@@ -6,7 +6,10 @@
   "scripts": {
     "sass": "node-sass src/scss/ -wo dist/css/",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "copy": "copy src/js/**/*.js dist/js",
+    "copy": "parallelshell \"npm run copy-js\" \"npm run copy-images\" \"npm run copy-fonts\" ",
+    "copy-js": "copy src/js/**/*.js dist/js",
+    "copy-fonts": "copy src/fonts/* dist/fonts",
+    "copy-images": "copy src/images/* dist/images",
     "watch-js": "chokidar 'src/js/*.js' -c 'npm run copy'",
     "serve": "live-server --port=4242 --entry-file='./demo/index.html' --watch='./dist/,./demo/md/' ",
     "start": "parallelshell \"npm run serve\" \"npm run sass\" \"npm run copy\" \"npm run watch-js\""
