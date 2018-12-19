@@ -1,10 +1,6 @@
-@import "./reveal/source/white.scss";
+@import "./theme/sfeir-overrides";
 
-@import "./utils/grid.scss";
-@import "./utils/helper.scss";
+@import "./utils/grid";
+@import "./utils/helper";
 
-@import "./theme/fonts.scss";
-
-html, body{
-    background: white;
-}
+@import "./theme/layout";

@@ -1,0 +1,103 @@
+/**
+* Globals overrides to change the layout of slides
+*/
+
+
+.reveal{ 
+    /*font-size: 1.25em;*/
+}
+
+
+.reveal ol, .reveal dl, .reveal ul{	
+	line-height: 1.5em;
+}
+
+.reveal ul{
+	list-style-type: disc;
+}
+
+.reveal ol, .reveal dl, .reveal ul {
+	//display: inline-block;
+	text-align: left;
+	margin: 0 0 0 1em;
+}
+
+.reveal .slides section li p{
+	font-size: 100%;
+}
+
+.reveal .slides section p{
+	font-size: 2em;
+}
+
+.reveal .slides section[data-type-show=full] p{
+    font-size: 100%;
+}
+
+
+.reveal .slides section p+p{
+  margin-top: 40px;
+}
+
+.reveal .slides section:not(.first-slide):not(.last-slide):not(.who-am-i):not([data-background]):not([class*="transition"]):not(.transition):not(.transition-white):not(.transition-black):not(.with-code){
+
+	width: 100%;
+	height: calc(100% - 40px);
+	height: -webkit-calc(100% - 40px);
+
+    h1, h2{
+    	color: $red;
+        font-size: 1.5em;
+        font-weight: 800;
+        text-align: left;
+        padding-left: 25px;
+        margin-left: 5px;
+    }
+    
+    h1, h2, h3{
+    	margin-bottom: 50px;
+    	text-align: left;
+        //font-size: 2.5em;
+	}
+
+   	h1~h2, h2~h3, h1~h3{
+    	margin-top: -30px;
+    	padding-left: 30px;
+    	color: $sfeir-blue;
+    }
+
+   
+}
+
+.reveal blockquote::before{
+	content:'\“';
+	position:absolute;
+	top: 0;
+	left: 0;
+	width:50px;
+	height: 50px;
+}
+.reveal blockquote::after{
+	content:'\”';
+	position:absolute;
+	bottom: -0.5em;
+	right: -0.5em;
+	width:50px;
+	height: 50px;
+}
+
+.reveal blockquote {
+	display: block;
+	position: relative;
+	width: 70%;
+	margin: 20px auto;
+	padding: 1em;
+	text-align: left;
+	font-style: italic;
+	background: white;
+	color: $sfeir-blue;
+	box-shadow: 0px 0px 2px rgba(0, 0, 0, 0.2);
+}
+.reveal q, .reveal blockquote {
+	//quotes: none;
+}
