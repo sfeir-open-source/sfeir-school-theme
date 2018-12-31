@@ -3,12 +3,12 @@
 */
 
 
-.reveal{ 
+.reveal{
     /*font-size: 1.25em;*/
 }
 
 
-.reveal ol, .reveal dl, .reveal ul{	
+.reveal ol, .reveal dl, .reveal ul{
 	line-height: 1.5em;
 }
 
@@ -53,7 +53,7 @@
         padding-left: 25px;
         margin-left: 5px;
     }
-    
+
     h1, h2, h3{
     	margin-bottom: 50px;
     	text-align: left;
@@ -66,7 +66,7 @@
     	color: $sfeir-blue;
     }
 
-   
+
 }
 
 .reveal blockquote::before{
@@ -100,4 +100,15 @@
 }
 .reveal q, .reveal blockquote {
 	//quotes: none;
+}
+
+/**
+* Reset Somes styles
+*/
+
+.reveal section img{
+	margin: initial;
+	background: initial;
+	border: initial;
+	box-shadow: initial;
 }
