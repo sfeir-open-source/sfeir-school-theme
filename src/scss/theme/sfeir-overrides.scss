@@ -1,5 +1,5 @@
 /**
- * Sfeir Override theme for reveal.js. 
+ * Sfeir Override theme for reveal.js.
 
  * By Jean-François Garreau : jefBinomed
  */
@@ -12,9 +12,11 @@
 
 @import "./fonts";
 @import "./colors";
+@import "../utils/custom-properties";
+
 
 // Background of the presentation
-$backgroundColor: #eee;
+$backgroundColor: #FFF;
 
 // Primary/body text
 $mainFont: 'Montserrat', sans-serif;
@@ -47,6 +49,45 @@ $linkColorHover: lighten( $linkColor, 20% );
 // Text selection
 $selectionBackgroundColor: rgba(140, 191, 240, 0.8);
 $selectionColor: #fff;
+
+//  Custom Properties
+
+:root{
+    // Background of the presentation
+    @include useCssVar(--backgroundColor, $backgroundColor);
+
+    // Primary/body text
+    @include useCssVar(--mainFont, $mainFont);
+    @include useCssVar(--mainFontSize, $mainFontSize);
+    @include useCssVar(--mainColor, $mainColor);
+
+    // Vertical spacing between blocks of text
+    @include useCssVar(--blockMargin, $blockMargin);
+
+    // Headings
+    @include useCssVar(--headingMargin, $headingMargin);
+    @include useCssVar(--headingFont, $headingFont);
+    @include useCssVar(--headingColor, $headingColor);
+    @include useCssVar(--headingLineHeight, $headingLineHeight);
+    @include useCssVar(--headingLetterSpacing, $headingLetterSpacing);
+    @include useCssVar(--headingTextTransform, $headingTextTransform);
+    @include useCssVar(--headingTextShadow, $headingTextShadow);
+    @include useCssVar(--headingFontWeight, $headingFontWeight);
+    @include useCssVar(--heading1TextShadow, $heading1TextShadow);
+
+    @include useCssVar(--heading1Size, $heading1Size);
+    @include useCssVar(--heading2Size, $heading2Size);
+    @include useCssVar(--heading3Size, $heading3Size);
+    @include useCssVar(--heading4Size, $heading4Size);
+
+    // Links and actions
+    @include useCssVar(--linkColor, $linkColor);
+    @include useCssVar(--linkColorHover, $linkColorHover);
+
+    // Text selection
+    @include useCssVar(--selectionBackgroundColor, $selectionBackgroundColor);
+    @include useCssVar(--selectionColor, $selectionColor);
+}
 
 
 // Theme template ------------------------------

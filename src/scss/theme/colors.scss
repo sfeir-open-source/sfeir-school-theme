@@ -1,7 +1,9 @@
 
+@import "../utils/custom-properties";
+
 // Generics colors Helpers
 
-
+$code-bg: #3f3f3f;
 $light-grey: #ddd;
 $white: white;
 $medium-grey: #817c7c;
@@ -14,3 +16,20 @@ $red: #e74c3c;
 
 $sfeir-orange: #ff0000;
 $sfeir-blue: #0b4269;
+
+:root{
+    // Generics colors Helpers
+    @include useCssVar(--code-bg, $code-bg);
+    @include useCssVar(--light-grey, $light-grey);
+    @include useCssVar(--white, $white);
+    @include useCssVar(--medium-grey, $medium-grey);
+    @include useCssVar(--black, $black);
+    @include useCssVar(--dark-grey, $dark-grey);
+    @include useCssVar(--dark-grey-alpha, $dark-grey-alpha);
+    @include useCssVar(--red, $red);
+
+    // Define specifics Sfeir colors
+
+    @include useCssVar(--sfeir-orange, $sfeir-orange);
+    @include useCssVar(--sfeir-blue, $sfeir-blue);
+}

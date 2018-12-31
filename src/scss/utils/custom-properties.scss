@@ -1,0 +1,8 @@
+/**
+* Custom Properties
+*/
+
+
+@mixin useCssVar($varName, $varValue){
+    #{$varName}: #{$varValue}
+}

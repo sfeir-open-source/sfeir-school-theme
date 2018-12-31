@@ -1,13 +1,11 @@
 // Base theme template for reveal.js
-@import "./mixins";
-@import "./settings";
 
 /*********************************************
  * GLOBAL STYLES
  *********************************************/
 
 body {
-	@include bodyBackground();
+	//@include bodyBackground();
 	background-color: $backgroundColor;
 }
 
