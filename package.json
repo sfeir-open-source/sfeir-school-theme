@@ -12,7 +12,7 @@
     "copy-fonts": "copy src/fonts/* dist/fonts",
     "copy-images": "copy src/images/* dist/images",
     "watch-js": "chokidar \"src/js/*.js\" -c \"npm run copy\"",
-    "serve": "live-server --port=4242 --entry-file=\"./demo/index.html\" --watch=\"dist/,demo/md/\" ",
+    "serve": "live-server --port=4242 --entry-file=\"./demo/index.html\" --mount=\"/assets:./demo/assets\" --watch=\"dist/,demo/md/\"",
     "start": "parallelshell \"npm run serve\" \"npm run sass\" \"npm run copy\" \"npm run watch-js\""
   },
   "repository": {
