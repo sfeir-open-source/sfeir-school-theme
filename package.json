@@ -4,8 +4,8 @@
   "description": "Sfeir School Theme for RevealJS",
   "main": "index.js",
   "scripts": {
-    "sass": "node-sass src/scss/ -wo dist/css/",
-    "sass-once": "node-sass src/scss/sfeir-school-theme.scss -o dist/css/",
+    "sass": "node-sass src/scss/sfeir-school-theme.scss -o dist/css/ --source-map=true --watch=\"src/scss\" --recursive=\"src/scss\"",
+    "sass-once": "node-sass src/scss/sfeir-school-theme.scss -o dist/css/ --source-map=true",
     "test": "echo \"Error: no test specified\" && exit 1",
     "copy": "parallelshell \"npm run copy-js\" \"npm run copy-images\" \"npm run copy-fonts\" ",
     "copy-js": "copy src/js/**/*.js dist/js",
