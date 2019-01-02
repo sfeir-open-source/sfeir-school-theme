@@ -1,25 +1,3 @@
-<!-- .slide: class="first-slide" sfeir-level="1" sfeir-techno="pwa" -->
-
-# **Welcome to Sfeir School**
-## **PWA 100**
-
-##==##
-
-<!-- .slide: class="first-slide first-red" sfeir-level="2" sfeir-techno="pwa" -->
-
-# **Welcome to Sfeir School**
-## **PWA 200**
-
-##==##
-
-<!-- .slide: class="first-slide first-pink" sfeir-level="3" sfeir-techno="pwa" -->
-
-# **Welcome to Sfeir School**
-## **PWA 300**
-
-
-
-##==##
 
 <!-- .slide: class="who-am-i" -->
 
