@@ -54,6 +54,7 @@ class SfeirTheme {
 			'first-slide': `${this.path}images/src/images/background_blue.png`,
 			'first-slide.first-red': `${this.path}images/src/images/background_red.png`,
 			'first-slide.first-pink': `${this.path}images/src/images/background_pink.png`,
+			'school-presentation': `${this.path}images/src/images/background_shcool.png`,
 		};
 
 		for (let key in map){
