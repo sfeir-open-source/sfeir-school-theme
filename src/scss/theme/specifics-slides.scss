@@ -1,6 +1,7 @@
 @import "colors";
 
 @import "title-slide";
+@import "speaker-slide";
 
 @mixin bandeau(){
     width:100%;
@@ -9,7 +10,7 @@
     background :$dark-grey;
     text-align: left;
     padding-left: 20px;
-    color: white;
+    color: white; 
     @include dropshadow();
 }
 
@@ -28,83 +29,6 @@
         }
         
     }
-}
-
-.reveal  .slides section.who-am-i{
-
-	color : white;
-	text-align: left;
-
-	h2{
-        color: $red;
-        font-weight: 800;
-        line-height: 2em;
-        height: 2em;
-        font-size: 2em;
-        margin-top: -20px;
-		margin-bottom: 20px;
-	}
-
-	h3{
-        position: absolute;
-        left: 350px;
-        top: 250px;
-		font-size: 1.2em;
-        color : $medium-grey;
-		margin-bottom: 20px;
-	}
-
-    img[alt*=avatar]{
-        position: absolute;
-        left: 100px;
-        top: 200px;
-        width: 200px;
-        margin-top: 20px;
-        box-shadow: 2px 2px 2px 3px #CCCCCC;
-    }
-
-    img[alt*=company_logo]{
-        position: absolute;
-        top: 480px;
-        left: 50px;
-        max-width:100px;
-        max-height:100px;
-    }
-
-    img[alt*=gdg_logo]{
-        position: absolute;
-        top: 470px;
-        left: 200px;
-        max-width:100px;
-        max-height:100px;
-    }
-
-    .twitter{
-        position:absolute;
-        font-size: 100%;
-        top: 430px;
-        left: 350px;
-    }
-
-    .gplus{
-        position:absolute;
-        font-size: 100%;
-        top: 500px;
-        left: 350px;
-    }
-
-    .descjf{
-        position: absolute;
-        color: $black;
-        font-size: 100%;
-        line-height: 1.5em;
-        left: 350px;
-        top: 320px;
-        width: calc(100% - 350px);
-        width: -webkit-calc(100% - 350px);
-    }
-
-
 }
 
 .reveal  .slides section.last-slide{
