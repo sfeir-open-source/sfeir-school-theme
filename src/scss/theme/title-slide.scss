@@ -87,5 +87,31 @@
         }
     }
 
+}
 
+
+.reveal .slides section[data-background].sfeir-slide-title.sfeir-bg-pink,
+.reveal .slides section[data-background].sfeir-slide-title.sfeir-bg-red,
+.reveal .slides section[data-background].sfeir-slide-title.sfeir-bg-blue{
+
+    position: absolute;
+    color: $white;
+    background : transparent;
+
+    h1, h2, h3 {
+        color:$white;
+        text-transform: initial;
+    }
+
+ 	h1{
+        margin-bottom:40px;
+        margin-top: 620px;
+        font-size: 2.5em;
+        font-weight: 600;
+ 	}
+
+    h2{
+        text-transform: uppercase;
+        margin-bottom: 20px;
+    }
 }

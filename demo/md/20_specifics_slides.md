@@ -1,14 +1,20 @@
 
 
-<!-- .slide: class="transition-white" -->
+<!-- .slide: class="sfeir-slide-title sfeir-bg-red" -->
 
-# A White Transition Slide
+# A Red Transition Slide
 
 ##==##
 
-<!-- .slide: class="transition-black" -->
+<!-- .slide: class="sfeir-slide-title sfeir-bg-pink" -->
 
-# A Black Transition Slide
+# A Pink Transition Slide
+
+##==##
+
+<!-- .slide: class="sfeir-slide-title sfeir-bg-blue" -->
+
+# A Blue Transition Slide
 
 ##==##
 
