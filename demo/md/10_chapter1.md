@@ -1,96 +1,5 @@
 
-<!-- .slide: class="who-am-i" -->
-
-## Qui suis-je ?
-
-### Jean-François GARREAU
-
-<!-- .element: class="descjf" -->
-Director Engineering Sfeir
-
-![avatar w-300 wp-200](./assets/images/jf.jpg)
-
-
-![company_logo](./assets/images/logo-SFEIR-blanc-orange.svg)
-![gdg_logo](./assets/images/GDG-Logo-carre.png)
-
-<!-- .element: class="twitter" -->
-[@jefBinomed](http://twitter.com/jefBinomed)
-
-
-
-##==##
-
-<!-- .slide: class="transition-white" -->
-
-# A White Transition Slide
-
-##==##
-
-<!-- .slide: class="transition-black" -->
-
-# A Black Transition Slide
-
-##==##
-
-<!-- .slide: data-background="./assets/images/iron_droid.jpg" data-state="hidefooter" class="transition" -->
-
-# A Custom Transition Slide
-
-
-
-##==##
-
-<!-- .slide: data-background="./assets/images/iron_droid.jpg" data-state="hidefooter" data-copyrights="true" class="transition" -->
-
-# With CopyRights white
-
-<div class="copyrights white">copyrights</div>
-
-##==##
-
-<!-- .slide: data-background="./assets/images/iron_droid.jpg" data-state="hidefooter" data-copyrights="true" class="transition" -->
-
-# With CopyRights black
-
-<div class="copyrights black">copyrights</div>
-
-
-
-##==##
-
-<!-- .slide: data-background="./assets/images/iron_droid.jpg" data-state="hidefooter" data-copyrights="true " class="transition no-filter" -->
-
-
-<div class="copyrights">copyrights</div>
-
-##==##
-
-<!-- .slide: data-background="#3d4349" data-state="hidefooter" class="transition" -->
-
-# A Custom Transition Slide With color
-
-
-##==##
-
-<!-- .slide: class="transition-white" -->
-
-# A White Transition Slide with icon
-
-![](./assets/images/android.png) <!-- .element: class="icon" -->
-
-##==##
-
-<!-- .slide: class="transition-black" -->
-
-# A Black Transition Slide with icon
-
-![icon](./assets/images/android.png)
-
-
-##==##
-
-## Summary ##
+## Summary 
 
 
 * Item 1
@@ -99,7 +8,7 @@ Director Engineering Sfeir
 
 ##==##
 
-## Summary ##
+## Summary 
 
 
 1. List Item 1

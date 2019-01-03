@@ -3,11 +3,6 @@
 */
 
 
-.reveal{
-    /*font-size: 1.25em;*/
-}
-
-
 .reveal ol, .reveal dl, .reveal ul{
 	line-height: 1.5em;
 }
@@ -39,33 +34,39 @@
   margin-top: 40px;
 }
 
-.reveal .slides section:not(.first-slide):not(.last-slide):not(.who-am-i):not([data-background]):not([class*="transition"]):not(.transition):not(.transition-white):not(.transition-black):not(.with-code){
+.reveal .slides section:not(.sfeir-specific-slide),
+.reveal .slides section.sfeir-specific-slide.sfeir-basic-slide,
+.reveal .slides section.sfeir-specific-slide.sfeir-bg-white-1,
+.reveal .slides section.sfeir-specific-slide.sfeir-bg-white-2,
+.reveal .slides section.sfeir-specific-slide.sfeir-bg-white-3{
 
 	width: 100%;
 	height: calc(100% - 40px);
 	height: -webkit-calc(100% - 40px);
+	text-align: left;
 
     h1, h2{
-    	color: $red;
+		text-transform: initial;
+		text-align: center;
+    	color: $sfeir-orange;
         font-size: 1.5em;
-        font-weight: 800;
-        text-align: left;
-        padding-left: 25px;
+        font-weight: 600;
+        padding-left: 25px; 
         margin-left: 5px;
     }
 
     h1, h2, h3{
+		text-transform: initial;
     	margin-bottom: 50px;
-    	text-align: left;
         //font-size: 2.5em;
 	}
 
    	h1~h2, h2~h3, h1~h3{
+		text-transform: initial;
     	margin-top: -30px;
     	padding-left: 30px;
     	color: $sfeir-blue;
     }
-
 
 }
 
