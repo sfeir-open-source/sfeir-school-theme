@@ -49,8 +49,6 @@ class SfeirTheme {
 	_manageBackgrounds(){
 
 		const map = {
-			'transition-white' : 'var(--light-grey)',
-			'transition-black' : 'var(--dark-grey)',
 			'first-slide': `${this.path}images/src/images/background_blue.png`,
 			'first-slide.first-red': `${this.path}images/src/images/background_red.png`,
 			'first-slide.first-pink': `${this.path}images/src/images/background_pink.png`,
@@ -71,7 +69,7 @@ class SfeirTheme {
 		};
 
 		for (let key in map){
-			const queryElementList = document.querySelectorAll('.reveal .slides section.'+key);
+			const queryElementList = document.querySelectorAll('.reveal .slides section:not([data-background]).'+key);
 
 			for (let i = 0; i < queryElementList.length; i++){
 				const element = queryElementList[i];
@@ -81,9 +79,8 @@ class SfeirTheme {
 		}
 
 		// Add default background for slides 
-		const genericsSlides = [...document.querySelectorAll('.reveal .slides section:not(.sfeir-specific-slide):not(.no-background)')];
+		const genericsSlides = [...document.querySelectorAll('.reveal .slides section:not([data-background]):not(.sfeir-specific-slide):not(.no-background)')];
 		for (let genericSlide of genericsSlides){
-			genericSlide.classList.add('sfeir-specific-slide');
 			genericSlide.classList.add('sfeir-basic-slide');
 			genericSlide.setAttribute('data-background', `${this.path}images/src/images/background_white_1.png`);
 		}
