@@ -5,6 +5,18 @@
 
 @import "./theme/layout";
 
-
+ 
 // Specifics slides
 @import "./theme/specifics-slides"; 
+
+// Override
+
+// To override the highlightJS theme you can do like this
+/*
+.with-code {
+    @import "../../../node_modules/highlight.js/styles/tomorrow";
+}
+.with-code-dark {
+    @import "../../../node_modules/highlight.js/styles/darcula";
+}
+*/

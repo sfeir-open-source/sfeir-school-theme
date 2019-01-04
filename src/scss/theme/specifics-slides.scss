@@ -3,6 +3,7 @@
 @import "title-slide";
 @import "speaker-slide";
 @import "transition-slides";
+@import "code-slides";
 
 @mixin bandeau(){
     width:100%;
@@ -65,60 +66,5 @@
     left: 0;
     width: 100vw;
     height: 100vw;
-}
-
-
-.reveal .backgrounds div.slide-background.with-code{
-    background-color: $code-bg;
-}
-
-.reveal .slides section.with-code{
-
-    h1, h2{
-        color: $light-grey;
-        font-family: monospace;
-        font-size: 1.5em;
-        font-weight: 600;
-        text-align: left;
-        padding-left: 25px;
-        margin-left: 5px;
-    }
-
-    pre {
-        display: block;
-        position: relative;
-        width: 90%;
-        margin: 20px auto;
-        text-align: left;
-        font-family: monospace;
-        line-height: 1.4em;
-        word-wrap: break-word;
-
-        code {
-            display: block;
-            padding: 10px;
-            overflow: auto;
-            max-height: 600px;
-            word-wrap: normal;
-            font-size: 0.70em;
-            font-family: monospace;
-            margin-bottom : 20px;
-
-            span{
-                line-height: 1.5em;
-            }
-        }
-    }
-
-    p.big-code ~ pre:not(.literal){
-        position: absolute;
-        top: 20vh;
-    }
-
-    p.big-code ~ pre:not(.literal) code {
-      font-size: 1.5em;
-      line-height: 2.1em;
-    }
-
 }
 

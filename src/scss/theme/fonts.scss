@@ -49,6 +49,35 @@
     font-style: normal;
 }
 
+// Consolas
+
+@font-face {
+    font-family: 'Consolas';
+    src: url('../fonts/src/fonts/Consolas.ttf');
+}
+
+
+@font-face {
+    font-family: 'Consolas';
+    src: url('../fonts/src/fonts/Consolaz.ttf');
+    font-weight: 800;
+    font-style: normal;
+}
+
+// Inconsolata
+
+@font-face {
+    font-family: 'Inconsolata';
+    src: url('../fonts/src/fonts/Inconsolata-Regular.ttf');
+}
+
+@font-face {
+    font-family: 'Inconsolata';
+    src: url('../fonts/src/fonts/Inconsolata-Bold.ttf');
+    font-weight: 800;
+    font-style: normal;
+}
+
 
 .reveal{
 	font-family: 'Montserrat', 'Helvetica Neue', Helvetica, 'Microsoft YaHei', 'WenQuanYi Micro Hei', Arial, sans-serif;
