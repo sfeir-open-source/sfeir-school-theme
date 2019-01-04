@@ -2,6 +2,7 @@
 
 @import "title-slide";
 @import "speaker-slide";
+@import "transition-slides";
 
 @mixin bandeau(){
     width:100%;
@@ -32,46 +33,6 @@
 }
 
 
-.reveal .slides section[data-background],
-.reveal .slides section[class*="transition"],
-.reveal .slides section.transition,
-.reveal .slides section.transition-white,
-.reveal .slides section.transition-black,{
-    background : rgba(0,0,0,0);
-}
-
-.reveal .slides section[data-background],
-.reveal .slides section[class*="transition"]
-.reveal .slides section.transition,
-.reveal .slides section.transition-white,
-.reveal .slides section.transition-black{
-    h1{
-        color:$red;
-        margin-top:150px;
-        font-size: 2.5em;
-        font-weight: 800;
-        margin-bottom: 40px;
-        text-transform: uppercase;
-
-    }
-    /*h1{
-        @include bandeau();
-        text-align: left;
-        padding-left : 10px;
-        font-size: 1.2em;
-    }*/
-}
-
-
-.reveal .slides section.transition-black h1{
-    color: $light-grey;
-
-}
-
-.reveal .backgrounds div.slide-background.transition-black{
-    background-color:$black;
-}
-
 .reveal .backgrounds div.slide-background.transition[data-background-hash].no-filter::before{
     background-color:rgba(0,0,0,0);
 }
@@ -97,7 +58,7 @@
 .reveal .backgrounds div.slide-background.transition[data-background-hash*=webp]::before,
 .reveal .backgrounds div.slide-background.transition[data-background-hash*=WEBP]::before,
 .reveal .backgrounds div.slide-background.transition[data-background-hash*=Webp]::before{
-    background-color : $dark-grey-alpha;
+    //background-color : $dark-grey-alpha;
     content: '';
     position: absolute;
     top: 0;
@@ -106,17 +67,6 @@
     height: 100vw;
 }
 
-
-.reveal .slides section.transition-white img[alt*=icon],
-.reveal .slides section.transition-black img[alt*=icon],
-.reveal .slides section.transition-white img.icon,
-.reveal .slides section.transition-black img.icon{
-    position: absolute;
-    top: 0em;
-    left: calc(50% - 75px);
-    max-height: 150px;
-    max-width: 150px;
-}
 
 .reveal .backgrounds div.slide-background.with-code{
     background-color: $code-bg;

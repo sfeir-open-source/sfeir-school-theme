@@ -1,47 +1,48 @@
 
+<!-- .slide: class="transition" -->
 
-<!-- .slide: class="sfeir-slide-title sfeir-bg-red" -->
+# Management of custom slides
+
+##==##
+
+<!-- .slide: class="transition-white sfeir-bg-red" -->
 
 # A Red Transition Slide
 
 ##==##
 
-<!-- .slide: class="sfeir-slide-title sfeir-bg-pink" -->
+<!-- .slide: class="transition-white sfeir-bg-pink" -->
 
 # A Pink Transition Slide
 
 ##==##
 
-<!-- .slide: class="sfeir-slide-title sfeir-bg-blue" -->
+<!-- .slide: class="transition-white sfeir-bg-blue" -->
 
 # A Blue Transition Slide
 
 ##==##
 
-<!-- .slide: data-background="./assets/images/iron_droid.jpg" data-state="hidefooter" class="transition" -->
+<!-- .slide: class="transition-center sfeir-bg-white-4" -->
+
+# A White Transition Slide with text center
+
+
+##==##
+
+<!-- .slide: data-background="./assets/images/dark_background.jpeg" class="transition-white" -->
 
 # A Custom Transition Slide
 
 ##==##
 
-<!-- .slide: data-background="#3d4349" data-state="hidefooter" class="transition" -->
+<!-- .slide: data-background="./assets/images/city.jpeg" class="transition-center" -->
+
+# A Custom Transition Slide 
+
+##==##
+
+<!-- .slide: data-background="#3d4349" class="transition" -->
 
 # A Custom Transition Slide With color
-
-
-##==##
-
-<!-- .slide: class="transition-white" -->
-
-# A White Transition Slide with icon
-
-![](./assets/images/android.png) <!-- .element: class="icon" -->
-
-##==##
-
-<!-- .slide: class="transition-black" -->
-
-# A Black Transition Slide with icon
-
-![icon](./assets/images/android.png)
 
