@@ -140,18 +140,3 @@ http://android.git.kernel.org/
 
 http://androidcookbook.oreilly.com/
 
-##==##
-
-<!-- .slide: data-type-show="prez" -->
-
-## A slide for prez only
-
-A few words !
-
-##==##
-
-<!-- .slide: data-type-show="full" -->
-
-## A slide for publication only
-
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin nec risus leo. Vestibulum condimentum orci in urna auctor aliquet. Quisque mi erat, placerat non porttitor ut, gravida eu erat. Fusce semper ipsum vel nibh porttitor aliquam. Cras sed porttitor est, id scelerisque odio. Pellentesque sit amet imperdiet ex. Aliquam erat.
