@@ -17,9 +17,14 @@ class SfeirTheme {
 		// ManageShowContent
 		this._manageShowTypeContent();
 
+		// ManageSpecificsColumnsSlides
+		this._manageSpecificsColumnsSlides();
+		
 		if (Reveal){
 			Reveal.sync();
 		}
+		
+
 	}
 	_extractPath(){
 		const scripts = document.getElementsByTagName("script");
@@ -116,6 +121,39 @@ class SfeirTheme {
 					tmpSlide.parentNode.removeChild(tmpSlide);
 				}
 			}
+		}
+	}
+
+	_manageSpecificsColumnsSlides(){
+
+		const twoColSlides = [...document.querySelectorAll('.reveal .slides section.two-column-layout')];
+		for (let twoColSection of twoColSlides){
+			const parentSection = twoColSection.parentElement;
+			parentSection.classList.add('two-column-layout');
+			// Need to overrides reveal inlinestyles
+			parentSection.style.display='grid';
+			if (parentSection.nodeName === 'SECTION'){
+				const subSections = [...parentSection.querySelectorAll('section')];
+				for(let subSection of subSections){
+					subSection.classList.remove('two-column-layout');
+					subSection.style.display='block';
+				}
+			}
+		}
+		if (Reveal){
+			// Need to overrides reveal inlinestyles
+			Reveal.addEventListener('slidechanged', (event)=> {
+				console.log(event);
+				const currentSlide = event.currentSlide;
+				const parentSlide = currentSlide.parentElement;
+				if (parentSlide.nodeName === 'SECTION' 
+					&& parentSlide.classList.contains('two-column-layout')){
+						const state = Reveal.getState();
+						state.indexv = 2;
+						Reveal.setState(state);
+						parentSlide.style.display='grid';
+				}
+			})
 		}
 	}
 

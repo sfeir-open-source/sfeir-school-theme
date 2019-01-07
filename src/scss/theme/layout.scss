@@ -111,6 +111,31 @@
 }
 
 /**
+* Two Columns slides
+*/
+
+.reveal .slides section.two-column-layout {
+	display: grid;
+	grid-template-columns: 50% 50%;
+	grid-template-rows: 100px auto;
+
+	section:first-child{
+		grid-row-start: 1;
+		opacity: 1;
+	}
+	section:nth-child(2){
+		grid-row-start: 2;
+		grid-column-end: 2;
+		opacity: 1;
+	}
+	section:last-child{
+		grid-row-start: 2;
+		grid-column-start: 2;
+		opacity: 1;
+	}
+}
+
+/**
 * Reset Somes styles
 */
 
