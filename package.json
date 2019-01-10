@@ -12,6 +12,7 @@
     "copy-fonts": "copy src/fonts/* dist/fonts",
     "copy-images": "copy src/images/* dist/images",
     "watch-js": "chokidar \"src/js/*.js\" -c \"npm run copy\"",
+    "format": "prettier --write {demo,src}/**/*.{html,md,js,scss}",
     "serve": "live-server --port=4242 --entry-file=\"./demo/index.html\" --mount=\"/assets:./demo/assets\" --watch=\"dist/,demo/md/\"",
     "start": "parallelshell \"npm run serve\" \"npm run sass\" \"npm run copy\" \"npm run watch-js\""
   },
@@ -36,6 +37,7 @@
     "live-server": "^1.2.1",
     "node-sass": "^4.11.0",
     "parallelshell": "3.0.1",
+    "prettier": "^1.15.3",
     "reveal.js": "^3.7.0"
   }
 }

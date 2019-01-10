@@ -1,61 +1,65 @@
+.reveal .slides section[data-background].speaker-slide {
+  text-transform: inherit;
 
-.reveal  .slides section[data-background].speaker-slide{
+  h1 {
     text-transform: inherit;
+    margin-top: 0;
+  }
 
+  $padding-left: 550px;
 
-    h1 {
-        text-transform: inherit;
-        margin-top: 0;
-    }
+  h2 {
+    text-transform: inherit;
+    text-align: left;
+    color: $sfeir-blue;
+    font-weight: 800;
+    line-height: 2em;
+    height: 2em;
+    font-size: 1.8em;
+    margin-top: 350px;
+    padding-left: $padding-left;
+    margin-bottom: 20px;
+  }
 
-    $padding-left: 550px;
-    
-	h2{
-        text-transform: inherit;
-        text-align: left;
-        color: $sfeir-blue;
-        font-weight: 800;
-        line-height: 2em;
-        height: 2em;
-        font-size: 1.8em;
-        margin-top: 350px;
-        padding-left: $padding-left;
-		margin-bottom: 20px;
-	}
+  h3 {
+    text-transform: inherit;
+    text-align: left;
+    padding-left: $padding-left;
+    font-size: 1.2em;
+    color: $medium-grey;
+    margin-bottom: 20px;
+  }
 
-	h3{
-        text-transform: inherit;
-        text-align: left;
-        padding-left: $padding-left;
-        font-size: 1.2em;
-        color : $medium-grey;
-		margin-bottom: 20px;
-	}
+  img[alt*="speaker"] {
+    position: absolute;
+    left: 100px;
+    top: 300px;
+    width: 400px;
+    margin-top: 20px;
+    -webkit-clip-path: polygon(
+      50% 0%,
+      100% 25%,
+      100% 75%,
+      50% 100%,
+      0% 75%,
+      0% 25%
+    );
+    clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+  }
 
-    img[alt*=speaker]{
-        position: absolute;
-        left: 100px;
-        top: 300px;
-        width: 400px;
-        margin-top: 20px;
-        -webkit-clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
-        clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
-    }
+  img[alt*="company"] {
+    position: absolute;
+    top: 300px;
+    left: 750px;
+    max-width: 400px;
+    max-height: 200px;
+  }
 
-    img[alt*=company]{
-        position: absolute;
-        top: 300px;
-        left: 750px;
-        max-width:400px;
-        max-height:200px;
-    }
-
-    img[alt*=badge]{
-        position: absolute;
-        top: 400px;
-        right: 200px;
-        max-width:300px;
-        max-height:300px;
-    }
-
+  img[alt*="badge"] {
+    position: absolute;
+    top: 400px;
+    right: 200px;
+    max-width: 300px;
+    max-height: 300px;
+  }
 }

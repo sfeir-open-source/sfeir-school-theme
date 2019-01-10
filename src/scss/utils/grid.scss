@@ -1,21 +1,22 @@
-
 /*
 * 
 * MIXINS
 **/
 
-@mixin img-size-prefix($prefix, $attr,$size){
-    img[alt*=#{$prefix}-#{$size}], .#{$prefix}-#{$size}, .#{$prefix}-#{$size}+*{
-        #{$attr}: #{$size}px;
-    }
+@mixin img-size-prefix($prefix, $attr, $size) {
+  img[alt*="#{$prefix}-#{$size}"],
+  .#{$prefix}-#{$size},
+  .#{$prefix}-#{$size} + * {
+    #{$attr}: #{$size}px;
+  }
 }
 
-@for $i from 1 through 20{
-    @include img-size-prefix(h, height, $i * 50);
-    @include img-size-prefix(w, width, $i * 50);
+@for $i from 1 through 20 {
+  @include img-size-prefix(h, height, $i * 50);
+  @include img-size-prefix(w, width, $i * 50);
 }
 
-@for $i from 1 through 20{
-    @include img-size-prefix(hm, max-height, $i * 50);
-    @include img-size-prefix(wm, max-width, $i * 50);
+@for $i from 1 through 20 {
+  @include img-size-prefix(hm, max-height, $i * 50);
+  @include img-size-prefix(wm, max-width, $i * 50);
 }

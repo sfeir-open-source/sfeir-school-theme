@@ -1,8 +1,6 @@
-
 <!-- .slide: class="transition-white sfeir-bg-red" -->
 
 # Slides using helpers of theme
-
 
 ##==##
 
@@ -67,7 +65,6 @@
 ![h-200](./assets/images/GDG-Logo-carre.png)
 ![h-100](./assets/images/GDG-Logo-carre.png)
 
-
 ##==##
 
 # Flex row alignement with auto wrap
@@ -92,12 +89,11 @@
 
 ## Image from 50px to 1000px (width and height)
 
-Image (w-500) : 
+Image (w-500) :
 
 ![w-500](./assets/images/350x90.png)
 
-
-Div background: 
+Div background:
 
 <div style="background:red;" class="w-500 h-200"> w-500 h-200</div>
 
@@ -107,12 +103,11 @@ Div background:
 
 ## Image from 50px to 1000px (max-width and max-height)
 
-Image : 
+Image :
 
 ![wm-500](./assets/images/350x90.png)
 
-
-Div background: 
+Div background:
 
 <div style="background:red; width:600px;" class="wm-500 h-200"> (height:600px) wm-500 h-200</div>
 
@@ -121,7 +116,6 @@ Div background:
 # Image with full width
 
 ## First way
-
 
 ![full-width](./assets/images/logo_sfeir_bleu_orange.png)
 
@@ -142,7 +136,6 @@ Div background:
 <div class="full-width"></div>
 ![](./assets/images/logo_sfeir_bleu_orange.png)
 
-
 ##==##
 
 <!-- .slide: style="height:100%" -->
@@ -150,6 +143,7 @@ Div background:
 # Image with full height
 
 Div with height of 600px;
+
 <div style="height:600px; width:100%; background:red;">
     <img class="full-height" src="./assets/images/logo_sfeir_bleu_orange.png">
 </div>

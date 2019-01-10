@@ -1,29 +1,28 @@
-
 .reveal .slides section[class*="transition"],
 .reveal .slides section.sfeir-basic-slide[class*="transition"],
-.reveal .slides section.sfeir-specific-slide[class*="transition"]{
-    background : rgba(0,0,0,0);
+.reveal .slides section.sfeir-specific-slide[class*="transition"] {
+  background: rgba(0, 0, 0, 0);
 
-    h1{
-        color:$sfeir-orange;
-        margin-top:650px;
-        font-size: 2em;
-        font-weight: 800;
-        margin-bottom: 40px;
-        text-transform: initial;
-    }
+  h1 {
+    color: $sfeir-orange;
+    margin-top: 650px;
+    font-size: 2em;
+    font-weight: 800;
+    margin-bottom: 40px;
+    text-transform: initial;
+  }
 }
 
 .reveal .slides section[class*="transition-white"] h1,
 .reveal .slides section.sfeir-basic-slide[class*="transition-white"] h1,
-.reveal .slides section.sfeir-specific-slide[class*="transition-white"] h1{
-    color:white;
-    font-weight: 600;
+.reveal .slides section.sfeir-specific-slide[class*="transition-white"] h1 {
+  color: white;
+  font-weight: 600;
 }
 
 .reveal .slides section[class*="transition-center"] h1,
 .reveal .slides section.sfeir-basic-slide[class*="transition-center"] h1,
-.reveal .slides section.sfeir-specific-slide[class*="transition-center"] h1{
-    margin-top:450px; 
-    text-align: left;
+.reveal .slides section.sfeir-specific-slide[class*="transition-center"] h1 {
+  margin-top: 450px;
+  text-align: left;
 }

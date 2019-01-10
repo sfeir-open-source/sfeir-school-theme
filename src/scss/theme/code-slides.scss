@@ -1,62 +1,59 @@
-
 .with-code-dark {
-    @import "../../../node_modules/highlight.js/styles/darcula";
+  @import "../../../node_modules/highlight.js/styles/darcula";
 }
 
-.reveal .backgrounds div.slide-background.with-code-dark{
-    background-color: $code-bg;
+.reveal .backgrounds div.slide-background.with-code-dark {
+  background-color: $code-bg;
 }
 
 .reveal .slides section.with-code,
-.reveal .slides section.with-code-dark{
-   
-    pre {
-        display: block;
-        position: relative;
-        width: 90%;
-        margin: 20px auto;
-        text-align: left;
-        font-family: monospace;
-        line-height: 1.4em;
-        word-wrap: break-word;
+.reveal .slides section.with-code-dark {
+  pre {
+    display: block;
+    position: relative;
+    width: 90%;
+    margin: 20px auto;
+    text-align: left;
+    font-family: monospace;
+    line-height: 1.4em;
+    word-wrap: break-word;
 
-        code {
-            display: block;
-            padding: 10px;
-            overflow: auto;
-            max-height: 600px;
-            word-wrap: normal;
-            font-size: 0.70em;
-            font-family: monospace;
-            margin-bottom : 20px;
+    code {
+      display: block;
+      padding: 10px;
+      overflow: auto;
+      max-height: 600px;
+      word-wrap: normal;
+      font-size: 0.7em;
+      font-family: monospace;
+      margin-bottom: 20px;
 
-            span{
-                line-height: 1.5em;
-            }
-        }
+      span {
+        line-height: 1.5em;
+      }
     }
+  }
 
-    pre.big-code:not(.literal){
-        position: absolute;
-        top: 20vh;
-        code {
-            font-size: 1.5em;
-            line-height: 2.1em;
-        }
+  pre.big-code:not(.literal) {
+    position: absolute;
+    top: 20vh;
+    code {
+      font-size: 1.5em;
+      line-height: 2.1em;
     }
+  }
 
-
-    &.consolas {
-        pre, pre code {
-            font-family: "Consolas";
-        }
+  &.consolas {
+    pre,
+    pre code {
+      font-family: "Consolas";
     }
+  }
 
-    &.inconsolata {
-        pre, pre code {
-            font-family: "Inconsolata";
-        }
+  &.inconsolata {
+    pre,
+    pre code {
+      font-family: "Inconsolata";
     }
-
+  }
 }
-

@@ -5,66 +5,107 @@
 @import "transition-slides";
 @import "code-slides";
 
-@mixin bandeau(){
-    width:100%;
-    height: 3em;
-    line-height: 3em;
-    background :$dark-grey;
-    text-align: left;
-    padding-left: 20px;
-    color: white; 
-    @include dropshadow();
+@mixin bandeau() {
+  width: 100%;
+  height: 3em;
+  line-height: 3em;
+  background: $dark-grey;
+  text-align: left;
+  padding-left: 20px;
+  color: white;
+  @include dropshadow();
 }
 
 .reveal .slides section.school-presentation {
-    .wifi{
-        font-weight: 800;
-        text-align: left;
-        padding: 100px;
+  .wifi {
+    font-weight: 800;
+    text-align: left;
+    padding: 100px;
 
-        .key{
-            text-transform: uppercase
-        }
-
-        span:not(.key){
-            color: $sfeir-orange;
-        }
-        
+    .key {
+      text-transform: uppercase;
     }
+
+    span:not(.key) {
+      color: $sfeir-orange;
+    }
+  }
 }
 
-
-.reveal .backgrounds div.slide-background.transition[data-background-hash].no-filter::before{
-    background-color:rgba(0,0,0,0);
+.reveal
+  .backgrounds
+  div.slide-background.transition[data-background-hash].no-filter::before {
+  background-color: rgba(0, 0, 0, 0);
 }
 
-.reveal .backgrounds div.slide-background.transition[data-background-hash*=png]::before,
-.reveal .backgrounds div.slide-background.transition[data-background-hash*=PNG]::before,
-.reveal .backgrounds div.slide-background.transition[data-background-hash*=Png]::before,
-.reveal .backgrounds div.slide-background.transition[data-background-hash*=jpg]::before,
-.reveal .backgrounds div.slide-background.transition[data-background-hash*=JPG]::before,
-.reveal .backgrounds div.slide-background.transition[data-background-hash*=Jpg]::before,
-.reveal .backgrounds div.slide-background.transition[data-background-hash*=jpeg]::before,
-.reveal .backgrounds div.slide-background.transition[data-background-hash*=JPEG]::before,
-.reveal .backgrounds div.slide-background.transition[data-background-hash*=Jpeg]::before,
-.reveal .backgrounds div.slide-background.transition[data-background-hash*=gif]::before,
-.reveal .backgrounds div.slide-background.transition[data-background-hash*=GIF]::before,
-.reveal .backgrounds div.slide-background.transition[data-background-hash*=Gif]::before,
-.reveal .backgrounds div.slide-background.transition[data-background-hash*=svg]::before,
-.reveal .backgrounds div.slide-background.transition[data-background-hash*=SVG]::before,
-.reveal .backgrounds div.slide-background.transition[data-background-hash*=Svg]::before,
-.reveal .backgrounds div.slide-background.transition[data-background-hash*=bmp]::before,
-.reveal .backgrounds div.slide-background.transition[data-background-hash*=BMP]::before,
-.reveal .backgrounds div.slide-background.transition[data-background-hash*=Bmp]::before,
-.reveal .backgrounds div.slide-background.transition[data-background-hash*=webp]::before,
-.reveal .backgrounds div.slide-background.transition[data-background-hash*=WEBP]::before,
-.reveal .backgrounds div.slide-background.transition[data-background-hash*=Webp]::before{
-    //background-color : $dark-grey-alpha;
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100vw;
-    height: 100vw;
+.reveal
+  .backgrounds
+  div.slide-background.transition[data-background-hash*="png"]::before,
+.reveal
+  .backgrounds
+  div.slide-background.transition[data-background-hash*="PNG"]::before,
+.reveal
+  .backgrounds
+  div.slide-background.transition[data-background-hash*="Png"]::before,
+.reveal
+  .backgrounds
+  div.slide-background.transition[data-background-hash*="jpg"]::before,
+.reveal
+  .backgrounds
+  div.slide-background.transition[data-background-hash*="JPG"]::before,
+.reveal
+  .backgrounds
+  div.slide-background.transition[data-background-hash*="Jpg"]::before,
+.reveal
+  .backgrounds
+  div.slide-background.transition[data-background-hash*="jpeg"]::before,
+.reveal
+  .backgrounds
+  div.slide-background.transition[data-background-hash*="JPEG"]::before,
+.reveal
+  .backgrounds
+  div.slide-background.transition[data-background-hash*="Jpeg"]::before,
+.reveal
+  .backgrounds
+  div.slide-background.transition[data-background-hash*="gif"]::before,
+.reveal
+  .backgrounds
+  div.slide-background.transition[data-background-hash*="GIF"]::before,
+.reveal
+  .backgrounds
+  div.slide-background.transition[data-background-hash*="Gif"]::before,
+.reveal
+  .backgrounds
+  div.slide-background.transition[data-background-hash*="svg"]::before,
+.reveal
+  .backgrounds
+  div.slide-background.transition[data-background-hash*="SVG"]::before,
+.reveal
+  .backgrounds
+  div.slide-background.transition[data-background-hash*="Svg"]::before,
+.reveal
+  .backgrounds
+  div.slide-background.transition[data-background-hash*="bmp"]::before,
+.reveal
+  .backgrounds
+  div.slide-background.transition[data-background-hash*="BMP"]::before,
+.reveal
+  .backgrounds
+  div.slide-background.transition[data-background-hash*="Bmp"]::before,
+.reveal
+  .backgrounds
+  div.slide-background.transition[data-background-hash*="webp"]::before,
+.reveal
+  .backgrounds
+  div.slide-background.transition[data-background-hash*="WEBP"]::before,
+.reveal
+  .backgrounds
+  div.slide-background.transition[data-background-hash*="Webp"]::before {
+  //background-color : $dark-grey-alpha;
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vw;
 }
-

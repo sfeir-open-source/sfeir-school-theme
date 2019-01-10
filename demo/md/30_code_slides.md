@@ -1,4 +1,3 @@
-
 <!-- .slide: class="with-code-dark" -->
 
 ## Some Code
@@ -24,7 +23,6 @@
 
 ## Some Code (with monospace font)
 
-
 ```xml
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
@@ -46,7 +44,6 @@
 
 ## Some Code (with consolas font)
 
-
 ```xml
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
@@ -67,7 +64,6 @@
 <!-- .slide: class="with-code inconsolata" -->
 
 ## Some Code (with inconsolata font)
-
 
 ```xml
 <?xml version="1.0" encoding="utf-8"?>
@@ -93,4 +89,5 @@
 ```xml
 <?xml version="1.0" encoding="utf-8"?>
 ```
+
 <!-- .element: class="big-code" -->

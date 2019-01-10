@@ -4,7 +4,6 @@
  * By Jean-François Garreau : jefBinomed
  */
 
-
 // Default mixins and settings -----------------
 @import "../reveal/template/mixins";
 @import "../reveal/template/settings";
@@ -14,12 +13,11 @@
 @import "./colors";
 @import "../utils/custom-properties";
 
-
 // Background of the presentation
-$backgroundColor: #FFF;
+$backgroundColor: #fff;
 
 // Primary/body text
-$mainFont: 'Montserrat', sans-serif;
+$mainFont: "Montserrat", sans-serif;
 $mainFontSize: 40px;
 $mainColor: $sfeir-blue;
 
@@ -28,7 +26,7 @@ $blockMargin: 20px;
 
 // Headings
 $headingMargin: 0 0 $blockMargin 0;
-$headingFont: 'Montserrat', Impact, sans-serif;
+$headingFont: "Montserrat", Impact, sans-serif;
 $headingColor: $sfeir-orange;
 $headingLineHeight: 1.2;
 $headingLetterSpacing: normal;
@@ -40,11 +38,11 @@ $heading1TextShadow: $headingTextShadow;
 $heading1Size: 3.77em;
 $heading2Size: 2.11em;
 $heading3Size: 1.55em;
-$heading4Size: 1.00em;
+$heading4Size: 1em;
 
 // Links and actions
 $linkColor: #1155cc;
-$linkColorHover: lighten( $linkColor, 20% );
+$linkColorHover: lighten($linkColor, 20%);
 
 // Text selection
 $selectionBackgroundColor: rgba(140, 191, 240, 0.8);
@@ -52,43 +50,42 @@ $selectionColor: #fff;
 
 //  Custom Properties
 
-:root{
-    // Background of the presentation
-    @include useCssVar(--backgroundColor, $backgroundColor);
+:root {
+  // Background of the presentation
+  @include useCssVar(--backgroundColor, $backgroundColor);
 
-    // Primary/body text
-    @include useCssVar(--mainFont, $mainFont);
-    @include useCssVar(--mainFontSize, $mainFontSize);
-    @include useCssVar(--mainColor, $mainColor);
+  // Primary/body text
+  @include useCssVar(--mainFont, $mainFont);
+  @include useCssVar(--mainFontSize, $mainFontSize);
+  @include useCssVar(--mainColor, $mainColor);
 
-    // Vertical spacing between blocks of text
-    @include useCssVar(--blockMargin, $blockMargin);
+  // Vertical spacing between blocks of text
+  @include useCssVar(--blockMargin, $blockMargin);
 
-    // Headings
-    @include useCssVar(--headingMargin, $headingMargin);
-    @include useCssVar(--headingFont, $headingFont);
-    @include useCssVar(--headingColor, $headingColor);
-    @include useCssVar(--headingLineHeight, $headingLineHeight);
-    @include useCssVar(--headingLetterSpacing, $headingLetterSpacing);
-    @include useCssVar(--headingTextTransform, $headingTextTransform);
-    @include useCssVar(--headingTextShadow, $headingTextShadow);
-    @include useCssVar(--headingFontWeight, $headingFontWeight);
-    @include useCssVar(--heading1TextShadow, $heading1TextShadow);
+  // Headings
+  @include useCssVar(--headingMargin, $headingMargin);
+  @include useCssVar(--headingFont, $headingFont);
+  @include useCssVar(--headingColor, $headingColor);
+  @include useCssVar(--headingLineHeight, $headingLineHeight);
+  @include useCssVar(--headingLetterSpacing, $headingLetterSpacing);
+  @include useCssVar(--headingTextTransform, $headingTextTransform);
+  @include useCssVar(--headingTextShadow, $headingTextShadow);
+  @include useCssVar(--headingFontWeight, $headingFontWeight);
+  @include useCssVar(--heading1TextShadow, $heading1TextShadow);
 
-    @include useCssVar(--heading1Size, $heading1Size);
-    @include useCssVar(--heading2Size, $heading2Size);
-    @include useCssVar(--heading3Size, $heading3Size);
-    @include useCssVar(--heading4Size, $heading4Size);
+  @include useCssVar(--heading1Size, $heading1Size);
+  @include useCssVar(--heading2Size, $heading2Size);
+  @include useCssVar(--heading3Size, $heading3Size);
+  @include useCssVar(--heading4Size, $heading4Size);
 
-    // Links and actions
-    @include useCssVar(--linkColor, $linkColor);
-    @include useCssVar(--linkColorHover, $linkColorHover);
+  // Links and actions
+  @include useCssVar(--linkColor, $linkColor);
+  @include useCssVar(--linkColorHover, $linkColorHover);
 
-    // Text selection
-    @include useCssVar(--selectionBackgroundColor, $selectionBackgroundColor);
-    @include useCssVar(--selectionColor, $selectionColor);
+  // Text selection
+  @include useCssVar(--selectionBackgroundColor, $selectionBackgroundColor);
+  @include useCssVar(--selectionColor, $selectionColor);
 }
-
 
 // Theme template ------------------------------
 @import "../reveal/template/theme";

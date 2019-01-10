@@ -1,4 +1,3 @@
-
 <!-- .slide: class="two-column-layout"-->
 
 # Un titre
@@ -18,12 +17,12 @@ content right
 # Un titre
 
 ##--##
+
 <!-- .slide: class="with-code" -->
 
-
 ```javascript
-function hello() {
-    console.log('World');
+function hello() {
+  console.log("World");
 }
 ```
 

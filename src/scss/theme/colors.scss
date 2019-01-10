@@ -1,4 +1,3 @@
-
 @import "../utils/custom-properties";
 
 // Generics colors Helpers
@@ -9,7 +8,7 @@ $white: white;
 $medium-grey: #817c7c;
 $black: #333;
 $dark-grey: #3d4349;
-$dark-grey-alpha : rgba(61,67,73,0.7);
+$dark-grey-alpha: rgba(61, 67, 73, 0.7);
 $red: #e74c3c;
 
 // Define specifics Sfeir colors
@@ -17,19 +16,19 @@ $red: #e74c3c;
 $sfeir-orange: #e7552b;
 $sfeir-blue: #0b4269;
 
-:root{
-    // Generics colors Helpers
-    @include useCssVar(--code-bg, $code-bg);
-    @include useCssVar(--light-grey, $light-grey);
-    @include useCssVar(--white, $white);
-    @include useCssVar(--medium-grey, $medium-grey);
-    @include useCssVar(--black, $black);
-    @include useCssVar(--dark-grey, $dark-grey);
-    @include useCssVar(--dark-grey-alpha, $dark-grey-alpha);
-    @include useCssVar(--red, $red);
+:root {
+  // Generics colors Helpers
+  @include useCssVar(--code-bg, $code-bg);
+  @include useCssVar(--light-grey, $light-grey);
+  @include useCssVar(--white, $white);
+  @include useCssVar(--medium-grey, $medium-grey);
+  @include useCssVar(--black, $black);
+  @include useCssVar(--dark-grey, $dark-grey);
+  @include useCssVar(--dark-grey-alpha, $dark-grey-alpha);
+  @include useCssVar(--red, $red);
 
-    // Define specifics Sfeir colors
+  // Define specifics Sfeir colors
 
-    @include useCssVar(--sfeir-orange, $sfeir-orange);
-    @include useCssVar(--sfeir-blue, $sfeir-blue);
+  @include useCssVar(--sfeir-orange, $sfeir-orange);
+  @include useCssVar(--sfeir-blue, $sfeir-blue);
 }

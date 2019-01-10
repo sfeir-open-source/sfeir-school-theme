@@ -1,4 +1,3 @@
-
 <!-- .slide: class="transition" -->
 
 # Management of custom slides
@@ -27,7 +26,6 @@
 
 # A White Transition Slide with text center
 
-
 ##==##
 
 <!-- .slide: data-background="./assets/images/dark_background.jpeg" class="transition-white" -->
@@ -38,11 +36,10 @@
 
 <!-- .slide: data-background="./assets/images/city.jpeg" class="transition-center" -->
 
-# A Custom Transition Slide 
+# A Custom Transition Slide
 
 ##==##
 
 <!-- .slide: data-background="#3d4349" class="transition" -->
 
 # A Custom Transition Slide With color
-
