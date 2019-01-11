@@ -46,7 +46,7 @@ class SfeirTheme {
 		const link = document.createElement('link');
 		link.type = 'image/x-icon';
 		link.rel = 'shortcut icon';
-		link.href = `${this.path}images/src/images/logo_sfeir_burger.png`;
+		link.href = `${this.path}images/logo_sfeir_burger.png`;
 		document.getElementsByTagName('head')[0].appendChild(link);
 
 	}
@@ -54,23 +54,23 @@ class SfeirTheme {
 	_manageBackgrounds(){
 
 		const map = {
-			'first-slide.first-red': `${this.path}images/src/images/background_red.png`,
-			'first-slide.first-pink': `${this.path}images/src/images/background_pink.png`,
-			'first-slide': `${this.path}images/src/images/background_blue.png`,
-			'school-presentation': `${this.path}images/src/images/background_shcool.png`,
-			'speaker-slide': `${this.path}images/src/images/background_white_1.png`,
-			'sfeir-slide': `${this.path}images/src/images/background_white_1.png`,
-			'sfeir-bg-blue': `${this.path}images/src/images/background_blue.png`,
-			'sfeir-bg-pink': `${this.path}images/src/images/background_pink.png`,
-			'sfeir-bg-red': `${this.path}images/src/images/background_red.png`,
-			'sfeir-bg-white-1': `${this.path}images/src/images/background_white_1.png`,
-			'sfeir-bg-white-2': `${this.path}images/src/images/background_white_2.png`,
-			'sfeir-bg-white-3': `${this.path}images/src/images/background_white_3.png`,
-			'sfeir-bg-white-4': `${this.path}images/src/images/background_white_4.png`,
-			'sfeir-bg-white-5': `${this.path}images/src/images/background_white_5.png`,
-			'sfeir-bg-white-6': `${this.path}images/src/images/background_white_6.png`,
-			'sfeir-bg-white-7': `${this.path}images/src/images/background_white_7.png`,
-			'sfeir-bg-white-8': `${this.path}images/src/images/background_white_8.png`,
+			'first-slide.first-red': `${this.path}images/background_red.png`,
+			'first-slide.first-pink': `${this.path}images/background_pink.png`,
+			'first-slide': `${this.path}images/background_blue.png`,
+			'school-presentation': `${this.path}images/background_shcool.png`,
+			'speaker-slide': `${this.path}images/background_white_1.png`,
+			'sfeir-slide': `${this.path}images/background_white_1.png`,
+			'sfeir-bg-blue': `${this.path}images/background_blue.png`,
+			'sfeir-bg-pink': `${this.path}images/background_pink.png`,
+			'sfeir-bg-red': `${this.path}images/background_red.png`,
+			'sfeir-bg-white-1': `${this.path}images/background_white_1.png`,
+			'sfeir-bg-white-2': `${this.path}images/background_white_2.png`,
+			'sfeir-bg-white-3': `${this.path}images/background_white_3.png`,
+			'sfeir-bg-white-4': `${this.path}images/background_white_4.png`,
+			'sfeir-bg-white-5': `${this.path}images/background_white_5.png`,
+			'sfeir-bg-white-6': `${this.path}images/background_white_6.png`,
+			'sfeir-bg-white-7': `${this.path}images/background_white_7.png`,
+			'sfeir-bg-white-8': `${this.path}images/background_white_8.png`,
 		};
 
 		for (let key in map){
@@ -87,7 +87,7 @@ class SfeirTheme {
 		const genericsSlides = [...document.querySelectorAll('.reveal .slides section:not([data-background]):not(.sfeir-specific-slide):not(.no-background):not(.with-code-dark)')];
 		for (let genericSlide of genericsSlides){
 			genericSlide.classList.add('sfeir-basic-slide');
-			genericSlide.setAttribute('data-background', `${this.path}images/src/images/background_white_1.png`);
+			genericSlide.setAttribute('data-background', `${this.path}images/background_white_1.png`);
 		}
 
 		this._manageFirstSlide();
@@ -98,7 +98,7 @@ class SfeirTheme {
 		for (let firstSlideSection of firstSlides){
 			const imgLogo = document.createElement('DIV');
 			imgLogo.classList.add("sfeir-logo");
-			imgLogo.style['background-image'] = `url(${this.path}images/src/images/logo_empty.png)`;
+			imgLogo.style['background-image'] = `url(${this.path}images/logo_empty.png)`;
 
 			const level = firstSlideSection.hasAttribute('sfeir-level') ? +firstSlideSection.getAttribute('sfeir-level') : 1;
 			const techno = firstSlideSection.hasAttribute('sfeir-techno') ? firstSlideSection.getAttribute('sfeir-techno') : '';

@@ -61,19 +61,19 @@
     }
 
     div.sfeir-logo[data-sfeir-level="1"]:after{
-        background: url('../images/src/images/star.png');
+        background: url('../images/star.png');
         background-repeat: no-repeat;
         background-position: 50% 40px;
         background-size: 55px;
     }
     div.sfeir-logo[data-sfeir-level="2"]:after{
-        background: url('../images/src/images/star.png'), url('../images/src/images/star.png');
+        background: url('../images/star.png'), url('../images/star.png');
         background-position: calc(50% - 35px) 40px, calc(50% + 35px) 40px;
         background-repeat: no-repeat;
         background-size: 55px;
     }
     div.sfeir-logo[data-sfeir-level="3"]:after{
-        background: url('../images/src/images/star.png'), url('../images/src/images/star.png'), url('../images/src/images/star.png');
+        background: url('../images/star.png'), url('../images/star.png'), url('../images/star.png');
         background-position: calc(50% - 35px) 25px, calc(50% + 35px) 25px, 50% 65px;
         background-repeat: no-repeat;
         background-size: 55px;
