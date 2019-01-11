@@ -64,5 +64,9 @@ typings/
 #dist
 dist
 
+#Demo
+demo/dist
+demo/libs
+
 #Mac
 .DS_Store
