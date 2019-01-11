@@ -159,16 +159,3 @@ You can also use class:
 * `consolas`: will use consolas font
 * `inconsolata`: will use inconsolata font
 * `big-code`: will use a big size of font
-
-# Contribute
-
-Use Node 10 as node version
-
-1. run `nvm use` if you have nvm installed
-2. run `npm install`
-3. run `npm start`
-
-## Errors
-
-If you got a "System limit for number of file watchers reached" error , take a look at this solution : [StackOverFlow Watching Error](https://stackoverflow.com/questions/16748737/grunt-watch-error-waiting-fatal-error-watch-enospc/17437601#17437601)
-
