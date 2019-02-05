@@ -6,7 +6,7 @@ You can preview it here : https://sfeir-school-theme.netlify.com/
 
 # How to use it:
 
-## Npm (come later not activ yet)
+## Npm (come later not active yet)
 
 ```sh
 # run
