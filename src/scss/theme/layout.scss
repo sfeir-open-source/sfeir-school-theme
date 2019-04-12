@@ -1,38 +1,65 @@
 /**
 * Globals overrides to change the layout of slides
 */
+.reveal {
+	ol, dl, ul {
+		line-height: 1.5em;
+		text-align: left;
+		margin: 0 0 0 1em;
+	}
 
+	ul{
+		list-style-type: disc;
+	}
+	
+	.slides section li p{
+		font-size: 100%;
+	}
+	
+	.slides section p{
+		font-size: 1em;
+	}
+	
+	.slides section[data-type-show=full] p{
+			font-size: 100%;
+	}
+	
+	.slides section p+p{
+		margin-top: 40px;
+	}
+	blockquote::before{
+		content:'\“';
+		position:absolute;
+		top: 0;
+		left: 0;
+		width:50px;
+		height: 50px;
+	}
 
-.reveal ol, .reveal dl, .reveal ul{
-	line-height: 1.5em;
+	blockquote::after{
+		content:'\”';
+		position:absolute;
+		bottom: -0.5em;
+		right: -0.5em;
+		width:50px;
+		height: 50px;
+	}
+	
+	blockquote {
+		display: block;
+		position: relative;
+		width: 70%;
+		margin: 20px auto;
+		padding: 1em;
+		text-align: left;
+		font-style: italic;
+		background: white;
+		color: $sfeir-blue;
+		box-shadow: 0px 0px 2px rgba(0, 0, 0, 0.2);
+	}
+	
 }
 
-.reveal ul{
-	list-style-type: disc;
-}
-
-.reveal ol, .reveal dl, .reveal ul {
-	//display: inline-block;
-	text-align: left;
-	margin: 0 0 0 1em;
-}
-
-.reveal .slides section li p{
-	font-size: 100%;
-}
-
-.reveal .slides section p{
-	font-size: 1em;
-}
-
-.reveal .slides section[data-type-show=full] p{
-    font-size: 100%;
-}
-
-
-.reveal .slides section p+p{
-  margin-top: 40px;
-}
 
 .reveal .slides section:not(.sfeir-specific-slide),
 .reveal .slides section.sfeir-basic-slide,
@@ -52,63 +79,29 @@
 	font-size: 1em;
 
     h1, h2{
-		text-transform: initial;
-		text-align: center;
+			text-transform: initial;
+			text-align: center;
     	color: $sfeir-orange;
-        font-size: 1.5em;
-        font-weight: 600;
-        padding-left: 25px; 
-        margin-left: 5px;
+      font-size: 1.5em;
+      font-weight: 600;
+      padding-left: 25px; 
+      margin-left: 5px;
     }
 
     h1, h2, h3{
-		text-transform: initial;
+			text-transform: initial;
     	margin-bottom: 50px;
-        //font-size: 2.5em;
-	}
+		}
 
    	h1~h2, h2~h3, h1~h3{
-		text-transform: initial;
+			text-transform: initial;
     	margin-top: -30px;
     	padding-left: 30px;
-		color: $sfeir-blue;
-		font-size: 1em;
+			color: $sfeir-blue;
+			font-size: 1em;
     }
-
 }
 
-.reveal blockquote::before{
-	content:'\“';
-	position:absolute;
-	top: 0;
-	left: 0;
-	width:50px;
-	height: 50px;
-}
-.reveal blockquote::after{
-	content:'\”';
-	position:absolute;
-	bottom: -0.5em;
-	right: -0.5em;
-	width:50px;
-	height: 50px;
-}
-
-.reveal blockquote {
-	display: block;
-	position: relative;
-	width: 70%;
-	margin: 20px auto;
-	padding: 1em;
-	text-align: left;
-	font-style: italic;
-	background: white;
-	color: $sfeir-blue;
-	box-shadow: 0px 0px 2px rgba(0, 0, 0, 0.2);
-}
-.reveal q, .reveal blockquote {
-	//quotes: none;
-}
 
 /**
 * Two Columns slides

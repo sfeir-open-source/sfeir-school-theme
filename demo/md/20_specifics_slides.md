@@ -46,3 +46,21 @@
 
 # A Custom Transition Slide With color
 
+##==##
+
+<!-- .slide: class="exercice sfeir-bg-pink" -->
+
+# Implémenter la Push API
+
+## Exercice
+
+<br>
+
+1. Vérifiez que vous n’avez pas encore souscrit à la push API.
+2. Si vous n’avez pas encore souscrit, enregistrez vous.
+3. Dans le service worker, ajouter un nouveau listener sur l’event “push”. Afficher une notification de votre choix avec un titre, un corps et une image.
+
+<br>
+Pensez à utiliser event.waitUntil ;) !
+
+### Step: push-1
