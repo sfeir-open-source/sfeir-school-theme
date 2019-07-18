@@ -14,20 +14,17 @@ Some Content
 
 Some Content
 
-##==##
-
-## Some Vertical Navigation Bis !
-
-Some Content
-
 ##--##
 
-## A first slide Vertical Bis
+<!-- .slide: class="with-code" -->
+
+# Code to produce / Markdown
+
+```markdown
+## -- ##
+
+## A first slide Vertical
 
 Some Content
-
-##--##
-
-## A Second slide Vertical Bis
-
-Some Content
+```
+<!-- .element: class="big-code" -->

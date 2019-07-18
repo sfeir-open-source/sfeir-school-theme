@@ -12,6 +12,17 @@
 
 ![center](./assets/images/GDG-Logo-carre.png)
 
+##--##
+
+<!-- .slide: class="with-code" -->
+
+# Code to produce / Markdown
+
+```markdown
+![center](./assets/images/GDG-Logo-carre.png)
+```
+<!-- .element: class="big-code" -->
+
 ##==##
 
 # Slide with center image (horizontal)
@@ -19,6 +30,17 @@
 ## Second way
 
 <img class="center" src="./assets/images/GDG-Logo-carre.png">
+
+##--##
+
+<!-- .slide: class="with-code" -->
+
+# Code to produce / Markdown
+
+```markdown
+<img class="center" src="./assets/images/GDG-Logo-carre.png">
+```
+<!-- .element: class="big-code" -->
 
 ##==##
 
@@ -28,6 +50,19 @@
 
 <div class="center"></div>
 ![](./assets/images/GDG-Logo-carre.png)
+
+##--##
+
+<!-- .slide: class="with-code" -->
+
+# Code to produce / Markdown
+
+```markdown
+<div class="center"></div>
+![](./assets/images/GDG-Logo-carre.png)
+```
+<!-- .element: class="big-code" -->
+
 
 ##==##
 
@@ -39,6 +74,21 @@
     <img src="./assets/images/GDG-Logo-carre.png">
 </div>
 
+
+##--##
+
+<!-- .slide: class="with-code" -->
+
+# Code to produce / Markdown
+
+```markdown
+<div class="full-center">
+    <img src="./assets/images/GDG-Logo-carre.png">
+</div>
+```
+<!-- .element: class="big-code" -->
+
+
 ##==##
 
 <!-- .slide: class="full-center" -->
@@ -48,6 +98,19 @@
 ## Second way
 
 ![](./assets/images/GDG-Logo-carre.png)
+
+##--##
+
+<!-- .slide: class="with-code" -->
+
+# Code to produce / Markdown
+
+```markdown
+<!-- .slide: class="full-center" -->
+
+![](./assets/images/GDG-Logo-carre.png)
+```
+<!-- .element: class="big-code" -->
 
 ##==##
 
@@ -68,6 +131,26 @@
 ![h-100](./assets/images/GDG-Logo-carre.png)
 
 
+##--##
+
+<!-- .slide: class="with-code" -->
+
+# Code to produce / Markdown
+
+```markdown
+<!-- .slide: class="flex-row" -->
+
+![h-200](./assets/images/GDG-Logo-carre.png)
+![h-250](./assets/images/GDG-Logo-carre.png)
+![h-300](./assets/images/GDG-Logo-carre.png)
+![h-200](./assets/images/GDG-Logo-carre.png)
+![h-350](./assets/images/GDG-Logo-carre.png)
+![h-300](./assets/images/GDG-Logo-carre.png)
+![h-350](./assets/images/GDG-Logo-carre.png)
+![h-200](./assets/images/GDG-Logo-carre.png)
+![h-100](./assets/images/GDG-Logo-carre.png)
+```
+
 ##==##
 
 # Flex row alignement with auto wrap
@@ -86,6 +169,27 @@
 <img class="h-100" src="./assets/images/GDG-Logo-carre.png">
 </div>
 
+
+##--##
+
+<!-- .slide: class="with-code" -->
+
+# Code to produce / Markdown
+
+```markdown
+<div class="flex-row">
+<img class="h-200" src="./assets/images/GDG-Logo-carre.png">
+<img class="h-250" src="./assets/images/GDG-Logo-carre.png">
+<img class="h-300" src="./assets/images/GDG-Logo-carre.png">
+<img class="h-200" src="./assets/images/GDG-Logo-carre.png">
+<img class="h-350" src="./assets/images/GDG-Logo-carre.png">
+<img class="h-300" src="./assets/images/GDG-Logo-carre.png">
+<img class="h-350" src="./assets/images/GDG-Logo-carre.png">
+<img class="h-200" src="./assets/images/GDG-Logo-carre.png">
+<img class="h-100" src="./assets/images/GDG-Logo-carre.png">
+</div>
+```
+
 ##==##
 
 # Play with images sizes
@@ -100,6 +204,21 @@ Image (w-500) :
 Div background: 
 
 <div style="background:red;" class="w-500 h-200"> w-500 h-200</div>
+
+
+##--##
+
+<!-- .slide: class="with-code" -->
+
+# Code to produce / Markdown
+
+```markdown
+
+![w-500](./assets/images/350x90.png)
+
+<div style="background:red;" class="w-500 h-200"> w-500 h-200</div>
+```
+<!-- .element: class="big-code" -->
 
 ##==##
 
@@ -116,6 +235,21 @@ Div background:
 
 <div style="background:red; width:600px;" class="wm-500 h-200"> (height:600px) wm-500 h-200</div>
 
+##--##
+
+<!-- .slide: class="with-code" -->
+
+# Code to produce / Markdown
+
+```markdown
+![wm-500](./assets/images/350x90.png)
+
+<div style="background:red; width:600px;" class="wm-500 h-200"> 
+    (height:600px) wm-500 h-200</div>
+```
+<!-- .element: class="big-code" -->
+
+
 ##==##
 
 # Image with full width
@@ -125,6 +259,18 @@ Div background:
 
 ![full-width](./assets/images/logo_sfeir_bleu_orange.png)
 
+##--##
+
+<!-- .slide: class="with-code" -->
+
+# Code to produce / Markdown
+
+```markdown
+![full-width](./assets/images/logo_sfeir_bleu_orange.png)
+```
+<!-- .element: class="big-code" -->
+
+
 ##==##
 
 # Image with full width
@@ -132,6 +278,18 @@ Div background:
 ## Second way
 
 <img class="full-width" src="./assets/images/logo_sfeir_bleu_orange.png">
+
+
+##--##
+
+<!-- .slide: class="with-code" -->
+
+# Code to produce / Markdown
+
+```markdown
+<img class="full-width" src="./assets/images/logo_sfeir_bleu_orange.png">
+```
+<!-- .element: class="big-code" -->
 
 ##==##
 
@@ -141,6 +299,19 @@ Div background:
 
 <div class="full-width"></div>
 ![](./assets/images/logo_sfeir_bleu_orange.png)
+
+
+##--##
+
+<!-- .slide: class="with-code" -->
+
+# Code to produce / Markdown
+
+```markdown
+<div class="full-width"></div>
+![](./assets/images/logo_sfeir_bleu_orange.png)
+```
+<!-- .element: class="big-code" -->
 
 
 ##==##
@@ -154,6 +325,22 @@ Div with height of 600px;
     <img class="full-height" src="./assets/images/logo_sfeir_bleu_orange.png">
 </div>
 
+##--##
+
+<!-- .slide: class="with-code" -->
+
+# Code to produce / Markdown
+
+```markdown
+<!-- .slide: style="height:100%" -->
+
+<div style="height:600px; width:100%; background:red;">
+    <img class="full-height" src="./assets/images/logo_sfeir_bleu_orange.png">
+</div>
+```
+<!-- .element: class="big-code" -->
+
+
 ##==##
 
 # Content with float-left
@@ -163,6 +350,20 @@ Div with height of 600px;
 ![float-left](./assets/images/gde.png)
 
 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin nec risus leo. Vestibulum condimentum orci in urna auctor aliquet. Quisque mi erat, placerat non porttitor ut, gravida eu erat. Fusce semper ipsum vel nibh porttitor aliquam. Cras sed porttitor est, id scelerisque odio. Pellentesque sit amet imperdiet ex. Aliquam erat.
+
+
+##--##
+
+<!-- .slide: class="with-code" -->
+
+# Code to produce / Markdown
+
+```markdown
+![float-left](./assets/images/gde.png)
+
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin nec risus leo. Vestibulum condimentum orci in urna auctor aliquet. Quisque mi erat, placerat non porttitor ut, gravida eu erat. Fusce semper ipsum vel nibh porttitor aliquam. Cras sed porttitor est, id scelerisque odio. Pellentesque sit amet imperdiet ex. Aliquam erat.
+```
+
 
 ##==##
 
@@ -174,6 +375,19 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin nec risus leo. Ve
 
 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin nec risus leo. Vestibulum condimentum orci in urna auctor aliquet. Quisque mi erat, placerat non porttitor ut, gravida eu erat. Fusce semper ipsum vel nibh porttitor aliquam. Cras sed porttitor est, id scelerisque odio. Pellentesque sit amet imperdiet ex. Aliquam erat.
 
+
+##--##
+
+<!-- .slide: class="with-code" -->
+
+# Code to produce / Markdown
+
+```markdown
+<img class="float-left" src="./assets/images/gde.png">
+
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin nec risus leo. Vestibulum condimentum orci in urna auctor aliquet. Quisque mi erat, placerat non porttitor ut, gravida eu erat. Fusce semper ipsum vel nibh porttitor aliquam. Cras sed porttitor est, id scelerisque odio. Pellentesque sit amet imperdiet ex. Aliquam erat.
+```
+
 ##==##
 
 # Content with float-right
@@ -183,6 +397,19 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin nec risus leo. Ve
 ![float-right](./assets/images/gde.png)
 
 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin nec risus leo. Vestibulum condimentum orci in urna auctor aliquet. Quisque mi erat, placerat non porttitor ut, gravida eu erat. Fusce semper ipsum vel nibh porttitor aliquam. Cras sed porttitor est, id scelerisque odio. Pellentesque sit amet imperdiet ex. Aliquam erat.
+
+
+##--##
+
+<!-- .slide: class="with-code" -->
+
+# Code to produce / Markdown
+
+```markdown
+![float-right](./assets/images/gde.png)
+
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin nec risus leo. Vestibulum condimentum orci in urna auctor aliquet. Quisque mi erat, placerat non porttitor ut, gravida eu erat. Fusce semper ipsum vel nibh porttitor aliquam. Cras sed porttitor est, id scelerisque odio. Pellentesque sit amet imperdiet ex. Aliquam erat.
+```
 
 ##==##
 
@@ -194,6 +421,20 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin nec risus leo. Ve
 
 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin nec risus leo. Vestibulum condimentum orci in urna auctor aliquet. Quisque mi erat, placerat non porttitor ut, gravida eu erat. Fusce semper ipsum vel nibh porttitor aliquam. Cras sed porttitor est, id scelerisque odio. Pellentesque sit amet imperdiet ex. Aliquam erat.
 
+
+##--##
+
+<!-- .slide: class="with-code" -->
+
+# Code to produce / Markdown
+
+```markdown
+<img class="float-right" src="./assets/images/gde.png">
+
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin nec risus leo. Vestibulum condimentum orci in urna auctor aliquet. Quisque mi erat, placerat non porttitor ut, gravida eu erat. Fusce semper ipsum vel nibh porttitor aliquam. Cras sed porttitor est, id scelerisque odio. Pellentesque sit amet imperdiet ex. Aliquam erat.
+```
+
+
 ##==##
 
 <!-- .slide: data-type-show="prez" -->
@@ -201,6 +442,23 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin nec risus leo. Ve
 ## A slide for prez only
 
 A few words !
+
+
+##--##
+
+<!-- .slide: class="with-code" -->
+
+# Code to produce / Markdown
+
+```markdown
+<!-- .slide: data-type-show="prez" -->
+For slide present on presentation 
+
+<!-- .slide: data-type-show="full" -->
+For slide present on restitution version
+
+To configure with index.html
+```
 
 ##==##
 
