@@ -5,6 +5,26 @@
 
 ##==##
 
+<!-- .slide: class="transition-white" data-background="#333"-->
+
+# A White Transition Slide
+
+
+##--##
+
+<!-- .slide: class="with-code" -->
+
+# Code to produce / Markdown
+
+```markdown
+<!-- .slide: class="transition-white" data-background="#333"-->
+
+# A White Transition Slide
+```
+<!-- .element: class="big-code" -->
+
+##==##
+
 <!-- .slide: class="transition-white sfeir-bg-red" -->
 
 # A Red Transition Slide
