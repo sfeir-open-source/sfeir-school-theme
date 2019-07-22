@@ -26,7 +26,7 @@ You can preview it here : https://sfeir-school-theme.netlify.com/
 
 ```sh
 # run
-$npm install @sfeir-oss/sfeir-theme
+$npm install sfeir-school-theme
 ```
 
 ## Cloning the repo
