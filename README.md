@@ -26,15 +26,20 @@ You can preview it here : https://sfeir-school-theme.netlify.com/
 
 ```sh
 # run
-$npm install sfeir-theme
+$npm install @sfeir-oss/sfeir-theme
 ```
 
 ## Cloning the repo
 
 Let's consider that the path to reveal engine is at `$REVEAL_PATH`
 
-1. Clone the repository in your project (`$SFEIR_THEME_PATH`)
-2. In your reveal index.html add the following lines:
+Clone the repository in your project (`$SFEIR_THEME_PATH`)
+
+
+## Link
+
+According that `$SFEIR_THEME_PATH` is the base path of the theme
+In your reveal index.html add the following lines:
 ```html
 
 ...
