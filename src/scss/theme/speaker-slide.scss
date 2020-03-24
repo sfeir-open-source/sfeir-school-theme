@@ -13,7 +13,7 @@
 	h2{
         text-transform: inherit;
         text-align: left;
-        color: $sfeir-blue;
+        color: $white;
         font-weight: 800;
         line-height: 2em;
         height: 2em;
@@ -28,7 +28,7 @@
         text-align: left;
         padding-left: $padding-left;
         font-size: 1.2em;
-        color : $medium-grey;
+        color : $white;
 		margin-bottom: 20px;
 	}
 
@@ -38,8 +38,9 @@
         top: 300px;
         width: 400px;
         margin-top: 20px;
-        -webkit-clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
-        clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+        border-radius: 400px;
+        border-width: 3px;
+        border-color: $sfeir-pink;        
     }
 
     img[alt*=company]{

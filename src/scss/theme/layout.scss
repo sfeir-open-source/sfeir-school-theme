@@ -63,14 +63,14 @@
 
 .reveal .slides section:not(.sfeir-specific-slide),
 .reveal .slides section.sfeir-basic-slide,
-.reveal .slides section.sfeir-specific-slide.sfeir-bg-white-1,
-.reveal .slides section.sfeir-specific-slide.sfeir-bg-white-2,
-.reveal .slides section.sfeir-specific-slide.sfeir-bg-white-3,
-.reveal .slides section.sfeir-specific-slide.sfeir-bg-white-4,
-.reveal .slides section.sfeir-specific-slide.sfeir-bg-white-5,
-.reveal .slides section.sfeir-specific-slide.sfeir-bg-white-6,
-.reveal .slides section.sfeir-specific-slide.sfeir-bg-white-7,
-.reveal .slides section.sfeir-specific-slide.sfeir-bg-white-8{
+.reveal .slides section.sfeir-specific-slide.sfeir-bg-grey-1,
+.reveal .slides section.sfeir-specific-slide.sfeir-bg-grey-2,
+.reveal .slides section.sfeir-specific-slide.sfeir-bg-grey-3,
+.reveal .slides section.sfeir-specific-slide.sfeir-bg-grey-4,
+.reveal .slides section.sfeir-specific-slide.sfeir-bg-grey-5,
+.reveal .slides section.sfeir-specific-slide.sfeir-bg-grey-6,
+.reveal .slides section.sfeir-specific-slide.sfeir-bg-grey-7,
+.reveal .slides section.sfeir-specific-slide.sfeir-bg-grey-8{
 
 	width: 100%;
 	height: calc(100% - 40px);
@@ -81,7 +81,7 @@
     h1, h2{
 			text-transform: initial;
 			text-align: center;
-    	color: $sfeir-orange;
+    	color: $black;
       font-size: 1.5em;
       font-weight: 600;
       padding-left: 25px; 
