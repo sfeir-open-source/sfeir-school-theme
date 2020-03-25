@@ -6,17 +6,32 @@
 
     h1{
         color:$white;
-        margin-top:650px;
-        font-size: 2em;
+        margin: auto;
+        margin-top:450px;
+        font-size: 3em;
         font-weight: 800;
         margin-bottom: 40px;
         text-transform: initial;
+        padding: 30px;
+        width: fit-content;
+        background: linear-gradient(to right, $sfeir-pink-stop-1, $sfeir-pink-stop-2);
+        transform: rotate(-3deg);
+
+        &.green{
+            background: linear-gradient(to right, $sfeir-green-stop-1, $sfeir-green-stop-2);
+        }
+
+        &.blue{
+            background: linear-gradient(to right, $sfeir-blue-stop-1, $sfeir-blue-stop-2);
+        }
     }
+
+    
 }
 
-.reveal .slides section[class*="transition-white"] h1,
-.reveal .slides section.sfeir-basic-slide[class*="transition-white"] h1,
-.reveal .slides section.sfeir-specific-slide[class*="transition-white"] h1{
+.reveal .slides section[class*="transition-pink"] h1,
+.reveal .slides section.sfeir-basic-slide[class*="transition-pink"] h1,
+.reveal .slides section.sfeir-specific-slide[class*="transition-pink"] h1{
     color:white;
     font-weight: 600;
 }

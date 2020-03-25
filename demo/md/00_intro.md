@@ -27,7 +27,7 @@ Now you see that you could use vertical navigation. Enjoy the possibilities of S
 
 ##==##
 
-<!-- .slide: class="transition-white sfeir-bg-red" -->
+<!-- .slide: class="transition" -->
 
 # Titles slides
 

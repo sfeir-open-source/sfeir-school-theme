@@ -61,17 +61,17 @@
 }
 
 
-.reveal .slides section:not(.sfeir-specific-slide),
-.reveal .slides section.sfeir-basic-slide,
-.reveal .slides section.sfeir-specific-slide.sfeir-bg-axololt,
-.reveal .slides section.sfeir-specific-slide.sfeir-bg-grey-1,
-.reveal .slides section.sfeir-specific-slide.sfeir-bg-grey-2,
-.reveal .slides section.sfeir-specific-slide.sfeir-bg-grey-3,
-.reveal .slides section.sfeir-specific-slide.sfeir-bg-grey-4,
-.reveal .slides section.sfeir-specific-slide.sfeir-bg-grey-5,
-.reveal .slides section.sfeir-specific-slide.sfeir-bg-grey-6,
-.reveal .slides section.sfeir-specific-slide.sfeir-bg-grey-7,
-.reveal .slides section.sfeir-specific-slide.sfeir-bg-grey-8{
+.reveal .slides section:not(.sfeir-specific-slide):not(.stack),
+.reveal .slides section.sfeir-basic-slide:not(.stack),
+.reveal .slides section.sfeir-specific-slide.sfeir-bg-axololt:not(.stack),
+.reveal .slides section.sfeir-specific-slide.sfeir-bg-grey-1:not(.stack),
+.reveal .slides section.sfeir-specific-slide.sfeir-bg-grey-2:not(.stack),
+.reveal .slides section.sfeir-specific-slide.sfeir-bg-grey-3:not(.stack),
+.reveal .slides section.sfeir-specific-slide.sfeir-bg-grey-4:not(.stack),
+.reveal .slides section.sfeir-specific-slide.sfeir-bg-grey-5:not(.stack),
+.reveal .slides section.sfeir-specific-slide.sfeir-bg-grey-6:not(.stack),
+.reveal .slides section.sfeir-specific-slide.sfeir-bg-grey-7:not(.stack),
+.reveal .slides section.sfeir-specific-slide.sfeir-bg-grey-8:not(.stack){
 
 	width: 100%;
 	height: calc(100% - 40px);
@@ -103,7 +103,7 @@
     }
 }
 
-.reveal .slides section.sfeir-basic-slide{
+.reveal .slides section.sfeir-basic-slide:not(.stack){
 	color:$dark-grey;
 
 	h1, h2, h3{

@@ -55,6 +55,7 @@ class SfeirTheme {
 
 		const map = {
 			'first-slide': `${this.path}images/bg-grey-axololt.png`,
+			'transition': `${this.path}images/bg-grey-axololt.png`,
 			'school-presentation': `${this.path}images/bg-school.png`,
 			'speaker-slide': `${this.path}images/bg-grey-axololt.png`,
 			'sfeir-slide': `${this.path}images/bg-grey-axololt.png`,
