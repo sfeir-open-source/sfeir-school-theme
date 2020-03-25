@@ -54,7 +54,7 @@
 		text-align: left;
 		font-style: italic;
 		background: white;
-		color: $sfeir-blue;
+		color: $dark-grey;
 		box-shadow: 0px 0px 2px rgba(0, 0, 0, 0.2);
 	}
 	
@@ -63,6 +63,7 @@
 
 .reveal .slides section:not(.sfeir-specific-slide),
 .reveal .slides section.sfeir-basic-slide,
+.reveal .slides section.sfeir-specific-slide.sfeir-bg-axololt,
 .reveal .slides section.sfeir-specific-slide.sfeir-bg-grey-1,
 .reveal .slides section.sfeir-specific-slide.sfeir-bg-grey-2,
 .reveal .slides section.sfeir-specific-slide.sfeir-bg-grey-3,
@@ -79,9 +80,9 @@
 	font-size: 1em;
 
     h1, h2{
-			text-transform: initial;
-			text-align: center;
-    	color: $black;
+		text-transform: initial;
+		text-align: center;
+		color: $white;
       font-size: 1.5em;
       font-weight: 600;
       padding-left: 25px; 
@@ -97,9 +98,41 @@
 			text-transform: initial;
     	margin-top: -30px;
     	padding-left: 30px;
-			color: $sfeir-blue;
+			color: $white;
 			font-size: 1em;
     }
+}
+
+.reveal .slides section.sfeir-basic-slide{
+	color:$dark-grey;
+
+	h1, h2, h3{
+		margin-bottom: 100px;
+	}
+
+    h1, h2, h1~h2, h2~h3, h1~h3{
+		position: relative;
+	    color: $black;      
+		text-align: left;
+	}
+	
+	h1:first-of-type:after, h2:first-of-type:after {
+		position: absolute;
+		content: '';
+		width: 40%;
+		height: 20px;
+		background-color: $sfeir-pink;
+		bottom: -30px;
+		left: 0;
+	}
+
+	&.blue h1:first-of-type:after, h2:first-of-type:after {
+		background-color: $sfeir-blue;
+	}
+	
+	&.green h1:first-of-type:after, h2:first-of-type:after {
+		background-color: $sfeir-green;
+	}
 }
 
 

@@ -1,5 +1,5 @@
 
-<!-- .slide: class="transition-center sfeir-bg-white-4" -->
+<!-- .slide: class="transition-center sfeir-bg-axololt" -->
 
 # SfeirSchool Theme
 
@@ -54,7 +54,7 @@ Now you see that you could use vertical navigation. Enjoy the possibilities of S
 
 ##==##
 
-<!-- .slide: class="first-slide first-red" sfeir-level="2" sfeir-techno="pwa" -->
+<!-- .slide: class="first-slide" sfeir-level="2" sfeir-techno="pwa" -->
 
 # **Welcome to Sfeir School**
 ## **PWA 200**
@@ -67,7 +67,7 @@ Now you see that you could use vertical navigation. Enjoy the possibilities of S
 # Code to produce / Markdown
 
 ```markdown
-<!-- .slide: class="first-slide first-red" sfeir-level="2" sfeir-techno="pwa" -->
+<!-- .slide: class="first-slide" sfeir-level="2" sfeir-techno="pwa" -->
 
 # **Welcome to Sfeir School**
 ## **PWA 200**
@@ -76,7 +76,7 @@ Now you see that you could use vertical navigation. Enjoy the possibilities of S
 
 ##==##
 
-<!-- .slide: class="first-slide first-pink" sfeir-level="3" sfeir-techno="pwa" -->
+<!-- .slide: class="first-slide" sfeir-level="3" sfeir-techno="pwa" -->
 
 # **Welcome to Sfeir School**
 ## **PWA 300**
@@ -88,7 +88,7 @@ Now you see that you could use vertical navigation. Enjoy the possibilities of S
 # Code to produce / Markdown
 
 ```markdown
-<!-- .slide: class="first-slide first-pink" sfeir-level="3" sfeir-techno="pwa" -->
+<!-- .slide: class="first-slide" sfeir-level="3" sfeir-techno="pwa" -->
 
 # **Welcome to Sfeir School**
 ## **PWA 300**
