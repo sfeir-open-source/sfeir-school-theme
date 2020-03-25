@@ -100,7 +100,20 @@
     	padding-left: 30px;
 			color: $white;
 			font-size: 1em;
-    }
+	}
+	
+	thead{
+		background-color: $sfeir-pink;
+		color:$white;
+	}
+	
+	&.blue thead{
+		background-color: $sfeir-blue;
+	}
+	
+	&.green thead{
+		background-color: $sfeir-green;
+	}
 }
 
 .reveal .slides section.sfeir-basic-slide:not(.stack){
@@ -126,11 +139,11 @@
 		left: 0;
 	}
 
-	&.blue h1:first-of-type:after, h2:first-of-type:after {
+	&.blue h1:first-of-type:after, &.blue h2:first-of-type:after {
 		background-color: $sfeir-blue;
 	}
 	
-	&.green h1:first-of-type:after, h2:first-of-type:after {
+	&.green h1:first-of-type:after, &.green h2:first-of-type:after {
 		background-color: $sfeir-green;
 	}
 }
