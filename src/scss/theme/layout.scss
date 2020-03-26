@@ -61,17 +61,17 @@
 }
 
 
-.reveal .slides section:not(.sfeir-specific-slide):not(.stack),
-.reveal .slides section.sfeir-basic-slide:not(.stack),
-.reveal .slides section.sfeir-specific-slide.sfeir-bg-axololt:not(.stack),
-.reveal .slides section.sfeir-specific-slide.sfeir-bg-grey-1:not(.stack),
-.reveal .slides section.sfeir-specific-slide.sfeir-bg-grey-2:not(.stack),
-.reveal .slides section.sfeir-specific-slide.sfeir-bg-grey-3:not(.stack),
-.reveal .slides section.sfeir-specific-slide.sfeir-bg-grey-4:not(.stack),
-.reveal .slides section.sfeir-specific-slide.sfeir-bg-grey-5:not(.stack),
-.reveal .slides section.sfeir-specific-slide.sfeir-bg-grey-6:not(.stack),
-.reveal .slides section.sfeir-specific-slide.sfeir-bg-grey-7:not(.stack),
-.reveal .slides section.sfeir-specific-slide.sfeir-bg-grey-8:not(.stack){
+.reveal .slides section:not(.sfeir-specific-slide):not(.stack):not(.transition),
+.reveal .slides section.sfeir-basic-slide:not(.stack):not(.transition),
+.reveal .slides section.sfeir-specific-slide.sfeir-bg-axololt:not(.stack):not(.transition),
+.reveal .slides section.sfeir-specific-slide.sfeir-bg-grey-1:not(.stack):not(.transition),
+.reveal .slides section.sfeir-specific-slide.sfeir-bg-grey-2:not(.stack):not(.transition),
+.reveal .slides section.sfeir-specific-slide.sfeir-bg-grey-3:not(.stack):not(.transition),
+.reveal .slides section.sfeir-specific-slide.sfeir-bg-grey-4:not(.stack):not(.transition),
+.reveal .slides section.sfeir-specific-slide.sfeir-bg-grey-5:not(.stack):not(.transition),
+.reveal .slides section.sfeir-specific-slide.sfeir-bg-grey-6:not(.stack):not(.transition),
+.reveal .slides section.sfeir-specific-slide.sfeir-bg-grey-7:not(.stack):not(.transition),
+.reveal .slides section.sfeir-specific-slide.sfeir-bg-grey-8:not(.stack):not(.transition){
 
 	width: 100%;
 	height: calc(100% - 40px);

@@ -17,14 +17,43 @@
         background: linear-gradient(to right, $sfeir-pink-stop-1, $sfeir-pink-stop-2);
         transform: rotate(-3deg);
 
-        &.green{
-            background: linear-gradient(to right, $sfeir-green-stop-1, $sfeir-green-stop-2);
+    }
+
+    &.blue h1{
+        background: linear-gradient(to right, $sfeir-blue-stop-1, $sfeir-blue-stop-2);
+    }
+
+    &.green h1{
+        background: linear-gradient(to right, $sfeir-green-stop-1, $sfeir-green-stop-2);
+    }
+
+    &.underline{ 
+        h1 {
+            background: initial;
+            position: relative;
+            transform: initial;
+
+            &:before{
+                content: '';
+                z-index: -1;
+                position: absolute;
+                background: $sfeir-pink;
+                width: 100%;
+                height: 50px;
+                left:0;
+                bottom:35px;
+                transform: rotate(1deg);
+            }
         }
 
-        &.blue{
-            background: linear-gradient(to right, $sfeir-blue-stop-1, $sfeir-blue-stop-2);
+        &.green h1:before{
+            background: $sfeir-green;
+        }
+        &.blue h1:before{
+            background: $sfeir-blue;
         }
     }
+
 
     
 }
@@ -41,4 +70,32 @@
 .reveal .slides section.sfeir-specific-slide[class*="transition-center"] h1{
     margin-top:450px; 
     text-align: left;
+}
+
+.reveal .backgrounds div.slide-background.transition {
+    &.bg-white,
+    &.bg-blue,
+    &.bg-green,
+    &.bg-pink{
+        position: relative;
+        &:after{
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 100%;
+        }
+    }
+
+    &.bg-white:after{
+        background:  rgba(255, 255, 255, 0.7);
+    }
+    &.bg-blue::after{
+        background:  rgba(87, 94, 170, 0.7);
+    }
+    &.bg-green::after{
+        background:  rgba(10, 181, 128, 0.7);
+    }
+    &.bg-pink::after{
+        background:  rgba(221, 51, 85, 0.7);
+    }
 }

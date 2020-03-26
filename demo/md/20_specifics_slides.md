@@ -1,15 +1,113 @@
 
 <!-- .slide: class="transition" -->
 
-# Management of custom slides
+# Custom slides
 
 ##==##
 
-<!-- .slide: class="transition-white" data-background="#333"-->
+<!-- .slide: class="transition" -->
+
+# Transition
+
+##--##
+
+<!-- .slide: class="with-code" -->
+
+# Code to produce / Markdown
+
+```markdown
+<!-- .slide: class="transition"-->
+
+# Transition
+```
+<!-- .element: class="big-code" -->
+
+
+##==##
+
+<!-- .slide: class="transition blue" -->
+
+# Transition blue
+
+##--##
+
+<!-- .slide: class="with-code" -->
+
+# Code to produce / Markdown
+
+```markdown
+<!-- .slide: class="transition blue"-->
+
+# Transition blue
+```
+<!-- .element: class="big-code" -->
+
+##==##
+
+<!-- .slide: class="transition green" -->
+
+# Transition Green
+
+##--##
+
+<!-- .slide: class="with-code" -->
+
+# Code to produce / Markdown
+
+```markdown
+<!-- .slide: class="transition green"-->
+
+# Transition green
+```
+<!-- .element: class="big-code" -->
+
+
+##==##
+
+<!-- .slide: class="transition underline" -->
+
+# Transition undeline
+
+##--##
+
+<!-- .slide: class="with-code" -->
+
+# Code to produce / Markdown
+
+```markdown
+<!-- .slide: class="transition underline"-->
+
+# Transition underline
+```
+<!-- .element: class="big-code" -->
+
+
+##==##
+
+<!-- .slide: class="transition" data-background="#333"-->
+
+# Transition with bg color
+
+
+##--##
+
+<!-- .slide: class="with-code" -->
+
+# Code to produce / Markdown
+
+```markdown
+<!-- .slide: class="transition" data-background="#333"-->
+
+# Transition with bg color
+```
+<!-- .element: class="big-code" -->
+
+##==##
+
+<!-- .slide: class="transition bg-white" -->
 
 # A White Transition Slide
 
-
 ##--##
 
 <!-- .slide: class="with-code" -->
@@ -17,7 +115,7 @@
 # Code to produce / Markdown
 
 ```markdown
-<!-- .slide: class="transition-white" data-background="#333"-->
+<!-- .slide: class="transition bg-white" -->
 
 # A White Transition Slide
 ```
@@ -25,30 +123,10 @@
 
 ##==##
 
-<!-- .slide: class="transition-white sfeir-bg-red" -->
-
-# A Red Transition Slide
-
-##--##
-
-<!-- .slide: class="with-code" -->
-
-# Code to produce / Markdown
-
-```markdown
-<!-- .slide: class="transition-white sfeir-bg-red" -->
-
-# A Red Transition Slide
-```
-<!-- .element: class="big-code" -->
-
-##==##
-
-<!-- .slide: class="transition-white sfeir-bg-pink" -->
+<!-- .slide: class="transition bg-pink" -->
 
 # A Pink Transition Slide
 
-
 ##--##
 
 <!-- .slide: class="with-code" -->
@@ -56,7 +134,7 @@
 # Code to produce / Markdown
 
 ```markdown
-<!-- .slide: class="transition-white sfeir-bg-pink" -->
+<!-- .slide: class="transition bg-pink" -->
 
 # A Pink Transition Slide
 ```
@@ -64,10 +142,9 @@
 
 ##==##
 
-<!-- .slide: class="transition-white sfeir-bg-blue" -->
+<!-- .slide: class="transition bg-blue" -->
 
 # A Blue Transition Slide
-
 
 ##--##
 
@@ -76,11 +153,31 @@
 # Code to produce / Markdown
 
 ```markdown
-<!-- .slide: class="transition-white sfeir-bg-blue" -->
+<!-- .slide: class="transition bg-blue" -->
 
 # A Blue Transition Slide
 ```
 <!-- .element: class="big-code" -->
+
+##==##
+
+<!-- .slide: class="transition bg-green" -->
+
+# A Green Transition Slide
+
+##--##
+
+<!-- .slide: class="with-code" -->
+
+# Code to produce / Markdown
+
+```markdown
+<!-- .slide: class="transition bg-green" -->
+
+# A Green Transition Slide
+```
+<!-- .element: class="big-code" -->
+
 
 
 ##==##

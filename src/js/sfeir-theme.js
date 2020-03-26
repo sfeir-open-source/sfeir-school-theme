@@ -59,9 +59,10 @@ class SfeirTheme {
 			'school-presentation': `${this.path}images/bg-school.png`,
 			'speaker-slide': `${this.path}images/bg-grey-axololt.png`,
 			'sfeir-slide': `${this.path}images/bg-grey-axololt.png`,
-			'sfeir-bg-blue': `${this.path}images/background_blue.png`,
-			'sfeir-bg-pink': `${this.path}images/background_pink.png`,
-			'sfeir-bg-red': `${this.path}images/background_red.png`,
+			'bg-white': `${this.path}images/bg-grey-8.png`,
+			'bg-pink': `${this.path}images/bg-grey-8.png`,
+			'bg-blue': `${this.path}images/bg-grey-8.png`,
+			'bg-green': `${this.path}images/bg-grey-8.png`,
 			'sfeir-bg-axololt': `${this.path}images/bg-grey-axololt.png`,
 			'sfeir-bg-grey-1': `${this.path}images/bg-grey-1.png`,
 			'sfeir-bg-grey-2': `${this.path}images/bg-grey-2.png`,
@@ -78,7 +79,7 @@ class SfeirTheme {
 
 			for (let i = 0; i < queryElementList.length; i++){
 				const element = queryElementList[i];
-				element.classList.add('sfeir-specific-slide');
+				element.classList.add('sfeir-specific-slide');			
 				element.setAttribute('data-background',map[key]);
 			}
 		}
