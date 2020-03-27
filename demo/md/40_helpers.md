@@ -1,5 +1,5 @@
 
-<!-- .slide: class="transition-white sfeir-bg-red" -->
+<!-- .slide: class="transition" -->
 
 # Slides using helpers of theme
 

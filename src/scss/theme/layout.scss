@@ -139,6 +139,10 @@
 	&.green h1:first-of-type:after, &.green h2:first-of-type:after {
 		background-color: $sfeir-green;
 	}
+
+	h1~h2:first-of-type:after, h2~h3:first-of-type:after, h1~h3:first-of-type:after{
+		content: initial;
+	}
 }
 
 
