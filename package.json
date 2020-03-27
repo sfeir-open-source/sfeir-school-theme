@@ -11,7 +11,7 @@
     "copy-js": "cpx \"src/js/**/*.js\" \"demo/dist/js\"",
     "copy-fonts": "cpx \"src/fonts/*\" \"demo/dist/fonts\"",
     "copy-images": "cpx \"src/images/*\" \"demo/dist/images\"",
-    "copy-icons": "cpx \"src/fontello-sfeir/*\" \"demo/dist/fontello-sfeir\"",
+    "copy-icons": "cpx \"src/fontello-sfeir/**\" \"demo/dist/fontello-sfeir\"",
     "copy-dist": "cpx \"demo/dist/**\" \"dist\" --clean",
     "copy-highlight": "cpx \"node_modules/highlight.js/**/*\" \"demo/libs/highlight.js\" ",
     "copy-reveal": "cpx \"node_modules/reveal.js/**/*\" \"demo/libs/reveal.js\" ",
