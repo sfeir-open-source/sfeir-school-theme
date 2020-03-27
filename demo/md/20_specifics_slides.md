@@ -84,26 +84,6 @@
 
 ##==##
 
-<!-- .slide: class="transition" data-background="#333"-->
-
-# Transition with bg color
-
-
-##--##
-
-<!-- .slide: class="with-code" -->
-
-# Code to produce / Markdown
-
-```markdown
-<!-- .slide: class="transition" data-background="#333"-->
-
-# Transition with bg color
-```
-<!-- .element: class="big-code" -->
-
-##==##
-
 <!-- .slide: class="transition bg-white" -->
 
 # A White Transition Slide
@@ -182,9 +162,9 @@
 
 ##==##
 
-<!-- .slide: class="transition-center sfeir-bg-white-4" -->
+<!-- .slide: class="transition-left sfeir-bg-grey-4" -->
 
-# A White Transition Slide with text center
+# Transition left
 
 
 ##--##
@@ -194,16 +174,38 @@
 # Code to produce / Markdown
 
 ```markdown
-<!-- .slide: class="transition-white sfeir-bg-white-4" -->
+<!-- .slide: class="transition-left sfeir-bg-grey-4" -->
 
-# A White Transition Slide with text center
+# Transition left
 ```
 <!-- .element: class="big-code" -->
 
+
+
 ##==##
 
-<!-- .slide: data-background="./assets/images/dark_background.jpeg"
-    class="transition-white" -->
+<!-- .slide: class="transition-right sfeir-bg-grey-1" -->
+
+# Transition right
+
+
+##--##
+
+<!-- .slide: class="with-code" -->
+
+# Code to produce / Markdown
+
+```markdown
+<!-- .slide: class="transition-right sfeir-bg-grey-1" -->
+
+# Transition right
+```
+<!-- .element: class="big-code" -->
+
+
+##==##
+
+<!-- .slide: data-background="./assets/images/dark_background.jpeg" class="transition" -->
 
 # A Custom Transition Slide
 
@@ -216,7 +218,7 @@
 
 ```markdown
 <!-- .slide: data-background="./assets/images/dark_background.jpeg"
-    class="transition-white" -->
+    class="transition" -->
 
 # A Custom Transition Slide
 ```
@@ -224,31 +226,9 @@
 
 ##==##
 
-<!-- .slide: data-background="./assets/images/city.jpeg"
-    class="transition-center" -->
-
-# A Custom Transition Slide 
-
-
-##--##
-
-<!-- .slide: class="with-code" -->
-
-# Code to produce / Markdown
-
-```markdown
-<!-- .slide: data-background="./assets/images/city.jpeg"
- class="transition-center" -->
-
-# A Custom Transition Slide 
-```
-<!-- .element: class="big-code" -->
-
-##==##
-
 <!-- .slide: data-background="#3d4349" class="transition" -->
 
-# A Custom Transition Slide With color
+# Transition with bg color
 
 
 ##--##
@@ -260,7 +240,7 @@
 ```markdown
 <!-- .slide: data-background="#3d4349" class="transition" -->
 
-# A Custom Transition Slide With color
+# Transition with bg color
 ```
 <!-- .element: class="big-code" -->
 

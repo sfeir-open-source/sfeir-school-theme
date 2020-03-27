@@ -85,7 +85,7 @@ class SfeirTheme {
 		}
 
 		// Add default background for slides 
-		const genericsSlides = [...document.querySelectorAll('.reveal .slides section:not([data-background]):not(.sfeir-specific-slide):not(.no-background):not(.with-code-dark)')];
+		const genericsSlides = [...document.querySelectorAll('.reveal .slides section:not([data-background]):not(.sfeir-specific-slide):not(.no-background):not(.with-code-dark):not([class*=transition])')];
 		for (let genericSlide of genericsSlides){
 			genericSlide.classList.add('sfeir-basic-slide');
 		}

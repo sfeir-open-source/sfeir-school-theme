@@ -1,5 +1,5 @@
 
-<!-- .slide: class="transition-center sfeir-bg-axololt" -->
+<!-- .slide: class="transition-left sfeir-bg-axololt" -->
 
 # SfeirSchool Theme
 
