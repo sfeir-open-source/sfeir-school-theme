@@ -108,7 +108,8 @@
 	}
 }
 
-.reveal .slides section.sfeir-basic-slide:not(.stack){
+.reveal .slides section.sfeir-basic-slide:not(.stack),
+.reveal .slides section.exercice:not(.stack){
 	color:$dark-grey;
 
 	h1, h2, h3{
