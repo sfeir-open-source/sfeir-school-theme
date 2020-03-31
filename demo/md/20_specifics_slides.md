@@ -162,7 +162,7 @@
 
 ##==##
 
-<!-- .slide: class="transition-left sfeir-bg-grey-4" -->
+<!-- .slide: class="transition-left transition-bg-grey-4" -->
 
 # Transition left
 
@@ -174,7 +174,7 @@
 # Code to produce / Markdown
 
 ```markdown
-<!-- .slide: class="transition-left sfeir-bg-grey-4" -->
+<!-- .slide: class="transition-left transition-bg-grey-4" -->
 
 # Transition left
 ```
@@ -184,7 +184,7 @@
 
 ##==##
 
-<!-- .slide: class="transition-right sfeir-bg-grey-1" -->
+<!-- .slide: class="transition-right transition-bg-grey-1" -->
 
 # Transition right
 
@@ -196,12 +196,152 @@
 # Code to produce / Markdown
 
 ```markdown
-<!-- .slide: class="transition-right sfeir-bg-grey-1" -->
+<!-- .slide: class="transition-right transition-bg-grey-1" -->
 
 # Transition right
 ```
 <!-- .element: class="big-code" -->
 
+
+##==##
+
+<!-- .slide: class="transition-bg-grey-1" -->
+
+# Sfeir bg grey 1
+
+
+##--##
+
+<!-- .slide: class="with-code" -->
+
+# Code to produce / Markdown
+
+```markdown
+<!-- .slide: class="transition-bg-grey-1" -->
+
+# Sfeir bg grey 1
+```
+<!-- .element: class="big-code" -->
+
+##==##
+
+<!-- .slide: class="transition-bg-grey-2" -->
+
+# Sfeir bg grey 2
+
+
+##--##
+
+<!-- .slide: class="with-code" -->
+
+# Code to produce / Markdown
+
+```markdown
+<!-- .slide: class="transition-bg-grey-2" -->
+
+# Sfeir bg grey 2
+```
+<!-- .element: class="big-code" -->
+
+##==##
+
+<!-- .slide: class="transition-bg-grey-3" -->
+
+# Sfeir bg grey 3
+
+
+##--##
+
+<!-- .slide: class="with-code" -->
+
+# Code to produce / Markdown
+
+```markdown
+<!-- .slide: class="transition-bg-grey-3" -->
+
+# Sfeir bg grey 3
+```
+<!-- .element: class="big-code" -->
+
+##==##
+
+<!-- .slide: class="transition-bg-grey-4" -->
+
+# Sfeir bg grey 4
+
+
+##--##
+
+<!-- .slide: class="with-code" -->
+
+# Code to produce / Markdown
+
+```markdown
+<!-- .slide: class="transition-bg-grey-4" -->
+
+# Sfeir bg grey 4
+```
+<!-- .element: class="big-code" -->
+
+##==##
+
+<!-- .slide: class="transition-bg-grey-5" -->
+
+# Sfeir bg grey 5
+
+
+##--##
+
+<!-- .slide: class="with-code" -->
+
+# Code to produce / Markdown
+
+```markdown
+<!-- .slide: class="transition-bg-grey-5" -->
+
+# Sfeir bg grey 5
+```
+<!-- .element: class="big-code" -->
+
+##==##
+
+<!-- .slide: class="transition-bg-grey-6" -->
+
+# Sfeir bg grey 6
+
+
+##--##
+
+<!-- .slide: class="with-code" -->
+
+# Code to produce / Markdown
+
+```markdown
+<!-- .slide: class="transition-bg-grey-6" -->
+
+# Sfeir bg grey 6
+```
+<!-- .element: class="big-code" -->
+
+##==##
+
+<!-- .slide: class="transition-bg-grey-7" -->
+
+# Sfeir bg grey 7
+
+
+##--##
+
+<!-- .slide: class="with-code" -->
+
+# Code to produce / Markdown
+
+```markdown
+<!-- .slide: class="transition-bg-grey-7" -->
+
+# Sfeir bg grey 7
+```
+<!-- .element: class="big-code" -->
 
 ##==##
 
