@@ -386,7 +386,7 @@
 
 ##==##
 
-<!-- .slide: class="exercice sfeir-bg-pink" -->
+<!-- .slide: class="exercice" -->
 
 # Exercice Title
 
@@ -411,7 +411,7 @@ Additionnal Advice
 # Code to produce / Markdown
 
 ```markdown
-<!-- .slide: class="exercice sfeir-bg-pink" -->
+<!-- .slide: class="exercice" -->
 # Exercice Title
 ## Exercice
 <br>

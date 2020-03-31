@@ -14,6 +14,7 @@ You can preview it here : https://sfeir-school-theme.netlify.com/
   * [Custom Backgrounds](https://github.com/sfeir-open-source/sfeir-school-theme/#specifics-colors-backgrounds)
   * [Different Layout](https://github.com/sfeir-open-source/sfeir-school-theme/#different-layout)
   * [Slides with code](https://github.com/sfeir-open-source/sfeir-school-theme/#slides-with-code)
+  * [Exercices](https://github.com/sfeir-open-source/sfeir-school-theme/#exercices)
   * [Helpers](https://github.com/sfeir-open-source/sfeir-school-theme/#helpers)
 
 
@@ -121,10 +122,10 @@ This theme use target for [RevealJS](https://revealjs.com/#/) so all you can do 
 <h2> Jean-François<span> Garreau</span></h2>
 
 ### CTO front
-<!-- .element: classs="icone-rule icon-first" -->
+<!-- .element: classs="icon-rule icon-first" -->
 
 ### @jefbinomed
-<!-- .element: classs="icone-twitter icon-second" -->
+<!-- .element: classs="icon-twitter icon-second" -->
 ```
 
 ![](./assets/speaker-slide.png)
@@ -362,6 +363,25 @@ HighlightJS propose lots of themes that could use.
 }
 
 ```
+
+## Exercices
+
+To produce exercices slides: 
+
+```md
+<!-- .slide: class="exercice" -->
+# Exercice Title
+## Exercice
+<br>
+1. First step
+2. Second step
+3. Third step
+<br>
+Additionnal Advice
+### Step: push-1
+```
+
+![](./assets/exercice-slide.png)
 
 ## Helpers
 
