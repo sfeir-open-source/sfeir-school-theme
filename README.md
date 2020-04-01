@@ -163,8 +163,10 @@ You can use those class for transitions slides :
 * `blue`: the text background of transition will be set to blue
 * `green`: the text background of transition will be set to blue
 * `underline`: the text will be underline instead of background
-* `transition-left`: the text will be left aligned
-* `transition-right`: the text will be right aligned
+* `left`: the text will be left aligned
+* `right`: the text will be right aligned
+* `top`: the text will be stick to the top
+* `bottom`: the text will be stick to the bottom
 * `bg-white` / `bg-pink` / `bg-blue` / `bg-green` : the background will be in a different color
 * `transition-bg-grey-1` -> `transition-bg-grey-7` : different background images
 
@@ -195,16 +197,24 @@ or in `green`
 ## Transition with text left aligned
 
 ```md
-<!-- .slide: class="transition-left" -->
+<!-- .slide: class="transition left" -->
 
 # Transition left
 ```
 
 ![](./assets/transition-left.png)
 
-and `transition-right` for right text aligned
+* `transition right` for right text aligned
 
 ![](./assets/transition-right.png)
+
+* `transition top` for top text aligned
+
+![](./assets/transition-top.png)
+
+* `transition bottom` for bottom text aligned
+
+![](./assets/transition-bottom.png)
 
 
 ## Specifics Colors Backgrounds

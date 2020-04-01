@@ -54,7 +54,25 @@
         }
     }
 
+    &.left h1, &.right h1{
+        margin-left: initial;
+    }
 
+    &.left h1{
+        text-align: left;
+    }
+
+    &.right h1{
+        text-align: left;
+    }
+    
+    &.top h1{
+        margin-top: 50px;
+    }
+    
+    &.bottom h1{
+        margin-top: 800px;
+    }
     
 }
 
