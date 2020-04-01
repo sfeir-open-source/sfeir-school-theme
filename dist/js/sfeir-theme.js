@@ -54,23 +54,24 @@ class SfeirTheme {
 	_manageBackgrounds(){
 
 		const map = {
-			'first-slide.first-red': `${this.path}images/background_red.png`,
-			'first-slide.first-pink': `${this.path}images/background_pink.png`,
-			'first-slide': `${this.path}images/background_blue.png`,
-			'school-presentation': `${this.path}images/background_shcool.png`,
-			'speaker-slide': `${this.path}images/background_white_1.png`,
-			'sfeir-slide': `${this.path}images/background_white_1.png`,
-			'sfeir-bg-blue': `${this.path}images/background_blue.png`,
-			'sfeir-bg-pink': `${this.path}images/background_pink.png`,
-			'sfeir-bg-red': `${this.path}images/background_red.png`,
-			'sfeir-bg-white-1': `${this.path}images/background_white_1.png`,
-			'sfeir-bg-white-2': `${this.path}images/background_white_2.png`,
-			'sfeir-bg-white-3': `${this.path}images/background_white_3.png`,
-			'sfeir-bg-white-4': `${this.path}images/background_white_4.png`,
-			'sfeir-bg-white-5': `${this.path}images/background_white_5.png`,
-			'sfeir-bg-white-6': `${this.path}images/background_white_6.png`,
-			'sfeir-bg-white-7': `${this.path}images/background_white_7.png`,
-			'sfeir-bg-white-8': `${this.path}images/background_white_8.png`,
+			'first-slide': `${this.path}images/bg-grey-axololt.png`,
+			'transition': `${this.path}images/bg-grey-axololt.png`,
+			'school-presentation': `${this.path}images/bg-school.png`,
+			'speaker-slide': `${this.path}images/bg-grey-axololt.png`,
+			'sfeir-slide': `${this.path}images/bg-grey-axololt.png`,
+			'bg-white': `${this.path}images/bg-grey-8.png`,
+			'bg-pink': `${this.path}images/bg-grey-8.png`,
+			'bg-blue': `${this.path}images/bg-grey-8.png`,
+			'bg-green': `${this.path}images/bg-grey-8.png`,
+			'sfeir-bg-axololt': `${this.path}images/bg-grey-axololt.png`,
+			'transition-bg-grey-1': `${this.path}images/bg-grey-1.png`,
+			'transition-bg-grey-2': `${this.path}images/bg-grey-2.png`,
+			'transition-bg-grey-3': `${this.path}images/bg-grey-3.jpg`,
+			'transition-bg-grey-4': `${this.path}images/bg-grey-4.jpg`,
+			'transition-bg-grey-5': `${this.path}images/bg-grey-5.jpg`,
+			'transition-bg-grey-6': `${this.path}images/bg-grey-6.jpg`,
+			'transition-bg-grey-7': `${this.path}images/bg-grey-7.jpg`,
+			'transition-bg-grey-8': `${this.path}images/bg-grey-8.png`,
 		};
 
 		for (let key in map){
@@ -78,16 +79,15 @@ class SfeirTheme {
 
 			for (let i = 0; i < queryElementList.length; i++){
 				const element = queryElementList[i];
-				element.classList.add('sfeir-specific-slide');
+				element.classList.add('sfeir-specific-slide');			
 				element.setAttribute('data-background',map[key]);
 			}
 		}
 
 		// Add default background for slides 
-		const genericsSlides = [...document.querySelectorAll('.reveal .slides section:not([data-background]):not(.sfeir-specific-slide):not(.no-background):not(.with-code-dark)')];
+		const genericsSlides = [...document.querySelectorAll('.reveal .slides section:not([data-background]):not(.sfeir-specific-slide):not(.no-background):not(.with-code-dark):not([class*=transition])')];
 		for (let genericSlide of genericsSlides){
 			genericSlide.classList.add('sfeir-basic-slide');
-			genericSlide.setAttribute('data-background', `${this.path}images/background_white_1.png`);
 		}
 
 		this._manageFirstSlide();
