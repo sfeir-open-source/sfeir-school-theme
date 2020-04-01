@@ -1,55 +1,65 @@
 .reveal .slides section {
-    &.exercice {
+    &.sfeir-basic-slide.exercice:not(.sfeir-specific-slide):not(.stack):not([class*=transition]) {
       width: calc(100% - 200px);
       height: calc(100% - 200px);
-      color: white;
-      padding-top: 200px;
+      color: $dark-grey;      
       padding-left: 200px;
   
-      &:before {
-        content: '';
-        background: url(../images/exercice_logo.png) no-repeat;
-        position: absolute;
-        background-size: calc(1750px / 10) calc(2500px / 10);
-        left: 0;
-        top: 0;
-        width: calc(1750px / 10);
-        height: calc(2500px / 10);
+      h1:first-of-type:after{
+        background-color: $sfeir-orange;
       }
   
       h1,
       h2,
       h3 {
-        all: unset;
-        position: absolute;
-        color: white;
+        position: relative;
+        color: $black;
         font-size: 2em;
       }
   
       h1 {
         top: 0;
         left: 0;
-        text-align: center;
         width: 100%;
       }
+
+      h1:first-of-type:before {
+        content: '\ed57';
+        font-family: 'sfeir';
+        position: absolute;
+        left: -200px;
+        top: 0;
+        font-size: 2em;
+        width: calc(1750px / 10);
+        height: calc(2500px / 10);
+      }
   
-      h2 {
-        transform: rotateZ(270deg);
+      h2:first-of-type {
+        position: absolute;
+        transform: rotateZ(272deg);
+        padding: 10px;
         font-weight: 800;
-        top: 50%;
+        top: 500px;
         left: -100px;
-        text-shadow: -4px -4px grey;
+        color: $white;
+        font-size: 2em;
+        background: linear-gradient(to right, $sfeir-orange-stop-1, $sfeir-pink-stop-2);
+        &:after{
+          content: initial;
+        }
       }
   
       h3 {
+        color: $sfeir-orange;
         font-size: 1.5em;
         text-align: center;
-        bottom: 50px;
-        width: 100%;
+        bottom: -50px;
+        width: 100%; 
         left: 0;
       }
   
       ul,
+      ol,
       p {
         text-align: left;
         font-size: 1.5em;

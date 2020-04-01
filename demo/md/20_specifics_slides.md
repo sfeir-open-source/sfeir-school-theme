@@ -1,15 +1,93 @@
 
 <!-- .slide: class="transition" -->
 
-# Management of custom slides
+# Custom slides
 
 ##==##
 
-<!-- .slide: class="transition-white" data-background="#333"-->
+<!-- .slide: class="transition" -->
+
+# Transition
+
+##--##
+
+<!-- .slide: class="with-code" -->
+
+# Code to produce / Markdown
+
+```markdown
+<!-- .slide: class="transition"-->
+
+# Transition
+```
+<!-- .element: class="big-code" -->
+
+
+##==##
+
+<!-- .slide: class="transition blue" -->
+
+# Transition blue
+
+##--##
+
+<!-- .slide: class="with-code" -->
+
+# Code to produce / Markdown
+
+```markdown
+<!-- .slide: class="transition blue"-->
+
+# Transition blue
+```
+<!-- .element: class="big-code" -->
+
+##==##
+
+<!-- .slide: class="transition green" -->
+
+# Transition Green
+
+##--##
+
+<!-- .slide: class="with-code" -->
+
+# Code to produce / Markdown
+
+```markdown
+<!-- .slide: class="transition green"-->
+
+# Transition green
+```
+<!-- .element: class="big-code" -->
+
+
+##==##
+
+<!-- .slide: class="transition underline" -->
+
+# Transition undeline
+
+##--##
+
+<!-- .slide: class="with-code" -->
+
+# Code to produce / Markdown
+
+```markdown
+<!-- .slide: class="transition underline"-->
+
+# Transition underline
+```
+<!-- .element: class="big-code" -->
+
+
+##==##
+
+<!-- .slide: class="transition bg-white" -->
 
 # A White Transition Slide
 
-
 ##--##
 
 <!-- .slide: class="with-code" -->
@@ -17,7 +95,7 @@
 # Code to produce / Markdown
 
 ```markdown
-<!-- .slide: class="transition-white" data-background="#333"-->
+<!-- .slide: class="transition bg-white" -->
 
 # A White Transition Slide
 ```
@@ -25,30 +103,10 @@
 
 ##==##
 
-<!-- .slide: class="transition-white sfeir-bg-red" -->
-
-# A Red Transition Slide
-
-##--##
-
-<!-- .slide: class="with-code" -->
-
-# Code to produce / Markdown
-
-```markdown
-<!-- .slide: class="transition-white sfeir-bg-red" -->
-
-# A Red Transition Slide
-```
-<!-- .element: class="big-code" -->
-
-##==##
-
-<!-- .slide: class="transition-white sfeir-bg-pink" -->
+<!-- .slide: class="transition bg-pink" -->
 
 # A Pink Transition Slide
 
-
 ##--##
 
 <!-- .slide: class="with-code" -->
@@ -56,7 +114,7 @@
 # Code to produce / Markdown
 
 ```markdown
-<!-- .slide: class="transition-white sfeir-bg-pink" -->
+<!-- .slide: class="transition bg-pink" -->
 
 # A Pink Transition Slide
 ```
@@ -64,9 +122,49 @@
 
 ##==##
 
-<!-- .slide: class="transition-white sfeir-bg-blue" -->
+<!-- .slide: class="transition bg-blue" -->
 
 # A Blue Transition Slide
+
+##--##
+
+<!-- .slide: class="with-code" -->
+
+# Code to produce / Markdown
+
+```markdown
+<!-- .slide: class="transition bg-blue" -->
+
+# A Blue Transition Slide
+```
+<!-- .element: class="big-code" -->
+
+##==##
+
+<!-- .slide: class="transition bg-green" -->
+
+# A Green Transition Slide
+
+##--##
+
+<!-- .slide: class="with-code" -->
+
+# Code to produce / Markdown
+
+```markdown
+<!-- .slide: class="transition bg-green" -->
+
+# A Green Transition Slide
+```
+<!-- .element: class="big-code" -->
+
+
+
+##==##
+
+<!-- .slide: class="transition-left transition-bg-grey-4" -->
+
+# Transition left
 
 
 ##--##
@@ -76,18 +174,19 @@
 # Code to produce / Markdown
 
 ```markdown
-<!-- .slide: class="transition-white sfeir-bg-blue" -->
+<!-- .slide: class="transition-left transition-bg-grey-4" -->
 
-# A Blue Transition Slide
+# Transition left
 ```
 <!-- .element: class="big-code" -->
 
 
+
 ##==##
 
-<!-- .slide: class="transition-center sfeir-bg-white-4" -->
+<!-- .slide: class="transition-right transition-bg-grey-1" -->
 
-# A White Transition Slide with text center
+# Transition right
 
 
 ##--##
@@ -97,16 +196,156 @@
 # Code to produce / Markdown
 
 ```markdown
-<!-- .slide: class="transition-white sfeir-bg-white-4" -->
+<!-- .slide: class="transition-right transition-bg-grey-1" -->
 
-# A White Transition Slide with text center
+# Transition right
+```
+<!-- .element: class="big-code" -->
+
+
+##==##
+
+<!-- .slide: class="transition-bg-grey-1" -->
+
+# Sfeir bg grey 1
+
+
+##--##
+
+<!-- .slide: class="with-code" -->
+
+# Code to produce / Markdown
+
+```markdown
+<!-- .slide: class="transition-bg-grey-1" -->
+
+# Sfeir bg grey 1
 ```
 <!-- .element: class="big-code" -->
 
 ##==##
 
-<!-- .slide: data-background="./assets/images/dark_background.jpeg"
-    class="transition-white" -->
+<!-- .slide: class="transition-bg-grey-2" -->
+
+# Sfeir bg grey 2
+
+
+##--##
+
+<!-- .slide: class="with-code" -->
+
+# Code to produce / Markdown
+
+```markdown
+<!-- .slide: class="transition-bg-grey-2" -->
+
+# Sfeir bg grey 2
+```
+<!-- .element: class="big-code" -->
+
+##==##
+
+<!-- .slide: class="transition-bg-grey-3" -->
+
+# Sfeir bg grey 3
+
+
+##--##
+
+<!-- .slide: class="with-code" -->
+
+# Code to produce / Markdown
+
+```markdown
+<!-- .slide: class="transition-bg-grey-3" -->
+
+# Sfeir bg grey 3
+```
+<!-- .element: class="big-code" -->
+
+##==##
+
+<!-- .slide: class="transition-bg-grey-4" -->
+
+# Sfeir bg grey 4
+
+
+##--##
+
+<!-- .slide: class="with-code" -->
+
+# Code to produce / Markdown
+
+```markdown
+<!-- .slide: class="transition-bg-grey-4" -->
+
+# Sfeir bg grey 4
+```
+<!-- .element: class="big-code" -->
+
+##==##
+
+<!-- .slide: class="transition-bg-grey-5" -->
+
+# Sfeir bg grey 5
+
+
+##--##
+
+<!-- .slide: class="with-code" -->
+
+# Code to produce / Markdown
+
+```markdown
+<!-- .slide: class="transition-bg-grey-5" -->
+
+# Sfeir bg grey 5
+```
+<!-- .element: class="big-code" -->
+
+##==##
+
+<!-- .slide: class="transition-bg-grey-6" -->
+
+# Sfeir bg grey 6
+
+
+##--##
+
+<!-- .slide: class="with-code" -->
+
+# Code to produce / Markdown
+
+```markdown
+<!-- .slide: class="transition-bg-grey-6" -->
+
+# Sfeir bg grey 6
+```
+<!-- .element: class="big-code" -->
+
+##==##
+
+<!-- .slide: class="transition-bg-grey-7" -->
+
+# Sfeir bg grey 7
+
+
+##--##
+
+<!-- .slide: class="with-code" -->
+
+# Code to produce / Markdown
+
+```markdown
+<!-- .slide: class="transition-bg-grey-7" -->
+
+# Sfeir bg grey 7
+```
+<!-- .element: class="big-code" -->
+
+##==##
+
+<!-- .slide: data-background="./assets/images/dark_background.jpeg" class="transition" -->
 
 # A Custom Transition Slide
 
@@ -119,7 +358,7 @@
 
 ```markdown
 <!-- .slide: data-background="./assets/images/dark_background.jpeg"
-    class="transition-white" -->
+    class="transition" -->
 
 # A Custom Transition Slide
 ```
@@ -127,31 +366,9 @@
 
 ##==##
 
-<!-- .slide: data-background="./assets/images/city.jpeg"
-    class="transition-center" -->
-
-# A Custom Transition Slide 
-
-
-##--##
-
-<!-- .slide: class="with-code" -->
-
-# Code to produce / Markdown
-
-```markdown
-<!-- .slide: data-background="./assets/images/city.jpeg"
- class="transition-center" -->
-
-# A Custom Transition Slide 
-```
-<!-- .element: class="big-code" -->
-
-##==##
-
 <!-- .slide: data-background="#3d4349" class="transition" -->
 
-# A Custom Transition Slide With color
+# Transition with bg color
 
 
 ##--##
@@ -163,13 +380,13 @@
 ```markdown
 <!-- .slide: data-background="#3d4349" class="transition" -->
 
-# A Custom Transition Slide With color
+# Transition with bg color
 ```
 <!-- .element: class="big-code" -->
 
 ##==##
 
-<!-- .slide: class="exercice sfeir-bg-pink" -->
+<!-- .slide: class="exercice" -->
 
 # Exercice Title
 
@@ -194,7 +411,7 @@ Additionnal Advice
 # Code to produce / Markdown
 
 ```markdown
-<!-- .slide: class="exercice sfeir-bg-pink" -->
+<!-- .slide: class="exercice" -->
 # Exercice Title
 ## Exercice
 <br>

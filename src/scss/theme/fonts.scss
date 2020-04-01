@@ -1,52 +1,108 @@
-// Montserrat
+// Poppins
 
 @font-face {
-    font-family: 'Montserrat';
-    src: url('../fonts/Montserrat-Light.ttf');
+    font-family: 'Poppins';
+    src: url('../fonts/Poppins-Light.ttf');
     font-weight: 300;
     font-style: normal;
 }
 
 @font-face {
-    font-family: 'Montserrat';
-    src: url('../fonts/Montserrat-ExtraLight.ttf');
+    font-family: 'Poppins';
+    src: url('../fonts/Poppins-LightItalic.ttf');
+    font-weight: 300;
+    font-style: italic;
+}
+
+@font-face {
+    font-family: 'Poppins';
+    src: url('../fonts/Poppins-ExtraLight.ttf');
     font-weight: 100;
     font-style: normal;
 }
 
 @font-face {
-    font-family: 'Montserrat';
-    src: url('../fonts/Montserrat-Regular.ttf');
+    font-family: 'Poppins';
+    src: url('../fonts/Poppins-ExtraLightItalic.ttf');
+    font-weight: 100;
+    font-style: italic;
+}
+
+@font-face {
+    font-family: 'Poppins';
+    src: url('../fonts/Poppins-Regular.ttf');
     font-weight: 400;
     font-style: normal;
 }
 
 @font-face {
-    font-family: 'Montserrat';
-    src: url('../fonts/Montserrat-Medium.ttf');
+    font-family: 'Poppins';
+    src: url('../fonts/Poppins-Medium.ttf');
     font-weight: 500;
     font-style: normal;
 }
 
 @font-face {
-    font-family: 'Montserrat';
-    src: url('../fonts/Montserrat-SemiBold.ttf');
+    font-family: 'Poppins';
+    src: url('../fonts/Poppins-MediumItalic.ttf');
+    font-weight: 500;
+    font-style: italic;
+}
+
+@font-face {
+    font-family: 'Poppins';
+    src: url('../fonts/Poppins-SemiBold.ttf');
     font-weight: 600;
     font-style: normal;
 }
 
 @font-face {
-    font-family: 'Montserrat';
-    src: url('../fonts/Montserrat-Bold.ttf');
+    font-family: 'Poppins';
+    src: url('../fonts/Poppins-SemiBoldItalic.ttf');
+    font-weight: 600;
+    font-style: italic;
+}
+
+@font-face {
+    font-family: 'Poppins';
+    src: url('../fonts/Poppins-Bold.ttf');
     font-weight: 700;
     font-style: normal;
 }
 
 @font-face {
-    font-family: 'Montserrat';
-    src: url('../fonts/Montserrat-ExtraBold.ttf');
+    font-family: 'Poppins';
+    src: url('../fonts/Poppins-BoldItalic.ttf');
+    font-weight: 700;
+    font-style: italic;
+}
+
+@font-face {
+    font-family: 'Poppins';
+    src: url('../fonts/Poppins-ExtraBold.ttf');
     font-weight: 800;
     font-style: normal;
+}
+
+@font-face {
+    font-family: 'Poppins';
+    src: url('../fonts/Poppins-ExtraBoldItalic.ttf');
+    font-weight: 800;
+    font-style: italic;
+}
+
+@font-face {
+    font-family: 'Poppins';
+    src: url('../fonts/Poppins-Black.ttf');
+    font-weight: 900;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Poppins';
+    src: url('../fonts/Poppins-BlackItalic.ttf');
+    font-weight: 900;
+    font-style: italic;
 }
 
 // Consolas
@@ -80,11 +136,14 @@
 
 
 .reveal{
-	font-family: 'Montserrat', 'Helvetica Neue', Helvetica, 'Microsoft YaHei', 'WenQuanYi Micro Hei', Arial, sans-serif;
+	font-family: 'Poppins', 'Helvetica Neue', Helvetica, 'Microsoft YaHei', 'WenQuanYi Micro Hei', Arial, sans-serif;
 }
 
 .reveal h1, .reveal h2, .reveal h3, .reveal h4,
 .reveal .slides section.with-code h1, .reveal .slides section.with-code h2{
-    font-family: 'Montserrat', 'Helvetica Neue', Helvetica, 'Microsoft YaHei', 'WenQuanYi Micro Hei', Arial, sans-serif;
+    font-family: 'Poppins', 'Helvetica Neue', Helvetica, 'Microsoft YaHei', 'WenQuanYi Micro Hei', Arial, sans-serif;
     font-weight: 600;
 }
+
+// Icons 
+@import "./icons-font.scss";

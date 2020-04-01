@@ -7,6 +7,10 @@
     background-color: $code-bg;
 }
 
+.reveal .slides section.with-code-dark:not(.sfeir-specific-slide):not(.stack):not([class*=transition]) h2{
+    color: $white;
+}
+
 .reveal .slides section.with-code,
 .reveal .slides section.with-code-dark{
    

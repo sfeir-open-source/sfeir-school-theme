@@ -38,12 +38,12 @@
         margin: auto;
 
         &::before{
-            color: $sfeir-blue;
+            color: $black;
             position: absolute;
             content: attr(data-sfeir-techno);
             text-transform: uppercase;
             font-weight: 800;
-            top: 280px;
+            top: 280px; 
             left: 0;
             width: 100%;
             text-align: center;
@@ -78,14 +78,5 @@
         background-repeat: no-repeat;
         background-size: 55px;
     }
-
-
-    // Specials cases for colors variants
-    &.first-red, &.first-pink{
-        div.sfeir-logo::before{
-            color:$sfeir-orange;
-        }
-    }
-
 }
 

@@ -7,15 +7,25 @@ $code-bg: #3f3f3f;
 $light-grey: #ddd;
 $white: white;
 $medium-grey: #817c7c;
-$black: #333;
-$dark-grey: #3d4349;
+$black: #434343;
+$dark-grey: #2a3244;
 $dark-grey-alpha : rgba(61,67,73,0.7);
 $red: #e74c3c;
 
 // Define specifics Sfeir colors
 
-$sfeir-orange: #e7552b;
-$sfeir-blue: #0b4269;
+$sfeir-pink: #dd3355;
+$sfeir-pink-stop-1: #ee0f50ff;
+$sfeir-pink-stop-2: #fa8b88ff;
+$sfeir-blue: #575eaa;
+$sfeir-blue-stop-1: #00b6e5ff;
+$sfeir-blue-stop-2: #575eaaff;
+$sfeir-green: #0ab580;
+$sfeir-green-stop-1: #00bbc5ff;
+$sfeir-green-stop-2: #0ab580ff;
+$sfeir-orange: #ffaa54;
+$sfeir-orange-stop-1: #f9cb9cff;
+$sfeir-orange-stop-2: #ffaa54ff;
 
 :root{
     // Generics colors Helpers
@@ -30,6 +40,7 @@ $sfeir-blue: #0b4269;
 
     // Define specifics Sfeir colors
 
-    @include useCssVar(--sfeir-orange, $sfeir-orange);
+    @include useCssVar(--sfeir-pink, $sfeir-pink);
     @include useCssVar(--sfeir-blue, $sfeir-blue);
+    @include useCssVar(--sfeir-green, $sfeir-green);
 }

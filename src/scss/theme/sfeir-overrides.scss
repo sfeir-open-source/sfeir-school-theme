@@ -19,17 +19,17 @@
 $backgroundColor: #FFF;
 
 // Primary/body text
-$mainFont: 'Montserrat', sans-serif;
+$mainFont: 'Poppins', sans-serif;
 $mainFontSize: 40px;
-$mainColor: $sfeir-blue;
+$mainColor: $white;
 
 // Vertical spacing between blocks of text
 $blockMargin: 20px;
 
 // Headings
 $headingMargin: 0 0 $blockMargin 0;
-$headingFont: 'Montserrat', Impact, sans-serif;
-$headingColor: $sfeir-orange;
+$headingFont: 'Poppins', Impact, sans-serif;
+$headingColor: $white;
 $headingLineHeight: 1.2;
 $headingLetterSpacing: normal;
 $headingTextTransform: uppercase;
@@ -43,7 +43,7 @@ $heading3Size: 1.55em;
 $heading4Size: 1.00em;
 
 // Links and actions
-$linkColor: #1155cc;
+$linkColor: $black;
 $linkColorHover: lighten( $linkColor, 20% );
 
 // Text selection

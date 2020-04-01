@@ -11,18 +11,17 @@ You can preview it here : https://sfeir-school-theme.netlify.com/
     * [Sfeir School presentation Slide](https://github.com/sfeir-open-source/sfeir-school-theme/#sfeir-school-presentation-slide)
     * [Speaker Slide](https://github.com/sfeir-open-source/sfeir-school-theme/#speaker-slide)
     * [Transitions slides](https://github.com/sfeir-open-source/sfeir-school-theme/#transitions-slides)
-  * [Custom Slide with text in white](https://github.com/sfeir-open-source/sfeir-school-theme/#custom-slide-with-text-in-white)
-  * [Custom Slide with text center](https://github.com/sfeir-open-source/sfeir-school-theme/#custom-slide-with-text-center)
-  * [Custom Backgrounds](https://github.com/sfeir-open-source/sfeir-school-theme/#custom-backgrounds)
+  * [Custom Backgrounds](https://github.com/sfeir-open-source/sfeir-school-theme/#specifics-colors-backgrounds)
   * [Different Layout](https://github.com/sfeir-open-source/sfeir-school-theme/#different-layout)
   * [Slides with code](https://github.com/sfeir-open-source/sfeir-school-theme/#slides-with-code)
+  * [Exercices](https://github.com/sfeir-open-source/sfeir-school-theme/#exercices)
   * [Helpers](https://github.com/sfeir-open-source/sfeir-school-theme/#helpers)
 
 
 
 # How to use it:
 
-## Npm (come later not active yet)
+## Npm
 
 ```sh
 # run
@@ -96,12 +95,6 @@ This theme use target for [RevealJS](https://revealjs.com/#/) so all you can do 
 * Attribute: `sfeir-level` could change from 1 to 3
 * Attribute: `sfeir-techno` display the technology of the sfeir school in the badge of sfeir school.
 
-For the class, you can alseo add class `first-pink`or `first-red` to use the pink background or red background.
-
-Here is for example, an alternative with `sfeir-level` 2 and class `first-red`
-
-![](./assets/first-slide-red.png)
-
 ### Sfeir School presentation Slide
 
 ```md
@@ -120,20 +113,41 @@ Here is for example, an alternative with `sfeir-level` 2 and class `first-red`
 ```md
 <!-- .slide: class="speaker-slide" -->
 
-# Présentation
+# Hello ! @SFEIR
 
 ![speaker](./assets/images/jf.jpg)
 ![company](./assets/images/logo_sfeir_bleu_orange.png)
 ![badge](./assets/images/gde.png)
 
-## Jean-François Garreau
+<h2> Jean-François<span> Garreau</span></h2>
 
 ### CTO front
+<!-- .element: classs="icon-rule icon-first" -->
 
 ### @jefbinomed
+<!-- .element: classs="icon-twitter icon-second" -->
 ```
 
 ![](./assets/speaker-slide.png)
+
+There is color alternative for these slide, just add `blue` or `green` class to the slide : 
+
+
+```md
+<!-- .slide: class="speaker-slide blue" -->
+
+OR 
+
+<!-- .slide: class="speaker-slide green" -->
+
+...
+```
+
+![](./assets/speaker-slide-blue.png)
+
+You can also change the order of sub information (here CTO Front & @jefbinomed). You can set up to 4 sub informations : `icon-first` | `icon-second` | `icon-third`.
+
+For the moment, only 3 icons are registered for speaker slide : `icon-rule` (for the job) | `icon-twitter` for twitter | `icon-mail` for the mail
 
 ### Transitions slides
 
@@ -146,67 +160,125 @@ Here is for example, an alternative with `sfeir-level` 2 and class `first-red`
 ![](./assets/transition-slide.png)
 
 You can use those class for transitions slides : 
-* `transition`: will position the title in the bottom of the slide
-* `transition-white`: the text will be in white
-* `transition-center`: the text will be center vertically
-* `sfeir-bg-red` / `sfeir-bg-pink` / `sfeir-bg-blue` / `sfeir-bg-white-4` : use the dedicate slide.
+* `blue`: the text background of transition will be set to blue
+* `green`: the text background of transition will be set to blue
+* `underline`: the text will be underline instead of background
+* `transition-left`: the text will be left aligned
+* `transition-right`: the text will be right aligned
+* `bg-white` / `bg-pink` / `bg-blue` / `bg-green` : the background will be in a different color
+* `transition-bg-grey-1` -> `transition-bg-grey-7` : different background images
 
-## Custom Slide with text in white
-
-```md
-<!-- .slide: class="transition-white" data-background="#333" -->
-
-# A White Transition Slide
-```
-
-![](./assets/white-transition-slide.png)
-
-## Custom Slide with text center
+## Transition with background text in blue or green
 
 ```md
-<!-- .slide: class="transition-center" -->
+<!-- .slide: class="transition blue" -->
 
-# A White Transition Slide with text center
+# Transition blue
 ```
 
-![](./assets/transition-center-slide.png)
+![](./assets/transition-blue.png)
 
-## Custom Backgrounds
+or in `green`
 
-Here is the list of possible backgrounds : 
+![](./assets/transition-green.png)
 
-* `sfeir-bg-red`
-![](./assets/sfeir-bg-red.png)
+## Transition with text underline
 
-* `sfeir-bg-pink`
+```md
+<!-- .slide: class="transition underline" -->
+
+# Transition underline
+```
+
+![](./assets/transition-underline.png)
+
+## Transition with text left aligned
+
+```md
+<!-- .slide: class="transition-left" -->
+
+# Transition left
+```
+
+![](./assets/transition-left.png)
+
+and `transition-right` for right text aligned
+
+![](./assets/transition-right.png)
+
+
+## Specifics Colors Backgrounds
+
+Here is the list of possible backgrounds: 
+
+```md
+<!-- .slide: class="transition bg-white" -->
+
+# Transition
+```
+
+* `bg-white`
+![](./assets/sfeir-bg-white.png)
+
+* `bg-pink`
 ![](./assets/sfeir-bg-pink.png)
 
-* `sfeir-bg-blue`
+* `bg-blue`
 ![](./assets/sfeir-bg-blue.png)
 
-* `sfeir-bg-white-1`
-![](./assets/sfeir-bg-white-1.png)
+* `bg-green`
+![](./assets/sfeir-bg-green.png)
 
-* `sfeir-bg-white-2`
-![](./assets/sfeir-bg-white-2.png)
+## Transition background grey
 
-* `sfeir-bg-white-3`
-![](./assets/sfeir-bg-white-3.png)
+Here is the list of possible grey background
 
-* `sfeir-bg-white-4`
-![](./assets/sfeir-bg-white-4.png)
+```md
+<!-- .slide: class="transition-bg-grey-1" -->
 
-* `sfeir-bg-white-5`
-![](./assets/sfeir-bg-white-5.png)
+# Sfeir bg grey 1
+```
 
-* `sfeir-bg-white-6`
-![](./assets/sfeir-bg-white-6.png)
+* `transition-bg-grey-1`
+![](./assets/sfeir-bg-grey-1.png)
 
-* `sfeir-bg-white-7`
-![](./assets/sfeir-bg-white-7.png)
+* `transition-bg-grey-2`
+![](./assets/sfeir-bg-grey-2.png)
 
-* `sfeir-bg-white-8`
-![](./assets/sfeir-bg-white-8.png)
+* `transition-bg-grey-3`
+![](./assets/sfeir-bg-grey-3.png)
+
+* `transition-bg-grey-4`
+![](./assets/sfeir-bg-grey-4.png)
+
+* `transition-bg-grey-5`
+![](./assets/sfeir-bg-grey-5.png)
+
+* `transition-bg-grey-6`
+![](./assets/sfeir-bg-grey-6.png)
+
+* `transition-bg-grey-7`
+![](./assets/sfeir-bg-grey-7.png)
+
+## Transition with custom Image
+
+```md
+<!-- .slide: data-background="./assets/images/dark_background.jpeg" class="transition" -->
+
+# A Custom Transition Slide
+```
+
+![](./assets/transition-bg-image.png)
+
+## Transition with background color
+
+```md
+<!-- .slide: .slide: data-background="#3d4349" class="transition" -->
+
+# Transition with bg color
+```
+
+![](./assets/transition-bg-color.png)
 
 ## Different Layout
 
@@ -291,6 +363,25 @@ HighlightJS propose lots of themes that could use.
 }
 
 ```
+
+## Exercices
+
+To produce exercices slides: 
+
+```md
+<!-- .slide: class="exercice" -->
+# Exercice Title
+## Exercice
+<br>
+1. First step
+2. Second step
+3. Third step
+<br>
+Additionnal Advice
+### Step: push-1
+```
+
+![](./assets/exercice-slide.png)
 
 ## Helpers
 

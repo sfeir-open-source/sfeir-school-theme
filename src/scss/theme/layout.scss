@@ -11,6 +11,10 @@
 	ul{
 		list-style-type: disc;
 	}
+
+	.slides section.stack{
+		height: 100%;
+	}
 	
 	.slides section li p{
 		font-size: 100%;
@@ -54,23 +58,16 @@
 		text-align: left;
 		font-style: italic;
 		background: white;
-		color: $sfeir-blue;
+		color: $dark-grey;
 		box-shadow: 0px 0px 2px rgba(0, 0, 0, 0.2);
 	}
 	
 }
 
 
-.reveal .slides section:not(.sfeir-specific-slide),
-.reveal .slides section.sfeir-basic-slide,
-.reveal .slides section.sfeir-specific-slide.sfeir-bg-white-1,
-.reveal .slides section.sfeir-specific-slide.sfeir-bg-white-2,
-.reveal .slides section.sfeir-specific-slide.sfeir-bg-white-3,
-.reveal .slides section.sfeir-specific-slide.sfeir-bg-white-4,
-.reveal .slides section.sfeir-specific-slide.sfeir-bg-white-5,
-.reveal .slides section.sfeir-specific-slide.sfeir-bg-white-6,
-.reveal .slides section.sfeir-specific-slide.sfeir-bg-white-7,
-.reveal .slides section.sfeir-specific-slide.sfeir-bg-white-8{
+.reveal .slides section:not(.sfeir-specific-slide):not(.stack):not([class*=transition]),
+.reveal .slides section.sfeir-basic-slide:not(.stack):not([class*=transition]),
+.reveal .slides section.sfeir-specific-slide.sfeir-bg-axololt:not(.stack):not([class*=transition]){
 
 	width: 100%;
 	height: calc(100% - 40px);
@@ -79,9 +76,9 @@
 	font-size: 1em;
 
     h1, h2{
-			text-transform: initial;
-			text-align: center;
-    	color: $sfeir-orange;
+		text-transform: initial;
+		text-align: left;
+		color: $black;
       font-size: 1.5em;
       font-weight: 600;
       padding-left: 25px; 
@@ -95,11 +92,61 @@
 
    	h1~h2, h2~h3, h1~h3{
 			text-transform: initial;
-    	margin-top: -30px;
+    	margin-top: -10px;
     	padding-left: 30px;
-			color: $sfeir-blue;
+			color: $black;
 			font-size: 1em;
-    }
+	}
+	
+	thead{
+		background-color: $sfeir-pink;
+		color:$white;
+	}
+	
+	&.blue thead{
+		background-color: $sfeir-blue;
+	}
+	
+	&.green thead{
+		background-color: $sfeir-green;
+	}
+}
+
+.reveal .slides section.sfeir-basic-slide:not(.stack),
+.reveal .slides section.exercice:not(.stack){
+	color:$dark-grey;
+
+	h1, h2, h3{
+		margin-bottom: 100px;
+	}
+
+    h1, h2, h1~h2, h2~h3, h1~h3{
+		position: relative;
+	    color: $black;      
+		text-align: left;
+	}
+	
+	h1:first-of-type:after, h2:first-of-type:after {
+		position: absolute;
+		content: '';
+		width: 40%;
+		height: 20px;
+		background-color: $sfeir-pink;
+		bottom: -30px;
+		left: 0;
+	}
+
+	&.blue h1:first-of-type:after, &.blue h2:first-of-type:after {
+		background-color: $sfeir-blue;
+	}
+	
+	&.green h1:first-of-type:after, &.green h2:first-of-type:after {
+		background-color: $sfeir-green;
+	}
+
+	h1~h2:first-of-type:after, h2~h3:first-of-type:after, h1~h3:first-of-type:after{
+		content: initial;
+	}
 }
 
 
