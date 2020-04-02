@@ -1,6 +1,6 @@
 {
   "name": "sfeir-school-theme",
-  "version": "2.0.0-rc-2",
+  "version": "2.0.0",
   "description": "Sfeir School Theme for RevealJS",
   "main": "./dist/js/sfeir-them.js",
   "exports": "./dist/js/sfeir-them.js",
