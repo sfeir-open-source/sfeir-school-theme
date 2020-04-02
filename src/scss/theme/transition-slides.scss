@@ -73,6 +73,10 @@
     &.bottom h1{
         margin-top: 800px;
     }
+
+    &.bg-white:not(h1){
+        color: $black;
+    }
     
 }
 
@@ -96,7 +100,7 @@
     &.bg-blue,
     &.bg-green,
     &.bg-pink{
-        position: relative;
+        
         &:after{
             content: '';
             position: absolute;
