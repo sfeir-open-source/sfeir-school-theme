@@ -355,6 +355,8 @@ You can also use class to customise the slide:
 * `big-code`: will use a big size of font
 ![](./assets/slide-with-code-big.png)
 
+there is a minor varient of `big-code`, add the class `alone` if there is only one code at screen to position it in the center of screen. Else it will be relative to it's parent
+
 ### Use an other HighlightJS theme
 
 HighlightJS propose lots of themes that could use.
