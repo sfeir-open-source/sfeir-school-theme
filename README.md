@@ -410,10 +410,6 @@ You could center and image with 3 different ways
 
 <!--  Second way -->
 <img class="center" src="./assets/images/GDG-Logo-carre.png">
-
-<!--  Third way -->
-<div class="center"></div>
-![](./assets/images/GDG-Logo-carre.png)
 ```
 
 ![](./assets/helper-img-center-hori.png)
@@ -524,10 +520,6 @@ To have image that take all the horizontal space, you could use 3 ways:
 
 <!-- Second way -->
 <img class="full-width" src="./assets/images/logo_sfeir_bleu_orange.png">
-
-<!-- Third way -->
-<div class="full-width"></div>
-![](./assets/images/logo_sfeir_bleu_orange.png)
 ```
 ![](./assets/helper-full-width.png)
 
