@@ -1,8 +1,9 @@
 {
   "name": "sfeir-school-theme",
-  "version": "2.0.0-rc",
+  "version": "2.0.0",
   "description": "Sfeir School Theme for RevealJS",
-  "main": "index.js",
+  "main": "./dist/js/sfeir-them.js",
+  "exports": "./dist/js/sfeir-them.js",
   "scripts": {
     "sass": "node-sass src/scss/sfeir-school-theme.scss -o demo/dist/css/ --source-map=true --watch=\"src/scss\" --recursive=\"src/scss\"",
     "sass-once": "node-sass src/scss/sfeir-school-theme.scss -o demo/dist/css/ --source-map=true",
@@ -25,7 +26,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/jefBinomed/SfeirSchoolTheme.git"
+    "url": "git+https://github.com/sfeir-open-source/sfeir-school-theme.git"
   },
   "keywords": [
     "css",
@@ -34,9 +35,9 @@
   "author": "jefbinomed",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/jefBinomed/SfeirSchoolTheme/issues"
+    "url": "https://github.com/sfeir-open-source/sfeir-school-theme/issues"
   },
-  "homepage": "https://github.com/jefBinomed/SfeirSchoolTheme#readme",
+  "homepage": "https://github.com/sfeir-open-source/sfeir-school-theme#readme",
   "dependencies": {
     "chokidar-cli": "^1.2.1",
     "cpx": "^1.5.0",

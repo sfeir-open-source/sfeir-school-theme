@@ -7,8 +7,10 @@
     background-color: $code-bg;
 }
 
-.reveal .slides section.with-code-dark:not(.sfeir-specific-slide):not(.stack):not([class*=transition]) h2{
-    color: $white;
+.reveal .slides section.with-code-dark:not(.sfeir-specific-slide):not(.stack):not([class*=transition]){
+    h1, h2{
+        color: $white;
+    }
 }
 
 .reveal .slides section.with-code,
@@ -41,11 +43,16 @@
     }
 
     pre.big-code:not(.literal){
-        position: absolute;
-        top: 20vh;
+        position: relative;
+        top: 0;
         code {
             font-size: 1.5em;
             line-height: 2.1em;
+        }
+
+        &.alone{
+            position: absolute;
+            top:20vh;
         }
     }
 

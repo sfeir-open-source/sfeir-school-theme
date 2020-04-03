@@ -162,7 +162,7 @@
 
 ##==##
 
-<!-- .slide: class="transition-left transition-bg-grey-4" -->
+<!-- .slide: class="transition left transition-bg-grey-4" -->
 
 # Transition left
 
@@ -174,7 +174,7 @@
 # Code to produce / Markdown
 
 ```markdown
-<!-- .slide: class="transition-left transition-bg-grey-4" -->
+<!-- .slide: class="transition left transition-bg-grey-4" -->
 
 # Transition left
 ```
@@ -184,7 +184,7 @@
 
 ##==##
 
-<!-- .slide: class="transition-right transition-bg-grey-1" -->
+<!-- .slide: class="transition right transition-bg-grey-1" -->
 
 # Transition right
 
@@ -196,9 +196,52 @@
 # Code to produce / Markdown
 
 ```markdown
-<!-- .slide: class="transition-right transition-bg-grey-1" -->
+<!-- .slide: class="transition right transition-bg-grey-1" -->
 
 # Transition right
+```
+<!-- .element: class="big-code" -->
+
+
+
+##==##
+
+<!-- .slide: class="transition top transition-bg-grey-2" -->
+
+# Transition top
+
+
+##--##
+
+<!-- .slide: class="with-code" -->
+
+# Code to produce / Markdown
+
+```markdown
+<!-- .slide: class="transition top transition-bg-grey-2" -->
+
+# Transition top
+```
+<!-- .element: class="big-code" -->
+
+
+##==##
+
+<!-- .slide: class="transition bottom transition-bg-grey-3" -->
+
+# Transition bottom
+
+
+##--##
+
+<!-- .slide: class="with-code" -->
+
+# Code to produce / Markdown
+
+```markdown
+<!-- .slide: class="transition bottom transition-bg-grey-3" -->
+
+# Transition bottom
 ```
 <!-- .element: class="big-code" -->
 
