@@ -54,16 +54,15 @@
         }
     }
 
-    &.left h1, &.right h1{
-        margin-left: initial;
-    }
-
+    
     &.left h1{
+        margin-left: initial;
         text-align: left;
     }
-
+    
     &.right h1{
-        text-align: left;
+        margin-right: initial;
+        text-align: right;
     }
     
     &.top h1{

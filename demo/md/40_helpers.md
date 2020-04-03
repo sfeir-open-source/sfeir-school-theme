@@ -42,27 +42,6 @@
 ```
 <!-- .element: class="big-code" -->
 
-##==##
-
-# Slide with center image (horizontal)
-
-## third way
-
-<div class="center"></div>
-![](./assets/images/GDG-Logo-carre.png)
-
-##--##
-
-<!-- .slide: class="with-code" -->
-
-# Code to produce / Markdown
-
-```markdown
-<div class="center"></div>
-![](./assets/images/GDG-Logo-carre.png)
-```
-<!-- .element: class="big-code" -->
-
 
 ##==##
 
@@ -288,28 +267,6 @@ Div background:
 
 ```markdown
 <img class="full-width" src="./assets/images/logo_sfeir_bleu_orange.png">
-```
-<!-- .element: class="big-code" -->
-
-##==##
-
-# Image with full width
-
-## Third way
-
-<div class="full-width"></div>
-![](./assets/images/logo_sfeir_bleu_orange.png)
-
-
-##--##
-
-<!-- .slide: class="with-code" -->
-
-# Code to produce / Markdown
-
-```markdown
-<div class="full-width"></div>
-![](./assets/images/logo_sfeir_bleu_orange.png)
 ```
 <!-- .element: class="big-code" -->
 

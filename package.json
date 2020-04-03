@@ -19,8 +19,8 @@
     "copy-modules": "parallelshell \"npm run copy-reveal\"  \"npm run copy-highlight\" ",
     "watch-js": "chokidar \"src/js/*.js\" -c \"npm run copy\"",
     "serve": "live-server --port=4242 --open=\"./demo/index.html\" --mount=\"/assets:./demo/assets\" --watch=\"demo/dist/,demo/md/\"",
-    "build": "parallelshell \"npm run sass-once\" \"npm run copy\" && npm run copy-dist",
-    "build-watch": "parallelshell \"npm run sass\" \"npm run copy\" && npm run copy-dist",
+    "build": "parallelshell \"npm run sass-once\" \"npm run copy\" \"npm run copy-dist\"",
+    "build-watch": "parallelshell \"npm run sass\" \"npm run copy\" \"npm run copy-dist\"",
     "release": "echo \"Error: no deployement is configure for the moment, please just build the project\"",
     "start": "parallelshell \"npm run serve\" \"npm run build-watch\" \"npm run watch-js\""
   },
@@ -44,7 +44,7 @@
     "highlight.js": "^9.18.1",
     "live-server": "^1.2.1",
     "node-sass": "^4.13.1",
-    "parallelshell": "3.0.2",
+    "parallelshell": "3.0.1",
     "reveal.js": "^3.9.2"
   }
 }
