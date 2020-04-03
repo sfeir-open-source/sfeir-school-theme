@@ -1,6 +1,6 @@
 {
   "name": "sfeir-school-theme",
-  "version": "2.0.0",
+  "version": "2.0.1",
   "description": "Sfeir School Theme for RevealJS",
   "main": "./dist/js/sfeir-them.js",
   "exports": "./dist/js/sfeir-them.js",
@@ -41,10 +41,10 @@
   "dependencies": {
     "chokidar-cli": "^1.2.1",
     "cpx": "^1.5.0",
-    "highlight.js": "^9.13.1",
+    "highlight.js": "^9.18.1",
     "live-server": "^1.2.1",
-    "node-sass": "^4.11.0",
-    "parallelshell": "3.0.1",
-    "reveal.js": "^3.7.0"
+    "node-sass": "^4.13.1",
+    "parallelshell": "3.0.2",
+    "reveal.js": "^3.9.2"
   }
 }
