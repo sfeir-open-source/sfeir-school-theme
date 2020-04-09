@@ -999,14 +999,15 @@ img[alt*=wm-1000], .wm-1000, .wm-1000 + * {
     font-weight: 600; }
   .reveal .slides section[data-background].speaker-slide h2 {
     position: absolute;
-    right: 200px;
+    right: 0;
     top: calc(400px + 200px + 100px);
     text-transform: inherit;
-    text-align: left;
+    text-align: center;
     color: white;
     font-weight: 800;
     line-height: 1.5em;
     height: 1.5em;
+    width: calc(300px * 2 + 400px);
     font-size: 1.3em; }
     .reveal .slides section[data-background].speaker-slide h2 span {
       padding-right: 15px;
@@ -1041,7 +1042,7 @@ img[alt*=wm-1000], .wm-1000, .wm-1000 + * {
     content: '\e81d'; }
   .reveal .slides section[data-background].speaker-slide img[alt*=speaker] {
     position: absolute;
-    right: calc(200px + 100px);
+    right: 300px;
     top: 200px;
     width: 400px;
     margin-top: 20px;
@@ -1122,20 +1123,16 @@ img[alt*=wm-1000], .wm-1000, .wm-1000 + * {
   .reveal .slides section.sfeir-basic-slide[class*="transition"].underline.blue h1:before,
   .reveal .slides section.sfeir-specific-slide[class*="transition"].underline.blue h1:before {
     background: #575eaa; }
-  .reveal .slides section[class*="transition"].left h1, .reveal .slides section[class*="transition"].right h1,
-  .reveal .slides section.sfeir-basic-slide[class*="transition"].left h1,
-  .reveal .slides section.sfeir-basic-slide[class*="transition"].right h1,
-  .reveal .slides section.sfeir-specific-slide[class*="transition"].left h1,
-  .reveal .slides section.sfeir-specific-slide[class*="transition"].right h1 {
-    margin-left: initial; }
   .reveal .slides section[class*="transition"].left h1,
   .reveal .slides section.sfeir-basic-slide[class*="transition"].left h1,
   .reveal .slides section.sfeir-specific-slide[class*="transition"].left h1 {
+    margin-left: initial;
     text-align: left; }
   .reveal .slides section[class*="transition"].right h1,
   .reveal .slides section.sfeir-basic-slide[class*="transition"].right h1,
   .reveal .slides section.sfeir-specific-slide[class*="transition"].right h1 {
-    text-align: left; }
+    margin-right: initial;
+    text-align: right; }
   .reveal .slides section[class*="transition"].top h1,
   .reveal .slides section.sfeir-basic-slide[class*="transition"].top h1,
   .reveal .slides section.sfeir-specific-slide[class*="transition"].top h1 {
@@ -1189,8 +1186,7 @@ Darcula color scheme from the JetBrains family of IDEs
     display: block;
     overflow-x: auto;
     padding: 0.5em;
-    background: #2b2b2b; }
-  .with-code-dark .hljs {
+    background: #2b2b2b;
     color: #bababa; }
   .with-code-dark .hljs-strong,
   .with-code-dark .hljs-emphasis {
