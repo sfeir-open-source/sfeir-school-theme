@@ -1,14 +1,13 @@
-
 .reveal  .slides section[data-background].speaker-slide{
     height: 800px; // force a big height to avoid strange operations 
     text-transform: inherit;
 
     $margin-left: 200px;
-    $margin-right: 200px;
+    $margin-right: 300px;
     $top-position-speaker: 200px; 
     $width-img-speaker: 400px;
 
-    h1 {
+    h1{
         text-transform: inherit;
         text-align: left;
         font-size: 2em;
@@ -18,31 +17,32 @@
     }
 
     
-	h2{
+    h2{
         position: absolute;
-        right: $margin-right;
+        right: 0;
         top: calc(#{$width-img-speaker} + #{$top-position-speaker} + 100px);
         text-transform: inherit;
-        text-align: left;
+        text-align: center;
         color: $white;
         font-weight: 800;
         line-height: 1.5em;
         height: 1.5em;
+        width: calc(#{$margin-right} * 2 + #{$width-img-speaker});
         font-size: 1.3em;
         span{
             padding-right: 15px;
             background: linear-gradient(to right, $sfeir-pink-stop-1, $sfeir-pink-stop-2);
         }
-	}
+    }
 
-	h3{
+    h3{
         position: absolute;
         text-transform: inherit;
         text-align: left;
         left: $margin-left;
         font-size: 1.2em;
         color : $white;
-		margin-bottom: 20px;
+        margin-bottom: 20px;
     }
 
     h3:before{
@@ -80,7 +80,7 @@
 
     img[alt*=speaker]{
         position: absolute;
-        right: calc(#{$margin-right} + 100px);
+        right: $margin-right;
         top: $top-position-speaker;
         width: $width-img-speaker;
         margin-top: 20px;
