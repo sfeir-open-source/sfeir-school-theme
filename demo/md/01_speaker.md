@@ -10,7 +10,9 @@
 
 ![speaker](./assets/images/jf.jpg)
 ![company](./assets/images/logo-sfeir-blanc.png)
-![badge](./assets/images/gde.png)
+![badge first-badge](./assets/images/gde.png)
+![badge second-badge](./assets/images/GDG-Logo-carre.png)
+![badge third-badge](./assets/images/mts.png)
 
 <h2>Jean-François<span> Garreau</span></h2>
 
@@ -34,6 +36,8 @@
 ![speaker](./assets/images/jf.jpg)
 ![company](./assets/images/logo-sfeir-blanc.png)
 ![badge](./assets/images/gde.png)
+![badge](./assets/images/GDG-Logo-carre.png)
+![badge](./assets/images/mts.png)
 
 <h2>Jean-François<span> Garreau</span></h2>
 
@@ -54,6 +58,8 @@
 ![speaker](./assets/images/jf.jpg)
 ![company](./assets/images/logo-sfeir-blanc.png)
 ![badge](./assets/images/gde.png)
+![badge](./assets/images/GDG-Logo-carre.png)
+![badge](./assets/images/mts.png)
 
 <h2>Jean-François<span> Garreau</span></h2>
 
@@ -77,6 +83,8 @@
 ![speaker](./assets/images/jf.jpg)
 ![company](./assets/images/logo-sfeir-blanc.png)
 ![badge](./assets/images/gde.png)
+![badge](./assets/images/GDG-Logo-carre.png)
+![badge](./assets/images/mts.png)
 
 <h2>Jean-François<span> Garreau</span></h2>
 
@@ -97,6 +105,8 @@
 ![speaker](./assets/images/jf.jpg)
 ![company](./assets/images/logo-sfeir-blanc.png)
 ![badge](./assets/images/gde.png)
+![badge](./assets/images/GDG-Logo-carre.png)
+![badge](./assets/images/mts.png)
 
 <h2>Jean-François<span> Garreau</span></h2>
 
@@ -120,6 +130,8 @@
 ![speaker](./assets/images/jf.jpg)
 ![company](./assets/images/logo-sfeir-blanc.png)
 ![badge](./assets/images/gde.png)
+![badge](./assets/images/GDG-Logo-carre.png)
+![badge](./assets/images/mts.png)
 
 <h2>Jean-François<span> Garreau</span></h2>
 

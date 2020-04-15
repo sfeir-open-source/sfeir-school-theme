@@ -93,17 +93,28 @@
     img[alt*=company]{
         position: absolute;
         top: 850px;
-        left: 550px;
+        left: 350px;
         max-width:400px;
         max-height:200px;
     }
 
     img[alt*=badge]{
         position: absolute;
-        top: 750px;
-        right: 500px;
-        max-width:300px;
-        max-height:300px;
+        top: 800px;
+        right: 400px;
+        max-width:250px;
+        max-height:250px;
+
+    }
+
+    img[alt*=first-badge]{
+        right: 700px    
+    }
+    img[alt*=second-badge]{
+        right: 400px    
+    }
+    img[alt*=third-badge]{
+        right: 100px    
     }
 
     // Colors variations
