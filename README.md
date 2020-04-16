@@ -347,6 +347,8 @@ You can also use class to customise the slide:
 * `with-code-dark`: to use a dark theme (default is light theme)
 ![](./assets/slide-with-code-dark.png)
 
+* `with-code-bg-dark`: to use a dark theme for code bloc (default is light theme)
+![](./assets/slide-with-code-bg-dark.png)
 
 * `consolas`: will use consolas font
 ![](./assets/slide-with-code-consolas.png)

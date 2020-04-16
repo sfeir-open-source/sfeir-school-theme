@@ -1,5 +1,4 @@
-
-.with-code-dark {
+.with-code-dark,.with-code-bg-dark {
     @import "../../../node_modules/highlight.js/styles/darcula";
 }
 
@@ -14,7 +13,8 @@
 }
 
 .reveal .slides section.with-code,
-.reveal .slides section.with-code-dark{
+.reveal .slides section.with-code-dark,
+.reveal .slides section.with-code-bg-dark{
    
     pre {
         display: block;
@@ -71,3 +71,8 @@
 
 }
 
+.reveal .slides section.with-code-bg-dark{
+    pre {
+        background-color: $code-bg;
+    }
+}
