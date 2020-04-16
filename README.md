@@ -119,7 +119,9 @@ This theme use target for [RevealJS](https://revealjs.com/#/) so all you can do 
 
 ![speaker](./assets/images/jf.jpg)
 ![company](./assets/images/logo_sfeir_bleu_orange.png)
-![badge](./assets/images/gde.png)
+![badge first-badge](./assets/images/gde.png)
+![badge second-badge](./assets/images/GDG-Logo-carre.png)
+![badge third-badge](./assets/images/mts.png)
 
 <h2> Jean-François<span> Garreau</span></h2>
 
@@ -150,6 +152,8 @@ OR
 You can also change the order of sub information (here CTO Front & @jefbinomed). You can set up to 4 sub informations : `icon-first` | `icon-second` | `icon-third`.
 
 For the moment, only 3 icons are registered for speaker slide : `icon-rule` (for the job) | `icon-twitter` for twitter | `icon-mail` for the mail
+
+You can also change the number of badge (one -> three) `first-badge` | `second-badge` | `third-badge`
 
 ### Transitions slides
 
