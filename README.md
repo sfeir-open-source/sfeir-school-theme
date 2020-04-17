@@ -18,6 +18,7 @@ You can preview it here : https://sfeir-school-theme.netlify.com/
   * [Slides with code](https://github.com/sfeir-open-source/sfeir-school-theme/#slides-with-code)
   * [Exercices](https://github.com/sfeir-open-source/sfeir-school-theme/#exercices)
   * [Helpers](https://github.com/sfeir-open-source/sfeir-school-theme/#helpers)
+    * [List with fragments ](https://github.com/sfeir-open-source/sfeir-school-theme/#list-with-fragments)
 
 
 
@@ -606,3 +607,34 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin nec risus leo. Ve
 ```
 
 If nothing is set in the markdown, the slide will be available for both versions.
+
+
+### List with fragments 
+
+Sometimes, you will need to use revealJS fragments (animation to reveal an element) on list elements. To do this, you could write directly html content or you can use a meta at the end of the list: 
+
+```markdown
+1. List Item 1
+2. List Item 2
+2. List Item 3
+<!-- .element: class="list-fragment" -->
+
+* Item 1
+* Item 2
+* **Item 3**
+<!-- .element: class="list-fragment" -->
+```
+This will apply on all elements of the list the class `fragment` or use html 
+```html
+<ol>
+    <li class="fragment">List Item 1</li>
+    <li class="fragment">List Item 2</li>
+    <li class="fragment">List Item 3</li>
+</ol>
+
+<ul>
+    <li class="fragment">Item 1</li>
+    <li class="fragment">Item 2</li>
+    <li class="fragment"><strong>Item 3<strong></li>
+</ul>
+```
