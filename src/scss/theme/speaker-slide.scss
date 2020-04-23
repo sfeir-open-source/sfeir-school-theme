@@ -1,3 +1,5 @@
+@import "./colors.scss";
+
 .reveal  .slides section[data-background].speaker-slide{
     height: 800px; // force a big height to avoid strange operations 
     text-transform: inherit;
@@ -69,14 +71,17 @@
         content: '\ec98';
     }
 
-    h3.icon-mail:before{
+    h3.icon-mail:before {
         content: '\e8c8';
+    }
+
+    h3[class^=icon]>a {
+        color: white;
     }
 
     h3.icon-rule:before{
         content: '\e81d';
     }
-    
 
     img[alt*=speaker]{
         position: absolute;

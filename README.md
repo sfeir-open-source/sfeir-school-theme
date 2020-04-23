@@ -127,10 +127,14 @@ This theme use target for [RevealJS](https://revealjs.com/#/) so all you can do 
 <h2> Jean-François<span> Garreau</span></h2>
 
 ### CTO front
-<!-- .element: classs="icon-rule icon-first" -->
+<!-- .element: class="icon-rule icon-first" -->
 
 ### @jefbinomed
-<!-- .element: classs="icon-twitter icon-second" -->
+<!-- .element: class="icon-twitter icon-second" -->
+
+### fake.email@sfeir.com
+
+<!-- .element: class="icon-mail icon-third" -->
 ```
 
 ![](./assets/speaker-slide.png)
