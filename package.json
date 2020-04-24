@@ -8,7 +8,7 @@
     "sass": "node-sass src/scss/sfeir-school-theme.scss -o demo/dist/css/ --source-map=true --watch=\"src/scss\" --recursive=\"src/scss\"",
     "sass-once": "node-sass src/scss/sfeir-school-theme.scss -o demo/dist/css/ --source-map=true",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "copy": "parallelshell \"npm run copy-js\" \"npm run copy-images\" \"npm run copy-fonts\" \"npm run copy-modules\" \"npm run copy-icons\" ",
+    "copy": "parallelshell \"npm run copy-js\" \"npm run copy-images\" \"npm run copy-fonts\" \"npm run copy-modules\" \"npm run copy-icons\" \"npm run copy-prismjs\" ",
     "copy-js": "cpx \"src/js/**/*.js\" \"demo/dist/js\"",
     "copy-fonts": "cpx \"src/fonts/*\" \"demo/dist/fonts\"",
     "copy-images": "cpx \"src/images/*\" \"demo/dist/images\"",
@@ -16,6 +16,7 @@
     "copy-dist": "cpx \"demo/dist/**\" \"dist\" --clean",
     "copy-highlight": "cpx \"node_modules/highlight.js/**/*\" \"demo/libs/highlight.js\" ",
     "copy-reveal": "cpx \"node_modules/reveal.js/**/*\" \"demo/libs/reveal.js\" ",
+    "copy-prismjs": "cpx \"node_modules/prismjs/**/*\" \"demo/web_modules/prismjs\" ",
     "copy-modules": "parallelshell \"npm run copy-reveal\"  \"npm run copy-highlight\" ",
     "watch-js": "chokidar \"src/js/*.js\" -c \"npm run copy\"",
     "serve": "live-server --port=4242 --open=\"./demo/index.html\" --mount=\"/assets:./demo/assets\" --watch=\"demo/dist/,demo/md/\"",
@@ -45,6 +46,7 @@
     "live-server": "^1.2.1",
     "node-sass": "^4.13.1",
     "parallelshell": "3.0.1",
+    "prismjs": "^1.20.0",
     "reveal.js": "^3.9.2"
   }
 }

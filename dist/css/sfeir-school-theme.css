@@ -4,6 +4,7 @@
 
  * By Jean-François Garreau : jefBinomed
  */
+@import url(../../../demo/web_modules/prismjs/themes/prism-okaidia.css);
 @font-face {
   font-family: 'Poppins';
   src: url("../fonts/Poppins-Light.ttf");
@@ -1053,15 +1054,21 @@ img[alt*=wm-1000], .wm-1000, .wm-1000 + * {
   .reveal .slides section[data-background].speaker-slide img[alt*=company] {
     position: absolute;
     top: 850px;
-    left: 550px;
+    left: 350px;
     max-width: 400px;
     max-height: 200px; }
   .reveal .slides section[data-background].speaker-slide img[alt*=badge] {
     position: absolute;
-    top: 750px;
-    right: 500px;
-    max-width: 300px;
-    max-height: 300px; }
+    top: 800px;
+    right: 400px;
+    max-width: 250px;
+    max-height: 250px; }
+  .reveal .slides section[data-background].speaker-slide img[alt*=first-badge] {
+    right: 700px; }
+  .reveal .slides section[data-background].speaker-slide img[alt*=second-badge] {
+    right: 400px; }
+  .reveal .slides section[data-background].speaker-slide img[alt*=third-badge] {
+    right: 100px; }
   .reveal .slides section[data-background].speaker-slide.blue img[alt*=speaker] {
     border-color: #575eaa; }
   .reveal .slides section[data-background].speaker-slide.blue h2 span {
@@ -1176,60 +1183,7 @@ img[alt*=wm-1000], .wm-1000, .wm-1000 + * {
 .reveal .backgrounds div.slide-background.transition.bg-pink::after {
   background: rgba(221, 51, 85, 0.7); }
 
-.with-code-dark {
-  /*
-
-Darcula color scheme from the JetBrains family of IDEs
-
-*/ }
-  .with-code-dark .hljs {
-    display: block;
-    overflow-x: auto;
-    padding: 0.5em;
-    background: #2b2b2b;
-    color: #bababa; }
-  .with-code-dark .hljs-strong,
-  .with-code-dark .hljs-emphasis {
-    color: #a8a8a2; }
-  .with-code-dark .hljs-bullet,
-  .with-code-dark .hljs-quote,
-  .with-code-dark .hljs-link,
-  .with-code-dark .hljs-number,
-  .with-code-dark .hljs-regexp,
-  .with-code-dark .hljs-literal {
-    color: #6896ba; }
-  .with-code-dark .hljs-code,
-  .with-code-dark .hljs-selector-class {
-    color: #a6e22e; }
-  .with-code-dark .hljs-emphasis {
-    font-style: italic; }
-  .with-code-dark .hljs-keyword,
-  .with-code-dark .hljs-selector-tag,
-  .with-code-dark .hljs-section,
-  .with-code-dark .hljs-attribute,
-  .with-code-dark .hljs-name,
-  .with-code-dark .hljs-variable {
-    color: #cb7832; }
-  .with-code-dark .hljs-params {
-    color: #b9b9b9; }
-  .with-code-dark .hljs-string {
-    color: #6a8759; }
-  .with-code-dark .hljs-subst,
-  .with-code-dark .hljs-type,
-  .with-code-dark .hljs-built_in,
-  .with-code-dark .hljs-builtin-name,
-  .with-code-dark .hljs-symbol,
-  .with-code-dark .hljs-selector-id,
-  .with-code-dark .hljs-selector-attr,
-  .with-code-dark .hljs-selector-pseudo,
-  .with-code-dark .hljs-template-tag,
-  .with-code-dark .hljs-template-variable,
-  .with-code-dark .hljs-addition {
-    color: #e0c46c; }
-  .with-code-dark .hljs-comment,
-  .with-code-dark .hljs-deletion,
-  .with-code-dark .hljs-meta {
-    color: #7f7f7f; }
+.with-code-dark, .with-code-bg-dark { }
 
 .reveal .backgrounds div.slide-background.with-code-dark {
   background-color: #3f3f3f; }
@@ -1238,7 +1192,8 @@ Darcula color scheme from the JetBrains family of IDEs
   color: white; }
 
 .reveal .slides section.with-code pre,
-.reveal .slides section.with-code-dark pre {
+.reveal .slides section.with-code-dark pre,
+.reveal .slides section.with-code-bg-dark pre {
   display: block;
   position: relative;
   width: 90%;
@@ -1248,7 +1203,8 @@ Darcula color scheme from the JetBrains family of IDEs
   line-height: 1.4em;
   word-wrap: break-word; }
   .reveal .slides section.with-code pre code,
-  .reveal .slides section.with-code-dark pre code {
+  .reveal .slides section.with-code-dark pre code,
+  .reveal .slides section.with-code-bg-dark pre code {
     display: block;
     padding: 10px;
     overflow: auto;
@@ -1258,30 +1214,38 @@ Darcula color scheme from the JetBrains family of IDEs
     font-family: monospace;
     margin-bottom: 20px; }
     .reveal .slides section.with-code pre code span,
-    .reveal .slides section.with-code-dark pre code span {
+    .reveal .slides section.with-code-dark pre code span,
+    .reveal .slides section.with-code-bg-dark pre code span {
       line-height: 1.5em; }
 
 .reveal .slides section.with-code pre.big-code:not(.literal),
-.reveal .slides section.with-code-dark pre.big-code:not(.literal) {
+.reveal .slides section.with-code-dark pre.big-code:not(.literal),
+.reveal .slides section.with-code-bg-dark pre.big-code:not(.literal) {
   position: relative;
   top: 0; }
   .reveal .slides section.with-code pre.big-code:not(.literal) code,
-  .reveal .slides section.with-code-dark pre.big-code:not(.literal) code {
+  .reveal .slides section.with-code-dark pre.big-code:not(.literal) code,
+  .reveal .slides section.with-code-bg-dark pre.big-code:not(.literal) code {
     font-size: 1.5em;
     line-height: 2.1em; }
   .reveal .slides section.with-code pre.big-code:not(.literal).alone,
-  .reveal .slides section.with-code-dark pre.big-code:not(.literal).alone {
+  .reveal .slides section.with-code-dark pre.big-code:not(.literal).alone,
+  .reveal .slides section.with-code-bg-dark pre.big-code:not(.literal).alone {
     position: absolute;
     top: 20vh; }
 
 .reveal .slides section.with-code.consolas pre, .reveal .slides section.with-code.consolas pre code,
 .reveal .slides section.with-code-dark.consolas pre,
-.reveal .slides section.with-code-dark.consolas pre code {
+.reveal .slides section.with-code-dark.consolas pre code,
+.reveal .slides section.with-code-bg-dark.consolas pre,
+.reveal .slides section.with-code-bg-dark.consolas pre code {
   font-family: "Consolas"; }
 
 .reveal .slides section.with-code.inconsolata pre, .reveal .slides section.with-code.inconsolata pre code,
 .reveal .slides section.with-code-dark.inconsolata pre,
-.reveal .slides section.with-code-dark.inconsolata pre code {
+.reveal .slides section.with-code-dark.inconsolata pre code,
+.reveal .slides section.with-code-bg-dark.inconsolata pre,
+.reveal .slides section.with-code-bg-dark.inconsolata pre code {
   font-family: "Inconsolata"; }
 
 .reveal .slides section.sfeir-basic-slide.exercice:not(.sfeir-specific-slide):not(.stack):not([class*=transition]) {

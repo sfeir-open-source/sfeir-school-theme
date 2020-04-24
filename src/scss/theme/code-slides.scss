@@ -1,5 +1,5 @@
 .with-code-dark,.with-code-bg-dark {
-    @import "../../../node_modules/highlight.js/styles/darcula";
+    @import "../../../demo/web_modules/prismjs/themes/prism-okaidia.css";
 }
 
 .reveal .backgrounds div.slide-background.with-code-dark{
@@ -67,12 +67,5 @@
         pre, pre code {
             font-family: "Inconsolata";
         }
-    }
-
-}
-
-.reveal .slides section.with-code-bg-dark{
-    pre {
-        background-color: $code-bg;
     }
 }
