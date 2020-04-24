@@ -127,6 +127,46 @@ Some Content
 
 ##==##
 
+## List with fragments 
+
+
+1. List Item 1
+2. List Item 2
+2. List Item 3
+<!-- .element: class="list-fragment" -->
+
+* Item 1
+* Item 2
+* **Item 3**
+<!-- .element: class="list-fragment" -->
+
+
+##--##
+
+<!-- .slide: class="with-code" -->
+
+# Code to produce / Markdown
+
+```markdown
+## List with fragments 
+
+
+1. List Item 1
+2. List Item 2
+2. List Item 3
+<!-- .element: class="list-fragment" -->
+
+* Item 1
+* Item 2
+* **Item 3**
+<!-- .element: class="list-fragment" -->
+```
+<!-- .element: class="big-code" -->
+
+
+
+##==##
+
 
 ## Title
 
