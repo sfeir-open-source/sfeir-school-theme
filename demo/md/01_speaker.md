@@ -22,6 +22,10 @@
 ### @jefbinomed
 <!-- .element: class="icon-twitter icon-second" -->
 
+### fake.email@sfeir.com
+
+<!-- .element: class="icon-mail icon-third" -->
+
 ##--##
 
 <!-- .slide: class="with-code" -->
@@ -48,6 +52,9 @@
 <!-- .element: class="icon-twitter icon-second" -->
 ```
 
+### fake.email@sfeir.com
+
+<!-- .element: class="icon-mail icon-third" -->
 
 ##==##
 
@@ -68,6 +75,10 @@
 
 ### @jefbinomed
 <!-- .element: class="icon-twitter icon-second" -->
+
+### fake.email@sfeir.com
+
+<!-- .element: class="icon-mail icon-third" -->
 
 ##--##
 
@@ -93,6 +104,10 @@
 
 ### @jefbinomed
 <!-- .element: class="icon-twitter icon-second" -->
+
+### fake.email@sfeir.com
+
+<!-- .element: class="icon-mail icon-third" -->
 ```
 
 
@@ -116,6 +131,10 @@
 ### @jefbinomed
 <!-- .element: class="icon-twitter icon-second" -->
 
+### fake.email@sfeir.com
+
+<!-- .element: class="icon-mail icon-third" -->
+
 ##--##
 
 <!-- .slide: class="with-code" -->
@@ -140,4 +159,8 @@
 
 ### @jefbinomed
 <!-- .element: class="icon-twitter icon-second" -->
+
+### fake.email@sfeir.com
+
+<!-- .element: class="icon-mail icon-third" -->
 ```

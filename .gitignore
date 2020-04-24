@@ -68,3 +68,5 @@ demo/libs
 
 #Mac
 .DS_Store
+
+.vscode
