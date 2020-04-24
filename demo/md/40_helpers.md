@@ -231,6 +231,46 @@ Div background:
 
 ##==##
 
+<!-- .slide: class="flex-row" -->
+
+# Play with margin top or bottom
+
+<br><br>
+
+![h-200 mt-430](./assets/images/GDG-Logo-carre.png)
+![h-200 mt-150](./assets/images/GDG-Logo-carre.png)
+![h-200 mt-50](./assets/images/GDG-Logo-carre.png)
+![h-200 mt-10](./assets/images/GDG-Logo-carre.png)
+![h-200](./assets/images/GDG-Logo-carre.png)
+![h-200 mb-10](./assets/images/GDG-Logo-carre.png)
+![h-200 mb-50](./assets/images/GDG-Logo-carre.png)
+![h-200 mb-160](./assets/images/GDG-Logo-carre.png)
+![h-200 mb-430](./assets/images/GDG-Logo-carre.png)
+
+
+##--##
+
+<!-- .slide: class="with-code" -->
+
+# Code to produce / Markdown
+
+```markdown
+<!-- .slide: class="flex-row" -->
+
+![h-200 mt-430](./assets/images/GDG-Logo-carre.png)
+![h-200 mt-150](./assets/images/GDG-Logo-carre.png)
+![h-200 mt-50](./assets/images/GDG-Logo-carre.png)
+![h-200 mt-10](./assets/images/GDG-Logo-carre.png)
+![h-200](./assets/images/GDG-Logo-carre.png)
+![h-200 mb-10](./assets/images/GDG-Logo-carre.png)
+![h-200 mb-50](./assets/images/GDG-Logo-carre.png)
+![h-200 mb-160](./assets/images/GDG-Logo-carre.png)
+![h-200 mb-430](./assets/images/GDG-Logo-carre.png)
+```
+
+
+##==##
+
 # Image with full width
 
 ## First way
@@ -390,6 +430,46 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin nec risus leo. Ve
 
 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin nec risus leo. Vestibulum condimentum orci in urna auctor aliquet. Quisque mi erat, placerat non porttitor ut, gravida eu erat. Fusce semper ipsum vel nibh porttitor aliquam. Cras sed porttitor est, id scelerisque odio. Pellentesque sit amet imperdiet ex. Aliquam erat.
 ```
+
+##==##
+
+# Slide with polygon image
+
+## First way
+
+![center polygon h-400](./assets/images/jf.jpg)
+
+##--##
+
+<!-- .slide: class="with-code" -->
+
+# Code to produce / Markdown
+
+```markdown
+![center polygon h-400](./assets/images/jf.jpg)
+```
+<!-- .element: class="big-code" -->
+
+
+##==##
+
+# Slide with polygon image
+
+## Second way
+
+<img src="./assets/images/jf.jpg" class="center polygon h-400">
+
+##--##
+
+<!-- .slide: class="with-code" -->
+
+# Code to produce / Markdown
+
+```markdown
+<img src="./assets/images/jf.jpg" class="center polygon h-400">
+```
+<!-- .element: class="big-code" -->
+
 
 
 ##==##

@@ -517,6 +517,41 @@ Div background:
 ```
 ![](./assets/helper-size-max.png)
 
+### Play with images margin-top or bottom
+
+Some selectors are add to the theme to easily fix margin-top/bottom of images in the slide to easily trick for the position.
+* `mt-N`: your image will have a magin-top of **N** (N between 10px and 1000px by steps of 10px)
+* `mb-N`: your image will have a margin-bottom of **N** (N between 10px and 1000px by steps of 10px)
+
+you can use thoses helpers in `alt` or `class` of your elements
+
+```markdown
+![h-200 mt-430](./assets/images/GDG-Logo-carre.png)
+![h-200 mt-150](./assets/images/GDG-Logo-carre.png)
+![h-200 mt-50](./assets/images/GDG-Logo-carre.png)
+![h-200 mt-10](./assets/images/GDG-Logo-carre.png)
+![h-200](./assets/images/GDG-Logo-carre.png)
+![h-200 mb-10](./assets/images/GDG-Logo-carre.png)
+![h-200 mb-50](./assets/images/GDG-Logo-carre.png)
+![h-200 mb-160](./assets/images/GDG-Logo-carre.png)
+![h-200 mb-430](./assets/images/GDG-Logo-carre.png)
+```
+![](./assets/helper-margin.png)
+
+
+```markdown
+Image : 
+
+![wm-500](./assets/images/350x90.png)
+
+
+Div background: 
+
+<div style="background:red; width:600px;" class="wm-500 h-200"> (height:600px) wm-500 h-200</div>
+```
+![](./assets/helper-size-max.png)
+
+
 ### Full With Image
 
 To have image that take all the horizontal space, you could use 3 ways:
@@ -559,6 +594,21 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin nec risus leo. Ve
 
 ```
 ![](./assets/helper-float-left.png)
+
+### Polygon border for images
+
+You can use float-right or float-left display 
+
+```markdown
+<!-- First way -->
+![polygon](./assets/images/jfg.png)
+
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin nec risus leo. Vestibulum condimentum orci in urna auctor aliquet. Quisque mi erat, placerat non porttitor ut, gravida eu erat. Fusce semper ipsum vel nibh porttitor aliquam. Cras sed porttitor est, id scelerisque odio. Pellentesque sit amet imperdiet ex. Aliquam erat.
+
+<!-- Second way -->
+<img class="polygon" src="./assets/images/jfg.png">
+```
+![](./assets/helper-polygon.png)
 
 ### Create content for the restitution only
 
