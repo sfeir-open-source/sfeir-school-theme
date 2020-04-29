@@ -83,16 +83,18 @@
         content: '\e81d';
     }
 
-    img[alt*=speaker]{
+    img[alt*=speaker], div.speaker{
         position: absolute;
         right: $margin-right;
         top: $top-position-speaker;
         width: $width-img-speaker;
+        height: $width-img-speaker;
         margin-top: 20px;
         border-radius: $width-img-speaker;
         border-style: solid;
         border-width: 10px;
-        border-color: $sfeir-pink;        
+        border-color: $sfeir-pink;     
+        background-size: cover;
     }
 
     img[alt*=company]{

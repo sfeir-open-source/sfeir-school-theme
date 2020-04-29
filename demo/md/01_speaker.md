@@ -62,7 +62,9 @@
 
 # Hello ! @SFEIR
 
-![speaker](./assets/images/jf.jpg)
+
+
+![speaker](./assets/images/jf-2.jpg)
 ![company](./assets/images/logo-sfeir-blanc.png)
 ![badge first-badge](./assets/images/gde.png)
 ![badge second-badge](./assets/images/GDG-Logo-carre.png)
@@ -91,7 +93,7 @@
 
 # Hello ! @SFEIR
 
-![speaker](./assets/images/jf.jpg)
+![speaker](./assets/images/jf-2.jpg)
 ![company](./assets/images/logo-sfeir-blanc.png)
 ![badge first-badge](./assets/images/gde.png)
 ![badge second-badge](./assets/images/GDG-Logo-carre.png)
@@ -117,7 +119,7 @@
 
 # Hello ! @SFEIR
 
-![speaker](./assets/images/jf.jpg)
+![speaker](./assets/images/jf-3.png)
 ![company](./assets/images/logo-sfeir-blanc.png)
 ![badge first-badge](./assets/images/gde.png)
 ![badge second-badge](./assets/images/GDG-Logo-carre.png)
@@ -146,7 +148,7 @@
 
 # Hello ! @SFEIR
 
-![speaker](./assets/images/jf.jpg)
+![speaker](./assets/images/jf-3.png)
 ![company](./assets/images/logo-sfeir-blanc.png)
 ![badge first-badge](./assets/images/gde.png)
 ![badge second-badge](./assets/images/GDG-Logo-carre.png)
