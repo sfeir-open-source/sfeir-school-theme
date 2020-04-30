@@ -5,7 +5,7 @@
 	ol, dl, ul {
 		line-height: 1.5em;
 		text-align: left;
-		margin: 0 0 0 1em;
+		margin: 0 0 0 0em;
 	}
 
 	ul{
@@ -81,23 +81,27 @@
 		color: $black;
       font-size: 1.5em;
       font-weight: 600;
-      padding-left: 25px; 
-      margin-left: 5px;
+	  
+	  
     }
 
     h1, h2, h3{
 			text-transform: initial;
-    	margin-bottom: 50px;
+    		margin-bottom: 130px;
 		}
 
    	h1~h2, h2~h3, h1~h3{
 			text-transform: initial;
-    	margin-top: -10px;
-    	padding-left: 30px;
+			margin-top: -90px;
+			margin-bottom: 40px;
 			color: $black;
 			font-size: 1em;
 	}
 	
+	table{
+		width: 100%;
+	}
+
 	thead{
 		background-color: $sfeir-pink;
 		color:$white;
@@ -130,7 +134,7 @@
 		position: absolute;
 		content: '';
 		width: 40%;
-		height: 20px;
+		height: 10px;
 		background-color: $sfeir-pink;
 		bottom: -30px;
 		left: 0;
@@ -164,11 +168,13 @@
 		opacity: 1;
 	}
 	section:nth-child(2){
+		margin-top: 50px;
 		grid-row-start: 2;
 		grid-column-end: 2;
 		opacity: 1;
 	}
 	section:last-child{
+		margin-top: 50px;
 		grid-row-start: 2;
 		grid-column-start: 2;
 		opacity: 1;

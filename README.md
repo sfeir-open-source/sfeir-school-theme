@@ -600,20 +600,7 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin nec risus leo. Ve
 ```
 ![](./assets/helper-float-left.png)
 
-### Polygon border for images
-
-You can use float-right or float-left display 
-
-```markdown
-<!-- First way -->
-![polygon](./assets/images/jfg.png)
-
 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin nec risus leo. Vestibulum condimentum orci in urna auctor aliquet. Quisque mi erat, placerat non porttitor ut, gravida eu erat. Fusce semper ipsum vel nibh porttitor aliquam. Cras sed porttitor est, id scelerisque odio. Pellentesque sit amet imperdiet ex. Aliquam erat.
-
-<!-- Second way -->
-<img class="polygon" src="./assets/images/jfg.png">
-```
-![](./assets/helper-polygon.png)
 
 ### Create content for the restitution only
 

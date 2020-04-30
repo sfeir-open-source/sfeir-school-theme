@@ -27,6 +27,12 @@
         background: linear-gradient(to right, $sfeir-green-stop-1, $sfeir-green-stop-2);
     }
 
+    &.bg-blue h1,
+    &.bg-green h1,
+    &.bg-pink h1 {
+        background: none;
+    }
+
     &.underline{ 
         h1 {
             background: initial;
@@ -107,17 +113,17 @@
             height: 100%;
         }
     }
-
+   
     &.bg-white:after{
-        background:  rgba(255, 255, 255, 0.7);
+        background:  rgba(255, 255, 255, 0.6);
     }
     &.bg-blue::after{
-        background:  rgba(87, 94, 170, 0.7);
+        background:  rgba(87, 94, 170, 0.6);
     }
     &.bg-green::after{
-        background:  rgba(10, 181, 128, 0.7);
+        background:  rgba(10, 181, 128, 0.6);
     }
     &.bg-pink::after{
-        background:  rgba(221, 51, 85, 0.7);
+        background:  rgba(221, 51, 85, 0.6);
     }
 }
