@@ -276,7 +276,7 @@ Div background:
 ## First way
 
 
-![full-width](./assets/images/logo_sfeir_bleu_orange.png)
+![full-width](./assets/images/Sfeir-Gris-vector.svg)
 
 ##--##
 
@@ -285,7 +285,7 @@ Div background:
 # Code to produce / Markdown
 
 ```markdown
-![full-width](./assets/images/logo_sfeir_bleu_orange.png)
+![full-width](./assets/images/Sfeir-Gris-vector.svg)
 ```
 <!-- .element: class="big-code" -->
 
@@ -296,7 +296,7 @@ Div background:
 
 ## Second way
 
-<img class="full-width" src="./assets/images/logo_sfeir_bleu_orange.png">
+<img class="full-width" src="./assets/images/Sfeir-Gris-vector.svg">
 
 
 ##--##
@@ -306,7 +306,7 @@ Div background:
 # Code to produce / Markdown
 
 ```markdown
-<img class="full-width" src="./assets/images/logo_sfeir_bleu_orange.png">
+<img class="full-width" src="./assets/images/Sfeir-Gris-vector.svg">
 ```
 <!-- .element: class="big-code" -->
 
@@ -318,8 +318,8 @@ Div background:
 # Image with full height
 
 Div with height of 600px;
-<div style="height:600px; width:100%; background:red;">
-    <img class="full-height" src="./assets/images/logo_sfeir_bleu_orange.png">
+<div style="height:600px; width:100%; border: dashed 3px grey;">
+    <img class="full-height" src="./assets/images/Sfeir-Gris-vector.svg">
 </div>
 
 ##--##
@@ -331,8 +331,8 @@ Div with height of 600px;
 ```markdown
 <!-- .slide: style="height:100%" -->
 
-<div style="height:600px; width:100%; background:red;">
-    <img class="full-height" src="./assets/images/logo_sfeir_bleu_orange.png">
+<div style="height:600px; width:100%; border: dashed 3px grey;">
+    <img class="full-height" src="./assets/images/Sfeir-Gris-vector.svg">
 </div>
 ```
 <!-- .element: class="big-code" -->
@@ -430,46 +430,6 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin nec risus leo. Ve
 
 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin nec risus leo. Vestibulum condimentum orci in urna auctor aliquet. Quisque mi erat, placerat non porttitor ut, gravida eu erat. Fusce semper ipsum vel nibh porttitor aliquam. Cras sed porttitor est, id scelerisque odio. Pellentesque sit amet imperdiet ex. Aliquam erat.
 ```
-
-##==##
-
-# Slide with polygon image
-
-## First way
-
-![center polygon h-400](./assets/images/jf.jpg)
-
-##--##
-
-<!-- .slide: class="with-code" -->
-
-# Code to produce / Markdown
-
-```markdown
-![center polygon h-400](./assets/images/jf.jpg)
-```
-<!-- .element: class="big-code" -->
-
-
-##==##
-
-# Slide with polygon image
-
-## Second way
-
-<img src="./assets/images/jf.jpg" class="center polygon h-400">
-
-##--##
-
-<!-- .slide: class="with-code" -->
-
-# Code to produce / Markdown
-
-```markdown
-<img src="./assets/images/jf.jpg" class="center polygon h-400">
-```
-<!-- .element: class="big-code" -->
-
 
 
 ##==##
