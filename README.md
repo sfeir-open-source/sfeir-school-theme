@@ -19,7 +19,7 @@ You can preview it here : https://sfeir-school-theme.netlify.com/
   * [Exercices](https://github.com/sfeir-open-source/sfeir-school-theme/#exercices)
   * [Helpers](https://github.com/sfeir-open-source/sfeir-school-theme/#helpers)
     * [List with fragments ](https://github.com/sfeir-open-source/sfeir-school-theme/#list-with-fragments)
-
+* [Releases Notes](https://github.com/sfeir-open-source/sfeir-school-theme/wiki/Releases-Notes)
 
 
 # How to use it:
