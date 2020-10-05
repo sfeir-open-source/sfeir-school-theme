@@ -261,3 +261,39 @@
 <!-- .element: class="big-code" -->
 ```
 <!-- .element: class="big-code" -->
+
+##==##
+
+<!-- .slide: class="with-code" -->
+
+# Text with inline code
+
+<br><br>
+- attribut `draggable=true` sur l'élément html.
+<br><br>
+- `ondragstart` event sur l'élément draggable.
+<br><br>
+- `ondrop` event dans la zone de dépot.
+<br><br>
+- `ondraghover` event sur la zone de dépot.
+
+
+##--##
+
+<!-- .slide: class="with-code" -->
+
+# Code to produce / Markdown
+
+```Markdown
+<!-- .slide: class="with-code" -->
+
+<br><br>
+- attribut `draggable=true` sur l'élément html.
+<br><br>
+- `ondragstart` event sur l'élément draggable.
+<br><br>
+- `ondrop` event dans la zone de dépot.
+<br><br>
+- `ondraghover` event sur la zone de dépot.
+```
+<!-- .element: class="big-code" -->
