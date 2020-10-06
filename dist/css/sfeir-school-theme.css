@@ -1350,6 +1350,13 @@ body {
 
 .reveal .slides section p {
   font-size: 1em; }
+  .reveal .slides section p.with-source {
+    justify-content: flex-end;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    text-align: center;
+    font-size: 0.7em; }
 
 .reveal .slides section[data-type-show=full] p {
   font-size: 100%; }

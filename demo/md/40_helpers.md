@@ -393,6 +393,9 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin nec risus leo. Ve
 
 ![float-right](./assets/images/gde.png)
 
+[Source of the image](http://www.sfeir.com)
+<!-- .element: class="with-source" -->
+
 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin nec risus leo. Vestibulum condimentum orci in urna auctor aliquet. Quisque mi erat, placerat non porttitor ut, gravida eu erat. Fusce semper ipsum vel nibh porttitor aliquam. Cras sed porttitor est, id scelerisque odio. Pellentesque sit amet imperdiet ex. Aliquam erat.
 
 
@@ -431,6 +434,15 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin nec risus leo. Ve
 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin nec risus leo. Vestibulum condimentum orci in urna auctor aliquet. Quisque mi erat, placerat non porttitor ut, gravida eu erat. Fusce semper ipsum vel nibh porttitor aliquam. Cras sed porttitor est, id scelerisque odio. Pellentesque sit amet imperdiet ex. Aliquam erat.
 ```
 
+##==##
+<!-- .slide: class="full-center" -->
+
+# Image with source
+
+![](./assets/images/GDG-Logo-carre.png)
+
+[Source of the image](http://www.sfeir.com)
+<!-- .element: class="with-source" -->
 
 ##==##
 
