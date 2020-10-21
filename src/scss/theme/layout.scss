@@ -162,6 +162,8 @@
 	display: grid;
 	grid-template-columns: 50% 50%;
 	grid-template-rows: 100px auto;
+	grid-column-gap: 20px;
+	grid-template-columns: 1fr 1fr;
 
 	section:first-child{
 		grid-row-start: 1;

@@ -1489,7 +1489,9 @@ body {
 .reveal .slides section.two-column-layout {
   display: grid;
   grid-template-columns: 50% 50%;
-  grid-template-rows: 100px auto; }
+  grid-template-rows: 100px auto;
+  grid-column-gap: 20px;
+  grid-template-columns: 1fr 1fr; }
   .reveal .slides section.two-column-layout section:first-child {
     grid-row-start: 1;
     opacity: 1; }
