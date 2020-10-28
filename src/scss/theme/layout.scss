@@ -93,10 +93,13 @@
 
    	h1~h2, h2~h3, h1~h3{
 			text-transform: initial;
-			margin-top: -90px;
 			margin-bottom: 40px;
 			color: $black;
 			font-size: 1em;
+	}
+	
+   	h1+h2, h2+h3, h1+h3{
+			margin-top: -90px;
 	}
 	
 	table{
