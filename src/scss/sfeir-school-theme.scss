@@ -5,11 +5,15 @@
 
 @import "./theme/layout";
 
- 
-// Specifics slides
-@import "./theme/specifics-slides"; 
 
-// Override 
+// Specifics slides
+@import "./theme/specifics-slides";
+
+// print styles
+@import "./print/pdf";
+@import "./print/paper";
+
+// Override
 
 // To override the highlightJS theme you can do like this
 /*
