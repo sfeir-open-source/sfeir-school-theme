@@ -167,17 +167,17 @@ body {
 
 	word-wrap: break-word;
 
-	box-shadow: 0px 0px 6px rgba(0,0,0,0.3);
 }
 
 .reveal code {
 	font-family: monospace;
 	text-transform: none;
+	padding: 5px;
+	box-shadow: 0px 0px 6px rgba(0,0,0,0.3);
 }
 
 .reveal pre code {
 	display: block;
-	padding: 5px;
 	overflow: auto;
 	max-height: 400px;
 	word-wrap: normal;
