@@ -172,9 +172,11 @@ Some Content
 
 ### SubTitle
 
+A Wonderful Content !
 
-A Wonderfull Content !
+### Another subtitle on the same slide
 
+More wonderful content
 
 ##--##
 
@@ -187,8 +189,11 @@ A Wonderfull Content !
 
 ### SubTitle
 
+A Wonderful Content !
 
-A Wonderfull Content !
+### Another subtitle on the same slide
+
+More wonderful content
 ```
 <!-- .element: class="big-code" -->
 

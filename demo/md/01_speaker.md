@@ -50,11 +50,10 @@
 
 ### @jefbinomed
 <!-- .element: class="icon-twitter icon-second" -->
-```
 
 ### fake.email@sfeir.com
-
 <!-- .element: class="icon-mail icon-third" -->
+```
 
 ##==##
 
