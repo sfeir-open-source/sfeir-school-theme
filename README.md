@@ -602,6 +602,17 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin nec risus leo. Ve
 
 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin nec risus leo. Vestibulum condimentum orci in urna auctor aliquet. Quisque mi erat, placerat non porttitor ut, gravida eu erat. Fusce semper ipsum vel nibh porttitor aliquam. Cras sed porttitor est, id scelerisque odio. Pellentesque sit amet imperdiet ex. Aliquam erat.
 
+### Credits notes
+
+You can add a kind of "footer" credit note to the page by adding the class 'credits' of an image or a link 
+
+```markdown
+[Source of the image](http://www.sfeir.com)
+<!-- .element: class="credits" -->
+```
+![](./assets/helper-credits.png)
+
+
 ### Create content for the restitution only
 
 With this theme you can easily create content that is different between, what you will play on stage and what you will give to your attendees without a complete rewrite of your slides. This configuration is a pair between a key specified in your index.html and a key present in your slides.
