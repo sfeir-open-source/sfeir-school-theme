@@ -44,7 +44,7 @@
     "highlight.js": "^10.4.1",
     "live-server": "^1.2.1",
     "parallelshell": "3.0.1",
-    "reveal.js": "^3.9.2",
-    "sass": "^1.51.0"
+    "sass": "^1.51.0",
+    "reveal.js": "^4.1.0"
   }
 }

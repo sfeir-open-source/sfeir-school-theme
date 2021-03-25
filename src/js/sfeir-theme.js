@@ -1,11 +1,10 @@
-
+import Reveal from '../../libs/reveal.js/dist/reveal.esm.js';
 class SfeirTheme {
 	constructor(){
-		Reveal.addEventListener('ready', () => setTimeout(this._pageload.bind(this), 500));
 		this.path = "";
 	}
 
-	_pageload(){
+	postprocess(){
 		this.path = this._extractPath();
 
 		// FavIcon
@@ -26,23 +25,19 @@ class SfeirTheme {
 		// Manage Hack to speakers images
 		this._manageSpeakersBorders();
 		
-		if (Reveal){
-			Reveal.sync();
-		}
-		
 
 	}
 	_extractPath(){
-		const scripts = document.getElementsByTagName("script");
+		const links = document.getElementsByTagName("link");
 
-		for(let idx = 0; idx < scripts.length; idx++)
+		for(let idx = 0; idx < links.length; idx++)
 		{
-		  const script = scripts.item(idx);
+		  const link = links.item(idx);
 
-		  if(script.src && script.src.match(/sfeir-theme\.js$/))
+		  if(link.href && link.href.match(/sfeir-school-theme\.css$/))
 		  {
-			const path = script.src;
-			return path.substring(0, path.indexOf('js/sfeir-theme'));
+			const path = link.href;
+			return path.substring(0, path.indexOf('css/sfeir-school-theme.css'));
 		  }
 		}
 	  return "";
@@ -207,8 +202,14 @@ class SfeirTheme {
 			parentOfImg.removeChild(imgToReplace);
 		}
 	}
-
 }
 
+const RevealSfeirTheme = {
+	id: "sfeir-theme",
+	init: () => {
+		const sfeirTheme = new SfeirTheme();
+		sfeirTheme.postprocess();
+	}
+}
 
-new SfeirTheme();
+export default RevealSfeirTheme;
