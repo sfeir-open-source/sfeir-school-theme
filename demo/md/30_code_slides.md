@@ -45,6 +45,52 @@
 
 ##==##
 
+<!-- .slide: class="with-code-dark" -->
+
+## Some Code with line numbers
+
+```xml []
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    >
+    <TextView
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/hello"
+        />
+</LinearLayout>
+```
+
+##--##
+
+<!-- .slide: class="with-code" -->
+
+# Code to produce / Markdown
+
+```markdown
+<!-- .slide: class="with-code-dark" -->
+
+```xml []
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    >
+    <TextView
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/hello"
+        />
+</LinearLayout>
+` ` `
+```
+
+##==##
+
 <!-- .slide: class="with-code-bg-dark" -->
 
 ## Some black bloc code
@@ -233,7 +279,6 @@
 ` ` `
 ```
 
-
 ##==##
 
 <!-- .slide: class="with-code" -->
@@ -267,7 +312,7 @@
 ```markdown
 <!-- .slide: class="with-code" -->
 
-```xml [1|7-11]
+```xml [1,7-11]
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical"
@@ -282,6 +327,56 @@
 </LinearLayout>
 ` ` `
 ```
+
+##==##
+
+<!-- .slide: class="with-code" -->
+
+## Some Code (with highlighting of individual lines step by step)
+
+
+```xml [1|5-6|7-11]
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    >
+    <TextView
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/hello"
+        />
+</LinearLayout>
+```
+
+
+
+##--##
+
+<!-- .slide: class="with-code" -->
+
+# Code to produce / Markdown
+
+```markdown
+<!-- .slide: class="with-code" -->
+
+```xml [1|5-6|7-11]
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    >
+    <TextView
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/hello"
+        />
+</LinearLayout>
+` ` `
+```
+
 
 ##==##
 
