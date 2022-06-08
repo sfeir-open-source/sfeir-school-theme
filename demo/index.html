@@ -17,16 +17,11 @@
         <!-- ----------------------------------------------------
         ---------------- REVEAL STYLES  -------------------------
         ------------------------------------------------------ -->
-		<link rel="stylesheet" type="text/css" href="./libs/reveal.js/css/reveal.css">
+		<link rel="stylesheet" type="text/css" href="./libs/reveal.js/dist/reveal.css">
 		<!--<link rel="stylesheet" href="reveal/css/theme/white.css" id="theme">-->
 
 		<!-- For syntax highlighting -->
 		<link rel="stylesheet" type="text/css" href="./libs/highlight.js/styles/tomorrow.css">
-
-		<!-- If the query includes 'print-pdf', use the PDF print sheet -->
-		<script>
-			document.write( '<link rel="stylesheet" href="./libs/reveal.js/css/print/' + ( window.location.search.match( /print-pdf/gi ) ? 'pdf' : 'paper' ) + '.css" type="text/css" media="print">' );
-		</script>
 
 		<!--[if lt IE 9]>
 		<script src="reveal/lib/js/html5shiv.js"></script>
@@ -37,7 +32,6 @@
 	    ------------------------------------------------------ -->
 
         <link rel="stylesheet" type="text/css" href="./dist/css/sfeir-school-theme.css" id="theme">
-		<script type="module" src="./dist/js/sfeir-theme.js"></script> 
 	</head>
 
 	<body>
@@ -82,9 +76,14 @@
 			</div>
 
 		</div>
-		<script src="./libs/reveal.js/js/reveal.js"></script>
 
-		<script>
+		<script type="module">
+			import Reveal from './libs/reveal.js/dist/reveal.esm.js';
+			import RevealMarkdown from './libs/reveal.js/plugin/markdown/markdown.esm.js';
+			import RevealZoom from './libs/reveal.js/plugin/zoom/zoom.esm.js';
+			import RevealNotes from './libs/reveal.js/plugin/notes/notes.esm.js';
+			import RevealHighLight from './libs/reveal.js/plugin/highlight/highlight.esm.js';
+			import RevealSfeirTheme from './dist/js/sfeir-theme.js';
 
 			// Full list of configuration options available here:
 			// https://github.com/hakimel/reveal.js#configuration
@@ -93,25 +92,22 @@
 				progress: true,
 				history: true,
 				center: false,
-                width: 1929,
-	           height: 1080,
-
-				theme: Reveal.getQueryHash().theme, // available themes are in /css/theme
-				transition: Reveal.getQueryHash().transition || 'none', // default/cube/page/concave/zoom/linear/fade/none
-
-				// Optional libraries used to extend on reveal.js
-				dependencies: [
-					{ src: './libs/reveal.js/lib/js/classList.js', condition: function() { return !document.body.classList; } },
-					{ src: './libs/reveal.js/plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
-					{ src: './libs/reveal.js/plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
-					{ src: './libs/reveal.js/plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
-					{ src: './libs/reveal.js/plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
-					{ src: './libs/reveal.js/plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } }
-					// { src: 'node_modules/reveal.js/plugin/search/search.js', async: true, condition: function() { return !!document.body.classList; } }
-					// { src: 'node_modules/reveal.js/plugin/remotes/remotes.js', async: true, condition: function() { return !!document.body.classList; } }
+				width: 1929,
+				height: 1080,
+				pdfMaxPagesPerSlide: 1,
+				markdown: {
+					smartypants: true
+				},
+				plugins: [
+					// Optional libraries used to extend on reveal.js
+					RevealMarkdown, RevealSfeirTheme, RevealZoom, RevealNotes, RevealHighLight,
 				]
+			}).then(() => {
+				Reveal.configure({
+					theme: Reveal.getQueryHash().theme, // available themes are in /css/theme
+					transition: Reveal.getQueryHash().transition || 'none', // default/cube/page/concave/zoom/linear/fade/none
+				})
 			});
-
 		</script>
 
 
