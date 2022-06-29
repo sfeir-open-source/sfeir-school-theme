@@ -1,11 +1,10 @@
-
+import Reveal from '../../libs/reveal.js/dist/reveal.esm.js';
 class SfeirTheme {
 	constructor(){
-		Reveal.addEventListener('ready', () => setTimeout(this._pageload.bind(this), 500));
 		this.path = "";
 	}
 
-	_pageload(){
+	postprocess(){
 		this.path = this._extractPath();
 
 		// FavIcon
@@ -13,6 +12,18 @@ class SfeirTheme {
 
 		// ManageBackground
 		this._manageBackgrounds();
+
+		const toMarkedSlides = [...document.querySelectorAll('.reveal .slides section.gridlayout-to-marked')];
+		for (const section of toMarkedSlides){
+			const subSections = [...section.querySelectorAll('section[data-markdown]')];
+			for (const subSection of subSections){
+				const divElt = document.createElement('DIV');
+				divElt.style.display='block';
+				divElt.innerHTML = Reveal.getPlugins().markdown.marked(subSection.innerHTML);
+				section.removeChild(subSection);
+				section.appendChild(divElt);
+			}
+		}
 
 		// ManageShowContent
 		this._manageShowTypeContent();
@@ -26,23 +37,19 @@ class SfeirTheme {
 		// Manage Hack to speakers images
 		this._manageSpeakersBorders();
 		
-		if (Reveal){
-			Reveal.sync();
-		}
-		
 
 	}
 	_extractPath(){
-		const scripts = document.getElementsByTagName("script");
+		const links = document.getElementsByTagName("link");
 
-		for(let idx = 0; idx < scripts.length; idx++)
+		for(let idx = 0; idx < links.length; idx++)
 		{
-		  const script = scripts.item(idx);
+		  const link = links.item(idx);
 
-		  if(script.src && script.src.match(/sfeir-theme\.js$/))
+		  if(link.href && link.href.match(/sfeir-school-theme\.css$/))
 		  {
-			const path = script.src;
-			return path.substring(0, path.indexOf('js/sfeir-theme'));
+			const path = link.href;
+			return path.substring(0, path.indexOf('css/sfeir-school-theme.css'));
 		  }
 		}
 	  return "";
@@ -157,6 +164,45 @@ class SfeirTheme {
 				}
 			}
 		}
+		const gridlSlides = [...document.querySelectorAll('.reveal .slides section.gridlayout')];
+		for (let twoColSection of gridlSlides){
+			const parentSection = twoColSection.parentElement;
+			parentSection.classList.add('gridlayout');
+			// Need to overrides reveal inlinestyles
+			parentSection.style.display='grid';
+			if (parentSection.nodeName === 'SECTION'){
+				const subSections = [...parentSection.querySelectorAll('section')];
+				for(let subSection of subSections){
+					const divElt = document.createElement('DIV');
+					divElt.innerHTML = subSection.innerHTML;
+					divElt.style.display='block';
+					parentSection.removeChild(subSection);
+					parentSection.appendChild(divElt);
+					//subSection.classList.remove('gridlayout');
+					//subSection.style.display='block';
+				}
+			}
+		}
+		const gridColSlides = [...document.querySelectorAll('.reveal .slides section.grid-layout')];
+		for (let twoColSection of gridColSlides){
+			const parentSection = twoColSection.parentElement;
+			//parentSection.classList.add('grid-layout');
+			// Need to overrides reveal inlinestyles
+			//parentSection.style.display='grid';
+			twoColSection.style.display='grid';
+			/*if (parentSection.nodeName === 'SECTION'){
+				const subSections = [...parentSection.querySelectorAll('section')];
+				for(let subSection of subSections){
+					subSection.classList.remove('grid-layout');
+					subSection.style.display='block';
+				}
+			}*/
+		}
+		const gridToMarkedColSlides = [...document.querySelectorAll('.reveal .slides section.gridlayout-to-marked')];
+		for (let twoColSection of gridToMarkedColSlides){
+			const parentSection = twoColSection.parentElement;
+			twoColSection.style.display='grid';			
+		}
 		if (Reveal){
 			// Need to overrides reveal inlinestyles
 			Reveal.addEventListener('slidechanged', (event)=> {
@@ -174,6 +220,40 @@ class SfeirTheme {
 					// Have to rewrite block due to bug 
 					const subSections = [...parentSlide.querySelectorAll('section')];
 					subSections[0].style.display='block';
+				}
+				// Have to rewrite block due to override of reveal
+				if (currentSlide.nodeName === 'SECTION' 
+				&& currentSlide.classList.contains('grid-layout')){
+					currentSlide.style.display='grid';
+				}
+				// Have to rewrite block due to override of reveal
+				if (currentSlide.nodeName === 'SECTION' 
+				&& currentSlide.classList.contains('gridlayout')){
+					currentSlide.style.display='grid';
+				}
+				// Have to rewrite block due to override of reveal
+				if (currentSlide.nodeName === 'SECTION' 
+				&& currentSlide.classList.contains('gridlayout-to-marked')){
+					currentSlide.style.display='grid';
+				}
+			})
+
+			Reveal.addEventListener('fragmentshown', (event)=>{
+				const currentSlide = event.currentSlide;
+				// Have to rewrite block due to override of reveal
+				if (currentSlide.nodeName === 'SECTION' 
+				&& (currentSlide.classList.contains('gridlayout')
+				|| currentSlide.classList.contains('gridlayout-to-marked'))){
+					currentSlide.style.display='grid important!';
+				}
+			})
+			Reveal.addEventListener('fragmenthidden', (event)=>{
+				const currentSlide = event.currentSlide;
+				// Have to rewrite block due to override of reveal
+				if (currentSlide.nodeName === 'SECTION' 
+				&& (currentSlide.classList.contains('gridlayout')
+				|| currentSlide.classList.contains('gridlayout-to-marked'))){
+					currentSlide.style.display='grid';
 				}
 			})
 		}
@@ -207,8 +287,14 @@ class SfeirTheme {
 			parentOfImg.removeChild(imgToReplace);
 		}
 	}
-
 }
 
+const RevealSfeirTheme = {
+	id: "sfeir-theme",
+	init: () => {
+		const sfeirTheme = new SfeirTheme();
+		sfeirTheme.postprocess();
+	}
+}
 
-new SfeirTheme();
+export default RevealSfeirTheme;
