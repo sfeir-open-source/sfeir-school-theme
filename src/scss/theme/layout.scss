@@ -196,8 +196,7 @@
 	}
 }
 
-.reveal .backgrounds div.slide-background.gridlayout-to-marked[data-background-hash],
-.reveal .backgrounds div.slide-background.gridlayout[data-background-hash]{
+.reveal .backgrounds div.slide-background.two-column[data-background-hash]{
     width: 50vw;
 
 	&.data-bg-right{
@@ -210,27 +209,62 @@
 	div.grid-div>div{
 		color:$mainColor
 	}
+
+	&.mask::after{
+		//background-color:rgba(0,0,0,0);
+		 background-color : $dark-grey-alpha;
+		 content: '';
+		 position: absolute;
+		 top: 0;
+		 left: 0;
+		 width: 100%;
+		 height: 100%;
+	}
 }
 
-.reveal .slides section.gridlayout-to-marked[data-background],
-.reveal .slides section.gridlayout[data-background]{
+
+.reveal .slides section.two-column[data-background],
+.reveal .slides section.two-column[data-background-image]{
 	&.data-bg-right{
 		div.grid-div>div:nth-child(2){
-			color:$mainColor
+			color:$mainColor;
+			h1, h2, h3{
+				color:$mainColor;
+			}
+		}
+
+		&.text-dark{
+			div.grid-div>div:nth-child(2){
+				color:$dark-grey;
+				h1, h2, h3{
+					color:$dark-grey;
+				}
+			}	
 		}
 	}
 	
 	&.data-bg-left{
 		div.grid-div>div:first-child{
-			color:$mainColor
+			color:$mainColor;
+			h1, h2, h3{
+				color:$mainColor;
+			}
+		}
+		
+		&.text-dark{
+			div.grid-div>div:first-child{
+				color:$dark-grey;
+				h1, h2, h3{
+					color:$dark-grey;
+				}
+			}
+
 		}
 	}
 
 }
 
-.reveal .slides section.grid-layout, 
-.reveal .slides section.gridlayout div.grid-div ,
-.reveal .slides section.gridlayout-to-marked div.grid-div {
+.reveal .slides section.two-column div.grid-div {
 	display: grid;
 	grid-template-columns: 50% 50%;
 	grid-template-rows: repeat(150px);
