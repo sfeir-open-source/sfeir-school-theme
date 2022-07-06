@@ -13,18 +13,6 @@ class SfeirTheme {
 		// ManageBackground
 		this._manageBackgrounds();
 
-		const toMarkedSlides = [...document.querySelectorAll('.reveal .slides section.gridlayout-to-marked')];
-		for (const section of toMarkedSlides){
-			const subSections = [...section.querySelectorAll('section[data-markdown]')];
-			for (const subSection of subSections){
-				const divElt = document.createElement('DIV');
-				divElt.style.display='block';
-				divElt.innerHTML = Reveal.getPlugins().markdown.marked(subSection.innerHTML);
-				section.removeChild(subSection);
-				section.appendChild(divElt);
-			}
-		}
-
 		// ManageShowContent
 		this._manageShowTypeContent();
 
@@ -37,7 +25,6 @@ class SfeirTheme {
 		// Manage Hack to speakers images
 		this._manageSpeakersBorders();
 		
-
 	}
 	_extractPath(){
 		const links = document.getElementsByTagName("link");
@@ -164,45 +151,32 @@ class SfeirTheme {
 				}
 			}
 		}
-		const gridlSlides = [...document.querySelectorAll('.reveal .slides section.gridlayout')];
+		const gridlSlides = [...document.querySelectorAll('.reveal .slides section.two-column')];
 		for (let twoColSection of gridlSlides){
 			const parentSection = twoColSection.parentElement;
-			parentSection.classList.add('gridlayout');
-			// Need to overrides reveal inlinestyles
-			parentSection.style.display='grid';
+			parentSection.classList.add('two-column');
+			const divParentElt = document.createElement('DIV');
+			divParentElt.style.display='grid';
+			divParentElt.classList.add('grid-div');
+			parentSection.appendChild(divParentElt);
+			parentSection.classList.add('sfeir-basic-slide');
 			if (parentSection.nodeName === 'SECTION'){
 				const subSections = [...parentSection.querySelectorAll('section')];
 				for(let subSection of subSections){
+					parentSection.classList.add(...subSection.classList.values())
+					if (subSection.hasAttribute('data-background')){
+						parentSection.setAttribute('data-background', subSection.getAttribute('data-background'))
+					}
 					const divElt = document.createElement('DIV');
 					divElt.innerHTML = subSection.innerHTML;
 					divElt.style.display='block';
 					parentSection.removeChild(subSection);
-					parentSection.appendChild(divElt);
-					//subSection.classList.remove('gridlayout');
-					//subSection.style.display='block';
+					divParentElt.appendChild(divElt);
 				}
 			}
 		}
-		const gridColSlides = [...document.querySelectorAll('.reveal .slides section.grid-layout')];
-		for (let twoColSection of gridColSlides){
-			const parentSection = twoColSection.parentElement;
-			//parentSection.classList.add('grid-layout');
-			// Need to overrides reveal inlinestyles
-			//parentSection.style.display='grid';
-			twoColSection.style.display='grid';
-			/*if (parentSection.nodeName === 'SECTION'){
-				const subSections = [...parentSection.querySelectorAll('section')];
-				for(let subSection of subSections){
-					subSection.classList.remove('grid-layout');
-					subSection.style.display='block';
-				}
-			}*/
-		}
-		const gridToMarkedColSlides = [...document.querySelectorAll('.reveal .slides section.gridlayout-to-marked')];
-		for (let twoColSection of gridToMarkedColSlides){
-			const parentSection = twoColSection.parentElement;
-			twoColSection.style.display='grid';			
-		}
+		
+		
 		if (Reveal){
 			// Need to overrides reveal inlinestyles
 			Reveal.addEventListener('slidechanged', (event)=> {
@@ -220,42 +194,8 @@ class SfeirTheme {
 					// Have to rewrite block due to bug 
 					const subSections = [...parentSlide.querySelectorAll('section')];
 					subSections[0].style.display='block';
-				}
-				// Have to rewrite block due to override of reveal
-				if (currentSlide.nodeName === 'SECTION' 
-				&& currentSlide.classList.contains('grid-layout')){
-					currentSlide.style.display='grid';
-				}
-				// Have to rewrite block due to override of reveal
-				if (currentSlide.nodeName === 'SECTION' 
-				&& currentSlide.classList.contains('gridlayout')){
-					currentSlide.style.display='grid';
-				}
-				// Have to rewrite block due to override of reveal
-				if (currentSlide.nodeName === 'SECTION' 
-				&& currentSlide.classList.contains('gridlayout-to-marked')){
-					currentSlide.style.display='grid';
-				}
-			})
-
-			Reveal.addEventListener('fragmentshown', (event)=>{
-				const currentSlide = event.currentSlide;
-				// Have to rewrite block due to override of reveal
-				if (currentSlide.nodeName === 'SECTION' 
-				&& (currentSlide.classList.contains('gridlayout')
-				|| currentSlide.classList.contains('gridlayout-to-marked'))){
-					currentSlide.style.display='grid important!';
-				}
-			})
-			Reveal.addEventListener('fragmenthidden', (event)=>{
-				const currentSlide = event.currentSlide;
-				// Have to rewrite block due to override of reveal
-				if (currentSlide.nodeName === 'SECTION' 
-				&& (currentSlide.classList.contains('gridlayout')
-				|| currentSlide.classList.contains('gridlayout-to-marked'))){
-					currentSlide.style.display='grid';
-				}
-			})
+				}				
+			})			
 		}
 	}
 
