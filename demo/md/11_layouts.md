@@ -108,7 +108,7 @@ A paragraph with some text and a [link](http://hakim.se).
 
 ##==##
 
-<!-- .slide: class="two-column data-bg-left" data-background="./assets/images/dark_background.jpeg" -->
+<!-- .slide: class="two-column" data-background="./assets/images/dark_background.jpeg" -->
 
 
 
@@ -127,7 +127,7 @@ A paragraph with some text and a [link](http://hakim.se).
 # Code to produce / Markdown
 
 ```markdown
-<!-- .slide: class="two-column data-bg-left" data-background="./assets/images/dark_background.jpeg"-->
+<!-- .slide: class="two-column" data-background="./assets/images/dark_background.jpeg"-->
 ## -- ##
 ## Slide 2
 * Item 2
@@ -138,13 +138,13 @@ A paragraph with some text and a [link](http://hakim.se).
 ##==##
 
 
-
-<!-- .slide: class="two-column data-bg-right" data-background="./assets/images/dark_background.jpeg"  -->
+<!-- .slide: class="two-column" -->
 
 ## Slide 1
 A paragraph with some text and a [link](http://hakim.se).    
 
 ##--##
+<!-- .slide:  data-background="./assets/images/dark_background.jpeg"  -->
 ## Slide 2
 
 * Item 2
@@ -160,10 +160,11 @@ A paragraph with some text and a [link](http://hakim.se).
 # Code to produce / Markdown
 
 ```markdown
-<!-- .slide: class="two-column data-bg-right" data-background="./assets/images/dark_background.jpeg"  -->
+<!-- .slide: class="two-column" -->
 ## Slide 1
 A paragraph with some text and a [link](http://hakim.se).    
 ## -- ##
+<!-- .slide: data-background="./assets/images/dark_background.jpeg"  -->
 ## Slide 2
 * Item 2
 * Item 3
@@ -174,10 +175,11 @@ A paragraph with some text and a [link](http://hakim.se).
 
 ##==##
 
-<!-- .slide: class="two-column data-bg-right text-dark" data-background="cyan" -->
+<!-- .slide: class="two-column" -->
 
 
 ##--##
+<!-- .slide: class="text-dark" data-background="cyan" -->
 ## Slide 2
 
 * Item 2
@@ -190,19 +192,21 @@ A paragraph with some text and a [link](http://hakim.se).
 # Code to produce / Markdown
 
 ```markdown
-<!-- .slide: class="two-column data-bg-right text-dark" data-background="cyan" -->
+<!-- .slide: class="two-column" -->
 ## -- ##
 ## Slide 2
+<!-- .slide: class="text-dark" data-background="cyan" -->
 * Item 2
 * Item 3
 ```
 
 ##==##
 
-<!-- .slide: class="two-column data-bg-right text-dark" data-background="./assets/images/light-background.webp" -->
+<!-- .slide: class="two-column"-->
 
 
 ##--##
+<!-- .slide: class="text-dark" data-background="./assets/images/light-background.webp" -->
 ## Slide 2
 
 * Item 2
@@ -215,19 +219,21 @@ A paragraph with some text and a [link](http://hakim.se).
 # Code to produce / Markdown
 
 ```markdown
-<!-- .slide: class="two-column data-bg-right text-dark" data-background="./assets/images/light-background.webp" -->
+<!-- .slide: class="two-column"-->
 ## -- ##
 ## Slide 2
+<!-- .slide: class="text-dark" data-background="./assets/images/light-background.webp" -->
 * Item 2
 * Item 3
 ```
 
 ##==##
 
-<!-- .slide: class="two-column data-bg-right mask" data-background="./assets/images/light-background.webp" -->
+<!-- .slide: class="two-column" -->
 
 
 ##--##
+<!-- .slide: class="mask" data-background="./assets/images/light-background.webp" -->
 ## Slide 2
 
 * Item 2
@@ -241,8 +247,9 @@ A paragraph with some text and a [link](http://hakim.se).
 # Code to produce / Markdown
 
 ```markdown
-<!-- .slide: class="two-column data-bg-right mask" data-background="./assets/images/light-background.webp" -->
+<!-- .slide: class="two-column" -->
 ## -- ##
+<!-- .slide: class="mask" data-background="./assets/images/light-background.webp" -->
 ## Slide 2
 * Item 2
 * Item 3

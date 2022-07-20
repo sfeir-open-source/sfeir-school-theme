@@ -162,9 +162,11 @@ class SfeirTheme {
 			parentSection.classList.add('sfeir-basic-slide');
 			if (parentSection.nodeName === 'SECTION'){
 				const subSections = [...parentSection.querySelectorAll('section')];
+				let indexSection = 0;
 				for(let subSection of subSections){
 					parentSection.classList.add(...subSection.classList.values())
 					if (subSection.hasAttribute('data-background')){
+						parentSection.classList.add(indexSection === 0 ? 'data-bg-left' : 'data-bg-right');
 						const dataBgString = subSection.getAttribute('data-background');
 						if( /^(http|file|\/\/)/gi.test( dataBgString ) || /\.(svg|png|jpg|jpeg|gif|bmp|webp)([?#\s]|$)/gi.test( dataBgString ) ) {
 							parentSection.setAttribute('data-background-image', dataBgString)
@@ -172,6 +174,7 @@ class SfeirTheme {
 							parentSection.setAttribute('data-background', dataBgString)
 						}
 					}else if (subSection.hasAttribute('data-background-image')){
+						parentSection.classList.add(indexSection === 0 ? 'data-bg-left' : 'data-bg-right');
 						parentSection.setAttribute('data-background-image', subSection.getAttribute('data-background-image'))
 					}
 					const divElt = document.createElement('DIV');
@@ -179,6 +182,7 @@ class SfeirTheme {
 					divElt.style.display='block';
 					parentSection.removeChild(subSection);
 					divParentElt.appendChild(divElt);
+					indexSection++;
 				}
 			}
 		}

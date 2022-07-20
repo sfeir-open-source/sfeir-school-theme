@@ -341,7 +341,7 @@ A paragraph with some text and a [link](http://hakim.se).
 ### Two column layout (with background left)
 
 ```md
-<!-- .slide: class="two-column data-bg-left" data-background="./assets/images/dark_background.jpeg" -->
+<!-- .slide: class="two-column" data-background="./assets/images/dark_background.jpeg" -->
 
 ##--##
 ## Slide 2
@@ -354,9 +354,10 @@ If text is set on over the background, the default color is white
 ### Two column layout (with background right and override color to dark)
 
 ```md
-<!-- .slide: class="two-column data-bg-right text-dark" data-background="cyan" -->
+<!-- .slide: class="two-column" -->
 
 ##--##
+<!-- .slide: class="text-dark" data-background="cyan" -->
 ## Slide 2
 
 * Item 2
@@ -368,9 +369,10 @@ If text is set on over the background, the default color is white
 ### Two column layout (with background with a mask)
 
 ```md
-<!-- .slide: class="two-column data-bg-right mask" data-background="./assets/images/light-background.webp" -->
+<!-- .slide: class="two-column" -->
 
 ##--##
+<!-- .slide: class="mask" data-background="./assets/images/light-background.webp" -->
 ## Slide 2
 
 * Item 2
