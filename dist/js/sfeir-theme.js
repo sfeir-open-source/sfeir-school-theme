@@ -1,11 +1,10 @@
-
+import Reveal from '../../libs/reveal.js/dist/reveal.esm.js';
 class SfeirTheme {
 	constructor(){
-		Reveal.addEventListener('ready', () => setTimeout(this._pageload.bind(this), 500));
 		this.path = "";
 	}
 
-	_pageload(){
+	postprocess(){
 		this.path = this._extractPath();
 
 		// FavIcon
@@ -26,23 +25,18 @@ class SfeirTheme {
 		// Manage Hack to speakers images
 		this._manageSpeakersBorders();
 		
-		if (Reveal){
-			Reveal.sync();
-		}
-		
-
 	}
 	_extractPath(){
-		const scripts = document.getElementsByTagName("script");
+		const links = document.getElementsByTagName("link");
 
-		for(let idx = 0; idx < scripts.length; idx++)
+		for(let idx = 0; idx < links.length; idx++)
 		{
-		  const script = scripts.item(idx);
+		  const link = links.item(idx);
 
-		  if(script.src && script.src.match(/sfeir-theme\.js$/))
+		  if(link.href && link.href.match(/sfeir-school-theme\.css$/))
 		  {
-			const path = script.src;
-			return path.substring(0, path.indexOf('js/sfeir-theme'));
+			const path = link.href;
+			return path.substring(0, path.indexOf('css/sfeir-school-theme.css'));
 		  }
 		}
 	  return "";
@@ -157,6 +151,32 @@ class SfeirTheme {
 				}
 			}
 		}
+		const gridlSlides = [...document.querySelectorAll('.reveal .slides section.two-column')];
+		for (let twoColSection of gridlSlides){
+			const parentSection = twoColSection.parentElement;
+			parentSection.classList.add('two-column');
+			const divParentElt = document.createElement('DIV');
+			divParentElt.style.display='grid';
+			divParentElt.classList.add('grid-div');
+			parentSection.appendChild(divParentElt);
+			parentSection.classList.add('sfeir-basic-slide');
+			if (parentSection.nodeName === 'SECTION'){
+				const subSections = [...parentSection.querySelectorAll('section')];
+				for(let subSection of subSections){
+					parentSection.classList.add(...subSection.classList.values())
+					if (subSection.hasAttribute('data-background')){
+						parentSection.setAttribute('data-background', subSection.getAttribute('data-background'))
+					}
+					const divElt = document.createElement('DIV');
+					divElt.innerHTML = subSection.innerHTML;
+					divElt.style.display='block';
+					parentSection.removeChild(subSection);
+					divParentElt.appendChild(divElt);
+				}
+			}
+		}
+		
+		
 		if (Reveal){
 			// Need to overrides reveal inlinestyles
 			Reveal.addEventListener('slidechanged', (event)=> {
@@ -174,8 +194,8 @@ class SfeirTheme {
 					// Have to rewrite block due to bug 
 					const subSections = [...parentSlide.querySelectorAll('section')];
 					subSections[0].style.display='block';
-				}
-			})
+				}				
+			})			
 		}
 	}
 
@@ -207,8 +227,14 @@ class SfeirTheme {
 			parentOfImg.removeChild(imgToReplace);
 		}
 	}
-
 }
 
+const RevealSfeirTheme = {
+	id: "sfeir-theme",
+	init: () => {
+		const sfeirTheme = new SfeirTheme();
+		sfeirTheme.postprocess();
+	}
+}
 
-new SfeirTheme();
+export default RevealSfeirTheme;

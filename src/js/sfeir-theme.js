@@ -25,7 +25,6 @@ class SfeirTheme {
 		// Manage Hack to speakers images
 		this._manageSpeakersBorders();
 		
-
 	}
 	_extractPath(){
 		const links = document.getElementsByTagName("link");
@@ -152,6 +151,43 @@ class SfeirTheme {
 				}
 			}
 		}
+		const gridlSlides = [...document.querySelectorAll('.reveal .slides section.two-column')];
+		for (let twoColSection of gridlSlides){
+			const parentSection = twoColSection.parentElement;
+			parentSection.classList.add('two-column');
+			const divParentElt = document.createElement('DIV');
+			divParentElt.style.display='grid';
+			divParentElt.classList.add('grid-div');
+			parentSection.appendChild(divParentElt);
+			parentSection.classList.add('sfeir-basic-slide');
+			if (parentSection.nodeName === 'SECTION'){
+				const subSections = [...parentSection.querySelectorAll('section')];
+				let indexSection = 0;
+				for(let subSection of subSections){
+					parentSection.classList.add(...subSection.classList.values())
+					if (subSection.hasAttribute('data-background')){
+						parentSection.classList.add(indexSection === 0 ? 'data-bg-left' : 'data-bg-right');
+						const dataBgString = subSection.getAttribute('data-background');
+						if( /^(http|file|\/\/)/gi.test( dataBgString ) || /\.(svg|png|jpg|jpeg|gif|bmp|webp)([?#\s]|$)/gi.test( dataBgString ) ) {
+							parentSection.setAttribute('data-background-image', dataBgString)
+						}else{
+							parentSection.setAttribute('data-background', dataBgString)
+						}
+					}else if (subSection.hasAttribute('data-background-image')){
+						parentSection.classList.add(indexSection === 0 ? 'data-bg-left' : 'data-bg-right');
+						parentSection.setAttribute('data-background-image', subSection.getAttribute('data-background-image'))
+					}
+					const divElt = document.createElement('DIV');
+					divElt.innerHTML = subSection.innerHTML;
+					divElt.style.display='block';
+					parentSection.removeChild(subSection);
+					divParentElt.appendChild(divElt);
+					indexSection++;
+				}
+			}
+		}
+		
+		
 		if (Reveal){
 			// Need to overrides reveal inlinestyles
 			Reveal.addEventListener('slidechanged', (event)=> {
@@ -169,8 +205,8 @@ class SfeirTheme {
 					// Have to rewrite block due to bug 
 					const subSections = [...parentSlide.querySelectorAll('section')];
 					subSections[0].style.display='block';
-				}
-			})
+				}				
+			})			
 		}
 	}
 

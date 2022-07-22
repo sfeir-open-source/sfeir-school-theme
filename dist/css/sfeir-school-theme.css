@@ -1624,6 +1624,73 @@
   opacity: 1;
 }
 
+.reveal .backgrounds div.slide-background.two-column[data-background-hash] {
+  width: 50vw;
+}
+.reveal .backgrounds div.slide-background.two-column[data-background-hash].data-bg-right {
+  left: 50vw;
+}
+.reveal .backgrounds div.slide-background.two-column[data-background-hash].data-bg-right div.grid-div > div {
+  color: white;
+}
+.reveal .backgrounds div.slide-background.two-column[data-background-hash] div.grid-div > div {
+  color: white;
+}
+
+.reveal .slides section.two-column[data-background].data-bg-right div.grid-div > div:nth-child(2) {
+  color: white;
+}
+.reveal .slides section.two-column[data-background].data-bg-right div.grid-div > div:nth-child(2) h1, .reveal .slides section.two-column[data-background].data-bg-right div.grid-div > div:nth-child(2) h2, .reveal .slides section.two-column[data-background].data-bg-right div.grid-div > div:nth-child(2) h3 {
+  color: white;
+}
+.reveal .slides section.two-column[data-background].data-bg-right.text-dark div.grid-div > div:nth-child(2) {
+  color: #2a3244;
+}
+.reveal .slides section.two-column[data-background].data-bg-right.text-dark div.grid-div > div:nth-child(2) h1, .reveal .slides section.two-column[data-background].data-bg-right.text-dark div.grid-div > div:nth-child(2) h2, .reveal .slides section.two-column[data-background].data-bg-right.text-dark div.grid-div > div:nth-child(2) h3 {
+  color: #2a3244;
+}
+.reveal .slides section.two-column[data-background].data-bg-left div.grid-div > div:first-child {
+  color: white;
+}
+.reveal .slides section.two-column[data-background].data-bg-left div.grid-div > div:first-child h1, .reveal .slides section.two-column[data-background].data-bg-left div.grid-div > div:first-child h2, .reveal .slides section.two-column[data-background].data-bg-left div.grid-div > div:first-child h3 {
+  color: white;
+}
+.reveal .slides section.two-column[data-background].data-bg-left.text-dark div.grid-div > div:first-child {
+  color: #2a3244;
+}
+.reveal .slides section.two-column[data-background].data-bg-left.text-dark div.grid-div > div:first-child h1, .reveal .slides section.two-column[data-background].data-bg-left.text-dark div.grid-div > div:first-child h2, .reveal .slides section.two-column[data-background].data-bg-left.text-dark div.grid-div > div:first-child h3 {
+  color: #2a3244;
+}
+
+.reveal .slides section.two-column div.grid-div {
+  display: grid;
+  grid-template-columns: 50% 50%;
+  grid-template-rows: repeat(150px);
+  grid-column-gap: 20px;
+}
+.reveal .slides section.two-column div.grid-div .grid-left {
+  grid-column-start: 1;
+}
+.reveal .slides section.two-column div.grid-div .grid-right {
+  grid-column-start: 2;
+}
+.reveal .slides section.two-column div.grid-div section:first-child {
+  grid-row-start: 1;
+  opacity: 1;
+}
+.reveal .slides section.two-column div.grid-div section:nth-child(2) {
+  margin-top: 50px;
+  grid-row-start: 2;
+  grid-column-end: 2;
+  opacity: 1;
+}
+.reveal .slides section.two-column div.grid-div section:last-child {
+  margin-top: 50px;
+  grid-row-start: 2;
+  grid-column-start: 2;
+  opacity: 1;
+}
+
 /**
 * Reset Somes styles
 */

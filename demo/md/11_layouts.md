@@ -6,7 +6,7 @@
 
 <!-- .slide: class="two-column-layout"-->
 
-# A title
+# A title (deprecated)
 
 ##--##
 
@@ -21,7 +21,7 @@ content right
 
 <!-- .slide: class="with-code" -->
 
-# Code to produce / Markdown
+# Code to produce / Markdown (deprecated)
 
 ```markdown
 <!-- .slide: class="two-column-layout"-->
@@ -37,7 +37,7 @@ content right
 
 <!-- .slide: class="two-column-layout"-->
 
-# A title
+# A title (deprecated)
 
 ##--##
 <!-- .slide: class="with-code" -->
@@ -58,7 +58,7 @@ content right
 
 <!-- .slide: class="with-code" -->
 
-# Code to produce / Markdown
+# Code to produce / Markdown (deprecated)
 
 ```markdown
 <!-- .slide: class="two-column-layout"-->
@@ -72,4 +72,185 @@ function hello() {
 ` ` `
 ## -- ##
 content right
+```
+
+
+##==##
+
+<!-- .slide: class="two-column" -->
+
+## Slide 1
+A paragraph with some text and a [link](http://hakim.se).    
+
+##--##
+## Slide 2
+
+* Item 2
+* Item 3
+<!-- .element: class="list-fragment" -->
+
+##==##
+
+<!-- .slide: class="with-code" -->
+
+# Code to produce / Markdown
+
+```markdown
+<!-- .slide: class="two-column" -->
+## Slide 1
+A paragraph with some text and a [link](http://hakim.se).    
+## -- ##
+## Slide 2
+* Item 2
+* Item 3
+<!-- .element: class="list-fragment" -->
+```
+
+##==##
+
+<!-- .slide: class="two-column" data-background="./assets/images/dark_background.jpeg" -->
+
+
+
+##--##
+## Slide 2
+
+* Item 2
+* Item 3
+<!-- .element: class="list-fragment" -->
+
+
+##==##
+
+<!-- .slide: class="with-code" -->
+
+# Code to produce / Markdown
+
+```markdown
+<!-- .slide: class="two-column" data-background="./assets/images/dark_background.jpeg"-->
+## -- ##
+## Slide 2
+* Item 2
+* Item 3
+<!-- .element: class="list-fragment" -->
+```
+
+##==##
+
+
+<!-- .slide: class="two-column" -->
+
+## Slide 1
+A paragraph with some text and a [link](http://hakim.se).    
+
+##--##
+<!-- .slide:  data-background="./assets/images/dark_background.jpeg"  -->
+## Slide 2
+
+* Item 2
+* Item 3
+<!-- .element: class="list-fragment" -->
+
+
+
+##==##
+
+<!-- .slide: class="with-code" -->
+
+# Code to produce / Markdown
+
+```markdown
+<!-- .slide: class="two-column" -->
+## Slide 1
+A paragraph with some text and a [link](http://hakim.se).    
+## -- ##
+<!-- .slide: data-background="./assets/images/dark_background.jpeg"  -->
+## Slide 2
+* Item 2
+* Item 3
+<!-- .element: class="list-fragment" -->
+```
+
+
+
+##==##
+
+<!-- .slide: class="two-column" -->
+
+
+##--##
+<!-- .slide: class="text-dark" data-background="cyan" -->
+## Slide 2
+
+* Item 2
+* Item 3
+
+##==##
+
+<!-- .slide: class="with-code" -->
+
+# Code to produce / Markdown
+
+```markdown
+<!-- .slide: class="two-column" -->
+## -- ##
+## Slide 2
+<!-- .slide: class="text-dark" data-background="cyan" -->
+* Item 2
+* Item 3
+```
+
+##==##
+
+<!-- .slide: class="two-column"-->
+
+
+##--##
+<!-- .slide: class="text-dark" data-background="./assets/images/light-background.webp" -->
+## Slide 2
+
+* Item 2
+* Item 3
+
+##==##
+
+<!-- .slide: class="with-code" -->
+
+# Code to produce / Markdown
+
+```markdown
+<!-- .slide: class="two-column"-->
+## -- ##
+## Slide 2
+<!-- .slide: class="text-dark" data-background="./assets/images/light-background.webp" -->
+* Item 2
+* Item 3
+```
+
+##==##
+
+<!-- .slide: class="two-column" -->
+
+
+##--##
+<!-- .slide: class="mask" data-background="./assets/images/light-background.webp" -->
+## Slide 2
+
+* Item 2
+* Item 3
+
+
+##==##
+
+<!-- .slide: class="with-code" -->
+
+# Code to produce / Markdown
+
+```markdown
+<!-- .slide: class="two-column" -->
+## -- ##
+<!-- .slide: class="mask" data-background="./assets/images/light-background.webp" -->
+## Slide 2
+* Item 2
+* Item 3
 ```
