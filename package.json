@@ -2,8 +2,8 @@
   "name": "sfeir-school-theme",
   "version": "2.2.0",
   "description": "Sfeir School Theme for RevealJS",
-  "main": "./dist/js/sfeir-them.js",
-  "exports": "./dist/js/sfeir-them.js",
+  "main": "./dist/js/sfeir-theme.js",
+  "exports": "./dist/js/sfeir-theme.js",
   "scripts": {
     "sass": "sass src/scss/sfeir-school-theme.scss:demo/dist/css/sfeir-school-theme.css --source-map --watch",
     "sass-once": "sass src/scss/sfeir-school-theme.scss:demo/dist/css/sfeir-school-theme.css --source-map",

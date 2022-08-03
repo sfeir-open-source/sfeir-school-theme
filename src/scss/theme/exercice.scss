@@ -1,9 +1,10 @@
 .reveal .slides section {
     &.sfeir-basic-slide.exercice:not(.sfeir-specific-slide):not(.stack):not([class*=transition]) {
-      width: calc(100% - 200px);
+      width: calc(100% - 25%);
+      left: 25%;
       height: calc(100% - 200px);
       color: $dark-grey;      
-      padding-left: 200px;
+      padding-left: 0;
   
       h1:first-of-type:after{
         background-color: $sfeir-orange;
@@ -24,7 +25,7 @@
       }
 
       h1:first-of-type:before {
-        content: '\ed57';
+        //content: '\ed57';
         font-family: 'sfeir';
         position: absolute;
         left: -200px;
@@ -36,26 +37,32 @@
   
       h2:first-of-type {
         position: absolute;
-        transform: rotateZ(272deg);
+        //transform: rotateZ(272deg);
         padding: 10px;
         font-weight: 800;
-        top: 500px;
-        left: -100px;
+        top: 200px;
+        left: -500px;
         color: $white;
         font-size: 2em;
-        background: linear-gradient(to right, $sfeir-orange-stop-1, $sfeir-pink-stop-2);
+        //background: linear-gradient(to right, $sfeir-orange-stop-1, $sfeir-pink-stop-2);
         &:after{
           content: initial;
         }
       }
   
+      
       h3 {
-        color: $sfeir-orange;
+        color: $sfeir-green;
         font-size: 1.5em;
         text-align: center;
         bottom: -50px;
         width: 100%; 
         left: 0;
+      }
+      
+      &.blue h3{
+        color: $sfeir-blue;
+
       }
   
       ul,

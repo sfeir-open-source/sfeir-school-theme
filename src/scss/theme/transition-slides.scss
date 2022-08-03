@@ -14,22 +14,35 @@
         text-transform: initial;
         padding: 30px;
         width: fit-content;
-        background: linear-gradient(to right, $sfeir-pink-stop-1, $sfeir-pink-stop-2);
-        transform: rotate(-3deg);
+        background: initial;
+        position: relative;
+        transform: initial;
 
+        &:before{
+            content: '';
+            z-index: -1;
+            position: absolute;
+            background: $sfeir-green;
+            width: 100px;
+            height: 10px;
+            left:0;
+            bottom:-20px;
+            transform: rotate(0deg);
+        }
+    }
+    
+    &.blue h1:before{
+        background: $sfeir-blue;        
+    }
+    
+    &.green h1:before{
+        background: $sfeir-blue;        
     }
 
-    &.blue h1{
-        background: linear-gradient(to right, $sfeir-blue-stop-1, $sfeir-blue-stop-2);
-    }
-
-    &.green h1{
-        background: linear-gradient(to right, $sfeir-green-stop-1, $sfeir-green-stop-2);
-    }
-
-    &.bg-blue h1,
-    &.bg-green h1,
-    &.bg-pink h1 {
+    &.bg-white h1:before,
+    &.bg-blue h1:before,
+    &.bg-green h1:before,
+    &.bg-pink h1:before {
         background: none;
     }
 
@@ -43,12 +56,12 @@
                 content: '';
                 z-index: -1;
                 position: absolute;
-                background: $sfeir-pink;
-                width: 100%;
-                height: 50px;
+                background: $sfeir-green;
+                width: 100px;
+                height: 10px;
                 left:0;
-                bottom:35px;
-                transform: rotate(1deg);
+                bottom:-20px;
+                transform: rotate(0deg);
             }
         }
 

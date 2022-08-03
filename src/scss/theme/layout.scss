@@ -12,6 +12,7 @@
 	ul{
 		list-style-type: disc;
 	}
+	
 
 	.slides section.stack{
 		height: 100%;
@@ -113,6 +114,10 @@
 	
 	table{
 		width: 100%;
+		background-color: #efefef;
+	}
+	table, th, td{
+		border: thin solid white;
 	}
 
 	thead{
@@ -145,7 +150,7 @@
 	
 	h1:first-of-type:after, h2:first-of-type:after {
 		position: absolute;
-		content: '';
+		//content: '';
 		width: 40%;
 		height: 10px;
 		background-color: $sfeir-pink;

@@ -1,5 +1,5 @@
 
-<!-- .slide: class="transition left sfeir-bg-axololt" -->
+<!-- .slide: class="transition left sfeir-bg-green-1" -->
 
 # SfeirSchool Theme
 
@@ -96,28 +96,3 @@ Now you see that you could use vertical navigation. Enjoy the possibilities of S
 <!-- .element: class="big-code" -->
 
 
-##==##
-
-<!-- .slide: class="school-presentation" -->
-
-<div class="wifi">
-    <span class="key">wifi:</span><span>SSID</span><br>
-    <span class="key">mdp:</span><span>PWD_WIFI</span>
-</div>
-
-
-##--##
-
-<!-- .slide: class="with-code" -->
-
-# Code to produce / Markdown
-
-```markdown
-<!-- .slide: class="school-presentation" -->
-
-<div class="wifi">
-    <span class="key">wifi:</span><span>SSID</span><br>
-    <span class="key">mdp:</span><span>PWD_WIFI</span>
-</div>
-```
-<!-- .element: class="big-code" -->

@@ -12,6 +12,9 @@ class SfeirTheme {
 
 		// ManageBackground
 		this._manageBackgrounds();
+		
+		// ManageExercices
+		this._manageExerciceSlide();
 
 		// ManageShowContent
 		this._manageShowTypeContent();
@@ -66,23 +69,24 @@ class SfeirTheme {
 	_manageBackgrounds(){
 
 		const map = {
-			'first-slide': `${this.path}images/bg-grey-axololt.png`,
-			'transition': `${this.path}images/bg-grey-axololt.png`,
-			'school-presentation': `${this.path}images/bg-school.png`,
-			'speaker-slide': `${this.path}images/bg-grey-axololt.png`,
-			'sfeir-slide': `${this.path}images/bg-grey-axololt.png`,
-			'bg-white': `${this.path}images/bg-grey-axololt.png`,
-			'bg-pink': `${this.path}images/bg-grey-axololt.png`,
-			'bg-blue': `${this.path}images/bg-grey-axololt.png`,
-			'bg-green': `${this.path}images/bg-grey-axololt.png`,
-			'sfeir-bg-axololt': `${this.path}images/bg-grey-axololt.png`,
-			'transition-bg-grey-1': `${this.path}images/bg-grey-1.png`,
-			'transition-bg-grey-2': `${this.path}images/bg-grey-2.png`,
-			'transition-bg-grey-3': `${this.path}images/bg-grey-3.jpg`,
-			'transition-bg-grey-4': `${this.path}images/bg-grey-4.jpg`,
-			'transition-bg-grey-5': `${this.path}images/bg-grey-5.jpg`,
-			'transition-bg-grey-6': `${this.path}images/bg-grey-6.jpg`,
-			'transition-bg-grey-7': `${this.path}images/bg-grey-7.jpg`,
+			'first-slide': `${this.path}images/bg-green-1.png`,
+			'transition': `${this.path}images/bg-green-1.png`,
+			'speaker-slide': `var(--dark-grey)`,
+			'sfeir-slide': `${this.path}images/bg-green-1.png`,
+			'bg-white': `${this.path}images/bg-green-1.png`,
+			'bg-pink': `${this.path}images/bg-green-1.png`,
+			'bg-blue': `${this.path}images/bg-green-1.png`,
+			'bg-green': `${this.path}images/bg-green-1.png`,
+			'transition-bg-blue-1': `${this.path}images/bg-blue-1.png`,
+			'transition-bg-blue-2': `${this.path}images/bg-blue-2.jpeg`,
+			'transition-bg-blue-3': `${this.path}images/bg-blue-3.png`,
+			'transition-bg-blue-blur': `${this.path}images/bg-blue-blur.jpg`,
+			'transition-bg-green-1': `${this.path}images/bg-green-1.png`,
+			'transition-bg-green-2': `${this.path}images/bg-green-2.png`,
+			'transition-bg-green-3': `${this.path}images/bg-green-3.png`,
+			'transition-bg-green-4': `${this.path}images/bg-green-4.png`,
+			'transition-bg-green-5': `${this.path}images/bg-green-5.png`,
+			'transition-bg-green-6': `${this.path}images/bg-green-6.png`,
 		};
 
 		for (let key in map){
@@ -118,6 +122,14 @@ class SfeirTheme {
 
 			firstSlideSection.insertAdjacentElement('afterbegin', imgLogo);
 
+		}
+	}
+
+	_manageExerciceSlide(){
+		const exercicesSlides = [...document.querySelectorAll('.reveal .slides section.exercice')];
+		for (let exercicesection of exercicesSlides){``
+			const colorToUse = exercicesection.classList.contains('blue') ? 'var(--sfeir-blue)' : 'var(--sfeir-green)'
+			exercicesection.setAttribute('data-background',`linear-gradient(90deg,  ${colorToUse} 25%, white 25%, white 100%)`)
 		}
 	}
 

@@ -6,7 +6,7 @@
 
 <!-- .slide: class="speaker-slide" -->
 
-# Hello ! @SFEIR
+# Votre hôte pour la journée
 
 ![speaker](./assets/images/jf.jpg)
 ![company](./assets/images/logo-sfeir-blanc.png)
