@@ -27,6 +27,9 @@ class SfeirTheme {
 
 		// Manage Hack to speakers images
 		this._manageSpeakersBorders();
+
+		// Manage Hack for using feather icons easily
+		this._manageFeatherIcons();
 		
 	}
 	_extractPath(){
@@ -67,16 +70,22 @@ class SfeirTheme {
 	}
 
 	_manageBackgrounds(){
+		const modeContent = document.querySelector('.reveal .slides').getAttribute('data-mode-slides')??'school';
 
 		const map = {
-			'first-slide': `${this.path}images/bg-green-1.png`,
-			'transition': `${this.path}images/bg-green-1.png`,
-			'speaker-slide': `var(--dark-grey)`,
+			'first-slide': `${this.path}images/${modeContent === 'school' ? 'bg-green-1.png' : 'bg-blue-1.png'}`,
+			'transition': `${this.path}images/${modeContent === 'school' ? 'bg-green-1.png' : 'bg-blue-1.png'}`,
+			'speaker-slide': `var(--black)`,
+			'quote-slide': `var(--black)`,
 			'sfeir-slide': `${this.path}images/bg-green-1.png`,
 			'bg-white': `${this.path}images/bg-green-1.png`,
 			'bg-pink': `${this.path}images/bg-green-1.png`,
 			'bg-blue': `${this.path}images/bg-green-1.png`,
 			'bg-green': `${this.path}images/bg-green-1.png`,
+			'bg-blur': `${this.path}images/bg-blue-blur.jpeg`,
+			'transition-bg-sfeir-1': `${this.path}images/${modeContent === 'school' ? 'bg-green-1.png' : 'bg-blue-1.png'}`,
+			'transition-bg-sfeir-2': `${this.path}images/${modeContent === 'school' ? 'bg-green-2.png' : 'bg-blue-2.jpeg'}`,
+			'transition-bg-sfeir-3': `${this.path}images/${modeContent === 'school' ? 'bg-green-3.png' : 'bg-blue-3.png'}`,
 			'transition-bg-blue-1': `${this.path}images/bg-blue-1.png`,
 			'transition-bg-blue-2': `${this.path}images/bg-blue-2.jpeg`,
 			'transition-bg-blue-3': `${this.path}images/bg-blue-3.png`,
@@ -126,9 +135,10 @@ class SfeirTheme {
 	}
 
 	_manageExerciceSlide(){
+		const modeContent = document.querySelector('.reveal .slides').getAttribute('data-mode-slides')??'school';
 		const exercicesSlides = [...document.querySelectorAll('.reveal .slides section.exercice')];
 		for (let exercicesection of exercicesSlides){``
-			const colorToUse = exercicesection.classList.contains('blue') ? 'var(--sfeir-blue)' : 'var(--sfeir-green)'
+			const colorToUse = modeContent === 'institute' ? 'var(--sfeir-blue)' : 'var(--sfeir-green)'
 			exercicesection.setAttribute('data-background',`linear-gradient(90deg,  ${colorToUse} 25%, white 25%, white 100%)`)
 		}
 	}
@@ -249,6 +259,37 @@ class SfeirTheme {
 			parentOfImg.appendChild(divWithBgElement);
 			parentOfImg.removeChild(imgToReplace);
 		}
+	}
+
+	_manageFeatherIcons(){
+
+		const imgOfFeatherIcons = [...document.querySelectorAll('.reveal .slides section img[alt*=feather]')];
+		const sectionsWhereReplace = [];
+		const imgListToReplace = [];
+		for(let imgToTransform of imgOfFeatherIcons){
+			let sectionTemp = imgToTransform.closest('.reveal .slides section');
+			if (sectionsWhereReplace.findIndex((elt )=>elt === sectionTemp) === -1){
+				sectionsWhereReplace.push(sectionTemp);
+			}
+			imgListToReplace.push(imgToTransform.outerHTML);
+		}
+
+		let newImgList = imgListToReplace;
+		for(let sectionTmp of sectionsWhereReplace){
+			let tempNewListOfImg = [];
+			for (let imgToReplace of newImgList){
+				if (sectionTmp.innerHTML.indexOf(imgToReplace) !== -1){
+					let imgTextReplace = imgToReplace.replace('<img', '<i')+'</i>';
+					imgTextReplace = imgTextReplace.replace('src', 'data-feather');
+					sectionTmp.innerHTML = sectionTmp.innerHTML.replace(imgToReplace, imgTextReplace);
+				}else{
+					tempNewListOfImg.push(imgToReplace);
+				}
+			}
+			newImgList = tempNewListOfImg;
+		}
+
+		feather.replace();
 	}
 }
 

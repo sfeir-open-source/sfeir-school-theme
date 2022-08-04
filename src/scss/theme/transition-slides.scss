@@ -31,49 +31,24 @@
         }
     }
     
-    &.blue h1:before{
+    &.blue h1:before,
+    &.transition-bg-blue-1 h1:before,
+    &.transition-bg-blue-2 h1:before,
+    &.transition-bg-blue-3 h1:before{
         background: $sfeir-blue;        
     }
     
     &.green h1:before{
-        background: $sfeir-blue;        
+        background: $sfeir-green;        
     }
 
     &.bg-white h1:before,
     &.bg-blue h1:before,
-    &.bg-green h1:before,
-    &.bg-pink h1:before {
+    &.bg-green h1:before {
         background: none;
     }
 
-    &.underline{ 
-        h1 {
-            background: initial;
-            position: relative;
-            transform: initial;
-
-            &:before{
-                content: '';
-                z-index: -1;
-                position: absolute;
-                background: $sfeir-green;
-                width: 100px;
-                height: 10px;
-                left:0;
-                bottom:-20px;
-                transform: rotate(0deg);
-            }
-        }
-
-        &.green h1:before{
-            background: $sfeir-green;
-        }
-        &.blue h1:before{
-            background: $sfeir-blue;
-        }
-    }
-
-    
+        
     &.left h1{
         margin-left: initial;
         text-align: left;
@@ -116,8 +91,7 @@
 .reveal .backgrounds div.slide-background.transition {
     &.bg-white,
     &.bg-blue,
-    &.bg-green,
-    &.bg-pink{
+    &.bg-green{
         
         &:after{
             content: '';
@@ -136,7 +110,30 @@
     &.bg-green::after{
         background:  rgba(10, 181, 128, 0.6);
     }
-    &.bg-pink::after{
-        background:  rgba(221, 51, 85, 0.6);
+}
+
+
+/**
+* Hack for institute mode
+**/
+.reveal .slides[data-mode-slides=institute] section[class*="transition"],
+.reveal .slides[data-mode-slides=institute] section.sfeir-basic-slide[class*="transition"],
+.reveal .slides[data-mode-slides=institute] section.sfeir-specific-slide[class*="transition"]{
+
+    h1:before{
+        background: $sfeir-blue; 
     }
+    
+    &.green h1:before,
+    &.transition-bg-green-1 h1:before,
+    &.transition-bg-green-2 h1:before,
+    &.transition-bg-green-3 h1:before,
+    &.transition-bg-green-4 h1:before,
+    &.transition-bg-green-5 h1:before,
+    &.transition-bg-green-6 h1:before{
+        
+        background: $sfeir-green; 
+
+    }
+
 }

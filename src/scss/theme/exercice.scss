@@ -60,10 +60,6 @@
         left: 0;
       }
       
-      &.blue h3{
-        color: $sfeir-blue;
-
-      }
   
       ul,
       ol,
@@ -73,3 +69,10 @@
       }
     }
   }
+
+/**
+* Hack for institute mode
+*/
+.reveal .slides[data-mode-slides=institute] section.sfeir-basic-slide.exercice:not(.sfeir-specific-slide):not(.stack):not([class*=transition]) h3{
+  color:$sfeir-blue;
+}

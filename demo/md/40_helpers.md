@@ -446,12 +446,23 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin nec risus leo. Ve
 
 ##==##
 
-<!-- .slide: data-type-show="prez" -->
+## Use Feathers icons
 
-## A slide for prez only
+En utilisant une image markdown
 
-A few words !
+![feather](github) icone basique
 
+![feather small](github) petite icone
+
+![feather big](github) grande icone
+
+![feather](github)<!-- .element: style="--icon-size:96px; --icon-color:orange;" --> icone avec une taille custo
+
+En utilisant du HTML
+
+<i data-feather="github" ></i> icone basique
+
+Liste complète des icônes possible : https://feathericons.com/
 
 ##--##
 
@@ -460,19 +471,13 @@ A few words !
 # Code to produce / Markdown
 
 ```markdown
-<!-- .slide: data-type-show="prez" -->
-For slide present on presentation 
+## Use Feathers icons
+En utilisant une image markdown
+![feather](github) icone basique
+![feather small](github) petite icone
+![feather big](github) grande icone
+![feather](github)<!-- .element: style="--icon-size:96px; --icon-color:orange;" --> icone avec une taille custo
+En utilisant du HTML
+<i data-feather="github" ></i> icone basique
 
-<!-- .slide: data-type-show="full" -->
-For slide present on restitution version
-
-To configure with index.html
 ```
-
-##==##
-
-<!-- .slide: data-type-show="full" -->
-
-## A slide for publication only
-
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin nec risus leo. Vestibulum condimentum orci in urna auctor aliquet. Quisque mi erat, placerat non porttitor ut, gravida eu erat. Fusce semper ipsum vel nibh porttitor aliquam. Cras sed porttitor est, id scelerisque odio. Pellentesque sit amet imperdiet ex. Aliquam erat.

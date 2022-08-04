@@ -171,3 +171,16 @@
     }
 
 }
+
+
+/**
+* Hack for institute
+*/
+
+.reveal  .slides[data-mode-slides=institute] section[data-background].speaker-slide{
+    &.green{     
+        h3.icon-role{
+            background: linear-gradient(to right, $sfeir-blue-stop-1, $sfeir-blue-stop-2);
+        }
+    }
+}

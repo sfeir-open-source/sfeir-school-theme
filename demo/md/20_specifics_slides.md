@@ -64,26 +64,6 @@
 
 ##==##
 
-<!-- .slide: class="transition underline" -->
-
-# Transition undeline
-
-##--##
-
-<!-- .slide: class="with-code" -->
-
-# Code to produce / Markdown
-
-```markdown
-<!-- .slide: class="transition underline"-->
-
-# Transition underline
-```
-<!-- .element: class="big-code" -->
-
-
-##==##
-
 <!-- .slide: class="transition bg-white" -->
 
 # A White Transition Slide
@@ -101,24 +81,6 @@
 ```
 <!-- .element: class="big-code" -->
 
-##==##
-
-<!-- .slide: class="transition bg-pink" -->
-
-# A Pink Transition Slide
-
-##--##
-
-<!-- .slide: class="with-code" -->
-
-# Code to produce / Markdown
-
-```markdown
-<!-- .slide: class="transition bg-pink" -->
-
-# A Pink Transition Slide
-```
-<!-- .element: class="big-code" -->
 
 ##==##
 
@@ -248,10 +210,78 @@
 
 ##==##
 
+<!-- .slide: class="transition-bg-sfeir-1" -->
+
+# Sfeir bg 1
+
+## dependant on mode (institute / school)
+
+
+##--##
+
+<!-- .slide: class="with-code" -->
+
+# Code to produce / Markdown
+
+```markdown
+<!-- .slide: class="transition-bg-sfeir-1" -->
+
+# Sfeir bg 1
+
+## dependant on mode (institute / school)
+```
+<!-- .element: class="big-code" -->
+
+##==##
+
+<!-- .slide: class="transition-bg-sfeir-2" -->
+
+# Sfeir bg 2
+
+## dependant on mode (institute / school)
+
+
+##--##
+
+<!-- .slide: class="with-code" -->
+
+# Code to produce / Markdown
+
+```markdown
+<!-- .slide: class="transition-bg-sfeir-2" -->
+
+# Sfeir bg 2
+
+## dependant on mode (institute / school)
+```
+<!-- .element: class="big-code" -->
+
+##==##
+
+<!-- .slide: class="transition-bg-sfeir-3" -->
+
+# Sfeir bg 3
+
+## dependant on mode (institute / school)
+
+##--##
+
+<!-- .slide: class="with-code" -->
+
+# Code to produce / Markdown
+
+```markdown
+<!-- .slide: class="transition-bg-sfeir-3" -->
+
+# Sfeir bg sfeir 3
+```
+<!-- .element: class="big-code" -->
+
+##==##
+
 <!-- .slide: class="transition-bg-green-1" -->
 
 # Sfeir bg green 1
-
 
 ##--##
 
@@ -368,7 +398,7 @@
 
 ##==##
 
-<!-- .slide: class="transition-bg-blue-1 blue" -->
+<!-- .slide: class="transition-bg-blue-1" -->
 
 # Sfeir bg blue 1
 
@@ -380,7 +410,7 @@
 # Code to produce / Markdown
 
 ```markdown
-<!-- .slide: class="transition-bg-blue-1 blue" -->
+<!-- .slide: class="transition-bg-blue-1" -->
 
 # Sfeir bg blue 1
 ```
@@ -388,7 +418,7 @@
 
 ##==##
 
-<!-- .slide: class="transition-bg-blue-2 blue" -->
+<!-- .slide: class="transition-bg-blue-2" -->
 
 # Sfeir bg blue 2
 
@@ -400,7 +430,7 @@
 # Code to produce / Markdown
 
 ```markdown
-<!-- .slide: class="transition-bg-blue-2 blue" -->
+<!-- .slide: class="transition-bg-blue-2" -->
 
 # Sfeir bg blue 2
 ```
@@ -408,7 +438,7 @@
 
 ##==##
 
-<!-- .slide: class="transition-bg-blue-3 blue" -->
+<!-- .slide: class="transition-bg-blue-3" -->
 
 # Sfeir bg blue 3
 
@@ -420,7 +450,7 @@
 # Code to produce / Markdown
 
 ```markdown
-<!-- .slide: class="transition-bg-blue-3 blue" -->
+<!-- .slide: class="transition-bg-blue-3" -->
 
 # Sfeir bg blue 3
 ```
@@ -507,24 +537,18 @@ Additionnal Advice
 ### Step: push-1
 ```
 
+
 ##==##
 
-<!-- .slide: class="exercice blue" -->
+<!-- .slide: class="quote-slide" -->
+## A dedicate Quote slide
 
-# Exercice Title
 
-## Lab
-
-<br>
-
-1. First step
-2. Second step
-3. Third step
-
-<br>
-Additionnal Advice
-
-### Step: push-1
+<blockquote>
+<cite>
+  To Quote or not to quote...
+</cite>
+</blockquote>
 
 
 ##--##
@@ -534,14 +558,30 @@ Additionnal Advice
 # Code to produce / Markdown
 
 ```markdown
-<!-- .slide: class="exercice blue" -->
-# Exercice Title
-## Lab
-<br>
-1. First step
-2. Second step
-3. Third step
-<br>
-Additionnal Advice
-### Step: push-1
+<blockquote>
+<cite>
+  To Quote or not to quote...
+</cite>
+</blockquote>
 ```
+<!-- .element: class="big-code" -->
+
+##==##
+
+<!-- .slide: class="bg-blur" -->
+
+<br>
+
+### C'est l'heure de la pause
+
+<br>
+
+![feather](pause-circle)<!-- .element: style="--icon-size:300px; --icon-color:var(--light-grey);" -->
+
+<br>
+
+On se retrouve à
+<!-- .element: class="center" -->
+<br>
+
+![feather big](clock)<!-- .element: style="--icon-color:var(--light-grey);" --> 10h
