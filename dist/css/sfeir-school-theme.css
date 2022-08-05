@@ -139,12 +139,12 @@
   --light-grey: #ddd;
   --white: white;
   --medium-grey: #817c7c;
-  --black: #434343;
-  --dark-grey: #2a3244;
+  --black: #1d1d2a;
+  --dark-grey: #56566a;
   --dark-grey-alpha: rgba(61, 67, 73, 0.7);
   --red: #e74c3c;
   --sfeir-pink: #dd3355;
-  --sfeir-blue: #575eaa;
+  --sfeir-blue: #5155f9;
   --sfeir-green: #0ab580;
 }
 
@@ -162,7 +162,7 @@
   --headingColor: white;
   --headingLineHeight: 1.2;
   --headingLetterSpacing: normal;
-  --headingTextTransform: uppercase;
+  --headingTextTransform: initial;
   --headingTextShadow: none;
   --headingFontWeight: normal;
   --heading1TextShadow: none;
@@ -170,8 +170,8 @@
   --heading2Size: 2.11em;
   --heading3Size: 1.55em;
   --heading4Size: 1em;
-  --linkColor: #434343;
-  --linkColorHover: #767676;
+  --linkColor: #1d1d2a;
+  --linkColorHover: #474766;
   --selectionBackgroundColor: rgba(140, 191, 240, 0.8);
   --selectionColor: #fff;
 }
@@ -190,7 +190,7 @@
   --heading-color: white;
   --heading-line-height: 1.2;
   --heading-letter-spacing: normal;
-  --heading-text-transform: uppercase;
+  --heading-text-transform: initial;
   --heading-text-shadow: none;
   --heading-font-weight: normal;
   --heading1-text-shadow: none;
@@ -199,8 +199,8 @@
   --heading3-size: 1.55em;
   --heading4-size: 1em;
   --code-font: monospace;
-  --link-color: #434343;
-  --link-color-hover: #767676;
+  --link-color: #1d1d2a;
+  --link-color-hover: #474766;
   --selection-background-color: rgba(140, 191, 240, 0.8);
   --selection-color: #fff;
 }
@@ -250,7 +250,7 @@
   font-weight: normal;
   line-height: 1.2;
   letter-spacing: normal;
-  text-transform: uppercase;
+  text-transform: initial;
   text-shadow: none;
   word-wrap: break-word;
 }
@@ -457,20 +457,20 @@
  * LINKS
  *********************************************/
 .reveal a {
-  color: #434343;
+  color: #1d1d2a;
   text-decoration: none;
   transition: color 0.15s ease;
 }
 
 .reveal a:hover {
-  color: #767676;
+  color: #474766;
   text-shadow: none;
   border: none;
 }
 
 .reveal .roll span:after {
   color: #fff;
-  background: #1d1d1d;
+  background: black;
 }
 
 /*********************************************
@@ -486,7 +486,7 @@
 }
 
 .reveal a:hover .r-frame {
-  border-color: #434343;
+  border-color: #1d1d2a;
   box-shadow: 0 0 20px rgba(0, 0, 0, 0.55);
 }
 
@@ -494,7 +494,7 @@
  * NAVIGATION CONTROLS
  *********************************************/
 .reveal .controls {
-  color: #434343;
+  color: #1d1d2a;
 }
 
 /*********************************************
@@ -502,7 +502,7 @@
  *********************************************/
 .reveal .progress {
   background: rgba(0, 0, 0, 0.2);
-  color: #434343;
+  color: #1d1d2a;
 }
 
 /*********************************************
@@ -1412,6 +1412,30 @@
 }
 
 /**
+* Feathers icons
+*/
+.reveal .slides section svg.feather {
+  stroke: var(--icon-color, #0ab580);
+  width: var(--icon-size, 24px);
+  height: var(--icon-size, 24px);
+}
+.reveal .slides section svg.feather[alt*=small] {
+  width: 12px;
+  height: 12px;
+}
+.reveal .slides section svg.feather[alt*=big] {
+  width: 48px;
+  height: 48px;
+}
+
+/**
+* Hack for mode instute
+*/
+.reveal .slides[data-mode-slides=institute] section svg.feather {
+  stroke: var(--icon-color, #5155f9);
+}
+
+/**
 * Globals overrides to change the layout of slides
 */
 .reveal ol, .reveal dl, .reveal ul {
@@ -1470,9 +1494,23 @@
   padding: 1em;
   text-align: left;
   font-style: italic;
-  background: white;
-  color: #2a3244;
-  box-shadow: 0px 0px 2px rgba(0, 0, 0, 0.2);
+  background: transparent;
+  color: white;
+}
+.reveal section.quote-slide blockquote {
+  margin-top: 300px;
+}
+.reveal .backgrounds div.slide-background.quote-slide::before {
+  content: "";
+  position: absolute;
+  background: url("../images/quotes.png");
+  background-size: contain;
+  filter: brightness(0.25);
+  top: 5px;
+  left: 5px;
+  width: 400px;
+  height: 400px;
+  color: #56566a;
 }
 
 .reveal .slides section:not(.sfeir-specific-slide):not(.stack):not([class*=transition]),
@@ -1491,7 +1529,7 @@
 .reveal .slides section.sfeir-specific-slide.sfeir-bg-axololt:not(.stack):not([class*=transition]) h2 {
   text-transform: initial;
   text-align: left;
-  color: #434343;
+  color: #1d1d2a;
   font-size: 1.5em;
   font-weight: 600;
 }
@@ -1514,7 +1552,7 @@
 .reveal .slides section.sfeir-specific-slide.sfeir-bg-axololt:not(.stack):not([class*=transition]) h1 ~ h3 {
   text-transform: initial;
   margin-bottom: 40px;
-  color: #434343;
+  color: #1d1d2a;
   font-size: 1em;
 }
 .reveal .slides section:not(.sfeir-specific-slide):not(.stack):not([class*=transition]) h1 + h2, .reveal .slides section:not(.sfeir-specific-slide):not(.stack):not([class*=transition]) h2 + h3, .reveal .slides section:not(.sfeir-specific-slide):not(.stack):not([class*=transition]) h1 + h3,
@@ -1531,6 +1569,16 @@
 .reveal .slides section.sfeir-basic-slide:not(.stack):not([class*=transition]) table,
 .reveal .slides section.sfeir-specific-slide.sfeir-bg-axololt:not(.stack):not([class*=transition]) table {
   width: 100%;
+  background-color: #efefef;
+}
+.reveal .slides section:not(.sfeir-specific-slide):not(.stack):not([class*=transition]) table, .reveal .slides section:not(.sfeir-specific-slide):not(.stack):not([class*=transition]) th, .reveal .slides section:not(.sfeir-specific-slide):not(.stack):not([class*=transition]) td,
+.reveal .slides section.sfeir-basic-slide:not(.stack):not([class*=transition]) table,
+.reveal .slides section.sfeir-basic-slide:not(.stack):not([class*=transition]) th,
+.reveal .slides section.sfeir-basic-slide:not(.stack):not([class*=transition]) td,
+.reveal .slides section.sfeir-specific-slide.sfeir-bg-axololt:not(.stack):not([class*=transition]) table,
+.reveal .slides section.sfeir-specific-slide.sfeir-bg-axololt:not(.stack):not([class*=transition]) th,
+.reveal .slides section.sfeir-specific-slide.sfeir-bg-axololt:not(.stack):not([class*=transition]) td {
+  border: thin solid white;
 }
 .reveal .slides section:not(.sfeir-specific-slide):not(.stack):not([class*=transition]) thead,
 .reveal .slides section.sfeir-basic-slide:not(.stack):not([class*=transition]) thead,
@@ -1541,7 +1589,7 @@
 .reveal .slides section:not(.sfeir-specific-slide):not(.stack):not([class*=transition]).blue thead,
 .reveal .slides section.sfeir-basic-slide:not(.stack):not([class*=transition]).blue thead,
 .reveal .slides section.sfeir-specific-slide.sfeir-bg-axololt:not(.stack):not([class*=transition]).blue thead {
-  background-color: #575eaa;
+  background-color: #5155f9;
 }
 .reveal .slides section:not(.sfeir-specific-slide):not(.stack):not([class*=transition]).green thead,
 .reveal .slides section.sfeir-basic-slide:not(.stack):not([class*=transition]).green thead,
@@ -1551,7 +1599,7 @@
 
 .reveal .slides section.sfeir-basic-slide:not(.stack),
 .reveal .slides section.exercice:not(.stack) {
-  color: #2a3244;
+  color: #56566a;
 }
 .reveal .slides section.sfeir-basic-slide:not(.stack) h1, .reveal .slides section.sfeir-basic-slide:not(.stack) h2, .reveal .slides section.sfeir-basic-slide:not(.stack) h3,
 .reveal .slides section.exercice:not(.stack) h1,
@@ -1566,14 +1614,13 @@
 .reveal .slides section.exercice:not(.stack) h2 ~ h3,
 .reveal .slides section.exercice:not(.stack) h1 ~ h3 {
   position: relative;
-  color: #434343;
+  color: #1d1d2a;
   text-align: left;
 }
 .reveal .slides section.sfeir-basic-slide:not(.stack) h1:first-of-type:after, .reveal .slides section.sfeir-basic-slide:not(.stack) h2:first-of-type:after,
 .reveal .slides section.exercice:not(.stack) h1:first-of-type:after,
 .reveal .slides section.exercice:not(.stack) h2:first-of-type:after {
   position: absolute;
-  content: "";
   width: 40%;
   height: 10px;
   background-color: #dd3355;
@@ -1583,7 +1630,7 @@
 .reveal .slides section.sfeir-basic-slide:not(.stack).blue h1:first-of-type:after, .reveal .slides section.sfeir-basic-slide:not(.stack).blue h2:first-of-type:after,
 .reveal .slides section.exercice:not(.stack).blue h1:first-of-type:after,
 .reveal .slides section.exercice:not(.stack).blue h2:first-of-type:after {
-  background-color: #575eaa;
+  background-color: #5155f9;
 }
 .reveal .slides section.sfeir-basic-slide:not(.stack).green h1:first-of-type:after, .reveal .slides section.sfeir-basic-slide:not(.stack).green h2:first-of-type:after,
 .reveal .slides section.exercice:not(.stack).green h1:first-of-type:after,
@@ -1636,30 +1683,55 @@
 .reveal .backgrounds div.slide-background.two-column[data-background-hash] div.grid-div > div {
   color: white;
 }
+.reveal .backgrounds div.slide-background.two-column[data-background-hash].mask::after {
+  background-color: rgba(61, 67, 73, 0.7);
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
 
-.reveal .slides section.two-column[data-background].data-bg-right div.grid-div > div:nth-child(2) {
+.reveal .slides section.two-column[data-background].data-bg-right div.grid-div > div:nth-child(2),
+.reveal .slides section.two-column[data-background-image].data-bg-right div.grid-div > div:nth-child(2) {
   color: white;
 }
-.reveal .slides section.two-column[data-background].data-bg-right div.grid-div > div:nth-child(2) h1, .reveal .slides section.two-column[data-background].data-bg-right div.grid-div > div:nth-child(2) h2, .reveal .slides section.two-column[data-background].data-bg-right div.grid-div > div:nth-child(2) h3 {
+.reveal .slides section.two-column[data-background].data-bg-right div.grid-div > div:nth-child(2) h1, .reveal .slides section.two-column[data-background].data-bg-right div.grid-div > div:nth-child(2) h2, .reveal .slides section.two-column[data-background].data-bg-right div.grid-div > div:nth-child(2) h3,
+.reveal .slides section.two-column[data-background-image].data-bg-right div.grid-div > div:nth-child(2) h1,
+.reveal .slides section.two-column[data-background-image].data-bg-right div.grid-div > div:nth-child(2) h2,
+.reveal .slides section.two-column[data-background-image].data-bg-right div.grid-div > div:nth-child(2) h3 {
   color: white;
 }
-.reveal .slides section.two-column[data-background].data-bg-right.text-dark div.grid-div > div:nth-child(2) {
-  color: #2a3244;
+.reveal .slides section.two-column[data-background].data-bg-right.text-dark div.grid-div > div:nth-child(2),
+.reveal .slides section.two-column[data-background-image].data-bg-right.text-dark div.grid-div > div:nth-child(2) {
+  color: #56566a;
 }
-.reveal .slides section.two-column[data-background].data-bg-right.text-dark div.grid-div > div:nth-child(2) h1, .reveal .slides section.two-column[data-background].data-bg-right.text-dark div.grid-div > div:nth-child(2) h2, .reveal .slides section.two-column[data-background].data-bg-right.text-dark div.grid-div > div:nth-child(2) h3 {
-  color: #2a3244;
+.reveal .slides section.two-column[data-background].data-bg-right.text-dark div.grid-div > div:nth-child(2) h1, .reveal .slides section.two-column[data-background].data-bg-right.text-dark div.grid-div > div:nth-child(2) h2, .reveal .slides section.two-column[data-background].data-bg-right.text-dark div.grid-div > div:nth-child(2) h3,
+.reveal .slides section.two-column[data-background-image].data-bg-right.text-dark div.grid-div > div:nth-child(2) h1,
+.reveal .slides section.two-column[data-background-image].data-bg-right.text-dark div.grid-div > div:nth-child(2) h2,
+.reveal .slides section.two-column[data-background-image].data-bg-right.text-dark div.grid-div > div:nth-child(2) h3 {
+  color: #56566a;
 }
-.reveal .slides section.two-column[data-background].data-bg-left div.grid-div > div:first-child {
+.reveal .slides section.two-column[data-background].data-bg-left div.grid-div > div:first-child,
+.reveal .slides section.two-column[data-background-image].data-bg-left div.grid-div > div:first-child {
   color: white;
 }
-.reveal .slides section.two-column[data-background].data-bg-left div.grid-div > div:first-child h1, .reveal .slides section.two-column[data-background].data-bg-left div.grid-div > div:first-child h2, .reveal .slides section.two-column[data-background].data-bg-left div.grid-div > div:first-child h3 {
+.reveal .slides section.two-column[data-background].data-bg-left div.grid-div > div:first-child h1, .reveal .slides section.two-column[data-background].data-bg-left div.grid-div > div:first-child h2, .reveal .slides section.two-column[data-background].data-bg-left div.grid-div > div:first-child h3,
+.reveal .slides section.two-column[data-background-image].data-bg-left div.grid-div > div:first-child h1,
+.reveal .slides section.two-column[data-background-image].data-bg-left div.grid-div > div:first-child h2,
+.reveal .slides section.two-column[data-background-image].data-bg-left div.grid-div > div:first-child h3 {
   color: white;
 }
-.reveal .slides section.two-column[data-background].data-bg-left.text-dark div.grid-div > div:first-child {
-  color: #2a3244;
+.reveal .slides section.two-column[data-background].data-bg-left.text-dark div.grid-div > div:first-child,
+.reveal .slides section.two-column[data-background-image].data-bg-left.text-dark div.grid-div > div:first-child {
+  color: #56566a;
 }
-.reveal .slides section.two-column[data-background].data-bg-left.text-dark div.grid-div > div:first-child h1, .reveal .slides section.two-column[data-background].data-bg-left.text-dark div.grid-div > div:first-child h2, .reveal .slides section.two-column[data-background].data-bg-left.text-dark div.grid-div > div:first-child h3 {
-  color: #2a3244;
+.reveal .slides section.two-column[data-background].data-bg-left.text-dark div.grid-div > div:first-child h1, .reveal .slides section.two-column[data-background].data-bg-left.text-dark div.grid-div > div:first-child h2, .reveal .slides section.two-column[data-background].data-bg-left.text-dark div.grid-div > div:first-child h3,
+.reveal .slides section.two-column[data-background-image].data-bg-left.text-dark div.grid-div > div:first-child h1,
+.reveal .slides section.two-column[data-background-image].data-bg-left.text-dark div.grid-div > div:first-child h2,
+.reveal .slides section.two-column[data-background-image].data-bg-left.text-dark div.grid-div > div:first-child h3 {
+  color: #56566a;
 }
 
 .reveal .slides section.two-column div.grid-div {
@@ -1709,12 +1781,12 @@
   --light-grey: #ddd;
   --white: white;
   --medium-grey: #817c7c;
-  --black: #434343;
-  --dark-grey: #2a3244;
+  --black: #1d1d2a;
+  --dark-grey: #56566a;
   --dark-grey-alpha: rgba(61, 67, 73, 0.7);
   --red: #e74c3c;
   --sfeir-pink: #dd3355;
-  --sfeir-blue: #575eaa;
+  --sfeir-blue: #5155f9;
   --sfeir-green: #0ab580;
 }
 
@@ -1737,7 +1809,6 @@
   font-weight: 800;
 }
 .reveal .slides section[data-background].first-slide h2 {
-  text-transform: uppercase;
   margin-bottom: 20px;
 }
 .reveal .slides section[data-background].first-slide div.sfeir-logo {
@@ -1752,7 +1823,7 @@
   margin: auto;
 }
 .reveal .slides section[data-background].first-slide div.sfeir-logo::before {
-  color: #434343;
+  color: #1d1d2a;
   position: absolute;
   content: attr(data-sfeir-techno);
   text-transform: uppercase;
@@ -1798,56 +1869,74 @@
   --light-grey: #ddd;
   --white: white;
   --medium-grey: #817c7c;
-  --black: #434343;
-  --dark-grey: #2a3244;
+  --black: #1d1d2a;
+  --dark-grey: #56566a;
   --dark-grey-alpha: rgba(61, 67, 73, 0.7);
   --red: #e74c3c;
   --sfeir-pink: #dd3355;
-  --sfeir-blue: #575eaa;
+  --sfeir-blue: #5155f9;
   --sfeir-green: #0ab580;
 }
 
 .reveal .slides section[data-background].speaker-slide {
   height: 800px;
   text-transform: inherit;
+  /*h3.icon-twitter:before{
+      content: '\ec98';
+  }
+
+  h3.icon-mail:before {
+      content: '\e8c8';
+  }
+
+  h3[class^=icon]>a {
+      color: $black;
+  }
+
+  h3.icon-rule:before{
+      content: '\e81d';
+  }*/
 }
 .reveal .slides section[data-background].speaker-slide h1 {
   text-transform: inherit;
   text-align: left;
-  font-size: 2em;
-  margin-top: 200px;
+  font-size: 1.3em;
+  margin-top: 100px;
   margin-left: 200px;
-  font-weight: 600;
+  font-weight: 400;
 }
 .reveal .slides section[data-background].speaker-slide h2 {
   position: absolute;
-  right: 0;
-  top: calc(400px + 200px + 100px);
+  left: calc(300px - ((320px - 240px) / 2));
+  top: calc(240px + 350px + 20px);
   text-transform: inherit;
   text-align: center;
-  color: white;
-  font-weight: 800;
+  color: #1d1d2a;
+  font-weight: 400;
   line-height: 1.5em;
   height: 1.5em;
-  width: calc(300px * 2 + 400px);
-  font-size: 1.3em;
+  width: 320px;
+  font-size: 0.8em;
 }
 .reveal .slides section[data-background].speaker-slide h2 span {
+  font-weight: 800;
   padding-right: 15px;
-  background: linear-gradient(to right, #ee0f50, #fa8b88);
 }
 .reveal .slides section[data-background].speaker-slide h3 {
   position: absolute;
   text-transform: inherit;
-  text-align: left;
-  left: 200px;
-  font-size: 1.2em;
-  color: white;
+  text-align: center;
+  left: calc(300px - ((320px - 240px) / 2));
+  font-size: 0.6em;
+  color: #1d1d2a;
   margin-bottom: 20px;
+  width: 320px;
+}
+.reveal .slides section[data-background].speaker-slide h3.icon-rule {
+  background: linear-gradient(to right, #316abe, #48d298);
 }
 .reveal .slides section[data-background].speaker-slide h3:before {
   font-family: "sfeir";
-  content: "\e8c8";
   position: absolute;
   top: 0;
   left: -70px;
@@ -1855,49 +1944,47 @@
   height: 50px;
 }
 .reveal .slides section[data-background].speaker-slide h3.icon-first {
-  top: calc(200px + 300px);
+  top: calc(240px + 350px + 20px + (3* 1.5em) );
 }
 .reveal .slides section[data-background].speaker-slide h3.icon-second {
-  top: calc(200px + 400px);
+  top: calc(350px + 400px);
+  top: calc(240px + 350px + 20px + (4* 1.5em) );
 }
 .reveal .slides section[data-background].speaker-slide h3.icon-third {
-  top: calc(200px + 500px);
+  top: calc(350px + 500px);
+  top: calc(240px + 350px + 20px + (5* 1.5em) );
 }
-.reveal .slides section[data-background].speaker-slide h3.icon-twitter:before {
-  content: "\ec98";
-}
-.reveal .slides section[data-background].speaker-slide h3.icon-mail:before {
-  content: "\e8c8";
-}
-.reveal .slides section[data-background].speaker-slide h3[class^=icon] > a {
-  color: white;
-}
-.reveal .slides section[data-background].speaker-slide h3.icon-rule:before {
-  content: "\e81d";
+.reveal .slides section[data-background].speaker-slide img[alt*=speaker]:before, .reveal .slides section[data-background].speaker-slide div.speaker:before {
+  content: "";
+  position: absolute;
+  top: calc(-1 * (320px - 240px) / 2);
+  left: calc(-1 * (320px - 240px) / 2);
+  border-radius: 20px;
+  background-color: white;
+  height: 580px;
+  width: 320px;
+  z-index: -1;
 }
 .reveal .slides section[data-background].speaker-slide img[alt*=speaker], .reveal .slides section[data-background].speaker-slide div.speaker {
   position: absolute;
-  right: 300px;
-  top: 200px;
-  width: 400px;
-  height: 400px;
-  margin-top: 20px;
-  border-radius: 400px;
-  border-style: solid;
-  border-width: 10px;
-  border-color: #dd3355;
+  left: 300px;
+  top: 350px;
+  width: 240px;
+  height: 240px;
+  border-radius: 240px;
   background-size: cover;
+  box-shadow: #ddd 0px 6px 6px 1px;
 }
 .reveal .slides section[data-background].speaker-slide img[alt*=company] {
   position: absolute;
-  top: 850px;
-  left: 350px;
+  top: 250px;
+  right: 350px;
   max-width: 400px;
   max-height: 200px;
 }
 .reveal .slides section[data-background].speaker-slide img[alt*=badge] {
   position: absolute;
-  top: 800px;
+  top: 550px;
   right: 400px;
   max-width: 250px;
   max-height: 250px;
@@ -1912,16 +1999,23 @@
   right: 100px;
 }
 .reveal .slides section[data-background].speaker-slide.blue img[alt*=speaker] {
-  border-color: #575eaa;
+  border-color: #5155f9;
 }
-.reveal .slides section[data-background].speaker-slide.blue h2 span {
-  background: linear-gradient(to right, #00b6e5, #575eaa);
+.reveal .slides section[data-background].speaker-slide.blue h3.icon-role {
+  background: linear-gradient(to right, #449fe6, #5156fa);
 }
 .reveal .slides section[data-background].speaker-slide.green img[alt*=speaker] {
   border-color: #0ab580;
 }
-.reveal .slides section[data-background].speaker-slide.green h2 span {
+.reveal .slides section[data-background].speaker-slide.green h3.icon-role {
   background: linear-gradient(to right, #00bbc5, #0ab580);
+}
+
+/**
+* Hack for institute
+*/
+.reveal .slides[data-mode-slides=institute] section[data-background].speaker-slide.green h3.icon-role {
+  background: linear-gradient(to right, #449fe6, #5156fa);
 }
 
 .reveal .slides section[class*=transition],
@@ -1941,57 +2035,47 @@
   text-transform: initial;
   padding: 30px;
   width: fit-content;
-  background: linear-gradient(to right, #ee0f50, #fa8b88);
-  transform: rotate(-3deg);
-}
-.reveal .slides section[class*=transition].blue h1,
-.reveal .slides section.sfeir-basic-slide[class*=transition].blue h1,
-.reveal .slides section.sfeir-specific-slide[class*=transition].blue h1 {
-  background: linear-gradient(to right, #00b6e5, #575eaa);
-}
-.reveal .slides section[class*=transition].green h1,
-.reveal .slides section.sfeir-basic-slide[class*=transition].green h1,
-.reveal .slides section.sfeir-specific-slide[class*=transition].green h1 {
-  background: linear-gradient(to right, #00bbc5, #0ab580);
-}
-.reveal .slides section[class*=transition].bg-blue h1, .reveal .slides section[class*=transition].bg-green h1, .reveal .slides section[class*=transition].bg-pink h1,
-.reveal .slides section.sfeir-basic-slide[class*=transition].bg-blue h1,
-.reveal .slides section.sfeir-basic-slide[class*=transition].bg-green h1,
-.reveal .slides section.sfeir-basic-slide[class*=transition].bg-pink h1,
-.reveal .slides section.sfeir-specific-slide[class*=transition].bg-blue h1,
-.reveal .slides section.sfeir-specific-slide[class*=transition].bg-green h1,
-.reveal .slides section.sfeir-specific-slide[class*=transition].bg-pink h1 {
-  background: none;
-}
-.reveal .slides section[class*=transition].underline h1,
-.reveal .slides section.sfeir-basic-slide[class*=transition].underline h1,
-.reveal .slides section.sfeir-specific-slide[class*=transition].underline h1 {
   background: initial;
   position: relative;
   transform: initial;
 }
-.reveal .slides section[class*=transition].underline h1:before,
-.reveal .slides section.sfeir-basic-slide[class*=transition].underline h1:before,
-.reveal .slides section.sfeir-specific-slide[class*=transition].underline h1:before {
+.reveal .slides section[class*=transition] h1:before,
+.reveal .slides section.sfeir-basic-slide[class*=transition] h1:before,
+.reveal .slides section.sfeir-specific-slide[class*=transition] h1:before {
   content: "";
   z-index: -1;
   position: absolute;
-  background: #dd3355;
-  width: 100%;
-  height: 50px;
+  background: #0ab580;
+  width: 100px;
+  height: 10px;
   left: 0;
-  bottom: 35px;
-  transform: rotate(1deg);
+  bottom: -20px;
+  transform: rotate(0deg);
 }
-.reveal .slides section[class*=transition].underline.green h1:before,
-.reveal .slides section.sfeir-basic-slide[class*=transition].underline.green h1:before,
-.reveal .slides section.sfeir-specific-slide[class*=transition].underline.green h1:before {
+.reveal .slides section[class*=transition].blue h1:before, .reveal .slides section[class*=transition].transition-bg-blue-1 h1:before, .reveal .slides section[class*=transition].transition-bg-blue-2 h1:before, .reveal .slides section[class*=transition].transition-bg-blue-3 h1:before,
+.reveal .slides section.sfeir-basic-slide[class*=transition].blue h1:before,
+.reveal .slides section.sfeir-basic-slide[class*=transition].transition-bg-blue-1 h1:before,
+.reveal .slides section.sfeir-basic-slide[class*=transition].transition-bg-blue-2 h1:before,
+.reveal .slides section.sfeir-basic-slide[class*=transition].transition-bg-blue-3 h1:before,
+.reveal .slides section.sfeir-specific-slide[class*=transition].blue h1:before,
+.reveal .slides section.sfeir-specific-slide[class*=transition].transition-bg-blue-1 h1:before,
+.reveal .slides section.sfeir-specific-slide[class*=transition].transition-bg-blue-2 h1:before,
+.reveal .slides section.sfeir-specific-slide[class*=transition].transition-bg-blue-3 h1:before {
+  background: #5155f9;
+}
+.reveal .slides section[class*=transition].green h1:before,
+.reveal .slides section.sfeir-basic-slide[class*=transition].green h1:before,
+.reveal .slides section.sfeir-specific-slide[class*=transition].green h1:before {
   background: #0ab580;
 }
-.reveal .slides section[class*=transition].underline.blue h1:before,
-.reveal .slides section.sfeir-basic-slide[class*=transition].underline.blue h1:before,
-.reveal .slides section.sfeir-specific-slide[class*=transition].underline.blue h1:before {
-  background: #575eaa;
+.reveal .slides section[class*=transition].bg-white h1:before, .reveal .slides section[class*=transition].bg-blue h1:before, .reveal .slides section[class*=transition].bg-green h1:before,
+.reveal .slides section.sfeir-basic-slide[class*=transition].bg-white h1:before,
+.reveal .slides section.sfeir-basic-slide[class*=transition].bg-blue h1:before,
+.reveal .slides section.sfeir-basic-slide[class*=transition].bg-green h1:before,
+.reveal .slides section.sfeir-specific-slide[class*=transition].bg-white h1:before,
+.reveal .slides section.sfeir-specific-slide[class*=transition].bg-blue h1:before,
+.reveal .slides section.sfeir-specific-slide[class*=transition].bg-green h1:before {
+  background: none;
 }
 .reveal .slides section[class*=transition].left h1,
 .reveal .slides section.sfeir-basic-slide[class*=transition].left h1,
@@ -2018,7 +2102,7 @@
 .reveal .slides section[class*=transition].bg-white:not(h1),
 .reveal .slides section.sfeir-basic-slide[class*=transition].bg-white:not(h1),
 .reveal .slides section.sfeir-specific-slide[class*=transition].bg-white:not(h1) {
-  color: #434343;
+  color: #1d1d2a;
 }
 
 .reveal .slides section[class*=transition-left] h1,
@@ -2035,7 +2119,7 @@
   margin-right: initial;
 }
 
-.reveal .backgrounds div.slide-background.transition.bg-white:after, .reveal .backgrounds div.slide-background.transition.bg-blue:after, .reveal .backgrounds div.slide-background.transition.bg-green:after, .reveal .backgrounds div.slide-background.transition.bg-pink:after {
+.reveal .backgrounds div.slide-background.transition.bg-white:after, .reveal .backgrounds div.slide-background.transition.bg-blue:after, .reveal .backgrounds div.slide-background.transition.bg-green:after {
   content: "";
   position: absolute;
   width: 100%;
@@ -2050,8 +2134,31 @@
 .reveal .backgrounds div.slide-background.transition.bg-green::after {
   background: rgba(10, 181, 128, 0.6);
 }
-.reveal .backgrounds div.slide-background.transition.bg-pink::after {
-  background: rgba(221, 51, 85, 0.6);
+
+/**
+* Hack for institute mode
+**/
+.reveal .slides[data-mode-slides=institute] section[class*=transition] h1:before,
+.reveal .slides[data-mode-slides=institute] section.sfeir-basic-slide[class*=transition] h1:before,
+.reveal .slides[data-mode-slides=institute] section.sfeir-specific-slide[class*=transition] h1:before {
+  background: #5155f9;
+}
+.reveal .slides[data-mode-slides=institute] section[class*=transition].green h1:before, .reveal .slides[data-mode-slides=institute] section[class*=transition].transition-bg-green-1 h1:before, .reveal .slides[data-mode-slides=institute] section[class*=transition].transition-bg-green-2 h1:before, .reveal .slides[data-mode-slides=institute] section[class*=transition].transition-bg-green-3 h1:before, .reveal .slides[data-mode-slides=institute] section[class*=transition].transition-bg-green-4 h1:before, .reveal .slides[data-mode-slides=institute] section[class*=transition].transition-bg-green-5 h1:before, .reveal .slides[data-mode-slides=institute] section[class*=transition].transition-bg-green-6 h1:before,
+.reveal .slides[data-mode-slides=institute] section.sfeir-basic-slide[class*=transition].green h1:before,
+.reveal .slides[data-mode-slides=institute] section.sfeir-basic-slide[class*=transition].transition-bg-green-1 h1:before,
+.reveal .slides[data-mode-slides=institute] section.sfeir-basic-slide[class*=transition].transition-bg-green-2 h1:before,
+.reveal .slides[data-mode-slides=institute] section.sfeir-basic-slide[class*=transition].transition-bg-green-3 h1:before,
+.reveal .slides[data-mode-slides=institute] section.sfeir-basic-slide[class*=transition].transition-bg-green-4 h1:before,
+.reveal .slides[data-mode-slides=institute] section.sfeir-basic-slide[class*=transition].transition-bg-green-5 h1:before,
+.reveal .slides[data-mode-slides=institute] section.sfeir-basic-slide[class*=transition].transition-bg-green-6 h1:before,
+.reveal .slides[data-mode-slides=institute] section.sfeir-specific-slide[class*=transition].green h1:before,
+.reveal .slides[data-mode-slides=institute] section.sfeir-specific-slide[class*=transition].transition-bg-green-1 h1:before,
+.reveal .slides[data-mode-slides=institute] section.sfeir-specific-slide[class*=transition].transition-bg-green-2 h1:before,
+.reveal .slides[data-mode-slides=institute] section.sfeir-specific-slide[class*=transition].transition-bg-green-3 h1:before,
+.reveal .slides[data-mode-slides=institute] section.sfeir-specific-slide[class*=transition].transition-bg-green-4 h1:before,
+.reveal .slides[data-mode-slides=institute] section.sfeir-specific-slide[class*=transition].transition-bg-green-5 h1:before,
+.reveal .slides[data-mode-slides=institute] section.sfeir-specific-slide[class*=transition].transition-bg-green-6 h1:before {
+  background: #0ab580;
 }
 
 .with-code-dark, .with-code-bg-dark {
@@ -2219,10 +2326,11 @@
 }
 
 .reveal .slides section.sfeir-basic-slide.exercice:not(.sfeir-specific-slide):not(.stack):not([class*=transition]) {
-  width: calc(100% - 200px);
+  width: 75%;
+  left: 25%;
   height: calc(100% - 200px);
-  color: #2a3244;
-  padding-left: 200px;
+  color: #56566a;
+  padding-left: 0;
 }
 .reveal .slides section.sfeir-basic-slide.exercice:not(.sfeir-specific-slide):not(.stack):not([class*=transition]) h1:first-of-type:after {
   background-color: #ffaa54;
@@ -2231,7 +2339,7 @@
 .reveal .slides section.sfeir-basic-slide.exercice:not(.sfeir-specific-slide):not(.stack):not([class*=transition]) h2,
 .reveal .slides section.sfeir-basic-slide.exercice:not(.sfeir-specific-slide):not(.stack):not([class*=transition]) h3 {
   position: relative;
-  color: #434343;
+  color: #1d1d2a;
   font-size: 2em;
 }
 .reveal .slides section.sfeir-basic-slide.exercice:not(.sfeir-specific-slide):not(.stack):not([class*=transition]) h1 {
@@ -2240,7 +2348,6 @@
   width: 100%;
 }
 .reveal .slides section.sfeir-basic-slide.exercice:not(.sfeir-specific-slide):not(.stack):not([class*=transition]) h1:first-of-type:before {
-  content: "\ed57";
   font-family: "sfeir";
   position: absolute;
   left: -200px;
@@ -2251,20 +2358,18 @@
 }
 .reveal .slides section.sfeir-basic-slide.exercice:not(.sfeir-specific-slide):not(.stack):not([class*=transition]) h2:first-of-type {
   position: absolute;
-  transform: rotateZ(272deg);
   padding: 10px;
   font-weight: 800;
-  top: 500px;
-  left: -100px;
+  top: 200px;
+  left: -500px;
   color: white;
   font-size: 2em;
-  background: linear-gradient(to right, #f9cb9c, #fa8b88);
 }
 .reveal .slides section.sfeir-basic-slide.exercice:not(.sfeir-specific-slide):not(.stack):not([class*=transition]) h2:first-of-type:after {
   content: initial;
 }
 .reveal .slides section.sfeir-basic-slide.exercice:not(.sfeir-specific-slide):not(.stack):not([class*=transition]) h3 {
-  color: #ffaa54;
+  color: #0ab580;
   font-size: 1.5em;
   text-align: center;
   bottom: -50px;
@@ -2278,6 +2383,13 @@
   font-size: 1.2em;
 }
 
+/**
+* Hack for institute mode
+*/
+.reveal .slides[data-mode-slides=institute] section.sfeir-basic-slide.exercice:not(.sfeir-specific-slide):not(.stack):not([class*=transition]) h3 {
+  color: #5155f9;
+}
+
 .reveal .slides section.school-presentation .wifi {
   font-weight: 800;
   text-align: left;
@@ -2289,6 +2401,11 @@
 .reveal .slides section.school-presentation .wifi span:not(.key) {
   color: white;
   font-weight: 400;
+}
+
+.reveal .slides section.bg-blur {
+  width: 50%;
+  left: 50%;
 }
 
 .reveal .backgrounds div.slide-background.transition[data-background-hash].no-filter::before {

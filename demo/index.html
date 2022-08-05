@@ -17,85 +17,32 @@
 	<!-- ----------------------------------------------------
         ---------------- REVEAL STYLES  -------------------------
         ------------------------------------------------------ -->
-	<link rel="stylesheet" type="text/css" href="./libs/reveal.js/dist/reveal.css">
+	<link rel="stylesheet" type="text/css" href="./web_modules/reveal.js/dist/reveal.css">
 	<!--<link rel="stylesheet" href="reveal/css/theme/white.css" id="theme">-->
 
 	<!-- For syntax highlighting -->
-	<link rel="stylesheet" type="text/css" href="./libs/highlight.js/styles/tomorrow.css">
+	<link rel="stylesheet" type="text/css" href="./web_modules/highlight.js/styles/tomorrow.css">
 
 	<!--[if lt IE 9]>
 		<script src="reveal/lib/js/html5shiv.js"></script>
 		<![endif]-->
 
+	<script src="./web_modules/feather-icons/dist/feather.min.js"></script>
 	<!-- ----------------------------------------------------
 	    ---------------- PREZ STYLES  ---------------------------
 	    ------------------------------------------------------ -->
 
 	<link rel="stylesheet" type="text/css" href="./dist/css/sfeir-school-theme.css" id="theme">
-	<script src="./libs/feather-icons/dist/feather.min.js"></script>
 </head>
 
 <body>
 
 	<div class="reveal">
-
 		<!-- Any section element inside of this container is displayed as a slide -->
 		<div class="slides" data-type-show="prez">
-			<section data-markdown="./md/00_intro.md" data-separator="##==##" data-separator-vertical="##--##"
-				data-separator-notes="^Notes:"></section>
-			<section data-markdown="./md/01_speaker.md" data-separator="##==##" data-separator-vertical="##--##"
-				data-separator-notes="^Notes:"></section>
-			<section data-markdown="./md/10_chapter1.md" data-separator="##==##" data-separator-vertical="##--##"
-				data-separator-notes="^Notes:"></section>
-			<section data-markdown="./md/11_layouts.md" data-separator="##==##" data-separator-vertical="##--##"
-				data-separator-notes="^Notes:"></section>
-			<section data-markdown="./md/15_vertical.md" data-separator="##==##" data-separator-vertical="##--##"
-				data-separator-notes="^Notes:"></section>
-			<section data-markdown="./md/20_specifics_slides.md" data-separator="##==##"
-				data-separator-vertical="##--##" data-separator-notes="^Notes:"></section>
-			<section data-markdown="./md/30_code_slides.md" data-separator="##==##" data-separator-vertical="##--##"
-				data-separator-notes="^Notes:"></section>
-			<section data-markdown="./md/40_helpers.md" data-separator="##==##" data-separator-vertical="##--##"
-				data-separator-notes="^Notes:"></section>
-			<section data-markdown="./md/50_modes.md" data-separator="##==##" data-separator-vertical="##--##"
-				data-separator-notes="^Notes:"></section>
 		</div>
-
 	</div>
-
-	<script type="module">
-		import Reveal from './libs/reveal.js/dist/reveal.esm.js';
-			import RevealMarkdown from './libs/reveal.js/plugin/markdown/markdown.esm.js';
-			import RevealZoom from './libs/reveal.js/plugin/zoom/zoom.esm.js';
-			import RevealNotes from './libs/reveal.js/plugin/notes/notes.esm.js';
-			import RevealHighLight from './libs/reveal.js/plugin/highlight/highlight.esm.js';
-			import RevealSfeirTheme from './dist/js/sfeir-theme.js';
-
-			// Full list of configuration options available here:
-			// https://github.com/hakimel/reveal.js#configuration
-			Reveal.initialize({
-				controls: true,
-				progress: true,
-				history: true,
-				center: false,
-				width: 1929,
-				height: 1080,
-				pdfMaxPagesPerSlide: 1,
-				markdown: {
-					smartypants: true
-				},
-				plugins: [
-					// Optional libraries used to extend on reveal.js
-					RevealMarkdown, RevealSfeirTheme, RevealZoom, RevealNotes, RevealHighLight,
-				]
-			}).then(() => {
-				Reveal.configure({
-					theme: Reveal.getQueryHash().theme, // available themes are in /css/theme
-					transition: Reveal.getQueryHash().transition || 'none', // default/cube/page/concave/zoom/linear/fade/none
-				})
-			});
-		</script>
-
+	<script type="module" src="./scripts/dont-touch/reveal-config.js"></script>
 
 </body>
 
