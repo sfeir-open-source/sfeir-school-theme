@@ -448,21 +448,21 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin nec risus leo. Ve
 
 ## Use Feathers icons
 
-En utilisant une image markdown
+Using markdown image
 
-![feather](github) icone basique
+![feather](github) basic icon
 
-![feather small](github) petite icone
+![feather small](github) small icon
 
-![feather big](github) grande icone
+![feather big](github) big icon
 
-![feather](github)<!-- .element: style="--icon-size:96px; --icon-color:orange;" --> icone avec une taille custo
+![feather](github)<!-- .element: style="--icon-size:96px; --icon-color:orange;" --> custom icon and custom color
 
-En utilisant du HTML
+Using html
 
-<i data-feather="github" ></i> icone basique
+<i data-feather="github" ></i> basic icon
 
-Liste complète des icônes possible : https://feathericons.com/
+Complete list of icons : https://feathericons.com/
 
 ##--##
 
@@ -472,12 +472,11 @@ Liste complète des icônes possible : https://feathericons.com/
 
 ```markdown
 ## Use Feathers icons
-En utilisant une image markdown
-![feather](github) icone basique
-![feather small](github) petite icone
-![feather big](github) grande icone
-![feather](github)<!-- .element: style="--icon-size:96px; --icon-color:orange;" --> icone avec une taille custo
-En utilisant du HTML
-<i data-feather="github" ></i> icone basique
-
+Using markdown image
+![feather](github) basic icon
+![feather small](github) small icon
+![feather big](github) big icon
+![feather](github)<!-- .element: style="--icon-size:96px; --icon-color:orange;" --> custom icon and custom color
+Using html
+<i data-feather="github" ></i> basic icon
 ```

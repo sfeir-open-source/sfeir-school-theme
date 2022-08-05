@@ -78,22 +78,6 @@
         top: calc(#{$width-img-speaker} + #{$top-position-speaker} + 20px + (5* 1.5em) );
     }
 
-    /*h3.icon-twitter:before{
-        content: '\ec98';
-    }
-
-    h3.icon-mail:before {
-        content: '\e8c8';
-    }
-
-    h3[class^=icon]>a {
-        color: $black;
-    }
-
-    h3.icon-rule:before{
-        content: '\e81d';
-    }*/
-
     img[alt*=speaker]:before, div.speaker:before{
         content:'';
         position: absolute;
@@ -112,11 +96,7 @@
         top: $top-position-speaker;
         width: $width-img-speaker;
         height: $width-img-speaker;
-        //margin-top: 20px;
         border-radius: $width-img-speaker;
-        //border-style: solid;
-        //border-width: 10px;
-        //border-color: $sfeir-green;     
         background-size: cover;
         box-shadow: $light-grey 0px 6px 6px 1px;;
     }
@@ -148,27 +128,6 @@
         right: 100px    
     }
 
-    // Colors variations
-
-    &.blue {
-        img[alt*=speaker]{
-            border-color: $sfeir-blue;        
-        }
-
-        h3.icon-role{
-            background: linear-gradient(to right, $sfeir-blue-stop-1, $sfeir-blue-stop-2);
-        }
-    }
-    
-    &.green{
-        img[alt*=speaker]{
-            border-color: $sfeir-green;        
-        }
-
-        h3.icon-role{
-            background: linear-gradient(to right, $sfeir-green-stop-1, $sfeir-green-stop-2);
-        }
-    }
 
 }
 
