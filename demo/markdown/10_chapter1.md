@@ -269,68 +269,6 @@ More wonderful content
 <!-- .element: class="big-code" -->
 
 
-##==##
-<!-- .slide: class="blue" -->
-
-## A Slide with Table blue
-
-|Version|Codename|API|Distribution|
-|-----|------|-|----------|
-|2.2|Froyo|8|2.4%|
-|2.3.3 - 2.3.7|Gingerbread|10|30.7%|
-|3.2|Honeycomb|13|0.1%|
-|4.0.3 - 4.0.4|Ice Cream Sandwich|15|21.7%|
-
-##--##
-
-<!-- .slide: class="with-code" -->
-
-# Code to produce / Markdown
-
-```markdown
-<!-- .slide: class="blue" -->
-
-|Version|Codename|API|Distribution|
-|-----|------|-|----------|
-|2.2|Froyo|8|2.4%|
-|2.3.3 - 2.3.7|Gingerbread|10|30.7%|
-|3.2|Honeycomb|13|0.1%|
-|4.0.3 - 4.0.4|Ice Cream Sandwich|15|21.7%|
-```
-<!-- .element: class="big-code" -->
-
-
-##==##
-
-<!-- .slide: class="green" -->
-
-## A Slide with Table green
-
-|Version|Codename|API|Distribution|
-|-----|------|-|----------|
-|2.2|Froyo|8|2.4%|
-|2.3.3 - 2.3.7|Gingerbread|10|30.7%|
-|3.2|Honeycomb|13|0.1%|
-|4.0.3 - 4.0.4|Ice Cream Sandwich|15|21.7%|
-
-##--##
-
-<!-- .slide: class="with-code" -->
-
-# Code to produce / Markdown
-
-```markdown
-<!-- .slide: class="green" -->
-
-|Version|Codename|API|Distribution|
-|-----|------|-|----------|
-|2.2|Froyo|8|2.4%|
-|2.3.3 - 2.3.7|Gingerbread|10|30.7%|
-|3.2|Honeycomb|13|0.1%|
-|4.0.3 - 4.0.4|Ice Cream Sandwich|15|21.7%|
-```
-<!-- .element: class="big-code" -->
-
 
 ##==##
 

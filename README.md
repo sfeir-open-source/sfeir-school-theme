@@ -165,6 +165,7 @@ Here are the impacts of the mode :
 * The underline of titles in transitions slides
 * The exercice slide
 * The color of feather icons
+* The header of tables
 
 ## Specifics Slides 
 

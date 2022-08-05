@@ -1,4 +1,4 @@
-import Reveal from '../../libs/reveal.js/dist/reveal.esm.js';
+import Reveal from '../../web_modules/reveal.js/dist/reveal.esm.js';
 class SfeirTheme {
 	constructor(){
 		this.path = "";

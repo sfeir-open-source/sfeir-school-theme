@@ -140,16 +140,17 @@
 	}
 
 	thead{
-		background-color: $sfeir-pink;
+		background-color: $sfeir-green;
 		color:$white;
 	}
 	
-	&.blue thead{
+}
+
+.reveal .slides[data-mode-slides=institute] section:not(.sfeir-specific-slide):not(.stack):not([class*=transition]),
+.reveal .slides[data-mode-slides=institute] section.sfeir-basic-slide:not(.stack):not([class*=transition]),
+.reveal .slides[data-mode-slides=institute] section.sfeir-specific-slide.sfeir-bg-axololt:not(.stack):not([class*=transition]){
+	thead{
 		background-color: $sfeir-blue;
-	}
-	
-	&.green thead{
-		background-color: $sfeir-green;
 	}
 }
 
