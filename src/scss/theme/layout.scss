@@ -221,7 +221,8 @@
 	}
 }
 
-.reveal .backgrounds div.slide-background.two-column[data-background-hash]{
+.reveal .backgrounds div.slide-background.two-column[data-background-hash],
+.reveal .pdf-page div.slide-background.two-column[data-background-hash]{
     width: 50vw;
 
 	&.data-bg-right{

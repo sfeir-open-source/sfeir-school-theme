@@ -1586,18 +1586,14 @@
 .reveal .slides section:not(.sfeir-specific-slide):not(.stack):not([class*=transition]) thead,
 .reveal .slides section.sfeir-basic-slide:not(.stack):not([class*=transition]) thead,
 .reveal .slides section.sfeir-specific-slide.sfeir-bg-axololt:not(.stack):not([class*=transition]) thead {
-  background-color: #dd3355;
+  background-color: #0ab580;
   color: white;
 }
-.reveal .slides section:not(.sfeir-specific-slide):not(.stack):not([class*=transition]).blue thead,
-.reveal .slides section.sfeir-basic-slide:not(.stack):not([class*=transition]).blue thead,
-.reveal .slides section.sfeir-specific-slide.sfeir-bg-axololt:not(.stack):not([class*=transition]).blue thead {
+
+.reveal .slides[data-mode-slides=institute] section:not(.sfeir-specific-slide):not(.stack):not([class*=transition]) thead,
+.reveal .slides[data-mode-slides=institute] section.sfeir-basic-slide:not(.stack):not([class*=transition]) thead,
+.reveal .slides[data-mode-slides=institute] section.sfeir-specific-slide.sfeir-bg-axololt:not(.stack):not([class*=transition]) thead {
   background-color: #5155f9;
-}
-.reveal .slides section:not(.sfeir-specific-slide):not(.stack):not([class*=transition]).green thead,
-.reveal .slides section.sfeir-basic-slide:not(.stack):not([class*=transition]).green thead,
-.reveal .slides section.sfeir-specific-slide.sfeir-bg-axololt:not(.stack):not([class*=transition]).green thead {
-  background-color: #0ab580;
 }
 
 .reveal .slides section.sfeir-basic-slide:not(.stack),
