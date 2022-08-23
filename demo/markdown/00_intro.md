@@ -3,13 +3,13 @@
 
 # SfeirSchool Theme
 
-## Showroom of sfeir school theme
+## Showroom of SFEIR school theme
 
 ##==##
 
 # How to use it ?
 
-Each of those slides will show you what you can do with Sfeir School Theme
+Each of those slides will show you what you can do with SFEIR School Theme
 
 <br>
 
@@ -23,7 +23,7 @@ To easily understand how to reproduce the slide for your needs. This presentatio
 # Vertical Navigation !!
 
 
-Now you see that you could use vertical navigation. Enjoy the possibilities of Sfeir School Theme
+Now you see that you could use vertical navigation. Enjoy the possibilities of SFEIR School Theme
 
 ##==##
 
@@ -35,7 +35,7 @@ Now you see that you could use vertical navigation. Enjoy the possibilities of S
 
 <!-- .slide: class="first-slide" sfeir-level="1" sfeir-techno="pwa" -->
 
-# **Welcome to Sfeir School**
+# **Welcome to SFEIR School**
 ## **PWA 100**
 
 ##--##
@@ -47,7 +47,7 @@ Now you see that you could use vertical navigation. Enjoy the possibilities of S
 ```markdown
 <!-- .slide: class="first-slide" sfeir-level="1" sfeir-techno="pwa" -->
 
-# **Welcome to Sfeir School**
+# **Welcome to SFEIR School**
 ## **PWA 100**
 ```
 <!-- .element: class="big-code" -->
@@ -56,7 +56,7 @@ Now you see that you could use vertical navigation. Enjoy the possibilities of S
 
 <!-- .slide: class="first-slide" sfeir-level="2" sfeir-techno="pwa" -->
 
-# **Welcome to Sfeir School**
+# **Welcome to SFEIR School**
 ## **PWA 200**
 
 
@@ -69,7 +69,7 @@ Now you see that you could use vertical navigation. Enjoy the possibilities of S
 ```markdown
 <!-- .slide: class="first-slide" sfeir-level="2" sfeir-techno="pwa" -->
 
-# **Welcome to Sfeir School**
+# **Welcome to SFEIR School**
 ## **PWA 200**
 ```
 <!-- .element: class="big-code" -->
@@ -78,7 +78,7 @@ Now you see that you could use vertical navigation. Enjoy the possibilities of S
 
 <!-- .slide: class="first-slide" sfeir-level="3" sfeir-techno="pwa" -->
 
-# **Welcome to Sfeir School**
+# **Welcome to SFEIR School**
 ## **PWA 300**
 
 ##--##
@@ -90,7 +90,7 @@ Now you see that you could use vertical navigation. Enjoy the possibilities of S
 ```markdown
 <!-- .slide: class="first-slide" sfeir-level="3" sfeir-techno="pwa" -->
 
-# **Welcome to Sfeir School**
+# **Welcome to SFEIR School**
 ## **PWA 300**
 ```
 <!-- .element: class="big-code" -->

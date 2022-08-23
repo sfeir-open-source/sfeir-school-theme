@@ -212,7 +212,7 @@
 
 <!-- .slide: class="transition-bg-sfeir-1" -->
 
-# Sfeir bg 1
+# SFEIR bg 1
 
 ## dependant on mode (institute / school)
 
@@ -226,7 +226,7 @@
 ```markdown
 <!-- .slide: class="transition-bg-sfeir-1" -->
 
-# Sfeir bg 1
+# SFEIR bg 1
 
 ## dependant on mode (institute / school)
 ```
@@ -236,7 +236,7 @@
 
 <!-- .slide: class="transition-bg-sfeir-2" -->
 
-# Sfeir bg 2
+# SFEIR bg 2
 
 ## dependant on mode (institute / school)
 
@@ -250,7 +250,7 @@
 ```markdown
 <!-- .slide: class="transition-bg-sfeir-2" -->
 
-# Sfeir bg 2
+# SFEIR bg 2
 
 ## dependant on mode (institute / school)
 ```
@@ -260,7 +260,7 @@
 
 <!-- .slide: class="transition-bg-sfeir-3" -->
 
-# Sfeir bg 3
+# SFEIR bg 3
 
 ## dependant on mode (institute / school)
 
@@ -273,7 +273,7 @@
 ```markdown
 <!-- .slide: class="transition-bg-sfeir-3" -->
 
-# Sfeir bg sfeir 3
+# SFEIR bg SFEIR 3
 ```
 <!-- .element: class="big-code" -->
 
@@ -281,7 +281,7 @@
 
 <!-- .slide: class="transition-bg-green-1" -->
 
-# Sfeir bg green 1
+# SFEIR bg green 1
 
 ##--##
 
@@ -292,7 +292,7 @@
 ```markdown
 <!-- .slide: class="transition-bg-green-1" -->
 
-# Sfeir bg green 1
+# SFEIR bg green 1
 ```
 <!-- .element: class="big-code" -->
 
@@ -300,7 +300,7 @@
 
 <!-- .slide: class="transition-bg-green-2" -->
 
-# Sfeir bg green 2
+# SFEIR bg green 2
 
 
 ##--##
@@ -312,7 +312,7 @@
 ```markdown
 <!-- .slide: class="transition-bg-green-2" -->
 
-# Sfeir bg green 2
+# SFEIR bg green 2
 ```
 <!-- .element: class="big-code" -->
 
@@ -320,7 +320,7 @@
 
 <!-- .slide: class="transition-bg-green-3" -->
 
-# Sfeir bg green 3
+# SFEIR bg green 3
 
 
 ##--##
@@ -332,7 +332,7 @@
 ```markdown
 <!-- .slide: class="transition-bg-green-3" -->
 
-# Sfeir bg green 3
+# SFEIR bg green 3
 ```
 <!-- .element: class="big-code" -->
 
@@ -340,7 +340,7 @@
 
 <!-- .slide: class="transition-bg-green-4" -->
 
-# Sfeir bg green 4
+# SFEIR bg green 4
 
 
 ##--##
@@ -352,7 +352,7 @@
 ```markdown
 <!-- .slide: class="transition-bg-green-4" -->
 
-# Sfeir bg green 4
+# SFEIR bg green 4
 ```
 <!-- .element: class="big-code" -->
 
@@ -360,7 +360,7 @@
 
 <!-- .slide: class="transition-bg-green-5" -->
 
-# Sfeir bg green 5
+# SFEIR bg green 5
 
 
 ##--##
@@ -372,7 +372,7 @@
 ```markdown
 <!-- .slide: class="transition-bg-green-5" -->
 
-# Sfeir bg green 5
+# SFEIR bg green 5
 ```
 <!-- .element: class="big-code" -->
 
@@ -380,7 +380,7 @@
 
 <!-- .slide: class="transition-bg-green-6" -->
 
-# Sfeir bg green 6
+# SFEIR bg green 6
 
 
 ##--##
@@ -392,7 +392,7 @@
 ```markdown
 <!-- .slide: class="transition-bg-green-6" -->
 
-# Sfeir bg green 6
+# SFEIR bg green 6
 ```
 <!-- .element: class="big-code" -->
 
@@ -400,7 +400,7 @@
 
 <!-- .slide: class="transition-bg-blue-1" -->
 
-# Sfeir bg blue 1
+# SFEIR bg blue 1
 
 
 ##--##
@@ -412,7 +412,7 @@
 ```markdown
 <!-- .slide: class="transition-bg-blue-1" -->
 
-# Sfeir bg blue 1
+# SFEIR bg blue 1
 ```
 <!-- .element: class="big-code" -->
 
@@ -420,7 +420,7 @@
 
 <!-- .slide: class="transition-bg-blue-2" -->
 
-# Sfeir bg blue 2
+# SFEIR bg blue 2
 
 
 ##--##
@@ -432,7 +432,7 @@
 ```markdown
 <!-- .slide: class="transition-bg-blue-2" -->
 
-# Sfeir bg blue 2
+# SFEIR bg blue 2
 ```
 <!-- .element: class="big-code" -->
 
@@ -440,7 +440,7 @@
 
 <!-- .slide: class="transition-bg-blue-3" -->
 
-# Sfeir bg blue 3
+# SFEIR bg blue 3
 
 
 ##--##
@@ -452,7 +452,7 @@
 ```markdown
 <!-- .slide: class="transition-bg-blue-3" -->
 
-# Sfeir bg blue 3
+# SFEIR bg blue 3
 ```
 <!-- .element: class="big-code" -->
 

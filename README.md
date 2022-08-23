@@ -1,8 +1,8 @@
 [![npm version](https://badge.fury.io/js/sfeir-school-theme.svg)](https://badge.fury.io/js/sfeir-school-theme)
 
-# Sfeir School Theme
+# SFEIR School Theme
 
-This repository is an Open Source theme for RevealJS presentations. It respect the graphical theme of [@Sfeir](https://github.com/sfeir) company.
+This repository is an Open Source theme for RevealJS presentations. It respect the graphical theme of [@SFEIR](https://github.com/sfeir) company.
 
 You can preview it here : https://sfeir-school-theme.netlify.com/
 
@@ -62,7 +62,7 @@ In your reveal index.html add the following lines:
     <!-- For using feather icons  -->
     <script src="$LIBS_PATH/feather-icons/dist/feather.min.js"></script>
     ...
-    <!-- Sfeir Theme includes -->
+    <!-- SFEIR Theme includes -->
     <link rel="stylesheet" href="$SFEIR_THEME_PATH/dist/css/sfeir-school-theme.css" id="theme">
 
     <script type="module" src="$SFEIR_THEME_PATH/dist/js/sfeir-theme.js"></script>
@@ -161,7 +161,7 @@ Here is an example of first slide according to if you set mode to institute or n
 
 Here are the impacts of the mode : 
 * Change the first slide
-* If you use sfeir background (`transition-bg-sfeir-1` to `transition-bg-sfeir-3`), the background use will be green or blue
+* If you use SFEIR background (`transition-bg-sfeir-1` to `transition-bg-sfeir-3`), the background use will be green or blue
 * The underline of titles in transitions slides
 * The exercice slide
 * The color of feather icons
@@ -175,14 +175,14 @@ Here are the impacts of the mode :
 ```md
 <!-- .slide: class="first-slide" sfeir-level="1" sfeir-techno="pwa" -->
 
-# **Welcome to Sfeir School**
+# **Welcome to SFEIR School**
 ## **PWA 100**
 ```
 
 ![](./assets/first-slide.png)
 
 * Attribute: `sfeir-level` could change from 1 to 3
-* Attribute: `sfeir-techno` display the technology of the sfeir school in the badge of sfeir school.
+* Attribute: `sfeir-techno` display the technology of the SFEIR school in the badge of SFEIR school.
 
 ### Speaker Slide
 
@@ -296,7 +296,7 @@ Here is the list of possible backgrounds:
 * `bg-green`
 ![](./assets/sfeir-bg-green.png)
 
-## Transition background sfeir and green and blue
+## Transition background SFEIR and green and blue
 
 Here is the list of possible grey background 
 * bg-sfeir-1 = bg-green-1 or bg-blue-1
@@ -306,7 +306,7 @@ Here is the list of possible grey background
 ```md
 <!-- .slide: class="transition-bg-sfeir-1" -->
 
-# Sfeir bg sfeir 1
+# SFEIR bg SFEIR 1
 ```
 
 * `transition-bg-sfeir-1`
