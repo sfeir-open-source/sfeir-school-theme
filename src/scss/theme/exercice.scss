@@ -6,10 +6,7 @@
       color: $dark-grey;      
       padding-left: 0;
   
-      h1:first-of-type:after{
-        background-color: $sfeir-orange;
-      }
-  
+    
       h1,
       h2,
       h3 {
@@ -24,16 +21,6 @@
         width: 100%;
       }
 
-      h1:first-of-type:before {
-        //content: '\ed57';
-        font-family: 'sfeir';
-        position: absolute;
-        left: -200px;
-        top: 0;
-        font-size: 2em;
-        width: calc(1750px / 10);
-        height: calc(2500px / 10);
-      }
   
       h2:first-of-type {
         position: absolute;
@@ -75,4 +62,17 @@
 */
 .reveal .slides[data-mode-slides=institute] section.sfeir-basic-slide.exercice:not(.sfeir-specific-slide):not(.stack):not([class*=transition]) h3{
   color:$sfeir-blue;
+}
+
+/**
+* Hack for print
+*/
+html.print-pdf {
+  .reveal .slides .pdf-page section {
+    &.sfeir-basic-slide.exercice:not(.sfeir-specific-slide):not(.stack):not([class*=transition]) {
+      width: calc(100% - 25%) !important;
+      left: 25% !important;
+      padding-left: 0 !important;
+    }
+  }
 }

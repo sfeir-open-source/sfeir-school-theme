@@ -1,15 +1,16 @@
 @import "./colors.scss";
 
+$margin-left: 200px;
+$margin-right: 300px;
+$top-position-speaker: 350px; 
+$width-img-speaker: 240px;
+$width-bg-white: 320px;
+$height-bg-white: 580px;
+
 .reveal  .slides section[data-background].speaker-slide{
     height: 800px; // force a big height to avoid strange operations 
     text-transform: inherit;
 
-    $margin-left: 200px;
-    $margin-right: 300px;
-    $top-position-speaker: 350px; 
-    $width-img-speaker: 240px;
-    $width-bg-white: 320px;
-    $height-bg-white: 580px;
 
     h1{
         text-transform: inherit;
@@ -55,15 +56,6 @@
         background: linear-gradient(to right, $sfeir-blue-green-stop-1, $sfeir-blue-green-stop-2);
     }
 
-    h3:before{
-        font-family: 'sfeir';
-        //content: '\e8c8';
-        position: absolute;
-        top: 0;
-        left: -70px;        
-        width: 50px;
-        height: 50px;
-    }
 
     h3.icon-first{
         top: calc(#{$width-img-speaker} + #{$top-position-speaker} + 20px + (3* 1.5em) );
@@ -78,18 +70,18 @@
         top: calc(#{$width-img-speaker} + #{$top-position-speaker} + 20px + (5* 1.5em) );
     }
 
-    img[alt*=speaker]:before, div.speaker:before{
+    p:first-of-type:before{
         content:'';
         position: absolute;
-        top: calc(-1 * ((#{$width-bg-white} - #{$width-img-speaker}) / 2));
-        left: calc(-1 * ((#{$width-bg-white} - #{$width-img-speaker}) / 2));
+        top: calc($top-position-speaker + (-1 * ((#{$width-bg-white} - #{$width-img-speaker}) / 2)));
+        left: calc($margin-right + (-1 * ((#{$width-bg-white} - #{$width-img-speaker}) / 2)));
         border-radius: 20px;
         background-color: $white;
         height: $height-bg-white;
         width: $width-bg-white;
-        z-index: -1;
     }
 
+   
     img[alt*=speaker], div.speaker{
         position: absolute;
         left: $margin-right;
@@ -98,7 +90,7 @@
         height: $width-img-speaker;
         border-radius: $width-img-speaker;
         background-size: cover;
-        box-shadow: $light-grey 0px 6px 6px 1px;;
+        box-shadow: $light-grey 0px 6px 6px 1px;
     }
 
     img[alt*=company]{

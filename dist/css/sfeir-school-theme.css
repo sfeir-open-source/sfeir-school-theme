@@ -1670,19 +1670,24 @@
   opacity: 1;
 }
 
-.reveal .backgrounds div.slide-background.two-column[data-background-hash] {
+.reveal .backgrounds div.slide-background.two-column[data-background-hash],
+.reveal .pdf-page div.slide-background.two-column[data-background-hash] {
   width: 50vw;
 }
-.reveal .backgrounds div.slide-background.two-column[data-background-hash].data-bg-right {
+.reveal .backgrounds div.slide-background.two-column[data-background-hash].data-bg-right,
+.reveal .pdf-page div.slide-background.two-column[data-background-hash].data-bg-right {
   left: 50vw;
 }
-.reveal .backgrounds div.slide-background.two-column[data-background-hash].data-bg-right div.grid-div > div {
+.reveal .backgrounds div.slide-background.two-column[data-background-hash].data-bg-right div.grid-div > div,
+.reveal .pdf-page div.slide-background.two-column[data-background-hash].data-bg-right div.grid-div > div {
   color: white;
 }
-.reveal .backgrounds div.slide-background.two-column[data-background-hash] div.grid-div > div {
+.reveal .backgrounds div.slide-background.two-column[data-background-hash] div.grid-div > div,
+.reveal .pdf-page div.slide-background.two-column[data-background-hash] div.grid-div > div {
   color: white;
 }
-.reveal .backgrounds div.slide-background.two-column[data-background-hash].mask::after {
+.reveal .backgrounds div.slide-background.two-column[data-background-hash].mask::after,
+.reveal .pdf-page div.slide-background.two-column[data-background-hash].mask::after {
   background-color: rgba(61, 67, 73, 0.7);
   content: "";
   position: absolute;
@@ -1770,6 +1775,22 @@
   background: initial;
   border: initial;
   box-shadow: initial;
+}
+
+/**
+* Hack for print
+*/
+html.print-pdf .reveal .slides .pdf-page div.slide-background.quote-slide::before {
+  content: "";
+  position: absolute;
+  background: url("../images/quotes.png");
+  background-size: contain;
+  filter: brightness(0.25);
+  top: 5px;
+  left: 5px;
+  width: 400px;
+  height: 400px;
+  color: #56566a;
 }
 
 /**
@@ -2186,6 +2207,16 @@
   background: #0ab580;
 }
 
+/**
+* Hack for print
+*/
+html.print-pdf .reveal .slides .pdf-page section[class*=transition] h1:before,
+html.print-pdf .reveal .slides .pdf-page section.sfeir-basic-slide[class*=transition] h1:before,
+html.print-pdf .reveal .slides .pdf-page section.sfeir-specific-slide[class*=transition] h1:before,
+html.print-pdf .reveal .slides .pdf-page section.first-slide h1:before {
+  z-index: 1;
+}
+
 .with-code-dark, .with-code-bg-dark {
   /*
 
@@ -2357,9 +2388,6 @@
   color: #56566a;
   padding-left: 0;
 }
-.reveal .slides section.sfeir-basic-slide.exercice:not(.sfeir-specific-slide):not(.stack):not([class*=transition]) h1:first-of-type:after {
-  background-color: #ffaa54;
-}
 .reveal .slides section.sfeir-basic-slide.exercice:not(.sfeir-specific-slide):not(.stack):not([class*=transition]) h1,
 .reveal .slides section.sfeir-basic-slide.exercice:not(.sfeir-specific-slide):not(.stack):not([class*=transition]) h2,
 .reveal .slides section.sfeir-basic-slide.exercice:not(.sfeir-specific-slide):not(.stack):not([class*=transition]) h3 {
@@ -2371,15 +2399,6 @@
   top: 0;
   left: 0;
   width: 100%;
-}
-.reveal .slides section.sfeir-basic-slide.exercice:not(.sfeir-specific-slide):not(.stack):not([class*=transition]) h1:first-of-type:before {
-  font-family: "sfeir";
-  position: absolute;
-  left: -200px;
-  top: 0;
-  font-size: 2em;
-  width: 175px;
-  height: 250px;
 }
 .reveal .slides section.sfeir-basic-slide.exercice:not(.sfeir-specific-slide):not(.stack):not([class*=transition]) h2:first-of-type {
   position: absolute;
@@ -2413,6 +2432,15 @@
 */
 .reveal .slides[data-mode-slides=institute] section.sfeir-basic-slide.exercice:not(.sfeir-specific-slide):not(.stack):not([class*=transition]) h3 {
   color: #5155f9;
+}
+
+/**
+* Hack for print
+*/
+html.print-pdf .reveal .slides .pdf-page section.sfeir-basic-slide.exercice:not(.sfeir-specific-slide):not(.stack):not([class*=transition]) {
+  width: 75% !important;
+  left: 25% !important;
+  padding-left: 0 !important;
 }
 
 .reveal .slides section.school-presentation .wifi {

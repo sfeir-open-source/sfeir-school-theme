@@ -94,6 +94,8 @@
 }
 
 
+
+
 .reveal .slides section:not(.sfeir-specific-slide):not(.stack):not([class*=transition]),
 .reveal .slides section.sfeir-basic-slide:not(.stack):not([class*=transition]),
 .reveal .slides section.sfeir-specific-slide.sfeir-bg-axololt:not(.stack):not([class*=transition]){
@@ -331,3 +333,22 @@
 	border: initial;
 	box-shadow: initial;
 }
+
+
+/**
+* Hack for print
+*/
+html.print-pdf {
+	.reveal .slides .pdf-page div.slide-background.quote-slide::before{
+		content:'';
+		position:absolute;
+		background: url('../images/quotes.png');
+		background-size: contain;
+		filter: brightness(0.25);
+		top: 5px;
+		left: 5px;
+		width: 400px;
+		height: 400px;
+		color:$dark-grey;
+	}
+  }

@@ -77,3 +77,16 @@
     height: 100vw;
 }
 
+
+/**
+* Hack for print
+*/
+html.print-pdf {
+
+    .reveal .slides  .pdf-page section.bg-blur {
+
+        width: 50% !important;
+        left: 50% !important;
+
+    }
+}

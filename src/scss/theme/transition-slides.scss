@@ -143,3 +143,45 @@
     }
 
 }
+
+
+/**
+* Hack for print
+*/
+html.print-pdf {
+
+    .reveal .slides .pdf-page section[class*="transition"],
+    .reveal .slides .pdf-page section.sfeir-basic-slide[class*="transition"],
+    .reveal .slides .pdf-page section.sfeir-specific-slide[class*="transition"], 
+    .reveal .slides .pdf-page section.first-slide{
+
+        h1:before{
+            z-index: 1;
+        }
+    }
+
+    .reveal .slides .pdf-page div.slide-background.transition {
+        &.bg-white,
+        &.bg-blue,
+        &.bg-green{
+            
+            &:after{
+                content: '';
+                position: absolute;
+                width: 100%;
+                height: 100%;
+                left: 0;
+            }
+        }
+       
+        &.bg-white:after{
+            background:  rgba(255, 255, 255, 0.6);
+        }
+        &.bg-blue::after{
+            background:  rgba(87, 94, 170, 0.6);
+        }
+        &.bg-green::after{
+            background:  rgba(10, 181, 128, 0.6);
+        }
+    }
+}
