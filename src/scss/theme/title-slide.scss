@@ -94,7 +94,7 @@
 * Hack for Institute
 */
 .reveal
-  .slides[data-mode-slides="institute"]
+  .slides[data-theme-slides="institute"]
   section[data-background].first-slide {
   &::before {
     background: url("./images/logo-institute-white.png");

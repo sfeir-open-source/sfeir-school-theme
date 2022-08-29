@@ -450,13 +450,13 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin nec risus leo. Ve
 
 Using markdown image
 
-![feather](github) basic icon
+![sfeir-icons](github) basic icon
 
-![feather small](github) small icon
+![sfeir-icons small](github) small icon
 
-![feather big](github) big icon
+![sfeir-icons big](github) big icon
 
-![feather](github)<!-- .element: style="--icon-size:96px; --icon-color:orange;" --> custom icon and custom color
+![sfeir-icons](github)<!-- .element: style="--icon-size:96px; --icon-color:orange;" --> custom icon and custom color
 
 Using html
 
@@ -473,10 +473,10 @@ Complete list of icons : https://feathericons.com/
 ```markdown
 ## Use Feathers icons
 Using markdown image
-![feather](github) basic icon
-![feather small](github) small icon
-![feather big](github) big icon
-![feather](github)<!-- .element: style="--icon-size:96px; --icon-color:orange;" --> custom icon and custom color
+![sfeir-icons](github) basic icon
+![sfeir-icons small](github) small icon
+![sfeir-icons big](github) big icon
+![sfeir-icons](github)<!-- .element: style="--icon-size:96px; --icon-color:orange;" --> custom icon and custom color
 Using html
 <i data-feather="github" ></i> basic icon
 ```

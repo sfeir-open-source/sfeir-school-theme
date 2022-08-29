@@ -580,7 +580,7 @@ Additionnal Advice
 
 <br>
 
-![feather](pause-circle)<!-- .element: style="--icon-size:300px; --icon-color:var(--light-grey);" -->
+![sfeir-icons](pause-circle)<!-- .element: style="--icon-size:300px; --icon-color:var(--light-grey);" -->
 
 <br>
 
@@ -588,7 +588,7 @@ On se retrouve à
 <!-- .element: class="center" -->
 <br>
 
-![feather big](clock)<!-- .element: style="--icon-color:var(--light-grey);" --> 10h
+![sfeir-icons big](clock)<!-- .element: style="--icon-color:var(--light-grey);" --> 10h
 
 ##--##
 
@@ -599,10 +599,10 @@ On se retrouve à
 <br>
 ### C'est l'heure de la pause
 <br>
-![feather](pause-circle)<!-- .element: style="--icon-size:300px; --icon-color:var(--light-grey);" -->
+![sfeir-icons](pause-circle)<!-- .element: style="--icon-size:300px; --icon-color:var(--light-grey);" -->
 <br>
 On se retrouve à
 <!-- .element: class="center" -->
 <br>
-![feather big](clock)<!-- .element: style="--icon-color:var(--light-grey);" --> 10h
+![sfeir-icons big](clock)<!-- .element: style="--icon-color:var(--light-grey);" --> 10h
 ```

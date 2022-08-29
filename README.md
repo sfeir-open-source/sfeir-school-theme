@@ -139,7 +139,7 @@ In the html, where you could configure the restitution mode (see below for more 
 ```html
 <body>
 	<div class="reveal">
-		<div class="slides" data-mode-slides="institute">
+		<div class="slides" data-theme-slides="institute">
         ...
         </div>
     </div>
@@ -391,7 +391,7 @@ There is a way to show content in a blur area for introducing pause in your trai
 
 <br>
 
-![feather](pause-circle)<!-- .element: style="--icon-size:300px; --icon-color:var(--light-grey);" -->
+![sfeir-icons](pause-circle)<!-- .element: style="--icon-size:300px; --icon-color:var(--light-grey);" -->
 
 <br>
 
@@ -399,7 +399,7 @@ On se retrouve à
 <!-- .element: class="center" -->
 <br>
 
-![feather big](clock)<!-- .element: style="--icon-color:var(--light-grey);" --> 10h
+![sfeir-icons big](clock)<!-- .element: style="--icon-color:var(--light-grey);" --> 10h
 ```
 
 ![](./docs/images/blur-slide.png)

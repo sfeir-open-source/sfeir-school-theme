@@ -1,5 +1,5 @@
 
-<!-- .slide: class="transition left transition-bg-green-1" -->
+<!-- .slide: class="transition left sfeir-bg-1" -->
 
 # SfeirSchool Theme
 

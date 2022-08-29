@@ -70,7 +70,7 @@ export class SfeirTheme {
     const modeContent =
       document
         .querySelector(".reveal .slides")
-        .getAttribute("data-mode-slides") ?? "school";
+        .getAttribute("data-theme-slides") ?? "school";
 
     const map = {
       "first-slide": `${this.path}${imagesPath}/${
@@ -161,7 +161,7 @@ export class SfeirTheme {
     const modeContent =
       document
         .querySelector(".reveal .slides")
-        .getAttribute("data-mode-slides") ?? "school";
+        .getAttribute("data-theme-slides") ?? "school";
     const exercicesSlides = [
       ...document.querySelectorAll(".reveal .slides section.exercice"),
     ];
@@ -322,7 +322,7 @@ export class SfeirTheme {
 
   _manageFeatherIcons() {
     const imgOfFeatherIcons = [
-      ...document.querySelectorAll(".reveal .slides section img[alt*=feather]"),
+      ...document.querySelectorAll(".reveal .slides section img[alt*=sfeir-icons]"),
     ];
     const sectionsWhereReplace = [];
     const imgListToReplace = [];

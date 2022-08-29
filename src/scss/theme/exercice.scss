@@ -60,7 +60,7 @@
 /**
 * Hack for institute mode
 */
-.reveal .slides[data-mode-slides=institute] section.sfeir-basic-slide.exercice:not(.sfeir-specific-slide):not(.stack):not([class*=transition]) h3{
+.reveal .slides[data-theme-slides=institute] section.sfeir-basic-slide.exercice:not(.sfeir-specific-slide):not(.stack):not([class*=transition]) h3{
   color:$sfeir-blue;
 }
 

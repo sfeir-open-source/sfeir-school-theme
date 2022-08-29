@@ -11713,7 +11713,7 @@ class bY {
   }
   _manageBackgrounds() {
     var a;
-    const t = (a = document.querySelector(".reveal .slides").getAttribute("data-mode-slides")) != null ? a : "school", n = {
+    const t = (a = document.querySelector(".reveal .slides").getAttribute("data-theme-slides")) != null ? a : "school", n = {
       "first-slide": `${this.path}${oe}/${t === "school" ? "bg-green-1.png" : "bg-blue-1.png"}`,
       transition: `${this.path}${oe}/${t === "school" ? "bg-green-1.png" : "bg-blue-1.png"}`,
       "speaker-slide": "var(--black)",
@@ -11769,7 +11769,7 @@ class bY {
   }
   _manageExerciceSlide() {
     var r;
-    const t = (r = document.querySelector(".reveal .slides").getAttribute("data-mode-slides")) != null ? r : "school", n = [
+    const t = (r = document.querySelector(".reveal .slides").getAttribute("data-theme-slides")) != null ? r : "school", n = [
       ...document.querySelectorAll(".reveal .slides section.exercice")
     ];
     for (let a of n) {
@@ -11869,7 +11869,7 @@ class bY {
   }
   _manageFeatherIcons() {
     const t = [
-      ...document.querySelectorAll(".reveal .slides section img[alt*=feather]")
+      ...document.querySelectorAll(".reveal .slides section img[alt*=sfeir-icons]")
     ], n = [], r = [];
     for (let i of t) {
       let s = i.closest(".reveal .slides section");

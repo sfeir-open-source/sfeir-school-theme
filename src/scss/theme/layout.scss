@@ -157,13 +157,13 @@
 }
 
 .reveal
-  .slides[data-mode-slides="institute"]
+  .slides[data-theme-slides="institute"]
   section:not(.sfeir-specific-slide):not(.stack):not([class*="transition"]),
 .reveal
-  .slides[data-mode-slides="institute"]
+  .slides[data-theme-slides="institute"]
   section.sfeir-basic-slide:not(.stack):not([class*="transition"]),
 .reveal
-  .slides[data-mode-slides="institute"]
+  .slides[data-theme-slides="institute"]
   section.sfeir-specific-slide.sfeir-bg-axololt:not(.stack):not([class*="transition"]) {
   thead {
     background-color: $sfeir-blue;

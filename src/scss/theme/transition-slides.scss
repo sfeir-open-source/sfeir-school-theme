@@ -121,10 +121,10 @@
 /**
 * Hack for institute mode
 **/
-.reveal .slides[data-mode-slides=institute] section[class*="transition"],
-.reveal .slides[data-mode-slides=institute] section.sfeir-basic-slide[class*="transition"],
-.reveal .slides[data-mode-slides=institute] section.sfeir-specific-slide[class*="transition"],
-.reveal .slides[data-mode-slides=institute] section.first-slide{
+.reveal .slides[data-theme-slides=institute] section[class*="transition"],
+.reveal .slides[data-theme-slides=institute] section.sfeir-basic-slide[class*="transition"],
+.reveal .slides[data-theme-slides=institute] section.sfeir-specific-slide[class*="transition"],
+.reveal .slides[data-theme-slides=institute] section.first-slide{
 
     h1:before{
         background: $sfeir-blue; 
