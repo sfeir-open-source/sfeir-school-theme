@@ -152,11 +152,11 @@ Here is an example of first slide according to if you set mode to institute or n
 
 ### Institute mode : 
 
-![](./assets/first-slide-institute.png)
+![](./docs/images/first-slide-institute.png)
 
 ### Normal mode (or school mode):
 
-![](./assets/first-slide.png)
+![](./docs/images/first-slide.png)
 
 Here are the impacts of the mode : 
 * Change the first slide
@@ -178,7 +178,7 @@ Here are the impacts of the mode :
 ## **PWA 100**
 ```
 
-![](./assets/first-slide.png)
+![](./docs/images/first-slide.png)
 
 * Attribute: `sfeir-level` could change from 1 to 3
 * Attribute: `sfeir-techno` display the technology of the SFEIR school in the badge of SFEIR school.
@@ -190,11 +190,11 @@ Here are the impacts of the mode :
 
 # Hello ! @SFEIR
 
-![speaker](./assets/images/jf.jpg)
-![company](./assets/images/logo_sfeir_bleu_orange.png)
-![badge first-badge](./assets/images/gde.png)
-![badge second-badge](./assets/images/GDG-Logo-carre.png)
-![badge third-badge](./assets/images/mts.png)
+![speaker](./docs/images/images/jf.jpg)
+![company](./docs/images/images/logo_sfeir_bleu_orange.png)
+![badge first-badge](./docs/images/images/gde.png)
+![badge second-badge](./docs/images/images/GDG-Logo-carre.png)
+![badge third-badge](./docs/images/images/mts.png)
 
 <h2> Jean-François<span> Garreau</span></h2>
 
@@ -209,7 +209,7 @@ Here are the impacts of the mode :
 <!-- .element: class="icon-mail icon-third" -->
 ```
 
-![](./assets/speaker-slide.png)
+![](./docs/images/speaker-slide.png)
 
 
 You can also change the order of sub information (here CTO Front & @jefbinomed). You can set up to 4 sub informations : `icon-first` | `icon-second` | `icon-third`.
@@ -224,7 +224,7 @@ You can also change the number of badge (one -> three) `first-badge` | `second-b
 # Management of custom slides
 ```
 
-![](./assets/transition-slide.png)
+![](./docs/images/transition-slide.png)
 
 You can use those class for transitions slides : 
 * `blue`: the text underline of transition will be set to blue
@@ -246,11 +246,11 @@ You can use those class for transitions slides :
 # Transition blue
 ```
 
-![](./assets/transition-blue.png)
+![](./docs/images/transition-blue.png)
 
 or in `green`
 
-![](./assets/transition-green.png)
+![](./docs/images/transition-green.png)
 
 
 ## Transition with text left aligned
@@ -261,19 +261,19 @@ or in `green`
 # Transition left
 ```
 
-![](./assets/transition-left.png)
+![](./docs/images/transition-left.png)
 
 * `transition right` for right text aligned
 
-![](./assets/transition-right.png)
+![](./docs/images/transition-right.png)
 
 * `transition top` for top text aligned
 
-![](./assets/transition-top.png)
+![](./docs/images/transition-top.png)
 
 * `transition bottom` for bottom text aligned
 
-![](./assets/transition-bottom.png)
+![](./docs/images/transition-bottom.png)
 
 
 ## Specifics Colors Backgrounds
@@ -287,13 +287,13 @@ Here is the list of possible backgrounds:
 ```
 
 * `bg-white`
-![](./assets/sfeir-bg-white.png)
+![](./docs/images/sfeir-bg-white.png)
 
 * `bg-blue`
-![](./assets/sfeir-bg-blue.png)
+![](./docs/images/sfeir-bg-blue.png)
 
 * `bg-green`
-![](./assets/sfeir-bg-green.png)
+![](./docs/images/sfeir-bg-green.png)
 
 ## Transition background SFEIR and green and blue
 
@@ -309,45 +309,45 @@ Here is the list of possible grey background
 ```
 
 * `transition-bg-sfeir-1`
-![](./assets/sfeir-bg-sfeir-1.png)
+![](./docs/images/sfeir-bg-sfeir-1.png)
 
 * `transition-bg-green-1`
-![](./assets/sfeir-bg-green-1.png)
+![](./docs/images/sfeir-bg-green-1.png)
 
 * `transition-bg-green-2`
-![](./assets/sfeir-bg-green-2.png)
+![](./docs/images/sfeir-bg-green-2.png)
 
 * `transition-bg-green-3`
-![](./assets/sfeir-bg-green-3.png)
+![](./docs/images/sfeir-bg-green-3.png)
 
 * `transition-bg-green-4`
-![](./assets/sfeir-bg-green-4.png)
+![](./docs/images/sfeir-bg-green-4.png)
 
 * `transition-bg-green-5`
-![](./assets/sfeir-bg-green-5.png)
+![](./docs/images/sfeir-bg-green-5.png)
 
 * `transition-bg-green-6`
-![](./assets/sfeir-bg-green-6.png)
+![](./docs/images/sfeir-bg-green-6.png)
 
 * `transition-bg-blue-1`
-![](./assets/sfeir-bg-blue-1.png)
+![](./docs/images/sfeir-bg-blue-1.png)
 
 * `transition-bg-blue-2`
-![](./assets/sfeir-bg-blue-2.png)
+![](./docs/images/sfeir-bg-blue-2.png)
 
 * `transition-bg-blue-3`
-![](./assets/sfeir-bg-blue-3.png)
+![](./docs/images/sfeir-bg-blue-3.png)
 
 
 ## Transition with custom Image
 
 ```md
-<!-- .slide: data-background="./assets/images/dark_background.jpeg" class="transition" -->
+<!-- .slide: data-background="./docs/images/images/dark_background.jpeg" class="transition" -->
 
 # A Custom Transition Slide
 ```
 
-![](./assets/transition-bg-image.png)
+![](./docs/images/transition-bg-image.png)
 
 ## Transition with background color
 
@@ -357,7 +357,7 @@ Here is the list of possible grey background
 # Transition with bg color
 ```
 
-![](./assets/transition-bg-color.png)
+![](./docs/images/transition-bg-color.png)
 
 ### Quotes slides
 
@@ -375,7 +375,7 @@ You could have dedicate quote slide to display a citation
 </blockquote>
 ```
 
-![](./assets/quote-slide.png)
+![](./docs/images/quote-slide.png)
 
 
 ### Blur area slides
@@ -402,7 +402,7 @@ On se retrouve à
 ![feather big](clock)<!-- .element: style="--icon-color:var(--light-grey);" --> 10h
 ```
 
-![](./assets/blur-slide.png)
+![](./docs/images/blur-slide.png)
 
 ## Different Layout
 
@@ -422,7 +422,7 @@ content left
 content right
 ```
 
-![](./assets/two-col-layout.png)
+![](./docs/images/two-col-layout.png)
 
 ### Two column layout (basic)
 
@@ -439,12 +439,12 @@ A paragraph with some text and a [link](http://hakim.se).
 * Item 3
 ```
 
-![](./assets/two-col-basic.png)
+![](./docs/images/two-col-basic.png)
 
 ### Two column layout (with background left)
 
 ```md
-<!-- .slide: class="two-column" data-background="./assets/images/dark_background.jpeg" -->
+<!-- .slide: class="two-column" data-background="./docs/images/images/dark_background.jpeg" -->
 
 ##--##
 ## Slide 2
@@ -452,7 +452,7 @@ A paragraph with some text and a [link](http://hakim.se).
 
 If text is set on over the background, the default color is white
 
-![](./assets/two-col-bg-left.png)
+![](./docs/images/two-col-bg-left.png)
 
 ### Two column layout (with background right and override color to dark)
 
@@ -467,7 +467,7 @@ If text is set on over the background, the default color is white
 * Item 3
 ```
 
-![](./assets/two-col-bg-right.png)
+![](./docs/images/two-col-bg-right.png)
 
 ### Two column layout (with background with a mask)
 
@@ -475,7 +475,7 @@ If text is set on over the background, the default color is white
 <!-- .slide: class="two-column" -->
 
 ##--##
-<!-- .slide: class="mask" data-background="./assets/images/light-background.webp" -->
+<!-- .slide: class="mask" data-background="./docs/images/images/light-background.webp" -->
 ## Slide 2
 
 * Item 2
@@ -484,7 +484,7 @@ If text is set on over the background, the default color is white
 
 Usefull when the background image has to much light
 
-![](./assets/two-col-bg-mask.png)
+![](./docs/images/two-col-bg-mask.png)
 
 ## Slides with code
 
@@ -513,25 +513,25 @@ You should use triple **\`** sufix by the langage. Code slides in Reveal are bas
 ` ` `
 ```
 
-![](./assets/slide-with-code.png)
+![](./docs/images/slide-with-code.png)
 
 
 You can also use class to customise the slide: 
 
 * `with-code-dark`: to use a dark theme (default is light theme)
-![](./assets/slide-with-code-dark.png)
+![](./docs/images/slide-with-code-dark.png)
 
 * `with-code-bg-dark`: to use a dark theme for code bloc (default is light theme)
-![](./assets/slide-with-code-bg-dark.png)
+![](./docs/images/slide-with-code-bg-dark.png)
 
 * `consolas`: will use consolas font
-![](./assets/slide-with-code-consolas.png)
+![](./docs/images/slide-with-code-consolas.png)
 
 * `inconsolata`: will use inconsolata font
-![](./assets/slide-with-code-inconsolata.png)
+![](./docs/images/slide-with-code-inconsolata.png)
 
 * `big-code`: will use a big size of font
-![](./assets/slide-with-code-big.png)
+![](./docs/images/slide-with-code-big.png)
 
 there is a minor varient of `big-code`, add the class `alone` if there is only one code at screen to position it in the center of screen. Else it will be relative to it's parent
 
@@ -559,7 +559,7 @@ there is a minor varient of `big-code`, add the class `alone` if there is only o
 </LinearLayout>
 ` ` `
 ```
-![](./assets/slide-with-code-highlight.png)
+![](./docs/images/slide-with-code-highlight.png)
 
 You could also use a step by step code highlighting 
 
@@ -617,7 +617,7 @@ Additionnal Advice
 ### Step: push-1
 ```
 
-![](./assets/exercice-slide.png)
+![](./docs/images/exercice-slide.png)
 
 ## Helpers
 
@@ -630,13 +630,13 @@ You could center and image with 3 different ways
 ```markdown
 
 <!--  First way -->
-![center](./assets/images/GDG-Logo-carre.png)
+![center](./docs/images/images/GDG-Logo-carre.png)
 
 <!--  Second way -->
-<img class="center" src="./assets/images/GDG-Logo-carre.png">
+<img class="center" src="./docs/images/images/GDG-Logo-carre.png">
 ```
 
-![](./assets/helper-img-center-hori.png)
+![](./docs/images/helper-img-center-hori.png)
 
 ### Center image horizontally en vertically
 
@@ -646,7 +646,7 @@ You could center an element in the slide with 2 different ways
 
 <!-- First way -->
 <div class="full-center">
-    <img src="./assets/images/GDG-Logo-carre.png">
+    <img src="./docs/images/images/GDG-Logo-carre.png">
 </div>
 
 
@@ -654,10 +654,10 @@ You could center an element in the slide with 2 different ways
 <!-- .slide: class="full-center" -->
 
 
-![](./assets/images/GDG-Logo-carre.png)
+![](./docs/images/images/GDG-Logo-carre.png)
 ```
 
-![](./assets/helper-img-center.png)
+![](./docs/images/helper-img-center.png)
 
 ### Use Flex to display elements with auto wrap
 
@@ -670,32 +670,32 @@ You could center an element in the slide with 2 different ways
 
 ## First way
 
-![h-200](./assets/images/GDG-Logo-carre.png)
-![h-250](./assets/images/GDG-Logo-carre.png)
-![h-300](./assets/images/GDG-Logo-carre.png)
-![h-200](./assets/images/GDG-Logo-carre.png)
-![h-350](./assets/images/GDG-Logo-carre.png)
-![h-300](./assets/images/GDG-Logo-carre.png)
-![h-350](./assets/images/GDG-Logo-carre.png)
-![h-200](./assets/images/GDG-Logo-carre.png)
-![h-100](./assets/images/GDG-Logo-carre.png)
+![h-200](./docs/images/images/GDG-Logo-carre.png)
+![h-250](./docs/images/images/GDG-Logo-carre.png)
+![h-300](./docs/images/images/GDG-Logo-carre.png)
+![h-200](./docs/images/images/GDG-Logo-carre.png)
+![h-350](./docs/images/images/GDG-Logo-carre.png)
+![h-300](./docs/images/images/GDG-Logo-carre.png)
+![h-350](./docs/images/images/GDG-Logo-carre.png)
+![h-200](./docs/images/images/GDG-Logo-carre.png)
+![h-100](./docs/images/images/GDG-Logo-carre.png)
 
 <!-- Second way : WARNING don't format your code!!
 Else revealJS will add some '<p>' tags and destroy the layout -->
 <div class="flex-row">
-<img class="h-200" src="./assets/images/GDG-Logo-carre.png">
-<img class="h-250" src="./assets/images/GDG-Logo-carre.png">
-<img class="h-300" src="./assets/images/GDG-Logo-carre.png">
-<img class="h-200" src="./assets/images/GDG-Logo-carre.png">
-<img class="h-350" src="./assets/images/GDG-Logo-carre.png">
-<img class="h-300" src="./assets/images/GDG-Logo-carre.png">
-<img class="h-350" src="./assets/images/GDG-Logo-carre.png">
-<img class="h-200" src="./assets/images/GDG-Logo-carre.png">
-<img class="h-100" src="./assets/images/GDG-Logo-carre.png">
+<img class="h-200" src="./docs/images/images/GDG-Logo-carre.png">
+<img class="h-250" src="./docs/images/images/GDG-Logo-carre.png">
+<img class="h-300" src="./docs/images/images/GDG-Logo-carre.png">
+<img class="h-200" src="./docs/images/images/GDG-Logo-carre.png">
+<img class="h-350" src="./docs/images/images/GDG-Logo-carre.png">
+<img class="h-300" src="./docs/images/images/GDG-Logo-carre.png">
+<img class="h-350" src="./docs/images/images/GDG-Logo-carre.png">
+<img class="h-200" src="./docs/images/images/GDG-Logo-carre.png">
+<img class="h-100" src="./docs/images/images/GDG-Logo-carre.png">
 </div>
 
 ````
-![](./assets/helper-flex.png)
+![](./docs/images/helper-flex.png)
 
 ### Play with images sizes
 
@@ -711,27 +711,27 @@ you can use thoses helpers in `alt` or `class` of your elements
 ```markdown
 Image (w-500) : 
 
-![w-500](./assets/images/350x90.png)
+![w-500](./docs/images/images/350x90.png)
 
 
 Div background: 
 
 <div style="background:red;" class="w-500 h-200"> w-500 h-200</div>
 ```
-![](./assets/helper-size.png)
+![](./docs/images/helper-size.png)
 
 
 ```markdown
 Image : 
 
-![wm-500](./assets/images/350x90.png)
+![wm-500](./docs/images/images/350x90.png)
 
 
 Div background: 
 
 <div style="background:red; width:600px;" class="wm-500 h-200"> (height:600px) wm-500 h-200</div>
 ```
-![](./assets/helper-size-max.png)
+![](./docs/images/helper-size-max.png)
 
 ### Play with images margin-top or bottom
 
@@ -742,30 +742,30 @@ Some selectors are add to the theme to easily fix margin-top/bottom of images in
 you can use thoses helpers in `alt` or `class` of your elements
 
 ```markdown
-![h-200 mt-430](./assets/images/GDG-Logo-carre.png)
-![h-200 mt-150](./assets/images/GDG-Logo-carre.png)
-![h-200 mt-50](./assets/images/GDG-Logo-carre.png)
-![h-200 mt-10](./assets/images/GDG-Logo-carre.png)
-![h-200](./assets/images/GDG-Logo-carre.png)
-![h-200 mb-10](./assets/images/GDG-Logo-carre.png)
-![h-200 mb-50](./assets/images/GDG-Logo-carre.png)
-![h-200 mb-160](./assets/images/GDG-Logo-carre.png)
-![h-200 mb-430](./assets/images/GDG-Logo-carre.png)
+![h-200 mt-430](./docs/images/images/GDG-Logo-carre.png)
+![h-200 mt-150](./docs/images/images/GDG-Logo-carre.png)
+![h-200 mt-50](./docs/images/images/GDG-Logo-carre.png)
+![h-200 mt-10](./docs/images/images/GDG-Logo-carre.png)
+![h-200](./docs/images/images/GDG-Logo-carre.png)
+![h-200 mb-10](./docs/images/images/GDG-Logo-carre.png)
+![h-200 mb-50](./docs/images/images/GDG-Logo-carre.png)
+![h-200 mb-160](./docs/images/images/GDG-Logo-carre.png)
+![h-200 mb-430](./docs/images/images/GDG-Logo-carre.png)
 ```
-![](./assets/helper-margin.png)
+![](./docs/images/helper-margin.png)
 
 
 ```markdown
 Image : 
 
-![wm-500](./assets/images/350x90.png)
+![wm-500](./docs/images/images/350x90.png)
 
 
 Div background: 
 
 <div style="background:red; width:600px;" class="wm-500 h-200"> (height:600px) wm-500 h-200</div>
 ```
-![](./assets/helper-size-max.png)
+![](./docs/images/helper-size-max.png)
 
 
 ### Full With Image
@@ -775,12 +775,12 @@ To have image that take all the horizontal space, you could use 3 ways:
 ```markdown
 
 <!-- First way -->
-![full-width](./assets/images/logo_sfeir_bleu_orange.png)
+![full-width](./docs/images/images/logo_sfeir_bleu_orange.png)
 
 <!-- Second way -->
-<img class="full-width" src="./assets/images/logo_sfeir_bleu_orange.png">
+<img class="full-width" src="./docs/images/images/logo_sfeir_bleu_orange.png">
 ```
-![](./assets/helper-full-width.png)
+![](./docs/images/helper-full-width.png)
 
 ### Full Height Image
 
@@ -788,10 +788,10 @@ You can ask to an image to take the whole height of it's parent
 
 ```markdown
 <div style="height:600px; width:100%; background:red;">
-    <img class="full-height" src="./assets/images/logo_sfeir_bleu_orange.png">
+    <img class="full-height" src="./docs/images/images/logo_sfeir_bleu_orange.png">
 </div>
 ```
-![](./assets/helper-full-height.png)
+![](./docs/images/helper-full-height.png)
 
 ### Float Left or Right
 
@@ -799,17 +799,17 @@ You can use float-right or float-left display
 
 ```markdown
 <!-- First way -->
-![float-left](./assets/images/gde.png)
+![float-left](./docs/images/images/gde.png)
 
 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin nec risus leo. Vestibulum condimentum orci in urna auctor aliquet. Quisque mi erat, placerat non porttitor ut, gravida eu erat. Fusce semper ipsum vel nibh porttitor aliquam. Cras sed porttitor est, id scelerisque odio. Pellentesque sit amet imperdiet ex. Aliquam erat.
 
 <!-- Second way -->
-<img class="float-left" src="./assets/images/gde.png">
+<img class="float-left" src="./docs/images/images/gde.png">
 
 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin nec risus leo. Vestibulum condimentum orci in urna auctor aliquet. Quisque mi erat, placerat non porttitor ut, gravida eu erat. Fusce semper ipsum vel nibh porttitor aliquam. Cras sed porttitor est, id scelerisque odio. Pellentesque sit amet imperdiet ex. Aliquam erat.
 
 ```
-![](./assets/helper-float-left.png)
+![](./docs/images/helper-float-left.png)
 
 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin nec risus leo. Vestibulum condimentum orci in urna auctor aliquet. Quisque mi erat, placerat non porttitor ut, gravida eu erat. Fusce semper ipsum vel nibh porttitor aliquam. Cras sed porttitor est, id scelerisque odio. Pellentesque sit amet imperdiet ex. Aliquam erat.
 
@@ -821,7 +821,7 @@ You can add a kind of "footer" credit note to the page by adding the class 'cred
 [Source of the image](http://www.sfeir.com)
 <!-- .element: class="credits" -->
 ```
-![](./assets/helper-credits.png)
+![](./docs/images/helper-credits.png)
 
 
 ### Create content for the restitution only
@@ -939,7 +939,7 @@ Using html
 Complete list of icons : https://feathericons.com/
 ```
 
-![](./assets/feather-icons.png)
+![](./docs/images/feather-icons.png)
 
 ## Print the slides
 
