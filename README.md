@@ -44,64 +44,63 @@ Clone the repository in your project (`$SFEIR_THEME_PATH`)
 
 ## Link
 
-According that `$SFEIR_THEME_PATH` is the base path of the theme.
+You should have a folder `web_modules/sfeir-theme`. In this folder you should have the bundled sfeir theme (either copy the demo web_modules or build it with `npm run build`).
 
-We recommand you to have all the external librairies in a dedicate folder like 'web_modules'. The needed library are : 
-* feather-icons : 4.29.x
-* highlight-js : 10.4.x
-* reveal.js : 4.3.x
-In your reveal index.html add the following lines:
+In your index.html add the following lines:
 ```html
 
 ...
 <head>
     ...
-    <!-- For syntax highlighting : Use Tomorrow.css -->
-    <link rel="stylesheet" href="$LIBS_PATH/highlight.js/src/styles/tomorrow.css">
-
-    <!-- For using feather icons  -->
-    <script src="$LIBS_PATH/feather-icons/dist/feather.min.js"></script>
-    ...
     <!-- SFEIR Theme includes -->
-    <link rel="stylesheet" href="$SFEIR_THEME_PATH/dist/css/sfeir-school-theme.css" id="theme">
-
-    <script type="module" src="$SFEIR_THEME_PATH/dist/js/sfeir-theme.js"></script>
+    <script type="module" src="./scripts/slides.js"></script>
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="./web_modules/sfeir-theme/sfeir-theme.css"
+      id="theme"
+    />
 </head>
 <body>
-    <!-- Here is the recommand way to load your reveal engine-->
-    <script type="module">
-        import Reveal from 'LIBS_PATH/reveal.js/dist/reveal.esm.js';
-        import RevealMarkdown from 'LIBS_PATH/reveal.js/plugin/markdown/markdown.esm.js';
-        import RevealZoom from 'LIBS_PATH/reveal.js/plugin/zoom/zoom.esm.js';
-        import RevealNotes from 'LIBS_PATH/reveal.js/plugin/notes/notes.esm.js';
-        import RevealHighLight from 'LIBS_PATH/reveal.js/plugin/highlight/highlight.esm.js';
-        import RevealSfeirTheme from '$SFEIR_THEME_PATH/dist/js/sfeir-theme.js'
-
-        Reveal.initialize({
-            controls: true,
-            progress: true,
-            history: true,
-            center: false,
-            width: 1929,
-            height: 1080,
-            pdfMaxPagesPerSlide: 1,
-            markdown: {
-            smartypants: true
-            },
-            plugins: [
-            // Optional libraries used to extend on reveal.js
-            RevealMarkdown, RevealSfeirTheme, RevealZoom, RevealNotes, RevealHighLight,
-            ]
-        }).then(() => {
-            Reveal.configure({
-            theme: Reveal.getQueryHash().theme, // available themes are in /css/theme
-            transition: Reveal.getQueryHash().transition || 'none', // default/cube/page/concave/zoom/linear/fade/none
-            })
-
-    </script>
+    <div class="reveal">
+      <!-- Any section element inside of this container is displayed as a slide -->
+      <div class="slides" data-type-show="prez"></div>
+    </div>
 </body>
 ...
 
+```
+
+and a basic `slides.js`:
+
+```JavaScript
+import { SfeirThemeInitializer } from "../web_modules/sfeir-theme/sfeir-theme.mjs";
+
+// One method per module
+function schoolSlides() {
+  return [
+    "00_intro.md",
+    "01_speaker.md",
+    "10_chapter1.md",
+    "11_layouts.md",
+    "15_vertical.md",
+    "20_specifics_slides.md",
+    "30_code_slides.md",
+    "40_helpers.md",
+    "50_modes.md",
+  ];
+}
+
+function formation() {
+  return [
+    //
+    ...schoolSlides(),
+  ].map((slidePath) => {
+    return { path: slidePath };
+  });
+}
+
+SfeirThemeInitializer.init(formation);
 ```
 
 Enjoy!

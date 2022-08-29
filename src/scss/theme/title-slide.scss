@@ -2,106 +2,106 @@
 * First Slide of Sfeir School
 */
 
+.reveal .slides section[data-background].first-slide {
+  position: absolute;
+  color: $white;
+  background: transparent;
 
-.reveal .slides section[data-background].first-slide{
-	position: absolute;
-    color: $white;
-    background : transparent;
-
-   &::before{
+  &::before {
     position: absolute;
-    content:'';
-    background: url('../images/logo-school-white-3.png');
+    content: "";
+    background: url("./images/logo-school-white-3.png");
     width: 800px;
     height: 400px;
     background-repeat: no-repeat;
     background-size: contain;
     top: 200px;
     left: 0;
-   }
+  }
 
- 	h1{
-        font-size: 2.0em;
-        margin-left: initial;
-        text-align: left;
-    }
-    
-    h2{
-        font-size: 2.0em;
-        margin-bottom: 20px;
-        margin-left: initial;
-        text-align: left;
-    }
+  h1 {
+    font-size: 2em;
+    margin-left: initial;
+    text-align: left;
+  }
 
-    // Management of logo
-    div.sfeir-logo{
-        position: absolute;
-        top:100px;
-        right: 100px;
-        width:400px;
-        height: 500px;
-        max-width:400px;
-        max-height: 500px;
-        background-size: contain;
-        background-position: center center;
-        background-repeat: no-repeat;
-        margin: auto;
+  h2 {
+    font-size: 2em;
+    margin-bottom: 20px;
+    margin-left: initial;
+    text-align: left;
+  }
 
-        &::before{
-            color: $black;
-            position: absolute;
-            content: attr(data-sfeir-techno);
-            text-transform: uppercase;
-            font-weight: 800;
-            top: 230px; 
-            left: 0;
-            width: 100%;
-            text-align: center;
-            font-size: 50px;
-        }
+  // Management of logo
+  div.sfeir-logo {
+    position: absolute;
+    top: 100px;
+    right: 100px;
+    width: 400px;
+    height: 500px;
+    max-width: 400px;
+    max-height: 500px;
+    background-size: contain;
+    background-position: center center;
+    background-repeat: no-repeat;
+    margin: auto;
 
-        &::after{
-            content:'';
-            position: absolute;
-            bottom: 50px;
-            width: 100%;
-            height: 200px;
-            left: 0;
-        }
+    &::before {
+      color: $black;
+      position: absolute;
+      content: attr(data-sfeir-techno);
+      text-transform: uppercase;
+      font-weight: 800;
+      top: 230px;
+      left: 0;
+      width: 100%;
+      text-align: center;
+      font-size: 50px;
     }
 
-    div.sfeir-logo[data-sfeir-level="1"]:after{
-        background: url('../images/star.png');
-        background-repeat: no-repeat;
-        background-position: 50% 70px;
-        background-size: 45px;
+    &::after {
+      content: "";
+      position: absolute;
+      bottom: 50px;
+      width: 100%;
+      height: 200px;
+      left: 0;
     }
-    div.sfeir-logo[data-sfeir-level="2"]:after{
-        background: url('../images/star.png'), url('../images/star.png');
-        background-position: calc(50% - 35px) 70px, calc(50% + 35px) 70px;
-        background-repeat: no-repeat;
-        background-size: 45px;
-    }
-    div.sfeir-logo[data-sfeir-level="3"]:after{
-        background: url('../images/star.png'), url('../images/star.png'), url('../images/star.png');
-        background-position: calc(50% - 35px) 55px, calc(50% + 35px) 55px, 50% 95px;
-        background-repeat: no-repeat;
-        background-size: 45px;
-    }
+  }
+
+  div.sfeir-logo[data-sfeir-level="1"]:after {
+    background: url("./images/star.png");
+    background-repeat: no-repeat;
+    background-position: 50% 70px;
+    background-size: 45px;
+  }
+  div.sfeir-logo[data-sfeir-level="2"]:after {
+    background: url("./images/star.png"), url("./images/star.png");
+    background-position: calc(50% - 35px) 70px, calc(50% + 35px) 70px;
+    background-repeat: no-repeat;
+    background-size: 45px;
+  }
+  div.sfeir-logo[data-sfeir-level="3"]:after {
+    background: url("./images/star.png"), url("./images/star.png"),
+      url("./images/star.png");
+    background-position: calc(50% - 35px) 55px, calc(50% + 35px) 55px, 50% 95px;
+    background-repeat: no-repeat;
+    background-size: 45px;
+  }
 }
-
 
 /**
 * Hack for Institute
 */
-.reveal .slides[data-mode-slides=institute] section[data-background].first-slide{
-
-    &::before{
-        background: url('../images/logo-institute-white.png');
-        background-repeat: no-repeat;
-        background-size: contain;
-    }
-    div.sfeir-logo{
-        display: none;
-    }
+.reveal
+  .slides[data-mode-slides="institute"]
+  section[data-background].first-slide {
+  &::before {
+    background: url("./images/logo-institute-white.png");
+    background-repeat: no-repeat;
+    background-size: contain;
+  }
+  div.sfeir-logo {
+    display: none;
+  }
 }
