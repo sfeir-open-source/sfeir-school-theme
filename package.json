@@ -2,8 +2,8 @@
   "name": "sfeir-school-theme",
   "version": "2.2.0",
   "description": "Sfeir School Theme for RevealJS",
-  "main": "./dist/sfeir-theme.mjs",
-  "exports": "./dist/sfeir-theme.mjs",
+  "main": "./sfeir-theme.mjs",
+  "exports": "./sfeir-theme.mjs",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "watch-js": "chokidar \"src/js/*.js\" -c \"npm run copy\"",
@@ -12,8 +12,7 @@
     "prepare-demo": "node ./scripts/prepare-demo.js",
     "prestart": "npm run prepare-demo",
     "start": "parallelshell \"npm run serve\" \"npm run build-watch\"",
-    "copy-feather": "shx cp -rf \"node_modules/feather-icons\" \"dist/feather-icons\" ",
-    "postbuild": "parallelshell \"npm run copy-feather\"",
+    "postbuild": "node scripts/prepare-publish.js",
     "build": "vite build",
     "build-watch": "vite dev"
   },
