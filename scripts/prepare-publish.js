@@ -3,6 +3,7 @@ const fs = require("node:fs");
 
 cleanupPackageJson();
 prepareFeather();
+copyDocs();
 console.log("prepare-publish.js END");
 
 function cleanupPackageJson() {
@@ -26,4 +27,12 @@ function cleanupPackageJson() {
 function prepareFeather() {
   shelljs.cp("-rf", "./node_modules/feather-icons", "./dist/feather-icons");
   shelljs.rm("-rf", "./dist/feather-icons/node_modules");
+}
+
+
+function copyDocs(){
+  shelljs.cp("-f", "./README.md", "./dist");
+  shelljs.rm("-rf", "./dist/docs");
+  shelljs.mkdir("-p", "./dist/docs");
+  shelljs.cp("-rf", "./docs", "./dist/docs");
 }

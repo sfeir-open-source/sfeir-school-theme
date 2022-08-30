@@ -1,7 +1,7 @@
 import Reveal from "reveal.js";
 import feather from "feather-icons";
 
-const imagesPath = "web_modules/sfeir-theme/images";
+const imagesPath = "web_modules/sfeir-school-theme/images";
 
 export class SfeirTheme {
   constructor() {
