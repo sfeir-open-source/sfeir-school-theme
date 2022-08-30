@@ -3,6 +3,7 @@ const fs = require("node:fs");
 
 cleanupPackageJson();
 prepareFeather();
+console.log("prepare-publish.js END");
 
 function cleanupPackageJson() {
   shelljs.rm("-f", "./dist/package.json");

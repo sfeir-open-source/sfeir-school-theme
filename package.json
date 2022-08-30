@@ -6,15 +6,16 @@
   "exports": "./sfeir-theme.mjs",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "watch-js": "chokidar \"src/js/*.js\" -c \"npm run copy\"",
-    "serve": "live-server --port=4242 --open=\"./demo/index.html\" --mount=\"/assets:./demo/assets\" --mount=\"/web_modules:./demo/web_modules\" --watch=\"demo/dist/,demo/md/\"",
+    "serve": "live-server --port=4242 --open=\"./demo/index.html\" --mount=\"/assets:./demo/assets\" --mount=\"/web_modules:./demo/web_modules\" --watch=\"./demo/web_modules/sfeir-theme,./demo/markdown/\"",
     "release": "echo \"Error: no deployement is configure for the moment, please just build the project\"",
     "prepare-demo": "node ./scripts/prepare-demo.js",
     "prestart": "npm run prepare-demo",
     "start": "parallelshell \"npm run serve\" \"npm run build-watch\"",
-    "postbuild": "node scripts/prepare-publish.js",
+    "postbuild": "node ./scripts/prepare-publish.js",
     "build": "vite build",
-    "build-watch": "vite dev"
+    "on-change:build": "chokidar \"./src\" -c \"npm run build\"",
+    "on-change:copy": "chokidar \"./dist\" -c \"npm run prepare-demo\"",
+    "build-watch": "parallelshell \"npm run on-change:build\" \"npm run on-change:copy\""
   },
   "repository": {
     "type": "git",
