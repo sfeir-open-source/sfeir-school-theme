@@ -5,20 +5,23 @@
 .reveal .slides section.first-slide{
     background : rgba(0,0,0,0);
 
+    $padding-h1: 30px;
+
     h1{
         color:$white;
-        margin: auto;
+        margin-left: initial;
+        text-align: left;
         margin-top:450px;
-        font-size: 3em;
+        font-size: 2em;
         font-weight: 800;
         margin-bottom: 40px;
         text-transform: initial;
-        padding: 30px;
+        padding: $padding-h1;
         width: fit-content;
         background: initial;
         position: relative;
         transform: initial;
-
+        
         &:before{
             content: '';
             z-index: -1;
@@ -26,11 +29,17 @@
             background: $sfeir-green;
             width: 100px;
             height: 10px;
-            left:0;
+            left:$padding-h1;
             bottom:-20px;
             transform: rotate(0deg);
         }
     }
+    
+    h2 {
+        font-size: 1.5em;
+        text-align: left;
+        padding-left: $padding-h1;
+      }
     
     &.blue h1:before,
     &.transition-bg-blue-1 h1:before,
@@ -60,15 +69,18 @@
     }
     
     &.right h1{
+        margin-left: auto;
         margin-right: initial;
         text-align: right;
     }
     
     &.top h1{
+        margin:auto;
         margin-top: 50px;
     }
     
     &.bottom h1{
+        margin:auto;
         margin-top: 800px;
     }
 

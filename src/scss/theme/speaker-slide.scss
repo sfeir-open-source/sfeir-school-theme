@@ -17,7 +17,7 @@ $height-bg-white: 580px;
         text-align: left;
         font-size: 1.3em;
         margin-top: 100px;
-        margin-left: $margin-left;
+        margin-left: calc($margin-right + (-1 * ((#{$width-bg-white} - #{$width-img-speaker}) / 2)));
         font-weight: 400;
     }
 
@@ -54,6 +54,10 @@ $height-bg-white: 580px;
 
     h3.icon-rule{
         background: linear-gradient(to right, $sfeir-blue-green-stop-1, $sfeir-blue-green-stop-2);
+        margin: 0 20px;
+        width: calc(#{$width-bg-white} - 40px);
+        padding: 10px 0;
+        color: $white;        
     }
 
 
@@ -62,12 +66,12 @@ $height-bg-white: 580px;
         //top: calc(#{$top-position-speaker} + 300px);
     }
     h3.icon-second{
-        top: calc(#{$top-position-speaker} + 400px);
-        top: calc(#{$width-img-speaker} + #{$top-position-speaker} + 20px + (4* 1.5em) );
+        //top: calc(#{$top-position-speaker} + 400px);
+        top: calc(#{$width-img-speaker} + #{$top-position-speaker} + 20px + 20px + (4* 1.5em) );
     }
     h3.icon-third{
-        top: calc(#{$top-position-speaker} + 500px);
-        top: calc(#{$width-img-speaker} + #{$top-position-speaker} + 20px + (5* 1.5em) );
+        //top: calc(#{$top-position-speaker} + 500px);
+        top: calc(#{$width-img-speaker} + #{$top-position-speaker} + 20px + 20px + (5* 1.5em) );
     }
 
     p:first-of-type:before{

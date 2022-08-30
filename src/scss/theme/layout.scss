@@ -11,10 +11,14 @@
     margin: 0;
   }
 
-  ul {
+  ul{
     list-style-type: disc;
   }
 
+  li::marker {
+    color: $sfeir-green; /* Change the color */    
+  }
+  
   .slides section.stack {
     height: 100%;
   }
@@ -226,9 +230,9 @@
   display: grid;
   grid-template-columns: 50% 50%;
   grid-template-rows: 100px auto;
-  grid-column-gap: 20px;
+  grid-column-gap: 50px;
   grid-template-columns: 1fr 1fr;
-
+ 
   section:first-child {
     grid-row-start: 1;
     opacity: 1;
@@ -325,7 +329,7 @@
   display: grid;
   grid-template-columns: 50% 50%;
   grid-template-rows: repeat(150px);
-  grid-column-gap: 20px;
+  grid-column-gap: 50px;
 
   .grid-left {
     grid-column-start: 1;
@@ -361,6 +365,16 @@
   background: initial;
   border: initial;
   box-shadow: initial;
+}
+
+/**
+* Hack for institute mode
+**/
+.reveal .slides[data-theme-slides=institute] {
+  li::marker {
+    color: $sfeir-blue; /* Change the color */    
+  }
+  
 }
 
 /**

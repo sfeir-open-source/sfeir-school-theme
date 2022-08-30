@@ -460,7 +460,7 @@ If text is set on over the background, the default color is white
 <!-- .slide: class="two-column" -->
 
 ##--##
-<!-- .slide: class="text-dark" data-background="cyan" -->
+<!-- .slide: class="text-dark" data-background="var(--black)" -->
 ## Slide 2
 
 * Item 2

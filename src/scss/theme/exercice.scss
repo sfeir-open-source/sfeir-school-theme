@@ -1,7 +1,7 @@
 .reveal .slides section {
     &.sfeir-basic-slide.exercice:not(.sfeir-specific-slide):not(.stack):not([class*=transition]) {
-      width: calc(100% - 25%);
-      left: 25%;
+      width: calc(100% - 25% - 50px);
+      left: calc(25% + 50px);
       height: calc(100% - 200px);
       color: $dark-grey;      
       padding-left: 0;
@@ -16,6 +16,7 @@
       }
   
       h1 {
+        margin-top: 145px;
         top: 0;
         left: 0;
         width: 100%;
@@ -24,14 +25,12 @@
   
       h2:first-of-type {
         position: absolute;
-        //transform: rotateZ(272deg);
         padding: 10px;
         font-weight: 800;
         top: 200px;
         left: -500px;
         color: $white;
-        font-size: 2em;
-        //background: linear-gradient(to right, $sfeir-orange-stop-1, $sfeir-pink-stop-2);
+        font-size: 3em;
         &:after{
           content: initial;
         }
