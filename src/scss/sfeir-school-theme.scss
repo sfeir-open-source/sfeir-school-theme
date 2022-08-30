@@ -1,15 +1,17 @@
+@import "/node_modules/reveal.js/dist/reveal.css";
+@import "/node_modules/highlight.js/styles/tomorrow.css";
 @import "./theme/sfeir-overrides";
 
 @import "./utils/grid";
 @import "./utils/helper";
+@import "./utils/icons";
 
 @import "./theme/layout";
 
- 
 // Specifics slides
-@import "./theme/specifics-slides"; 
+@import "./theme/specifics-slides";
 
-// Override 
+// Override
 
 // To override the highlightJS theme you can do like this
 /*

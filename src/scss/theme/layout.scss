@@ -2,306 +2,381 @@
 * Globals overrides to change the layout of slides
 */
 .reveal {
-	ol, dl, ul {
-		padding: 0 0 0 1em;
-		line-height: 1.5em;
-		text-align: left;
-		margin: 0;
-	}
+  ol,
+  dl,
+  ul {
+    padding: 0 0 0 1em;
+    line-height: 1.5em;
+    text-align: left;
+    margin: 0;
+  }
 
-	ul{
-		list-style-type: disc;
-	}
+  ul {
+    list-style-type: disc;
+  }
 
-	.slides section.stack{
-		height: 100%;
-	}
-	
-	.slides section li p{
-		font-size: 100%;
-	}
-	
-	.slides section p{
-		font-size: 1em;
-		&.credits {
-			justify-content: flex-end;
-			position: absolute;
-			bottom: 0;
-			width: 100%;
-			text-align: center;
-			font-size: 0.7em;
-		}
-	}
-	
-	.slides section[data-type-show=full] p{
-			font-size: 100%;
-	}
-	
-	.slides section p+p{
-		margin-top: 40px;
-	}
-	blockquote::before{
-		content:'\“';
-		position:absolute;
-		top: 0;
-		left: 0;
-		width:50px;
-		height: 50px;
-	}
+  .slides section.stack {
+    height: 100%;
+  }
 
-	blockquote::after{
-		content:'\”';
-		position:absolute;
-		bottom: -0.5em;
-		right: -0.5em;
-		width:50px;
-		height: 50px;
-	}
-	
-	blockquote {
-		display: block;
-		position: relative;
-		width: 70%;
-		margin: 20px auto;
-		padding: 1em;
-		text-align: left;
-		font-style: italic;
-		background: white;
-		color: $dark-grey;
-		box-shadow: 0px 0px 2px rgba(0, 0, 0, 0.2);
-	}
-	
+  .slides section li p {
+    font-size: 100%;
+  }
+
+  .slides section p {
+    font-size: 1em;
+    &.credits {
+      justify-content: flex-end;
+      position: absolute;
+      bottom: 0;
+      width: 100%;
+      text-align: center;
+      font-size: 0.7em;
+    }
+  }
+
+  .slides section[data-type-show="full"] p {
+    font-size: 100%;
+  }
+
+  .slides section p + p {
+    margin-top: 40px;
+  }
+  blockquote::before {
+    content: "\“";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 50px;
+    height: 50px;
+  }
+
+  blockquote::after {
+    content: "\”";
+    position: absolute;
+    bottom: -0.5em;
+    right: -0.5em;
+    width: 50px;
+    height: 50px;
+  }
+
+  blockquote {
+    display: block;
+    position: relative;
+    width: 70%;
+    margin: 20px auto;
+    padding: 1em;
+    text-align: left;
+    font-style: italic;
+    background: transparent;
+    color: $dark-grey;
+    box-shadow: 0px 0px 2px rgba(0, 0, 0, 0.2);
+  }
+
+  section.quote-slide blockquote {
+    margin-top: 300px;
+    color: $white;
+    box-shadow: initial;
+  }
+
+  .backgrounds div.slide-background.quote-slide::before {
+    content: "";
+    position: absolute;
+    background: url("/web_modules/images/quotes.png");
+    background-size: contain;
+    filter: brightness(0.25);
+    top: 5px;
+    left: 5px;
+    width: 400px;
+    height: 400px;
+    color: $dark-grey;
+  }
 }
 
+.reveal
+  .slides
+  section:not(.sfeir-specific-slide):not(.stack):not([class*="transition"]),
+.reveal
+  .slides
+  section.sfeir-basic-slide:not(.stack):not([class*="transition"]),
+.reveal
+  .slides
+  section.sfeir-specific-slide.sfeir-bg-axololt:not(.stack):not([class*="transition"]) {
+  width: 100%;
+  height: calc(100% - 40px);
+  height: -webkit-calc(100% - 40px);
+  text-align: left;
+  font-size: 1em;
 
-.reveal .slides section:not(.sfeir-specific-slide):not(.stack):not([class*=transition]),
-.reveal .slides section.sfeir-basic-slide:not(.stack):not([class*=transition]),
-.reveal .slides section.sfeir-specific-slide.sfeir-bg-axololt:not(.stack):not([class*=transition]){
+  h1,
+  h2 {
+    text-transform: initial;
+    text-align: left;
+    color: $black;
+    font-size: 1.5em;
+    font-weight: 600;
+  }
 
-	width: 100%;
-	height: calc(100% - 40px);
-	height: -webkit-calc(100% - 40px);
-	text-align: left;
-	font-size: 1em;
+  h1,
+  h2,
+  h3 {
+    text-transform: initial;
+    margin-bottom: 130px;
+  }
 
-    h1, h2{
-		text-transform: initial;
-		text-align: left;
-		color: $black;
-      font-size: 1.5em;
-      font-weight: 600;
-	  
-	  
-    }
+  h1 ~ h2,
+  h2 ~ h3,
+  h1 ~ h3 {
+    text-transform: initial;
+    margin-bottom: 40px;
+    color: $black;
+    font-size: 1em;
+  }
 
-    h1, h2, h3{
-			text-transform: initial;
-    		margin-bottom: 130px;
-		}
+  h1 + h2,
+  h2 + h3,
+  h1 + h3 {
+    margin-top: -90px;
+    font-size: 1.15em;
+  }
 
-   	h1~h2, h2~h3, h1~h3{
-			text-transform: initial;
-			margin-bottom: 40px;
-			color: $black;
-			font-size: 1em;
-	}
-	
-   	h1+h2, h2+h3, h1+h3{
-			margin-top: -90px;
-			font-size: 1.15em;
-	}
-	
-	table{
-		width: 100%;
-	}
+  table {
+    width: 100%;
+    background-color: #efefef;
+  }
+  table,
+  th,
+  td {
+    border: thin solid white;
+  }
 
-	thead{
-		background-color: $sfeir-pink;
-		color:$white;
-	}
-	
-	&.blue thead{
-		background-color: $sfeir-blue;
-	}
-	
-	&.green thead{
-		background-color: $sfeir-green;
-	}
+  thead {
+    background-color: $sfeir-green;
+    color: $white;
+  }
+}
+
+.reveal
+  .slides[data-theme-slides="institute"]
+  section:not(.sfeir-specific-slide):not(.stack):not([class*="transition"]),
+.reveal
+  .slides[data-theme-slides="institute"]
+  section.sfeir-basic-slide:not(.stack):not([class*="transition"]),
+.reveal
+  .slides[data-theme-slides="institute"]
+  section.sfeir-specific-slide.sfeir-bg-axololt:not(.stack):not([class*="transition"]) {
+  thead {
+    background-color: $sfeir-blue;
+  }
 }
 
 .reveal .slides section.sfeir-basic-slide:not(.stack),
-.reveal .slides section.exercice:not(.stack){
-	color:$dark-grey;
+.reveal .slides section.exercice:not(.stack) {
+  color: $dark-grey;
 
-	h1, h2, h3{
-		margin-bottom: 100px;
-	}
+  h1,
+  h2,
+  h3 {
+    margin-bottom: 100px;
+  }
 
-    h1, h2, h1~h2, h2~h3, h1~h3{
-		position: relative;
-	    color: $black;      
-		text-align: left;
-	}
-	
-	h1:first-of-type:after, h2:first-of-type:after {
-		position: absolute;
-		content: '';
-		width: 40%;
-		height: 10px;
-		background-color: $sfeir-pink;
-		bottom: -30px;
-		left: 0;
-	}
+  h1,
+  h2,
+  h1 ~ h2,
+  h2 ~ h3,
+  h1 ~ h3 {
+    position: relative;
+    color: $black;
+    text-align: left;
+  }
 
-	&.blue h1:first-of-type:after, &.blue h2:first-of-type:after {
-		background-color: $sfeir-blue;
-	}
-	
-	&.green h1:first-of-type:after, &.green h2:first-of-type:after {
-		background-color: $sfeir-green;
-	}
+  h1:first-of-type:after,
+  h2:first-of-type:after {
+    position: absolute;
+    //content: '';
+    width: 40%;
+    height: 10px;
+    background-color: $sfeir-pink;
+    bottom: -30px;
+    left: 0;
+  }
 
-	h1~h2:first-of-type:after, h2~h3:first-of-type:after, h1~h3:first-of-type:after{
-		content: initial;
-	}
+  &.blue h1:first-of-type:after,
+  &.blue h2:first-of-type:after {
+    background-color: $sfeir-blue;
+  }
+
+  &.green h1:first-of-type:after,
+  &.green h2:first-of-type:after {
+    background-color: $sfeir-green;
+  }
+
+  h1 ~ h2:first-of-type:after,
+  h2 ~ h3:first-of-type:after,
+  h1 ~ h3:first-of-type:after {
+    content: initial;
+  }
 }
-
 
 /**
 * Two Columns slides
 */
 
 .reveal .slides section.two-column-layout {
-	display: grid;
-	grid-template-columns: 50% 50%;
-	grid-template-rows: 100px auto;
-	grid-column-gap: 20px;
-	grid-template-columns: 1fr 1fr;
+  display: grid;
+  grid-template-columns: 50% 50%;
+  grid-template-rows: 100px auto;
+  grid-column-gap: 20px;
+  grid-template-columns: 1fr 1fr;
 
-	section:first-child{
-		grid-row-start: 1;
-		opacity: 1;
-	}
-	section:nth-child(2){
-		margin-top: 50px;
-		grid-row-start: 2;
-		grid-column-end: 2;
-		opacity: 1;
-	}
-	section:last-child{
-		margin-top: 50px;
-		grid-row-start: 2;
-		grid-column-start: 2;
-		opacity: 1;
-	}
+  section:first-child {
+    grid-row-start: 1;
+    opacity: 1;
+  }
+  section:nth-child(2) {
+    margin-top: 50px;
+    grid-row-start: 2;
+    grid-column-end: 2;
+    opacity: 1;
+  }
+  section:last-child {
+    margin-top: 50px;
+    grid-row-start: 2;
+    grid-column-start: 2;
+    opacity: 1;
+  }
 }
 
-.reveal .backgrounds div.slide-background.two-column[data-background-hash]{
-    width: 50vw;
+.reveal .backgrounds div.slide-background.two-column[data-background-hash],
+.reveal .pdf-page div.slide-background.two-column[data-background-hash] {
+  width: 50vw;
 
-	&.data-bg-right{
-		left:50vw;
-		div.grid-div>div{
-			color:$mainColor
-		}
-	}
+  &.data-bg-right {
+    left: 50vw;
+    div.grid-div > div {
+      color: $mainColor;
+    }
+  }
 
-	div.grid-div>div{
-		color:$mainColor
-	}
+  div.grid-div > div {
+    color: $mainColor;
+  }
 
-	&.mask::after{
-		//background-color:rgba(0,0,0,0);
-		 background-color : $dark-grey-alpha;
-		 content: '';
-		 position: absolute;
-		 top: 0;
-		 left: 0;
-		 width: 100%;
-		 height: 100%;
-	}
+  &.mask::after {
+    //background-color:rgba(0,0,0,0);
+    background-color: $dark-grey-alpha;
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+  }
 }
-
 
 .reveal .slides section.two-column[data-background],
-.reveal .slides section.two-column[data-background-image]{
-	&.data-bg-right{
-		div.grid-div>div:nth-child(2){
-			color:$mainColor;
-			h1, h2, h3{
-				color:$mainColor;
-			}
-		}
+.reveal .slides section.two-column[data-background-image] {
+  &.data-bg-right {
+    div.grid-div > div:nth-child(2) {
+      color: $mainColor;
+      h1,
+      h2,
+      h3 {
+        color: $mainColor;
+      }
+    }
 
-		&.text-dark{
-			div.grid-div>div:nth-child(2){
-				color:$dark-grey;
-				h1, h2, h3{
-					color:$dark-grey;
-				}
-			}	
-		}
-	}
-	
-	&.data-bg-left{
-		div.grid-div>div:first-child{
-			color:$mainColor;
-			h1, h2, h3{
-				color:$mainColor;
-			}
-		}
-		
-		&.text-dark{
-			div.grid-div>div:first-child{
-				color:$dark-grey;
-				h1, h2, h3{
-					color:$dark-grey;
-				}
-			}
+    &.text-dark {
+      div.grid-div > div:nth-child(2) {
+        color: $dark-grey;
+        h1,
+        h2,
+        h3 {
+          color: $dark-grey;
+        }
+      }
+    }
+  }
 
-		}
-	}
+  &.data-bg-left {
+    div.grid-div > div:first-child {
+      color: $mainColor;
+      h1,
+      h2,
+      h3 {
+        color: $mainColor;
+      }
+    }
 
+    &.text-dark {
+      div.grid-div > div:first-child {
+        color: $dark-grey;
+        h1,
+        h2,
+        h3 {
+          color: $dark-grey;
+        }
+      }
+    }
+  }
 }
 
 .reveal .slides section.two-column div.grid-div {
-	display: grid;
-	grid-template-columns: 50% 50%;
-	grid-template-rows: repeat(150px);
-	grid-column-gap: 20px;
+  display: grid;
+  grid-template-columns: 50% 50%;
+  grid-template-rows: repeat(150px);
+  grid-column-gap: 20px;
 
-	.grid-left{
-		grid-column-start: 1;
-	}
-	.grid-right{
-		grid-column-start: 2;
-	}
+  .grid-left {
+    grid-column-start: 1;
+  }
+  .grid-right {
+    grid-column-start: 2;
+  }
 
-	section:first-child{
-		grid-row-start: 1;
-		opacity: 1;
-	}
-	section:nth-child(2){
-		margin-top: 50px;
-		grid-row-start: 2;
-		grid-column-end: 2;
-		opacity: 1;
-	}
-	section:last-child{
-		margin-top: 50px;
-		grid-row-start: 2;
-		grid-column-start: 2;
-		opacity: 1;
-	}
+  section:first-child {
+    grid-row-start: 1;
+    opacity: 1;
+  }
+  section:nth-child(2) {
+    margin-top: 50px;
+    grid-row-start: 2;
+    grid-column-end: 2;
+    opacity: 1;
+  }
+  section:last-child {
+    margin-top: 50px;
+    grid-row-start: 2;
+    grid-column-start: 2;
+    opacity: 1;
+  }
 }
 
 /**
 * Reset Somes styles
 */
 
-.reveal section img{
-	margin: initial;
-	background: initial;
-	border: initial;
-	box-shadow: initial;
+.reveal section img {
+  margin: initial;
+  background: initial;
+  border: initial;
+  box-shadow: initial;
+}
+
+/**
+* Hack for print
+*/
+html.print-pdf {
+  .reveal .slides .pdf-page div.slide-background.quote-slide::before {
+    content: "";
+    position: absolute;
+    background: url("/web_content/images/quotes.png");
+    background-size: contain;
+    filter: brightness(0.25);
+    top: 5px;
+    left: 5px;
+    width: 400px;
+    height: 400px;
+    color: $dark-grey;
+  }
 }

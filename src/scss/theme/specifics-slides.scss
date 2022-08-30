@@ -35,6 +35,13 @@
     }
 }
 
+.reveal .slides section.bg-blur {
+
+    width: 50%;
+    left: 50%;
+
+}
+
 
 .reveal .backgrounds div.slide-background.transition[data-background-hash].no-filter::before{
     background-color:rgba(0,0,0,0);
@@ -70,3 +77,16 @@
     height: 100vw;
 }
 
+
+/**
+* Hack for print
+*/
+html.print-pdf {
+
+    .reveal .slides  .pdf-page section.bg-blur {
+
+        width: 50% !important;
+        left: 50% !important;
+
+    }
+}

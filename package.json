@@ -2,27 +2,20 @@
   "name": "sfeir-school-theme",
   "version": "2.2.0",
   "description": "Sfeir School Theme for RevealJS",
-  "main": "./dist/js/sfeir-them.js",
-  "exports": "./dist/js/sfeir-them.js",
+  "main": "./sfeir-theme.mjs",
+  "exports": "./sfeir-theme.mjs",
   "scripts": {
-    "sass": "sass src/scss/sfeir-school-theme.scss:demo/dist/css/sfeir-school-theme.css --source-map --watch",
-    "sass-once": "sass src/scss/sfeir-school-theme.scss:demo/dist/css/sfeir-school-theme.css --source-map",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "copy": "parallelshell \"npm run copy-js\" \"npm run copy-images\" \"npm run copy-fonts\" \"npm run copy-modules\" \"npm run copy-icons\" ",
-    "copy-js": "cpx \"src/js/**/*.js\" \"demo/dist/js\"",
-    "copy-fonts": "cpx \"src/fonts/*\" \"demo/dist/fonts\"",
-    "copy-images": "cpx \"src/images/*\" \"demo/dist/images\"",
-    "copy-icons": "cpx \"src/fontello-sfeir/**\" \"demo/dist/fontello-sfeir\"",
-    "copy-dist": "cpx \"demo/dist/**\" \"dist\" --clean",
-    "copy-highlight": "cpx \"node_modules/highlight.js/**/*\" \"demo/libs/highlight.js\" ",
-    "copy-reveal": "cpx \"node_modules/reveal.js/**/*\" \"demo/libs/reveal.js\" ",
-    "copy-modules": "parallelshell \"npm run copy-reveal\"  \"npm run copy-highlight\" ",
-    "watch-js": "chokidar \"src/js/*.js\" -c \"npm run copy\"",
-    "serve": "live-server --port=4242 --open=\"./demo/index.html\" --mount=\"/assets:./demo/assets\" --watch=\"demo/dist/,demo/md/\"",
-    "build": "parallelshell \"npm run sass-once\" \"npm run copy\" \"npm run copy-dist\"",
-    "build-watch": "parallelshell \"npm run sass\" \"npm run copy\" \"npm run copy-dist\"",
+    "serve": "live-server --port=4242 --open=\"./demo/index.html\" --mount=\"/assets:./demo/assets\" --mount=\"/web_modules:./demo/web_modules\" --watch=\"./demo/web_modules/sfeir-theme,./demo/markdown/\"",
     "release": "echo \"Error: no deployement is configure for the moment, please just build the project\"",
-    "start": "parallelshell \"npm run serve\" \"npm run build-watch\" \"npm run watch-js\""
+    "prepare-demo": "node ./scripts/prepare-demo.js",
+    "prestart": "npm run prepare-demo",
+    "start": "parallelshell \"npm run serve\" \"npm run build-watch\"",
+    "postbuild": "node ./scripts/prepare-publish.js",
+    "build": "vite build",
+    "on-change:build": "chokidar \"./src\" -c \"npm run build\"",
+    "on-change:copy": "chokidar \"./dist\" -c \"npm run prepare-demo\"",
+    "build-watch": "parallelshell \"npm run on-change:build\" \"npm run on-change:copy\""
   },
   "repository": {
     "type": "git",
@@ -39,12 +32,18 @@
   },
   "homepage": "https://github.com/sfeir-open-source/sfeir-school-theme#readme",
   "dependencies": {
-    "chokidar-cli": "^1.2.1",
-    "cpx": "^1.5.0",
+    "feather-icons": "^4.29.0",
     "highlight.js": "^10.4.1",
+    "lit-html": "^2.2.7",
+    "reveal.js": "^4.3.0"
+  },
+  "devDependencies": {
+    "chokidar-cli": "^1.2.1",
     "live-server": "^1.2.1",
     "parallelshell": "3.0.1",
     "sass": "^1.51.0",
-    "reveal.js": "^4.3.0"
+    "shelljs": "^0.8.5",
+    "shx": "^0.3.4",
+    "vite": "^3.0.9"
   }
 }

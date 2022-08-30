@@ -1,113 +1,109 @@
 @import "./colors.scss";
 
+$margin-left: 200px;
+$margin-right: 300px;
+$top-position-speaker: 350px; 
+$width-img-speaker: 240px;
+$width-bg-white: 320px;
+$height-bg-white: 580px;
+
 .reveal  .slides section[data-background].speaker-slide{
     height: 800px; // force a big height to avoid strange operations 
     text-transform: inherit;
 
-    $margin-left: 200px;
-    $margin-right: 300px;
-    $top-position-speaker: 200px; 
-    $width-img-speaker: 400px;
 
     h1{
         text-transform: inherit;
         text-align: left;
-        font-size: 2em;
-        margin-top: $top-position-speaker;
+        font-size: 1.3em;
+        margin-top: 100px;
         margin-left: $margin-left;
-        font-weight: 600;
+        font-weight: 400;
     }
 
     
     h2{
         position: absolute;
-        right: 0;
-        top: calc(#{$width-img-speaker} + #{$top-position-speaker} + 100px);
+        left:calc(#{$margin-right} - ((#{$width-bg-white} - #{$width-img-speaker}) / 2));
+        top: calc(#{$width-img-speaker} + #{$top-position-speaker} + 20px);
         text-transform: inherit;
         text-align: center;
-        color: $white;
-        font-weight: 800;
+        color: $black;
+        font-weight: 400;
         line-height: 1.5em;
         height: 1.5em;
-        width: calc(#{$margin-right} * 2 + #{$width-img-speaker});
-        font-size: 1.3em;
+        width: $width-bg-white;
+        font-size: 0.8em;
         span{
+            font-weight: 800;
             padding-right: 15px;
-            background: linear-gradient(to right, $sfeir-pink-stop-1, $sfeir-pink-stop-2);
         }
     }
 
     h3{
         position: absolute;
         text-transform: inherit;
-        text-align: left;
-        left: $margin-left;
-        font-size: 1.2em;
-        color : $white;
+        text-align: center;
+        left:calc(#{$margin-right} - ((#{$width-bg-white} - #{$width-img-speaker}) / 2));
+        //left: $margin-right;
+        font-size: 0.6em;
+        color : $black;
         margin-bottom: 20px;
+        width: $width-bg-white;        
     }
 
-    h3:before{
-        font-family: 'sfeir';
-        content: '\e8c8';
-        position: absolute;
-        top: 0;
-        left: -70px;        
-        width: 50px;
-        height: 50px;
+    h3.icon-rule{
+        background: linear-gradient(to right, $sfeir-blue-green-stop-1, $sfeir-blue-green-stop-2);
     }
+
 
     h3.icon-first{
-        top: calc(#{$top-position-speaker} + 300px);
+        top: calc(#{$width-img-speaker} + #{$top-position-speaker} + 20px + (3* 1.5em) );
+        //top: calc(#{$top-position-speaker} + 300px);
     }
     h3.icon-second{
         top: calc(#{$top-position-speaker} + 400px);
+        top: calc(#{$width-img-speaker} + #{$top-position-speaker} + 20px + (4* 1.5em) );
     }
     h3.icon-third{
         top: calc(#{$top-position-speaker} + 500px);
+        top: calc(#{$width-img-speaker} + #{$top-position-speaker} + 20px + (5* 1.5em) );
     }
 
-    h3.icon-twitter:before{
-        content: '\ec98';
+    p:first-of-type:before{
+        content:'';
+        position: absolute;
+        top: calc($top-position-speaker + (-1 * ((#{$width-bg-white} - #{$width-img-speaker}) / 2)));
+        left: calc($margin-right + (-1 * ((#{$width-bg-white} - #{$width-img-speaker}) / 2)));
+        border-radius: 20px;
+        background-color: $white;
+        height: $height-bg-white;
+        width: $width-bg-white;
     }
 
-    h3.icon-mail:before {
-        content: '\e8c8';
-    }
-
-    h3[class^=icon]>a {
-        color: white;
-    }
-
-    h3.icon-rule:before{
-        content: '\e81d';
-    }
-
+   
     img[alt*=speaker], div.speaker{
         position: absolute;
-        right: $margin-right;
+        left: $margin-right;
         top: $top-position-speaker;
         width: $width-img-speaker;
         height: $width-img-speaker;
-        margin-top: 20px;
         border-radius: $width-img-speaker;
-        border-style: solid;
-        border-width: 10px;
-        border-color: $sfeir-pink;     
         background-size: cover;
+        box-shadow: $light-grey 0px 6px 6px 1px;
     }
 
     img[alt*=company]{
         position: absolute;
-        top: 850px;
-        left: 350px;
+        top: 250px;
+        right: 350px;
         max-width:400px;
         max-height:200px;
     }
 
     img[alt*=badge]{
         position: absolute;
-        top: 800px;
+        top: 550px;
         right: 400px;
         max-width:250px;
         max-height:250px;
@@ -124,26 +120,18 @@
         right: 100px    
     }
 
-    // Colors variations
 
-    &.blue {
-        img[alt*=speaker]{
-            border-color: $sfeir-blue;        
-        }
+}
 
-        h2 span{
+
+/**
+* Hack for institute
+*/
+
+.reveal  .slides[data-theme-slides=institute] section[data-background].speaker-slide{
+    &.green{     
+        h3.icon-role{
             background: linear-gradient(to right, $sfeir-blue-stop-1, $sfeir-blue-stop-2);
         }
     }
-    
-    &.green{
-        img[alt*=speaker]{
-            border-color: $sfeir-green;        
-        }
-
-        h2 span{
-            background: linear-gradient(to right, $sfeir-green-stop-1, $sfeir-green-stop-2);
-        }
-    }
-
 }
