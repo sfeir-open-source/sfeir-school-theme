@@ -86,7 +86,7 @@
   .backgrounds div.slide-background.quote-slide::before {
     content: "";
     position: absolute;
-    background: url("/web_modules/images/quotes.png");
+    background: url("./images/quotes.png");
     background-size: contain;
     filter: brightness(0.25);
     top: 5px;
@@ -194,17 +194,6 @@
     text-align: left;
   }
 
-  h1:first-of-type:after,
-  h2:first-of-type:after {
-    position: absolute;
-    //content: '';
-    width: 40%;
-    height: 10px;
-    background-color: $sfeir-pink;
-    bottom: -30px;
-    left: 0;
-  }
-
   &.blue h1:first-of-type:after,
   &.blue h2:first-of-type:after {
     background-color: $sfeir-blue;
@@ -267,7 +256,6 @@
   }
 
   &.mask::after {
-    //background-color:rgba(0,0,0,0);
     background-color: $dark-grey-alpha;
     content: "";
     position: absolute;
@@ -357,6 +345,46 @@
 }
 
 /**
+* Logo SFEIR 
+**/
+.reveal  .backgrounds div.slide-background .slide-background-content:after{
+  content: '';
+  position: absolute;
+  bottom: 40px;
+  right: 140px;
+  background-image: url("./images/logo-school-dark-3.webp");
+  width: 150px;
+  height: 40px;
+  background-repeat: no-repeat;
+  background-size: contain;
+  z-index: 1;
+}
+
+.reveal .backgrounds div.slide-background.two-column[data-background-hash].data-bg-left .slide-background-content:after{
+  position: fixed;
+  background-image: url("./images/logo-school-dark-3.webp");
+  
+}
+
+.reveal .backgrounds div.slide-background.two-column[data-background-hash].data-bg-right .slide-background-content:after{
+  background-image: url("./images/logo-school-white-3.png");
+  z-index: 1;
+}
+
+.reveal .backgrounds div.slide-background.speaker-slide,
+.reveal .backgrounds div.slide-background.first-slide,
+.reveal .backgrounds div.slide-background[class*="transition"],
+.reveal .backgrounds div.slide-background.sfeir-basic-slide[class*="transition"],
+.reveal .backgrounds div.slide-background.sfeir-specific-slide[class*="transition"], 
+.reveal .backgrounds div.slide-background.first-slide,
+.reveal .backgrounds div.slide-background.quote-slide,
+.reveal  .backgrounds div.slide-background.with-code-dark:not(.sfeir-specific-slide):not(.stack):not([class*="transition"]){
+  .slide-background-content:after{
+    background-image: url("./images/logo-school-white-3.png");
+  }
+}
+
+/**
 * Reset Somes styles
 */
 
@@ -374,7 +402,37 @@
   li::marker {
     color: $sfeir-blue; /* Change the color */    
   }
+}
+
+.reveal .slides[data-theme-slides=institute]~.backgrounds {
+  div.slide-background .slide-background-content:after{
+    background-image: url("./images/logo-institute-dark.webp");
+  }
+  div.slide-background.speaker-slide,
+  div.slide-background.first-slide,
+  div.slide-background[class*="transition"],
+  div.slide-background.sfeir-basic-slide[class*="transition"],
+  div.slide-background.sfeir-specific-slide[class*="transition"], 
+  div.slide-background.first-slide,
+  div.slide-background.quote-slide,
+  div.slide-background.with-code-dark:not(.sfeir-specific-slide):not(.stack):not([class*="transition"]){
+    .slide-background-content:after{
+      background-image: url("./images/logo-institute-white.png");
+    }
+  }
+
+
+div.slide-background.two-column[data-background-hash].data-bg-left .slide-background-content:after{
+  position: fixed;
+  background-image: url("./images/logo-institute-dark.webp");
   
+}
+
+div.slide-background.two-column[data-background-hash].data-bg-right .slide-background-content:after{
+  background-image: url("./images/logo-institute-white.png");
+  z-index: 1;
+}
+
 }
 
 /**
@@ -384,7 +442,7 @@ html.print-pdf {
   .reveal .slides .pdf-page div.slide-background.quote-slide::before {
     content: "";
     position: absolute;
-    background: url("/web_content/images/quotes.png");
+    background: url("./images/quotes.png");
     background-size: contain;
     filter: brightness(0.25);
     top: 5px;
@@ -393,4 +451,87 @@ html.print-pdf {
     height: 400px;
     color: $dark-grey;
   }
+
+  .reveal   .slides .pdf-page {
+    div.slide-background .slide-background-content:after{
+    content: '';
+    position: absolute;
+    bottom: 40px;
+    right: 140px;
+    background-image: url("./images/logo-school-dark-3.webp");
+    width: 150px;
+    height: 40px;
+    background-repeat: no-repeat;
+    background-size: contain;
+    }
+
+    div.slide-background.two-column[data-background-hash].data-bg-left{
+      overflow: initial;
+      .slide-background-content:after{
+        right: calc(-50vw + 140px);  
+        background-image: url("./images/logo-school-dark-3.webp");
+      }
+    }
+
+
+  div.slide-background.two-column[data-background-hash].data-bg-right .slide-background-content:after{
+    background-image: url("./images/logo-school-white-3.png");
+    z-index: 1;
+  }
+
+    div.slide-background.speaker-slide,
+    div.slide-background.first-slide,
+    div.slide-background[class*="transition"],
+    div.slide-background.sfeir-basic-slide[class*="transition"],
+    div.slide-background.sfeir-specific-slide[class*="transition"], 
+    div.slide-background.first-slide,
+    div.slide-background.quote-slide,
+    div.slide-background.with-code-dark:not(.sfeir-specific-slide):not(.stack):not([class*="transition"]){
+      .slide-background-content:after{
+        background-image: url("./images/logo-school-white-3.png");
+      }
+    }
+  }
+
+  .reveal   .slides[data-theme-slides=institute] .pdf-page {
+    div.slide-background .slide-background-content:after{
+    content: '';
+    position: absolute;
+    bottom: 40px;
+    right: 140px;
+    background-image: url("./images/logo-institute-dark.webp");
+    width: 150px;
+    height: 40px;
+    background-repeat: no-repeat;
+    background-size: contain;
+    }
+    div.slide-background.two-column[data-background-hash].data-bg-left{
+      overflow: initial;
+      .slide-background-content:after{
+        right: calc(-50vw + 140px);  
+        background-image: url("./images/logo-school-dark-3.webp");
+      }
+    }
+
+
+  div.slide-background.two-column[data-background-hash].data-bg-right .slide-background-content:after{
+    background-image: url("./images/logo-school-white-3.png");
+    z-index: 1;
+  }
+
+    div.slide-background.speaker-slide,
+    div.slide-background.first-slide,
+    div.slide-background[class*="transition"],
+    div.slide-background.sfeir-basic-slide[class*="transition"],
+    div.slide-background.sfeir-specific-slide[class*="transition"], 
+    div.slide-background.first-slide,
+    div.slide-background.quote-slide,
+    div.slide-background.with-code-dark:not(.sfeir-specific-slide):not(.stack):not([class*="transition"]){
+      .slide-background-content:after{
+        background-image: url("./images/logo-institute-white.png");
+      }
+    }
+  }
+  
+
 }

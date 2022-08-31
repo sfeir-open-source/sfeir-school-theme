@@ -45,7 +45,6 @@ $height-bg-white: 580px;
         text-transform: inherit;
         text-align: center;
         left:calc(#{$margin-right} - ((#{$width-bg-white} - #{$width-img-speaker}) / 2));
-        //left: $margin-right;
         font-size: 0.6em;
         color : $black;
         margin-bottom: 20px;
@@ -63,14 +62,11 @@ $height-bg-white: 580px;
 
     h3.icon-first{
         top: calc(#{$width-img-speaker} + #{$top-position-speaker} + 20px + (3* 1.5em) );
-        //top: calc(#{$top-position-speaker} + 300px);
     }
     h3.icon-second{
-        //top: calc(#{$top-position-speaker} + 400px);
         top: calc(#{$width-img-speaker} + #{$top-position-speaker} + 20px + 20px + (4* 1.5em) );
     }
     h3.icon-third{
-        //top: calc(#{$top-position-speaker} + 500px);
         top: calc(#{$width-img-speaker} + #{$top-position-speaker} + 20px + 20px + (5* 1.5em) );
     }
 

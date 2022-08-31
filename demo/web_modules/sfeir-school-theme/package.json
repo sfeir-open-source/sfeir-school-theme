@@ -2,8 +2,8 @@
   "name": "sfeir-school-theme",
   "version": "3.0.0-rc",
   "description": "Sfeir School Theme for RevealJS",
-  "main": "./sfeir-theme.mjs",
-  "exports": "./sfeir-theme.mjs",
+  "main": "./sfeir-school-theme.mjs",
+  "exports": "./sfeir-school-theme.mjs",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/sfeir-open-source/sfeir-school-theme.git"
