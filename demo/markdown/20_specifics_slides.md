@@ -478,6 +478,28 @@
 ```
 <!-- .element: class="big-code" -->
 
+
+##==##
+
+<!-- .slide: data-background="./assets/images/dark_background.jpeg" class="transition mask" -->
+
+# A Custom Transition Slide with mask
+
+
+##--##
+
+<!-- .slide: class="with-code" -->
+
+# Code to produce / Markdown
+
+```markdown
+<!-- .slide: data-background="./assets/images/dark_background.jpeg"
+    class="transition mask" -->
+
+# A Custom Transition Slide with mask
+```
+<!-- .element: class="big-code" -->
+
 ##==##
 
 <!-- .slide: data-background="#3d4349" class="transition" -->

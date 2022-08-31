@@ -2,11 +2,11 @@
   "name": "sfeir-school-theme",
   "version": "3.0.0-rc",
   "description": "Sfeir School Theme for RevealJS",
-  "main": "./sfeir-theme.mjs",
-  "exports": "./sfeir-theme.mjs",
+  "main": "./sfeir-school-theme.mjs",
+  "exports": "./sfeir-school-theme.mjs",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "serve": "live-server --port=4242 --open=\"./demo/index.html\" --mount=\"/assets:./demo/assets\" --mount=\"/web_modules:./demo/web_modules\" --watch=\"./demo/web_modules/sfeir-theme,./demo/markdown/\"",
+    "serve": "live-server --port=4242 --open=\"./demo/index.html\" --mount=\"/assets:./demo/assets\" --mount=\"/web_modules:./demo/web_modules\" --watch=\"./demo/web_modules/sfeir-school-theme,./demo/markdown/\"",
     "release": "echo \"Error: no deployement is configure for the moment, please just build the project\"",
     "prepare-demo": "node ./scripts/prepare-demo.js",
     "prestart": "npm run prepare-demo",
@@ -43,7 +43,6 @@
     "parallelshell": "3.0.1",
     "sass": "^1.51.0",
     "shelljs": "^0.8.5",
-    "shx": "^0.3.4",
     "vite": "^3.0.9"
   }
 }

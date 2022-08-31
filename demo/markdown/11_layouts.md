@@ -179,7 +179,7 @@ A paragraph with some text and a [link](http://hakim.se).
 
 
 ##--##
-<!-- .slide: class="text-dark" data-background="cyan" -->
+<!-- .slide: data-background="var(--black)" -->
 ## Slide 2
 
 * Item 2
@@ -195,7 +195,7 @@ A paragraph with some text and a [link](http://hakim.se).
 <!-- .slide: class="two-column" -->
 ## -- ##
 ## Slide 2
-<!-- .slide: class="text-dark" data-background="cyan" -->
+<!-- .slide: data-background="var(--black)" -->
 * Item 2
 * Item 3
 ```

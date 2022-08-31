@@ -44,7 +44,7 @@ Clone the repository in your project (`$SFEIR_THEME_PATH`)
 
 ## Link
 
-You should have a folder `web_modules/sfeir-theme`. In this folder you should have the bundled sfeir theme (either copy the demo web_modules or build it with `npm run build`).
+You should have a folder `web_modules/sfeir-school-theme`. In this folder you should have the bundled sfeir theme (either copy the demo web_modules or build it with `npm run build`).
 
 In your index.html add the following lines:
 ```html
@@ -57,7 +57,7 @@ In your index.html add the following lines:
     <link
       rel="stylesheet"
       type="text/css"
-      href="./web_modules/sfeir-theme/sfeir-theme.css"
+      href="./web_modules/sfeir-school-theme/sfeir-school-theme.css"
       id="theme"
     />
 </head>
@@ -74,7 +74,7 @@ In your index.html add the following lines:
 and a basic `slides.js`:
 
 ```JavaScript
-import { SfeirThemeInitializer } from "../web_modules/sfeir-theme/sfeir-theme.mjs";
+import { SfeirThemeInitializer } from "../web_modules/sfeir-school-theme/sfeir-school-theme.mjs";
 
 // One method per module
 function schoolSlides() {
@@ -349,6 +349,17 @@ Here is the list of possible grey background
 
 ![](./docs/images/transition-bg-image.png)
 
+## Transition with custom Image and mask
+
+```md
+<!-- .slide: data-background="./docs/images/images/dark_background.jpeg" class="transition mask" -->
+
+# A Custom Transition Slide with mask
+```
+
+
+![](./docs/images/transition-bg-image-mask.png)
+
 ## Transition with background color
 
 ```md
@@ -460,7 +471,7 @@ If text is set on over the background, the default color is white
 <!-- .slide: class="two-column" -->
 
 ##--##
-<!-- .slide: class="text-dark" data-background="cyan" -->
+<!-- .slide: class="text-dark" data-background="var(--black)" -->
 ## Slide 2
 
 * Item 2
