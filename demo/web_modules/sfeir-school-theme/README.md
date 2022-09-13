@@ -349,6 +349,17 @@ Here is the list of possible grey background
 
 ![](./docs/images/transition-bg-image.png)
 
+## Transition with custom Image and mask
+
+```md
+<!-- .slide: data-background="./docs/images/images/dark_background.jpeg" class="transition mask" -->
+
+# A Custom Transition Slide with mask
+```
+
+
+![](./docs/images/transition-bg-image-mask.png)
+
 ## Transition with background color
 
 ```md
@@ -532,6 +543,9 @@ You can also use class to customise the slide:
 
 * `big-code`: will use a big size of font
 ![](./docs/images/slide-with-code-big.png)
+
+* `max-height`: enhanced the size of code block to the maximum of the screen
+![](./docs/images/slide-with-code-max-height.png)
 
 there is a minor varient of `big-code`, add the class `alone` if there is only one code at screen to position it in the center of screen. Else it will be relative to it's parent
 
