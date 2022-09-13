@@ -257,15 +257,25 @@
  *********************************************/
 
 .reveal a {
-	color: $linkColor;
-	text-decoration: none;
+	color: $sfeir-green;
+	//text-decoration: none;
 	transition: color .15s ease;
 }
-	.reveal a:hover {
-		color: $linkColorHover;
-		text-shadow: none;
-		border: none;
+.reveal a:hover {
+	color: $sfeir-green;
+	//text-shadow: none;
+	border: none;
+}
+.reveal .slides[data-theme-slides="institute"]{
+	a{
+		color: $sfeir-blue;
+		
 	}
+	a:hover{
+		color: $sfeir-blue;
+
+	}
+}
 
 .reveal .roll span:after {
 	color: #fff;
