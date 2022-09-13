@@ -349,6 +349,17 @@ Here is the list of possible grey background
 
 ![](./docs/images/transition-bg-image.png)
 
+## Transition with custom Image and mask
+
+```md
+<!-- .slide: data-background="./docs/images/images/dark_background.jpeg" class="transition mask" -->
+
+# A Custom Transition Slide with mask
+```
+
+
+![](./docs/images/transition-bg-image-mask.png)
+
 ## Transition with background color
 
 ```md
