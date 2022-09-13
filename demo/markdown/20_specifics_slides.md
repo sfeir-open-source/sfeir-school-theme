@@ -572,6 +572,8 @@ Additionnal Advice
 </cite>
 </blockquote>
 
+[Credit of citation](http://www.sfeir.com)
+<!-- .element: class="credits" -->
 
 ##--##
 
@@ -589,6 +591,9 @@ Additionnal Advice
   To Quote or not to quote...
 </cite>
 </blockquote>
+
+[Credit of citation](http://www.sfeir.com)
+<!-- .element: class="credits" -->
 ```
 <!-- .element: class="big-code" -->
 
