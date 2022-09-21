@@ -153,13 +153,13 @@
     font-size: 1.15em;
   }
 
-  table {
+  table:not(.hljs-ln) {
     width: 100%;
     background-color: #efefef;
   }
-  table,
+  table:not(.hljs-ln),
   th,
-  td {
+  tdtable:not(.hljs-ln-line) {
     border: thin solid white;
   }
 

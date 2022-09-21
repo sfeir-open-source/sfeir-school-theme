@@ -340,7 +340,7 @@
 
 ##==##
 
-<!-- .slide: class="with-code" -->
+<!-- .slide: class="with-code-dark" -->
 
 ## Some Code (with highlighting of individual lines)
 
@@ -369,7 +369,7 @@
 # Code to produce / Markdown
 
 ```markdown
-<!-- .slide: class="with-code" -->
+<!-- .slide: class="with-code-dark" -->
 
 ```xml [1,7-11]
 <?xml version="1.0" encoding="utf-8"?>
