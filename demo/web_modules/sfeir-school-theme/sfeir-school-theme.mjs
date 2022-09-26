@@ -928,269 +928,6 @@ var kE = { exports: {} };
   });
 })(kE);
 const ab = /* @__PURE__ */ rb(kE.exports);
-/**
- * @license
- * Copyright 2017 Google LLC
- * SPDX-License-Identifier: BSD-3-Clause
- */
-var Po;
-const Ri = window, zn = Ri.trustedTypes, xd = zn ? zn.createPolicy("lit-html", { createHTML: (e) => e }) : void 0, Vt = `lit$${(Math.random() + "").slice(9)}$`, PE = "?" + Vt, ib = `<${PE}>`, Vn = document, Jr = (e = "") => Vn.createComment(e), ea = (e) => e === null || typeof e != "object" && typeof e != "function", FE = Array.isArray, ob = (e) => FE(e) || typeof (e == null ? void 0 : e[Symbol.iterator]) == "function", fr = /<(?:(!--|\/[^a-zA-Z])|(\/?[a-zA-Z][^>\s]*)|(\/?$))/g, wd = /-->/g, Md = />/g, nn = RegExp(`>|[ 	
-\f\r](?:([^\\s"'>=/]+)([ 	
-\f\r]*=[ 	
-\f\r]*(?:[^ 	
-\f\r"'\`<>=]|("|')|))|$)`, "g"), Ld = /'/g, kd = /"/g, BE = /^(?:script|style|textarea|title)$/i, sb = (e) => (t, ...n) => ({ _$litType$: e, strings: t, values: n }), Pd = sb(1), ta = Symbol.for("lit-noChange"), be = Symbol.for("lit-nothing"), Fd = /* @__PURE__ */ new WeakMap(), lb = (e, t, n) => {
-  var r, a;
-  const i = (r = n == null ? void 0 : n.renderBefore) !== null && r !== void 0 ? r : t;
-  let s = i._$litPart$;
-  if (s === void 0) {
-    const l = (a = n == null ? void 0 : n.renderBefore) !== null && a !== void 0 ? a : null;
-    i._$litPart$ = s = new _a(t.insertBefore(Jr(), l), l, void 0, n != null ? n : {});
-  }
-  return s._$AI(e), s;
-}, $n = Vn.createTreeWalker(Vn, 129, null, !1), cb = (e, t) => {
-  const n = e.length - 1, r = [];
-  let a, i = t === 2 ? "<svg>" : "", s = fr;
-  for (let o = 0; o < n; o++) {
-    const c = e[o];
-    let d, u, p = -1, m = 0;
-    for (; m < c.length && (s.lastIndex = m, u = s.exec(c), u !== null); )
-      m = s.lastIndex, s === fr ? u[1] === "!--" ? s = wd : u[1] !== void 0 ? s = Md : u[2] !== void 0 ? (BE.test(u[2]) && (a = RegExp("</" + u[2], "g")), s = nn) : u[3] !== void 0 && (s = nn) : s === nn ? u[0] === ">" ? (s = a != null ? a : fr, p = -1) : u[1] === void 0 ? p = -2 : (p = s.lastIndex - u[2].length, d = u[1], s = u[3] === void 0 ? nn : u[3] === '"' ? kd : Ld) : s === kd || s === Ld ? s = nn : s === wd || s === Md ? s = fr : (s = nn, a = void 0);
-    const _ = s === nn && e[o + 1].startsWith("/>") ? " " : "";
-    i += s === fr ? c + ib : p >= 0 ? (r.push(d), c.slice(0, p) + "$lit$" + c.slice(p) + Vt + _) : c + Vt + (p === -2 ? (r.push(void 0), o) : _);
-  }
-  const l = i + (e[n] || "<?>") + (t === 2 ? "</svg>" : "");
-  if (!Array.isArray(e) || !e.hasOwnProperty("raw"))
-    throw Error("invalid template strings array");
-  return [xd !== void 0 ? xd.createHTML(l) : l, r];
-};
-class na {
-  constructor({ strings: t, _$litType$: n }, r) {
-    let a;
-    this.parts = [];
-    let i = 0, s = 0;
-    const l = t.length - 1, o = this.parts, [c, d] = cb(t, n);
-    if (this.el = na.createElement(c, r), $n.currentNode = this.el.content, n === 2) {
-      const u = this.el.content, p = u.firstChild;
-      p.remove(), u.append(...p.childNodes);
-    }
-    for (; (a = $n.nextNode()) !== null && o.length < l; ) {
-      if (a.nodeType === 1) {
-        if (a.hasAttributes()) {
-          const u = [];
-          for (const p of a.getAttributeNames())
-            if (p.endsWith("$lit$") || p.startsWith(Vt)) {
-              const m = d[s++];
-              if (u.push(p), m !== void 0) {
-                const _ = a.getAttribute(m.toLowerCase() + "$lit$").split(Vt), g = /([.?@])?(.*)/.exec(m);
-                o.push({ type: 1, index: i, name: g[2], strings: _, ctor: g[1] === "." ? db : g[1] === "?" ? pb : g[1] === "@" ? mb : Ji });
-              } else
-                o.push({ type: 6, index: i });
-            }
-          for (const p of u)
-            a.removeAttribute(p);
-        }
-        if (BE.test(a.tagName)) {
-          const u = a.textContent.split(Vt), p = u.length - 1;
-          if (p > 0) {
-            a.textContent = zn ? zn.emptyScript : "";
-            for (let m = 0; m < p; m++)
-              a.append(u[m], Jr()), $n.nextNode(), o.push({ type: 2, index: ++i });
-            a.append(u[p], Jr());
-          }
-        }
-      } else if (a.nodeType === 8)
-        if (a.data === PE)
-          o.push({ type: 2, index: i });
-        else {
-          let u = -1;
-          for (; (u = a.data.indexOf(Vt, u + 1)) !== -1; )
-            o.push({ type: 7, index: i }), u += Vt.length - 1;
-        }
-      i++;
-    }
-  }
-  static createElement(t, n) {
-    const r = Vn.createElement("template");
-    return r.innerHTML = t, r;
-  }
-}
-function qn(e, t, n = e, r) {
-  var a, i, s, l;
-  if (t === ta)
-    return t;
-  let o = r !== void 0 ? (a = n._$Cl) === null || a === void 0 ? void 0 : a[r] : n._$Cu;
-  const c = ea(t) ? void 0 : t._$litDirective$;
-  return (o == null ? void 0 : o.constructor) !== c && ((i = o == null ? void 0 : o._$AO) === null || i === void 0 || i.call(o, !1), c === void 0 ? o = void 0 : (o = new c(e), o._$AT(e, n, r)), r !== void 0 ? ((s = (l = n)._$Cl) !== null && s !== void 0 ? s : l._$Cl = [])[r] = o : n._$Cu = o), o !== void 0 && (t = qn(e, o._$AS(e, t.values), o, r)), t;
-}
-class ub {
-  constructor(t, n) {
-    this.v = [], this._$AN = void 0, this._$AD = t, this._$AM = n;
-  }
-  get parentNode() {
-    return this._$AM.parentNode;
-  }
-  get _$AU() {
-    return this._$AM._$AU;
-  }
-  p(t) {
-    var n;
-    const { el: { content: r }, parts: a } = this._$AD, i = ((n = t == null ? void 0 : t.creationScope) !== null && n !== void 0 ? n : Vn).importNode(r, !0);
-    $n.currentNode = i;
-    let s = $n.nextNode(), l = 0, o = 0, c = a[0];
-    for (; c !== void 0; ) {
-      if (l === c.index) {
-        let d;
-        c.type === 2 ? d = new _a(s, s.nextSibling, this, t) : c.type === 1 ? d = new c.ctor(s, c.name, c.strings, this, t) : c.type === 6 && (d = new gb(s, this, t)), this.v.push(d), c = a[++o];
-      }
-      l !== (c == null ? void 0 : c.index) && (s = $n.nextNode(), l++);
-    }
-    return i;
-  }
-  m(t) {
-    let n = 0;
-    for (const r of this.v)
-      r !== void 0 && (r.strings !== void 0 ? (r._$AI(t, r, n), n += r.strings.length - 2) : r._$AI(t[n])), n++;
-  }
-}
-class _a {
-  constructor(t, n, r, a) {
-    var i;
-    this.type = 2, this._$AH = be, this._$AN = void 0, this._$AA = t, this._$AB = n, this._$AM = r, this.options = a, this._$C_ = (i = a == null ? void 0 : a.isConnected) === null || i === void 0 || i;
-  }
-  get _$AU() {
-    var t, n;
-    return (n = (t = this._$AM) === null || t === void 0 ? void 0 : t._$AU) !== null && n !== void 0 ? n : this._$C_;
-  }
-  get parentNode() {
-    let t = this._$AA.parentNode;
-    const n = this._$AM;
-    return n !== void 0 && t.nodeType === 11 && (t = n.parentNode), t;
-  }
-  get startNode() {
-    return this._$AA;
-  }
-  get endNode() {
-    return this._$AB;
-  }
-  _$AI(t, n = this) {
-    t = qn(this, t, n), ea(t) ? t === be || t == null || t === "" ? (this._$AH !== be && this._$AR(), this._$AH = be) : t !== this._$AH && t !== ta && this.$(t) : t._$litType$ !== void 0 ? this.T(t) : t.nodeType !== void 0 ? this.k(t) : ob(t) ? this.O(t) : this.$(t);
-  }
-  S(t, n = this._$AB) {
-    return this._$AA.parentNode.insertBefore(t, n);
-  }
-  k(t) {
-    this._$AH !== t && (this._$AR(), this._$AH = this.S(t));
-  }
-  $(t) {
-    this._$AH !== be && ea(this._$AH) ? this._$AA.nextSibling.data = t : this.k(Vn.createTextNode(t)), this._$AH = t;
-  }
-  T(t) {
-    var n;
-    const { values: r, _$litType$: a } = t, i = typeof a == "number" ? this._$AC(t) : (a.el === void 0 && (a.el = na.createElement(a.h, this.options)), a);
-    if (((n = this._$AH) === null || n === void 0 ? void 0 : n._$AD) === i)
-      this._$AH.m(r);
-    else {
-      const s = new ub(i, this), l = s.p(this.options);
-      s.m(r), this.k(l), this._$AH = s;
-    }
-  }
-  _$AC(t) {
-    let n = Fd.get(t.strings);
-    return n === void 0 && Fd.set(t.strings, n = new na(t)), n;
-  }
-  O(t) {
-    FE(this._$AH) || (this._$AH = [], this._$AR());
-    const n = this._$AH;
-    let r, a = 0;
-    for (const i of t)
-      a === n.length ? n.push(r = new _a(this.S(Jr()), this.S(Jr()), this, this.options)) : r = n[a], r._$AI(i), a++;
-    a < n.length && (this._$AR(r && r._$AB.nextSibling, a), n.length = a);
-  }
-  _$AR(t = this._$AA.nextSibling, n) {
-    var r;
-    for ((r = this._$AP) === null || r === void 0 || r.call(this, !1, !0, n); t && t !== this._$AB; ) {
-      const a = t.nextSibling;
-      t.remove(), t = a;
-    }
-  }
-  setConnected(t) {
-    var n;
-    this._$AM === void 0 && (this._$C_ = t, (n = this._$AP) === null || n === void 0 || n.call(this, t));
-  }
-}
-class Ji {
-  constructor(t, n, r, a, i) {
-    this.type = 1, this._$AH = be, this._$AN = void 0, this.element = t, this.name = n, this._$AM = a, this.options = i, r.length > 2 || r[0] !== "" || r[1] !== "" ? (this._$AH = Array(r.length - 1).fill(new String()), this.strings = r) : this._$AH = be;
-  }
-  get tagName() {
-    return this.element.tagName;
-  }
-  get _$AU() {
-    return this._$AM._$AU;
-  }
-  _$AI(t, n = this, r, a) {
-    const i = this.strings;
-    let s = !1;
-    if (i === void 0)
-      t = qn(this, t, n, 0), s = !ea(t) || t !== this._$AH && t !== ta, s && (this._$AH = t);
-    else {
-      const l = t;
-      let o, c;
-      for (t = i[0], o = 0; o < i.length - 1; o++)
-        c = qn(this, l[r + o], n, o), c === ta && (c = this._$AH[o]), s || (s = !ea(c) || c !== this._$AH[o]), c === be ? t = be : t !== be && (t += (c != null ? c : "") + i[o + 1]), this._$AH[o] = c;
-    }
-    s && !a && this.P(t);
-  }
-  P(t) {
-    t === be ? this.element.removeAttribute(this.name) : this.element.setAttribute(this.name, t != null ? t : "");
-  }
-}
-class db extends Ji {
-  constructor() {
-    super(...arguments), this.type = 3;
-  }
-  P(t) {
-    this.element[this.name] = t === be ? void 0 : t;
-  }
-}
-const _b = zn ? zn.emptyScript : "";
-class pb extends Ji {
-  constructor() {
-    super(...arguments), this.type = 4;
-  }
-  P(t) {
-    t && t !== be ? this.element.setAttribute(this.name, _b) : this.element.removeAttribute(this.name);
-  }
-}
-class mb extends Ji {
-  constructor(t, n, r, a, i) {
-    super(t, n, r, a, i), this.type = 5;
-  }
-  _$AI(t, n = this) {
-    var r;
-    if ((t = (r = qn(this, t, n, 0)) !== null && r !== void 0 ? r : be) === ta)
-      return;
-    const a = this._$AH, i = t === be && a !== be || t.capture !== a.capture || t.once !== a.once || t.passive !== a.passive, s = t !== be && (a === be || i);
-    i && this.element.removeEventListener(this.name, this, a), s && this.element.addEventListener(this.name, this, t), this._$AH = t;
-  }
-  handleEvent(t) {
-    var n, r;
-    typeof this._$AH == "function" ? this._$AH.call((r = (n = this.options) === null || n === void 0 ? void 0 : n.host) !== null && r !== void 0 ? r : this.element, t) : this._$AH.handleEvent(t);
-  }
-}
-class gb {
-  constructor(t, n, r) {
-    this.element = t, this.type = 6, this._$AN = void 0, this._$AM = n, this.options = r;
-  }
-  get _$AU() {
-    return this._$AM._$AU;
-  }
-  _$AI(t) {
-    qn(this, t);
-  }
-}
-const Bd = Ri.litHtmlPolyfillSupport;
-Bd == null || Bd(na, _a), ((Po = Ri.litHtmlVersions) !== null && Po !== void 0 ? Po : Ri.litHtmlVersions = []).push("2.3.1");
 /*!
 * reveal.js 4.3.1
 * https://revealjs.com
@@ -1202,7 +939,7 @@ const Bn = (e, t) => {
   for (let n in t)
     e[n] = t[n];
   return e;
-}, G = (e, t) => Array.from(e.querySelectorAll(t)), Fo = (e, t, n) => {
+}, G = (e, t) => Array.from(e.querySelectorAll(t)), Po = (e, t, n) => {
   n ? e.classList.add(t) : e.classList.remove(t);
 }, Fn = (e) => {
   if (typeof e == "string") {
@@ -1218,19 +955,19 @@ const Bn = (e, t) => {
   return e;
 }, zt = (e, t) => {
   e.style.transform = t;
-}, Ai = (e, t) => {
+}, Ri = (e, t) => {
   let n = e.matches || e.matchesSelector || e.msMatchesSelector;
   return !(!n || !n.call(e, t));
 }, Ce = (e, t) => {
   if (typeof e.closest == "function")
     return e.closest(t);
   for (; e; ) {
-    if (Ai(e, t))
+    if (Ri(e, t))
       return e;
     e = e.parentNode;
   }
   return null;
-}, Eb = (e, t, n, r = "") => {
+}, ib = (e, t, n, r = "") => {
   let a = e.querySelectorAll("." + n);
   for (let s = 0; s < a.length; s++) {
     let l = a[s];
@@ -1242,7 +979,7 @@ const Bn = (e, t) => {
 }, Hl = (e) => {
   let t = document.createElement("style");
   return t.type = "text/css", e && e.length > 0 && (t.styleSheet ? t.styleSheet.cssText = e : t.appendChild(document.createTextNode(e))), document.head.appendChild(t), t;
-}, Ud = () => {
+}, xd = () => {
   let e = {};
   location.search.replace(/[A-Z0-9]+?=([\w\.%-]*)/gi, (t) => {
     e[t.split("=").shift()] = t.split("=").pop();
@@ -1252,23 +989,23 @@ const Bn = (e, t) => {
     e[t] = Fn(unescape(n));
   }
   return e.dependencies !== void 0 && delete e.dependencies, e;
-}, fb = (e, t = 0) => {
+}, ob = (e, t = 0) => {
   if (e) {
     let n, r = e.style.height;
     return e.style.height = "0px", e.parentNode.style.height = "auto", n = t - e.parentNode.offsetHeight, e.style.height = r + "px", e.parentNode.style.removeProperty("height"), n;
   }
   return t;
-}, hb = { mp4: "video/mp4", m4a: "video/mp4", ogv: "video/ogg", mpeg: "video/mpeg", webm: "video/webm" }, ra = navigator.userAgent, Sb = document.createElement("div"), hn = /(iphone|ipod|ipad|android)/gi.test(ra) || navigator.platform === "MacIntel" && navigator.maxTouchPoints > 1, bb = /chrome/i.test(ra) && !/edge/i.test(ra), UE = /android/gi.test(ra), vb = "zoom" in Sb.style && !hn && (bb || /Version\/[\d\.]+.*Safari/.test(ra));
-var $E = {};
-Object.defineProperty($E, "__esModule", { value: !0 });
-var $d = Object.assign || function(e) {
+}, sb = { mp4: "video/mp4", m4a: "video/mp4", ogv: "video/ogg", mpeg: "video/mpeg", webm: "video/webm" }, Jr = navigator.userAgent, lb = document.createElement("div"), hn = /(iphone|ipod|ipad|android)/gi.test(Jr) || navigator.platform === "MacIntel" && navigator.maxTouchPoints > 1, cb = /chrome/i.test(Jr) && !/edge/i.test(Jr), PE = /android/gi.test(Jr), ub = "zoom" in lb.style && !hn && (cb || /Version\/[\d\.]+.*Safari/.test(Jr));
+var FE = {};
+Object.defineProperty(FE, "__esModule", { value: !0 });
+var wd = Object.assign || function(e) {
   for (var t = 1; t < arguments.length; t++) {
     var n = arguments[t];
     for (var r in n)
       Object.prototype.hasOwnProperty.call(n, r) && (e[r] = n[r]);
   }
   return e;
-}, yb = $E.default = function(e) {
+}, db = FE.default = function(e) {
   if (e) {
     var t = function(N) {
       return [].slice.call(N);
@@ -1342,8 +1079,8 @@ var $d = Object.assign || function(e) {
     } }), V.observeWindow = !0, V.observeWindowDelay = 100, V.fitAll = c(i), V;
   }
   function L(N, F) {
-    var U = $d({}, D, F), X = N.map(function(Z) {
-      var ge = $d({}, U, { element: Z, active: !0 });
+    var U = wd({}, D, F), X = N.map(function(Z) {
+      var ge = wd({}, U, { element: Z, active: !0 });
       return function(Q) {
         Q.originalStyle = { whiteSpace: Q.element.style.whiteSpace, display: Q.element.style.display, fontSize: Q.element.style.fontSize }, A(Q), Q.newbie = !0, Q.dirty = !0, s.push(Q);
       }(ge), { element: Z, fit: h(ge, i), unfreeze: T(ge), freeze: O(ge), unsubscribe: S(ge) };
@@ -1355,7 +1092,7 @@ var $d = Object.assign || function(e) {
     return typeof N == "string" ? L(t(document.querySelectorAll(N)), F) : L([N], F)[0];
   }
 }(typeof window > "u" ? null : window);
-class Tb {
+class _b {
   constructor(t) {
     this.Reveal = t, this.startEmbeddedIframe = this.startEmbeddedIframe.bind(this);
   }
@@ -1384,7 +1121,7 @@ class Tb {
         else if (o && !this.Reveal.isSpeakerNotes()) {
           let u = document.createElement("video");
           c && u.setAttribute("loop", ""), d && (u.muted = !0), hn && (u.muted = !0, u.setAttribute("playsinline", "")), o.split(",").forEach((p) => {
-            let m = ((_ = "") => hb[_.split(".").pop()])(p);
+            let m = ((_ = "") => sb[_.split(".").pop()])(p);
             u.innerHTML += m ? `<source src="${p}" type="${m}">` : `<source src="${p}">`;
           }), a.appendChild(u);
         } else if (i && n.excludeIframes !== !0) {
@@ -1399,7 +1136,7 @@ class Tb {
   }
   layout(t) {
     Array.from(t.querySelectorAll(".r-fit-text")).forEach((n) => {
-      yb(n, { minSize: 24, maxSize: 0.8 * this.Reveal.getConfig().height, observeMutations: !1, observeWindow: !1 });
+      db(n, { minSize: 24, maxSize: 0.8 * this.Reveal.getConfig().height, observeMutations: !1, observeWindow: !1 });
     });
   }
   unload(t) {
@@ -1475,7 +1212,7 @@ class Tb {
     }));
   }
 }
-class Cb {
+class pb {
   constructor(t) {
     this.Reveal = t;
   }
@@ -1526,7 +1263,7 @@ class Cb {
     this.element.remove();
   }
 }
-const Bo = (e) => {
+const Fo = (e) => {
   let t = e.match(/^#([0-9a-f]{3})$/i);
   if (t && t[1])
     return t = t[1], { r: 17 * parseInt(t.charAt(0), 16), g: 17 * parseInt(t.charAt(1), 16), b: 17 * parseInt(t.charAt(2), 16) };
@@ -1539,7 +1276,7 @@ const Bo = (e) => {
   let a = e.match(/^rgba\s*\(\s*(\d+)\s*,\s*(\d+)\s*,\s*(\d+)\s*\,\s*([\d]+|[\d]*.[\d]+)\s*\)$/i);
   return a ? { r: parseInt(a[1], 10), g: parseInt(a[2], 10), b: parseInt(a[3], 10), a: parseFloat(a[4]) } : null;
 };
-class Rb {
+class mb {
   constructor(t) {
     this.Reveal = t;
   }
@@ -1566,13 +1303,13 @@ class Rb {
     const n = t.slideBackgroundElement, r = t.slideBackgroundContentElement, a = { background: t.getAttribute("data-background"), backgroundSize: t.getAttribute("data-background-size"), backgroundImage: t.getAttribute("data-background-image"), backgroundVideo: t.getAttribute("data-background-video"), backgroundIframe: t.getAttribute("data-background-iframe"), backgroundColor: t.getAttribute("data-background-color"), backgroundRepeat: t.getAttribute("data-background-repeat"), backgroundPosition: t.getAttribute("data-background-position"), backgroundTransition: t.getAttribute("data-background-transition"), backgroundOpacity: t.getAttribute("data-background-opacity") }, i = t.hasAttribute("data-preload");
     t.classList.remove("has-dark-background"), t.classList.remove("has-light-background"), n.removeAttribute("data-loaded"), n.removeAttribute("data-background-hash"), n.removeAttribute("data-background-size"), n.removeAttribute("data-background-transition"), n.style.backgroundColor = "", r.style.backgroundSize = "", r.style.backgroundRepeat = "", r.style.backgroundPosition = "", r.style.backgroundImage = "", r.style.opacity = "", r.innerHTML = "", a.background && (/^(http|file|\/\/)/gi.test(a.background) || /\.(svg|png|jpg|jpeg|gif|bmp)([?#\s]|$)/gi.test(a.background) ? t.setAttribute("data-background-image", a.background) : n.style.background = a.background), (a.background || a.backgroundColor || a.backgroundImage || a.backgroundVideo || a.backgroundIframe) && n.setAttribute("data-background-hash", a.background + a.backgroundSize + a.backgroundImage + a.backgroundVideo + a.backgroundIframe + a.backgroundColor + a.backgroundRepeat + a.backgroundPosition + a.backgroundTransition + a.backgroundOpacity), a.backgroundSize && n.setAttribute("data-background-size", a.backgroundSize), a.backgroundColor && (n.style.backgroundColor = a.backgroundColor), a.backgroundTransition && n.setAttribute("data-background-transition", a.backgroundTransition), i && n.setAttribute("data-preload", ""), a.backgroundSize && (r.style.backgroundSize = a.backgroundSize), a.backgroundRepeat && (r.style.backgroundRepeat = a.backgroundRepeat), a.backgroundPosition && (r.style.backgroundPosition = a.backgroundPosition), a.backgroundOpacity && (r.style.opacity = a.backgroundOpacity);
     let s = a.backgroundColor;
-    if (!s || !Bo(s)) {
+    if (!s || !Fo(s)) {
       let o = window.getComputedStyle(n);
       o && o.backgroundColor && (s = o.backgroundColor);
     }
     if (s) {
-      const o = Bo(s);
-      o && o.a !== 0 && (typeof (l = s) == "string" && (l = Bo(l)), (l ? (299 * l.r + 587 * l.g + 114 * l.b) / 1e3 : null) < 128 ? t.classList.add("has-dark-background") : t.classList.add("has-light-background"));
+      const o = Fo(s);
+      o && o.a !== 0 && (typeof (l = s) == "string" && (l = Fo(l)), (l ? (299 * l.r + 587 * l.g + 114 * l.b) / 1e3 : null) < 128 ? t.classList.add("has-dark-background") : t.classList.add("has-light-background"));
     }
     var l;
   }
@@ -1613,9 +1350,9 @@ class Rb {
     this.element.remove();
   }
 }
-const Ab = /registerPlugin|registerKeyboardShortcut|addKeyBinding|addEventListener/, Gd = /fade-(down|up|right|left|out|in-then-out|in-then-semi-out)|semi-fade-out|current-visible|shrink|grow/;
-let Yd = 0;
-class Nb {
+const gb = /registerPlugin|registerKeyboardShortcut|addKeyBinding|addEventListener/, Md = /fade-(down|up|right|left|out|in-then-out|in-then-semi-out)|semi-fade-out|current-visible|shrink|grow/;
+let Ld = 0;
+class Eb {
   constructor(t) {
     this.Reveal = t;
   }
@@ -1626,12 +1363,12 @@ class Nb {
       this.autoAnimateStyleSheet = this.autoAnimateStyleSheet || Hl();
       let s = this.getAutoAnimateOptions(n);
       t.dataset.autoAnimate = "pending", n.dataset.autoAnimate = "pending", s.slideDirection = a > i ? "forward" : "backward";
-      let l = this.getAutoAnimatableElements(t, n).map((o) => this.autoAnimateElements(o.from, o.to, o.options || {}, s, Yd++));
+      let l = this.getAutoAnimatableElements(t, n).map((o) => this.autoAnimateElements(o.from, o.to, o.options || {}, s, Ld++));
       if (n.dataset.autoAnimateUnmatched !== "false" && this.Reveal.getConfig().autoAnimateUnmatched === !0) {
         let o = 0.8 * s.duration, c = 0.2 * s.duration;
         this.getUnmatchedAutoAnimateElements(n).forEach((d) => {
           let u = this.getAutoAnimateOptions(d, s), p = "unmatched";
-          u.duration === s.duration && u.delay === s.delay || (p = "unmatched-" + Yd++, l.push(`[data-auto-animate="running"] [data-auto-animate-target="${p}"] { transition: opacity ${u.duration}s ease ${u.delay}s; }`)), d.dataset.autoAnimateTarget = p;
+          u.duration === s.duration && u.delay === s.delay || (p = "unmatched-" + Ld++, l.push(`[data-auto-animate="running"] [data-auto-animate-target="${p}"] { transition: opacity ${u.duration}s ease ${u.delay}s; }`)), d.dataset.autoAnimateTarget = p;
         }, this), l.push(`[data-auto-animate="running"] [data-auto-animate-target="unmatched"] { transition: opacity ${o}s ease ${c}s; }`);
       }
       this.autoAnimateStyleSheet.innerHTML = l.join(""), requestAnimationFrame(() => {
@@ -1651,7 +1388,7 @@ class Nb {
     let s = this.getAutoAnimateOptions(n, a);
     r.delay !== void 0 && (s.delay = r.delay), r.duration !== void 0 && (s.duration = r.duration), r.easing !== void 0 && (s.easing = r.easing);
     let l = this.getAutoAnimatableProperties("from", t, r), o = this.getAutoAnimatableProperties("to", n, r);
-    if (n.classList.contains("fragment") && (delete o.styles.opacity, t.classList.contains("fragment")) && (t.className.match(Gd) || [""])[0] === (n.className.match(Gd) || [""])[0] && a.slideDirection === "forward" && n.classList.add("visible", "disabled"), r.translate !== !1 || r.scale !== !1) {
+    if (n.classList.contains("fragment") && (delete o.styles.opacity, t.classList.contains("fragment")) && (t.className.match(Md) || [""])[0] === (n.className.match(Md) || [""])[0] && a.slideDirection === "forward" && n.classList.add("visible", "disabled"), r.translate !== !1 || r.scale !== !1) {
       let u = this.Reveal.getScale(), p = { x: (l.x - o.x) / u, y: (l.y - o.y) / u, scaleX: l.width / o.width, scaleY: l.height / o.height };
       p.x = Math.round(1e3 * p.x) / 1e3, p.y = Math.round(1e3 * p.y) / 1e3, p.scaleX = Math.round(1e3 * p.scaleX) / 1e3, p.scaleX = Math.round(1e3 * p.scaleX) / 1e3;
       let m = r.translate !== !1 && (p.x !== 0 || p.y !== 0), _ = r.scale !== !1 && (p.scaleX !== 0 || p.scaleY !== 0);
@@ -1706,7 +1443,7 @@ class Nb {
     let r = [];
     const a = "h1, h2, h3, h4, h5, h6, p, li";
     return this.findAutoAnimateMatches(r, t, n, "[data-id]", (i) => i.nodeName + ":::" + i.getAttribute("data-id")), this.findAutoAnimateMatches(r, t, n, a, (i) => i.nodeName + ":::" + i.innerText), this.findAutoAnimateMatches(r, t, n, "img, video, iframe", (i) => i.nodeName + ":::" + (i.getAttribute("src") || i.getAttribute("data-src"))), this.findAutoAnimateMatches(r, t, n, "pre", (i) => i.nodeName + ":::" + i.innerText), r.forEach((i) => {
-      Ai(i.from, a) ? i.options = { scale: !1 } : Ai(i.from, "pre") && (i.options = { scale: !1, styles: ["width", "height"] }, this.findAutoAnimateMatches(r, i.from, i.to, ".hljs .hljs-ln-code", (s) => s.textContent, { scale: !1, styles: [], measure: this.getLocalBoundingBox.bind(this) }), this.findAutoAnimateMatches(r, i.from, i.to, ".hljs .hljs-ln-line[data-line-number]", (s) => s.getAttribute("data-line-number"), { scale: !1, styles: ["width"], measure: this.getLocalBoundingBox.bind(this) }));
+      Ri(i.from, a) ? i.options = { scale: !1 } : Ri(i.from, "pre") && (i.options = { scale: !1, styles: ["width", "height"] }, this.findAutoAnimateMatches(r, i.from, i.to, ".hljs .hljs-ln-code", (s) => s.textContent, { scale: !1, styles: [], measure: this.getLocalBoundingBox.bind(this) }), this.findAutoAnimateMatches(r, i.from, i.to, ".hljs .hljs-ln-line[data-line-number]", (s) => s.getAttribute("data-line-number"), { scale: !1, styles: ["width"], measure: this.getLocalBoundingBox.bind(this) }));
     }, this), r;
   }
   getLocalBoundingBox(t) {
@@ -1735,7 +1472,7 @@ class Nb {
     }, []);
   }
 }
-class Ob {
+class fb {
   constructor(t) {
     this.Reveal = t;
   }
@@ -1831,7 +1568,7 @@ class Ob {
     return this.goto(null, -1);
   }
 }
-class Db {
+class hb {
   constructor(t) {
     this.Reveal = t, this.active = !1, this.onSlideClicked = this.onSlideClicked.bind(this);
   }
@@ -1893,7 +1630,7 @@ class Db {
     }
   }
 }
-class Ib {
+class Sb {
   constructor(t) {
     this.Reveal = t, this.shortcuts = {}, this.bindings = {}, this.onDocumentKeyDown = this.onDocumentKeyDown.bind(this), this.onDocumentKeyPress = this.onDocumentKeyPress.bind(this);
   }
@@ -1963,7 +1700,7 @@ class Ib {
     })(n.embedded ? this.Reveal.getViewportElement() : document.documentElement) : r === 65 ? n.autoSlideStoppable && this.Reveal.toggleAutoSlide(a) : p = !1), p ? t.preventDefault && t.preventDefault() : r !== 27 && r !== 79 || (this.Reveal.closeOverlay() === !1 && this.Reveal.overview.toggle(), t.preventDefault && t.preventDefault()), this.Reveal.cueAutoSlide();
   }
 }
-class xb {
+class bb {
   constructor(t) {
     var n, r, a;
     a = 1e3, (r = "MAX_REPLACE_STATE_FREQUENCY") in (n = this) ? Object.defineProperty(n, r, { value: a, enumerable: !0, configurable: !0, writable: !0 }) : n[r] = a, this.Reveal = t, this.writeURLTimeout = 0, this.replaceStateTimestamp = 0, this.onWindowHashChange = this.onWindowHashChange.bind(this);
@@ -2028,7 +1765,7 @@ class xb {
     this.readURL();
   }
 }
-class wb {
+class vb {
   constructor(t) {
     this.Reveal = t, this.onNavigateLeftClicked = this.onNavigateLeftClicked.bind(this), this.onNavigateRightClicked = this.onNavigateRightClicked.bind(this), this.onNavigateUpClicked = this.onNavigateUpClicked.bind(this), this.onNavigateDownClicked = this.onNavigateDownClicked.bind(this), this.onNavigatePrevClicked = this.onNavigatePrevClicked.bind(this), this.onNavigateNextClicked = this.onNavigateNextClicked.bind(this);
   }
@@ -2044,7 +1781,7 @@ class wb {
   }
   bind() {
     let t = ["touchstart", "click"];
-    UE && (t = ["touchstart"]), t.forEach((n) => {
+    PE && (t = ["touchstart"]), t.forEach((n) => {
       this.controlsLeft.forEach((r) => r.addEventListener(n, this.onNavigateLeftClicked, !1)), this.controlsRight.forEach((r) => r.addEventListener(n, this.onNavigateRightClicked, !1)), this.controlsUp.forEach((r) => r.addEventListener(n, this.onNavigateUpClicked, !1)), this.controlsDown.forEach((r) => r.addEventListener(n, this.onNavigateDownClicked, !1)), this.controlsPrev.forEach((r) => r.addEventListener(n, this.onNavigatePrevClicked, !1)), this.controlsNext.forEach((r) => r.addEventListener(n, this.onNavigateNextClicked, !1));
     });
   }
@@ -2114,7 +1851,7 @@ class wb {
     t.preventDefault(), this.Reveal.onUserInput(), this.Reveal.next();
   }
 }
-class Mb {
+class yb {
   constructor(t) {
     this.Reveal = t, this.onProgressClicked = this.onProgressClicked.bind(this);
   }
@@ -2150,7 +1887,7 @@ class Mb {
     this.element.remove();
   }
 }
-class Lb {
+class Tb {
   constructor(t) {
     this.Reveal = t, this.lastMouseWheelStep = 0, this.cursorHidden = !1, this.cursorInactiveTimeout = 0, this.onDocumentCursorActive = this.onDocumentCursorActive.bind(this), this.onDocumentMouseScroll = this.onDocumentMouseScroll.bind(this);
   }
@@ -2177,7 +1914,7 @@ class Lb {
     }
   }
 }
-const jd = (e, t) => {
+const kd = (e, t) => {
   const n = document.createElement("script");
   n.type = "text/javascript", n.async = !1, n.defer = !1, n.src = e, typeof t == "function" && (n.onload = n.onreadystatechange = (a) => {
     (a.type === "load" || /loaded|complete/.test(n.readyState)) && (n.onload = n.onreadystatechange = n.onerror = null, t());
@@ -2188,7 +1925,7 @@ const jd = (e, t) => {
   const r = document.querySelector("head");
   r.insertBefore(n, r.lastChild);
 };
-class kb {
+class Cb {
   constructor(t) {
     this.Reveal = t, this.state = "idle", this.registeredPlugins = {}, this.asyncDependencies = [];
   }
@@ -2203,7 +1940,7 @@ class kb {
           l && typeof l.callback == "function" && l.callback(), --i == 0 && this.initPlugins().then(r);
         };
         a.forEach((l) => {
-          typeof l.id == "string" ? (this.registerPlugin(l), s(l)) : typeof l.src == "string" ? jd(l.src, () => s(l)) : (console.warn("Unrecognized plugin format", l), s());
+          typeof l.id == "string" ? (this.registerPlugin(l), s(l)) : typeof l.src == "string" ? kd(l.src, () => s(l)) : (console.warn("Unrecognized plugin format", l), s());
         });
       } else
         this.initPlugins().then(r);
@@ -2231,7 +1968,7 @@ class kb {
   }
   loadAsync() {
     return this.state = "loaded", this.asyncDependencies.length && this.asyncDependencies.forEach((t) => {
-      jd(t.src, t.callback);
+      kd(t.src, t.callback);
     }), Promise.resolve();
   }
   registerPlugin(t) {
@@ -2254,7 +1991,7 @@ class kb {
     }), this.registeredPlugins = {}, this.asyncDependencies = [];
   }
 }
-class Pb {
+class Rb {
   constructor(t) {
     this.Reveal = t;
   }
@@ -2314,7 +2051,7 @@ class Pb {
     return /print-pdf/gi.test(window.location.search);
   }
 }
-class Fb {
+class Ab {
   constructor(t) {
     this.Reveal = t, this.touchStartX = 0, this.touchStartY = 0, this.touchStartCount = 0, this.touchCaptured = !1, this.onPointerDown = this.onPointerDown.bind(this), this.onPointerMove = this.onPointerMove.bind(this), this.onPointerUp = this.onPointerUp.bind(this), this.onTouchStart = this.onTouchStart.bind(this), this.onTouchMove = this.onTouchMove.bind(this), this.onTouchEnd = this.onTouchEnd.bind(this);
   }
@@ -2327,7 +2064,7 @@ class Fb {
     t.removeEventListener("pointerdown", this.onPointerDown, !1), t.removeEventListener("pointermove", this.onPointerMove, !1), t.removeEventListener("pointerup", this.onPointerUp, !1), t.removeEventListener("MSPointerDown", this.onPointerDown, !1), t.removeEventListener("MSPointerMove", this.onPointerMove, !1), t.removeEventListener("MSPointerUp", this.onPointerUp, !1), t.removeEventListener("touchstart", this.onTouchStart, !1), t.removeEventListener("touchmove", this.onTouchMove, !1), t.removeEventListener("touchend", this.onTouchEnd, !1);
   }
   isSwipePrevented(t) {
-    if (Ai(t, "video, audio"))
+    if (Ri(t, "video, audio"))
       return !0;
     for (; t && typeof t.hasAttribute == "function"; ) {
       if (t.hasAttribute("data-prevent-swipe"))
@@ -2346,7 +2083,7 @@ class Fb {
       return !0;
     let n = this.Reveal.getConfig();
     if (this.touchCaptured)
-      UE && t.preventDefault();
+      PE && t.preventDefault();
     else {
       this.Reveal.onUserInput(t);
       let r = t.touches[0].clientX, a = t.touches[0].clientY;
@@ -2369,7 +2106,7 @@ class Fb {
     t.pointerType !== t.MSPOINTER_TYPE_TOUCH && t.pointerType !== "touch" || (t.touches = [{ clientX: t.clientX, clientY: t.clientY }], this.onTouchEnd(t));
   }
 }
-class Bb {
+class Nb {
   constructor(t) {
     this.Reveal = t, this.onRevealPointerDown = this.onRevealPointerDown.bind(this), this.onDocumentPointerDown = this.onDocumentPointerDown.bind(this);
   }
@@ -2402,7 +2139,7 @@ class Bb {
     n && n === this.Reveal.getRevealElement() || this.blur();
   }
 }
-class Ub {
+class Ob {
   constructor(t) {
     this.Reveal = t;
   }
@@ -2434,7 +2171,7 @@ class Ub {
     this.element.remove();
   }
 }
-class $b {
+class Db {
   constructor(t, n) {
     this.diameter = 100, this.diameter2 = this.diameter / 2, this.thickness = 6, this.playing = !1, this.progress = 0, this.progressOffset = 1, this.container = t, this.progressCheck = n, this.canvas = document.createElement("canvas"), this.canvas.className = "playback", this.canvas.width = this.diameter, this.canvas.height = this.diameter, this.canvas.style.width = this.diameter2 + "px", this.canvas.style.height = this.diameter2 + "px", this.context = this.canvas.getContext("2d"), this.container.appendChild(this.canvas), this.render();
   }
@@ -2462,17 +2199,17 @@ class $b {
     this.playing = !1, this.canvas.parentNode && this.container.removeChild(this.canvas);
   }
 }
-var Gb = { width: 960, height: 700, margin: 0.04, minScale: 0.2, maxScale: 2, controls: !0, controlsTutorial: !0, controlsLayout: "bottom-right", controlsBackArrows: "faded", progress: !0, slideNumber: !1, showSlideNumber: "all", hashOneBasedIndex: !1, hash: !1, respondToHashChanges: !0, history: !1, keyboard: !0, keyboardCondition: null, disableLayout: !1, overview: !0, center: !0, touch: !0, loop: !1, rtl: !1, navigationMode: "default", shuffle: !1, fragments: !0, fragmentInURL: !0, embedded: !1, help: !0, pause: !0, showNotes: !1, showHiddenSlides: !1, autoPlayMedia: null, preloadIframes: null, autoAnimate: !0, autoAnimateMatcher: null, autoAnimateEasing: "ease", autoAnimateDuration: 1, autoAnimateUnmatched: !0, autoAnimateStyles: ["opacity", "color", "background-color", "padding", "font-size", "line-height", "letter-spacing", "border-width", "border-color", "border-radius", "outline", "outline-offset"], autoSlide: 0, autoSlideStoppable: !0, autoSlideMethod: null, defaultTiming: null, mouseWheel: !1, previewLinks: !1, postMessage: !0, postMessageEvents: !1, focusBodyOnPageVisibilityChange: !0, transition: "slide", transitionSpeed: "default", backgroundTransition: "fade", parallaxBackgroundImage: "", parallaxBackgroundSize: "", parallaxBackgroundRepeat: "", parallaxBackgroundPosition: "", parallaxBackgroundHorizontal: null, parallaxBackgroundVertical: null, pdfMaxPagesPerSlide: Number.POSITIVE_INFINITY, pdfSeparateFragments: !0, pdfPageHeightOffset: -1, viewDistance: 3, mobileViewDistance: 2, display: "block", hideInactiveCursor: !0, hideCursorTime: 5e3, dependencies: [], plugins: [] };
-function GE(e, t) {
+var Ib = { width: 960, height: 700, margin: 0.04, minScale: 0.2, maxScale: 2, controls: !0, controlsTutorial: !0, controlsLayout: "bottom-right", controlsBackArrows: "faded", progress: !0, slideNumber: !1, showSlideNumber: "all", hashOneBasedIndex: !1, hash: !1, respondToHashChanges: !0, history: !1, keyboard: !0, keyboardCondition: null, disableLayout: !1, overview: !0, center: !0, touch: !0, loop: !1, rtl: !1, navigationMode: "default", shuffle: !1, fragments: !0, fragmentInURL: !0, embedded: !1, help: !0, pause: !0, showNotes: !1, showHiddenSlides: !1, autoPlayMedia: null, preloadIframes: null, autoAnimate: !0, autoAnimateMatcher: null, autoAnimateEasing: "ease", autoAnimateDuration: 1, autoAnimateUnmatched: !0, autoAnimateStyles: ["opacity", "color", "background-color", "padding", "font-size", "line-height", "letter-spacing", "border-width", "border-color", "border-radius", "outline", "outline-offset"], autoSlide: 0, autoSlideStoppable: !0, autoSlideMethod: null, defaultTiming: null, mouseWheel: !1, previewLinks: !1, postMessage: !0, postMessageEvents: !1, focusBodyOnPageVisibilityChange: !0, transition: "slide", transitionSpeed: "default", backgroundTransition: "fade", parallaxBackgroundImage: "", parallaxBackgroundSize: "", parallaxBackgroundRepeat: "", parallaxBackgroundPosition: "", parallaxBackgroundHorizontal: null, parallaxBackgroundVertical: null, pdfMaxPagesPerSlide: Number.POSITIVE_INFINITY, pdfSeparateFragments: !0, pdfPageHeightOffset: -1, viewDistance: 3, mobileViewDistance: 2, display: "block", hideInactiveCursor: !0, hideCursorTime: 5e3, dependencies: [], plugins: [] };
+function BE(e, t) {
   arguments.length < 2 && (t = arguments[0], e = document.querySelector(".reveal"));
   const n = {};
-  let r, a, i, s, l, o = {}, c = !1, d = { hasNavigatedHorizontally: !1, hasNavigatedVertically: !1 }, u = [], p = 1, m = { layout: "", overview: "" }, _ = {}, g = "idle", E = 0, f = 0, h = -1, S = !1, T = new Tb(n), O = new Cb(n), A = new Nb(n), D = new Rb(n), y = new Ob(n), C = new Db(n), x = new Ib(n), L = new xb(n), V = new wb(n), N = new Mb(n), F = new Lb(n), U = new kb(n), X = new Pb(n), Z = new Bb(n), ge = new Fb(n), Q = new Ub(n);
+  let r, a, i, s, l, o = {}, c = !1, d = { hasNavigatedHorizontally: !1, hasNavigatedVertically: !1 }, u = [], p = 1, m = { layout: "", overview: "" }, _ = {}, g = "idle", E = 0, f = 0, h = -1, S = !1, T = new _b(n), O = new pb(n), A = new Eb(n), D = new mb(n), y = new fb(n), C = new hb(n), x = new Sb(n), L = new bb(n), V = new vb(n), N = new yb(n), F = new Tb(n), U = new Cb(n), X = new Rb(n), Z = new Nb(n), ge = new Ab(n), Q = new Ob(n);
   function mt(b) {
     if (!e)
       throw 'Unable to find presentation root (<div class="reveal">).';
     if (_.wrapper = e, _.slides = e.querySelector(".slides"), !_.slides)
       throw 'Unable to find slides container (<div class="slides">).';
-    return o = { ...Gb, ...o, ...t, ...b, ...Ud() }, ue(), window.addEventListener("load", yn, !1), U.load(o.plugins, o.dependencies).then(He), new Promise((R) => n.on("ready", R));
+    return o = { ...Ib, ...o, ...t, ...b, ...xd() }, ue(), window.addEventListener("load", yn, !1), U.load(o.plugins, o.dependencies).then(He), new Promise((R) => n.on("ready", R));
   }
   function ue() {
     o.embedded === !0 ? _.viewport = Ce(e, ".reveal-viewport") || e : (_.viewport = document.body, document.documentElement.classList.add("reveal-full-page")), _.viewport.classList.add("reveal-viewport");
@@ -2490,7 +2227,7 @@ function GE(e, t) {
     });
   }
   function M() {
-    _.slides.classList.add("no-transition"), hn ? _.wrapper.classList.add("no-hover") : _.wrapper.classList.remove("no-hover"), D.render(), O.render(), V.render(), N.render(), Q.render(), _.pauseOverlay = Eb(_.wrapper, "div", "pause-overlay", o.controls ? '<button class="resume-button">Resume presentation</button>' : null), _.statusElement = gt(), _.wrapper.setAttribute("role", "application");
+    _.slides.classList.add("no-transition"), hn ? _.wrapper.classList.add("no-hover") : _.wrapper.classList.remove("no-hover"), D.render(), O.render(), V.render(), N.render(), Q.render(), _.pauseOverlay = ib(_.wrapper, "div", "pause-overlay", o.controls ? '<button class="resume-button">Resume presentation</button>' : null), _.statusElement = gt(), _.wrapper.setAttribute("role", "application");
   }
   function gt() {
     let b = _.wrapper.querySelector(".aria-status");
@@ -2527,7 +2264,7 @@ function GE(e, t) {
     if (typeof b == "object" && Bn(o, b), n.isReady() === !1)
       return;
     const I = _.wrapper.querySelectorAll(".slides section").length;
-    _.wrapper.classList.remove(R.transition), _.wrapper.classList.add(o.transition), _.wrapper.setAttribute("data-transition-speed", o.transitionSpeed), _.wrapper.setAttribute("data-background-transition", o.backgroundTransition), _.viewport.style.setProperty("--slide-width", o.width + "px"), _.viewport.style.setProperty("--slide-height", o.height + "px"), o.shuffle && Do(), Fo(_.wrapper, "embedded", o.embedded), Fo(_.wrapper, "rtl", o.rtl), Fo(_.wrapper, "center", o.center), o.pause === !1 && gr(), o.previewLinks ? (ht(), Bt("[data-preview-link=false]")) : (Bt(), ht("[data-preview-link]:not([data-preview-link=false])")), A.reset(), l && (l.destroy(), l = null), I > 1 && o.autoSlide && o.autoSlideStoppable && (l = new $b(_.wrapper, () => Math.min(Math.max((Date.now() - h) / E, 0), 1)), l.on("click", eb), S = !1), o.navigationMode !== "default" ? _.wrapper.setAttribute("data-navigation-mode", o.navigationMode) : _.wrapper.removeAttribute("data-navigation-mode"), Q.configure(o, R), Z.configure(o, R), F.configure(o, R), V.configure(o, R), N.configure(o, R), x.configure(o, R), y.configure(o, R), O.configure(o, R), pd();
+    _.wrapper.classList.remove(R.transition), _.wrapper.classList.add(o.transition), _.wrapper.setAttribute("data-transition-speed", o.transitionSpeed), _.wrapper.setAttribute("data-background-transition", o.backgroundTransition), _.viewport.style.setProperty("--slide-width", o.width + "px"), _.viewport.style.setProperty("--slide-height", o.height + "px"), o.shuffle && Do(), Po(_.wrapper, "embedded", o.embedded), Po(_.wrapper, "rtl", o.rtl), Po(_.wrapper, "center", o.center), o.pause === !1 && gr(), o.previewLinks ? (ht(), Bt("[data-preview-link=false]")) : (Bt(), ht("[data-preview-link]:not([data-preview-link=false])")), A.reset(), l && (l.destroy(), l = null), I > 1 && o.autoSlide && o.autoSlideStoppable && (l = new Db(_.wrapper, () => Math.min(Math.max((Date.now() - h) / E, 0), 1)), l.on("click", eb), S = !1), o.navigationMode !== "default" ? _.wrapper.setAttribute("data-navigation-mode", o.navigationMode) : _.wrapper.removeAttribute("data-navigation-mode"), Q.configure(o, R), Z.configure(o, R), F.configure(o, R), V.configure(o, R), N.configure(o, R), x.configure(o, R), y.configure(o, R), O.configure(o, R), pd();
   }
   function Le() {
     window.addEventListener("resize", Nd, !1), o.touch && ge.bind(), o.keyboard && x.bind(), o.progress && N.bind(), o.respondToHashChanges && L.bind(), V.bind(), Z.bind(), _.slides.addEventListener("click", Ad, !1), _.slides.addEventListener("transitionend", Rd, !1), _.pauseOverlay.addEventListener("click", gr, !1), o.focusBodyOnPageVisibilityChange && document.addEventListener("visibilitychange", Od, !1);
@@ -2620,7 +2357,7 @@ function GE(e, t) {
       if (!o.disableLayout) {
         hn && !o.embedded && document.documentElement.style.setProperty("--vh", 0.01 * window.innerHeight + "px");
         const b = od(), R = p;
-        id(o.width, o.height), _.slides.style.width = b.width + "px", _.slides.style.height = b.height + "px", p = Math.min(b.presentationWidth / b.width, b.presentationHeight / b.height), p = Math.max(p, o.minScale), p = Math.min(p, o.maxScale), p === 1 ? (_.slides.style.zoom = "", _.slides.style.left = "", _.slides.style.top = "", _.slides.style.bottom = "", _.slides.style.right = "", ie({ layout: "" })) : p > 1 && vb && window.devicePixelRatio < 2 ? (_.slides.style.zoom = p, _.slides.style.left = "", _.slides.style.top = "", _.slides.style.bottom = "", _.slides.style.right = "", ie({ layout: "" })) : (_.slides.style.zoom = "", _.slides.style.left = "50%", _.slides.style.top = "50%", _.slides.style.bottom = "auto", _.slides.style.right = "auto", ie({ layout: "translate(-50%, -50%) scale(" + p + ")" }));
+        id(o.width, o.height), _.slides.style.width = b.width + "px", _.slides.style.height = b.height + "px", p = Math.min(b.presentationWidth / b.width, b.presentationHeight / b.height), p = Math.max(p, o.minScale), p = Math.min(p, o.maxScale), p === 1 ? (_.slides.style.zoom = "", _.slides.style.left = "", _.slides.style.top = "", _.slides.style.bottom = "", _.slides.style.right = "", ie({ layout: "" })) : p > 1 && ub && window.devicePixelRatio < 2 ? (_.slides.style.zoom = p, _.slides.style.left = "", _.slides.style.top = "", _.slides.style.bottom = "", _.slides.style.right = "", ie({ layout: "" })) : (_.slides.style.zoom = "", _.slides.style.left = "50%", _.slides.style.top = "50%", _.slides.style.bottom = "auto", _.slides.style.right = "auto", ie({ layout: "translate(-50%, -50%) scale(" + p + ")" }));
         const I = Array.from(_.wrapper.querySelectorAll(".slides section"));
         for (let w = 0, $ = I.length; w < $; w++) {
           const K = I[w];
@@ -2633,7 +2370,7 @@ function GE(e, t) {
   }
   function id(b, R) {
     G(_.slides, "section > .stretch, section > .r-stretch").forEach((I) => {
-      let w = fb(I, R);
+      let w = ob(I, R);
       if (/(img|video)/gi.test(I.nodeName)) {
         const $ = I.naturalWidth || I.videoWidth, K = I.naturalHeight || I.videoHeight, Ee = Math.min(b / $, w / K);
         I.style.width = $ * Ee + "px", I.style.height = K * Ee + "px";
@@ -2947,7 +2684,7 @@ function GE(e, t) {
   function Cd(b) {
     let R = b.data;
     if (typeof R == "string" && R.charAt(0) === "{" && R.charAt(R.length - 1) === "}" && (R = JSON.parse(R), R.method && typeof n[R.method] == "function"))
-      if (Ab.test(R.method) === !1) {
+      if (gb.test(R.method) === !1) {
         const I = n[R.method].apply(n, R.args);
         Oe("callback", { method: R.method, result: I });
       } else
@@ -2983,15 +2720,278 @@ function GE(e, t) {
   function eb(b) {
     Oo() && o.loop === !1 ? (tt(0, 0), Fa()) : S ? Fa() : Pa();
   }
-  const Id = { VERSION: "4.3.1", initialize: mt, configure: ft, destroy: B, sync: pd, syncSlide: VS, syncFragments: y.sync.bind(y), slide: tt, left: Ba, right: wo, up: Mo, down: Lo, prev: Td, next: ko, navigateLeft: Ba, navigateRight: wo, navigateUp: Mo, navigateDown: Lo, navigatePrev: Td, navigateNext: ko, navigateFragment: y.goto.bind(y), prevFragment: y.prev.bind(y), nextFragment: y.next.bind(y), on: H, off: W, addEventListener: H, removeEventListener: W, layout: yn, shuffle: Do, availableRoutes: bt, availableFragments: y.availableRoutes.bind(y), toggleHelp: jS, toggleOverview: C.toggle.bind(C), togglePause: _d, toggleAutoSlide: HS, isFirstSlide: ud, isLastSlide: Oo, isLastVerticalSlide: cd, isVerticalSlide: mr, isPaused: Er, isAutoSliding: zS, isSpeakerNotes: Q.isSpeakerNotesWindow.bind(Q), isOverview: C.isActive.bind(C), isFocused: Z.isFocused.bind(Z), isPrintingPDF: X.isPrintingPDF.bind(X), isReady: () => c, loadSlide: T.load.bind(T), unloadSlide: T.unload.bind(T), showPreview: rd, hidePreview: St, addEventListeners: Le, removeEventListeners: vn, dispatchEvent: J, getState: yd, setState: ZS, getProgress: WS, getIndices: Ed, getSlidesAttributes: QS, getSlidePastCount: gd, getTotalSlides: bd, getSlide: vd, getPreviousSlide: () => i, getCurrentSlide: () => s, getSlideBackground: XS, getSlideNotes: Q.getSlideNotes.bind(Q), getSlides: xo, getHorizontalSlides: Ut, getVerticalSlides: fd, hasHorizontalSlides: hd, hasVerticalSlides: Sd, hasNavigatedHorizontally: () => d.hasNavigatedHorizontally, hasNavigatedVertically: () => d.hasNavigatedVertically, addKeyBinding: x.addKeyBinding.bind(x), removeKeyBinding: x.removeKeyBinding.bind(x), triggerKey: x.triggerKey.bind(x), registerKeyboardShortcut: x.registerKeyboardShortcut.bind(x), getComputedSlideSize: od, getScale: () => p, getConfig: () => o, getQueryHash: Ud, getSlidePath: L.getHash.bind(L), getRevealElement: () => e, getSlidesElement: () => _.slides, getViewportElement: () => _.viewport, getBackgroundsElement: () => D.element, registerPlugin: U.registerPlugin.bind(U), hasPlugin: U.hasPlugin.bind(U), getPlugin: U.getPlugin.bind(U), getPlugins: U.getRegisteredPlugins.bind(U) };
+  const Id = { VERSION: "4.3.1", initialize: mt, configure: ft, destroy: B, sync: pd, syncSlide: VS, syncFragments: y.sync.bind(y), slide: tt, left: Ba, right: wo, up: Mo, down: Lo, prev: Td, next: ko, navigateLeft: Ba, navigateRight: wo, navigateUp: Mo, navigateDown: Lo, navigatePrev: Td, navigateNext: ko, navigateFragment: y.goto.bind(y), prevFragment: y.prev.bind(y), nextFragment: y.next.bind(y), on: H, off: W, addEventListener: H, removeEventListener: W, layout: yn, shuffle: Do, availableRoutes: bt, availableFragments: y.availableRoutes.bind(y), toggleHelp: jS, toggleOverview: C.toggle.bind(C), togglePause: _d, toggleAutoSlide: HS, isFirstSlide: ud, isLastSlide: Oo, isLastVerticalSlide: cd, isVerticalSlide: mr, isPaused: Er, isAutoSliding: zS, isSpeakerNotes: Q.isSpeakerNotesWindow.bind(Q), isOverview: C.isActive.bind(C), isFocused: Z.isFocused.bind(Z), isPrintingPDF: X.isPrintingPDF.bind(X), isReady: () => c, loadSlide: T.load.bind(T), unloadSlide: T.unload.bind(T), showPreview: rd, hidePreview: St, addEventListeners: Le, removeEventListeners: vn, dispatchEvent: J, getState: yd, setState: ZS, getProgress: WS, getIndices: Ed, getSlidesAttributes: QS, getSlidePastCount: gd, getTotalSlides: bd, getSlide: vd, getPreviousSlide: () => i, getCurrentSlide: () => s, getSlideBackground: XS, getSlideNotes: Q.getSlideNotes.bind(Q), getSlides: xo, getHorizontalSlides: Ut, getVerticalSlides: fd, hasHorizontalSlides: hd, hasVerticalSlides: Sd, hasNavigatedHorizontally: () => d.hasNavigatedHorizontally, hasNavigatedVertically: () => d.hasNavigatedVertically, addKeyBinding: x.addKeyBinding.bind(x), removeKeyBinding: x.removeKeyBinding.bind(x), triggerKey: x.triggerKey.bind(x), registerKeyboardShortcut: x.registerKeyboardShortcut.bind(x), getComputedSlideSize: od, getScale: () => p, getConfig: () => o, getQueryHash: xd, getSlidePath: L.getHash.bind(L), getRevealElement: () => e, getSlidesElement: () => _.slides, getViewportElement: () => _.viewport, getBackgroundsElement: () => D.element, registerPlugin: U.registerPlugin.bind(U), hasPlugin: U.hasPlugin.bind(U), getPlugin: U.getPlugin.bind(U), getPlugins: U.getRegisteredPlugins.bind(U) };
   return Bn(n, { ...Id, announceStatus: ee, getStatusText: te, print: X, focus: Z, progress: N, controls: V, location: L, overview: C, fragments: y, slideContent: T, slideNumber: O, onUserInput: JS, closeOverlay: St, updateSlidesVisibility: Io, layoutSlideContents: id, transformSlides: ie, cueAutoSlide: Tn, cancelAutoSlide: ka }), Id;
 }
-let Ie = GE, Hd = [];
-Ie.initialize = (e) => (Object.assign(Ie, new GE(document.querySelector(".reveal"), e)), Hd.map((t) => t(Ie)), Ie.initialize()), ["configure", "on", "off", "addEventListener", "removeEventListener", "registerPlugin"].forEach((e) => {
+let Ie = BE, Pd = [];
+Ie.initialize = (e) => (Object.assign(Ie, new BE(document.querySelector(".reveal"), e)), Pd.map((t) => t(Ie)), Ie.initialize()), ["configure", "on", "off", "addEventListener", "removeEventListener", "registerPlugin"].forEach((e) => {
   Ie[e] = (...t) => {
-    Hd.push((n) => n[e].call(null, ...t));
+    Pd.push((n) => n[e].call(null, ...t));
   };
 }), Ie.isReady = () => !1, Ie.VERSION = "4.3.1";
+/**
+ * @license
+ * Copyright 2017 Google LLC
+ * SPDX-License-Identifier: BSD-3-Clause
+ */
+var Bo;
+const Ai = window, zn = Ai.trustedTypes, Fd = zn ? zn.createPolicy("lit-html", { createHTML: (e) => e }) : void 0, Vt = `lit$${(Math.random() + "").slice(9)}$`, UE = "?" + Vt, xb = `<${UE}>`, Vn = document, ea = (e = "") => Vn.createComment(e), ta = (e) => e === null || typeof e != "object" && typeof e != "function", $E = Array.isArray, wb = (e) => $E(e) || typeof (e == null ? void 0 : e[Symbol.iterator]) == "function", fr = /<(?:(!--|\/[^a-zA-Z])|(\/?[a-zA-Z][^>\s]*)|(\/?$))/g, Bd = /-->/g, Ud = />/g, nn = RegExp(`>|[ 	
+\f\r](?:([^\\s"'>=/]+)([ 	
+\f\r]*=[ 	
+\f\r]*(?:[^ 	
+\f\r"'\`<>=]|("|')|))|$)`, "g"), $d = /'/g, Gd = /"/g, GE = /^(?:script|style|textarea|title)$/i, Mb = (e) => (t, ...n) => ({ _$litType$: e, strings: t, values: n }), Yd = Mb(1), na = Symbol.for("lit-noChange"), be = Symbol.for("lit-nothing"), jd = /* @__PURE__ */ new WeakMap(), Lb = (e, t, n) => {
+  var r, a;
+  const i = (r = n == null ? void 0 : n.renderBefore) !== null && r !== void 0 ? r : t;
+  let s = i._$litPart$;
+  if (s === void 0) {
+    const l = (a = n == null ? void 0 : n.renderBefore) !== null && a !== void 0 ? a : null;
+    i._$litPart$ = s = new _a(t.insertBefore(ea(), l), l, void 0, n != null ? n : {});
+  }
+  return s._$AI(e), s;
+}, $n = Vn.createTreeWalker(Vn, 129, null, !1), kb = (e, t) => {
+  const n = e.length - 1, r = [];
+  let a, i = t === 2 ? "<svg>" : "", s = fr;
+  for (let o = 0; o < n; o++) {
+    const c = e[o];
+    let d, u, p = -1, m = 0;
+    for (; m < c.length && (s.lastIndex = m, u = s.exec(c), u !== null); )
+      m = s.lastIndex, s === fr ? u[1] === "!--" ? s = Bd : u[1] !== void 0 ? s = Ud : u[2] !== void 0 ? (GE.test(u[2]) && (a = RegExp("</" + u[2], "g")), s = nn) : u[3] !== void 0 && (s = nn) : s === nn ? u[0] === ">" ? (s = a != null ? a : fr, p = -1) : u[1] === void 0 ? p = -2 : (p = s.lastIndex - u[2].length, d = u[1], s = u[3] === void 0 ? nn : u[3] === '"' ? Gd : $d) : s === Gd || s === $d ? s = nn : s === Bd || s === Ud ? s = fr : (s = nn, a = void 0);
+    const _ = s === nn && e[o + 1].startsWith("/>") ? " " : "";
+    i += s === fr ? c + xb : p >= 0 ? (r.push(d), c.slice(0, p) + "$lit$" + c.slice(p) + Vt + _) : c + Vt + (p === -2 ? (r.push(void 0), o) : _);
+  }
+  const l = i + (e[n] || "<?>") + (t === 2 ? "</svg>" : "");
+  if (!Array.isArray(e) || !e.hasOwnProperty("raw"))
+    throw Error("invalid template strings array");
+  return [Fd !== void 0 ? Fd.createHTML(l) : l, r];
+};
+class ra {
+  constructor({ strings: t, _$litType$: n }, r) {
+    let a;
+    this.parts = [];
+    let i = 0, s = 0;
+    const l = t.length - 1, o = this.parts, [c, d] = kb(t, n);
+    if (this.el = ra.createElement(c, r), $n.currentNode = this.el.content, n === 2) {
+      const u = this.el.content, p = u.firstChild;
+      p.remove(), u.append(...p.childNodes);
+    }
+    for (; (a = $n.nextNode()) !== null && o.length < l; ) {
+      if (a.nodeType === 1) {
+        if (a.hasAttributes()) {
+          const u = [];
+          for (const p of a.getAttributeNames())
+            if (p.endsWith("$lit$") || p.startsWith(Vt)) {
+              const m = d[s++];
+              if (u.push(p), m !== void 0) {
+                const _ = a.getAttribute(m.toLowerCase() + "$lit$").split(Vt), g = /([.?@])?(.*)/.exec(m);
+                o.push({ type: 1, index: i, name: g[2], strings: _, ctor: g[1] === "." ? Fb : g[1] === "?" ? Ub : g[1] === "@" ? $b : Ji });
+              } else
+                o.push({ type: 6, index: i });
+            }
+          for (const p of u)
+            a.removeAttribute(p);
+        }
+        if (GE.test(a.tagName)) {
+          const u = a.textContent.split(Vt), p = u.length - 1;
+          if (p > 0) {
+            a.textContent = zn ? zn.emptyScript : "";
+            for (let m = 0; m < p; m++)
+              a.append(u[m], ea()), $n.nextNode(), o.push({ type: 2, index: ++i });
+            a.append(u[p], ea());
+          }
+        }
+      } else if (a.nodeType === 8)
+        if (a.data === UE)
+          o.push({ type: 2, index: i });
+        else {
+          let u = -1;
+          for (; (u = a.data.indexOf(Vt, u + 1)) !== -1; )
+            o.push({ type: 7, index: i }), u += Vt.length - 1;
+        }
+      i++;
+    }
+  }
+  static createElement(t, n) {
+    const r = Vn.createElement("template");
+    return r.innerHTML = t, r;
+  }
+}
+function qn(e, t, n = e, r) {
+  var a, i, s, l;
+  if (t === na)
+    return t;
+  let o = r !== void 0 ? (a = n._$Cl) === null || a === void 0 ? void 0 : a[r] : n._$Cu;
+  const c = ta(t) ? void 0 : t._$litDirective$;
+  return (o == null ? void 0 : o.constructor) !== c && ((i = o == null ? void 0 : o._$AO) === null || i === void 0 || i.call(o, !1), c === void 0 ? o = void 0 : (o = new c(e), o._$AT(e, n, r)), r !== void 0 ? ((s = (l = n)._$Cl) !== null && s !== void 0 ? s : l._$Cl = [])[r] = o : n._$Cu = o), o !== void 0 && (t = qn(e, o._$AS(e, t.values), o, r)), t;
+}
+class Pb {
+  constructor(t, n) {
+    this.v = [], this._$AN = void 0, this._$AD = t, this._$AM = n;
+  }
+  get parentNode() {
+    return this._$AM.parentNode;
+  }
+  get _$AU() {
+    return this._$AM._$AU;
+  }
+  p(t) {
+    var n;
+    const { el: { content: r }, parts: a } = this._$AD, i = ((n = t == null ? void 0 : t.creationScope) !== null && n !== void 0 ? n : Vn).importNode(r, !0);
+    $n.currentNode = i;
+    let s = $n.nextNode(), l = 0, o = 0, c = a[0];
+    for (; c !== void 0; ) {
+      if (l === c.index) {
+        let d;
+        c.type === 2 ? d = new _a(s, s.nextSibling, this, t) : c.type === 1 ? d = new c.ctor(s, c.name, c.strings, this, t) : c.type === 6 && (d = new Gb(s, this, t)), this.v.push(d), c = a[++o];
+      }
+      l !== (c == null ? void 0 : c.index) && (s = $n.nextNode(), l++);
+    }
+    return i;
+  }
+  m(t) {
+    let n = 0;
+    for (const r of this.v)
+      r !== void 0 && (r.strings !== void 0 ? (r._$AI(t, r, n), n += r.strings.length - 2) : r._$AI(t[n])), n++;
+  }
+}
+class _a {
+  constructor(t, n, r, a) {
+    var i;
+    this.type = 2, this._$AH = be, this._$AN = void 0, this._$AA = t, this._$AB = n, this._$AM = r, this.options = a, this._$C_ = (i = a == null ? void 0 : a.isConnected) === null || i === void 0 || i;
+  }
+  get _$AU() {
+    var t, n;
+    return (n = (t = this._$AM) === null || t === void 0 ? void 0 : t._$AU) !== null && n !== void 0 ? n : this._$C_;
+  }
+  get parentNode() {
+    let t = this._$AA.parentNode;
+    const n = this._$AM;
+    return n !== void 0 && t.nodeType === 11 && (t = n.parentNode), t;
+  }
+  get startNode() {
+    return this._$AA;
+  }
+  get endNode() {
+    return this._$AB;
+  }
+  _$AI(t, n = this) {
+    t = qn(this, t, n), ta(t) ? t === be || t == null || t === "" ? (this._$AH !== be && this._$AR(), this._$AH = be) : t !== this._$AH && t !== na && this.$(t) : t._$litType$ !== void 0 ? this.T(t) : t.nodeType !== void 0 ? this.k(t) : wb(t) ? this.O(t) : this.$(t);
+  }
+  S(t, n = this._$AB) {
+    return this._$AA.parentNode.insertBefore(t, n);
+  }
+  k(t) {
+    this._$AH !== t && (this._$AR(), this._$AH = this.S(t));
+  }
+  $(t) {
+    this._$AH !== be && ta(this._$AH) ? this._$AA.nextSibling.data = t : this.k(Vn.createTextNode(t)), this._$AH = t;
+  }
+  T(t) {
+    var n;
+    const { values: r, _$litType$: a } = t, i = typeof a == "number" ? this._$AC(t) : (a.el === void 0 && (a.el = ra.createElement(a.h, this.options)), a);
+    if (((n = this._$AH) === null || n === void 0 ? void 0 : n._$AD) === i)
+      this._$AH.m(r);
+    else {
+      const s = new Pb(i, this), l = s.p(this.options);
+      s.m(r), this.k(l), this._$AH = s;
+    }
+  }
+  _$AC(t) {
+    let n = jd.get(t.strings);
+    return n === void 0 && jd.set(t.strings, n = new ra(t)), n;
+  }
+  O(t) {
+    $E(this._$AH) || (this._$AH = [], this._$AR());
+    const n = this._$AH;
+    let r, a = 0;
+    for (const i of t)
+      a === n.length ? n.push(r = new _a(this.S(ea()), this.S(ea()), this, this.options)) : r = n[a], r._$AI(i), a++;
+    a < n.length && (this._$AR(r && r._$AB.nextSibling, a), n.length = a);
+  }
+  _$AR(t = this._$AA.nextSibling, n) {
+    var r;
+    for ((r = this._$AP) === null || r === void 0 || r.call(this, !1, !0, n); t && t !== this._$AB; ) {
+      const a = t.nextSibling;
+      t.remove(), t = a;
+    }
+  }
+  setConnected(t) {
+    var n;
+    this._$AM === void 0 && (this._$C_ = t, (n = this._$AP) === null || n === void 0 || n.call(this, t));
+  }
+}
+class Ji {
+  constructor(t, n, r, a, i) {
+    this.type = 1, this._$AH = be, this._$AN = void 0, this.element = t, this.name = n, this._$AM = a, this.options = i, r.length > 2 || r[0] !== "" || r[1] !== "" ? (this._$AH = Array(r.length - 1).fill(new String()), this.strings = r) : this._$AH = be;
+  }
+  get tagName() {
+    return this.element.tagName;
+  }
+  get _$AU() {
+    return this._$AM._$AU;
+  }
+  _$AI(t, n = this, r, a) {
+    const i = this.strings;
+    let s = !1;
+    if (i === void 0)
+      t = qn(this, t, n, 0), s = !ta(t) || t !== this._$AH && t !== na, s && (this._$AH = t);
+    else {
+      const l = t;
+      let o, c;
+      for (t = i[0], o = 0; o < i.length - 1; o++)
+        c = qn(this, l[r + o], n, o), c === na && (c = this._$AH[o]), s || (s = !ta(c) || c !== this._$AH[o]), c === be ? t = be : t !== be && (t += (c != null ? c : "") + i[o + 1]), this._$AH[o] = c;
+    }
+    s && !a && this.P(t);
+  }
+  P(t) {
+    t === be ? this.element.removeAttribute(this.name) : this.element.setAttribute(this.name, t != null ? t : "");
+  }
+}
+class Fb extends Ji {
+  constructor() {
+    super(...arguments), this.type = 3;
+  }
+  P(t) {
+    this.element[this.name] = t === be ? void 0 : t;
+  }
+}
+const Bb = zn ? zn.emptyScript : "";
+class Ub extends Ji {
+  constructor() {
+    super(...arguments), this.type = 4;
+  }
+  P(t) {
+    t && t !== be ? this.element.setAttribute(this.name, Bb) : this.element.removeAttribute(this.name);
+  }
+}
+class $b extends Ji {
+  constructor(t, n, r, a, i) {
+    super(t, n, r, a, i), this.type = 5;
+  }
+  _$AI(t, n = this) {
+    var r;
+    if ((t = (r = qn(this, t, n, 0)) !== null && r !== void 0 ? r : be) === na)
+      return;
+    const a = this._$AH, i = t === be && a !== be || t.capture !== a.capture || t.once !== a.once || t.passive !== a.passive, s = t !== be && (a === be || i);
+    i && this.element.removeEventListener(this.name, this, a), s && this.element.addEventListener(this.name, this, t), this._$AH = t;
+  }
+  handleEvent(t) {
+    var n, r;
+    typeof this._$AH == "function" ? this._$AH.call((r = (n = this.options) === null || n === void 0 ? void 0 : n.host) !== null && r !== void 0 ? r : this.element, t) : this._$AH.handleEvent(t);
+  }
+}
+class Gb {
+  constructor(t, n, r) {
+    this.element = t, this.type = 6, this._$AN = void 0, this._$AM = n, this.options = r;
+  }
+  get _$AU() {
+    return this._$AM._$AU;
+  }
+  _$AI(t) {
+    qn(this, t);
+  }
+}
+const Hd = Ai.litHtmlPolyfillSupport;
+Hd == null || Hd(ra, _a), ((Bo = Ai.litHtmlVersions) !== null && Bo !== void 0 ? Bo : Ai.litHtmlVersions = []).push("2.3.1");
 function Wn(e) {
   return (Wn = typeof Symbol == "function" && typeof Symbol.iterator == "symbol" ? function(t) {
     return typeof t;
@@ -11697,7 +11697,10 @@ class vY {
       const r = t.item(n);
       if (r.href && r.href.match(/sfeir-school-theme\.css$/)) {
         const a = r.href;
-        return a.substring(0, a.indexOf("css/sfeir-school-theme.css"));
+        return a.substring(
+          0,
+          a.indexOf("css/sfeir-school-theme.css")
+        );
       }
     }
     return "";
@@ -11794,12 +11797,16 @@ class vY {
   }
   _manageSpecificsColumnsSlides() {
     const t = [
-      ...document.querySelectorAll(".reveal .slides section.two-column-layout")
+      ...document.querySelectorAll(
+        ".reveal .slides section.two-column-layout"
+      )
     ];
     for (let r of t) {
       const a = r.parentElement;
       if (a.classList.add("two-column-layout"), a.style.display = "grid", a.nodeName === "SECTION") {
-        const i = [...a.querySelectorAll("section")];
+        const i = [
+          ...a.querySelectorAll("section")
+        ];
         for (let s of i)
           s.classList.remove("two-column-layout"), s.style.display = "block";
       }
@@ -11812,15 +11819,27 @@ class vY {
       a.classList.add("two-column");
       const i = document.createElement("DIV");
       if (i.style.display = "grid", i.classList.add("grid-div"), a.appendChild(i), a.classList.add("sfeir-basic-slide"), a.nodeName === "SECTION") {
-        const s = [...a.querySelectorAll("section")];
+        const s = [
+          ...a.querySelectorAll("section")
+        ];
         let l = 0;
         for (let o of s) {
-          if (a.classList.add(...o.classList.values()), o.hasAttribute("data-background")) {
+          if (a.classList.add(
+            ...o.classList.values()
+          ), o.hasAttribute("data-background")) {
             a.classList.add(
               l === 0 ? "data-bg-left" : "data-bg-right"
             );
             const d = o.getAttribute("data-background");
-            /^(http|file|\/\/)/gi.test(d) || /\.(svg|png|jpg|jpeg|gif|bmp|webp)([?#\s]|$)/gi.test(d) ? a.setAttribute("data-background-image", d) : a.setAttribute("data-background", d);
+            /^(http|file|\/\/)/gi.test(d) || /\.(svg|png|jpg|jpeg|gif|bmp|webp)([?#\s]|$)/gi.test(
+              d
+            ) ? a.setAttribute(
+              "data-background-image",
+              d
+            ) : a.setAttribute(
+              "data-background",
+              d
+            );
           } else
             o.hasAttribute("data-background-image") && (a.classList.add(
               l === 0 ? "data-bg-left" : "data-bg-right"
@@ -11839,19 +11858,25 @@ class vY {
       if (i.nodeName === "SECTION" && i.classList.contains("two-column-layout")) {
         const s = Ie.getState();
         s.indexv = 2, Ie.setState(s), i.style.display = "grid";
-        const l = [...i.querySelectorAll("section")];
+        const l = [
+          ...i.querySelectorAll("section")
+        ];
         l[0].style.display = "block";
       }
     });
   }
   _manageListFragment() {
     const t = [
-      ...document.querySelectorAll(".reveal .slides section .list-fragment")
+      ...document.querySelectorAll(
+        ".reveal .slides section .list-fragment"
+      )
     ];
     for (let n of t) {
       let r = n.parentElement;
       if (r.nodeName === "LI" && (r = r.parentElement), r.nodeName === "UL" || r.nodeName === "OL") {
-        const a = [...r.querySelectorAll("li")];
+        const a = [
+          ...r.querySelectorAll("li")
+        ];
         for (let i of a)
           i.classList.add("fragment");
       }
@@ -11859,7 +11884,9 @@ class vY {
   }
   _manageSpeakersBorders() {
     const t = [
-      ...document.querySelectorAll(".reveal .slides section img[alt*=speaker]")
+      ...document.querySelectorAll(
+        ".reveal .slides section img[alt*=speaker]"
+      )
     ];
     for (let n of t) {
       let r = n.parentElement;
@@ -11869,7 +11896,9 @@ class vY {
   }
   _manageFeatherIcons() {
     const t = [
-      ...document.querySelectorAll(".reveal .slides section img[alt*=sfeir-icons]")
+      ...document.querySelectorAll(
+        ".reveal .slides section img[alt*=sfeir-icons]"
+      )
     ], n = [], r = [];
     for (let i of t) {
       let s = i.closest(".reveal .slides section");
@@ -11881,7 +11910,10 @@ class vY {
       for (let l of a)
         if (i.innerHTML.indexOf(l) !== -1) {
           let o = l.replace("<img", "<i") + "</i>";
-          o = o.replace("src", "data-feather"), i.innerHTML = i.innerHTML.replace(
+          o = o.replace(
+            "src",
+            "data-feather"
+          ), i.innerHTML = i.innerHTML.replace(
             l,
             o
           );
@@ -11934,23 +11966,23 @@ const yY = {
   }
 };
 function TY(e, t) {
-  return lb(
-    Pd`
-      ${t.map(
-      (n) => Pd`
-          <section
-            data-markdown="./markdown/${n.path}"
-            data-separator="##==##"
-            data-separator-vertical="##--##"
-            data-separator-notes="^Notes:"
-          ></section>
-        `
+  return Lb(
+    Yd`
+            ${t.map(
+      (n) => Yd`
+                    <section
+                        data-markdown="./markdown/${n.path}"
+                        data-separator="##==##"
+                        data-separator-vertical="##--##"
+                        data-separator-notes="^Notes:"></section>
+                `
     )}
-    `,
+        `,
     e
   );
 }
 export {
+  Ie as Reveal,
   CY as SfeirThemeInitializer
 };
 //# sourceMappingURL=sfeir-school-theme.mjs.map
