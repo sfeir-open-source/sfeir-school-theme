@@ -1,77 +1,76 @@
 .reveal .slides section {
-    &.sfeir-basic-slide.exercice:not(.sfeir-specific-slide):not(.stack):not([class*=transition]) {
-      width: calc(100% - 25% - 50px);
-      left: calc(25% + 50px);
-      height: calc(100% - 200px);
-      color: $dark-grey;      
-      padding-left: 0;
-  
-    
-      h1,
-      h2,
-      h3 {
-        position: relative;
-        color: $black;
-        font-size: 2em;
-      }
-  
-      h1 {
-        margin-top: 145px;
-        top: 0;
-        left: 0;
-        width: 100%;
-      }
+    &.sfeir-basic-slide.exercice:not(.sfeir-specific-slide):not(.stack):not([class*='transition']) {
+        width: calc(100% - 25% - 50px);
+        left: calc(25% + 50px);
+        height: calc(100% - 200px);
+        color: $dark-grey;
+        padding-left: 0;
 
-  
-      h2:first-of-type {
-        position: absolute;
-        padding: 10px;
-        font-weight: 800;
-        top: 200px;
-        left: -500px;
-        color: $white;
-        font-size: 3em;
-        &:after{
-          content: initial;
+        h1,
+        h2,
+        h3 {
+            position: relative;
+            color: $black;
+            font-size: 2em;
         }
-      }
-  
-      
-      h3 {
-        color: $sfeir-green;
-        font-size: 1.5em;
-        text-align: center;
-        bottom: -50px;
-        width: 100%; 
-        left: 0;
-      }
-      
-  
-      ul,
-      ol,
-      p {
-        text-align: left;
-        font-size: 1.2em;
-      }
+
+        h1 {
+            margin-top: 145px;
+            top: 0;
+            left: 0;
+            width: 100%;
+        }
+
+        h2:first-of-type {
+            position: absolute;
+            padding: 10px;
+            font-weight: 800;
+            top: 200px;
+            left: -500px;
+            color: $white;
+            font-size: 3em;
+            &:after {
+                content: initial;
+            }
+        }
+
+        h3 {
+            color: $sfeir-green;
+            font-size: 1.5em;
+            text-align: center;
+            bottom: -50px;
+            width: 100%;
+            left: 0;
+        }
+
+        ul,
+        ol,
+        p {
+            text-align: left;
+            font-size: 1.2em;
+        }
     }
-  }
+}
 
 /**
 * Hack for institute mode
 */
-.reveal .slides[data-theme-slides=institute] section.sfeir-basic-slide.exercice:not(.sfeir-specific-slide):not(.stack):not([class*=transition]) h3{
-  color:$sfeir-blue;
+.reveal
+    .slides[data-theme-slides='institute']
+    section.sfeir-basic-slide.exercice:not(.sfeir-specific-slide):not(.stack):not([class*='transition'])
+    h3 {
+    color: $sfeir-blue;
 }
 
 /**
 * Hack for print
 */
 html.print-pdf {
-  .reveal .slides .pdf-page section {
-    &.sfeir-basic-slide.exercice:not(.sfeir-specific-slide):not(.stack):not([class*=transition]) {
-      width: calc(100% - 25%) !important;
-      left: 25% !important;
-      padding-left: 0 !important;
+    .reveal .slides .pdf-page section {
+        &.sfeir-basic-slide.exercice:not(.sfeir-specific-slide):not(.stack):not([class*='transition']) {
+            width: calc(100% - 25%) !important;
+            left: 25% !important;
+            padding-left: 0 !important;
+        }
     }
-  }
 }

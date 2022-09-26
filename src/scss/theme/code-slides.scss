@@ -1,85 +1,85 @@
 .with-code-dark,
 .with-code-bg-dark {
-  @import "../../../node_modules/highlight.js/styles/darcula";
+    @import '../../../node_modules/highlight.js/styles/darcula';
 }
 
 .reveal .backgrounds div.slide-background.with-code-dark {
-  background-color: $code-bg;
+    background-color: $code-bg;
 }
 
 .reveal
-  .slides
-  section.with-code-dark:not(.sfeir-specific-slide):not(.stack):not([class*="transition"]) {
-  h1,
-  h2 {
-    color: $white;
-  }
+    .slides
+    section.with-code-dark:not(.sfeir-specific-slide):not(.stack):not([class*='transition']) {
+    h1,
+    h2 {
+        color: $white;
+    }
 }
 
 .reveal .slides section.with-code,
 .reveal .slides section.with-code-dark,
 .reveal .slides section.with-code-bg-dark {
-  pre {
-    display: block;
-    position: relative;
-    width: 100%;
-    margin: 20px auto;
-    text-align: left;
-    font-family: monospace;
-    line-height: 1.7em;
-    word-wrap: break-word;
+    pre {
+        display: block;
+        position: relative;
+        width: 100%;
+        margin: 20px auto;
+        text-align: left;
+        font-family: monospace;
+        line-height: 1.7em;
+        word-wrap: break-word;
 
-    code {
-      display: block;
-      padding: 10px;
-      overflow: auto;
-      max-height: 600px;
-      word-wrap: normal;
-      font-size: 0.9em;
-      font-family: monospace;
-      margin-bottom: 20px;
+        code {
+            display: block;
+            padding: 10px;
+            overflow: auto;
+            max-height: 600px;
+            word-wrap: normal;
+            font-size: 0.9em;
+            font-family: monospace;
+            margin-bottom: 20px;
 
-      span {
-        line-height: 1.8em;
-      }
-    }
-  }
-
-  pre.big-code:not(.literal) {
-    position: relative;
-    top: 0;
-    code {
-      font-size: 1.5em;
-      line-height: 2.1em;
+            span {
+                line-height: 1.8em;
+            }
+        }
     }
 
-    &.alone {
-      position: absolute;
-      top: 20vh;
-    }
-  }
+    pre.big-code:not(.literal) {
+        position: relative;
+        top: 0;
+        code {
+            font-size: 1.5em;
+            line-height: 2.1em;
+        }
 
-  &.consolas {
-    pre,
-    pre code {
-      font-family: "Consolas";
+        &.alone {
+            position: absolute;
+            top: 20vh;
+        }
     }
-  }
 
-  &.inconsolata {
-    pre,
-    pre code {
-      font-family: "Inconsolata";
+    &.consolas {
+        pre,
+        pre code {
+            font-family: 'Consolas';
+        }
     }
-  }
 
-  &.max-height pre code {
-    max-height: 900px;
-  }
+    &.inconsolata {
+        pre,
+        pre code {
+            font-family: 'Inconsolata';
+        }
+    }
+
+    &.max-height pre code {
+        max-height: 900px;
+    }
 }
 
 .reveal .slides section.with-code-bg-dark {
-  pre {
-    background-color: $code-bg;
-  }
+    pre {
+        background-color: $code-bg;
+    }
 }

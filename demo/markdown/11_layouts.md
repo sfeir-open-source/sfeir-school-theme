@@ -16,21 +16,22 @@ content left
 
 content right
 
-
 ##==##
 
 <!-- .slide: class="with-code" -->
 
 # Code to produce / Markdown (deprecated)
 
+<!-- prettier-ignore -->
 ```markdown
 <!-- .slide: class="two-column-layout"-->
 # A title
-## -- ##
+## --##
 content left
-## -- ##
+## --##
 content right
 ```
+
 <!-- .element: class="big-code" -->
 
 ##==##
@@ -40,11 +41,11 @@ content right
 # A title (deprecated)
 
 ##--##
+
 <!-- .slide: class="with-code" -->
 
-
 ```javascript
-function hello() {
+function hello() {
     console.log('World');
 }
 ```
@@ -52,7 +53,6 @@ function hello() {
 ##--##
 
 content right
-
 
 ##==##
 
@@ -60,33 +60,35 @@ content right
 
 # Code to produce / Markdown (deprecated)
 
-```markdown
+<!-- prettier-ignore -->
+````markdown
 <!-- .slide: class="two-column-layout"-->
 # A title
-## -- ##
+## --##
 <!-- .slide: class="with-code" -->
 ```javascript
 function hello() {
     console.log('World');
 }
-` ` `
-## -- ##
-content right
 ```
-
+## --##
+content right
+````
 
 ##==##
 
 <!-- .slide: class="two-column" -->
 
 ## Slide 1
-A paragraph with some text and a [link](http://hakim.se).    
+
+A paragraph with some text and a [link](http://hakim.se).
 
 ##--##
+
 ## Slide 2
 
-* Item 2
-* Item 3
+-   Item 2
+-   Item 3
 <!-- .element: class="list-fragment" -->
 
 ##==##
@@ -95,14 +97,15 @@ A paragraph with some text and a [link](http://hakim.se).
 
 # Code to produce / Markdown
 
+<!-- prettier-ignore -->
 ```markdown
 <!-- .slide: class="two-column" -->
 ## Slide 1
-A paragraph with some text and a [link](http://hakim.se).    
-## -- ##
+A paragraph with some text and a [link](http://hakim.se).
+## --##
 ## Slide 2
-* Item 2
-* Item 3
+-   Item 2
+-   Item 3
 <!-- .element: class="list-fragment" -->
 ```
 
@@ -110,15 +113,13 @@ A paragraph with some text and a [link](http://hakim.se).
 
 <!-- .slide: class="two-column" data-background="./assets/images/dark_background.jpeg" -->
 
-
-
 ##--##
+
 ## Slide 2
 
-* Item 2
-* Item 3
+-   Item 2
+-   Item 3
 <!-- .element: class="list-fragment" -->
-
 
 ##==##
 
@@ -126,32 +127,33 @@ A paragraph with some text and a [link](http://hakim.se).
 
 # Code to produce / Markdown
 
+<!-- prettier-ignore -->
 ```markdown
 <!-- .slide: class="two-column" data-background="./assets/images/dark_background.jpeg"-->
-## -- ##
+## --##
 ## Slide 2
-* Item 2
-* Item 3
+-   Item 2
+-   Item 3
 <!-- .element: class="list-fragment" -->
 ```
 
 ##==##
 
-
 <!-- .slide: class="two-column" -->
 
 ## Slide 1
-A paragraph with some text and a [link](http://hakim.se).    
+
+A paragraph with some text and a [link](http://hakim.se).
 
 ##--##
+
 <!-- .slide:  data-background="./assets/images/dark_background.jpeg"  -->
+
 ## Slide 2
 
-* Item 2
-* Item 3
+-   Item 2
+-   Item 3
 <!-- .element: class="list-fragment" -->
-
-
 
 ##==##
 
@@ -159,31 +161,31 @@ A paragraph with some text and a [link](http://hakim.se).
 
 # Code to produce / Markdown
 
+<!-- prettier-ignore -->
 ```markdown
 <!-- .slide: class="two-column" -->
 ## Slide 1
-A paragraph with some text and a [link](http://hakim.se).    
-## -- ##
+A paragraph with some text and a [link](http://hakim.se).
+## --##
 <!-- .slide: data-background="./assets/images/dark_background.jpeg"  -->
 ## Slide 2
-* Item 2
-* Item 3
+-   Item 2
+-   Item 3
 <!-- .element: class="list-fragment" -->
 ```
 
-
-
 ##==##
 
 <!-- .slide: class="two-column" -->
 
-
 ##--##
+
 <!-- .slide: data-background="var(--black)" -->
+
 ## Slide 2
 
-* Item 2
-* Item 3
+-   Item 2
+-   Item 3
 
 ##==##
 
@@ -191,26 +193,28 @@ A paragraph with some text and a [link](http://hakim.se).
 
 # Code to produce / Markdown
 
+<!-- prettier-ignore -->
 ```markdown
 <!-- .slide: class="two-column" -->
-## -- ##
+## --##
 ## Slide 2
 <!-- .slide: data-background="var(--black)" -->
-* Item 2
-* Item 3
+-   Item 2
+-   Item 3
 ```
 
 ##==##
 
 <!-- .slide: class="two-column"-->
 
-
 ##--##
+
 <!-- .slide: class="text-dark" data-background="./assets/images/light-background.webp" -->
+
 ## Slide 2
 
-* Item 2
-* Item 3
+-   Item 2
+-   Item 3
 
 ##==##
 
@@ -218,27 +222,28 @@ A paragraph with some text and a [link](http://hakim.se).
 
 # Code to produce / Markdown
 
+<!-- prettier-ignore -->
 ```markdown
 <!-- .slide: class="two-column"-->
-## -- ##
+## --##
 ## Slide 2
 <!-- .slide: class="text-dark" data-background="./assets/images/light-background.webp" -->
-* Item 2
-* Item 3
+-   Item 2
+-   Item 3
 ```
 
 ##==##
 
 <!-- .slide: class="two-column" -->
 
-
 ##--##
+
 <!-- .slide: class="mask" data-background="./assets/images/light-background.webp" -->
+
 ## Slide 2
 
-* Item 2
-* Item 3
-
+-   Item 2
+-   Item 3
 
 ##==##
 
@@ -246,11 +251,12 @@ A paragraph with some text and a [link](http://hakim.se).
 
 # Code to produce / Markdown
 
+<!-- prettier-ignore -->
 ```markdown
 <!-- .slide: class="two-column" -->
-## -- ##
+## --##
 <!-- .slide: class="mask" data-background="./assets/images/light-background.webp" -->
 ## Slide 2
-* Item 2
-* Item 3
+-   Item 2
+-   Item 3
 ```

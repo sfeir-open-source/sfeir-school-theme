@@ -1,4 +1,3 @@
-
 <!-- .slide: class="with-code-dark" -->
 
 ## Some Code
@@ -24,24 +23,27 @@
 
 # Code to produce / Markdown
 
-```markdown
+<!-- prettier-ignore -->
+````markdown
 <!-- .slide: class="with-code-dark" -->
 
 ```xml
+
 <?xml version="1.0" encoding="utf-8"?>
+
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
     >
-    <TextView
+<TextView
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:text="@string/hello"
         />
 </LinearLayout>
-` ` `
 ```
+````
 
 ##==##
 
@@ -82,7 +84,8 @@
 
 # Code to produce / Markdown
 
-```markdown
+<!-- prettier-ignore -->
+````markdown
 <!-- .slide: class="with-code-dark" -->
 
 ```xml
@@ -98,9 +101,8 @@
         android:text="@string/hello"
         />
 </LinearLayout>
-` ` `
 ```
-
+````
 
 ##==##
 
@@ -129,7 +131,8 @@
 
 # Code to produce / Markdown
 
-```markdown
+<!-- prettier-ignore -->
+````markdown
 <!-- .slide: class="with-code-dark" -->
 
 ```xml []
@@ -145,8 +148,8 @@
         android:text="@string/hello"
         />
 </LinearLayout>
-` ` `
 ```
+````
 
 ##==##
 
@@ -175,7 +178,8 @@
 
 # Code to produce / Markdown
 
-```markdown
+<!-- prettier-ignore -->
+````markdown
 <!-- .slide: class="with-code-bg-dark" -->
 
 ```xml
@@ -191,14 +195,14 @@
         android:text="@string/hello"
         />
 </LinearLayout>
-` ` `
 ```
+````
+
 ##==##
 
 <!-- .slide: class="with-code" -->
 
 ## Some Code (with monospace font)
-
 
 ```xml
 <?xml version="1.0" encoding="utf-8"?>
@@ -221,7 +225,8 @@
 
 # Code to produce / Markdown
 
-```markdown
+<!-- prettier-ignore -->
+````markdown
 <!-- .slide: class="with-code" -->
 
 ```xml
@@ -237,9 +242,8 @@
         android:text="@string/hello"
         />
 </LinearLayout>
-` ` `
 ```
-
+````
 
 ##==##
 
@@ -247,7 +251,6 @@
 
 ## Some Code (with consolas font)
 
-
 ```xml
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
@@ -263,14 +266,14 @@
 </LinearLayout>
 ```
 
-
 ##--##
 
 <!-- .slide: class="with-code" -->
 
 # Code to produce / Markdown
 
-```markdown
+<!-- prettier-ignore -->
+````markdown
 <!-- .slide: class="with-code consolas" -->
 
 ```xml
@@ -286,8 +289,8 @@
         android:text="@string/hello"
         />
 </LinearLayout>
-` ` `
 ```
+````
 
 ##==##
 
@@ -295,7 +298,6 @@
 
 ## Some Code (with inconsolata font)
 
-
 ```xml
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
@@ -311,15 +313,13 @@
 </LinearLayout>
 ```
 
-
-
 ##--##
 
 <!-- .slide: class="with-code" -->
 
 # Code to produce / Markdown
 
-```markdown
+````markdown
 <!-- .slide: class="with-code inconsolata" -->
 
 ```xml
@@ -335,8 +335,8 @@
         android:text="@string/hello"
         />
 </LinearLayout>
-` ` `
 ```
+````
 
 ##==##
 
@@ -344,7 +344,6 @@
 
 ## Some Code (with highlighting of individual lines)
 
-
 ```xml [1,7-11]
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
@@ -360,15 +359,13 @@
 </LinearLayout>
 ```
 
-
-
 ##--##
 
 <!-- .slide: class="with-code" -->
 
 # Code to produce / Markdown
 
-```markdown
+````markdown
 <!-- .slide: class="with-code-dark" -->
 
 ```xml [1,7-11]
@@ -384,8 +381,8 @@
         android:text="@string/hello"
         />
 </LinearLayout>
-` ` `
 ```
+````
 
 ##==##
 
@@ -393,7 +390,6 @@
 
 ## Some Code (with highlighting of individual lines step by step)
 
-
 ```xml [1|5-6|7-11]
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
@@ -408,8 +404,6 @@
         />
 </LinearLayout>
 ```
-
-
 
 ##--##
 
@@ -417,25 +411,26 @@
 
 # Code to produce / Markdown
 
-```markdown
+````markdown
 <!-- .slide: class="with-code" -->
 
 ```xml [1|5-6|7-11]
+
 <?xml version="1.0" encoding="utf-8"?>
+
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
     >
-    <TextView
+<TextView
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:text="@string/hello"
         />
 </LinearLayout>
-` ` `
 ```
-
+````
 
 ##==##
 
@@ -446,9 +441,8 @@
 ```xml
 <?xml version="1.0" encoding="utf-8"?>
 ```
+
 <!-- .element: class="big-code" -->
-
-
 
 ##--##
 
@@ -456,14 +450,16 @@
 
 # Code to produce / Markdown
 
-```markdown
+````markdown
 <!-- .slide: class="with-code" -->
 
 ```xml
 <?xml version="1.0" encoding="utf-8"?>
-` ` `
-<!-- .element: class="big-code" -->
 ```
+
+<!-- .element: class="big-code" -->
+````
+
 <!-- .element: class="big-code" -->
 
 ##==##
@@ -473,14 +469,14 @@
 # Text with inline code
 
 <br><br>
-- attribut `draggable=true` sur l'élément html.
-<br><br>
-- `ondragstart` event sur l'élément draggable.
-<br><br>
-- `ondrop` event dans la zone de dépot.
-<br><br>
-- `ondraghover` event sur la zone de dépot.
 
+-   attribut `draggable=true` sur l'élément html.
+    <br><br>
+-   `ondragstart` event sur l'élément draggable.
+    <br><br>
+-   `ondrop` event dans la zone de dépot.
+    <br><br>
+-   `ondraghover` event sur la zone de dépot.
 
 ##--##
 
@@ -500,4 +496,5 @@
 <br><br>
 - `ondraghover` event sur la zone de dépot.
 ```
+
 <!-- .element: class="big-code" -->

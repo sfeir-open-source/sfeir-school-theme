@@ -15,13 +15,13 @@ Some Content
 # Code to produce / Markdown
 
 ```markdown
+## ==##
 
-## == ##
-
-## A new slide 
+## A new slide
 
 Some Content
 ```
+
 <!-- .element: class="big-code" -->
 
 ##==##
@@ -39,16 +39,16 @@ Some Content
 # Code to produce / Markdown
 
 ```markdown
+## ==##
 
-## == ##
 <!-- .slide: class="blue" -->
 
-## A new slide 
+## A new slide
 
 Some Content
 ```
-<!-- .element: class="big-code" -->
 
+<!-- .element: class="big-code" -->
 
 ##==##
 
@@ -65,25 +65,24 @@ Some Content
 # Code to produce / Markdown
 
 ```markdown
+## ==##
 
-## == ##
 <!-- .slide: class="green" -->
 
-## A new slide 
+## A new slide
 
 Some Content
 ```
+
 <!-- .element: class="big-code" -->
-
-
 
 ##==##
 
-## Summary 
+## Summary
 
-* Item 1
-* Item 2
-* Item 3
+-   Item 1
+-   Item 2
+-   Item 3
 
 ##--##
 
@@ -92,23 +91,22 @@ Some Content
 # Code to produce / Markdown
 
 ```markdown
-## Summary 
+## Summary
 
-* Item 1
-* Item 2
-* Item 3
+-   Item 1
+-   Item 2
+-   Item 3
 ```
+
 <!-- .element: class="big-code" -->
 
 ##==##
 
-## Summary 
-
+## Summary
 
 1. List Item 1
 2. List Item 2
-2. List Item 3
-
+3. List Item 3
 
 ##--##
 
@@ -117,29 +115,28 @@ Some Content
 # Code to produce / Markdown
 
 ```markdown
-## Summary 
+## Summary
 
 1. Item 1
 2. Item 2
 3. Item 3
 ```
+
 <!-- .element: class="big-code" -->
 
 ##==##
 
-## List with fragments 
-
+## List with fragments
 
 1. List Item 1
 2. List Item 2
-2. List Item 3
-<!-- .element: class="list-fragment" -->
+3. List Item 3
+ <!-- .element: class="list-fragment" -->
 
-* Item 1
-* Item 2
-* **Item 3**
+-   Item 1
+-   Item 2
+-   **Item 3**
 <!-- .element: class="list-fragment" -->
-
 
 ##--##
 
@@ -148,25 +145,22 @@ Some Content
 # Code to produce / Markdown
 
 ```markdown
-## List with fragments 
-
+## List with fragments
 
 1. List Item 1
 2. List Item 2
-2. List Item 3
-<!-- .element: class="list-fragment" -->
+3. List Item 3
+ <!-- .element: class="list-fragment" -->
 
-* Item 1
-* Item 2
-* **Item 3**
+-   Item 1
+-   Item 2
+-   **Item 3**
 <!-- .element: class="list-fragment" -->
 ```
+
 <!-- .element: class="big-code" -->
 
-
-
 ##==##
-
 
 ## Title
 
@@ -195,6 +189,7 @@ A Wonderful Content !
 
 More wonderful content
 ```
+
 <!-- .element: class="big-code" -->
 
 ##==##
@@ -203,18 +198,17 @@ More wonderful content
 
 ### Sub title
 
-* First Line
+-   First Line
 
-* Second Line
+-   Second Line
 
-* Third Line
+-   Third Line
 
-    * Sub Content
+    -   Sub Content
 
-    * Sub Content
+    -   Sub Content
 
-      * Third Level
-
+        -   Third Level
 
 ##--##
 
@@ -227,30 +221,31 @@ More wonderful content
 
 ### Sub title
 
-* First Line
+-   First Line
 
-* Second Line
+-   Second Line
 
-* Third Line
+-   Third Line
 
-    * Sub Content
+    -   Sub Content
 
-    * Sub Content
+    -   Sub Content
 
-      * Third Level
+        -   Third Level
 ```
+
 <!-- .element: class="big-code" -->
 
 ##==##
 
 ## A Slide with Table
 
-|Version|Codename|API|Distribution|
-|-----|------|-|----------|
-|2.2|Froyo|8|2.4%|
-|2.3.3 - 2.3.7|Gingerbread|10|30.7%|
-|3.2|Honeycomb|13|0.1%|
-|4.0.3 - 4.0.4|Ice Cream Sandwich|15|21.7%|
+| Version       | Codename           | API | Distribution |
+| ------------- | ------------------ | --- | ------------ |
+| 2.2           | Froyo              | 8   | 2.4%         |
+| 2.3.3 - 2.3.7 | Gingerbread        | 10  | 30.7%        |
+| 3.2           | Honeycomb          | 13  | 0.1%         |
+| 4.0.3 - 4.0.4 | Ice Cream Sandwich | 15  | 21.7%        |
 
 ##--##
 
@@ -259,29 +254,25 @@ More wonderful content
 # Code to produce / Markdown
 
 ```markdown
-|Version|Codename|API|Distribution|
-|-----|------|-|----------|
-|2.2|Froyo|8|2.4%|
-|2.3.3 - 2.3.7|Gingerbread|10|30.7%|
-|3.2|Honeycomb|13|0.1%|
-|4.0.3 - 4.0.4|Ice Cream Sandwich|15|21.7%|
+| Version       | Codename           | API | Distribution |
+| ------------- | ------------------ | --- | ------------ |
+| 2.2           | Froyo              | 8   | 2.4%         |
+| 2.3.3 - 2.3.7 | Gingerbread        | 10  | 30.7%        |
+| 3.2           | Honeycomb          | 13  | 0.1%         |
+| 4.0.3 - 4.0.4 | Ice Cream Sandwich | 15  | 21.7%        |
 ```
+
 <!-- .element: class="big-code" -->
-
-
 
 ##==##
 
-
 ## A Quote
-
 
 <blockquote>
 <cite>
   To Quote or not to quote...
 </cite>
 </blockquote>
-
 
 ##--##
 
@@ -296,13 +287,13 @@ More wonderful content
 </cite>
 </blockquote>
 ```
+
 <!-- .element: class="big-code" -->
 
 ##==##
 
 ## Links
 
-
 http://developer.android.com/index.html
 
 http://android.git.kernel.org/
@@ -316,13 +307,13 @@ http://androidcookbook.oreilly.com/
 # Code to produce / Markdown
 
 ```markdown
-
 http://developer.android.com/index.html
 
 http://android.git.kernel.org/
 
 http://androidcookbook.oreilly.com/
 ```
+
 <!-- .element: class="big-code" -->
 
 ##==##
@@ -348,4 +339,5 @@ To see the notes of this slide Press : 'S'
 ^Notes:
 A super notes for speaker
 ```
+
 <!-- .element: class="big-code" -->

@@ -1,4 +1,5 @@
 # Contributor Code of Conduct
+
 ## Version 0.1-sfeir
 
 As contributors and maintainers of the SFEIR organisation, we pledge to respect everyone who contributes by posting issues, updating documentation, submitting pull requests, providing feedback in comments, and any other activities.

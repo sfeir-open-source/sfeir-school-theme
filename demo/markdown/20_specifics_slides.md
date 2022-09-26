@@ -1,4 +1,3 @@
-
 <!-- .slide: class="transition" -->
 
 # Custom slides
@@ -20,8 +19,8 @@
 
 # Transition
 ```
-<!-- .element: class="big-code" -->
 
+<!-- .element: class="big-code" -->
 
 ##==##
 
@@ -40,6 +39,7 @@
 
 # Transition blue
 ```
+
 <!-- .element: class="big-code" -->
 
 ##==##
@@ -59,8 +59,8 @@
 
 # Transition green
 ```
-<!-- .element: class="big-code" -->
 
+<!-- .element: class="big-code" -->
 
 ##==##
 
@@ -79,8 +79,8 @@
 
 # A White Transition Slide
 ```
-<!-- .element: class="big-code" -->
 
+<!-- .element: class="big-code" -->
 
 ##==##
 
@@ -99,6 +99,7 @@
 
 # A Blue Transition Slide
 ```
+
 <!-- .element: class="big-code" -->
 
 ##==##
@@ -118,16 +119,14 @@
 
 # A Green Transition Slide
 ```
+
 <!-- .element: class="big-code" -->
-
-
 
 ##==##
 
 <!-- .slide: class="transition left transition-bg-sfeir-1" -->
 
 # Transition left
-
 
 ##--##
 
@@ -140,16 +139,14 @@
 
 # Transition left
 ```
+
 <!-- .element: class="big-code" -->
-
-
 
 ##==##
 
 <!-- .slide: class="transition right transition-bg-sfeir-1" -->
 
 # Transition right
-
 
 ##--##
 
@@ -162,16 +159,14 @@
 
 # Transition right
 ```
+
 <!-- .element: class="big-code" -->
-
-
 
 ##==##
 
 <!-- .slide: class="transition top transition-bg-sfeir-1" -->
 
 # Transition top
-
 
 ##--##
 
@@ -184,15 +179,14 @@
 
 # Transition top
 ```
-<!-- .element: class="big-code" -->
 
+<!-- .element: class="big-code" -->
 
 ##==##
 
 <!-- .slide: class="transition bottom transition-bg-sfeir-1" -->
 
 # Transition bottom
-
 
 ##--##
 
@@ -205,8 +199,8 @@
 
 # Transition bottom
 ```
-<!-- .element: class="big-code" -->
 
+<!-- .element: class="big-code" -->
 
 ##==##
 
@@ -215,7 +209,6 @@
 # SFEIR bg 1
 
 ## dependant on mode (institute / school)
-
 
 ##--##
 
@@ -230,6 +223,7 @@
 
 ## dependant on mode (institute / school)
 ```
+
 <!-- .element: class="big-code" -->
 
 ##==##
@@ -239,7 +233,6 @@
 # SFEIR bg 2
 
 ## dependant on mode (institute / school)
-
 
 ##--##
 
@@ -254,6 +247,7 @@
 
 ## dependant on mode (institute / school)
 ```
+
 <!-- .element: class="big-code" -->
 
 ##==##
@@ -275,6 +269,7 @@
 
 # SFEIR bg SFEIR 3
 ```
+
 <!-- .element: class="big-code" -->
 
 ##==##
@@ -294,6 +289,7 @@
 
 # SFEIR bg green 1
 ```
+
 <!-- .element: class="big-code" -->
 
 ##==##
@@ -302,7 +298,6 @@
 
 # SFEIR bg green 2
 
-
 ##--##
 
 <!-- .slide: class="with-code" -->
@@ -314,6 +309,7 @@
 
 # SFEIR bg green 2
 ```
+
 <!-- .element: class="big-code" -->
 
 ##==##
@@ -322,7 +318,6 @@
 
 # SFEIR bg green 3
 
-
 ##--##
 
 <!-- .slide: class="with-code" -->
@@ -334,6 +329,7 @@
 
 # SFEIR bg green 3
 ```
+
 <!-- .element: class="big-code" -->
 
 ##==##
@@ -342,7 +338,6 @@
 
 # SFEIR bg green 4
 
-
 ##--##
 
 <!-- .slide: class="with-code" -->
@@ -354,6 +349,7 @@
 
 # SFEIR bg green 4
 ```
+
 <!-- .element: class="big-code" -->
 
 ##==##
@@ -362,7 +358,6 @@
 
 # SFEIR bg green 5
 
-
 ##--##
 
 <!-- .slide: class="with-code" -->
@@ -374,6 +369,7 @@
 
 # SFEIR bg green 5
 ```
+
 <!-- .element: class="big-code" -->
 
 ##==##
@@ -382,7 +378,6 @@
 
 # SFEIR bg green 6
 
-
 ##--##
 
 <!-- .slide: class="with-code" -->
@@ -394,6 +389,7 @@
 
 # SFEIR bg green 6
 ```
+
 <!-- .element: class="big-code" -->
 
 ##==##
@@ -402,7 +398,6 @@
 
 # SFEIR bg blue 1
 
-
 ##--##
 
 <!-- .slide: class="with-code" -->
@@ -414,6 +409,7 @@
 
 # SFEIR bg blue 1
 ```
+
 <!-- .element: class="big-code" -->
 
 ##==##
@@ -421,7 +417,6 @@
 <!-- .slide: class="transition-bg-blue-2" -->
 
 # SFEIR bg blue 2
-
 
 ##--##
 
@@ -434,6 +429,7 @@
 
 # SFEIR bg blue 2
 ```
+
 <!-- .element: class="big-code" -->
 
 ##==##
@@ -441,7 +437,6 @@
 <!-- .slide: class="transition-bg-blue-3" -->
 
 # SFEIR bg blue 3
-
 
 ##--##
 
@@ -454,15 +449,14 @@
 
 # SFEIR bg blue 3
 ```
-<!-- .element: class="big-code" -->
 
+<!-- .element: class="big-code" -->
 
 ##==##
 
 <!-- .slide: data-background="./assets/images/dark_background.jpeg" class="transition" -->
 
 # A Custom Transition Slide
-
 
 ##--##
 
@@ -476,15 +470,14 @@
 
 # A Custom Transition Slide
 ```
-<!-- .element: class="big-code" -->
 
+<!-- .element: class="big-code" -->
 
 ##==##
 
 <!-- .slide: data-background="./assets/images/dark_background.jpeg" class="transition mask" -->
 
 # A Custom Transition Slide with mask
-
 
 ##--##
 
@@ -498,6 +491,7 @@
 
 # A Custom Transition Slide with mask
 ```
+
 <!-- .element: class="big-code" -->
 
 ##==##
@@ -505,7 +499,6 @@
 <!-- .slide: data-background="#3d4349" class="transition" -->
 
 # Transition with bg color
-
 
 ##--##
 
@@ -518,6 +511,7 @@
 
 # Transition with bg color
 ```
+
 <!-- .element: class="big-code" -->
 
 ##==##
@@ -539,13 +533,13 @@ Additionnal Advice
 
 ### Step: push-1
 
-
 ##--##
 
 <!-- .slide: class="with-code" -->
 
 # Code to produce / Markdown
 
+<!-- prettier-ignore -->
 ```markdown
 <!-- .slide: class="exercice" -->
 # Exercice Title
@@ -559,12 +553,11 @@ Additionnal Advice
 ### Step: push-1
 ```
 
-
 ##==##
 
 <!-- .slide: class="quote-slide" -->
-## A dedicate Quote slide
 
+## A dedicate Quote slide
 
 <blockquote>
 <cite>
@@ -573,6 +566,7 @@ Additionnal Advice
 </blockquote>
 
 [Credit of citation](http://www.sfeir.com)
+
 <!-- .element: class="credits" -->
 
 ##--##
@@ -581,20 +575,19 @@ Additionnal Advice
 
 # Code to produce / Markdown
 
+<!-- prettier-ignore -->
 ```markdown
 <!-- .slide: class="quote-slide" -->
 ## A dedicate Quote slide
-
-
 <blockquote>
 <cite>
   To Quote or not to quote...
 </cite>
 </blockquote>
-
 [Credit of citation](http://www.sfeir.com)
 <!-- .element: class="credits" -->
 ```
+
 <!-- .element: class="big-code" -->
 
 ##==##
@@ -612,6 +605,7 @@ Additionnal Advice
 <br>
 
 On se retrouve à
+
 <!-- .element: class="center" -->
 <br>
 
