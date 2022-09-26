@@ -11715,10 +11715,11 @@ class vY {
     n.type = "image/x-icon", n.rel = "shortcut icon", n.href = `${this.path}${oe}/favicon.ico`, document.getElementsByTagName("head")[0].appendChild(n);
   }
   _manageBackgrounds() {
-    var a;
-    const t = (a = document.querySelector(".reveal .slides").getAttribute("data-theme-slides")) != null ? a : "school", n = {
-      "first-slide": `${this.path}${oe}/${t === "school" ? "bg-green-1.png" : "bg-blue-1.png"}`,
-      transition: `${this.path}${oe}/${t === "school" ? "bg-green-1.png" : "bg-blue-1.png"}`,
+    let t = document.querySelector(".reveal .slides").getAttribute("data-theme-slides");
+    (t === null || t.trim() === "") && (document.querySelector(".reveal .slides").setAttribute("data-theme-slides", "school"), t = "school");
+    const n = {
+      "first-slide": `${this.path}${oe}/${t === "institute" ? "bg-blue-1.png" : "bg-green-1.png"}`,
+      transition: `${this.path}${oe}/${t === "institute" ? "bg-blue-1.png" : "bg-green-1.png"}`,
       "speaker-slide": "var(--black)",
       "quote-slide": "var(--black)",
       "sfeir-slide": `${this.path}${oe}/bg-green-1.png`,
@@ -11727,9 +11728,9 @@ class vY {
       "bg-blue": `${this.path}${oe}/bg-green-1.png`,
       "bg-green": `${this.path}${oe}/bg-green-1.png`,
       "bg-blur": `${this.path}${oe}/bg-blue-blur.jpeg`,
-      "transition-bg-sfeir-1": `${this.path}${oe}/${t === "school" ? "bg-green-1.png" : "bg-blue-1.png"}`,
-      "transition-bg-sfeir-2": `${this.path}${oe}/${t === "school" ? "bg-green-2.png" : "bg-blue-2.jpeg"}`,
-      "transition-bg-sfeir-3": `${this.path}${oe}/${t === "school" ? "bg-green-3.png" : "bg-blue-3.png"}`,
+      "transition-bg-sfeir-1": `${this.path}${oe}/${t === "institute" ? "bg-blue-1.png" : "bg-green-1.png"}`,
+      "transition-bg-sfeir-2": `${this.path}${oe}/${t === "institute" ? "bg-blue-1.png" : "bg-green-1.png"}`,
+      "transition-bg-sfeir-3": `${this.path}${oe}/${t === "institute" ? "bg-blue-1.png" : "bg-green-1.png"}`,
       "transition-bg-blue-1": `${this.path}${oe}/bg-blue-1.png`,
       "transition-bg-blue-2": `${this.path}${oe}/bg-blue-2.jpeg`,
       "transition-bg-blue-3": `${this.path}${oe}/bg-blue-3.png`,
@@ -11741,13 +11742,13 @@ class vY {
       "transition-bg-green-5": `${this.path}${oe}/bg-green-5.png`,
       "transition-bg-green-6": `${this.path}${oe}/bg-green-6.png`
     };
-    for (let i in n) {
-      const s = document.querySelectorAll(
-        ".reveal .slides section:not([data-background])." + i
+    for (let a in n) {
+      const i = document.querySelectorAll(
+        ".reveal .slides section:not([data-background])." + a
       );
-      for (let l = 0; l < s.length; l++) {
-        const o = s[l];
-        o.classList.add("sfeir-specific-slide"), o.setAttribute("data-background", n[i]);
+      for (let s = 0; s < i.length; s++) {
+        const l = i[s];
+        l.classList.add("sfeir-specific-slide"), l.setAttribute("data-background", n[a]);
       }
     }
     const r = [
@@ -11755,8 +11756,8 @@ class vY {
         ".reveal .slides section:not([data-background]):not(.sfeir-specific-slide):not(.no-background):not(.with-code-dark):not([class*=transition])"
       )
     ];
-    for (let i of r)
-      i.classList.add("sfeir-basic-slide");
+    for (let a of r)
+      a.classList.add("sfeir-basic-slide");
     this._manageFirstSlide();
   }
   _manageFirstSlide() {
