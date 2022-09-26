@@ -1,9 +1,7 @@
-
 <!-- .slide: class="transition" -->
 
 # Slides using helpers of theme
 
-
 ##==##
 
 # Slide with center image (horizontal)
@@ -21,6 +19,7 @@
 ```markdown
 ![center](./assets/images/GDG-Logo-carre.png)
 ```
+
 <!-- .element: class="big-code" -->
 
 ##==##
@@ -40,8 +39,8 @@
 ```markdown
 <img class="center" src="./assets/images/GDG-Logo-carre.png">
 ```
-<!-- .element: class="big-code" -->
 
+<!-- .element: class="big-code" -->
 
 ##==##
 
@@ -52,7 +51,6 @@
 <div class="full-center">
     <img src="./assets/images/GDG-Logo-carre.png">
 </div>
-
 
 ##--##
 
@@ -65,8 +63,8 @@
     <img src="./assets/images/GDG-Logo-carre.png">
 </div>
 ```
-<!-- .element: class="big-code" -->
 
+<!-- .element: class="big-code" -->
 
 ##==##
 
@@ -89,6 +87,7 @@
 
 ![](./assets/images/GDG-Logo-carre.png)
 ```
+
 <!-- .element: class="big-code" -->
 
 ##==##
@@ -108,7 +107,6 @@
 ![h-350](./assets/images/GDG-Logo-carre.png)
 ![h-200](./assets/images/GDG-Logo-carre.png)
 ![h-100](./assets/images/GDG-Logo-carre.png)
-
 
 ##--##
 
@@ -147,7 +145,6 @@
 <img class="h-200" src="./assets/images/GDG-Logo-carre.png">
 <img class="h-100" src="./assets/images/GDG-Logo-carre.png">
 </div>
-
 
 ##--##
 
@@ -175,15 +172,13 @@
 
 ## Image from 50px to 1000px (width and height)
 
-Image (w-500) : 
+Image (w-500) :
 
 ![w-500](./assets/images/350x90.png)
 
-
-Div background: 
+Div background:
 
 <div style="background:red;" class="w-500 h-200"> w-500 h-200</div>
-
 
 ##--##
 
@@ -192,11 +187,11 @@ Div background:
 # Code to produce / Markdown
 
 ```markdown
-
 ![w-500](./assets/images/350x90.png)
 
 <div style="background:red;" class="w-500 h-200"> w-500 h-200</div>
 ```
+
 <!-- .element: class="big-code" -->
 
 ##==##
@@ -205,12 +200,11 @@ Div background:
 
 ## Image from 50px to 1000px (max-width and max-height)
 
-Image : 
+Image :
 
 ![wm-500](./assets/images/350x90.png)
 
-
-Div background: 
+Div background:
 
 <div style="background:red; width:600px;" class="wm-500 h-200"> (height:600px) wm-500 h-200</div>
 
@@ -226,8 +220,8 @@ Div background:
 <div style="background:red; width:600px;" class="wm-500 h-200"> 
     (height:600px) wm-500 h-200</div>
 ```
-<!-- .element: class="big-code" -->
 
+<!-- .element: class="big-code" -->
 
 ##==##
 
@@ -247,7 +241,6 @@ Div background:
 ![h-200 mb-160](./assets/images/GDG-Logo-carre.png)
 ![h-200 mb-430](./assets/images/GDG-Logo-carre.png)
 
-
 ##--##
 
 <!-- .slide: class="with-code" -->
@@ -268,13 +261,11 @@ Div background:
 ![h-200 mb-430](./assets/images/GDG-Logo-carre.png)
 ```
 
-
 ##==##
 
 # Image with full width
 
 ## First way
-
 
 ![full-width](./assets/images/Sfeir-Gris-vector.svg)
 
@@ -287,8 +278,8 @@ Div background:
 ```markdown
 ![full-width](./assets/images/Sfeir-Gris-vector.svg)
 ```
-<!-- .element: class="big-code" -->
 
+<!-- .element: class="big-code" -->
 
 ##==##
 
@@ -298,7 +289,6 @@ Div background:
 
 <img class="full-width" src="./assets/images/Sfeir-Gris-vector.svg">
 
-
 ##--##
 
 <!-- .slide: class="with-code" -->
@@ -308,8 +298,8 @@ Div background:
 ```markdown
 <img class="full-width" src="./assets/images/Sfeir-Gris-vector.svg">
 ```
-<!-- .element: class="big-code" -->
 
+<!-- .element: class="big-code" -->
 
 ##==##
 
@@ -318,6 +308,7 @@ Div background:
 # Image with full height
 
 Div with height of 600px;
+
 <div style="height:600px; width:100%; border: dashed 3px grey;">
     <img class="full-height" src="./assets/images/Sfeir-Gris-vector.svg">
 </div>
@@ -335,8 +326,8 @@ Div with height of 600px;
     <img class="full-height" src="./assets/images/Sfeir-Gris-vector.svg">
 </div>
 ```
-<!-- .element: class="big-code" -->
 
+<!-- .element: class="big-code" -->
 
 ##==##
 
@@ -347,7 +338,6 @@ Div with height of 600px;
 ![float-left](./assets/images/gde.png)
 
 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin nec risus leo. Vestibulum condimentum orci in urna auctor aliquet. Quisque mi erat, placerat non porttitor ut, gravida eu erat. Fusce semper ipsum vel nibh porttitor aliquam. Cras sed porttitor est, id scelerisque odio. Pellentesque sit amet imperdiet ex. Aliquam erat.
-
 
 ##--##
 
@@ -361,7 +351,6 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin nec risus leo. Ve
 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin nec risus leo. Vestibulum condimentum orci in urna auctor aliquet. Quisque mi erat, placerat non porttitor ut, gravida eu erat. Fusce semper ipsum vel nibh porttitor aliquam. Cras sed porttitor est, id scelerisque odio. Pellentesque sit amet imperdiet ex. Aliquam erat.
 ```
 
-
 ##==##
 
 # Content with float-left
@@ -371,7 +360,6 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin nec risus leo. Ve
 <img class="float-left" src="./assets/images/gde.png">
 
 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin nec risus leo. Vestibulum condimentum orci in urna auctor aliquet. Quisque mi erat, placerat non porttitor ut, gravida eu erat. Fusce semper ipsum vel nibh porttitor aliquam. Cras sed porttitor est, id scelerisque odio. Pellentesque sit amet imperdiet ex. Aliquam erat.
-
 
 ##--##
 
@@ -394,10 +382,10 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin nec risus leo. Ve
 ![float-right](./assets/images/gde.png)
 
 [Source of the image](http://www.sfeir.com)
+
 <!-- .element: class="credits" -->
 
 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin nec risus leo. Vestibulum condimentum orci in urna auctor aliquet. Quisque mi erat, placerat non porttitor ut, gravida eu erat. Fusce semper ipsum vel nibh porttitor aliquam. Cras sed porttitor est, id scelerisque odio. Pellentesque sit amet imperdiet ex. Aliquam erat.
-
 
 ##--##
 
@@ -421,7 +409,6 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin nec risus leo. Ve
 
 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin nec risus leo. Vestibulum condimentum orci in urna auctor aliquet. Quisque mi erat, placerat non porttitor ut, gravida eu erat. Fusce semper ipsum vel nibh porttitor aliquam. Cras sed porttitor est, id scelerisque odio. Pellentesque sit amet imperdiet ex. Aliquam erat.
 
-
 ##--##
 
 <!-- .slide: class="with-code" -->
@@ -435,6 +422,7 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin nec risus leo. Ve
 ```
 
 ##==##
+
 <!-- .slide: class="full-center" -->
 
 # Image with source
@@ -442,6 +430,7 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin nec risus leo. Ve
 ![](./assets/images/GDG-Logo-carre.png)
 
 [Source of the image](http://www.sfeir.com)
+
 <!-- .element: class="credits" -->
 
 ##==##
@@ -472,6 +461,7 @@ Complete list of icons : https://feathericons.com/
 
 ```markdown
 ## Use Feathers icons
+
 Using markdown image
 ![sfeir-icons](github) basic icon
 ![sfeir-icons small](github) small icon

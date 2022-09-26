@@ -4,19 +4,17 @@
  * By Jean-François Garreau : jefBinomed
  */
 
-
 // Default mixins and settings -----------------
-@import "../reveal/template/mixins";
-@import "../reveal/template/settings";
+@import '../reveal/template/mixins';
+@import '../reveal/template/settings';
 // ---------------------------------------------
 
-@import "./fonts";
-@import "./colors";
-@import "../utils/custom-properties";
-
+@import './fonts';
+@import './colors';
+@import '../utils/custom-properties';
 
 // Background of the presentation
-$backgroundColor: #FFF;
+$backgroundColor: #fff;
 
 // Primary/body text
 $mainFont: 'Poppins', sans-serif;
@@ -40,11 +38,11 @@ $heading1TextShadow: $headingTextShadow;
 $heading1Size: 3.77em;
 $heading2Size: 2.11em;
 $heading3Size: 1.55em;
-$heading4Size: 1.00em;
+$heading4Size: 1em;
 
 // Links and actions
 $linkColor: $black;
-$linkColorHover: lighten( $linkColor, 20% );
+$linkColorHover: lighten($linkColor, 20%);
 
 // Text selection
 $selectionBackgroundColor: rgba(140, 191, 240, 0.8);
@@ -52,7 +50,7 @@ $selectionColor: #fff;
 
 //  Custom Properties
 
-:root{
+:root {
     // Background of the presentation
     @include useCssVar(--backgroundColor, $backgroundColor);
 
@@ -89,7 +87,6 @@ $selectionColor: #fff;
     @include useCssVar(--selectionColor, $selectionColor);
 }
 
-
 // Theme template ------------------------------
-@import "../reveal/template/theme";
+@import '../reveal/template/theme';
 // ---------------------------------------------

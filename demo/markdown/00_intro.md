@@ -1,4 +1,3 @@
-
 <!-- .slide: class="transition left sfeir-bg-1" -->
 
 # SfeirSchool Theme
@@ -13,15 +12,15 @@ Each of those slides will show you what you can do with SFEIR School Theme
 
 <br>
 
-To easily understand how to reproduce the slide for your needs. This presentation will use RevealJS vertical navigation to show you the code to produce. Press space or ⬇️key to see the code 
+To easily understand how to reproduce the slide for your needs. This presentation will use RevealJS vertical navigation to show you the code to produce. Press space or ⬇️key to see the code
 
 # ⬇️
+
 <!-- .element: class="center" -->
 
 ##--##
 
 # Vertical Navigation !!
-
 
 Now you see that you could use vertical navigation. Enjoy the possibilities of SFEIR School Theme
 
@@ -36,6 +35,7 @@ Now you see that you could use vertical navigation. Enjoy the possibilities of S
 <!-- .slide: class="first-slide" sfeir-level="1" sfeir-techno="pwa" -->
 
 # **Welcome to SFEIR School**
+
 ## **PWA 100**
 
 ##--##
@@ -48,8 +48,10 @@ Now you see that you could use vertical navigation. Enjoy the possibilities of S
 <!-- .slide: class="first-slide" sfeir-level="1" sfeir-techno="pwa" -->
 
 # **Welcome to SFEIR School**
+
 ## **PWA 100**
 ```
+
 <!-- .element: class="big-code" -->
 
 ##==##
@@ -57,8 +59,8 @@ Now you see that you could use vertical navigation. Enjoy the possibilities of S
 <!-- .slide: class="first-slide" sfeir-level="2" sfeir-techno="pwa" -->
 
 # **Welcome to SFEIR School**
-## **PWA 200**
 
+## **PWA 200**
 
 ##--##
 
@@ -70,8 +72,10 @@ Now you see that you could use vertical navigation. Enjoy the possibilities of S
 <!-- .slide: class="first-slide" sfeir-level="2" sfeir-techno="pwa" -->
 
 # **Welcome to SFEIR School**
+
 ## **PWA 200**
 ```
+
 <!-- .element: class="big-code" -->
 
 ##==##
@@ -79,6 +83,7 @@ Now you see that you could use vertical navigation. Enjoy the possibilities of S
 <!-- .slide: class="first-slide" sfeir-level="3" sfeir-techno="pwa" -->
 
 # **Welcome to SFEIR School**
+
 ## **PWA 300**
 
 ##--##
@@ -91,8 +96,8 @@ Now you see that you could use vertical navigation. Enjoy the possibilities of S
 <!-- .slide: class="first-slide" sfeir-level="3" sfeir-techno="pwa" -->
 
 # **Welcome to SFEIR School**
+
 ## **PWA 300**
 ```
+
 <!-- .element: class="big-code" -->
-
-

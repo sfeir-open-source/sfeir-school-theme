@@ -1,48 +1,48 @@
 {
-  "name": "sfeir-school-theme",
-  "version": "3.0.0-rc-2",
-  "description": "Sfeir School Theme for RevealJS",
-  "main": "./sfeir-school-theme.mjs",
-  "exports": "./sfeir-school-theme.mjs",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "serve": "live-server --port=4242 --open=\"./demo/index.html\" --mount=\"/assets:./demo/assets\" --mount=\"/web_modules:./demo/web_modules\" --watch=\"./demo/web_modules/sfeir-school-theme,./demo/markdown/\"",
-    "release": "echo \"Error: no deployement is configure for the moment, please just build the project\"",
-    "prepare-demo": "node ./scripts/prepare-demo.js",
-    "prestart": "npm run prepare-demo",
-    "start": "parallelshell \"npm run serve\" \"npm run build-watch\"",
-    "postbuild": "node ./scripts/prepare-publish.js",
-    "build": "vite build",
-    "on-change:build": "chokidar \"./src\" -c \"npm run build\"",
-    "on-change:copy": "chokidar \"./dist\" -c \"npm run prepare-demo\"",
-    "build-watch": "parallelshell \"npm run on-change:build\" \"npm run on-change:copy\""
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/sfeir-open-source/sfeir-school-theme.git"
-  },
-  "keywords": [
-    "css",
-    "sfeir"
-  ],
-  "author": "jefbinomed",
-  "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/sfeir-open-source/sfeir-school-theme/issues"
-  },
-  "homepage": "https://github.com/sfeir-open-source/sfeir-school-theme#readme",
-  "dependencies": {
-    "feather-icons": "^4.29.0",
-    "highlight.js": "^10.4.1",
-    "lit-html": "^2.2.7",
-    "reveal.js": "^4.3.0"
-  },
-  "devDependencies": {
-    "chokidar-cli": "^3.0.0",
-    "live-server": "^1.1.0",
-    "parallelshell": "3.0.1",
-    "sass": "^1.51.0",
-    "shelljs": "^0.8.5",
-    "vite": "^3.1.0"
-  }
+    "name": "sfeir-school-theme",
+    "version": "3.0.0-rc-3",
+    "description": "Sfeir School Theme for RevealJS",
+    "main": "./sfeir-school-theme.mjs",
+    "exports": "./sfeir-school-theme.mjs",
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1",
+        "serve": "live-server --port=4242 --open=\"./demo/index.html\" --mount=\"/assets:./demo/assets\" --mount=\"/web_modules:./demo/web_modules\" --watch=\"./demo/web_modules/sfeir-school-theme,./demo/markdown/\"",
+        "release": "echo \"Error: no deployement is configure for the moment, please just build the project\"",
+        "prepare-demo": "node ./scripts/prepare-demo.js",
+        "prestart": "npm run prepare-demo",
+        "start": "parallelshell \"npm run serve\" \"npm run build-watch\"",
+        "postbuild": "node ./scripts/prepare-publish.js",
+        "build": "vite build",
+        "on-change:build": "chokidar \"./src\" -c \"npm run build\"",
+        "on-change:copy": "chokidar \"./dist\" -c \"npm run prepare-demo\"",
+        "build-watch": "parallelshell \"npm run on-change:build\" \"npm run on-change:copy\""
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/sfeir-open-source/sfeir-school-theme.git"
+    },
+    "keywords": [
+        "css",
+        "sfeir"
+    ],
+    "author": "jefbinomed",
+    "license": "MIT",
+    "bugs": {
+        "url": "https://github.com/sfeir-open-source/sfeir-school-theme/issues"
+    },
+    "homepage": "https://github.com/sfeir-open-source/sfeir-school-theme#readme",
+    "dependencies": {
+        "feather-icons": "^4.29.0",
+        "highlight.js": "^10.4.1",
+        "lit-html": "^2.2.7",
+        "reveal.js": "^4.3.0"
+    },
+    "devDependencies": {
+        "chokidar-cli": "^3.0.0",
+        "live-server": "^1.1.0",
+        "parallelshell": "3.0.1",
+        "sass": "^1.51.0",
+        "shelljs": "^0.8.5",
+        "vite": "^3.1.0"
+    }
 }
