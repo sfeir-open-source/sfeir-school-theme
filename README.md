@@ -109,6 +109,8 @@ Enjoy!
 
 This theme use target for [RevealJS](https://revealjs.com/#/) so all you can do with RevealJS is available with theme.
 
+You can still use RevealJS API by importing `Reveal` object in `import { Reveal } from "../web_modules/sfeir-school-theme/sfeir-school-theme.mjs";`
+
 # Features
 
 * Specifics slides management: 
