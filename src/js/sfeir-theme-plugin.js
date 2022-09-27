@@ -70,50 +70,46 @@ export class SfeirTheme {
     }
 
     _manageBackgrounds() {
-        let modeContent =
+        const modeContent =
             document
                 .querySelector('.reveal .slides')
-                .getAttribute('data-theme-slides')
-        if (modeContent === null || modeContent.trim() === "") {
-            document.querySelector('.reveal .slides').setAttribute("data-theme-slides","school")
-            modeContent = "school"
-        }
+                .getAttribute('data-theme-slides') ?? 'school';
 
-    const map = {
-      "first-slide": `${this.path}${imagesPath}/${
-        modeContent === "institute" ? "bg-blue-1.png" : "bg-green-1.png"
-      }`,
-      transition: `${this.path}${imagesPath}/${
-        modeContent === "institute" ? "bg-blue-1.png" : "bg-green-1.png"
-      }`,
-      "speaker-slide": `var(--black)`,
-      "quote-slide": `var(--black)`,
-      "sfeir-slide": `${this.path}${imagesPath}/bg-green-1.png`,
-      "bg-white": `${this.path}${imagesPath}/bg-green-1.png`,
-      "bg-pink": `${this.path}${imagesPath}/bg-green-1.png`,
-      "bg-blue": `${this.path}${imagesPath}/bg-green-1.png`,
-      "bg-green": `${this.path}${imagesPath}/bg-green-1.png`,
-      "bg-blur": `${this.path}${imagesPath}/bg-blue-blur.jpeg`,
-      "transition-bg-sfeir-1": `${this.path}${imagesPath}/${
-        modeContent === "institute" ? "bg-blue-1.png" : "bg-green-1.png"
-      }`,
-      "transition-bg-sfeir-2": `${this.path}${imagesPath}/${
-        modeContent === "institute" ? "bg-blue-1.png" : "bg-green-1.png"
-      }`,
-      "transition-bg-sfeir-3": `${this.path}${imagesPath}/${
-        modeContent === "institute" ? "bg-blue-1.png" : "bg-green-1.png"
-      }`,
-      "transition-bg-blue-1": `${this.path}${imagesPath}/bg-blue-1.png`,
-      "transition-bg-blue-2": `${this.path}${imagesPath}/bg-blue-2.jpeg`,
-      "transition-bg-blue-3": `${this.path}${imagesPath}/bg-blue-3.png`,
-      "transition-bg-blue-blur": `${this.path}${imagesPath}/bg-blue-blur.jpg`,
-      "transition-bg-green-1": `${this.path}${imagesPath}/bg-green-1.png`,
-      "transition-bg-green-2": `${this.path}${imagesPath}/bg-green-2.png`,
-      "transition-bg-green-3": `${this.path}${imagesPath}/bg-green-3.png`,
-      "transition-bg-green-4": `${this.path}${imagesPath}/bg-green-4.png`,
-      "transition-bg-green-5": `${this.path}${imagesPath}/bg-green-5.png`,
-      "transition-bg-green-6": `${this.path}${imagesPath}/bg-green-6.png`,
-    };
+        const map = {
+            'first-slide': `${this.path}${imagesPath}/${
+                modeContent === 'institute' ? 'bg-blue-1.png' : 'bg-green-1.png'
+            }`,
+            transition: `${this.path}${imagesPath}/${
+                modeContent === 'institute' ? 'bg-blue-1.png' : 'bg-green-1.png'
+            }`,
+            'speaker-slide': `var(--black)`,
+            'quote-slide': `var(--black)`,
+            'sfeir-slide': `${this.path}${imagesPath}/bg-green-1.png`,
+            'bg-white': `${this.path}${imagesPath}/bg-green-1.png`,
+            'bg-pink': `${this.path}${imagesPath}/bg-green-1.png`,
+            'bg-blue': `${this.path}${imagesPath}/bg-green-1.png`,
+            'bg-green': `${this.path}${imagesPath}/bg-green-1.png`,
+            'bg-blur': `${this.path}${imagesPath}/bg-blue-blur.jpeg`,
+            'transition-bg-sfeir-1': `${this.path}${imagesPath}/${
+                modeContent === 'institute' ? 'bg-blue-1.png' : 'bg-green-1.png'
+            }`,
+            'transition-bg-sfeir-2': `${this.path}${imagesPath}/${
+                modeContent === 'institute' ? 'bg-blue-1.png' : 'bg-green-1.png'
+            }`,
+            'transition-bg-sfeir-3': `${this.path}${imagesPath}/${
+                modeContent === 'institute' ? 'bg-blue-1.png' : 'bg-green-1.png'
+            }`,
+            'transition-bg-blue-1': `${this.path}${imagesPath}/bg-blue-1.png`,
+            'transition-bg-blue-2': `${this.path}${imagesPath}/bg-blue-2.jpeg`,
+            'transition-bg-blue-3': `${this.path}${imagesPath}/bg-blue-3.png`,
+            'transition-bg-blue-blur': `${this.path}${imagesPath}/bg-blue-blur.jpg`,
+            'transition-bg-green-1': `${this.path}${imagesPath}/bg-green-1.png`,
+            'transition-bg-green-2': `${this.path}${imagesPath}/bg-green-2.png`,
+            'transition-bg-green-3': `${this.path}${imagesPath}/bg-green-3.png`,
+            'transition-bg-green-4': `${this.path}${imagesPath}/bg-green-4.png`,
+            'transition-bg-green-5': `${this.path}${imagesPath}/bg-green-5.png`,
+            'transition-bg-green-6': `${this.path}${imagesPath}/bg-green-6.png`,
+        };
 
         for (let key in map) {
             const queryElementList = document.querySelectorAll(

@@ -110,15 +110,11 @@
 /**
 * Hack for Conf
 */
-.reveal
-.slides[data-theme-slides="conf"]
-section[data-background].first-slide {
-  &::before {
-    //background: url("");
-    background-repeat: no-repeat;
-    background-size: contain;
-  }
-  div.sfeir-logo {
-    display: none;
-  }
+.reveal .slides[data-theme-slides='conf'] section[data-background].first-slide {
+    &::before {
+        display: none;
+    }
+    div.sfeir-logo {
+        display: none;
+    }
 }
