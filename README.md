@@ -173,6 +173,10 @@ Here is an example of first slide according to if you set mode to institute or n
 
 ![](./docs/images/first-slide-institute.png)
 
+### Conf mode :
+
+![](./docs/images/first-slide-conf.png)
+
 ### Normal mode (or school mode):
 
 ![](./docs/images/first-slide.png)
