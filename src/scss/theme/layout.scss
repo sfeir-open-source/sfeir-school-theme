@@ -371,22 +371,22 @@
     z-index: 1;
 }
 
-.reveal .backgrounds div.slide-background.speaker-slide,
-.reveal .backgrounds div.slide-background.first-slide,
-.reveal .backgrounds div.slide-background[class*='transition'],
-.reveal
-    .backgrounds
+.reveal .backgrounds {
+    div.slide-background .slide-background-content:after {
+        background-image: url('./images/logo-school-dark-3.webp');
+    }
+
+    div.slide-background.speaker-slide,
+    div.slide-background.first-slide,
+    div.slide-background[class*='transition'],
     div.slide-background.sfeir-basic-slide[class*='transition'],
-.reveal
-    .backgrounds
     div.slide-background.sfeir-specific-slide[class*='transition'],
-.reveal .backgrounds div.slide-background.first-slide,
-.reveal .backgrounds div.slide-background.quote-slide,
-.reveal
-    .backgrounds
+    div.slide-background.first-slide,
+    div.slide-background.quote-slide,
     div.slide-background.with-code-dark:not(.sfeir-specific-slide):not(.stack):not([class*='transition']) {
-    .slide-background-content:after {
-        background-image: url('./images/logo-school-white-3.png');
+        .slide-background-content:after {
+            background-image: url('./images/logo-school-white-3.png');
+        }
     }
 }
 
@@ -454,6 +454,15 @@
         .slide-background-content:after {
         background-image: url('./images/logo-institute-white.png');
         z-index: 1;
+    }
+}
+
+/**
+* Hack for conf Mode
+**/
+.reveal .slides[data-theme-slides='conf'] ~ .backgrounds {
+    div.slide-background .slide-background-content:after {
+        display: none;
     }
 }
 
@@ -552,6 +561,12 @@ html.print-pdf {
             .slide-background-content:after {
                 background-image: url('./images/logo-institute-white.png');
             }
+        }
+    }
+
+    .reveal .slides[data-theme-slides='conf'] .pdf-page {
+        div.slide-background .slide-background-content:after {
+            display: none;
         }
     }
 }

@@ -106,3 +106,15 @@
         display: none;
     }
 }
+
+/**
+* Hack for Conf
+*/
+.reveal .slides[data-theme-slides='conf'] section[data-background].first-slide {
+    &::before {
+        display: none;
+    }
+    div.sfeir-logo {
+        display: none;
+    }
+}

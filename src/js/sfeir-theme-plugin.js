@@ -77,10 +77,10 @@ export class SfeirTheme {
 
         const map = {
             'first-slide': `${this.path}${imagesPath}/${
-                modeContent === 'school' ? 'bg-green-1.png' : 'bg-blue-1.png'
+                modeContent === 'institute' ? 'bg-blue-1.png' : 'bg-green-1.png'
             }`,
             transition: `${this.path}${imagesPath}/${
-                modeContent === 'school' ? 'bg-green-1.png' : 'bg-blue-1.png'
+                modeContent === 'institute' ? 'bg-blue-1.png' : 'bg-green-1.png'
             }`,
             'speaker-slide': `var(--black)`,
             'quote-slide': `var(--black)`,
@@ -91,13 +91,13 @@ export class SfeirTheme {
             'bg-green': `${this.path}${imagesPath}/bg-green-1.png`,
             'bg-blur': `${this.path}${imagesPath}/bg-blue-blur.jpeg`,
             'transition-bg-sfeir-1': `${this.path}${imagesPath}/${
-                modeContent === 'school' ? 'bg-green-1.png' : 'bg-blue-1.png'
+                modeContent === 'institute' ? 'bg-blue-1.png' : 'bg-green-1.png'
             }`,
             'transition-bg-sfeir-2': `${this.path}${imagesPath}/${
-                modeContent === 'school' ? 'bg-green-2.png' : 'bg-blue-2.jpeg'
+                modeContent === 'institute' ? 'bg-blue-1.png' : 'bg-green-1.png'
             }`,
             'transition-bg-sfeir-3': `${this.path}${imagesPath}/${
-                modeContent === 'school' ? 'bg-green-3.png' : 'bg-blue-3.png'
+                modeContent === 'institute' ? 'bg-blue-1.png' : 'bg-green-1.png'
             }`,
             'transition-bg-blue-1': `${this.path}${imagesPath}/bg-blue-1.png`,
             'transition-bg-blue-2': `${this.path}${imagesPath}/bg-blue-2.jpeg`,

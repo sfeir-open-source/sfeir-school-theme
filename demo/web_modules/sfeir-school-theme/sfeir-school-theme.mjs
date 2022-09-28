@@ -11717,8 +11717,8 @@ class vY {
   _manageBackgrounds() {
     var a;
     const t = (a = document.querySelector(".reveal .slides").getAttribute("data-theme-slides")) != null ? a : "school", n = {
-      "first-slide": `${this.path}${oe}/${t === "school" ? "bg-green-1.png" : "bg-blue-1.png"}`,
-      transition: `${this.path}${oe}/${t === "school" ? "bg-green-1.png" : "bg-blue-1.png"}`,
+      "first-slide": `${this.path}${oe}/${t === "institute" ? "bg-blue-1.png" : "bg-green-1.png"}`,
+      transition: `${this.path}${oe}/${t === "institute" ? "bg-blue-1.png" : "bg-green-1.png"}`,
       "speaker-slide": "var(--black)",
       "quote-slide": "var(--black)",
       "sfeir-slide": `${this.path}${oe}/bg-green-1.png`,
@@ -11727,9 +11727,9 @@ class vY {
       "bg-blue": `${this.path}${oe}/bg-green-1.png`,
       "bg-green": `${this.path}${oe}/bg-green-1.png`,
       "bg-blur": `${this.path}${oe}/bg-blue-blur.jpeg`,
-      "transition-bg-sfeir-1": `${this.path}${oe}/${t === "school" ? "bg-green-1.png" : "bg-blue-1.png"}`,
-      "transition-bg-sfeir-2": `${this.path}${oe}/${t === "school" ? "bg-green-2.png" : "bg-blue-2.jpeg"}`,
-      "transition-bg-sfeir-3": `${this.path}${oe}/${t === "school" ? "bg-green-3.png" : "bg-blue-3.png"}`,
+      "transition-bg-sfeir-1": `${this.path}${oe}/${t === "institute" ? "bg-blue-1.png" : "bg-green-1.png"}`,
+      "transition-bg-sfeir-2": `${this.path}${oe}/${t === "institute" ? "bg-blue-1.png" : "bg-green-1.png"}`,
+      "transition-bg-sfeir-3": `${this.path}${oe}/${t === "institute" ? "bg-blue-1.png" : "bg-green-1.png"}`,
       "transition-bg-blue-1": `${this.path}${oe}/bg-blue-1.png`,
       "transition-bg-blue-2": `${this.path}${oe}/bg-blue-2.jpeg`,
       "transition-bg-blue-3": `${this.path}${oe}/bg-blue-3.png`,
