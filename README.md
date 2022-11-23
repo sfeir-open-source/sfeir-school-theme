@@ -990,3 +990,11 @@ Complete list of icons : https://feathericons.com/
 ## Print the slides
 
 To print your presentation, simply follow the reveal.js tutorial : [Pdf Export](https://revealjs.com/pdf-export/)
+
+| Configuration | Description |
+| - | - |
+| `<div class="slides" data-show-notes/>` | Show the notes in the exported page. |
+| `<div class="slides" data-show-notes="separate-page"/>` | Show the notes of the exported page in a separate page. |
+| `<div class="slides" data-pdf-max-pages-per-slide="1"/>` | Ensures that one slide is printed as one page. |
+| `<div class="slides" data-pdf-max-pages-per-slide="<number>"/>` | Ensures that one slide is printed as `<number>` page maximum. |
+| `<div class="slides" data-pdf-dont-separate-fragments/>` | Ensure that fragments are not separated in multiple pages. |
