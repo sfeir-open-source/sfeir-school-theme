@@ -119,52 +119,42 @@ export class SfeirTheme {
     _manageBackgrounds() {
         const map = {
             'first-slide': `${this.path}${imagesPath}/${
-                this.slidesTheme === 'institute'
-                    ? 'bg-blue-1.png'
-                    : 'bg-green-1.png'
+                modeContent === 'institute' ? 'bg-blue-1.jpg' : 'bg-green-1.jpg'
             }`,
             transition: `${this.path}${imagesPath}/${
-                this.slidesTheme === 'institute'
-                    ? 'bg-blue-1.png'
-                    : 'bg-green-1.png'
+                modeContent === 'institute' ? 'bg-blue-1.jpg' : 'bg-green-1.jpg'
             }`,
             'speaker-slide': `var(--black)`,
             'quote-slide': `var(--black)`,
-            'sfeir-slide': `${this.path}${imagesPath}/bg-green-1.png`,
-            'bg-white': `${this.path}${imagesPath}/bg-green-1.png`,
-            'bg-pink': `${this.path}${imagesPath}/bg-green-1.png`,
-            'bg-blue': `${this.path}${imagesPath}/bg-green-1.png`,
-            'bg-green': `${this.path}${imagesPath}/bg-green-1.png`,
+            'sfeir-slide': `${this.path}${imagesPath}/bg-green-1.jpg`,
+            'bg-white': `${this.path}${imagesPath}/bg-green-1.jpg`,
+            'bg-pink': `${this.path}${imagesPath}/bg-green-1.jpg`,
+            'bg-blue': `${this.path}${imagesPath}/bg-green-1.jpg`,
+            'bg-green': `${this.path}${imagesPath}/bg-green-1.jpg`,
             'bg-blur': `${this.path}${imagesPath}/${
                 this.slidesTheme === 'institute'
-                    ? 'bg-blue-blur.jpeg'
+                    ? 'bg-blue-blur.jpg'
                     : 'bg-green-blur.jpeg'
             }`,
             'transition-bg-sfeir-1': `${this.path}${imagesPath}/${
-                this.slidesTheme === 'institute'
-                    ? 'bg-blue-1.png'
-                    : 'bg-green-1.png'
+                modeContent === 'institute' ? 'bg-blue-1.jpg' : 'bg-green-1.jpg'
             }`,
             'transition-bg-sfeir-2': `${this.path}${imagesPath}/${
-                this.slidesTheme === 'institute'
-                    ? 'bg-blue-2.png'
-                    : 'bg-green-2.png'
+                modeContent === 'institute' ? 'bg-blue-2.jpg' : 'bg-green-2.jpg'
             }`,
             'transition-bg-sfeir-3': `${this.path}${imagesPath}/${
-                this.slidesTheme === 'institute'
-                    ? 'bg-blue-3.png'
-                    : 'bg-green-3.png'
+                modeContent === 'institute' ? 'bg-blue-2.jpg' : 'bg-green-2.jpg'
             }`,
-            'transition-bg-blue-1': `${this.path}${imagesPath}/bg-blue-1.png`,
-            'transition-bg-blue-2': `${this.path}${imagesPath}/bg-blue-2.jpeg`,
-            'transition-bg-blue-3': `${this.path}${imagesPath}/bg-blue-3.png`,
+            'transition-bg-blue-1': `${this.path}${imagesPath}/bg-blue-1.jpg`,
+            'transition-bg-blue-2': `${this.path}${imagesPath}/bg-blue-2.jpg`,
+            'transition-bg-blue-3': `${this.path}${imagesPath}/bg-blue-3.jpg`,
             'transition-bg-blue-blur': `${this.path}${imagesPath}/bg-blue-blur.jpg`,
-            'transition-bg-green-1': `${this.path}${imagesPath}/bg-green-1.png`,
-            'transition-bg-green-2': `${this.path}${imagesPath}/bg-green-2.png`,
-            'transition-bg-green-3': `${this.path}${imagesPath}/bg-green-3.png`,
-            'transition-bg-green-4': `${this.path}${imagesPath}/bg-green-4.png`,
-            'transition-bg-green-5': `${this.path}${imagesPath}/bg-green-5.png`,
-            'transition-bg-green-6': `${this.path}${imagesPath}/bg-green-6.png`,
+            'transition-bg-green-1': `${this.path}${imagesPath}/bg-green-1.jpg`,
+            'transition-bg-green-2': `${this.path}${imagesPath}/bg-green-2.jpg`,
+            'transition-bg-green-3': `${this.path}${imagesPath}/bg-green-3.jpg`,
+            'transition-bg-green-4': `${this.path}${imagesPath}/bg-green-4.jpg`,
+            'transition-bg-green-5': `${this.path}${imagesPath}/bg-green-5.jpg`,
+            'transition-bg-green-6': `${this.path}${imagesPath}/bg-green-6.jpg`,
         };
 
         for (let key in map) {
