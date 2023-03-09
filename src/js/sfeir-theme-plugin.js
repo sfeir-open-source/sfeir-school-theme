@@ -12,8 +12,23 @@ export class SfeirTheme {
 
         this.slidesElement = document.querySelector('.reveal .slides');
 
-        this.slidesType = this._determine_type();
-        this.slidesTheme = this._determine_theme();
+        this.slidesType = this._handle_parameter('type', 'data-type-show', 'prez');
+        this.slidesTheme = this._handle_parameter('theme', 'data-theme-slides', 'school');
+    }
+
+    // Since CSS makes use of data-* attributes, we need to persist URL parameters there, giving
+    // them priority over anything that would already be there.
+    _handle_parameter(urlParam, htmlParam, defaultValue) {
+        if (this.urlParams.has(urlParam)) {
+            const urlValue = this.urlParams.get(urlParam);
+            this.slidesElement.setAttribute(htmlParam, urlValue);
+        }
+
+        if (!this.slidesElement.hasAttribute(htmlParam)) {
+            this.slidesElement.setAttribute(htmlParam, defaultValue);
+        }
+
+        return this.slidesElement.getAttribute(htmlParam);
     }
 
     _determine_type() {
