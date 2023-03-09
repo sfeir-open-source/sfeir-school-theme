@@ -13,6 +13,7 @@ export class SfeirTheme {
         this.slidesElement = document.querySelector('.reveal .slides');
 
         this.slidesType = this._determine_type();
+        this.slidesTheme = this._determine_theme();
     }
 
     _determine_type() {
@@ -20,6 +21,13 @@ export class SfeirTheme {
         const showTypeContentFromUrl = this.urlParams.get('type');
 
         return showTypeContentFromUrl ?? showTypeContentFromHtml ?? "prez";
+    }
+
+    _determine_theme() {
+        const themeFromHtml = this.slidesElement.getAttribute('data-theme-slides');
+        const themeFromUrl = this.urlParams.get('theme');
+
+        return themeFromHtml ?? themeFromUrl ?? 'school';
     }
 
     postprocess() {
@@ -84,17 +92,12 @@ export class SfeirTheme {
     }
 
     _manageBackgrounds() {
-        const modeContent =
-            document
-                .querySelector('.reveal .slides')
-                .getAttribute('data-theme-slides') ?? 'school';
-
         const map = {
             'first-slide': `${this.path}${imagesPath}/${
-                modeContent === 'institute' ? 'bg-blue-1.png' : 'bg-green-1.png'
+                this.slidesTheme === 'institute' ? 'bg-blue-1.png' : 'bg-green-1.png'
             }`,
             transition: `${this.path}${imagesPath}/${
-                modeContent === 'institute' ? 'bg-blue-1.png' : 'bg-green-1.png'
+                this.slidesTheme === 'institute' ? 'bg-blue-1.png' : 'bg-green-1.png'
             }`,
             'speaker-slide': `var(--black)`,
             'quote-slide': `var(--black)`,
@@ -105,13 +108,13 @@ export class SfeirTheme {
             'bg-green': `${this.path}${imagesPath}/bg-green-1.png`,
             'bg-blur': `${this.path}${imagesPath}/bg-blue-blur.jpeg`,
             'transition-bg-sfeir-1': `${this.path}${imagesPath}/${
-                modeContent === 'institute' ? 'bg-blue-1.png' : 'bg-green-1.png'
+                this.slidesTheme === 'institute' ? 'bg-blue-1.png' : 'bg-green-1.png'
             }`,
             'transition-bg-sfeir-2': `${this.path}${imagesPath}/${
-                modeContent === 'institute' ? 'bg-blue-1.png' : 'bg-green-1.png'
+                this.slidesTheme === 'institute' ? 'bg-blue-1.png' : 'bg-green-1.png'
             }`,
             'transition-bg-sfeir-3': `${this.path}${imagesPath}/${
-                modeContent === 'institute' ? 'bg-blue-1.png' : 'bg-green-1.png'
+                this.slidesTheme === 'institute' ? 'bg-blue-1.png' : 'bg-green-1.png'
             }`,
             'transition-bg-blue-1': `${this.path}${imagesPath}/bg-blue-1.png`,
             'transition-bg-blue-2': `${this.path}${imagesPath}/bg-blue-2.jpeg`,
@@ -175,17 +178,13 @@ export class SfeirTheme {
     }
 
     _manageExerciceSlide() {
-        const modeContent =
-            document
-                .querySelector('.reveal .slides')
-                .getAttribute('data-theme-slides') ?? 'school';
         const exercicesSlides = [
             ...document.querySelectorAll('.reveal .slides section.exercice'),
         ];
         for (let exercicesection of exercicesSlides) {
             ``;
             const colorToUse =
-                modeContent === 'institute'
+                this.slidesTheme === 'institute'
                     ? 'var(--sfeir-blue)'
                     : 'var(--sfeir-green)';
             exercicesection.setAttribute(
