@@ -573,7 +573,7 @@ You can also use class to customise the slide:
 -   `big-code`: will use a big size of font
     ![](./docs/images/slide-with-code-big.png)
 
--   `max-height`: enhanced the size of code block to the maximum of the screen
+-   `full-height`: enhanced the size of code block to the maximum of the screen
     ![](./docs/images/slide-with-code-max-height.png)
 
 there is a minor varient of `big-code`, add the class `alone` if there is only one code at screen to position it in the center of screen. Else it will be relative to it's parent
