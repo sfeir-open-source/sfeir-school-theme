@@ -90,7 +90,16 @@
     div.slide-background.transition[data-background-hash*='WEBP']::after,
 .reveal
     .backgrounds
-    div.slide-background.transition[data-background-hash*='Webp']::after {
+    div.slide-background.transition[data-background-hash*='Webp']::after,
+.reveal
+    .backgrounds
+    div.slide-background.transition[data-background-hash*='avif']::after,
+.reveal
+    .backgrounds
+    div.slide-background.transition[data-background-hash*='AVIF']::after,
+.reveal
+    .backgrounds
+    div.slide-background.transition[data-background-hash*='Avif']::after {
     content: '';
     position: absolute;
     top: 0;
