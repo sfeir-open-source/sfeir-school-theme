@@ -6,6 +6,20 @@ const imagesPath = 'web_modules/sfeir-school-theme/images';
 export class SfeirTheme {
     constructor() {
         this.path = '';
+
+        const queryString = window.location.search;
+        this.urlParams = new URLSearchParams(queryString);
+
+        this.slidesElement = document.querySelector('.reveal .slides');
+
+        this.slidesType = this._determine_type();
+    }
+
+    _determine_type() {
+        const showTypeContentFromHtml = this.slidesElement.getAttribute('data-type-show');
+        const showTypeContentFromUrl = this.urlParams.get('type');
+
+        return showTypeContentFromUrl ?? showTypeContentFromHtml ?? "prez";
     }
 
     postprocess() {
@@ -182,21 +196,11 @@ export class SfeirTheme {
     }
 
     _manageShowTypeContent() {
-        const showTypeContent = document
-            .querySelector('.reveal .slides')
-            .getAttribute('data-type-show');
-        if (showTypeContent) {
-            const showTypeSlides = document.querySelectorAll(
-                '.reveal .slides section[data-type-show]'
-            );
-            for (let i = 0; i < showTypeSlides.length; i++) {
-                const tmpSlide = showTypeSlides[i];
-                if (
-                    tmpSlide.getAttribute('data-type-show') != showTypeContent
-                ) {
-                    tmpSlide.parentNode.removeChild(tmpSlide);
-                }
-            }
+        if (this.slidesType !== 'all') {
+            Array
+                .from(this.slidesElement.querySelectorAll('section[data-type-show]'))
+                .filter(el => el.getAttribute('data-type-show') !== this.slidesType)
+                .forEach(el => el.parentNode.removeChild(el));
         }
     }
 
