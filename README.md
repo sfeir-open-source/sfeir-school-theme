@@ -128,12 +128,15 @@ You can still use RevealJS API by importing `Reveal` object in `import { Reveal 
 
 ## Play with mode theme
 
-Lot's of training given by SFEIR School program are also available with the paid program SFEIR Institute (training organism of SFEIR company). The program SFEIR School has a main which is green where SFEIR Institue has a main color which is blue. To use the sames support for both program, a litle trick was introduce in V3.
+Lots of trainings given by SFEIR School program are also available with the paid program SFEIR Institute (training organism of SFEIR company). The program SFEIR School has a main theme color which is green whereas SFEIR Institute has a main theme color which is blue. To use the same support for both programs, V3 makes it possible to switch easily from one theme to another.
 
-In the html, where you could configure the restitution mode (see below for more details). You could define mode for displaying the slides :
+To this end, you have two possibilities:
+- Use HTML attribute `data-theme-slides`;
+- Use URL parameter `theme`.
 
--   **[Institute](https://sfeir-school-theme.netlify.app/index-mode.html#/)**
-    -   _Index.html Configuration_
+Below are `index.html` and URL examples for the available themes.
+
+1. **[Institute](https://sfeir-school-theme.netlify.app/index-mode.html#/)**
 
 ```html
 <body>
@@ -142,9 +145,9 @@ In the html, where you could configure the restitution mode (see below for more 
     </div>
 </body>
 ```
+https://sfeir-school-theme.netlify.app/index.html?theme=institute#/
 
--   **[School](https://sfeir-school-theme.netlify.app/index.html#/)**
-    -   _Index.html Configuration_
+2. **[School](https://sfeir-school-theme.netlify.app/index.html#/)**
 
 ```html
 <body>
@@ -153,9 +156,9 @@ In the html, where you could configure the restitution mode (see below for more 
     </div>
 </body>
 ```
+https://sfeir-school-theme.netlify.app/index.html?theme=school#/
 
--   **[Conf](https://sfeir-school-theme.netlify.app/index-conf.html#/)**
-    -   _Index.html Configuration_
+3. **[Conf](https://sfeir-school-theme.netlify.app/index-conf.html#/)**
 
 ```html
 <body>
@@ -164,8 +167,9 @@ In the html, where you could configure the restitution mode (see below for more 
     </div>
 </body>
 ```
+https://sfeir-school-theme.netlify.app/index.html?theme=conf#/
 
-The default mode is "school" mode -> Green theme.
+The default value is "school" mode -> Green theme.
 
 Here is an example of first slide according to if you set mode to institute or not.
 
