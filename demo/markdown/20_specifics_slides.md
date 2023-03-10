@@ -479,8 +479,6 @@
 
 # Support for avif format
 
-Even though the avif file is named *.jpg to circumvent a current limitation of RevealJS (should be fixed soon - See https://github.com/hakimel/reveal.js/issues/3379). 
-
 ##--##
 
 <!-- .slide: class="with-code" -->
@@ -488,7 +486,7 @@ Even though the avif file is named *.jpg to circumvent a current limitation of R
 # Code to produce / Markdown
 
 ```markdown
-<!-- .slide: data-background-image="./assets/images/bg-school.jpg"
+<!-- .slide: data-background-image="./assets/images/bg-school.avif"
     class="transition" -->
 
 # Support for avif format
