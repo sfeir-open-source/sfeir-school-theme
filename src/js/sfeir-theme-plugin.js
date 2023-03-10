@@ -143,7 +143,7 @@ export class SfeirTheme {
                 modeContent === 'institute' ? 'bg-blue-2.jpg' : 'bg-green-2.jpg'
             }`,
             'transition-bg-sfeir-3': `${this.path}${imagesPath}/${
-                modeContent === 'institute' ? 'bg-blue-2.jpg' : 'bg-green-2.jpg'
+                modeContent === 'institute' ? 'bg-blue-3.jpg' : 'bg-green-3.jpg'
             }`,
             'transition-bg-blue-1': `${this.path}${imagesPath}/bg-blue-1.jpg`,
             'transition-bg-blue-2': `${this.path}${imagesPath}/bg-blue-2.jpg`,
