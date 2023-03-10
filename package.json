@@ -12,6 +12,7 @@
         "prestart": "npm run prepare-demo",
         "start": "parallelshell \"npm run serve\" \"npm run build-watch\"",
         "postbuild": "node ./scripts/prepare-publish.js",
+	"postinstall": "patch-package",
         "build": "vite build",
         "on-change:build": "chokidar \"./src\" -c \"npm run build\"",
         "on-change:copy": "chokidar \"./dist\" -c \"npm run prepare-demo\"",
