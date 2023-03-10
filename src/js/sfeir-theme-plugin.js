@@ -94,10 +94,10 @@ export class SfeirTheme {
                 modeContent === 'institute' ? 'bg-blue-1.png' : 'bg-green-1.png'
             }`,
             'transition-bg-sfeir-2': `${this.path}${imagesPath}/${
-                modeContent === 'institute' ? 'bg-blue-1.png' : 'bg-green-1.png'
+                modeContent === 'institute' ? 'bg-blue-2.png' : 'bg-green-2.png'
             }`,
             'transition-bg-sfeir-3': `${this.path}${imagesPath}/${
-                modeContent === 'institute' ? 'bg-blue-1.png' : 'bg-green-1.png'
+                modeContent === 'institute' ? 'bg-blue-3.png' : 'bg-green-3.png'
             }`,
             'transition-bg-blue-1': `${this.path}${imagesPath}/bg-blue-1.png`,
             'transition-bg-blue-2': `${this.path}${imagesPath}/bg-blue-2.jpeg`,
