@@ -475,7 +475,7 @@
 
 ##==##
 
-<!-- .slide: data-background="./assets/images/bg-school.jpg" class="transition" -->
+<!-- .slide: data-background="./assets/images/bg-school.avif" class="transition" -->
 
 # Support for avif format
 
