@@ -23,4 +23,4 @@ function formation() {
   });
 }
 
-SfeirThemeInitializer.init(formation);
+await SfeirThemeInitializer.init(formation);

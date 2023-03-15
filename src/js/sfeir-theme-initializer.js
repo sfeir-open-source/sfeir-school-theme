@@ -11,9 +11,12 @@ export const SfeirThemeInitializer = {
     /**
      * @param {() => Array.<string>} slidesFactory
      */
-    init(slidesFactory, slidesRenderer = defaultSlideRenderer) {
+    async init(slidesFactory, slidesRenderer = defaultSlideRenderer) {
         const importSlideElement = document.querySelector('.slides');
-        slidesRenderer(importSlideElement, slidesFactory());
+        const slides = slidesFactory();
+        const slidesI18n = await i18n(slides);
+
+        await slidesRenderer(importSlideElement, slidesI18n);
 
         setTimeout(
             () =>
@@ -25,7 +28,7 @@ export const SfeirThemeInitializer = {
                     width: 1920,
                     height: 1080,
                     keyboard: {
-                        32: function () {
+                        32: function() {
                             var video =
                                 document.querySelector('.present video');
                             if (video.paused == true) {
@@ -57,13 +60,46 @@ export const SfeirThemeInitializer = {
     },
 };
 
+async function i18n(slides) {
+    const language =
+        new URLSearchParams(window.location.search).get('lang') ??
+        document.querySelector('.reveal .slides').getAttribute('data-lang') ??
+        'fr';
+
+    console.log('Slides language : ', language);
+
+    return slides
+        .map(path => {
+            const tmp = path['path'].substring(0, path['path'].length - 3);
+            return firstExisting(
+                { path: tmp + '-' + language + '.md' },
+                { path: tmp + '.md' },
+                { path: tmp + '-fr.md' },
+            )
+        });
+}
+
+async function firstExisting(...paths) {
+    const data = paths.map(path => {
+        const promise = fetch('markdown/' + path['path'], { 'method': 'HEAD' })
+        return promise
+    });
+
+    for (const i in data) {
+        if ((await data[i]).status === 200)
+            return paths[i];
+    }
+}
+
 /**
  * Render the html
  */
-function defaultSlideRenderer(element, slides) {
+async function defaultSlideRenderer(element, slides) {
+    const slidesI18n = await Promise.all(slides)
+
     return render(
         html`
-            ${slides.map(
+            ${slidesI18n.map(
                 (slide) => html`
                     <section
                         data-markdown="./markdown/${slide.path}"
