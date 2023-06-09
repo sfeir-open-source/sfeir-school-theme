@@ -952,9 +952,9 @@ This will apply on all elements of the list the class `fragment` or use html
 
 In this new version, you could use the library of icons : [feather icons](https://feathericons.com/).
 
-You can use it in 2 way, a Hachky way using markdon image syntax or the normal way with html tag.
+You can use it in 2 way, a Hachky way using markdown image syntax or the normal way with html tag.
 
-The "hacky" way play with mardown image syntax : `![tagList](sourceOfImage)`. So to add a feather icon, you will do this : `![feather](codeOfFeatherIcon)`. The image will be replaced by the correct html
+The "hacky" way plays with mardown image syntax : `![tagList](sourceOfImage)`. So to add a feather icon, you will do this : `![feather](codeOfFeatherIcon)`. The image will be replaced by the correct html.
 
 We introduce some extensible capabilities :
 
@@ -963,7 +963,7 @@ We introduce some extensible capabilities :
     -   With `small` : size is `24px`
     -   With `big` : size is `96px`
 -   You can define your own custom size using html custom properties in the style of image (see example after) : `--icon-size`
--   By default, the color of icons follow the mode of presentation (school (green) or institute (blue)). You can add your custom color using custom properties in the style of image (see example after) : `--icon-color`
+-   By default, the color of icons follow the mode of presentation (school (green) or institute (blue)). You can add your custom colors using custom properties in the style of image (see example after) : `--icon-color`
 
 ```md
 ## Use Feathers icons
