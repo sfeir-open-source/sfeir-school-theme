@@ -6,6 +6,43 @@ const imagesPath = 'web_modules/sfeir-school-theme/images';
 export class SfeirTheme {
     constructor() {
         this.path = '';
+
+        const queryString = window.location.search;
+        this.urlParams = new URLSearchParams(queryString);
+
+        this.slidesElement = document.querySelector('.reveal .slides');
+
+        this.slidesType = this._handle_parameter('type', 'data-type-show', 'prez');
+        this.slidesTheme = this._handle_parameter('theme', 'data-theme-slides', 'school');
+    }
+
+    // Since CSS makes use of data-* attributes, we need to persist URL parameters there, giving
+    // them priority over anything that would already be there.
+    _handle_parameter(urlParam, htmlParam, defaultValue) {
+        if (this.urlParams.has(urlParam)) {
+            const urlValue = this.urlParams.get(urlParam);
+            this.slidesElement.setAttribute(htmlParam, urlValue);
+        }
+
+        if (!this.slidesElement.hasAttribute(htmlParam)) {
+            this.slidesElement.setAttribute(htmlParam, defaultValue);
+        }
+
+        return this.slidesElement.getAttribute(htmlParam);
+    }
+
+    _determine_type() {
+        const showTypeContentFromHtml = this.slidesElement.getAttribute('data-type-show');
+        const showTypeContentFromUrl = this.urlParams.get('type');
+
+        return showTypeContentFromUrl ?? showTypeContentFromHtml ?? "prez";
+    }
+
+    _determine_theme() {
+        const themeFromHtml = this.slidesElement.getAttribute('data-theme-slides');
+        const themeFromUrl = this.urlParams.get('theme');
+
+        return themeFromHtml ?? themeFromUrl ?? 'school';
     }
 
     postprocess() {
@@ -70,17 +107,12 @@ export class SfeirTheme {
     }
 
     _manageBackgrounds() {
-        const modeContent =
-            document
-                .querySelector('.reveal .slides')
-                .getAttribute('data-theme-slides') ?? 'school';
-
         const map = {
             'first-slide': `${this.path}${imagesPath}/${
-                modeContent === 'institute' ? 'bg-blue-1.png' : 'bg-green-1.png'
+                this.slidesTheme === 'institute' ? 'bg-blue-1.png' : 'bg-green-1.png'
             }`,
             transition: `${this.path}${imagesPath}/${
-                modeContent === 'institute' ? 'bg-blue-1.png' : 'bg-green-1.png'
+                this.slidesTheme === 'institute' ? 'bg-blue-1.png' : 'bg-green-1.png'
             }`,
             'speaker-slide': `var(--black)`,
             'quote-slide': `var(--black)`,
@@ -91,13 +123,13 @@ export class SfeirTheme {
             'bg-green': `${this.path}${imagesPath}/bg-green-1.png`,
             'bg-blur': `${this.path}${imagesPath}/bg-blue-blur.jpeg`,
             'transition-bg-sfeir-1': `${this.path}${imagesPath}/${
-                modeContent === 'institute' ? 'bg-blue-1.png' : 'bg-green-1.png'
+                this.slidesTheme === 'institute' ? 'bg-blue-1.png' : 'bg-green-1.png'
             }`,
             'transition-bg-sfeir-2': `${this.path}${imagesPath}/${
-                modeContent === 'institute' ? 'bg-blue-2.png' : 'bg-green-2.png'
+                this.slidesTheme === 'institute' ? 'bg-blue-2.png' : 'bg-green-2.png'
             }`,
             'transition-bg-sfeir-3': `${this.path}${imagesPath}/${
-                modeContent === 'institute' ? 'bg-blue-3.png' : 'bg-green-3.png'
+                this.slidesTheme === 'institute' ? 'bg-blue-3.png' : 'bg-green-3.png'
             }`,
             'transition-bg-blue-1': `${this.path}${imagesPath}/bg-blue-1.png`,
             'transition-bg-blue-2': `${this.path}${imagesPath}/bg-blue-2.jpeg`,
@@ -161,17 +193,13 @@ export class SfeirTheme {
     }
 
     _manageExerciceSlide() {
-        const modeContent =
-            document
-                .querySelector('.reveal .slides')
-                .getAttribute('data-theme-slides') ?? 'school';
         const exercicesSlides = [
             ...document.querySelectorAll('.reveal .slides section.exercice'),
         ];
         for (let exercicesection of exercicesSlides) {
             ``;
             const colorToUse =
-                modeContent === 'institute'
+                this.slidesTheme === 'institute'
                     ? 'var(--sfeir-blue)'
                     : 'var(--sfeir-green)';
             exercicesection.setAttribute(
@@ -182,21 +210,11 @@ export class SfeirTheme {
     }
 
     _manageShowTypeContent() {
-        const showTypeContent = document
-            .querySelector('.reveal .slides')
-            .getAttribute('data-type-show');
-        if (showTypeContent) {
-            const showTypeSlides = document.querySelectorAll(
-                '.reveal .slides section[data-type-show]'
-            );
-            for (let i = 0; i < showTypeSlides.length; i++) {
-                const tmpSlide = showTypeSlides[i];
-                if (
-                    tmpSlide.getAttribute('data-type-show') != showTypeContent
-                ) {
-                    tmpSlide.parentNode.removeChild(tmpSlide);
-                }
-            }
+        if (this.slidesType !== 'all') {
+            Array
+                .from(this.slidesElement.querySelectorAll('section[data-type-show]'))
+                .filter(el => el.getAttribute('data-type-show') !== this.slidesType)
+                .forEach(el => el.parentNode.removeChild(el));
         }
     }
 
