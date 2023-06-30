@@ -1,18 +1,18 @@
 <!-- .slide: class="transition left sfeir-bg-1" -->
 
-# Thème SFEIR School
+# SfeirSchool Theme
 
-## Présentation du thème SFEIR School
+## Showroom of SFEIR school theme
 
 ##==##
 
-# Comment l'utiliser ?
+# How to use it ?
 
-Chaque diapo montre une fonctionnalité du Thème SFEIR School
+Each of those slides will show you what you can do with SFEIR School Theme
 
 <br>
 
-Le code utilisé pour produire cette présentation est accessible via la navigation verticale (Appuyez sur ⬇️)
+To easily understand how to reproduce the slide for your needs. This presentation will use RevealJS vertical navigation to show you the code to produce. Press space or ⬇️key to see the code
 
 # ⬇️
 
@@ -20,21 +20,21 @@ Le code utilisé pour produire cette présentation est accessible via la navigat
 
 ##--##
 
-# Navigation verticale !!
+# Vertical Navigation !!
 
-Maintenant que vous maîtrisez la navigation verticale, profitez des possibilités du thème SFEIR School !
+Now you see that you could use vertical navigation. Enjoy the possibilities of SFEIR School Theme
 
 ##==##
 
 <!-- .slide: class="transition" -->
 
-# Diapos de titres
+# Titles slides
 
 ##==##
 
 <!-- .slide: class="first-slide" sfeir-level="1" sfeir-techno="pwa" -->
 
-# **Bienvenue à la SFEIR School**
+# **Welcome to SFEIR School**
 
 ## **PWA 100**
 
@@ -42,12 +42,12 @@ Maintenant que vous maîtrisez la navigation verticale, profitez des possibilit�
 
 <!-- .slide: class="with-code" -->
 
-# Code pour reproduire / Markdown
+# Code to produce / Markdown
 
 ```markdown
 <!-- .slide: class="first-slide" sfeir-level="1" sfeir-techno="pwa" -->
 
-# **Bienvenue à la SFEIR School**
+# **Welcome to SFEIR School**
 
 ## **PWA 100**
 ```
@@ -58,7 +58,7 @@ Maintenant que vous maîtrisez la navigation verticale, profitez des possibilit�
 
 <!-- .slide: class="first-slide" sfeir-level="2" sfeir-techno="pwa" -->
 
-# **Bienvenue à la SFEIR School**
+# **Welcome to SFEIR School**
 
 ## **PWA 200**
 
@@ -66,12 +66,12 @@ Maintenant que vous maîtrisez la navigation verticale, profitez des possibilit�
 
 <!-- .slide: class="with-code" -->
 
-# Code pour reproduire / Markdown
+# Code to produce / Markdown
 
 ```markdown
 <!-- .slide: class="first-slide" sfeir-level="2" sfeir-techno="pwa" -->
 
-# **Bienvenue à la SFEIR School**
+# **Welcome to SFEIR School**
 
 ## **PWA 200**
 ```
@@ -82,7 +82,7 @@ Maintenant que vous maîtrisez la navigation verticale, profitez des possibilit�
 
 <!-- .slide: class="first-slide" sfeir-level="3" sfeir-techno="pwa" -->
 
-# **Bienvenue à la SFEIR School**
+# **Welcome to SFEIR School**
 
 ## **PWA 300**
 
@@ -90,12 +90,12 @@ Maintenant que vous maîtrisez la navigation verticale, profitez des possibilit�
 
 <!-- .slide: class="with-code" -->
 
-# Code pour reproduire / Markdown
+# Code to produce / Markdown
 
 ```markdown
 <!-- .slide: class="first-slide" sfeir-level="3" sfeir-techno="pwa" -->
 
-# **Bienvenue à la SFEIR School**
+# **Welcome to SFEIR School**
 
 ## **PWA 300**
 ```

@@ -9,6 +9,7 @@ You can preview it here : https://sfeir-school-theme.netlify.com/
 -   [How to use it](https://github.com/sfeir-open-source/sfeir-school-theme/#how-to-use-it)
 -   [Features](https://github.com/sfeir-open-source/sfeir-school-theme/#features)
     -   [Play with mode theme](https://github.com/sfeir-open-source/sfeir-school-theme/#play-with-mode-theme)
+    -   [I18N your slides](https://github.com/sfeir-open-source/sfeir-school-theme/#i18n-your-slides)
     -   [Specifics Slides](https://github.com/sfeir-open-source/sfeir-school-theme/#specifics-slides)
         -   [First slide](https://github.com/sfeir-open-source/sfeir-school-theme/#first-slide)
         -   [Speaker Slide](https://github.com/sfeir-open-source/sfeir-school-theme/#speaker-slide)
@@ -189,6 +190,35 @@ Here are the impacts of the mode :
 -   The exercice slide
 -   The color of feather icons
 -   The header of tables
+
+## I18N your slides
+
+If you want to translate your slides, you simply have to add the extension corresponding to the translate langage : `XX-slide.EN.md`.
+
+The default langage used is French, so by default a file with no extension or when you ask french slides, the engine provides you the markdown files without lang suffix.
+
+If your asking a slide that is not available in the asked langage, the engine will provide you the "default" langage slide.
+
+To resume, asking `FR` langage will serve you default markdown files.
+
+To specify the langage you want to use, you have two options :
+
+-   define the langage in the index.html
+-   adding a parameter specifying the langage
+
+### Configuration in the index.html
+
+```html
+<body>
+    <div class="reveal">
+        <div class="slides" data-lang="EN">...</div>
+    </div>
+</body>
+```
+
+### Configuration by URL
+
+Simply add a query parameter in the URL `data-lang` with the wanted langage after.
 
 ## Specifics Slides
 
