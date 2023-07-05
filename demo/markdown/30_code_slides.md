@@ -86,7 +86,7 @@
 
 <!-- prettier-ignore -->
 ````markdown
-<!-- .slide: class="with-code-dark" -->
+<!-- .slide: class="with-code-dark max-height" -->
 
 ```xml
 <?xml version="1.0" encoding="utf-8"?>
@@ -100,6 +100,18 @@
         android:layout_height="wrap_content"
         android:text="@string/hello"
         />
+    <TextView
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/hello"
+        />
+    <TextView
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/hello"
+        />
+    <TextView
+        android:text="@string/hello"/>
 </LinearLayout>
 ```
 ````

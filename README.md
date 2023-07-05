@@ -605,12 +605,14 @@ You can also use class to customise the slide:
     ![](./docs/images/slide-with-code-inconsolata.png)
 
 -   `big-code`: will use a big size of font
+
     ![](./docs/images/slide-with-code-big.png)
 
--   `max-height`: enhanced the size of code block to the maximum of the screen
+-   `max-height`: make the code block of the slide take all vertical space. This class should be define on the second as a complement of `with-code` or `with-code-dark` classes.
+
     ![](./docs/images/slide-with-code-max-height.png)
 
-there is a minor varient of `big-code`, add the class `alone` if there is only one code at screen to position it in the center of screen. Else it will be relative to it's parent
+The additional class `alone` will position the code in the center of screen instead of relative to its parent.
 
 ### Highlight just a part of code
 
