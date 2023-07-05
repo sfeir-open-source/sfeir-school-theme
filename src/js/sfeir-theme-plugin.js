@@ -89,7 +89,9 @@ export class SfeirTheme {
             'bg-pink': `${this.path}${imagesPath}/bg-green-1.png`,
             'bg-blue': `${this.path}${imagesPath}/bg-green-1.png`,
             'bg-green': `${this.path}${imagesPath}/bg-green-1.png`,
-            'bg-blur': `${this.path}${imagesPath}/bg-blue-blur.jpeg`,
+            'bg-blur': `${this.path}${imagesPath}/${
+                modeContent === 'institute' ? 'bg-blue-blur.jpeg' : 'bg-green-blur.jpeg'
+            }`,
             'transition-bg-sfeir-1': `${this.path}${imagesPath}/${
                 modeContent === 'institute' ? 'bg-blue-1.png' : 'bg-green-1.png'
             }`,

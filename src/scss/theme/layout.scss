@@ -371,11 +371,12 @@
     z-index: 1;
 }
 
-.reveal .backgrounds {
+.reveal .slides~.backgrounds {
     div.slide-background .slide-background-content:after {
         background-image: url('./images/logo-school-dark-3.webp');
     }
 
+    div.sfeir-basic-slide .slide-background.bg-blur,
     div.slide-background.speaker-slide,
     div.slide-background.first-slide,
     div.slide-background[class*='transition'],
@@ -517,6 +518,7 @@ html.print-pdf {
         div.slide-background.sfeir-specific-slide[class*='transition'],
         div.slide-background.first-slide,
         div.slide-background.quote-slide,
+
         div.slide-background.with-code-dark:not(.sfeir-specific-slide):not(.stack):not([class*='transition']) {
             .slide-background-content:after {
                 background-image: url('./images/logo-school-white-3.png');
