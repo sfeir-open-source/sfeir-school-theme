@@ -12,8 +12,16 @@ export class SfeirTheme {
 
         this.slidesElement = document.querySelector('.reveal .slides');
 
-        this.slidesType = this._handle_parameter('type', 'data-type-show', 'prez');
-        this.slidesTheme = this._handle_parameter('theme', 'data-theme-slides', 'school');
+        this.slidesType = this._handle_parameter(
+            'type',
+            'data-type-show',
+            'prez'
+        );
+        this.slidesTheme = this._handle_parameter(
+            'theme',
+            'data-theme-slides',
+            'school'
+        );
     }
 
     // Since CSS makes use of data-* attributes, we need to persist URL parameters there, giving
@@ -32,14 +40,16 @@ export class SfeirTheme {
     }
 
     _determine_type() {
-        const showTypeContentFromHtml = this.slidesElement.getAttribute('data-type-show');
+        const showTypeContentFromHtml =
+            this.slidesElement.getAttribute('data-type-show');
         const showTypeContentFromUrl = this.urlParams.get('type');
 
-        return showTypeContentFromUrl ?? showTypeContentFromHtml ?? "prez";
+        return showTypeContentFromUrl ?? showTypeContentFromHtml ?? 'prez';
     }
 
     _determine_theme() {
-        const themeFromHtml = this.slidesElement.getAttribute('data-theme-slides');
+        const themeFromHtml =
+            this.slidesElement.getAttribute('data-theme-slides');
         const themeFromUrl = this.urlParams.get('theme');
 
         return themeFromHtml ?? themeFromUrl ?? 'school';
@@ -109,10 +119,14 @@ export class SfeirTheme {
     _manageBackgrounds() {
         const map = {
             'first-slide': `${this.path}${imagesPath}/${
-                this.slidesTheme === 'institute' ? 'bg-blue-1.png' : 'bg-green-1.png'
+                this.slidesTheme === 'institute'
+                    ? 'bg-blue-1.png'
+                    : 'bg-green-1.png'
             }`,
             transition: `${this.path}${imagesPath}/${
-                this.slidesTheme === 'institute' ? 'bg-blue-1.png' : 'bg-green-1.png'
+                this.slidesTheme === 'institute'
+                    ? 'bg-blue-1.png'
+                    : 'bg-green-1.png'
             }`,
             'speaker-slide': `var(--black)`,
             'quote-slide': `var(--black)`,
@@ -122,16 +136,24 @@ export class SfeirTheme {
             'bg-blue': `${this.path}${imagesPath}/bg-green-1.png`,
             'bg-green': `${this.path}${imagesPath}/bg-green-1.png`,
             'bg-blur': `${this.path}${imagesPath}/${
-                modeContent === 'institute' ? 'bg-blue-blur.jpeg' : 'bg-green-blur.jpeg'
+                this.slidesTheme === 'institute'
+                    ? 'bg-blue-blur.jpeg'
+                    : 'bg-green-blur.jpeg'
             }`,
             'transition-bg-sfeir-1': `${this.path}${imagesPath}/${
-                this.slidesTheme === 'institute' ? 'bg-blue-1.png' : 'bg-green-1.png'
+                this.slidesTheme === 'institute'
+                    ? 'bg-blue-1.png'
+                    : 'bg-green-1.png'
             }`,
             'transition-bg-sfeir-2': `${this.path}${imagesPath}/${
-                this.slidesTheme === 'institute' ? 'bg-blue-2.png' : 'bg-green-2.png'
+                this.slidesTheme === 'institute'
+                    ? 'bg-blue-2.png'
+                    : 'bg-green-2.png'
             }`,
             'transition-bg-sfeir-3': `${this.path}${imagesPath}/${
-                this.slidesTheme === 'institute' ? 'bg-blue-3.png' : 'bg-green-3.png'
+                this.slidesTheme === 'institute'
+                    ? 'bg-blue-3.png'
+                    : 'bg-green-3.png'
             }`,
             'transition-bg-blue-1': `${this.path}${imagesPath}/bg-blue-1.png`,
             'transition-bg-blue-2': `${this.path}${imagesPath}/bg-blue-2.jpeg`,
@@ -213,10 +235,14 @@ export class SfeirTheme {
 
     _manageShowTypeContent() {
         if (this.slidesType !== 'all') {
-            Array
-                .from(this.slidesElement.querySelectorAll('section[data-type-show]'))
-                .filter(el => el.getAttribute('data-type-show') !== this.slidesType)
-                .forEach(el => el.parentNode.removeChild(el));
+            Array.from(
+                this.slidesElement.querySelectorAll('section[data-type-show]')
+            )
+                .filter(
+                    (el) =>
+                        el.getAttribute('data-type-show') !== this.slidesType
+                )
+                .forEach((el) => el.parentNode.removeChild(el));
         }
     }
 
