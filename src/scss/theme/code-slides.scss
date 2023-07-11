@@ -1,6 +1,6 @@
 .with-code-dark,
 .with-code-bg-dark {
-    @import '../../../node_modules/highlight.js/styles/darcula';
+    @import '../../../node_modules/highlight.js/scss/base16/dracula.scss';
 }
 
 .reveal .backgrounds div.slide-background.with-code-dark {
@@ -9,7 +9,9 @@
 
 .reveal
     .slides
-    section.with-code-dark:not(.sfeir-specific-slide):not(.stack):not([class*='transition']) {
+    section.with-code-dark:not(.sfeir-specific-slide):not(.stack):not(
+        [class*='transition']
+    ) {
     h1,
     h2 {
         color: $white;
