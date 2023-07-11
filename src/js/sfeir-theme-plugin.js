@@ -283,10 +283,13 @@ export class SfeirTheme {
                     ...parentSection.querySelectorAll('section'),
                 ];
                 let indexSection = 0;
+
                 for (let subSection of subSections) {
+                    // We preserve specific classes
                     parentSection.classList.add(
                         ...subSection.classList.values()
                     );
+                    // We preserve Backgrounds
                     if (subSection.hasAttribute('data-background')) {
                         parentSection.classList.add(
                             indexSection === 0
@@ -323,6 +326,51 @@ export class SfeirTheme {
                             'data-background-image',
                             subSection.getAttribute('data-background-image')
                         );
+                    }
+
+                    // We preserve events
+                    if (subSection.hasAttribute('data-state')) {
+                        let dataStateParentString =
+                            parentSection.getAttribute('data-state');
+                        if (!parentSection.hasAttribute('data-state')) {
+                            dataStateParentString = '';
+                            parentSection.setAttribute('data-state', '');
+                        }
+                        const dataStateString =
+                            subSection.getAttribute('data-state');
+                        parentSection.setAttribute(
+                            'data-state',
+                            (
+                                dataStateParentString +
+                                ' ' +
+                                dataStateString
+                            ).trim()
+                        );
+                    }
+
+                    // We preserve notes of right slide
+                    if (indexSection !== 0) {
+                        let notesSectionRight =
+                            subSection.querySelector('aside.notes');
+                        let noteSectionsInParent = [
+                            ...parentSection.querySelectorAll(
+                                'aside.notes:last-child'
+                            ),
+                        ];
+                        let noteSection =
+                            noteSectionsInParent[
+                                noteSectionsInParent.length - 1
+                            ];
+                        if (!noteSection) {
+                            noteSection = document.createElement('ASIDE');
+                            noteSection.classList.add('notes');
+                            parentSection.appendChild(noteSection);
+                        }
+                        if (notesSectionRight) {
+                            noteSection.innerHTML += `
+                            ----------------
+                            ${notesSectionRight.innerHTML}`;
+                        }
                     }
                     const divElt = document.createElement('DIV');
                     divElt.innerHTML = subSection.innerHTML;
