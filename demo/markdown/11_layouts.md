@@ -111,6 +111,55 @@ A paragraph with some text and a [link](http://hakim.se).
 
 ##==##
 
+<!-- .slide: class="two-column" data-state="test" -->
+
+## Slide 1 with notes
+
+A paragraph with some text and a [link](http://hakim.se).
+
+Press 'S'
+
+Notes:
+Notes for slide left
+
+##--##
+
+<!-- .slide: data-state="test2"  -->
+
+## Slide 2 with notes
+
+-   Item 2
+-   Item 3
+<!-- .element: class="list-fragment" -->
+
+Notes:
+Notes for slide right
+
+##==##
+
+<!-- .slide: class="with-code" -->
+
+# Code to produce / Markdown
+
+<!-- prettier-ignore -->
+```markdown
+<!-- .slide: class="two-column" -->
+## Slide 1 with notes
+A paragraph with some text and a [link](http://hakim.se).
+Press 'S'
+Notes:
+Notes for slide left
+## --##
+## Slide 2 with notes
+-   Item 2
+-   Item 3
+<!-- .element: class="list-fragment" -->
+Notes:
+Notes for slide right
+```
+
+##==##
+
 <!-- .slide: class="two-column" data-background="./assets/images/dark_background.jpeg" -->
 
 ##--##

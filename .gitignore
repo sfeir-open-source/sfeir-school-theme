@@ -71,3 +71,4 @@ demo/libs
 .DS_Store
 
 .vscode
+.idea
