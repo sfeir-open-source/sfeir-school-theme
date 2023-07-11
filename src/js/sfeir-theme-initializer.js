@@ -18,6 +18,34 @@ export const SfeirThemeInitializer = {
         // Retrieve the translate version asked (if needed)
         const slidesI18n = await i18n(slides);
 
+        // Notes aren't shown by default
+        // eg. <div class="slides"/>
+        // or  <div class="slides" data-show-notes="any other value" />
+        var enableShowNotes = false
+        if (importSlideElement.dataset.showNotes == 'separate-page') {
+            // eg. <div class="slides" data-show-notes="separate-page"/>
+            enableShowNotes = 'separate-page'
+        } else if (importSlideElement.dataset.showNotes == '') {
+            // eg. <div class="slides" data-show-notes/>
+            enableShowNotes = true
+        }
+
+        // No max pages per slide by default
+        // eg. <div class="slides"/>
+        var pdfMaxPagesPerSlide = 0
+        if (importSlideElement.dataset.pdfMaxPagesPerSlide != null) {
+            // eg. <div class="slides" data-pdf-max-pages-per-slide="<number>"/>
+            pdfMaxPagesPerSlide = importSlideElement.dataset.pdfMaxPagesPerSlide
+        }
+
+        // Fragments are separated by default
+        // eg. <div class="slides"/>
+        var pdfSeparateFragments = true;
+        if (importSlideElement.dataset.pdfDontSeparateFragments == '') {
+            // eg. <div class="slides" data-pdf-dont-separate-fragments/>
+            pdfSeparateFragments = false;
+        }
+
         // Generate all the DOM code corresponding to slides
         await slidesRenderer(importSlideElement, slidesI18n);
 
@@ -42,7 +70,9 @@ export const SfeirThemeInitializer = {
 
             slideNumber: 'c/t',
             showSlideNumber: 'speaker',
-
+            showNotes: enableShowNotes,
+            pdfMaxPagesPerSlide: pdfMaxPagesPerSlide,
+            pdfSeparateFragments: pdfSeparateFragments,
             plugins: [
                 RevealMarkdown,
                 RevealSfeirThemePlugin,
@@ -113,7 +143,7 @@ async function defaultSlideRenderer(element, slides) {
                         data-separator-vertical="##--##"
                         data-separator-notes="^Notes:"></section>
                 `
-            )}
+        )}
         `,
         element
     );
