@@ -132,8 +132,9 @@ You can still use RevealJS API by importing `Reveal` object in `import { Reveal 
 Lots of trainings given by SFEIR School program are also available with the paid program SFEIR Institute (training organism of SFEIR company). The program SFEIR School has a main theme color which is green whereas SFEIR Institute has a main theme color which is blue. To use the same support for both programs, V3 makes it possible to switch easily from one theme to another.
 
 To this end, you have two possibilities:
-- Use HTML attribute `data-theme-slides`;
-- Use URL parameter `theme`.
+
+-   Use HTML attribute `data-theme-slides`;
+-   Use URL parameter `theme`.
 
 Below are `index.html` and URL examples for the available themes.
 
@@ -146,6 +147,7 @@ Below are `index.html` and URL examples for the available themes.
     </div>
 </body>
 ```
+
 https://sfeir-school-theme.netlify.app/index.html?theme=institute#/
 
 2. **[School](https://sfeir-school-theme.netlify.app/index.html#/)**
@@ -157,6 +159,7 @@ https://sfeir-school-theme.netlify.app/index.html?theme=institute#/
     </div>
 </body>
 ```
+
 https://sfeir-school-theme.netlify.app/index.html?theme=school#/
 
 3. **[Conf](https://sfeir-school-theme.netlify.app/index-conf.html#/)**
@@ -168,6 +171,7 @@ https://sfeir-school-theme.netlify.app/index.html?theme=school#/
     </div>
 </body>
 ```
+
 https://sfeir-school-theme.netlify.app/index.html?theme=conf#/
 
 The default value is "school" mode -> Green theme.
@@ -919,6 +923,7 @@ With this configuration option you can easily create content that is different b
     </div>
 </body>
 ```
+
 https://sfeir-school-theme.netlify.app/index.html?type=prez#/
 
 **Slides configuration**
@@ -1028,3 +1033,14 @@ Complete list of icons : https://feathericons.com/
 ## Print the slides
 
 To print your presentation, simply follow the reveal.js tutorial : [Pdf Export](https://revealjs.com/pdf-export/)
+
+| Configuration                                                   | Description                                                   |
+| --------------------------------------------------------------- | ------------------------------------------------------------- |
+| `index.html?print-pdf&show-notes`                               | Show the notes in the exported page.                          |
+| `<div class="slides" data-show-notes/>`                         | Show the notes in the exported page.                          |
+| `<div class="slides" data-show-notes="separate-page"/>`         | Show the notes of the exported page in a separate page.       |
+| `<div class="slides" data-pdf-max-pages-per-slide="1"/>`        | Ensures that one slide is printed as one page.                |
+| `index.html?print-pdf&pdf-max-pages-per-slide=1`                | Ensures that one slide is printed as one page.                |
+| `<div class="slides" data-pdf-max-pages-per-slide="<number>"/>` | Ensures that one slide is printed as `<number>` page maximum. |
+| `<div class="slides" data-pdf-dont-separate-fragments/>`        | Ensure that fragments are not separated in multiple pages.    |
+| `index.html?print-pdf&pdf-dont-separate-fragments`              | Ensure that fragments are not separated in multiple pages.    |

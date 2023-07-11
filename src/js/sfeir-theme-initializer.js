@@ -21,6 +21,10 @@ export const SfeirThemeInitializer = {
         // Generate all the DOM code corresponding to slides
         await slidesRenderer(importSlideElement, slidesI18n);
 
+        // Notes aren't shown by default
+        let { enableShowNotes, pdfMaxPagesPerSlide, pdfSeparateFragments } =
+            checkPdfConfiguration(importSlideElement);
+
         // Init the Reveal Engine
         Reveal.initialize({
             controls: true,
@@ -42,7 +46,9 @@ export const SfeirThemeInitializer = {
 
             slideNumber: 'c/t',
             showSlideNumber: 'speaker',
-
+            showNotes: enableShowNotes,
+            pdfMaxPagesPerSlide: pdfMaxPagesPerSlide,
+            pdfSeparateFragments: pdfSeparateFragments,
             plugins: [
                 RevealMarkdown,
                 RevealSfeirThemePlugin,
@@ -117,4 +123,54 @@ async function defaultSlideRenderer(element, slides) {
         `,
         element
     );
+}
+
+/**
+ * Check the pdf configuration to apply it
+ * @param {HTMLElement} importSlideElement
+ * @returns the configuration variables to apply
+ */
+function checkPdfConfiguration(importSlideElement) {
+    const urlParams = new URLSearchParams(window.location.search);
+
+    // Notes aren't shown by default
+    // eg. <div class="slides"/>
+    // or  <div class="slides" data-show-notes="any other value" />
+    let enableShowNotes = false;
+    if (urlParams.has('show-notes')) {
+        const urlValue = urlParams.get('show-notes');
+        importSlideElement.dataset.showNotes = urlValue ?? true;
+    }
+    if (importSlideElement.dataset.showNotes == 'separate-page') {
+        // eg. <div class="slides" data-show-notes="separate-page"/>
+        enableShowNotes = 'separate-page';
+    } else if (importSlideElement.dataset.showNotes == '') {
+        // eg. <div class="slides" data-show-notes/>
+        enableShowNotes = true;
+    }
+
+    // No max pages per slide by default
+    // eg. <div class="slides"/>
+    let pdfMaxPagesPerSlide = 1;
+    if (urlParams.has('pdf-max-pages-per-slide')) {
+        const urlValue = urlParams.get('pdf-max-pages-per-slide');
+        importSlideElement.dataset.pdfMaxPagesPerSlide = +urlValue;
+    }
+    if (importSlideElement.dataset.pdfMaxPagesPerSlide != null) {
+        // eg. <div class="slides" data-pdf-max-pages-per-slide="<number>"/>
+        pdfMaxPagesPerSlide = importSlideElement.dataset.pdfMaxPagesPerSlide;
+    }
+
+    // Fragments are separated by default
+    // eg. <div class="slides"/>
+    let pdfSeparateFragments = true;
+    if (urlParams.has('pdf-dont-separate-fragments')) {
+        importSlideElement.dataset.pdfDontSeparateFragments = true;
+    }
+    if (importSlideElement.dataset.pdfDontSeparateFragments == '') {
+        // eg. <div class="slides" data-pdf-dont-separate-fragments/>
+        pdfSeparateFragments = false;
+    }
+
+    return { enableShowNotes, pdfMaxPagesPerSlide, pdfSeparateFragments };
 }
