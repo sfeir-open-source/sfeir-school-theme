@@ -52,12 +52,13 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin nec risus leo. Ve
 
 # Internationalization
 
-We can provide slides in different languages. Just write several versions of each markdown file (e.g., `00_intro.md` and `00_intro-en.md`).
+We can provide slides in different languages. Just write several versions of each markdown file (e.g., `00_intro.md` and `00_intro.EN.md`).
 
 To select the language to be used, you can
-- set the language in index.html by setting the HTML attribute `data-lang`; or
-- pick the language when presenting by setting the URL parameter lang.
+
+-   set the language in index.html by setting the HTML attribute `data-lang`; or
+-   pick the language when presenting by setting the URL parameter lang.
 
 The URL parameter takes precedence over the HTML attribute.
 
-For instance, add `?lang=fr` or `&lang=fr` to the URL before the hash sign to switch to the French version of this presentation (only the introduction slides are translated)
+For instance, add `?data-lang=fr` or `&data-lang=fr` to the URL before the hash sign to switch to the French version of this presentation (only the introduction slides are translated)
