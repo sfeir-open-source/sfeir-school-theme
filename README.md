@@ -959,6 +959,12 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin nec risus leo. Ve
 
 If nothing is set in the markdown, the slide will be available for both versions.
 
+You can also set multiples data-type-show in the same slide (separated by a space) to create kind of specifics configurations for your slides.
+
+```markdown
+<!-- .slide: data-type-show="prez other" -->
+```
+
 ### List with fragments
 
 Sometimes, you will need to use revealJS fragments (animation to reveal an element) on list elements. To do this, you could write directly html content or you can use a meta at the end of the list:

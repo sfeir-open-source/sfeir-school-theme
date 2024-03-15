@@ -240,7 +240,9 @@ export class SfeirTheme {
             )
                 .filter(
                     (el) =>
-                        el.getAttribute('data-type-show') !== this.slidesType
+                        el
+                            .getAttribute('data-type-show')
+                            .indexOf(this.slidesType) === -1
                 )
                 .forEach((el) => el.parentNode.removeChild(el));
         }
