@@ -36,7 +36,7 @@ To configure with index.html
 
 ##==##
 
-<!-- .slide: data-type-show="full" -->
+<!-- .slide: data-type-show="full other" -->
 
 ## A slide for publication only
 
