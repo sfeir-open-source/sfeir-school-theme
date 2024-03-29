@@ -470,3 +470,106 @@ Using markdown image
 Using html
 <i data-feather="github" ></i> basic icon
 ```
+
+##==##
+
+# Admonition Blocks
+
+Du texte Admonition en mode informatif mais qui est vraiment assez long et qui du coup nécessite un retour à la ligne
+
+<!-- .element: class="admonition info" -->
+
+<div style="display:grid;grid-template-columns: 1fr 1fr 1fr 1fr ;">
+    <div>
+        <p class="admonition abstract">Mode abstract</p>
+        <p class="admonition tip">Mode tip</p>
+        <p class="admonition note">Mode note</p>
+        <p class="admonition success">Mode success</p>
+    </div>
+    <div>
+        <p class="admonition question">Mode question</p>
+        <p class="admonition warning">Mode warning</p>
+        <p class="admonition failure">Mode failure</p>
+        <p class="admonition danger">Mode danger</p>
+    </div>
+    <div>
+        <p class="admonition important">Mode important</p>
+        <p class="admonition bug">Mode bug</p>
+        <p class="admonition example">Mode example</p>
+        <p class="admonition quote">Mode quote</p>
+    </div>
+    <div>
+        <p class="admonition custom" data-admonition-icon="🐼 Custom">Mode custom</p>
+        <p class="admonition custom" data-admonition-icon="🕶️ Custombis" style="--admonition-bg-color:#d7be00;">Mode custom and custom color</p>
+    </div>
+</div>
+
+##--##
+
+<!-- .slide: class="with-code" -->
+
+# Code to produce / Markdown
+
+```markdown
+# Admonition Blocks
+
+Du texte Admonition en mode informatif mais qui est vraiment assez long et qui du coup nécessite un retour à la ligne
+
+<!-- .element: class="admonition info" -->
+
+Mode abstract
+
+<!-- .element: class="admonition abstract" -->
+
+Mode tip
+
+<!-- .element: class="admonition tip" -->
+
+Mode note
+
+<!-- .element: class="admonition note" -->
+
+Mode success
+
+<!-- .element: class="admonition success" -->
+
+Mode question
+
+<!-- .element: class="admonition question" -->
+
+Mode warning
+
+<!-- .element: class="admonition warning" -->
+
+Mode failure
+
+<!-- .element: class="admonition failure" -->
+
+Mode danger
+
+<!-- .element: class="admonition danger" -->
+
+Mode important
+
+<!-- .element: class="admonition important" -->
+
+Mode bug
+
+<!-- .element: class="admonition bug" -->
+
+Mode example
+
+<!-- .element: class="admonition example" -->
+
+Mode quote
+
+<!-- .element: class="admonition quote" -->
+
+Mode custom
+
+<!-- .element: class="admonition custom" data-admonition-icon="🐼 Custom" -->
+
+Mode custom and custom color
+
+<!-- .element: class="admonition custom" data-admonition-icon="🕶️ Custombis" style="--admonition-bg-color:#d7be00;" -->
+```
