@@ -23,6 +23,7 @@ You can preview it here : https://sfeir-school-theme.netlify.com/
     -   [Helpers](https://github.com/sfeir-open-source/sfeir-school-theme/#helpers)
         -   [List with fragments ](https://github.com/sfeir-open-source/sfeir-school-theme/#list-with-fragments)
         -   [Feather icons ](https://github.com/sfeir-open-source/sfeir-school-theme/#feather-icons)
+        -   [Admonition blocks ](https://github.com/sfeir-open-source/sfeir-school-theme/#admonition-blocks)
     -   [Print the slides](https://github.com/sfeir-open-source/sfeir-school-theme/#print-the-slides)
 -   [Releases Notes](https://github.com/sfeir-open-source/sfeir-school-theme/wiki/Releases-Notes)
 
@@ -1035,6 +1036,66 @@ Complete list of icons : https://feathericons.com/
 ```
 
 ![](./docs/images/feather-icons.png)
+
+### Admonition blocks
+
+You can you admonition blocks to highlight some content in your slides. You can use the following classes:
+
+-   `abstract`
+-   `info`
+-   `tip`
+-   `note`
+-   `success`
+-   `question`
+-   `warning`
+-   `failure`
+-   `danger`
+-   `important`
+-   `bug`
+-   `example`
+-   `quote`
+
+Simply add the class "admonition" with the tip desired as class to transform the text into admonition. This is target for text!
+
+```md
+Mode tip
+
+<!-- .element: class="admonition tip" -->
+```
+
+will produce
+
+![](./docs/images/admonition-tip.png)
+
+to do this in html :
+
+```html
+<p class="admonition tip">>Mode tip</p>
+```
+
+#### Custom Admonition
+
+You can also specify your own icon if you want using 'custom' as class. To specify the icon to use, you will have to add data attribute on your element `data-admonition-icon` with the icon. We recommand you to use Emojis as icon.
+
+There is a default grey background color but if you want, you can customize it using the custom property `--admonition-bg-color` in the style of the element.
+
+```md
+Mode custom
+
+<!-- .element: class="admonition custom" data-admonition-icon="🐼 Custom" -->
+
+Mode custom and custom color
+
+<!-- .element: class="admonition custom" data-admonition-icon="🕶️ Custombis" style="--admonition-bg-color:#d7be00;" -->
+```
+
+this will produce
+
+![](./docs/images/admonition-custom.png)
+
+Here are all the icons availables and modes :
+
+![](./docs/images/admonition-all.png)
 
 ## Print the slides
 
