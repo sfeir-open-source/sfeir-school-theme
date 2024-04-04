@@ -6,6 +6,7 @@ import RevealMarkdown from 'reveal.js/plugin/markdown/markdown.esm';
 import RevealNotes from 'reveal.js/plugin/notes/notes.esm';
 import RevealZoom from 'reveal.js/plugin/zoom/zoom.esm';
 import RevealSfeirThemePlugin from './sfeir-theme-plugin';
+import { SfeirThemeUiSelector } from './sfeir-theme-ui-slides';
 
 export const SfeirThemeInitializer = {
     /**
@@ -15,8 +16,10 @@ export const SfeirThemeInitializer = {
         const importSlideElement = document.querySelector('.slides');
         // Retrieve the slide path list
         const slides = slidesFactory();
+        // Check if we're working with a sub-set of slides
+        const slidesToUse = SfeirThemeUiSelector.init(slides);
         // Retrieve the translate version asked (if needed)
-        const slidesI18n = await i18n(slides);
+        const slidesI18n = await i18n(slidesToUse);
 
         // Generate all the DOM code corresponding to slides
         await slidesRenderer(importSlideElement, slidesI18n);
