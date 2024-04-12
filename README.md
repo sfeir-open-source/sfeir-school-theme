@@ -24,6 +24,7 @@ You can preview it here : https://sfeir-school-theme.netlify.com/
         -   [List with fragments ](https://github.com/sfeir-open-source/sfeir-school-theme/#list-with-fragments)
         -   [Feather icons ](https://github.com/sfeir-open-source/sfeir-school-theme/#feather-icons)
         -   [Admonition blocks ](https://github.com/sfeir-open-source/sfeir-school-theme/#admonition-blocks)
+        -   [UI to select your slides](https://github.com/sfeir-open-source/sfeir-school-theme/#ui-to-select-your-slides)
     -   [Print the slides](https://github.com/sfeir-open-source/sfeir-school-theme/#print-the-slides)
 -   [Releases Notes](https://github.com/sfeir-open-source/sfeir-school-theme/wiki/Releases-Notes)
 
@@ -1096,6 +1097,16 @@ this will produce
 Here are all the icons availables and modes :
 
 ![](./docs/images/admonition-all.png)
+
+### UI to select your slides
+
+To select the slides to display, you have to give to the initializer a function that will return an array of objects with the path of the slides. So to choose your slide, you normally return 'only' the selected slides.
+
+You can also use the 'Slide selector' UI to select your slides. To do this, hit the key 'c' when you presentation is loaded. You will see a modal with all the slides availables. You can select the slides you want to display and click on the 'Validate selection' button. Only the selected path will be displayed.
+
+The selection is stored in session storage so if you reload the page, the selection will be kept. But if you close the window or tab, the selection will be lost.
+
+![](./docs/images/slide-selector.png)
 
 ## Print the slides
 
