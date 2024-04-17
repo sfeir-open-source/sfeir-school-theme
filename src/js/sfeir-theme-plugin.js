@@ -119,42 +119,52 @@ export class SfeirTheme {
     _manageBackgrounds() {
         const map = {
             'first-slide': `${this.path}${imagesPath}/${
-                modeContent === 'institute' ? 'bg-blue-1.jpg' : 'bg-green-1.jpg'
+                this.slidesTheme === 'institute'
+                    ? 'bg-blue-1.webp'
+                    : 'bg-green-1.webp'
             }`,
             transition: `${this.path}${imagesPath}/${
-                modeContent === 'institute' ? 'bg-blue-1.jpg' : 'bg-green-1.jpg'
+                this.slidesTheme === 'institute'
+                    ? 'bg-blue-1.webp'
+                    : 'bg-green-1.webp'
             }`,
             'speaker-slide': `var(--black)`,
             'quote-slide': `var(--black)`,
-            'sfeir-slide': `${this.path}${imagesPath}/bg-green-1.jpg`,
-            'bg-white': `${this.path}${imagesPath}/bg-green-1.jpg`,
-            'bg-pink': `${this.path}${imagesPath}/bg-green-1.jpg`,
-            'bg-blue': `${this.path}${imagesPath}/bg-green-1.jpg`,
-            'bg-green': `${this.path}${imagesPath}/bg-green-1.jpg`,
+            'sfeir-slide': `${this.path}${imagesPath}/bg-green-1.webp`,
+            'bg-white': `${this.path}${imagesPath}/bg-green-1.webp`,
+            'bg-pink': `${this.path}${imagesPath}/bg-green-1.webp`,
+            'bg-blue': `${this.path}${imagesPath}/bg-green-1.webp`,
+            'bg-green': `${this.path}${imagesPath}/bg-green-1.webp`,
             'bg-blur': `${this.path}${imagesPath}/${
                 this.slidesTheme === 'institute'
-                    ? 'bg-blue-blur.jpg'
-                    : 'bg-green-blur.jpeg'
+                    ? 'bg-blue-blur.webp'
+                    : 'bg-green-blur.webp'
             }`,
             'transition-bg-sfeir-1': `${this.path}${imagesPath}/${
-                modeContent === 'institute' ? 'bg-blue-1.jpg' : 'bg-green-1.jpg'
+                this.slidesTheme === 'institute'
+                    ? 'bg-blue-1.webp'
+                    : 'bg-green-1.webp'
             }`,
             'transition-bg-sfeir-2': `${this.path}${imagesPath}/${
-                modeContent === 'institute' ? 'bg-blue-2.jpg' : 'bg-green-2.jpg'
+                this.slidesTheme === 'institute'
+                    ? 'bg-blue-2.webp'
+                    : 'bg-green-2.webp'
             }`,
             'transition-bg-sfeir-3': `${this.path}${imagesPath}/${
-                modeContent === 'institute' ? 'bg-blue-3.jpg' : 'bg-green-3.jpg'
+                this.slidesTheme === 'institute'
+                    ? 'bg-blue-3.webp'
+                    : 'bg-green-3.webp'
             }`,
-            'transition-bg-blue-1': `${this.path}${imagesPath}/bg-blue-1.jpg`,
-            'transition-bg-blue-2': `${this.path}${imagesPath}/bg-blue-2.jpg`,
-            'transition-bg-blue-3': `${this.path}${imagesPath}/bg-blue-3.jpg`,
-            'transition-bg-blue-blur': `${this.path}${imagesPath}/bg-blue-blur.jpg`,
-            'transition-bg-green-1': `${this.path}${imagesPath}/bg-green-1.jpg`,
-            'transition-bg-green-2': `${this.path}${imagesPath}/bg-green-2.jpg`,
-            'transition-bg-green-3': `${this.path}${imagesPath}/bg-green-3.jpg`,
-            'transition-bg-green-4': `${this.path}${imagesPath}/bg-green-4.jpg`,
-            'transition-bg-green-5': `${this.path}${imagesPath}/bg-green-5.jpg`,
-            'transition-bg-green-6': `${this.path}${imagesPath}/bg-green-6.jpg`,
+            'transition-bg-blue-1': `${this.path}${imagesPath}/bg-blue-1.webp`,
+            'transition-bg-blue-2': `${this.path}${imagesPath}/bg-blue-2.webp`,
+            'transition-bg-blue-3': `${this.path}${imagesPath}/bg-blue-3.webp`,
+            'transition-bg-blue-blur': `${this.path}${imagesPath}/bg-blue-blur.webp`,
+            'transition-bg-green-1': `${this.path}${imagesPath}/bg-green-1.webp`,
+            'transition-bg-green-2': `${this.path}${imagesPath}/bg-green-2.webp`,
+            'transition-bg-green-3': `${this.path}${imagesPath}/bg-green-3.webp`,
+            'transition-bg-green-4': `${this.path}${imagesPath}/bg-green-4.webp`,
+            'transition-bg-green-5': `${this.path}${imagesPath}/bg-green-5.webp`,
+            'transition-bg-green-6': `${this.path}${imagesPath}/bg-green-6.webp`,
         };
 
         for (let key in map) {
@@ -191,7 +201,7 @@ export class SfeirTheme {
             imgLogo.classList.add('sfeir-logo');
             imgLogo.style[
                 'background-image'
-            ] = `url(${this.path}${imagesPath}/logo_empty.png)`;
+            ] = `url(${this.path}${imagesPath}/logo_empty.webp)`;
 
             const level = firstSlideSection.hasAttribute('sfeir-level')
                 ? +firstSlideSection.getAttribute('sfeir-level')
