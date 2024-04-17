@@ -22,6 +22,9 @@ export class SfeirTheme {
             'data-theme-slides',
             'school'
         );
+
+        // Could be desactivate by configuration
+        this.copyCode = true;
     }
 
     // Since CSS makes use of data-* attributes, we need to persist URL parameters there, giving
@@ -81,6 +84,11 @@ export class SfeirTheme {
 
         // Manage Hack for using feather icons easily
         this._manageFeatherIcons();
+
+        // Manage Copy to clipboard icon for code blocks
+        if (this.copyCode) {
+            this._manageCopyPasteClipBoard();
+        }
     }
     _extractPath() {
         const links = document.getElementsByTagName('link');
@@ -496,6 +504,59 @@ export class SfeirTheme {
         }
 
         feather.replace();
+    }
+
+    _manageCopyPasteClipBoard() {
+        // First we add to each codeblock the icon
+        const codeBlocks = [
+            ...document.querySelectorAll(
+                '.reveal .slides section[class*="with-code"] pre code'
+            ),
+        ];
+
+        for (let codeBlockElt of codeBlocks) {
+            const copyIcon = document.createElement('i');
+            copyIcon.setAttribute('data-feather', 'copy');
+            copyIcon.setAttribute('alt', 'big');
+            copyIcon.classList.add('sfeir-theme-copy-to-clipboard');
+            codeBlockElt.parentElement.appendChild(copyIcon);
+        }
+
+        // Ask to feather library to replace the icon
+        feather.replace();
+
+        // Second we listen to click on it in order to copy the code to clipboard
+        const copyToClipboardIcons = [
+            ...document.querySelectorAll(
+                '.reveal .slides section svg.sfeir-theme-copy-to-clipboard'
+            ),
+        ];
+        for (let copyIcon of copyToClipboardIcons) {
+            copyIcon.addEventListener('click', (event) => {
+                const codeBlock =
+                    event.target.parentElement.querySelector('code');
+                const textToCopy = codeBlock.innerText;
+                navigator.clipboard.writeText(textToCopy);
+
+                // Notify graphicly the copy
+                event.target.classList.add('copied');
+                setTimeout(() => {
+                    event.target.classList.remove('copied');
+                }, 300);
+
+                // add popup that disappear
+                const popup = document.createElement('div');
+                popup.classList.add('sfeir-theme-copy-popup');
+                popup.innerText = 'Copied to clipboard';
+                event.target.parentElement.appendChild(popup);
+                setTimeout(() => {
+                    popup.classList.add('hide');
+                    setTimeout(() => {
+                        event.target.parentElement.removeChild(popup);
+                    }, 1000);
+                }, 1000);
+            });
+        }
     }
 }
 
