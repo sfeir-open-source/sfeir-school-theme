@@ -95,7 +95,7 @@
     .backgrounds div.slide-background.quote-slide::before {
         content: '';
         position: absolute;
-        background: url('./images/quotes.png');
+        background: url('./images/quotes.webp');
         background-size: contain;
         filter: brightness(0.25);
         top: 5px;
@@ -114,7 +114,9 @@
     section.sfeir-basic-slide:not(.stack):not([class*='transition']),
 .reveal
     .slides
-    section.sfeir-specific-slide.sfeir-bg-axololt:not(.stack):not([class*='transition']) {
+    section.sfeir-specific-slide.sfeir-bg-axololt:not(.stack):not(
+        [class*='transition']
+    ) {
     width: 100%;
     height: calc(100% - 40px);
     height: -webkit-calc(100% - 40px);
@@ -367,11 +369,11 @@
     .backgrounds
     div.slide-background.two-column[data-background-hash].data-bg-right
     .slide-background-content:after {
-    background-image: url('./images/logo-school-white-3.png');
+    background-image: url('./images/logo-school-white-3.webp');
     z-index: 1;
 }
 
-.reveal .slides~.backgrounds {
+.reveal .slides ~ .backgrounds {
     div.slide-background .slide-background-content:after {
         background-image: url('./images/logo-school-dark-3.webp');
     }
@@ -384,9 +386,11 @@
     div.slide-background.sfeir-specific-slide[class*='transition'],
     div.slide-background.first-slide,
     div.slide-background.quote-slide,
-    div.slide-background.with-code-dark:not(.sfeir-specific-slide):not(.stack):not([class*='transition']) {
+    div.slide-background.with-code-dark:not(.sfeir-specific-slide):not(
+            .stack
+        ):not([class*='transition']) {
         .slide-background-content:after {
-            background-image: url('./images/logo-school-white-3.png');
+            background-image: url('./images/logo-school-white-3.webp');
         }
     }
 }
@@ -422,7 +426,9 @@
     section.sfeir-basic-slide:not(.stack):not([class*='transition']),
 .reveal
     .slides[data-theme-slides='institute']
-    section.sfeir-specific-slide.sfeir-bg-axololt:not(.stack):not([class*='transition']) {
+    section.sfeir-specific-slide.sfeir-bg-axololt:not(.stack):not(
+        [class*='transition']
+    ) {
     thead {
         background-color: $sfeir-blue;
     }
@@ -439,9 +445,11 @@
     div.slide-background.sfeir-specific-slide[class*='transition'],
     div.slide-background.first-slide,
     div.slide-background.quote-slide,
-    div.slide-background.with-code-dark:not(.sfeir-specific-slide):not(.stack):not([class*='transition']) {
+    div.slide-background.with-code-dark:not(.sfeir-specific-slide):not(
+            .stack
+        ):not([class*='transition']) {
         .slide-background-content:after {
-            background-image: url('./images/logo-institute-white.png');
+            background-image: url('./images/logo-institute-white.webp');
         }
     }
 
@@ -453,7 +461,7 @@
 
     div.slide-background.two-column[data-background-hash].data-bg-right
         .slide-background-content:after {
-        background-image: url('./images/logo-institute-white.png');
+        background-image: url('./images/logo-institute-white.webp');
         z-index: 1;
     }
 }
@@ -474,7 +482,7 @@ html.print-pdf {
     .reveal .slides .pdf-page div.slide-background.quote-slide::before {
         content: '';
         position: absolute;
-        background: url('./images/quotes.png');
+        background: url('./images/quotes.webp');
         background-size: contain;
         filter: brightness(0.25);
         top: 5px;
@@ -507,7 +515,7 @@ html.print-pdf {
 
         div.slide-background.two-column[data-background-hash].data-bg-right
             .slide-background-content:after {
-            background-image: url('./images/logo-school-white-3.png');
+            background-image: url('./images/logo-school-white-3.webp');
             z-index: 1;
         }
 
@@ -518,10 +526,11 @@ html.print-pdf {
         div.slide-background.sfeir-specific-slide[class*='transition'],
         div.slide-background.first-slide,
         div.slide-background.quote-slide,
-
-        div.slide-background.with-code-dark:not(.sfeir-specific-slide):not(.stack):not([class*='transition']) {
+        div.slide-background.with-code-dark:not(.sfeir-specific-slide):not(
+                .stack
+            ):not([class*='transition']) {
             .slide-background-content:after {
-                background-image: url('./images/logo-school-white-3.png');
+                background-image: url('./images/logo-school-white-3.webp');
             }
         }
     }
@@ -548,7 +557,7 @@ html.print-pdf {
 
         div.slide-background.two-column[data-background-hash].data-bg-right
             .slide-background-content:after {
-            background-image: url('./images/logo-school-white-3.png');
+            background-image: url('./images/logo-school-white-3.webp');
             z-index: 1;
         }
 
@@ -559,9 +568,11 @@ html.print-pdf {
         div.slide-background.sfeir-specific-slide[class*='transition'],
         div.slide-background.first-slide,
         div.slide-background.quote-slide,
-        div.slide-background.with-code-dark:not(.sfeir-specific-slide):not(.stack):not([class*='transition']) {
+        div.slide-background.with-code-dark:not(.sfeir-specific-slide):not(
+                .stack
+            ):not([class*='transition']) {
             .slide-background-content:after {
-                background-image: url('./images/logo-institute-white.png');
+                background-image: url('./images/logo-institute-white.webp');
             }
         }
     }

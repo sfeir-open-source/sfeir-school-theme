@@ -10,7 +10,7 @@
     &::before {
         position: absolute;
         content: '';
-        background: url('./images/logo-school-white-3.png');
+        background: url('./images/logo-school-white-3.webp');
         width: 800px;
         height: 400px;
         background-repeat: no-repeat;
@@ -70,20 +70,20 @@
     }
 
     div.sfeir-logo[data-sfeir-level='1']:after {
-        background: url('./images/star.png');
+        background: url('./images/star.webp');
         background-repeat: no-repeat;
         background-position: 50% 70px;
         background-size: 45px;
     }
     div.sfeir-logo[data-sfeir-level='2']:after {
-        background: url('./images/star.png'), url('./images/star.png');
+        background: url('./images/star.webp'), url('./images/star.webp');
         background-position: calc(50% - 35px) 70px, calc(50% + 35px) 70px;
         background-repeat: no-repeat;
         background-size: 45px;
     }
     div.sfeir-logo[data-sfeir-level='3']:after {
-        background: url('./images/star.png'), url('./images/star.png'),
-            url('./images/star.png');
+        background: url('./images/star.webp'), url('./images/star.webp'),
+            url('./images/star.webp');
         background-position: calc(50% - 35px) 55px, calc(50% + 35px) 55px,
             50% 95px;
         background-repeat: no-repeat;
@@ -98,7 +98,7 @@
     .slides[data-theme-slides='institute']
     section[data-background].first-slide {
     &::before {
-        background: url('./images/logo-institute-white.png');
+        background: url('./images/logo-institute-white.webp');
         background-repeat: no-repeat;
         background-size: contain;
     }
