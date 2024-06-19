@@ -4,7 +4,7 @@
 
 This repository is an Open Source theme for RevealJS presentations. It respect the graphical theme of [@SFEIR](https://github.com/sfeir) company.
 
-You can preview it here : https://sfeir-school-theme.netlify.com/
+You can preview it here : https://sfeir-school-theme.netlify.app/
 
 -   [How to use it](https://github.com/sfeir-open-source/sfeir-school-theme/#how-to-use-it)
 -   [Features](https://github.com/sfeir-open-source/sfeir-school-theme/#features)
