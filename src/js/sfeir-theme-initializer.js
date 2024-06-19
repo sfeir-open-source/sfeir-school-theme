@@ -7,6 +7,7 @@ import RevealNotes from 'reveal.js/plugin/notes/notes.esm';
 import RevealZoom from 'reveal.js/plugin/zoom/zoom.esm';
 import RevealSfeirThemePlugin from './sfeir-theme-plugin';
 import { SfeirThemeUiSelector } from './sfeir-theme-ui-slides';
+import { _handle_parameter } from './helper';
 
 export const SfeirThemeInitializer = {
     /**
@@ -74,11 +75,17 @@ export const SfeirThemeInitializer = {
  * @returns a Promise that returns a string[] with the correct suffix for internationalization
  */
 async function i18n(slides) {
-    const language =
-        new URLSearchParams(window.location.search).get('data-lang') ??
-        document.querySelector('.reveal .slides').getAttribute('data-lang') ??
-        'FR';
+    const urlParams = new URLSearchParams(window.location.search);
+    const slidesElement = document.querySelector('.reveal .slides');
+    const language = _handle_parameter(
+        urlParams,
+        'data-lang',
+        slidesElement,
+        'data-lang',
+        'FR'
+    );
 
+    // If the language is French, we don't need to translate (because default language)
     if (language === 'FR') return Promise.resolve(slides);
 
     return slides.map((path) => {

@@ -1,5 +1,6 @@
 import Reveal from 'reveal.js';
 import feather from 'feather-icons';
+import { _handle_parameter } from './helper';
 
 const imagesPath = 'web_modules/sfeir-school-theme/images';
 
@@ -12,50 +13,23 @@ export class SfeirTheme {
 
         this.slidesElement = document.querySelector('.reveal .slides');
 
-        this.slidesType = this._handle_parameter(
+        this.slidesType = _handle_parameter(
+            this.urlParams,
             'type',
+            this.slidesElement,
             'data-type-show',
             'prez'
         );
-        this.slidesTheme = this._handle_parameter(
+        this.slidesTheme = _handle_parameter(
+            this.urlParams,
             'theme',
+            this.slidesElement,
             'data-theme-slides',
             'school'
         );
 
         // Could be desactivate by configuration
         this.copyCode = true;
-    }
-
-    // Since CSS makes use of data-* attributes, we need to persist URL parameters there, giving
-    // them priority over anything that would already be there.
-    _handle_parameter(urlParam, htmlParam, defaultValue) {
-        if (this.urlParams.has(urlParam)) {
-            const urlValue = this.urlParams.get(urlParam);
-            this.slidesElement.setAttribute(htmlParam, urlValue);
-        }
-
-        if (!this.slidesElement.hasAttribute(htmlParam)) {
-            this.slidesElement.setAttribute(htmlParam, defaultValue);
-        }
-
-        return this.slidesElement.getAttribute(htmlParam);
-    }
-
-    _determine_type() {
-        const showTypeContentFromHtml =
-            this.slidesElement.getAttribute('data-type-show');
-        const showTypeContentFromUrl = this.urlParams.get('type');
-
-        return showTypeContentFromUrl ?? showTypeContentFromHtml ?? 'prez';
-    }
-
-    _determine_theme() {
-        const themeFromHtml =
-            this.slidesElement.getAttribute('data-theme-slides');
-        const themeFromUrl = this.urlParams.get('theme');
-
-        return themeFromHtml ?? themeFromUrl ?? 'school';
     }
 
     postprocess() {
