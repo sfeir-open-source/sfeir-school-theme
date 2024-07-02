@@ -284,7 +284,7 @@ export class SfeirTheme {
                             subSection.getAttribute('data-background');
                         if (
                             /^(http|file|\/\/)/gi.test(dataBgString) ||
-                            /\.(svg|png|jpg|jpeg|gif|bmp|webp)([?#\s]|$)/gi.test(
+                            /\.(svg|png|jpg|jpeg|gif|bmp|webp|avif)([?#\s]|$)/gi.test(
                                 dataBgString
                             )
                         ) {

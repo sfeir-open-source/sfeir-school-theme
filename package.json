@@ -12,6 +12,7 @@
         "prestart": "npm run prepare-demo",
         "start": "parallelshell \"npm run serve\" \"npm run build-watch\"",
         "postbuild": "node ./scripts/prepare-publish.js",
+	"postinstall": "patch-package",
         "build": "vite build",
         "on-change:build": "chokidar \"./src\" -c \"npm run build\"",
         "on-change:copy": "chokidar \"./dist\" -c \"npm run prepare-demo\"",
@@ -43,6 +44,7 @@
         "parallelshell": "3.0.1",
         "sass": "^1.51.0",
         "shelljs": "^0.8.5",
-        "vite": "^3.1.0"
+        "vite": "^3.1.0",
+	"patch-package": "^6.5.1"
     }
 }
