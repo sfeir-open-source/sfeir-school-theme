@@ -123,10 +123,18 @@ export const SfeirThemeUiSelector = {
      * @param {*} e keyup event
      */
     keyUpHandler(e) {
-        if (e.key === 'c' && !this.state.show) {
+        if (
+            (e.key === 'c' || e.key === 'C') &&
+            !e.ctrlKey &&
+            !e.shiftKey &&
+            !e.metaKey &&
+            !this.state.show
+        ) {
+            e.preventDefault();
             this.state.show = true;
             this.resetOrCreateUI();
-        } else if ((e.key === 'Escape' || e.key === 'c') && this.state.show) {
+        } else if (e.key === 'Escape' && this.state.show) {
+            e.preventDefault();
             this.closeUI();
         }
     },
@@ -272,7 +280,7 @@ export const SfeirThemeUiSelector = {
                         Validate selection
                     </button>
                     <span
-                        >Close this window by pressing again 'c', clicking on
+                        >Close this window by pressing 'Escape', clicking on
                         cross or validating the selection</span
                     >
                 </div>
