@@ -8107,7 +8107,7 @@ const g_ = {
     return e;
   },
   keyUpHandler(t) {
-    t.key === "c" && !this.state.show ? (this.state.show = !0, this.resetOrCreateUI()) : (t.key === "Escape" || t.key === "c") && this.state.show && this.closeUI();
+    (t.key === "c" || t.key === "C") && !t.ctrlKey && !t.shiftKey && !t.metaKey && !this.state.show ? (t.preventDefault(), this.state.show = !0, this.resetOrCreateUI()) : t.key === "Escape" && this.state.show && (t.preventDefault(), this.closeUI());
   },
   initModes() {
     const t = window.location.search, e = new URLSearchParams(t), n = document.querySelector(".reveal .slides");
@@ -8194,7 +8194,7 @@ const g_ = {
                         Validate selection
                     </button>
                     <span
-                        >Close this window by pressing again 'c', clicking on
+                        >Close this window by pressing 'Escape', clicking on
                         cross or validating the selection</span
                     >
                 </div>
