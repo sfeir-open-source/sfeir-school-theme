@@ -14,8 +14,8 @@ const OTHER_KNOWN_CSS_CLASSES = [
     ".transition-bg-sfeir-3",
 ];
 
-export function getAllCssContent(rootDir: string) {
-    return THEME_CSS_FILES.map((cssFilePath) =>
+export function getAllCssContent(rootDir: string, extraCssFiles: string[]) {
+    return (THEME_CSS_FILES.concat(extraCssFiles)).map((cssFilePath) =>
         getCssFile(rootDir, cssFilePath)
     ).concat(OTHER_KNOWN_CSS_CLASSES).join("\n\n\n");
 }

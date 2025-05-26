@@ -1,6 +1,5 @@
 import fs from "node:fs";
 import path from "node:path";
-import { CheckCommand } from "../cli";
 import {
     docsFilePath,
     docsImagePath,
@@ -11,6 +10,7 @@ import {
 } from "./path.utils";
 import { isDefined } from "./fp.utils";
 import { isDirectory } from "./fs.utils";
+import { ConfigJson } from "./config.utils";
 
 export interface SlideEntry {
     path: string;
@@ -74,14 +74,22 @@ export function readSlideFile(rootDir: string, slideFilePath: string) {
     return fs.readFileSync(slidePath(rootDir, slideFilePath), "utf-8");
 }
 
-export function getAllLabSlideCommandRow(files: string[]): string[] {
-    return files.map((file) => getLabSlideCommandRow(file)).filter(
+export function getAllLabSlideCommandRow(
+    files: string[],
+    config: ConfigJson,
+): string[] {
+    return files.map((file) => getLabSlideCommandRow(file, config)).filter(
         isDefined,
     );
 }
 
-export function getLabSlideCommandRow(file: string): string | undefined {
-    return file.split("\n").find((row) => row.includes("npm run"));
+export function getLabSlideCommandRow(
+    file: string,
+    config: ConfigJson,
+): string | undefined {
+    return file.split("\n").find((row) =>
+        row.includes(config.stepCommandPrefix)
+    );
 }
 
 export function getImagesPathFromSlides(

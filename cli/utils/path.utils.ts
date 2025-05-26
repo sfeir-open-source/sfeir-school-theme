@@ -31,3 +31,7 @@ export function stepsPath(rootDir: string) {
 export function getWorkspaceStepsPackageJsonPath(rootDir: string) {
     return path.resolve(stepsPath(rootDir), "package.json");
 }
+
+export function getProjectConfigPath(rootDir: string) {
+    return path.resolve(rootDir, ".sfeir-theme-config.json");
+}
