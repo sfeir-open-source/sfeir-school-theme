@@ -4,9 +4,9 @@ import { checkDocs } from "./check-docs";
 import { checkSteps } from "./check-steps";
 import { getErrors } from "../../utils/assert.utils";
 
-export function checkCommand(command: CheckCommand) {
+export async function checkCommand(command: CheckCommand) {
     checkRootDir(command);
-    checkDocs(command);
+    await checkDocs(command);
     checkSteps(command);
 
     if (getErrors().length === 0) {
