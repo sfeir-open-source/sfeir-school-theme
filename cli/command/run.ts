@@ -3,10 +3,10 @@ import { checkCommand } from "./check/index";
 import { helpCommand } from "./help";
 import { versionCommand } from "./version";
 
-export function runCommand(command: Command) {
+export async function runCommand(command: Command) {
     switch (command.type) {
         case "check":
-            checkCommand(command);
+            await checkCommand(command);
             break;
         case "help":
             helpCommand(command);
