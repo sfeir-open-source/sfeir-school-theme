@@ -1,0 +1,13 @@
+{
+    "compilerOptions": {
+        "rootDir": "cli",
+        "outDir": "dist/cli",
+        "strict": true,
+        "target": "es6",
+        "module": "nodenext",
+        "sourceMap": true,
+        "esModuleInterop": true,
+        "resolveJsonModule": true,
+        "moduleResolution": "nodenext"
+    }
+}
