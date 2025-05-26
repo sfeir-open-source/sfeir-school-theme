@@ -11,5 +11,10 @@ import { CheckError } from "./utils/assert.utils";
             console.error(error.message);
             process.exit(1);
         }
+        if (error instanceof Error) {
+            console.error(error.message);
+            console.error(error.stack);
+            process.exit(2);
+        }
     }
 })();

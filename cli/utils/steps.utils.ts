@@ -1,5 +1,6 @@
 import fs from "node:fs";
 import { getWorkspaceStepsPackageJsonPath } from "./path.utils";
+import { ConfigJson } from "./config.utils";
 
 export function isStepDirectoryExists(stepDirPath: string) {
     return fs.existsSync(stepDirPath);
@@ -36,6 +37,6 @@ export function isLabCommandExists(rootDir: string, commandName: string) {
     return getLabsCommands(rootDir).includes(commandName);
 }
 
-export function getLabCommandTarget(labCommandRow: string) {
-    return labCommandRow.split("npm run ")[1].trim();
+export function getLabCommandTarget(labCommandRow: string, config: ConfigJson) {
+    return labCommandRow.split(config.stepCommandPrefix)[1].trim();
 }

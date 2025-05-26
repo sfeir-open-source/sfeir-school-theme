@@ -25,16 +25,17 @@ import {
     getAllCssContent,
     getCssClassUsedInSlide,
 } from "../../utils/css.utils";
+import { ConfigJson } from "../../utils/config.utils";
 
-export async function checkDocs({ rootDir }: CheckCommand) {
+export async function checkDocs(rootDir: string, config: ConfigJson) {
     const slideFilesFromSlidesJs = await getSlideFilesFromSlidesJs(
         rootDir,
     );
 
     checkSlideFilePathInSlideJs(rootDir, slideFilesFromSlidesJs);
-    checkSlideFileInFs(rootDir, slideFilesFromSlidesJs);
-    checkLabSlideFile(rootDir, slideFilesFromSlidesJs);
-    checkLabCommand(rootDir, slideFilesFromSlidesJs);
+    checkSlideFileInFs(rootDir, slideFilesFromSlidesJs, config);
+    checkLabSlideFile(rootDir, slideFilesFromSlidesJs, config);
+    checkLabCommand(rootDir, slideFilesFromSlidesJs, config);
     checkImagesFs(rootDir);
 }
 
@@ -61,12 +62,13 @@ function checkSlideFilePathInSlideJs(
 function checkSlideFileInFs(
     rootDir: string,
     slideEntriesFromSlidesJs: SlideEntry[],
+    config: ConfigJson,
 ) {
     const slideFilesFromFs = getSlideFilesFromFs(rootDir);
     const slideFilesFromSlidesJs = slideEntriesFromSlidesJs.map((entry) =>
         entry.path
     );
-    const cssContent = getAllCssContent(rootDir);
+    const cssContent = getAllCssContent(rootDir, config.extraCssFiles);
 
     for (const slideFile of slideFilesFromFs) {
         check(
@@ -100,24 +102,30 @@ function checkSlideFileInFs(
 function checkLabSlideFile(
     rootDir: string,
     slideFilesFromSlidesJs: SlideEntry[],
+    config: ConfigJson,
 ) {
     const labSlides = getLabSlides(slideFilesFromSlidesJs);
     for (const slideFile of labSlides) {
         const labSlideContent = readSlideFile(rootDir, slideFile.path);
-        const commandRow = getLabSlideCommandRow(labSlideContent)!;
+        const commandRow = getLabSlideCommandRow(labSlideContent, config)!;
         check(
             `"${slideFile?.path}" should contains the command to run the exercise`,
             () => {
                 return isDefined(commandRow) && commandRow.length > 0;
             },
         );
-        check(
-            `"${slideFile?.path}" should contains the valid command to run the exercise`,
-            () => {
-                const commandTarget = getLabCommandTarget(commandRow);
-                return isLabCommandExists(rootDir, commandTarget);
-            },
-        );
+        if (isDefined(commandRow)) {
+            check(
+                `"${slideFile?.path}" should contains the valid command to run the exercise`,
+                () => {
+                    const commandTarget = getLabCommandTarget(
+                        commandRow,
+                        config,
+                    );
+                    return isLabCommandExists(rootDir, commandTarget);
+                },
+            );
+        }
         check(
             `"${slideFile?.path}" should use lab slide format`,
             () => {
@@ -133,10 +141,15 @@ function checkLabSlideFile(
     }
 }
 
-function checkLabCommand(rootDir: string, labSlides: SlideEntry[]) {
+function checkLabCommand(
+    rootDir: string,
+    labSlides: SlideEntry[],
+    config: ConfigJson,
+) {
     const allLabCommandInSlides = getAllLabSlideCommandRow(
         labSlides.map((slide) => readSlideFile(rootDir, slide.path)),
-    ).map(getLabCommandTarget);
+        config,
+    ).map((commandRow) => getLabCommandTarget(commandRow, config));
     const labsCommands = getLabsCommands(rootDir);
     for (const labCommand of labsCommands) {
         check(
