@@ -1,14 +1,15 @@
 import fs from "node:fs";
 import configTemplateJson from "../config-template.json";
-import { getProjectConfigPath } from "./path.utils";
+import { projectConfigPath } from "./path.utils";
 
 export interface ConfigJson {
     extraCssFiles: string[];
     stepCommandPrefix: string;
+    ignoreStepsDirectories: string[];
 }
 
 export function getProjectConfig(rootDir: string): ConfigJson {
-    const configPath = getProjectConfigPath(rootDir);
+    const configPath = projectConfigPath(rootDir);
     if (fs.existsSync(configPath)) {
         return {
             ...(configTemplateJson as ConfigJson),

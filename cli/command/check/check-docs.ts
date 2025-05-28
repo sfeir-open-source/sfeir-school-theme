@@ -20,7 +20,7 @@ import {
     getLabCommandTarget,
     getLabsCommands,
     isLabCommandExists,
-} from "../../utils/steps.utils";
+} from "../../utils/labs.utils";
 import {
     getAllCssContent,
     getCssClassUsedInSlide,
@@ -108,13 +108,13 @@ function checkLabSlideFile(
     for (const slideFile of labSlides) {
         const labSlideContent = readSlideFile(rootDir, slideFile.path);
         const commandRow = getLabSlideCommandRow(labSlideContent, config)!;
-        check(
+        const hasCommandRow = check(
             `"${slideFile?.path}" should contains the command to run the exercise`,
             () => {
                 return isDefined(commandRow) && commandRow.length > 0;
             },
         );
-        if (isDefined(commandRow)) {
+        if (hasCommandRow) {
             check(
                 `"${slideFile?.path}" should contains the valid command to run the exercise`,
                 () => {

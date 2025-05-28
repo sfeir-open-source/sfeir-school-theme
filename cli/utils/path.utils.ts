@@ -24,14 +24,26 @@ export function docsImagePath(rootDir: string, filePath: string) {
     return path.resolve(docsImagesPath(rootDir), filePath);
 }
 
-export function stepsPath(rootDir: string) {
+export function labsPath(rootDir: string) {
     return path.resolve(rootDir, "steps");
 }
 
-export function getWorkspaceStepsPackageJsonPath(rootDir: string) {
-    return path.resolve(stepsPath(rootDir), "package.json");
+export function labsDirPackageJsonPath(rootDir: string) {
+    return path.resolve(labsPath(rootDir), "package.json");
 }
 
-export function getProjectConfigPath(rootDir: string) {
+export function labsDirLabsJsonPath(rootDir: string) {
+    return path.resolve(labsPath(rootDir), "labs.json");
+}
+
+export function projectConfigPath(rootDir: string) {
     return path.resolve(rootDir, ".sfeir-theme-config.json");
+}
+
+export function labPackageJsonPath(rootDir: string, lab: string) {
+    return path.resolve(labsPath(rootDir), lab, "package.json");
+}
+
+export function labReadmePath(rootDir: string, lab: string) {
+    return path.resolve(labsPath(rootDir), lab, "README.md");
 }
