@@ -1,15 +1,17 @@
 import path from "node:path";
 
-export type HelpCommand = { type: "help" };
-export type VersionCommand = { type: "version" };
-export type InitConfigCommand = { type: "init-config"; rootDir: string };
 export type CheckCommand = { type: "check"; rootDir: string };
+export type HelpCommand = { type: "help" };
+export type InfoCommand = { type: "info"; rootDir: string };
+export type InitConfigCommand = { type: "init-config"; rootDir: string };
+export type VersionCommand = { type: "version" };
 
 export type Command =
+    | CheckCommand
     | HelpCommand
-    | VersionCommand
+    | InfoCommand
     | InitConfigCommand
-    | CheckCommand;
+    | VersionCommand;
 
 export function parseArgs(args: string[], currentWorkingDir: string): Command {
     if (args.includes("help")) {
@@ -17,6 +19,12 @@ export function parseArgs(args: string[], currentWorkingDir: string): Command {
     }
     if (args.includes("version")) {
         return { type: "version" };
+    }
+    if (args.includes("info")) {
+        return {
+            type: "info",
+            rootDir: getRootDirOrDefault(args, currentWorkingDir),
+        };
     }
     if (args.includes("init-config")) {
         return {

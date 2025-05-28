@@ -1,6 +1,7 @@
 import { Command } from "../cli";
 import { checkCommand } from "./check/index";
 import { helpCommand } from "./help";
+import { infoCommand } from "./info";
 import { initConfigCommand } from "./init-config";
 import { versionCommand } from "./version";
 
@@ -15,8 +16,15 @@ export async function runCommand(command: Command) {
         case "help":
             helpCommand(command);
             break;
+        case "info":
+            infoCommand(command);
+            break;
         case "version":
             versionCommand(command);
             break;
+        default:
+            throw new Error(
+                `Command "${JSON.stringify(command)}" not implemented`,
+            );
     }
 }

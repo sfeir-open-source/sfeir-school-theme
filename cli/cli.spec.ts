@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { CheckCommand, InitConfigCommand, parseArgs } from "./cli";
+import { CheckCommand, InfoCommand, InitConfigCommand, parseArgs } from "./cli";
 
 describe(parseArgs.name, () => {
     it("should enable help command by default", () => {
@@ -22,6 +22,38 @@ describe(parseArgs.name, () => {
         );
         expect(parseArgs(withBaseArgs("help", "version"), "./cwd").type).toBe(
             "help",
+        );
+    });
+
+    it("should enable version command if 'info' is present", () => {
+        expect(parseArgs(withBaseArgs("info"), "./cwd").type).toBe(
+            "info",
+        );
+    });
+
+    it("should enable check command with custom root dir if 'info' is present with option --rootDir", () => {
+        const res = parseArgs(
+            withBaseArgs("info", "--rootDir=/other/path"),
+            "./cwd",
+        );
+        expect(res.type).toBe("info");
+        expect((res as InfoCommand).rootDir).toBe("/other/path");
+    });
+
+    it("should enable help command if 'info' and 'help' are present", () => {
+        expect(parseArgs(withBaseArgs("info", "help"), "./cwd").type).toBe(
+            "help",
+        );
+        expect(parseArgs(withBaseArgs("help", "info"), "./cwd").type).toBe(
+            "help",
+        );
+    });
+    it("should enable version command if 'info' and 'version' are present", () => {
+        expect(parseArgs(withBaseArgs("info", "version"), "./cwd").type).toBe(
+            "version",
+        );
+        expect(parseArgs(withBaseArgs("version", "info"), "./cwd").type).toBe(
+            "version",
         );
     });
 

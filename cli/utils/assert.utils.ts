@@ -4,7 +4,9 @@ export function check(
     msg: string | { msg: string; continueCheck: boolean },
     predicate: () => boolean,
 ) {
-    if (!predicate()) {
+    if (predicate()) {
+        return true;
+    } else {
         if (typeof msg === "string") {
             ERRORS.push(new CheckError(msg));
         } else {
@@ -14,6 +16,7 @@ export function check(
                 throw error;
             }
         }
+        return false;
     }
 }
 
