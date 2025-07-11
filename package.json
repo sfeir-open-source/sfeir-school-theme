@@ -1,11 +1,14 @@
 {
     "name": "sfeir-school-theme",
-    "version": "3.2.0",
+    "version": "3.2.1-alpha-1",
     "description": "Sfeir School Theme for RevealJS",
     "main": "./sfeir-school-theme.mjs",
     "exports": "./sfeir-school-theme.mjs",
+    "bin": {
+        "sfeir-school-theme": "./cli/sfeir-school-theme-cli.js"
+    },
     "scripts": {
-        "test": "echo \"Error: no test specified\" && exit 1",
+        "test": "vitest",
         "serve": "live-server --port=4242 --open=\"./demo/index.html\" --mount=\"/assets:./demo/assets\" --mount=\"/web_modules:./demo/web_modules\" --watch=\"./demo/web_modules/sfeir-school-theme,./demo/markdown/\"",
         "release": "echo \"Error: no deployement is configure for the moment, please just build the project\"",
         "prepare-demo": "node ./scripts/prepare-demo.js",
@@ -15,7 +18,9 @@
         "build": "vite build",
         "on-change:build": "chokidar \"./src\" -c \"npm run build\"",
         "on-change:copy": "chokidar \"./dist\" -c \"npm run prepare-demo\"",
-        "build-watch": "parallelshell \"npm run on-change:build\" \"npm run on-change:copy\""
+        "build-watch": "parallelshell \"npm run on-change:build\" \"npm run on-change:copy\"",
+        "cli-build": "tsc",
+        "cli-run": "node dist/cli/main.js"
     },
     "repository": {
         "type": "git",
@@ -38,11 +43,14 @@
         "reveal.js": "^4.5.0"
     },
     "devDependencies": {
+        "@types/node": "^22.15.21",
         "chokidar-cli": "^3.0.0",
         "live-server": "^1.1.0",
         "parallelshell": "3.0.1",
         "sass": "^1.51.0",
         "shelljs": "^0.8.5",
-        "vite": "^3.1.0"
+        "typescript": "^5.8.3",
+        "vite": "^3.1.0",
+        "vitest": "^3.2.4"
     }
 }
