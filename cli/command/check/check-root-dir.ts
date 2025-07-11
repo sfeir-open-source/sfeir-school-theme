@@ -5,6 +5,7 @@ import { isDirectory } from "../../utils/fs.utils";
 
 export function checkRootDir(command: CheckCommand) {
     check(
+        "G_001",
         {
             msg: `Project root dir (${command.rootDir}) does not exist.`,
             continueCheck: false,
@@ -12,6 +13,7 @@ export function checkRootDir(command: CheckCommand) {
         () => isDirectory(command.rootDir),
     );
     check(
+        "G_003",
         {
             msg: "Project should have a 'steps' directory",
             continueCheck: false,
@@ -21,7 +23,11 @@ export function checkRootDir(command: CheckCommand) {
             isDirectory(command.rootDir, "steps"),
     );
     check(
-        { msg: "Project should have a 'docs' directory", continueCheck: false },
+        "G_002",
+        {
+            msg: "Project should have a 'docs' directory",
+            continueCheck: false,
+        },
         () =>
             readRootDir(command).includes("docs") &&
             isDirectory(command.rootDir, "docs"),
