@@ -104,10 +104,17 @@ export function getAllLabScripts(rootDir: string): string[] {
     }
 }
 
-export function getLabPackageJson(rootDir: string, lab: string): PackageJson {
-    return JSON.parse(
-        fs.readFileSync(labPackageJsonPath(rootDir, lab), "utf-8"),
-    );
+export function getLabPackageJson(
+    rootDir: string,
+    lab: string,
+): PackageJson | null {
+    try {
+        return JSON.parse(
+            fs.readFileSync(labPackageJsonPath(rootDir, lab), "utf-8"),
+        );
+    } catch {
+        return null;
+    }
 }
 
 export function splitLabsAndSolutions(labNames: string[]) {
