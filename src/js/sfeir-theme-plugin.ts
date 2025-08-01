@@ -1,0 +1,102 @@
+export class SfeirTheme {
+    constructor() {}
+
+    /*postprocess() {
+        // FavIcon
+        this._manageFavIcon();
+
+        // ManageBackground
+        //this._manageBackgrounds();
+        this._manageFirstSlide();
+
+        // ManageExercices
+        this._manageExerciceSlide();
+
+        // Manage Hack to speakers images
+        this._manageSpeakersBorders();
+    }
+
+    _manageFavIcon() {
+        const resolutions = ['16x16', '32x32', '96x96'];
+        for (let resolution of resolutions) {
+            const link = document.createElement('link');
+            link.type = 'image/x-icon';
+            link.rel = 'shortcut icon';
+            link.sizes = resolution;
+            link.href = `${this.path}${imagesPath}/favicon-${resolution}.png`;
+            document.getElementsByTagName('head')[0].appendChild(link);
+        }
+        const link = document.createElement('link');
+        link.type = 'image/x-icon';
+        link.rel = 'shortcut icon';
+        link.href = `${this.path}${imagesPath}/favicon.ico`;
+        document.getElementsByTagName('head')[0].appendChild(link);
+    }
+
+    _manageFirstSlide() {
+        const firstSlides = [
+            ...document.querySelectorAll('.reveal .slides section.first-slide'),
+        ];
+        for (let firstSlideSection of firstSlides) {
+            const imgLogo = document.createElement('DIV');
+            imgLogo.classList.add('sfeir-logo');
+            imgLogo.style['background-image'] =
+                `url(${this.path}${imagesPath}/logo_empty.webp)`;
+
+            const level = firstSlideSection.hasAttribute('sfeir-level')
+                ? +firstSlideSection.getAttribute('sfeir-level')
+                : 1;
+            const techno = firstSlideSection.hasAttribute('sfeir-techno')
+                ? firstSlideSection.getAttribute('sfeir-techno')
+                : '';
+            imgLogo.setAttribute('data-sfeir-level', level);
+            imgLogo.setAttribute('data-sfeir-techno', techno);
+
+            firstSlideSection.insertAdjacentElement('afterbegin', imgLogo);
+        }
+    }
+
+    _manageExerciceSlide() {
+        const exercicesSlides = [
+            ...document.querySelectorAll('.reveal .slides section.exercice'),
+        ];
+        for (let exercicesection of exercicesSlides) {
+            ``;
+            const colorToUse =
+                this.slidesTheme === 'institute'
+                    ? 'var(--sfeir-blue)'
+                    : 'var(--sfeir-green)';
+            exercicesection.setAttribute(
+                'data-background',
+                `linear-gradient(90deg,  ${colorToUse} 25%, white 25%, white 100%)`
+            );
+        }
+    }
+
+    _manageSpeakersBorders() {
+        const imgOfSpeakersToReplaces = [
+            ...document.querySelectorAll(
+                '.reveal .slides section img[alt*=speaker]'
+            ),
+        ];
+        for (let imgToReplace of imgOfSpeakersToReplaces) {
+            let parentOfImg = imgToReplace.parentElement;
+            const divWithBgElement = document.createElement('DIV');
+            divWithBgElement.classList.add('speaker');
+            divWithBgElement.style['background-image'] =
+                `url(${imgToReplace.src})`;
+            parentOfImg.appendChild(divWithBgElement);
+            parentOfImg.removeChild(imgToReplace);
+        }
+    }*/
+}
+
+const RevealSfeirThemePlugin = {
+    id: 'sfeir-theme',
+    init: () => {
+        //const sfeirTheme = new SfeirTheme();
+        //sfeirTheme.postprocess();
+    },
+};
+
+export default RevealSfeirThemePlugin;

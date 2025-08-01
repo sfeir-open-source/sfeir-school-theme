@@ -1,15 +1,17 @@
-@import '/node_modules/reveal.js/dist/reveal.css';
-@import '/node_modules/highlight.js/scss/base16/tomorrow.scss';
-@import './theme/sfeir-overrides';
+@import '/node_modules/@talk-control/talk-control-revealjs-extensions/dist/talk-control-revealjs-theme.css';
 
-@import './utils/grid';
+//@import '/node_modules/reveal.js/dist/reveal.css';
+//@import '/node_modules/highlight.js/scss/base16/tomorrow.scss';
+//@import './theme/sfeir-overrides';
+
+/*@import './utils/grid';
 @import './utils/helper';
 @import './utils/icons';
 
 @import './theme/layout';
 
 // Specifics slides
-@import './theme/specifics-slides';
+@import './theme/specifics-slides';*/
 
 // Override
 

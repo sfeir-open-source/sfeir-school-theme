@@ -2,7 +2,7 @@
   "name": "sfeir-school-theme",
   "version": "3.2.0",
   "description": "Sfeir School Theme for RevealJS",
-  "main": "./sfeir-school-theme.mjs",
+  "main": "./sfeir-school-theme.js",
   "exports": "./sfeir-school-theme.mjs",
   "repository": {
     "type": "git",
@@ -13,9 +13,13 @@
     "sfeir"
   ],
   "author": "jefbinomed",
-  "license": "MIT",
+  "contributors": [
+    "kuroidoruido"
+  ],
+  "license": "Apache-2.0",
   "bugs": {
     "url": "https://github.com/sfeir-open-source/sfeir-school-theme/issues"
   },
-  "homepage": "https://github.com/sfeir-open-source/sfeir-school-theme#readme"
+  "homepage": "https://github.com/sfeir-open-source/sfeir-school-theme#readme",
+  "type": "module"
 }
