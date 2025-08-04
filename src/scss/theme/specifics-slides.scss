@@ -1,102 +1,23 @@
-@import 'colors';
+//@import 'colors';
 
 @import 'title-slide';
 @import 'speaker-slide';
 @import 'transition-slides';
-@import 'code-slides';
 @import 'exercice';
-
-@mixin bandeau() {
-    width: 100%;
-    height: 3em;
-    line-height: 3em;
-    background: $dark-grey;
-    text-align: left;
-    padding-left: 20px;
-    color: white;
-    @include dropshadow();
-}
 
 .reveal .slides section.bg-blur {
     width: 50%;
     left: 50%;
-}
-
-.reveal
-    .backgrounds
-    div.slide-background.transition[data-background-hash].mask::after {
-    background-color: $dark-grey-alpha;
-}
-
-.reveal
-    .backgrounds
-    div.slide-background.transition[data-background-hash*='png']::after,
-.reveal
-    .backgrounds
-    div.slide-background.transition[data-background-hash*='PNG']::after,
-.reveal
-    .backgrounds
-    div.slide-background.transition[data-background-hash*='Png']::after,
-.reveal
-    .backgrounds
-    div.slide-background.transition[data-background-hash*='jpg']::after,
-.reveal
-    .backgrounds
-    div.slide-background.transition[data-background-hash*='JPG']::after,
-.reveal
-    .backgrounds
-    div.slide-background.transition[data-background-hash*='Jpg']::after,
-.reveal
-    .backgrounds
-    div.slide-background.transition[data-background-hash*='jpeg']::after,
-.reveal
-    .backgrounds
-    div.slide-background.transition[data-background-hash*='JPEG']::after,
-.reveal
-    .backgrounds
-    div.slide-background.transition[data-background-hash*='Jpeg']::after,
-.reveal
-    .backgrounds
-    div.slide-background.transition[data-background-hash*='gif']::after,
-.reveal
-    .backgrounds
-    div.slide-background.transition[data-background-hash*='GIF']::after,
-.reveal
-    .backgrounds
-    div.slide-background.transition[data-background-hash*='Gif']::after,
-.reveal
-    .backgrounds
-    div.slide-background.transition[data-background-hash*='svg']::after,
-.reveal
-    .backgrounds
-    div.slide-background.transition[data-background-hash*='SVG']::after,
-.reveal
-    .backgrounds
-    div.slide-background.transition[data-background-hash*='Svg']::after,
-.reveal
-    .backgrounds
-    div.slide-background.transition[data-background-hash*='bmp']::after,
-.reveal
-    .backgrounds
-    div.slide-background.transition[data-background-hash*='BMP']::after,
-.reveal
-    .backgrounds
-    div.slide-background.transition[data-background-hash*='Bmp']::after,
-.reveal
-    .backgrounds
-    div.slide-background.transition[data-background-hash*='webp']::after,
-.reveal
-    .backgrounds
-    div.slide-background.transition[data-background-hash*='WEBP']::after,
-.reveal
-    .backgrounds
-    div.slide-background.transition[data-background-hash*='Webp']::after {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100vw;
-    height: 100vw;
+    text-align: center;
+    color: var(--white);
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+        color: var(--white);
+    }
 }
 
 /**
@@ -110,7 +31,7 @@ html.print-pdf {
 
     .reveal .slides .pdf-page div.slide-background.transition.mask::after {
         content: '';
-        background-color: $dark-grey-alpha;
+        background-color: var(--color-dark-grey-alpha);
         position: absolute;
         width: 100%;
         height: 100%;

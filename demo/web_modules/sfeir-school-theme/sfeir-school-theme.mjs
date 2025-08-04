@@ -17569,7 +17569,7 @@ const eo = {
     await q9.init({
       slidesFactory: e,
       tcCustomBackgroundOptions: {
-        basePath: "/images/",
+        basePath: "/web_modules/sfeir-school-theme/images/",
         mapBackgrounds(t) {
           return {
             "first-slide": t === "institute" ? "bg-blue-1.webp" : "bg-green-1.webp",

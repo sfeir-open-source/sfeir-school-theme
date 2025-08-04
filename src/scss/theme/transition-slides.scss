@@ -1,54 +1,31 @@
-.reveal .slides section[class*='transition'],
-.reveal .slides section.sfeir-basic-slide[class*='transition'],
-.reveal .slides section.sfeir-specific-slide[class*='transition'],
-.reveal .slides section.first-slide {
-    background: rgba(0, 0, 0, 0);
+:root {
+    --tc-transition-color: var(--white);
+    --tc-transition-title-font-size: 2em;
+    --tc-transition-margin-top: 450px;
+    --tc-transition-line-color: var(--sfeir-green);
+    --tc-transition-sub-title-font-size: 1.5em;
+}
 
-    $padding-h1: 30px;
-
+.reveal .slides section[class*='transition']:not(.stack),
+.reveal .slides section.first-slide:not(.stack) {
     h1 {
-        color: $white;
         margin-left: initial;
         text-align: left;
-        margin-top: 450px;
-        font-size: 2em;
-        font-weight: 800;
-        margin-bottom: 40px;
-        text-transform: initial;
-        padding: $padding-h1;
-        width: fit-content;
-        background: initial;
-        position: relative;
-        transform: initial;
-
-        &:before {
-            content: '';
-            z-index: -1;
-            position: absolute;
-            background: $sfeir-green;
-            width: 100px;
-            height: 10px;
-            left: $padding-h1;
-            bottom: -20px;
-            transform: rotate(0deg);
-        }
     }
 
     h2 {
-        font-size: 1.5em;
         text-align: left;
-        padding-left: $padding-h1;
     }
 
     &.blue h1:before,
     &.transition-bg-blue-1 h1:before,
     &.transition-bg-blue-2 h1:before,
     &.transition-bg-blue-3 h1:before {
-        background: $sfeir-blue;
+        --tc-transition-line-color: var(--sfeir-blue);
     }
 
     &.green h1:before {
-        background: $sfeir-green;
+        --tc-transition-line-color: var(--sfeir-green);
     }
 
     &.bg-white h1:before,
@@ -58,47 +35,11 @@
     }
 
     &.bg-white h1 {
-        color: $black;
+        --tc-transition-color: var(--black);
     }
-
-    &.left h1 {
-        margin-left: initial;
-        text-align: left;
-    }
-
-    &.right h1 {
-        margin-left: auto;
-        margin-right: initial;
-        text-align: right;
-    }
-
-    &.top h1 {
-        margin: auto;
-        margin-top: 50px;
-    }
-
-    &.bottom h1 {
-        margin: auto;
-        margin-top: 800px;
-    }
-
     &.bg-white:not(h1) {
-        color: $black;
+        color: var(--black);
     }
-}
-
-.reveal .slides section[class*='transition-left'] h1,
-.reveal .slides section.sfeir-basic-slide[class*='transition-left'] h1,
-.reveal .slides section.sfeir-specific-slide[class*='transition-left'] h1 {
-    text-align: left;
-    margin-left: initial;
-}
-
-.reveal .slides section[class*='transition-right'] h1,
-.reveal .slides section.sfeir-basic-slide[class*='transition-right'] h1,
-.reveal .slides section.sfeir-specific-slide[class*='transition-right'] h1 {
-    text-align: right;
-    margin-right: initial;
 }
 
 .reveal .backgrounds div.slide-background.transition {
@@ -136,7 +77,7 @@
     section.sfeir-specific-slide[class*='transition'],
 .reveal .slides[data-theme-slides='institute'] section.first-slide {
     h1:before {
-        background: $sfeir-blue;
+        --tc-transition-line-color: var(--sfeir-blue);
     }
 
     &.green h1:before,
@@ -146,7 +87,7 @@
     &.transition-bg-green-4 h1:before,
     &.transition-bg-green-5 h1:before,
     &.transition-bg-green-6 h1:before {
-        background: $sfeir-green;
+        --tc-transition-line-color: var(--sfeir-green);
     }
 }
 

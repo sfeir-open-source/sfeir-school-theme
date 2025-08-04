@@ -600,7 +600,7 @@ Additionnal Advice
 
 <br>
 
-![sfeir-icons](pause-circle)<!-- .element: style="--icon-size:300px; --icon-color:var(--light-grey);" -->
+![](pause-circle 'tc-icons feather')<!-- .element: style="--tc-icon-size:300px; --tc-icon-color:var(--light-grey);" -->
 
 <br>
 
@@ -609,7 +609,7 @@ On se retrouve à
 <!-- .element: class="center" -->
 <br>
 
-![sfeir-icons big](clock)<!-- .element: style="--icon-color:var(--light-grey);" --> 10h
+![](clock 'tc-icons feather tc-big')<!-- .element: style="--tc-icon-color:var(--light-grey);" --> 10h
 
 ##--##
 

@@ -5,28 +5,29 @@
 ##==##
 
 <!-- .slide: class="speaker-slide" -->
+<div class="speaker-slide">
 
-# Votre hôte pour la journée
+# Hello ! @SFEIR
 
-![speaker](./assets/images/jf.jpg)
-![company](./assets/images/logo-sfeir-blanc.png)
-![badge first-badge](./assets/images/gde.png)
-![badge second-badge](./assets/images/GDG-Logo-carre.png)
-![badge third-badge mt-50](./assets/images/mts.png)
+## Jean-François Garreau
 
-<h2>Jean-François<span> Garreau</span></h2>
-
-### CTO front
-
-<!-- .element: class="icon-rule icon-first" -->
-
-### @jefbinomed
-
-<!-- .element: class="icon-twitter icon-second" -->
+### CTO Front
 
 ### fake.email@sfeir.com
 
-<!-- .element: class="icon-mail icon-third" -->
+### @jefbinomed
+
+![](./assets/images/jf.jpg) <!-- .element: class="speaker" -->
+
+![](./assets/images/logo-sfeir-blanc.png) <!-- .element: class="company" -->
+
+![](./assets/images/gde.png) <!-- .element: class="badge" -->
+
+![](./assets/images/GDG-Logo-carre.png) <!-- .element: class="badge" -->
+
+![](./assets/images/mts.png) <!-- .element: class="badge" -->
+
+</div>
 
 ##--##
 
@@ -36,55 +37,57 @@
 
 ```markdown
 <!-- .slide: class="speaker-slide" -->
+<div class="speaker-slide">
 
 # Hello ! @SFEIR
 
-![speaker](./assets/images/jf.jpg)
-![company](./assets/images/logo-sfeir-blanc.png)
-![badge first-badge](./assets/images/gde.png)
-![badge second-badge](./assets/images/GDG-Logo-carre.png)
-![badge third-badge mt-50](./assets/images/mts.png)
+## Jean-François Garreau
 
-<h2>Jean-François<span> Garreau</span></h2>
-
-### CTO front
-
-<!-- .element: class="icon-rule icon-first" -->
-
-### @jefbinomed
-
-<!-- .element: class="icon-twitter icon-second" -->
+### CTO Front
 
 ### fake.email@sfeir.com
 
-<!-- .element: class="icon-mail icon-third" -->
+### @jefbinomed
+
+![](./assets/images/jf.jpg) <!-- .element: class="speaker" -->
+
+![](./assets/images/logo-sfeir-blanc.png) <!-- .element: class="company" -->
+
+![](./assets/images/gde.png) <!-- .element: class="badge" -->
+
+![](./assets/images/GDG-Logo-carre.png) <!-- .element: class="badge" -->
+
+![](./assets/images/mts.png) <!-- .element: class="badge" -->
+
+</div>
 ```
 
 ##==##
 
-<!-- .slide: class="speaker-slide blue" -->
+<!-- .slide: class="speaker-slide" -->
+<div class="speaker-slide">
 
 # Hello ! @SFEIR
 
-![speaker](./assets/images/jf-2.jpg)
-![company](./assets/images/logo-sfeir-blanc.png)
-![badge first-badge](./assets/images/gde.png)
-![badge second-badge](./assets/images/GDG-Logo-carre.png)
-![badge third-badge mt-50](./assets/images/mts.png)
+## Jean-François Garreau
 
-<h2>Jean-François<span> Garreau</span></h2>
-
-### CTO front
-
-<!-- .element: class="icon-rule icon-first" -->
-
-### @jefbinomed
-
-<!-- .element: class="icon-twitter icon-second" -->
+### CTO Front
 
 ### fake.email@sfeir.com
 
-<!-- .element: class="icon-mail icon-third" -->
+### @jefbinomed
+
+![](./assets/images/jf-2.jpg) <!-- .element: class="speaker" -->
+
+![](./assets/images/logo-sfeir-blanc.png) <!-- .element: class="company" -->
+
+![](./assets/images/gde.png) <!-- .element: class="badge" -->
+
+![](./assets/images/GDG-Logo-carre.png) <!-- .element: class="badge" -->
+
+![](./assets/images/mts.png) <!-- .element: class="badge" -->
+
+</div>
 
 ##--##
 
@@ -93,56 +96,58 @@
 # Code to produce / Markdown
 
 ```markdown
-<!-- .slide: class="speaker-slide blue" -->
+<!-- .slide: class="speaker-slide" -->
+<div class="speaker-slide">
 
 # Hello ! @SFEIR
 
-![speaker](./assets/images/jf-2.jpg)
-![company](./assets/images/logo-sfeir-blanc.png)
-![badge first-badge](./assets/images/gde.png)
-![badge second-badge](./assets/images/GDG-Logo-carre.png)
-![badge third-badge mt-50](./assets/images/mts.png)
+## Jean-François Garreau
 
-<h2>Jean-François<span> Garreau</span></h2>
-
-### CTO front
-
-<!-- .element: class="icon-rule icon-first" -->
-
-### @jefbinomed
-
-<!-- .element: class="icon-twitter icon-second" -->
+### CTO Front
 
 ### fake.email@sfeir.com
 
-<!-- .element: class="icon-mail icon-third" -->
+### @jefbinomed
+
+![](./assets/images/jf-2.jpg) <!-- .element: class="speaker" -->
+
+![](./assets/images/logo-sfeir-blanc.png) <!-- .element: class="company" -->
+
+![](./assets/images/gde.png) <!-- .element: class="badge" -->
+
+![](./assets/images/GDG-Logo-carre.png) <!-- .element: class="badge" -->
+
+![](./assets/images/mts.png) <!-- .element: class="badge" -->
+
+</div>
 ```
 
 ##==##
 
-<!-- .slide: class="speaker-slide green" -->
+<!-- .slide: class="speaker-slide" -->
+<div class="speaker-slide">
 
 # Hello ! @SFEIR
 
-![speaker](./assets/images/jf-3.png)
-![company](./assets/images/logo-sfeir-blanc.png)
-![badge first-badge](./assets/images/gde.png)
-![badge second-badge](./assets/images/GDG-Logo-carre.png)
-![badge third-badge mt-50](./assets/images/mts.png)
+## Jean-François Garreau
 
-<h2>Jean-François<span> Garreau</span></h2>
-
-### CTO front
-
-<!-- .element: class="icon-rule icon-first" -->
-
-### @jefbinomed
-
-<!-- .element: class="icon-twitter icon-second" -->
+### CTO Front
 
 ### fake.email@sfeir.com
 
-<!-- .element: class="icon-mail icon-third" -->
+### @jefbinomed
+
+![](./assets/images/jf-3.png) <!-- .element: class="speaker" -->
+
+![](./assets/images/logo-sfeir-blanc.png) <!-- .element: class="company" -->
+
+![](./assets/images/gde.png) <!-- .element: class="badge" -->
+
+![](./assets/images/GDG-Logo-carre.png) <!-- .element: class="badge" -->
+
+![](./assets/images/mts.png) <!-- .element: class="badge" -->
+
+</div>
 
 ##--##
 
@@ -151,27 +156,28 @@
 # Code to produce / Markdown
 
 ```markdown
-<!-- .slide: class="speaker-slide green" -->
+<!-- .slide: class="speaker-slide" -->
+<div class="speaker-slide">
 
 # Hello ! @SFEIR
 
-![speaker](./assets/images/jf-3.png)
-![company](./assets/images/logo-sfeir-blanc.png)
-![badge first-badge](./assets/images/gde.png)
-![badge second-badge](./assets/images/GDG-Logo-carre.png)
-![badge third-badge mt-50](./assets/images/mts.png)
+## Jean-François Garreau
 
-<h2>Jean-François<span> Garreau</span></h2>
-
-### CTO front
-
-<!-- .element: class="icon-rule icon-first" -->
-
-### @jefbinomed
-
-<!-- .element: class="icon-twitter icon-second" -->
+### CTO Front
 
 ### fake.email@sfeir.com
 
-<!-- .element: class="icon-mail icon-third" -->
+### @jefbinomed
+
+![](./assets/images/jf-3.png) <!-- .element: class="speaker" -->
+
+![](./assets/images/logo-sfeir-blanc.png) <!-- .element: class="company" -->
+
+![](./assets/images/gde.png) <!-- .element: class="badge" -->
+
+![](./assets/images/GDG-Logo-carre.png) <!-- .element: class="badge" -->
+
+![](./assets/images/mts.png) <!-- .element: class="badge" -->
+
+</div>
 ```

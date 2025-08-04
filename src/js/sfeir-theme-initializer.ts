@@ -17,7 +17,7 @@ export const SfeirThemeInitializer = {
         await ThemeInitializer.init({
             slidesFactory,
             tcCustomBackgroundOptions: {
-                basePath: '/images/',
+                basePath: '/web_modules/sfeir-school-theme/images/',
                 mapBackgrounds(theme) {
                     return {
                         'first-slide':

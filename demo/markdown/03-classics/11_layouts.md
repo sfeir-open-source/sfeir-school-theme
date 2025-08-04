@@ -4,92 +4,25 @@
 
 ##==##
 
-<!-- .slide: class="two-column-layout"-->
+<!-- .slide: class="tc-multiple-columns" -->
 
-# A title (deprecated)
-
-##--##
-
-content left
-
-##--##
-
-content right
-
-##==##
-
-<!-- .slide: class="with-code" -->
-
-# Code to produce / Markdown (deprecated)
-
-<!-- prettier-ignore -->
-```markdown
-<!-- .slide: class="two-column-layout"-->
-# A title
-## --##
-content left
-## --##
-content right
-```
-
-<!-- .element: class="big-code" -->
-
-##==##
-
-<!-- .slide: class="two-column-layout"-->
-
-# A title (deprecated)
-
-##--##
-
-<!-- .slide: class="with-code" -->
-
-```javascript
-function hello() {
-    console.log('World');
-}
-```
-
-##--##
-
-content right
-
-##==##
-
-<!-- .slide: class="with-code" -->
-
-# Code to produce / Markdown (deprecated)
-
-<!-- prettier-ignore -->
-````markdown
-<!-- .slide: class="two-column-layout"-->
-# A title
-## --##
-<!-- .slide: class="with-code" -->
-```javascript
-function hello() {
-    console.log('World');
-}
-```
-## --##
-content right
-````
-
-##==##
-
-<!-- .slide: class="two-column" -->
+##++##
 
 ## Slide 1
 
 A paragraph with some text and a [link](http://hakim.se).
 
-##--##
+##++##
+
+##++##
 
 ## Slide 2
 
--   Item 2
--   Item 3
-<!-- .element: class="list-fragment" -->
+- Item 2
+- Item 3
+    <!-- .element: class="list-fragment" -->
+
+##++##
 
 ##==##
 
@@ -99,19 +32,32 @@ A paragraph with some text and a [link](http://hakim.se).
 
 <!-- prettier-ignore -->
 ```markdown
-<!-- .slide: class="two-column" -->
+<!-- .slide: class="tc-multiple-columns" -->
+
+##++##
+
 ## Slide 1
+
 A paragraph with some text and a [link](http://hakim.se).
-## --##
+
+##++##
+
+##++##
+
 ## Slide 2
--   Item 2
--   Item 3
-<!-- .element: class="list-fragment" -->
+
+- Item 2
+- Item 3
+  <!-- .element: class="list-fragment" -->
+
+##++##
 ```
 
 ##==##
 
-<!-- .slide: class="two-column" data-state="test" -->
+<!-- .slide: class="tc-multiple-columns" data-state="test" -->
+
+##++##
 
 ## Slide 1 with notes
 
@@ -119,56 +65,77 @@ A paragraph with some text and a [link](http://hakim.se).
 
 Press 'S'
 
-Notes:
-Notes for slide left
+##++##
 
-##--##
+##++##
 
 <!-- .slide: data-state="test2"  -->
 
 ## Slide 2 with notes
 
--   Item 2
--   Item 3
-<!-- .element: class="list-fragment" -->
+- Item 2
+- Item 3
+    <!-- .element: class="list-fragment" -->
 
-Notes:
-Notes for slide right
+##++##
 
-##==##
-
-<!-- .slide: class="with-code" -->
-
-# Code to produce / Markdown
-
-<!-- prettier-ignore -->
-```markdown
-<!-- .slide: class="two-column" -->
-## Slide 1 with notes
-A paragraph with some text and a [link](http://hakim.se).
-Press 'S'
 Notes:
 Notes for slide left
-## --##
+Notes for slide right
+
+##==##
+
+<!-- .slide: class="with-code" -->
+
+# Code to produce / Markdown
+
+<!-- prettier-ignore -->
+```markdown
+<!-- .slide: class="tc-multiple-columns" data-state="test" -->
+
+##++##
+
+## Slide 1 with notes
+
+A paragraph with some text and a [link](http://hakim.se).
+
+Press 'S'
+
+##++##
+
+##++##
+
+<!-- .slide: data-state="test2"  -->
+
 ## Slide 2 with notes
--   Item 2
--   Item 3
-<!-- .element: class="list-fragment" -->
+
+- Item 2
+- Item 3
+      <!-- .element: class="list-fragment" -->
+
+##++##
+
 Notes:
+Notes for slide left
 Notes for slide right
 ```
 
 ##==##
 
-<!-- .slide: class="two-column" data-background="./assets/images/dark_background.jpeg" -->
+<!-- .slide: class="tc-multiple-columns" -->
 
-##--##
+##++## data-background="./assets/images/dark_background.jpeg"
+##++##
+
+##++##
 
 ## Slide 2
 
--   Item 2
--   Item 3
-<!-- .element: class="list-fragment" -->
+- Item 2
+- Item 3
+    <!-- .element: class="list-fragment" -->
+
+##++##
 
 ##==##
 
@@ -178,31 +145,43 @@ Notes for slide right
 
 <!-- prettier-ignore -->
 ```markdown
-<!-- .slide: class="two-column" data-background="./assets/images/dark_background.jpeg"-->
-## --##
+<!-- .slide: class="tc-multiple-columns" -->
+
+##++## data-background="./assets/images/dark_background.jpeg"
+##++##
+
+##++##
+
 ## Slide 2
--   Item 2
--   Item 3
-<!-- .element: class="list-fragment" -->
+
+- Item 2
+- Item 3
+    <!-- .element: class="list-fragment" -->
+
+##++##
 ```
 
 ##==##
 
-<!-- .slide: class="two-column" -->
+<!-- .slide: class="tc-multiple-columns" -->
+
+##++##
 
 ## Slide 1
 
 A paragraph with some text and a [link](http://hakim.se).
 
-##--##
+##++##
 
-<!-- .slide:  data-background="./assets/images/dark_background.jpeg"  -->
+##++## data-background="./assets/images/dark_background.jpeg"
 
 ## Slide 2
 
--   Item 2
--   Item 3
-<!-- .element: class="list-fragment" -->
+- Item 2
+- Item 3
+    <!-- .element: class="list-fragment" -->
+
+##++##
 
 ##==##
 
@@ -212,29 +191,42 @@ A paragraph with some text and a [link](http://hakim.se).
 
 <!-- prettier-ignore -->
 ```markdown
-<!-- .slide: class="two-column" -->
+<!-- .slide: class="tc-multiple-columns" -->
+
+##++##
+
 ## Slide 1
+
 A paragraph with some text and a [link](http://hakim.se).
-## --##
-<!-- .slide: data-background="./assets/images/dark_background.jpeg"  -->
+
+##++##
+
+##++## data-background="./assets/images/dark_background.jpeg"
+
 ## Slide 2
--   Item 2
--   Item 3
-<!-- .element: class="list-fragment" -->
+
+- Item 2
+- Item 3
+      <!-- .element: class="list-fragment" -->
+
+##++##
 ```
 
 ##==##
 
-<!-- .slide: class="two-column" -->
+<!-- .slide: class="tc-multiple-columns" -->
 
-##--##
+##++##
+##++##
 
-<!-- .slide: data-background="var(--black)" -->
+##++## data-background="var(--black)"
 
 ## Slide 2
 
--   Item 2
--   Item 3
+- Item 2
+- Item 3
+
+##++##
 
 ##==##
 
@@ -244,26 +236,36 @@ A paragraph with some text and a [link](http://hakim.se).
 
 <!-- prettier-ignore -->
 ```markdown
-<!-- .slide: class="two-column" -->
-## --##
+<!-- .slide: class="tc-multiple-columns" -->
+
+##++##
+##++##
+
+##++## data-background="var(--black)"
+
 ## Slide 2
-<!-- .slide: data-background="var(--black)" -->
--   Item 2
--   Item 3
+
+- Item 2
+- Item 3
+
+##++##
 ```
 
 ##==##
 
-<!-- .slide: class="two-column"-->
+<!-- .slide: class="tc-multiple-columns" -->
 
-##--##
+##++##
+##++##
 
-<!-- .slide: class="text-dark" data-background="./assets/images/light-background.webp" -->
+##++## class="text-dark" data-background="./assets/images/light-background.webp"
 
 ## Slide 2
 
--   Item 2
--   Item 3
+- Item 2
+- Item 3
+
+##++##
 
 ##==##
 
@@ -273,26 +275,36 @@ A paragraph with some text and a [link](http://hakim.se).
 
 <!-- prettier-ignore -->
 ```markdown
-<!-- .slide: class="two-column"-->
-## --##
+<!-- .slide: class="tc-multiple-columns" -->
+
+##++##
+##++##
+
+##++## class="text-dark" data-background="./assets/images/light-background.webp"
+
 ## Slide 2
-<!-- .slide: class="text-dark" data-background="./assets/images/light-background.webp" -->
--   Item 2
--   Item 3
+
+- Item 2
+- Item 3
+
+##++##
 ```
 
 ##==##
 
-<!-- .slide: class="two-column" -->
+<!-- .slide: class="tc-multiple-columns" -->
 
-##--##
+##++##
+##++##
 
-<!-- .slide: class="mask" data-background="./assets/images/light-background.webp" -->
+##++## class="mask" data-background="./assets/images/light-background.webp"
 
 ## Slide 2
 
--   Item 2
--   Item 3
+- Item 2
+- Item 3
+
+##++##
 
 ##==##
 
@@ -302,10 +314,18 @@ A paragraph with some text and a [link](http://hakim.se).
 
 <!-- prettier-ignore -->
 ```markdown
-<!-- .slide: class="two-column" -->
-## --##
-<!-- .slide: class="mask" data-background="./assets/images/light-background.webp" -->
+
+<!-- .slide: class="tc-multiple-columns" -->
+
+##++##
+##++##
+
+##++## class="mask" data-background="./assets/images/light-background.webp"
+
 ## Slide 2
--   Item 2
--   Item 3
+
+- Item 2
+- Item 3
+
+##++##
 ```
