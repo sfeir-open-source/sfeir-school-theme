@@ -1,5 +1,5 @@
 .reveal .slides section {
-    &.sfeir-basic-slide.exercice:not(.sfeir-specific-slide):not(.stack):not(
+    &.exercice:not(.sfeir-specific-slide):not(.stack):not(
             [class*='transition']
         ) {
         width: calc(100% - 25% - 50px);
@@ -59,9 +59,9 @@
 */
 .reveal
     .slides[data-theme-slides='institute']
-    section.sfeir-basic-slide.exercice:not(.sfeir-specific-slide):not(
-        .stack
-    ):not([class*='transition'])
+    section.exercice:not(.sfeir-specific-slide):not(.stack):not(
+        [class*='transition']
+    )
     h3 {
     color: var(--sfeir-blue);
 }
@@ -71,7 +71,7 @@
 */
 html.print-pdf {
     .reveal .slides .pdf-page section {
-        &.sfeir-basic-slide.exercice:not(.sfeir-specific-slide):not(.stack):not(
+        &.exercice:not(.sfeir-specific-slide):not(.stack):not(
                 [class*='transition']
             ) {
             width: calc(100% - 25%) !important;

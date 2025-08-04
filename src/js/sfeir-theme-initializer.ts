@@ -4,6 +4,7 @@ import {
     fontAwesomeIconPack,
     materialSymbolsIconPack,
 } from '@talk-control/talk-control-revealjs-extensions';
+import RevealSfeirThemePlugin from './sfeir-theme-plugin';
 
 interface SlidePath {
     path: string;
@@ -79,6 +80,9 @@ export const SfeirThemeInitializer = {
             tcThemeOptions: {
                 defaultTheme: 'school',
             },
+            plugins: [RevealSfeirThemePlugin],
         });
+
+        console.log('post init');
     },
 };

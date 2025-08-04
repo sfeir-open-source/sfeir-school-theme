@@ -1,7 +1,9 @@
+import { _handle_parameter } from '@talk-control/talk-control-revealjs-extensions';
+
 export class SfeirTheme {
     constructor() {}
 
-    /*postprocess() {
+    postprocess() {
         // FavIcon
         this._manageFavIcon();
 
@@ -18,18 +20,18 @@ export class SfeirTheme {
 
     _manageFavIcon() {
         const resolutions = ['16x16', '32x32', '96x96'];
-        for (let resolution of resolutions) {
+        for (const resolution of resolutions) {
             const link = document.createElement('link');
             link.type = 'image/x-icon';
             link.rel = 'shortcut icon';
             link.sizes = resolution;
-            link.href = `${this.path}${imagesPath}/favicon-${resolution}.png`;
+            link.href = `web_modules/sfeir-school-theme/images/favicon-${resolution}.png`;
             document.getElementsByTagName('head')[0].appendChild(link);
         }
         const link = document.createElement('link');
         link.type = 'image/x-icon';
         link.rel = 'shortcut icon';
-        link.href = `${this.path}${imagesPath}/favicon.ico`;
+        link.href = `web_modules/sfeir-school-theme/images/favicon.ico`;
         document.getElementsByTagName('head')[0].appendChild(link);
     }
 
@@ -37,33 +39,43 @@ export class SfeirTheme {
         const firstSlides = [
             ...document.querySelectorAll('.reveal .slides section.first-slide'),
         ];
-        for (let firstSlideSection of firstSlides) {
+        for (const firstSlideSection of firstSlides) {
             const imgLogo = document.createElement('DIV');
             imgLogo.classList.add('sfeir-logo');
             imgLogo.style['background-image'] =
-                `url(${this.path}${imagesPath}/logo_empty.webp)`;
+                `url(web_modules/sfeir-school-theme/images/logo_empty.webp)`;
 
             const level = firstSlideSection.hasAttribute('sfeir-level')
-                ? +firstSlideSection.getAttribute('sfeir-level')
+                ? +firstSlideSection.getAttribute('sfeir-level')!
                 : 1;
             const techno = firstSlideSection.hasAttribute('sfeir-techno')
                 ? firstSlideSection.getAttribute('sfeir-techno')
                 : '';
-            imgLogo.setAttribute('data-sfeir-level', level);
-            imgLogo.setAttribute('data-sfeir-techno', techno);
+            imgLogo.setAttribute('data-sfeir-level', `${level}`);
+            imgLogo.setAttribute('data-sfeir-techno', `${techno}`);
 
             firstSlideSection.insertAdjacentElement('afterbegin', imgLogo);
         }
     }
 
     _manageExerciceSlide() {
+        const queryString = window.location.search;
+        const urlParams = new URLSearchParams(queryString);
+        const slidesElement: HTMLElement =
+            document.querySelector('.reveal .slides')!;
+        const slidesTheme = _handle_parameter(
+            urlParams,
+            'data-theme',
+            slidesElement,
+            'data-theme',
+            'school'
+        );
         const exercicesSlides = [
             ...document.querySelectorAll('.reveal .slides section.exercice'),
         ];
-        for (let exercicesection of exercicesSlides) {
-            ``;
+        for (const exercicesection of exercicesSlides) {
             const colorToUse =
-                this.slidesTheme === 'institute'
+                slidesTheme === 'institute'
                     ? 'var(--sfeir-blue)'
                     : 'var(--sfeir-green)';
             exercicesection.setAttribute(
@@ -74,7 +86,7 @@ export class SfeirTheme {
     }
 
     _manageSpeakersBorders() {
-        const imgOfSpeakersToReplaces = [
+        /*const imgOfSpeakersToReplaces = [
             ...document.querySelectorAll(
                 '.reveal .slides section img[alt*=speaker]'
             ),
@@ -87,16 +99,19 @@ export class SfeirTheme {
                 `url(${imgToReplace.src})`;
             parentOfImg.appendChild(divWithBgElement);
             parentOfImg.removeChild(imgToReplace);
-        }
-    }*/
+        }*/
+    }
 }
 
-const RevealSfeirThemePlugin = {
-    id: 'sfeir-theme',
-    init: () => {
-        //const sfeirTheme = new SfeirTheme();
-        //sfeirTheme.postprocess();
-    },
+const RevealSfeirThemePlugin = () => {
+    return {
+        id: 'sfeir-theme',
+        init: () => {
+            console.log('init');
+            const sfeirTheme = new SfeirTheme();
+            sfeirTheme.postprocess();
+        },
+    };
 };
 
 export default RevealSfeirThemePlugin;
