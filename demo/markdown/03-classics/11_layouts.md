@@ -69,8 +69,6 @@ Press 'S'
 
 ##++##
 
-<!-- .slide: data-state="test2"  -->
-
 ## Slide 2 with notes
 
 - Item 2
@@ -80,8 +78,7 @@ Press 'S'
 ##++##
 
 Notes:
-Notes for slide left
-Notes for slide right
+Notes for slide
 
 ##==##
 
@@ -105,8 +102,6 @@ Press 'S'
 
 ##++##
 
-<!-- .slide: data-state="test2"  -->
-
 ## Slide 2 with notes
 
 - Item 2
@@ -116,8 +111,7 @@ Press 'S'
 ##++##
 
 Notes:
-Notes for slide left
-Notes for slide right
+Notes for slide
 ```
 
 ##==##
@@ -173,7 +167,7 @@ A paragraph with some text and a [link](http://hakim.se).
 
 ##++##
 
-##++## data-background="./assets/images/dark_background.jpeg"
+##++## data-background="./assets/images/dark_background.jpeg" class="contrast-opposite"
 
 ## Slide 2
 
@@ -201,7 +195,7 @@ A paragraph with some text and a [link](http://hakim.se).
 
 ##++##
 
-##++## data-background="./assets/images/dark_background.jpeg"
+##++## data-background="./assets/images/dark_background.jpeg" class="contrast-opposite"
 
 ## Slide 2
 
@@ -219,7 +213,7 @@ A paragraph with some text and a [link](http://hakim.se).
 ##++##
 ##++##
 
-##++## data-background="var(--black)"
+##++## data-background="var(--black)" class="contrast-opposite"
 
 ## Slide 2
 
@@ -241,7 +235,7 @@ A paragraph with some text and a [link](http://hakim.se).
 ##++##
 ##++##
 
-##++## data-background="var(--black)"
+##++## data-background="var(--black)" class="contrast-opposite"
 
 ## Slide 2
 
@@ -258,7 +252,7 @@ A paragraph with some text and a [link](http://hakim.se).
 ##++##
 ##++##
 
-##++## class="text-dark" data-background="./assets/images/light-background.webp"
+##++## data-background="./assets/images/light-background.webp"
 
 ## Slide 2
 
@@ -280,7 +274,7 @@ A paragraph with some text and a [link](http://hakim.se).
 ##++##
 ##++##
 
-##++## class="text-dark" data-background="./assets/images/light-background.webp"
+##++## data-background="./assets/images/light-background.webp"
 
 ## Slide 2
 
@@ -297,7 +291,7 @@ A paragraph with some text and a [link](http://hakim.se).
 ##++##
 ##++##
 
-##++## class="mask" data-background="./assets/images/light-background.webp"
+##++## class="mask contrast-opposite" data-background="./assets/images/light-background.webp"
 
 ## Slide 2
 
@@ -320,7 +314,7 @@ A paragraph with some text and a [link](http://hakim.se).
 ##++##
 ##++##
 
-##++## class="mask" data-background="./assets/images/light-background.webp"
+##++## class="mask contrast-opposite" data-background="./assets/images/light-background.webp"
 
 ## Slide 2
 
