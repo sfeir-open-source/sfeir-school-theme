@@ -12,7 +12,7 @@
         "prestart": "npm run prepare-demo",
         "start": "parallelshell \"npm run serve\" \"npm run build-watch\"",
         "postbuild": "tsx ./scripts/prepare-publish.ts",
-        "build": "vite build",
+        "build": "tsc && vite build",
         "on-change:build": "chokidar \"./src\" -c \"npm run build\"",
         "on-change:copy": "chokidar \"./dist\" -c \"npm run prepare-demo\"",
         "build-watch": "parallelshell \"npm run on-change:build\" \"npm run on-change:copy\""
