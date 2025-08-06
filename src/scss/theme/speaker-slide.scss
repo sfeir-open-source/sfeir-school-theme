@@ -65,13 +65,19 @@
             color: var(--white);
         }
     }
+}
 
-    /*    --tc-speaker-grid-template-areas: 'title title title title title'
-        'img  rules rules badge-1 badge-4' 'img  rules rules badge-2 badge-5'
-        'info-1 info-2 company badge-3 badge-6'; // Grid template areas
-    --tc-speaker-grid-template-columns: var(--tc-speaker-width-img) 1fr 1fr
-        var(--tc-speaker-max-size-badge) var(--tc-speaker-max-size-badge); // Grid template columns
-    --tc-speaker-grid-template-rows: var(--tc-speaker-h1-line-height)
-        var(--tc-speaker-max-size-badge) var(--tc-speaker-max-size-badge)
-        var(--tc-speaker-max-height-company); // Grid template rows*/
+/**
+* HACK FOR Print
+*/
+
+.reveal .slides .pdf-page section.speaker-slide div.speaker-slide {
+    p:has(.speaker) {
+        z-index: 0;
+    }
+
+    h2,
+    h3 {
+        z-index: 1;
+    }
 }
