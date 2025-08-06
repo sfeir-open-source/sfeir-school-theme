@@ -1,179 +1,29 @@
 /**
 * Globals overrides to change the layout of slides
 */
-.reveal {
-    ol,
-    dl,
-    ul {
-        padding: 0 0 0 1em;
-        line-height: 1.5em;
-        text-align: left;
-        margin: 0;
-    }
-
-    ul {
-        list-style-type: disc;
-    }
-
-    li::marker {
-        color: $sfeir-green; /* Change the color */
-    }
-
-    .slides section.stack {
-        height: 100%;
-    }
-
-    .slides section li p {
-        font-size: 100%;
-    }
-
-    .slides section p {
-        font-size: 1em;
-        &.credits {
-            justify-content: flex-end;
-            position: absolute;
-            bottom: 0;
-            width: 100%;
-            text-align: center;
-            font-size: 0.7em;
-        }
-    }
-
-    .slides section[data-type-show='full'] p {
-        font-size: 100%;
-    }
-
-    .slides section p + p {
-        margin-top: 40px;
-    }
-    blockquote::before {
-        content: '\“';
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 50px;
-        height: 50px;
-    }
-
-    blockquote::after {
-        content: '\”';
-        position: absolute;
-        bottom: -0.5em;
-        right: -0.5em;
-        width: 50px;
-        height: 50px;
-    }
-
-    blockquote {
-        display: block;
-        position: relative;
-        width: 70%;
-        margin: 20px auto;
-        padding: 1em;
-        text-align: left;
-        font-style: italic;
-        background: transparent;
-        color: $dark-grey;
-        box-shadow: 0px 0px 2px rgba(0, 0, 0, 0.2);
-    }
-
-    section.quote-slide {
-        height: 100%;
-
-        blockquote {
-            margin-top: 300px;
-            color: $white;
-            box-shadow: initial;
-        }
-
-        .credits::before {
-            content: '@';
-            color: $sfeir-green;
-        }
-    }
-
-    .backgrounds div.slide-background.quote-slide::before {
-        content: '';
-        position: absolute;
-        background: url('./images/quotes.webp');
-        background-size: contain;
-        filter: brightness(0.25);
-        top: 5px;
-        left: 5px;
-        width: 400px;
-        height: 400px;
-        color: $dark-grey;
-    }
+:root {
+    --tc-quote-color: var(--white);
+    --tc-credits-color: var(--sfeir-green);
+    --tc-quote-bg-color: var(--dark-grey);
+    --tc-heading-color: var(--black);
+    --tc-heading-title-font-size: 1.5em;
+    --tc-heading-sub-title-font-size: 1.15em;
+    --tc-heading-other-headings-font-size: 1em;
+    --tc-font-size: 1em; // TODO à check ??
+    --tc-table-bg: #efefef;
+    --tc-table-header-bg: var(--sfeir-green);
+    --tc-table-header-color: var(--white);
 }
 
-.reveal
-    .slides
-    section:not(.sfeir-specific-slide):not(.stack):not([class*='transition']),
-.reveal
-    .slides
-    section.sfeir-basic-slide:not(.stack):not([class*='transition']),
-.reveal
-    .slides
-    section.sfeir-specific-slide.sfeir-bg-axololt:not(.stack):not(
-        [class*='transition']
-    ) {
-    width: 100%;
-    height: calc(100% - 40px);
-    height: -webkit-calc(100% - 40px);
-    text-align: left;
-    font-size: 1em;
-
-    h1,
-    h2 {
-        text-transform: initial;
-        text-align: left;
-        color: $black;
-        font-size: 1.5em;
-        font-weight: 600;
-    }
-
-    h1,
-    h2,
-    h3 {
-        text-transform: initial;
-        margin-bottom: 130px;
-    }
-
-    h1 ~ h2,
-    h2 ~ h3,
-    h1 ~ h3 {
-        text-transform: initial;
-        margin-bottom: 40px;
-        color: $black;
-        font-size: 1em;
-    }
-
-    h1 + h2,
-    h2 + h3,
-    h1 + h3 {
-        margin-top: -90px;
-        font-size: 1.15em;
-    }
-
-    table:not(.hljs-ln) {
-        width: 100%;
-        background-color: #efefef;
-    }
-    table:not(.hljs-ln),
-    th,
-    tdtable:not(.hljs-ln-line) {
-        border: thin solid white;
-    }
-
-    thead {
-        background-color: $sfeir-green;
-        color: $white;
+.reveal {
+    li::marker {
+        color: var(--sfeir-green); /* Change the color */
     }
 }
 
 .reveal .slides section.sfeir-basic-slide:not(.stack),
 .reveal .slides section.exercice:not(.stack) {
-    color: $dark-grey;
+    color: var(--dark-grey);
 
     h1,
     h2,
@@ -187,18 +37,18 @@
     h2 ~ h3,
     h1 ~ h3 {
         position: relative;
-        color: $black;
+        color: var(--black);
         text-align: left;
     }
 
     &.blue h1:first-of-type:after,
     &.blue h2:first-of-type:after {
-        background-color: $sfeir-blue;
+        background-color: var(--sfeir-blue);
     }
 
     &.green h1:first-of-type:after,
     &.green h2:first-of-type:after {
-        background-color: $sfeir-green;
+        background-color: var(--sfeir-green);
     }
 
     h1 ~ h2:first-of-type:after,
@@ -209,147 +59,37 @@
 }
 
 /**
-* Two Columns slides
-*/
-
-.reveal .slides section.two-column-layout {
-    display: grid;
-    grid-template-columns: 50% 50%;
-    grid-template-rows: 100px auto;
-    grid-column-gap: 50px;
-    grid-template-columns: 1fr 1fr;
-
-    section:first-child {
-        grid-row-start: 1;
-        opacity: 1;
-    }
-    section:nth-child(2) {
-        margin-top: 50px;
-        grid-row-start: 2;
-        grid-column-end: 2;
-        opacity: 1;
-    }
-    section:last-child {
-        margin-top: 50px;
-        grid-row-start: 2;
-        grid-column-start: 2;
-        opacity: 1;
-    }
-}
-
-.reveal .backgrounds div.slide-background.two-column[data-background-hash],
-.reveal .pdf-page div.slide-background.two-column[data-background-hash] {
-    width: 50vw;
-
-    &.data-bg-right {
-        left: 50vw;
-        div.grid-div > div {
-            color: $mainColor;
-        }
-    }
-
-    div.grid-div > div {
-        color: $mainColor;
-    }
-
-    &.mask::after {
-        background-color: $dark-grey-alpha;
-        content: '';
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-    }
-}
-
-.reveal .slides section.two-column[data-background],
-.reveal .slides section.two-column[data-background-image] {
-    &.data-bg-right {
-        div.grid-div > div:nth-child(2) {
-            color: $mainColor;
-            h1,
-            h2,
-            h3 {
-                color: $mainColor;
-            }
-        }
-
-        &.text-dark {
-            div.grid-div > div:nth-child(2) {
-                color: $dark-grey;
-                h1,
-                h2,
-                h3 {
-                    color: $dark-grey;
-                }
-            }
-        }
-    }
-
-    &.data-bg-left {
-        div.grid-div > div:first-child {
-            color: $mainColor;
-            h1,
-            h2,
-            h3 {
-                color: $mainColor;
-            }
-        }
-
-        &.text-dark {
-            div.grid-div > div:first-child {
-                color: $dark-grey;
-                h1,
-                h2,
-                h3 {
-                    color: $dark-grey;
-                }
-            }
-        }
-    }
-}
-
-.reveal .slides section.two-column div.grid-div {
-    display: grid;
-    grid-template-columns: 50% 50%;
-    grid-template-rows: repeat(150px);
-    grid-column-gap: 50px;
-
-    .grid-left {
-        grid-column-start: 1;
-    }
-    .grid-right {
-        grid-column-start: 2;
-    }
-
-    section:first-child {
-        grid-row-start: 1;
-        opacity: 1;
-    }
-    section:nth-child(2) {
-        margin-top: 50px;
-        grid-row-start: 2;
-        grid-column-end: 2;
-        opacity: 1;
-    }
-    section:last-child {
-        margin-top: 50px;
-        grid-row-start: 2;
-        grid-column-start: 2;
-        opacity: 1;
-    }
-}
-
-/**
 * Logo SFEIR 
 **/
-.reveal .backgrounds div.slide-background .slide-background-content:after {
+:root {
+    --url-logo-white: url('./images/logo-school-white-3.webp');
+    --url-logo-dark: url('./images/logo-school-dark-3.webp');
+}
+
+.reveal
+    .backgrounds
+    > div.slide-background.tc-multiple-columns
+    > .slide-background
+    .slide-background-content:after,
+.reveal
+    .backgrounds
+    > div.slide-background.tc-multiple-columns
+    .slide-background-content:after {
+    display: none;
+}
+
+.reveal .backgrounds div.slide-background > .slide-background-content:after,
+.reveal
+    .backgrounds
+    > div.slide-background.tc-multiple-columns
+    > .slide-background:last-of-type
+    .slide-background-content:after {
     content: '';
+    display: block;
     position: absolute;
     bottom: 40px;
     right: 140px;
-    background-image: url('./images/logo-school-dark-3.webp');
+    background-image: var(--url-logo-dark);
     width: 150px;
     height: 40px;
     background-repeat: no-repeat;
@@ -359,39 +99,25 @@
 
 .reveal
     .backgrounds
-    div.slide-background.two-column[data-background-hash].data-bg-left
-    .slide-background-content:after {
-    position: fixed;
-    background-image: url('./images/logo-school-dark-3.webp');
-}
-
+    > div.slide-background.tc-multiple-columns
+    > .slide-background:last-of-type:is(.contrast-opposite),
 .reveal
     .backgrounds
-    div.slide-background.two-column[data-background-hash].data-bg-right
+    > .slide-background
+    > div.slide-background:is(
+        .speaker-slide,
+        .first-slide,
+        .quote-slide,
+        .bg-blur,
+        .with-code-dark
+    ),
+.reveal .backgrounds > div.slide-background[class*='transition'],
+.reveal
+    .backgrounds
+    > .slide-background
+    > div.slide-background[class*='transition'] {
     .slide-background-content:after {
-    background-image: url('./images/logo-school-white-3.webp');
-    z-index: 1;
-}
-
-.reveal .slides ~ .backgrounds {
-    div.slide-background .slide-background-content:after {
-        background-image: url('./images/logo-school-dark-3.webp');
-    }
-
-    div.sfeir-basic-slide .slide-background.bg-blur,
-    div.slide-background.speaker-slide,
-    div.slide-background.first-slide,
-    div.slide-background[class*='transition'],
-    div.slide-background.sfeir-basic-slide[class*='transition'],
-    div.slide-background.sfeir-specific-slide[class*='transition'],
-    div.slide-background.first-slide,
-    div.slide-background.quote-slide,
-    div.slide-background.with-code-dark:not(.sfeir-specific-slide):not(
-            .stack
-        ):not([class*='transition']) {
-        .slide-background-content:after {
-            background-image: url('./images/logo-school-white-3.webp');
-        }
+        background-image: var(--url-logo-white);
     }
 }
 
@@ -409,68 +135,36 @@
 /**
 * Hack for institute mode
 **/
-.reveal .slides[data-theme-slides='institute'] {
+.reveal .slides[data-theme='institute'] {
     li::marker {
-        color: $sfeir-blue; /* Change the color */
+        color: var(--sfeir-blue); /* Change the color */
     }
     section.quote-slide .credits::before {
-        color: $sfeir-blue;
+        color: var(--sfeir-blue);
+    }
+
+    & ~ .backgrounds {
+        --url-logo-dark: url('./images/logo-institute-dark.webp');
+        --url-logo-white: url('./images/logo-institute-white.webp');
     }
 }
 
 .reveal
-    .slides[data-theme-slides='institute']
-    section:not(.sfeir-specific-slide):not(.stack):not([class*='transition']),
+    .slides[data-theme='institute']
+    section:not(.stack):not([class*='transition']),
 .reveal
-    .slides[data-theme-slides='institute']
-    section.sfeir-basic-slide:not(.stack):not([class*='transition']),
-.reveal
-    .slides[data-theme-slides='institute']
-    section.sfeir-specific-slide.sfeir-bg-axololt:not(.stack):not(
-        [class*='transition']
-    ) {
+    .slides[data-theme='institute']
+    section:not(.stack):not([class*='transition']) {
     thead {
-        background-color: $sfeir-blue;
-    }
-}
-
-.reveal .slides[data-theme-slides='institute'] ~ .backgrounds {
-    div.slide-background .slide-background-content:after {
-        background-image: url('./images/logo-institute-dark.webp');
-    }
-    div.slide-background.speaker-slide,
-    div.slide-background.first-slide,
-    div.slide-background[class*='transition'],
-    div.slide-background.sfeir-basic-slide[class*='transition'],
-    div.slide-background.sfeir-specific-slide[class*='transition'],
-    div.slide-background.first-slide,
-    div.slide-background.quote-slide,
-    div.slide-background.with-code-dark:not(.sfeir-specific-slide):not(
-            .stack
-        ):not([class*='transition']) {
-        .slide-background-content:after {
-            background-image: url('./images/logo-institute-white.webp');
-        }
-    }
-
-    div.slide-background.two-column[data-background-hash].data-bg-left
-        .slide-background-content:after {
-        position: fixed;
-        background-image: url('./images/logo-institute-dark.webp');
-    }
-
-    div.slide-background.two-column[data-background-hash].data-bg-right
-        .slide-background-content:after {
-        background-image: url('./images/logo-institute-white.webp');
-        z-index: 1;
+        background-color: var(--sfeir-blue);
     }
 }
 
 /**
 * Hack for conf Mode
 **/
-.reveal .slides[data-theme-slides='conf'] ~ .backgrounds {
-    div.slide-background .slide-background-content:after {
+.reveal .slides[data-theme='conf'] ~ .backgrounds {
+    .slide-background-content:after {
         display: none;
     }
 }
@@ -489,95 +183,57 @@ html.print-pdf {
         left: 5px;
         width: 400px;
         height: 400px;
-        color: $dark-grey;
+        color: var(--dark-grey);
     }
 
     .reveal .slides .pdf-page {
-        div.slide-background .slide-background-content:after {
+        div.slide-background.tc-multiple-columns
+            > .slide-background
+            .slide-background-content:after,
+        div.slide-background.tc-multiple-columns
+            .slide-background-content:after {
+            display: none;
+        }
+
+        div.slide-background > .slide-background-content:after,
+        div.slide-background.tc-multiple-columns
+            > .slide-background:last-of-type
+            .slide-background-content:after {
             content: '';
             position: absolute;
             bottom: 40px;
             right: 140px;
-            background-image: url('./images/logo-school-dark-3.webp');
+            background-image: var(--url-logo-dark);
             width: 150px;
             height: 40px;
             background-repeat: no-repeat;
             background-size: contain;
         }
 
-        div.slide-background.two-column[data-background-hash].data-bg-left {
-            overflow: initial;
-            .slide-background-content:after {
-                right: calc(-50vw + 140px);
-                background-image: url('./images/logo-school-dark-3.webp');
-            }
-        }
-
-        div.slide-background.two-column[data-background-hash].data-bg-right
-            .slide-background-content:after {
-            background-image: url('./images/logo-school-white-3.webp');
-            z-index: 1;
-        }
-
-        div.slide-background.speaker-slide,
-        div.slide-background.first-slide,
+        div.slide-background.tc-multiple-columns
+            > .slide-background:last-of-type:is(.contrast-opposite),
+        .slide-background
+            > div.slide-background:is(
+                .speaker-slide,
+                .first-slide,
+                .quote-slide,
+                .bg-blur,
+                .with-code-dark
+            ),
         div.slide-background[class*='transition'],
-        div.slide-background.sfeir-basic-slide[class*='transition'],
-        div.slide-background.sfeir-specific-slide[class*='transition'],
-        div.slide-background.first-slide,
-        div.slide-background.quote-slide,
-        div.slide-background.with-code-dark:not(.sfeir-specific-slide):not(
-                .stack
-            ):not([class*='transition']) {
+        .slide-background > div.slide-background[class*='transition'] {
             .slide-background-content:after {
-                background-image: url('./images/logo-school-white-3.webp');
+                background-image: var(--url-logo-white);
             }
         }
     }
 
-    .reveal .slides[data-theme-slides='institute'] .pdf-page {
-        div.slide-background .slide-background-content:after {
-            content: '';
-            position: absolute;
-            bottom: 40px;
-            right: 140px;
-            background-image: url('./images/logo-institute-dark.webp');
-            width: 150px;
-            height: 40px;
-            background-repeat: no-repeat;
-            background-size: contain;
-        }
-        div.slide-background.two-column[data-background-hash].data-bg-left {
-            overflow: initial;
-            .slide-background-content:after {
-                right: calc(-50vw + 140px);
-                background-image: url('./images/logo-school-dark-3.webp');
-            }
-        }
-
-        div.slide-background.two-column[data-background-hash].data-bg-right
-            .slide-background-content:after {
-            background-image: url('./images/logo-school-white-3.webp');
-            z-index: 1;
-        }
-
-        div.slide-background.speaker-slide,
-        div.slide-background.first-slide,
-        div.slide-background[class*='transition'],
-        div.slide-background.sfeir-basic-slide[class*='transition'],
-        div.slide-background.sfeir-specific-slide[class*='transition'],
-        div.slide-background.first-slide,
-        div.slide-background.quote-slide,
-        div.slide-background.with-code-dark:not(.sfeir-specific-slide):not(
-                .stack
-            ):not([class*='transition']) {
-            .slide-background-content:after {
-                background-image: url('./images/logo-institute-white.webp');
-            }
-        }
+    .reveal .slides[data-theme='institute'] .pdf-page {
+        --url-logo-dark: url('./images/logo-institute-dark.webp');
+        --url-logo-white: url('./images/logo-institute-white.webp');
     }
 
-    .reveal .slides[data-theme-slides='conf'] .pdf-page {
+    .reveal .slides[data-theme='conf'] .pdf-page {
         div.slide-background .slide-background-content:after {
             display: none;
         }

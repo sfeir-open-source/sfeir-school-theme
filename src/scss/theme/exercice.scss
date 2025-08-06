@@ -1,16 +1,18 @@
 .reveal .slides section {
-    &.sfeir-basic-slide.exercice:not(.sfeir-specific-slide):not(.stack):not([class*='transition']) {
+    &.exercice:not(.sfeir-specific-slide):not(.stack):not(
+            [class*='transition']
+        ) {
         width: calc(100% - 25% - 50px);
         left: calc(25% + 50px);
         height: calc(100% - 200px);
-        color: $dark-grey;
+        color: var(--dark-grey);
         padding-left: 0;
 
         h1,
         h2,
         h3 {
             position: relative;
-            color: $black;
+            color: var(--black);
             font-size: 2em;
         }
 
@@ -26,8 +28,9 @@
             padding: 10px;
             font-weight: 800;
             top: 200px;
-            left: -500px;
-            color: $white;
+            left: -600px;
+            transform: translateY(300px) rotate(-90deg);
+            color: var(--white);
             font-size: 3em;
             &:after {
                 content: initial;
@@ -35,7 +38,7 @@
         }
 
         h3 {
-            color: $sfeir-green;
+            color: var(--sfeir-green);
             font-size: 1.5em;
             text-align: center;
             bottom: -50px;
@@ -56,10 +59,12 @@
 * Hack for institute mode
 */
 .reveal
-    .slides[data-theme-slides='institute']
-    section.sfeir-basic-slide.exercice:not(.sfeir-specific-slide):not(.stack):not([class*='transition'])
+    .slides[data-theme='institute']
+    section.exercice:not(.sfeir-specific-slide):not(.stack):not(
+        [class*='transition']
+    )
     h3 {
-    color: $sfeir-blue;
+    color: var(--sfeir-blue);
 }
 
 /**
@@ -67,7 +72,9 @@
 */
 html.print-pdf {
     .reveal .slides .pdf-page section {
-        &.sfeir-basic-slide.exercice:not(.sfeir-specific-slide):not(.stack):not([class*='transition']) {
+        &.exercice:not(.sfeir-specific-slide):not(.stack):not(
+                [class*='transition']
+            ) {
             width: calc(100% - 25%) !important;
             left: 25% !important;
             padding-left: 0 !important;

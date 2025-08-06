@@ -2,30 +2,15 @@
 * Feathers icons
 */
 
-.reveal .slides section {
-    svg.feather {
-        stroke: var(--icon-color, $sfeir-green);
-        width: var(--icon-size, 24px);
-        height: var(--icon-size, 24px);
-    }
-
-    svg.feather[alt*='small'] {
-        width: 12px;
-        height: 12px;
-    }
-
-    svg.feather[alt*='big'] {
-        width: 48px;
-        height: 48px;
-    }
+:root {
+    --tc-icon-color: var(--sfeir-green);
+    --tc-icone-size: 24px;
 }
 
 /**
 * Hack for mode instute
 */
 
-.reveal .slides[data-theme-slides='institute'] section {
-    svg.feather {
-        stroke: var(--icon-color, $sfeir-blue);
-    }
+.reveal .slides[data-theme='institute'] section {
+    --tc-icon-color: var(--sfeir-blue);
 }

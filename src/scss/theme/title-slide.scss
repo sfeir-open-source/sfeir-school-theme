@@ -4,7 +4,7 @@
 
 .reveal .slides section[data-background].first-slide {
     position: absolute;
-    color: $white;
+    color: var(--white);
     background: transparent;
 
     &::before {
@@ -47,7 +47,7 @@
         margin: auto;
 
         &::before {
-            color: $black;
+            color: var(--black);
             position: absolute;
             content: attr(data-sfeir-techno);
             text-transform: uppercase;
@@ -77,14 +77,19 @@
     }
     div.sfeir-logo[data-sfeir-level='2']:after {
         background: url('./images/star.webp'), url('./images/star.webp');
-        background-position: calc(50% - 35px) 70px, calc(50% + 35px) 70px;
+        background-position:
+            calc(50% - 35px) 70px,
+            calc(50% + 35px) 70px;
         background-repeat: no-repeat;
         background-size: 45px;
     }
     div.sfeir-logo[data-sfeir-level='3']:after {
-        background: url('./images/star.webp'), url('./images/star.webp'),
+        background:
+            url('./images/star.webp'), url('./images/star.webp'),
             url('./images/star.webp');
-        background-position: calc(50% - 35px) 55px, calc(50% + 35px) 55px,
+        background-position:
+            calc(50% - 35px) 55px,
+            calc(50% + 35px) 55px,
             50% 95px;
         background-repeat: no-repeat;
         background-size: 45px;
@@ -94,9 +99,7 @@
 /**
 * Hack for Institute
 */
-.reveal
-    .slides[data-theme-slides='institute']
-    section[data-background].first-slide {
+.reveal .slides[data-theme='institute'] section[data-background].first-slide {
     &::before {
         background: url('./images/logo-institute-white.webp');
         background-repeat: no-repeat;
@@ -110,7 +113,7 @@
 /**
 * Hack for Conf
 */
-.reveal .slides[data-theme-slides='conf'] section[data-background].first-slide {
+.reveal .slides[data-theme='conf'] section[data-background].first-slide {
     &::before {
         display: none;
     }

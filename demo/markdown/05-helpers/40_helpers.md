@@ -8,7 +8,7 @@
 
 ## First way
 
-![center](./assets/images/GDG-Logo-carre.png)
+![](./assets/images/GDG-Logo-carre.png 'center')
 
 ##--##
 
@@ -17,7 +17,7 @@
 # Code to produce / Markdown
 
 ```markdown
-![center](./assets/images/GDG-Logo-carre.png)
+![](./assets/images/GDG-Logo-carre.png 'center')
 ```
 
 <!-- .element: class="big-code" -->
@@ -98,15 +98,15 @@
 
 ## First way
 
-![h-200](./assets/images/GDG-Logo-carre.png)
-![h-250](./assets/images/GDG-Logo-carre.png)
-![h-300](./assets/images/GDG-Logo-carre.png)
-![h-200](./assets/images/GDG-Logo-carre.png)
-![h-350](./assets/images/GDG-Logo-carre.png)
-![h-300](./assets/images/GDG-Logo-carre.png)
-![h-350](./assets/images/GDG-Logo-carre.png)
-![h-200](./assets/images/GDG-Logo-carre.png)
-![h-100](./assets/images/GDG-Logo-carre.png)
+![](./assets/images/GDG-Logo-carre.png 'h-200')
+![](./assets/images/GDG-Logo-carre.png 'h-250')
+![](./assets/images/GDG-Logo-carre.png 'h-300')
+![](./assets/images/GDG-Logo-carre.png 'h-200')
+![](./assets/images/GDG-Logo-carre.png 'h-350')
+![](./assets/images/GDG-Logo-carre.png 'h-300')
+![](./assets/images/GDG-Logo-carre.png 'h-350')
+![](./assets/images/GDG-Logo-carre.png 'h-200')
+![](./assets/images/GDG-Logo-carre.png 'h-100')
 
 ##--##
 
@@ -117,15 +117,15 @@
 ```markdown
 <!-- .slide: class="flex-row" -->
 
-![h-200](./assets/images/GDG-Logo-carre.png)
-![h-250](./assets/images/GDG-Logo-carre.png)
-![h-300](./assets/images/GDG-Logo-carre.png)
-![h-200](./assets/images/GDG-Logo-carre.png)
-![h-350](./assets/images/GDG-Logo-carre.png)
-![h-300](./assets/images/GDG-Logo-carre.png)
-![h-350](./assets/images/GDG-Logo-carre.png)
-![h-200](./assets/images/GDG-Logo-carre.png)
-![h-100](./assets/images/GDG-Logo-carre.png)
+![](./assets/images/GDG-Logo-carre.png 'h-200')
+![](./assets/images/GDG-Logo-carre.png 'h-250')
+![](./assets/images/GDG-Logo-carre.png 'h-300')
+![](./assets/images/GDG-Logo-carre.png 'h-200')
+![](./assets/images/GDG-Logo-carre.png 'h-350')
+![](./assets/images/GDG-Logo-carre.png 'h-300')
+![](./assets/images/GDG-Logo-carre.png 'h-350')
+![](./assets/images/GDG-Logo-carre.png 'h-200')
+![](./assets/images/GDG-Logo-carre.png 'h-100')
 ```
 
 ##==##
@@ -174,7 +174,7 @@
 
 Image (w-500) :
 
-![w-500](./assets/images/350x90.png)
+![](./assets/images/350x90.png 'w-500')
 
 Div background:
 
@@ -187,7 +187,7 @@ Div background:
 # Code to produce / Markdown
 
 ```markdown
-![w-500](./assets/images/350x90.png)
+![](./assets/images/350x90.png 'w-500')
 
 <div style="background:red;" class="w-500 h-200"> w-500 h-200</div>
 ```
@@ -202,7 +202,7 @@ Div background:
 
 Image :
 
-![wm-500](./assets/images/350x90.png)
+![](./assets/images/350x90.png 'wm-500')
 
 Div background:
 
@@ -215,7 +215,7 @@ Div background:
 # Code to produce / Markdown
 
 ```markdown
-![wm-500](./assets/images/350x90.png)
+![](./assets/images/350x90.png 'wm-500')
 
 <div style="background:red; width:600px;" class="wm-500 h-200"> 
     (height:600px) wm-500 h-200</div>
@@ -231,15 +231,27 @@ Div background:
 
 <br><br>
 
-![h-200 mt-430](./assets/images/GDG-Logo-carre.png)
-![h-200 mt-150](./assets/images/GDG-Logo-carre.png)
-![h-200 mt-50](./assets/images/GDG-Logo-carre.png)
-![h-200 mt-10](./assets/images/GDG-Logo-carre.png)
-![h-200](./assets/images/GDG-Logo-carre.png)
-![h-200 mb-10](./assets/images/GDG-Logo-carre.png)
-![h-200 mb-50](./assets/images/GDG-Logo-carre.png)
-![h-200 mb-160](./assets/images/GDG-Logo-carre.png)
-![h-200 mb-430](./assets/images/GDG-Logo-carre.png)
+<div class="flex-row">
+
+![](./assets/images/GDG-Logo-carre.png 'h-200 mt-430')
+
+![](./assets/images/GDG-Logo-carre.png 'h-200 mt-150')
+
+![](./assets/images/GDG-Logo-carre.png 'h-200 mt-50')
+
+![](./assets/images/GDG-Logo-carre.png 'h-200 mt-10')
+
+![](./assets/images/GDG-Logo-carre.png 'h-200')
+
+![](./assets/images/GDG-Logo-carre.png 'h-200 mb-10')
+
+![](./assets/images/GDG-Logo-carre.png 'h-200 mb-50')
+
+![](./assets/images/GDG-Logo-carre.png 'h-200 mb-160')
+
+![](./assets/images/GDG-Logo-carre.png 'h-200 mb-430')
+
+</div>
 
 ##--##
 
@@ -250,15 +262,15 @@ Div background:
 ```markdown
 <!-- .slide: class="flex-row" -->
 
-![h-200 mt-430](./assets/images/GDG-Logo-carre.png)
-![h-200 mt-150](./assets/images/GDG-Logo-carre.png)
-![h-200 mt-50](./assets/images/GDG-Logo-carre.png)
-![h-200 mt-10](./assets/images/GDG-Logo-carre.png)
-![h-200](./assets/images/GDG-Logo-carre.png)
-![h-200 mb-10](./assets/images/GDG-Logo-carre.png)
-![h-200 mb-50](./assets/images/GDG-Logo-carre.png)
-![h-200 mb-160](./assets/images/GDG-Logo-carre.png)
-![h-200 mb-430](./assets/images/GDG-Logo-carre.png)
+![](./assets/images/GDG-Logo-carre.png 'h-200 mt-430')
+![](./assets/images/GDG-Logo-carre.png 'h-200 mt-150')
+![](./assets/images/GDG-Logo-carre.png 'h-200 mt-50')
+![](./assets/images/GDG-Logo-carre.png 'h-200 mt-10')
+![](./assets/images/GDG-Logo-carre.png 'h-200')
+![](./assets/images/GDG-Logo-carre.png 'h-200 mb-10')
+![](./assets/images/GDG-Logo-carre.png 'h-200 mb-50')
+![](./assets/images/GDG-Logo-carre.png 'h-200 mb-160')
+![](./assets/images/GDG-Logo-carre.png 'h-200 mb-430')
 ```
 
 ##==##
@@ -267,7 +279,7 @@ Div background:
 
 ## First way
 
-![full-width](./assets/images/Sfeir-Gris-vector.svg)
+![](./assets/images/Sfeir-Gris-vector.svg 'full-width')
 
 ##--##
 
@@ -276,7 +288,7 @@ Div background:
 # Code to produce / Markdown
 
 ```markdown
-![full-width](./assets/images/Sfeir-Gris-vector.svg)
+![](./assets/images/Sfeir-Gris-vector.svg 'full-width')
 ```
 
 <!-- .element: class="big-code" -->
@@ -335,7 +347,7 @@ Div with height of 600px;
 
 ## First way
 
-![float-left](./assets/images/gde.png)
+![](./assets/images/gde.png 'float-left')
 
 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin nec risus leo. Vestibulum condimentum orci in urna auctor aliquet. Quisque mi erat, placerat non porttitor ut, gravida eu erat. Fusce semper ipsum vel nibh porttitor aliquam. Cras sed porttitor est, id scelerisque odio. Pellentesque sit amet imperdiet ex. Aliquam erat.
 
@@ -346,7 +358,7 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin nec risus leo. Ve
 # Code to produce / Markdown
 
 ```markdown
-![float-left](./assets/images/gde.png)
+![](./assets/images/gde.png 'float-left')
 
 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin nec risus leo. Vestibulum condimentum orci in urna auctor aliquet. Quisque mi erat, placerat non porttitor ut, gravida eu erat. Fusce semper ipsum vel nibh porttitor aliquam. Cras sed porttitor est, id scelerisque odio. Pellentesque sit amet imperdiet ex. Aliquam erat.
 ```
@@ -379,7 +391,7 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin nec risus leo. Ve
 
 ## First way
 
-![float-right](./assets/images/gde.png)
+![](./assets/images/gde.png 'float-right')
 
 [Source of the image](http://www.sfeir.com)
 
@@ -394,7 +406,7 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin nec risus leo. Ve
 # Code to produce / Markdown
 
 ```markdown
-![float-right](./assets/images/gde.png)
+![](./assets/images/gde.png 'float-right')
 
 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin nec risus leo. Vestibulum condimentum orci in urna auctor aliquet. Quisque mi erat, placerat non porttitor ut, gravida eu erat. Fusce semper ipsum vel nibh porttitor aliquam. Cras sed porttitor est, id scelerisque odio. Pellentesque sit amet imperdiet ex. Aliquam erat.
 ```
@@ -439,13 +451,13 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin nec risus leo. Ve
 
 Using markdown image
 
-![sfeir-icons](github) basic icon
+![](github 'tc-icons feather') basic icon
 
-![sfeir-icons small](github) small icon
+![](github 'tc-icons feather tc-small') small icon
 
-![sfeir-icons big](github) big icon
+![](github 'tc-icons feather tc-big') big icon
 
-![sfeir-icons](github)<!-- .element: style="--icon-size:96px; --icon-color:orange;" --> custom icon and custom color
+![](github 'tc-icons feather')<!-- .element: style="--tc-icon-size:96px; --tc-icon-color:orange;" --> custom icon and custom color
 
 Using html
 
@@ -463,12 +475,81 @@ Complete list of icons : https://feathericons.com/
 ## Use Feathers icons
 
 Using markdown image
-![sfeir-icons](github) basic icon
-![sfeir-icons small](github) small icon
-![sfeir-icons big](github) big icon
-![sfeir-icons](github)<!-- .element: style="--icon-size:96px; --icon-color:orange;" --> custom icon and custom color
+![](github 'tc-icons feather') basic icon
+
+![](github 'tc-icons feather tc-small') small icon
+
+![](github 'tc-icons feather tc-big') big icon
+
+![](github 'tc-icons feather')<!-- .element: style="--tc-icon-size:96px; --tc-icon-color:orange;" --> custom icon and custom color
 Using html
 <i data-feather="github" ></i> basic icon
+```
+
+##==##
+
+## Use Material icons
+
+Using markdown image
+
+![](android 'tc-icons material-symbols material-symbols-sharp') basic icon
+
+![](android 'tc-icons material-symbols material-symbols-sharp tc-small') small icon
+
+![](android 'tc-icons material-symbols material-symbols-sharp tc-big') big icon
+
+![](android 'tc-icons material-symbols material-symbols-sharp')<!-- .element: style="--tc-icon-size:96px; --tc-icon-color:orange;" --> custom icon and custom color
+
+##--##
+
+<!-- .slide: class="with-code" -->
+
+# Code to produce / Markdown
+
+```markdown
+## Use Material icons
+
+Using markdown image
+![](android 'tc-icons material-symbols material-symbols-sharp') basic icon
+
+![](android 'tc-icons material-symbols material-symbols-sharp tc-small') small icon
+
+![](android 'tc-icons material-symbols material-symbols-sharp tc-big') big icon
+
+![](android 'tc-icons material-symbols material-symbols-sharp')<!-- .element: style="--tc-icon-size:96px; --tc-icon-color:orange;" --> custom icon and custom color
+```
+
+##==##
+
+## Use Fontawesome icons
+
+Using markdown image
+
+![](fa-github 'tc-icons fa fa-brands') basic icon
+
+![](fa-github 'tc-icons fa fa-brands tc-small') small icon
+
+![](fa-github 'tc-icons fa fa-brands tc-big') big icon
+
+![](fa-github 'tc-icons fa fa-brands')<!-- .element: style="--tc-icon-size:96px; --tc-icon-color:orange;" --> custom icon and custom color
+
+##--##
+
+<!-- .slide: class="with-code" -->
+
+# Code to produce / Markdown
+
+```markdown
+## Use Fontawesome icons
+
+Using markdown image
+![](fa-github 'tc-icons fa fa-brands') basic icon
+
+![](fa-github 'tc-icons fa fa-brands tc-small') small icon
+
+![](fa-github 'tc-icons fa fa-brands tc-big') big icon
+
+![](fa-github 'tc-icons fa fa-brands')<!-- .element: style="--tc-icon-size:96px; --tc-icon-color:orange;" --> custom icon and custom color
 ```
 
 ##==##
@@ -573,3 +654,331 @@ Mode custom and custom color
 
 <!-- .element: class="admonition custom" data-admonition-icon="🕶️ Custombis" style="--admonition-bg-color:#d7be00;" -->
 ```
+
+##==##
+
+# Admonition Blocks - using custom syntax
+
+!!! info
+Some info block
+!!!
+
+!!! custom tc-admonition-type="🕶️ Custombis" tc-admonition-color="#d7be00"
+Custom and custom color
+!!!
+
+##--##
+
+<!-- .slide: class="with-code" -->
+
+# Code to produce / Markdown
+
+```markdown
+# Admonition Blocks - using custom syntax
+
+!!! info
+Some info block
+!!!
+
+!!! custom tc-admonition-type="🕶️ Custombis" tc-admonition-color="#d7be00"
+Custom and custom color
+!!!
+```
+
+##==##
+
+# You can include QR Code to your slides
+
+You can put QR Codes with plain text in it (URL, text, everything that is inline text for this version)
+
+!!! warning
+When you use QR Code, please think at the accessibility of the data you expose ! The QR Code should not be the only way to share your information
+!!!
+
+The qrcode is inline (it's an img). text to produce :
+
+`![](TEXT_TO_ENCODE 'tc-qrcode somesCssClasses')`
+
+##==##
+
+# Some examples
+
+<div class="flex-row">
+
+![](test 'tc-qrcode h-200') some text
+
+![](test 'tc-qrcode h-200 text-above') some text above
+
+![](test 'tc-qrcode h-200 text-below') some text below
+
+![](test 'tc-qrcode h-200 text-left') some text left
+
+</div>
+
+##--##
+
+<!-- .slide: class="with-code" -->
+
+# Code to produce / Markdown
+
+```markdown
+# Some examples
+
+<div class="flex-row">
+![](test 'tc-qrcode h-200') some text
+![](test 'tc-qrcode h-200 text-above') some text above
+![](test 'tc-qrcode h-200 text-below') some text below
+![](test 'tc-qrcode h-200 text-left') some text left
+</div>
+```
+
+<!-- .element: class="big-code" -->
+
+##==##
+
+<!-- .slide: class="tc-multiple-columns" -->
+
+##++##
+
+# Somes meta examples
+
+## VCard
+
+<br><br>
+
+```
+BEGIN:VCARD
+VERSION:3.0
+N:Lastname;Firstname
+FN:Firstname Lastname
+ORG:CompanyName
+TITLE:JobTitle
+ADR:;;123 Sesame St;SomeCity;CA;12345;USA
+TEL;WORK;VOICE:1234567890
+TEL;CELL:Mobile
+TEL;FAX:
+EMAIL;WORK;INTERNET:foo@email.com
+URL:http://website.com
+END:VCARD
+```
+
+##++##
+
+##++##
+
+![](BEGIN:VCARD VERSION:3.0 N:Lastname;Firstname FN:Firstname Lastname ORG:CompanyName TITLE:JobTitle ADR:;;123 Sesame St;SomeCity;CA;12345;USA TEL;WORK;VOICE:1234567890 TEL;CELL:Mobile TEL;FAX: EMAIL;WORK; INTERNET:foo@email.com URL:http://website.com END:VCARD 'tc-qrcode h-500')
+
+<!-- .element: class="full-center" -->
+
+##++##
+
+##==##
+
+<!-- .slide: class="with-code" -->
+
+# Code to produce / Markdown
+
+```markdown
+![](BEGIN:VCARD VERSION:3.0 N:Lastname;Firstname FN:Firstname Lastname ORG:CompanyName TITLE:JobTitle ADR:;;123 Sesame St;SomeCity;CA;12345;USA TEL;WORK;VOICE:1234567890 TEL;CELL:Mobile TEL;FAX: EMAIL;WORK; INTERNET:foo@email.com URL:http://website.com END:VCARD 'tc-qrcode h-500')
+```
+
+<!-- .element: class="big-code" -->
+
+##==##
+
+<!-- .slide: class="tc-multiple-columns" -->
+
+##++##
+
+# Somes meta examples
+
+## V Calendar
+
+<br><br>
+
+```
+BEGIN:VCALENDAR
+VERSION:2.0
+BEGIN:VEVENT
+SUMMARY:Event Title
+DTSTART:Start Date and Time
+DTEND:End Date and Time
+LOCATION:Event Location
+DESCRIPTION:Event Description
+END:VEVENT
+END:VCALENDAR
+```
+
+##++##
+
+##++##
+
+![](BEGIN:VCALENDAR VERSION:2.0 BEGIN:VEVENT SUMMARY:Event Title DTSTART:Start Date and Time DTEND:End Date and Time LOCATION:Event Location DESCRIPTION:Event Description END:VEVENT END:VCALENDAR 'tc-qrcode h-500')
+
+<!-- .element: class="full-center" -->
+
+##++##
+
+##==##
+
+<!-- .slide: class="with-code" -->
+
+# Code to produce / Markdown
+
+```markdown
+![](BEGIN:VCALENDAR VERSION:2.0 BEGIN:VEVENT SUMMARY:Event Title DTSTART:Start Date and Time DTEND:End Date and Time LOCATION:Event Location DESCRIPTION:Event Description END:VEVENT END:VCALENDAR 'tc-qrcode h-500')
+```
+
+<!-- .element: class="big-code" -->
+
+##==##
+
+<!-- .slide: class="tc-multiple-columns" -->
+
+##++##
+
+# Somes meta examples
+
+## Emails
+
+<br><br>
+
+```
+mailto:email_address?subject=email_subject&body=email_body
+```
+
+##++##
+
+##++##
+
+![](mailto:email_address?subject=email_subject&body=email_body 'tc-qrcode h-500')
+
+<!-- .element: class="full-center" -->
+
+##++##
+
+##==##
+
+<!-- .slide: class="with-code" -->
+
+# Code to produce / Markdown
+
+```markdown
+![](mailto:email_address?subject=email_subject&body=email_body 'tc-qrcode h-500')
+```
+
+<!-- .element: class="big-code" -->
+
+##==##
+
+<!-- .slide: class="tc-multiple-columns" -->
+
+##++##
+
+# Somes meta examples
+
+## Geo Format
+
+<br><br>
+
+```
+geo:latitude,longitude,altitude
+```
+
+##++##
+
+##++##
+
+![](geo:latitude,longitude,altitude 'tc-qrcode h-500')
+
+<!-- .element: class="full-center" -->
+
+##++##
+
+##==##
+
+<!-- .slide: class="with-code" -->
+
+# Code to produce / Markdown
+
+```markdown
+![](geo:latitude,longitude,altitude 'tc-qrcode h-500')
+```
+
+<!-- .element: class="big-code" -->
+
+##==##
+
+<!-- .slide: class="tc-multiple-columns" -->
+
+##++##
+
+# Somes meta examples
+
+## SMS
+
+<br><br>
+
+```
+smsto:phone_number:message
+```
+
+##++##
+
+##++##
+
+![](smsto:phone_number:message 'tc-qrcode h-500')
+
+<!-- .element: class="full-center" -->
+
+##++##
+
+##==##
+
+<!-- .slide: class="with-code" -->
+
+# Code to produce / Markdown
+
+```markdown
+![](smsto:phone_number:message 'tc-qrcode h-500')
+```
+
+<!-- .element: class="big-code" -->
+
+##==##
+
+<!-- .slide: class="tc-multiple-columns" -->
+
+##++##
+
+# Somes meta examples
+
+## WIFI
+
+<br><br>
+
+```
+WIFI:T:network_type;S:network_name;P:password;H:hidden;;
+```
+
+##++##
+
+##++##
+
+![](WIFI:T:network_type;S:network_name;P:password;H:hidden;; 'tc-qrcode h-500')
+
+<!-- .element: class="full-center" -->
+
+##++##
+
+##==##
+
+<!-- .slide: class="with-code" -->
+
+# Code to produce / Markdown
+
+```markdown
+![](WIFI:T:network_type;S:network_name;P:password;H:hidden;; 'tc-qrcode h-500')
+```
+
+<!-- .element: class="big-code" -->

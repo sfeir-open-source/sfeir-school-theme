@@ -520,7 +520,7 @@
 
 # Exercice Title
 
-## Lab
+## Exercice
 
 <br>
 
@@ -543,7 +543,7 @@ Additionnal Advice
 ```markdown
 <!-- .slide: class="exercice" -->
 # Exercice Title
-## Lab
+## Exercice
 <br>
 1. First step
 2. Second step
@@ -600,7 +600,7 @@ Additionnal Advice
 
 <br>
 
-![sfeir-icons](pause-circle)<!-- .element: style="--icon-size:300px; --icon-color:var(--light-grey);" -->
+![](pause-circle 'tc-icons feather')<!-- .element: style="--tc-icon-size:300px; --tc-icon-color:var(--light-grey);" -->
 
 <br>
 
@@ -609,7 +609,7 @@ On se retrouve à
 <!-- .element: class="center" -->
 <br>
 
-![sfeir-icons big](clock)<!-- .element: style="--icon-color:var(--light-grey);" --> 10h
+![](clock 'tc-icons feather tc-big')<!-- .element: style="--tc-icon-color:var(--light-grey);" --> 10h
 
 ##--##
 
@@ -620,10 +620,10 @@ On se retrouve à
 <br>
 ### C'est l'heure de la pause
 <br>
-![sfeir-icons](pause-circle)<!-- .element: style="--icon-size:300px; --icon-color:var(--light-grey);" -->
+![](pause-circle 'tc-icons feather')<!-- .element: style="--icon-size:300px; --icon-color:var(--light-grey);" -->
 <br>
 On se retrouve à
 <!-- .element: class="center" -->
 <br>
-![sfeir-icons big](clock)<!-- .element: style="--icon-color:var(--light-grey);" --> 10h
+![](clock 'tc-icons feather tc-big'<!-- .element: style="--icon-color:var(--light-grey);" --> 10h
 ```

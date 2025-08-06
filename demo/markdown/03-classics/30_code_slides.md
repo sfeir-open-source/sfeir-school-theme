@@ -212,146 +212,6 @@
 
 ##==##
 
-<!-- .slide: class="with-code" -->
-
-## Some Code (with monospace font)
-
-```xml
-<?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical"
-    android:layout_width="fill_parent"
-    android:layout_height="fill_parent"
-    >
-    <TextView
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/hello"
-        />
-</LinearLayout>
-```
-
-##--##
-
-<!-- .slide: class="with-code" -->
-
-# Code to produce / Markdown
-
-<!-- prettier-ignore -->
-````markdown
-<!-- .slide: class="with-code" -->
-
-```xml
-<?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical"
-    android:layout_width="fill_parent"
-    android:layout_height="fill_parent"
-    >
-    <TextView
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/hello"
-        />
-</LinearLayout>
-```
-````
-
-##==##
-
-<!-- .slide: class="with-code consolas" -->
-
-## Some Code (with consolas font)
-
-```xml
-<?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical"
-    android:layout_width="fill_parent"
-    android:layout_height="fill_parent"
-    >
-    <TextView
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/hello"
-        />
-</LinearLayout>
-```
-
-##--##
-
-<!-- .slide: class="with-code" -->
-
-# Code to produce / Markdown
-
-<!-- prettier-ignore -->
-````markdown
-<!-- .slide: class="with-code consolas" -->
-
-```xml
-<?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical"
-    android:layout_width="fill_parent"
-    android:layout_height="fill_parent"
-    >
-    <TextView
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/hello"
-        />
-</LinearLayout>
-```
-````
-
-##==##
-
-<!-- .slide: class="with-code inconsolata" -->
-
-## Some Code (with inconsolata font)
-
-```xml
-<?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical"
-    android:layout_width="fill_parent"
-    android:layout_height="fill_parent"
-    >
-    <TextView
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/hello"
-        />
-</LinearLayout>
-```
-
-##--##
-
-<!-- .slide: class="with-code" -->
-
-# Code to produce / Markdown
-
-````markdown
-<!-- .slide: class="with-code inconsolata" -->
-
-```xml
-<?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical"
-    android:layout_width="fill_parent"
-    android:layout_height="fill_parent"
-    >
-    <TextView
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/hello"
-        />
-</LinearLayout>
-```
-````
-
-##==##
-
 <!-- .slide: class="with-code-dark" -->
 
 ## Some Code (with highlighting of individual lines)
@@ -446,7 +306,7 @@
 
 ##==##
 
-<!-- .slide: class="with-code" -->
+<!-- .slide: class="with-code big-code" -->
 
 ## Some BIG Code
 
@@ -454,25 +314,47 @@
 <?xml version="1.0" encoding="utf-8"?>
 ```
 
-<!-- .element: class="big-code" -->
-
 ##--##
 
-<!-- .slide: class="with-code" -->
+<!-- .slide: class="with-code big-code" -->
 
 # Code to produce / Markdown
 
 ````markdown
-<!-- .slide: class="with-code" -->
+<!-- .slide: class="with-code big-code" -->
+
+```xml
+<?xml version="1.0" encoding="utf-8"?>
+```
+````
+
+##==##
+
+<!-- .slide: class="with-code big-code" -->
+
+## Some BIG Code centered
 
 ```xml
 <?xml version="1.0" encoding="utf-8"?>
 ```
 
-<!-- .element: class="big-code" -->
-````
+<!-- .element: class="alone" -->
 
-<!-- .element: class="big-code" -->
+##--##
+
+<!-- .slide: class="with-code big-code" -->
+
+# Code to produce / Markdown
+
+````markdown
+<!-- .slide: class="with-code big-code" -->
+
+```xml
+<?xml version="1.0" encoding="utf-8"?>
+```
+
+<!-- .element: class="alone" -->
+````
 
 ##==##
 
@@ -482,13 +364,13 @@
 
 <br><br>
 
--   attribut `draggable=true` sur l'élément html.
-    <br><br>
--   `ondragstart` event sur l'élément draggable.
-    <br><br>
--   `ondrop` event dans la zone de dépot.
-    <br><br>
--   `ondraghover` event sur la zone de dépot.
+- attribut `draggable=true` sur l'élément html.
+  <br><br>
+- `ondragstart` event sur l'élément draggable.
+  <br><br>
+- `ondrop` event dans la zone de dépot.
+  <br><br>
+- `ondraghover` event sur la zone de dépot.
 
 ##--##
 

@@ -26,63 +26,11 @@ Some Content
 
 ##==##
 
-<!-- .slide: class="blue" -->
-
-## A new slide with blue
-
-Some Content
-
-##--##
-
-<!-- .slide: class="with-code" -->
-
-# Code to produce / Markdown
-
-```markdown
-## ==##
-
-<!-- .slide: class="blue" -->
-
-## A new slide
-
-Some Content
-```
-
-<!-- .element: class="big-code" -->
-
-##==##
-
-<!-- .slide: class="green" -->
-
-## A new slide with green
-
-Some Content
-
-##--##
-
-<!-- .slide: class="with-code" -->
-
-# Code to produce / Markdown
-
-```markdown
-## ==##
-
-<!-- .slide: class="green" -->
-
-## A new slide
-
-Some Content
-```
-
-<!-- .element: class="big-code" -->
-
-##==##
-
 ## Summary
 
--   Item 1
--   Item 2
--   Item 3
+- Item 1
+- Item 2
+- Item 3
 
 ##--##
 
@@ -93,9 +41,9 @@ Some Content
 ```markdown
 ## Summary
 
--   Item 1
--   Item 2
--   Item 3
+- Item 1
+- Item 2
+- Item 3
 ```
 
 <!-- .element: class="big-code" -->
@@ -133,10 +81,10 @@ Some Content
 3. List Item 3
  <!-- .element: class="list-fragment" -->
 
--   Item 1
--   Item 2
--   **Item 3**
-<!-- .element: class="list-fragment" -->
+- Item 1
+- Item 2
+- **Item 3**
+  <!-- .element: class="list-fragment" -->
 
 ##--##
 
@@ -152,10 +100,10 @@ Some Content
 3. List Item 3
  <!-- .element: class="list-fragment" -->
 
--   Item 1
--   Item 2
--   **Item 3**
-<!-- .element: class="list-fragment" -->
+- Item 1
+- Item 2
+- **Item 3**
+  <!-- .element: class="list-fragment" -->
 ```
 
 <!-- .element: class="big-code" -->
@@ -198,17 +146,15 @@ More wonderful content
 
 ### Sub title
 
--   First Line
+- First Line
 
--   Second Line
+- Second Line
 
--   Third Line
+- Third Line
+    - Sub Content
 
-    -   Sub Content
-
-    -   Sub Content
-
-        -   Third Level
+    - Sub Content
+        - Third Level
 
 ##--##
 
@@ -221,17 +167,15 @@ More wonderful content
 
 ### Sub title
 
--   First Line
+- First Line
 
--   Second Line
+- Second Line
 
--   Third Line
+- Third Line
+    - Sub Content
 
-    -   Sub Content
-
-    -   Sub Content
-
-        -   Third Level
+    - Sub Content
+        - Third Level
 ```
 
 <!-- .element: class="big-code" -->
