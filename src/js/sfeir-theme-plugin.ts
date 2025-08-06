@@ -13,25 +13,22 @@ export class SfeirTheme {
 
         // ManageExercices
         this._manageExerciceSlide();
-
-        // Manage Hack to speakers images
-        this._manageSpeakersBorders();
     }
 
     _manageFavIcon() {
         const resolutions = ['16x16', '32x32', '96x96'];
         for (const resolution of resolutions) {
             const link = document.createElement('link');
-            link.type = 'image/x-icon';
-            link.rel = 'shortcut icon';
+            link.type = 'image/png';
+            link.rel = 'icon';
             link.sizes = resolution;
-            link.href = `web_modules/sfeir-school-theme/images/favicon-${resolution}.png`;
+            link.href = `./web_modules/sfeir-school-theme/images/favicon-${resolution}.png`;
             document.getElementsByTagName('head')[0].appendChild(link);
         }
         const link = document.createElement('link');
-        link.type = 'image/x-icon';
+        //link.type = 'image/x-icon';
         link.rel = 'shortcut icon';
-        link.href = `web_modules/sfeir-school-theme/images/favicon.ico`;
+        link.href = `./web_modules/sfeir-school-theme/images/favicon.ico`;
         document.getElementsByTagName('head')[0].appendChild(link);
     }
 
@@ -84,30 +81,12 @@ export class SfeirTheme {
             );
         }
     }
-
-    _manageSpeakersBorders() {
-        /*const imgOfSpeakersToReplaces = [
-            ...document.querySelectorAll(
-                '.reveal .slides section img[alt*=speaker]'
-            ),
-        ];
-        for (let imgToReplace of imgOfSpeakersToReplaces) {
-            let parentOfImg = imgToReplace.parentElement;
-            const divWithBgElement = document.createElement('DIV');
-            divWithBgElement.classList.add('speaker');
-            divWithBgElement.style['background-image'] =
-                `url(${imgToReplace.src})`;
-            parentOfImg.appendChild(divWithBgElement);
-            parentOfImg.removeChild(imgToReplace);
-        }*/
-    }
 }
 
 const RevealSfeirThemePlugin = () => {
     return {
         id: 'sfeir-theme',
         init: () => {
-            console.log('init');
             const sfeirTheme = new SfeirTheme();
             sfeirTheme.postprocess();
         },

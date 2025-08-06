@@ -97,11 +97,25 @@
     z-index: 1;
 }
 
-.reveal .backgrounds > div.slide-background.tc-multiple-columns > .slide-background:last-of-type:is(.contrast-opposite),
-//    div.sfeir-basic-slide .slide-background.bg-blur,
-.reveal .backgrounds > .slide-background > div.slide-background:is(.speaker-slide, .first-slide, .quote-slide, .with-code-dark),
+.reveal
+    .backgrounds
+    > div.slide-background.tc-multiple-columns
+    > .slide-background:last-of-type:is(.contrast-opposite),
+.reveal
+    .backgrounds
+    > .slide-background
+    > div.slide-background:is(
+        .speaker-slide,
+        .first-slide,
+        .quote-slide,
+        .bg-blur,
+        .with-code-dark
+    ),
 .reveal .backgrounds > div.slide-background[class*='transition'],
-.reveal .backgrounds > .slide-background > div.slide-background[class*='transition'] {
+.reveal
+    .backgrounds
+    > .slide-background
+    > div.slide-background[class*='transition'] {
     .slide-background-content:after {
         background-image: var(--url-logo-white);
     }
@@ -121,7 +135,7 @@
 /**
 * Hack for institute mode
 **/
-.reveal .slides[data-theme-slides='institute'] {
+.reveal .slides[data-theme='institute'] {
     li::marker {
         color: var(--sfeir-blue); /* Change the color */
     }
@@ -129,21 +143,18 @@
         color: var(--sfeir-blue);
     }
 
-    --url-logo-dark: url('./images/logo-institute-dark.webp');
-    --url-logo-white: url('./images/logo-institute-white.webp');
+    & ~ .backgrounds {
+        --url-logo-dark: url('./images/logo-institute-dark.webp');
+        --url-logo-white: url('./images/logo-institute-white.webp');
+    }
 }
 
 .reveal
-    .slides[data-theme-slides='institute']
-    section:not(.sfeir-specific-slide):not(.stack):not([class*='transition']),
+    .slides[data-theme='institute']
+    section:not(.stack):not([class*='transition']),
 .reveal
-    .slides[data-theme-slides='institute']
-    section.sfeir-basic-slide:not(.stack):not([class*='transition']),
-.reveal
-    .slides[data-theme-slides='institute']
-    section.sfeir-specific-slide.sfeir-bg-axololt:not(.stack):not(
-        [class*='transition']
-    ) {
+    .slides[data-theme='institute']
+    section:not(.stack):not([class*='transition']) {
     thead {
         background-color: var(--sfeir-blue);
     }
@@ -152,8 +163,8 @@
 /**
 * Hack for conf Mode
 **/
-.reveal .slides[data-theme-slides='conf'] ~ .backgrounds {
-    div.slide-background:last-of-type .slide-background-content:after {
+.reveal .slides[data-theme='conf'] ~ .backgrounds {
+    .slide-background-content:after {
         display: none;
     }
 }
@@ -176,7 +187,18 @@ html.print-pdf {
     }
 
     .reveal .slides .pdf-page {
-        div.slide-background:last-of-type .slide-background-content:after {
+        div.slide-background.tc-multiple-columns
+            > .slide-background
+            .slide-background-content:after,
+        div.slide-background.tc-multiple-columns
+            .slide-background-content:after {
+            display: none;
+        }
+
+        div.slide-background > .slide-background-content:after,
+        div.slide-background.tc-multiple-columns
+            > .slide-background:last-of-type
+            .slide-background-content:after {
             content: '';
             position: absolute;
             bottom: 40px;
@@ -188,29 +210,30 @@ html.print-pdf {
             background-size: contain;
         }
 
-        div.slide-background:last-of-type.contrast-opposite,
-        div.slide-background:last-of-type.speaker-slide,
-        div.slide-background:last-of-type.first-slide,
-        div.slide-background:last-of-type[class*='transition'],
-        div.slide-background:last-of-type.sfeir-basic-slide[class*='transition'],
-        div.slide-background:last-of-type.sfeir-specific-slide[class*='transition'],
-        div.slide-background:last-of-type.first-slide,
-        div.slide-background:last-of-type.quote-slide,
-        div.slide-background:last-of-type.with-code-dark:not(
-                .sfeir-specific-slide
-            ):not(.stack):not([class*='transition']) {
+        div.slide-background.tc-multiple-columns
+            > .slide-background:last-of-type:is(.contrast-opposite),
+        .slide-background
+            > div.slide-background:is(
+                .speaker-slide,
+                .first-slide,
+                .quote-slide,
+                .bg-blur,
+                .with-code-dark
+            ),
+        div.slide-background[class*='transition'],
+        .slide-background > div.slide-background[class*='transition'] {
             .slide-background-content:after {
                 background-image: var(--url-logo-white);
             }
         }
     }
 
-    .reveal .slides[data-theme-slides='institute'] .pdf-page {
+    .reveal .slides[data-theme='institute'] .pdf-page {
         --url-logo-dark: url('./images/logo-institute-dark.webp');
         --url-logo-white: url('./images/logo-institute-white.webp');
     }
 
-    .reveal .slides[data-theme-slides='conf'] .pdf-page {
+    .reveal .slides[data-theme='conf'] .pdf-page {
         div.slide-background .slide-background-content:after {
             display: none;
         }

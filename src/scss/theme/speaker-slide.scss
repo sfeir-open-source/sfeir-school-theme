@@ -2,5 +2,76 @@
     --r-main-color: var(--white);
     --tc-heading-color: var(--white);
     --r-heading-color: var(--white);
-    --r-link-color: var(--white);
+    --tc-speaker-width-img: 300px;
+
+    --tc-speaker-grid-template-areas: 'left title title title title title right'
+        'left img empty company company company right'
+        'left img  empty company company company right'
+        'left img  empty badge-1 badge-2 badge-3 right'
+        'left rules empty badge-1 badge-2 badge-3 right'
+        'left rules empty badge-1 badge-2 badge-3 right'
+        'left info-1 empty badge-4 badge-5 badge-6 right'
+        'left info-2 empty badge-4 badge-5 badge-6 right'; // Grid template areas
+    --tc-speaker-grid-template-columns: 250px
+        calc(var(--tc-speaker-width-img) + 100px) 1fr
+        calc(var(--tc-speaker-max-size-badge) + 50px)
+        calc(var(--tc-speaker-max-size-badge) + 50px)
+        calc(var(--tc-speaker-max-size-badge) + 50px) 150px; // Grid template columns
+    --tc-speaker-grid-template-rows: var(--tc-speaker-h1-line-height)
+        calc(var(--tc-speaker-max-height-company) / 2)
+        calc(var(--tc-speaker-max-height-company) / 2)
+        calc(var(--tc-speaker-max-size-badge) / 3)
+        calc(var(--tc-speaker-max-size-badge) / 3)
+        calc(var(--tc-speaker-max-size-badge) / 3)
+        calc(var(--tc-speaker-max-size-badge) / 2)
+        calc(var(--tc-speaker-max-size-badge) / 2); // Grid template rows
+
+    div.speaker-slide {
+        p:has(.speaker) {
+            justify-self: center;
+            position: relative;
+            z-index: -1;
+            &::before {
+                content: '';
+                position: absolute;
+                background-color: white;
+                left: 50%;
+                top: 0;
+                transform: translate(-50%, -20px);
+                height: calc(
+                    var(--tc-speaker-max-height-company) +
+                        (var(--tc-speaker-max-size-badge) * 2) + 20px
+                );
+                width: calc(var(--tc-speaker-width-img) + 100px + 20px);
+                border-radius: 30px;
+                z-index: -1;
+            }
+        }
+        --tc-speaker-h2-font-size: 1em;
+        --tc-speaker-info-font-size: 0.8em;
+        h3,
+        h2 {
+            text-align: center;
+            color: var(--black);
+            font-weight: 400;
+        }
+
+        :nth-child(1 of h3) {
+            background: linear-gradient(
+                to right,
+                var(--sfeir-blue),
+                var(--sfeir-green)
+            );
+            color: var(--white);
+        }
+    }
+
+    /*    --tc-speaker-grid-template-areas: 'title title title title title'
+        'img  rules rules badge-1 badge-4' 'img  rules rules badge-2 badge-5'
+        'info-1 info-2 company badge-3 badge-6'; // Grid template areas
+    --tc-speaker-grid-template-columns: var(--tc-speaker-width-img) 1fr 1fr
+        var(--tc-speaker-max-size-badge) var(--tc-speaker-max-size-badge); // Grid template columns
+    --tc-speaker-grid-template-rows: var(--tc-speaker-h1-line-height)
+        var(--tc-speaker-max-size-badge) var(--tc-speaker-max-size-badge)
+        var(--tc-speaker-max-height-company); // Grid template rows*/
 }

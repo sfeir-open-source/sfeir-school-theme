@@ -520,7 +520,7 @@
 
 # Exercice Title
 
-## Lab
+## Exercice
 
 <br>
 

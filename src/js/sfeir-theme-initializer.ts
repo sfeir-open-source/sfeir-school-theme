@@ -82,7 +82,5 @@ export const SfeirThemeInitializer = {
             },
             plugins: [RevealSfeirThemePlugin],
         });
-
-        console.log('post init');
     },
 };

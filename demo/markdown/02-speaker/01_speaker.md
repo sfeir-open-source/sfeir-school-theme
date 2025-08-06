@@ -9,7 +9,7 @@
 
 # Hello ! @SFEIR
 
-## Jean-François Garreau
+## Jean-François <b>Garreau</b>
 
 ### CTO Front
 
@@ -41,7 +41,7 @@
 
 # Hello ! @SFEIR
 
-## Jean-François Garreau
+## Jean-François <b>Garreau</b>
 
 ### CTO Front
 
@@ -69,7 +69,7 @@
 
 # Hello ! @SFEIR
 
-## Jean-François Garreau
+## Jean-François <b>Garreau</b>
 
 ### CTO Front
 
@@ -101,7 +101,7 @@
 
 # Hello ! @SFEIR
 
-## Jean-François Garreau
+## Jean-François <b>Garreau</b>
 
 ### CTO Front
 
@@ -129,7 +129,7 @@
 
 # Hello ! @SFEIR
 
-## Jean-François Garreau
+## Jean-François <b>Garreau</b>
 
 ### CTO Front
 
@@ -161,7 +161,7 @@
 
 # Hello ! @SFEIR
 
-## Jean-François Garreau
+## Jean-François <b>Garreau</b>
 
 ### CTO Front
 

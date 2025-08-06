@@ -17611,16 +17611,16 @@ class c9 {
   constructor() {
   }
   postprocess() {
-    this._manageFavIcon(), this._manageFirstSlide(), this._manageExerciceSlide(), this._manageSpeakersBorders();
+    this._manageFavIcon(), this._manageFirstSlide(), this._manageExerciceSlide();
   }
   _manageFavIcon() {
     const t = ["16x16", "32x32", "96x96"];
     for (const c of t) {
       const n = document.createElement("link");
-      n.type = "image/x-icon", n.rel = "shortcut icon", n.sizes = c, n.href = `web_modules/sfeir-school-theme/images/favicon-${c}.png`, document.getElementsByTagName("head")[0].appendChild(n);
+      n.type = "image/png", n.rel = "icon", n.sizes = c, n.href = `./web_modules/sfeir-school-theme/images/favicon-${c}.png`, document.getElementsByTagName("head")[0].appendChild(n);
     }
     const a = document.createElement("link");
-    a.type = "image/x-icon", a.rel = "shortcut icon", a.href = "web_modules/sfeir-school-theme/images/favicon.ico", document.getElementsByTagName("head")[0].appendChild(a);
+    a.rel = "shortcut icon", a.href = "./web_modules/sfeir-school-theme/images/favicon.ico", document.getElementsByTagName("head")[0].appendChild(a);
   }
   _manageFirstSlide() {
     const t = [
@@ -17651,13 +17651,11 @@ class c9 {
       );
     }
   }
-  _manageSpeakersBorders() {
-  }
 }
 const n9 = () => ({
   id: "sfeir-theme",
   init: () => {
-    console.log("init"), new c9().postprocess();
+    new c9().postprocess();
   }
 }), l9 = {
   /**
@@ -17712,7 +17710,7 @@ const n9 = () => ({
         defaultTheme: "school"
       },
       plugins: [n9]
-    }), console.log("post init");
+    });
   }
 };
 export {

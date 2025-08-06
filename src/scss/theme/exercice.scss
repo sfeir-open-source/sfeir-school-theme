@@ -28,7 +28,8 @@
             padding: 10px;
             font-weight: 800;
             top: 200px;
-            left: -500px;
+            left: -600px;
+            transform: translateY(300px) rotate(-90deg);
             color: var(--white);
             font-size: 3em;
             &:after {
@@ -58,7 +59,7 @@
 * Hack for institute mode
 */
 .reveal
-    .slides[data-theme-slides='institute']
+    .slides[data-theme='institute']
     section.exercice:not(.sfeir-specific-slide):not(.stack):not(
         [class*='transition']
     )

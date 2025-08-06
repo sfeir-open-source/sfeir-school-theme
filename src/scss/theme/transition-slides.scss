@@ -68,14 +68,14 @@
 /**
 * Hack for institute mode
 **/
-.reveal .slides[data-theme-slides='institute'] section[class*='transition'],
+.reveal .slides[data-theme='institute'] section[class*='transition'],
 .reveal
-    .slides[data-theme-slides='institute']
+    .slides[data-theme='institute']
     section.sfeir-basic-slide[class*='transition'],
 .reveal
-    .slides[data-theme-slides='institute']
+    .slides[data-theme='institute']
     section.sfeir-specific-slide[class*='transition'],
-.reveal .slides[data-theme-slides='institute'] section.first-slide {
+.reveal .slides[data-theme='institute'] section.first-slide {
     h1:before {
         --tc-transition-line-color: var(--sfeir-blue);
     }
