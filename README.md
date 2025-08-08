@@ -38,7 +38,7 @@ In your index.html add the following lines:
     <link
         rel="stylesheet"
         type="text/css"
-        href="./web_modules/sfeir-school-theme/sfeir-school-theme.css"
+        href="./web_modules/sfeir-school-theme/dist/sfeir-school-theme.css"
         id="theme" />
 </head>
 <body>
@@ -53,7 +53,7 @@ In your index.html add the following lines:
 and a basic `slides.js`:
 
 ```JavaScript
-import { SfeirThemeInitializer } from "../web_modules/sfeir-school-theme/sfeir-school-theme.mjs";
+import { SfeirThemeInitializer } from "../web_modules/sfeir-school-theme/dist/sfeir-school-theme.mjs";
 
 // One method per module
 function schoolSlides(typeShow) {
@@ -88,7 +88,7 @@ Enjoy!
 
 This theme use target for [RevealJS](https://revealjs.com/#/) so all you can do with RevealJS is available with theme.
 
-You can still use RevealJS API by importing `Reveal` object in `import { Reveal } from "../web_modules/sfeir-school-theme/sfeir-school-theme.mjs";`
+You can still use RevealJS API by importing `Reveal` object in `import { Reveal } from "../web_modules/sfeir-school-theme/dist/sfeir-school-theme.mjs";`
 
 ## Features availables:
 
@@ -275,15 +275,15 @@ Simply add a query parameter in the URL `data-lang` with the wanted langage afte
 
 ### @jefbinomed
 
-![](./assets/images/jf.jpg) <!-- .element: class="speaker" -->
+![](./assets/images/jf.jpg 'speaker')
 
-![](./assets/images/logo-sfeir-blanc.png) <!-- .element: class="company" -->
+![](./assets/images/logo-sfeir-blanc.png 'company')
 
-![](./assets/images/gde.png) <!-- .element: class="badge" -->
+![](./assets/images/gde.png 'badge')
 
-![](./assets/images/GDG-Logo-carre.png) <!-- .element: class="badge" -->
+![](./assets/images/GDG-Logo-carre.png 'badge')
 
-![](./assets/images/mts.png) <!-- .element: class="badge" -->
+![](./assets/images/mts.png 'badge')
 
 </div>
 ```
@@ -429,7 +429,7 @@ There is a way to show content in a blur area for introducing pause in your trai
 
 <br>
 
-![sfeir-icons](pause-circle)<!-- .element: style="--icon-size:300px; --icon-color:var(--light-grey);" -->
+![](pause-circle 'tc-icons feather')<!-- .element: style="--tc-icon-size:300px; --tc-icon-color:var(--light-grey);" -->
 
 <br>
 
@@ -438,7 +438,7 @@ On se retrouve à
 <!-- .element: class="center" -->
 <br>
 
-![sfeir-icons big](clock)<!-- .element: style="--icon-color:var(--light-grey);" --> 10h
+![](clock 'tc-icons feather tc-big')<!-- .element: style="--tc-icon-color:var(--light-grey);" --> 10h
 ```
 
 ![](./docs/images/blur-slide.png)

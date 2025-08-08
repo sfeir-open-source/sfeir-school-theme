@@ -17,15 +17,15 @@
 
 ### @jefbinomed
 
-![](./assets/images/jf.jpg) <!-- .element: class="speaker" -->
+![](./assets/images/jf.jpg 'speaker')
 
-![](./assets/images/logo-sfeir-blanc.png) <!-- .element: class="company" -->
+![](./assets/images/logo-sfeir-blanc.png 'company')
 
-![](./assets/images/gde.png) <!-- .element: class="badge" -->
+![](./assets/images/gde.png 'badge')
 
-![](./assets/images/GDG-Logo-carre.png) <!-- .element: class="badge" -->
+![](./assets/images/GDG-Logo-carre.png 'badge')
 
-![](./assets/images/mts.png) <!-- .element: class="badge" -->
+![](./assets/images/mts.png 'badge')
 
 </div>
 
@@ -49,15 +49,15 @@
 
 ### @jefbinomed
 
-![](./assets/images/jf.jpg) <!-- .element: class="speaker" -->
+![](./assets/images/jf.jpg 'speaker')
 
-![](./assets/images/logo-sfeir-blanc.png) <!-- .element: class="company" -->
+![](./assets/images/logo-sfeir-blanc.png 'company')
 
-![](./assets/images/gde.png) <!-- .element: class="badge" -->
+![](./assets/images/gde.png 'badge')
 
-![](./assets/images/GDG-Logo-carre.png) <!-- .element: class="badge" -->
+![](./assets/images/GDG-Logo-carre.png 'badge')
 
-![](./assets/images/mts.png) <!-- .element: class="badge" -->
+![](./assets/images/mts.png 'badge')
 
 </div>
 ```

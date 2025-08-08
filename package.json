@@ -1,6 +1,6 @@
 {
     "name": "sfeir-school-theme",
-    "version": "4.0.0-rc-8",
+    "version": "4.0.0-rc-9",
     "description": "Sfeir School Theme for RevealJS",
     "files": [
         "dist"
@@ -54,7 +54,7 @@
     },
     "homepage": "https://github.com/sfeir-open-source/sfeir-school-theme#readme",
     "dependencies": {
-        "@talk-control/talk-control-revealjs-extensions": "^1.0.0-rc-1",
+        "@talk-control/talk-control-revealjs-extensions": "^1.0.0-rc-2",
         "lit-html": "^3.1.4"
     },
     "devDependencies": {
