@@ -22,13 +22,13 @@ export class SfeirTheme {
             link.type = 'image/png';
             link.rel = 'icon';
             link.sizes = resolution;
-            link.href = `./web_modules/sfeir-school-theme/images/favicon-${resolution}.png`;
+            link.href = `./web_modules/sfeir-school-theme/dist/images/favicon-${resolution}.png`;
             document.getElementsByTagName('head')[0].appendChild(link);
         }
         const link = document.createElement('link');
         //link.type = 'image/x-icon';
         link.rel = 'shortcut icon';
-        link.href = `./web_modules/sfeir-school-theme/images/favicon.ico`;
+        link.href = `./web_modules/sfeir-school-theme/dist/images/favicon.ico`;
         document.getElementsByTagName('head')[0].appendChild(link);
     }
 
@@ -41,7 +41,7 @@ export class SfeirTheme {
             imgLogo.classList.add('sfeir-logo');
             // eslint-disable-next-line @typescript-eslint/no-explicit-any
             (imgLogo.style as any)['background-image'] =
-                `url(web_modules/sfeir-school-theme/images/logo_empty.webp)`;
+                `url(web_modules/sfeir-school-theme/dist/images/logo_empty.webp)`;
 
             const level = firstSlideSection.hasAttribute('sfeir-level')
                 ? +firstSlideSection.getAttribute('sfeir-level')!
