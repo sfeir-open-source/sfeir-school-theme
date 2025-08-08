@@ -1,12 +1,21 @@
 import { PackageJson } from 'type-fest';
 import { buildPackageJson } from './utils/package-json.utils';
 import packageJson from '../package.json';
+import shelljs from 'shelljs';
 import viteConfig from '../vite.config';
 
 const DIST = viteConfig.build!.outDir!;
 
 buildPackageJson(packageJson as PackageJson, DIST);
 
+copyDocs();
+
+function copyDocs() {
+    shelljs.cp('-f', './README.md', './dist');
+    shelljs.rm('-rf', './dist/docs');
+    shelljs.mkdir('-p', './dist/docs');
+    shelljs.cp('-rf', './docs', './dist/docs');
+}
 /*const shelljs = require('shelljs');
 const fs = require('node:fs');
 
