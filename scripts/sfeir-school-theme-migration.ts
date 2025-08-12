@@ -9,9 +9,9 @@ import path from 'path';
 // Règles V3 -> V4 avec le bon ordre
 const V3_TO_V4_RULES = {
     MARKDOWN: [
-        // 1. Icônes (plus spécifique)
+        // 1. Icônes avec style (plus spécifique en premier)
         {
-            from: /(!\[sfeir-icons([^\\]*)\]\(([^)]+)\))<!-- \.element: style=\"([^\"]*)\" -->/g,
+            from: /(!\[sfeir-icons([^\]]*)\]\(([^)]+)\))<!-- \.element: style=\"([^\"]*)\" -->/g,
             to: (
                 _match: any,
                 _markdownImage: any,
@@ -27,13 +27,14 @@ const V3_TO_V4_RULES = {
                 const newStyleContent = styleContent
                     .replace(/--icon-size/g, '--tc-icon-size')
                     .replace(/--icon-color/g, '--tc-icon-color');
-                const newStyleComment = `<!-- .element: style=\" ${newStyleContent}\" -->`;
+                const newStyleComment = `<!-- .element: style="${newStyleContent}" -->`;
 
                 return newImage + newStyleComment;
             },
         },
+        // 2. Icônes sans style
         {
-            from: /!\[sfeir-icons([^\\]*)\]\(([^)]+)\)(?!<!-- \.element: style=)/g,
+            from: /!\[sfeir-icons([^\]]*)\]\(([^)]+)\)(?!<!-- \.element: style=)/g,
             to: (_match: any, modifiers: any, iconName: any) => {
                 let classes = 'tc-icons feather';
                 if (modifiers.includes('small')) classes += ' tc-small';
@@ -41,12 +42,12 @@ const V3_TO_V4_RULES = {
                 return `![](${iconName} '${classes}')`;
             },
         },
-        // 2. Images (plus générique)
+        // 3. Images avec classes h- ou w- (plus générique)
         {
             from: /!\[([^\]]*?(?:h-|w-)[^\]]*)\]\(([^)]+)\)/g,
             to: "![]($2 '$1')",
         },
-        // 3. Autres règles
+        // 4. Autres règles
         { from: /data-background-image-light/g, to: 'data-background-light' },
         { from: /data-background-image-dark/g, to: 'data-background-dark' },
     ],
@@ -58,7 +59,7 @@ const V3_TO_V4_RULES = {
     ],
     JAVASCRIPT: [
         {
-            from: /(from\s+['"])([^'"\/]*\/sfeir-school-theme)\/sfeir-school-theme\.mjs(['"])/g,
+            from: /(['"])([^'"]*\/sfeir-school-theme)\/sfeir-school-theme\.mjs(['"])/g,
             to: '$1$2/dist/sfeir-school-theme.mjs$3',
         },
     ],
@@ -180,6 +181,9 @@ function migrateFile(filePath: string) {
         const originalContent = content;
         const extension = path.extname(filePath);
 
+        console.log(
+            `Migrating file :  ${filePath} with extension ${extension}`
+        );
         if (extension === '.md') {
             content = migrateSpeakerSlides(content); // Avant les autres règles
             content = applyRules(content, V3_TO_V4_RULES.MARKDOWN);
@@ -187,6 +191,7 @@ function migrateFile(filePath: string) {
         } else if (extension === '.html') {
             content = applyRules(content, V3_TO_V4_RULES.HTML);
         } else if (extension === '.js') {
+            console.log('try to migrate file JS : ', filePath);
             content = applyRules(content, V3_TO_V4_RULES.JAVASCRIPT);
         }
 
@@ -204,7 +209,10 @@ function findFiles(dir: string, filter: RegExp): string[] {
     const list = fs.readdirSync(dir);
     list.forEach(function (file: any) {
         const fullPath = path.join(dir, file);
-        if (path.basename(fullPath) === 'web_modules') {
+        if (
+            path.basename(fullPath) === 'web_modules' ||
+            path.basename(fullPath) === 'node_modules'
+        ) {
             return; // Skip web_modules directory
         }
         const stat = fs.statSync(fullPath);
