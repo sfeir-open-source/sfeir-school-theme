@@ -126,7 +126,7 @@ function migrateMultiColumnSlides(content: string): string {
             const processedColumns = columns
                 .map((col: any) => col.trim())
                 .filter((col: any) => col.length > 0)
-                .map((col: any, index: number) => {
+                .map((col: any) => {
                     // Vérifier si la colonne contient un tag de slide
                     const slideMatch = col.match(
                         /<!--\s*\.slide:\s*([^>]*?)\s*-->/
@@ -186,6 +186,15 @@ function migrateSpeakerSlides(content: string): string {
                 /(first-badge|second-badge|third-badge)/g,
                 'badge'
             );
+
+            // Ajouter des lignes vides après chaque image (sauf si elle est déjà suivie d'une ligne vide)
+            processedContent = processedContent.replace(
+                /!\[[^\]]*\]\([^)]+\s+'[^']+'\)(?!\n\s*\n)/g,
+                (match: any) => match + '\n'
+            );
+
+            // Nettoyer les lignes vides multiples (plus de 2 consécutives)
+            processedContent = processedContent.replace(/\n{3,}/g, '\n\n');
 
             // Wrap in a div
             const newContent = `<div class="speaker-slide">\n\n${processedContent.trim()}\n\n</div>`;
