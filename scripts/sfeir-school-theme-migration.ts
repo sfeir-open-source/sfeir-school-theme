@@ -47,6 +47,11 @@ const V3_TO_V4_RULES = {
             from: /!\[([^\]]*?(?:h-|w-)[^\]]*)\]\(([^)]+)\)/g,
             to: "![]($2 '$1')",
         },
+        // 4. Images avec autres classes CSS (float-left, float-right, etc.)
+        {
+            from: /!\[([^\]]+)\]\(([^)]+)\)(?!<!-- \.element:)/g,
+            to: "![]($2 '$1')",
+        },
         // 4. Autres règles
         { from: /data-background-image-light/g, to: 'data-background-light' },
         { from: /data-background-image-dark/g, to: 'data-background-dark' },
