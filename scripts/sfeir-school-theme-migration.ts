@@ -89,14 +89,14 @@ function applyRules(
 function migrateMultiColumnSlides(content: string): string {
     // Regex pour capturer les slides avec class="two-column" ou "two-column-layout"
     const slideRegex =
-        /(<!-- \.slide: class=\"[^\"]*(?:two-column-layout|two-column)[^\"]*\"[^>]*-->)([\s\S]*?)(?=<!-- \.slide:|##==##|$)/g;
+        /(<!-- \.slide: class=\"[^\"]*(?:two-column-layout|two-column)[^\"]*\"[^>]*-->)([\s\S]*?)(?=##==##|$)/g;
 
     return content.replace(
         slideRegex,
         (_fullMatch: any, slideTag: any, slideContent: any) => {
             console.log('Migrating a multi-column slide...');
 
-            // Remplacer la classe dans le tag de slide - CORRECTION: tc-multiple-columns avec 's'
+            // Remplacer la classe dans le tag de slide
             const newSlideTag = slideTag.replace(
                 /(?:two-column-layout|two-column)/g,
                 'tc-multiple-columns'
@@ -123,14 +123,29 @@ function migrateMultiColumnSlides(content: string): string {
             const columns = contentWithoutNotes.split(/##--##/);
 
             // Traiter chaque colonne
-            const newColumnsContent = columns
+            const processedColumns = columns
                 .map((col: any) => col.trim())
                 .filter((col: any) => col.length > 0)
-                .map((col: any) => `##++##\n${col}\n##++##`)
-                .join('\n\n');
+                .map((col: any, index: number) => {
+                    // Vérifier si la colonne contient un tag de slide
+                    const slideMatch = col.match(
+                        /<!--\s*\.slide:\s*([^>]*?)\s*-->/
+                    );
+
+                    if (slideMatch) {
+                        // Extraire les attributs de la slide
+                        const slideAttributes = slideMatch[1].trim();
+
+                        // Retourner juste les attributs dans le ##++##
+                        return `##++## ${slideAttributes}\n##++##`;
+                    } else {
+                        // Si c'est du contenu normal, on l'entoure de ##++##
+                        return `##++##\n${col}\n##++##`;
+                    }
+                });
 
             // Reconstruire le slide
-            let result = newSlideTag + '\n\n' + newColumnsContent;
+            let result = newSlideTag + '\n\n' + processedColumns.join('\n\n');
 
             // Ajouter les Notes à la fin si elles existent
             if (notes) {
@@ -169,11 +184,11 @@ function migrateSpeakerSlides(content: string): string {
             // Remove 'first-badge', 'second-badge', 'third-badge' (au cas où)
             processedContent = processedContent.replace(
                 /(first-badge|second-badge|third-badge)/g,
-                ''
+                'badge'
             );
 
             // Wrap in a div
-            const newContent = `<div class="speaker-slide">\n${processedContent.trim()}\n</div>`;
+            const newContent = `<div class="speaker-slide">\n\n${processedContent.trim()}\n\n</div>`;
 
             return `${slideTag}\n\n${newContent}\n\n`;
         }
