@@ -240,6 +240,32 @@ function migrateSpeakerSlides(content: string): string {
     );
 }
 
+function processFullCenterImages(content: string): string {
+    // Regex pour capturer les images avec 'full-center' dans les classes
+    const fullCenterImageRegex =
+        /!\[\]\(([^)]+)\s+'([^']*\bfull-center\b[^']*)'\)/g;
+
+    return content.replace(fullCenterImageRegex, (_, src, classes) => {
+        // Enlever 'full-center' des classes
+        const cleanedClasses = classes
+            .split(/\s+/)
+            .filter((cls: string) => cls !== 'full-center')
+            .join(' ')
+            .trim();
+
+        // Construire la nouvelle image
+        let newImage;
+        if (cleanedClasses) {
+            newImage = `![](${src} '${cleanedClasses}')`;
+        } else {
+            newImage = `![](${src})`;
+        }
+
+        // Ajouter le commentaire avec la classe full-center
+        return `${newImage} \n<!-- .element: class="full-center" -->`;
+    });
+}
+
 function migrateFile(filePath: string) {
     try {
         let content = fs.readFileSync(filePath, 'utf-8');
@@ -253,6 +279,7 @@ function migrateFile(filePath: string) {
             content = migrateSpeakerSlides(content); // Avant les autres règles
             content = migrateMultiColumnSlides(content);
             content = applyRules(content, V3_TO_V4_RULES.MARKDOWN);
+            content = processFullCenterImages(content);
         } else if (extension === '.html') {
             content = applyRules(content, V3_TO_V4_RULES.HTML);
         } else if (extension === '.js') {
