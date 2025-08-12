@@ -87,74 +87,110 @@ function applyRules(
 }
 
 function migrateMultiColumnSlides(content: string): string {
-    // Regex pour capturer les slides avec class="two-column" ou "two-column-layout"
-    const slideRegex =
-        /(<!-- \.slide: class=\"[^\"]*(?:two-column-layout|two-column)[^\"]*\"[^>]*-->)([\s\S]*?)(?=##==##|$)/g;
+    // Diviser le contenu en sections délimitées par ##==##
+    const sections = content.split(/(##==##)/);
 
-    return content.replace(
-        slideRegex,
-        (_fullMatch: any, slideTag: any, slideContent: any) => {
-            console.log('Migrating a multi-column slide...');
-
-            // Remplacer la classe dans le tag de slide
-            const newSlideTag = slideTag.replace(
-                /(?:two-column-layout|two-column)/g,
-                'tc-multiple-columns'
-            );
-
-            // Séparer les Notes du contenu principal
-            const notesMatch = slideContent.match(
-                /(Notes:\s*[\s\S]*?)(?=##--##|<!-- \.slide:|##==##|$)/
-            );
-            const notes = notesMatch ? notesMatch[1].trim() : '';
-
-            // Enlever les Notes du contenu pour traiter les colonnes
-            let contentWithoutNotes = slideContent;
-            if (notes) {
-                contentWithoutNotes = slideContent
-                    .replace(
-                        /(Notes:\s*[\s\S]*?)(?=##--##|<!-- \.slide:|##==##|$)/,
-                        ''
-                    )
-                    .trim();
-            }
-
-            // Diviser le contenu en colonnes en utilisant ##--##
-            const columns = contentWithoutNotes.split(/##--##/);
-
-            // Traiter chaque colonne
-            const processedColumns = columns
-                .map((col: any) => col.trim())
-                .filter((col: any) => col.length > 0)
-                .map((col: any) => {
-                    // Vérifier si la colonne contient un tag de slide
-                    const slideMatch = col.match(
-                        /<!--\s*\.slide:\s*([^>]*?)\s*-->/
-                    );
-
-                    if (slideMatch) {
-                        // Extraire les attributs de la slide
-                        const slideAttributes = slideMatch[1].trim();
-
-                        // Retourner juste les attributs dans le ##++##
-                        return `##++## ${slideAttributes}\n##++##`;
-                    } else {
-                        // Si c'est du contenu normal, on l'entoure de ##++##
-                        return `##++##\n${col}\n##++##`;
-                    }
-                });
-
-            // Reconstruire le slide
-            let result = newSlideTag + '\n\n' + processedColumns.join('\n\n');
-
-            // Ajouter les Notes à la fin si elles existent
-            if (notes) {
-                result += '\n\n' + notes;
-            }
-
-            return result + '\n\n';
+    const processedSections = sections.map((section) => {
+        // Ne pas traiter les séparateurs ##==##
+        if (section === '##==##') {
+            return section;
         }
-    );
+
+        // Chercher s'il y a un slide multi-colonnes dans cette section
+        const multiColumnMatch = section.match(
+            /([\s\S]*?)(<!-- \.slide: class=\"[^\"]*(?:two-column-layout|two-column)[^\"]*\"[^>]*-->)([\s\S]*)/
+        );
+
+        if (!multiColumnMatch) {
+            return section; // Pas de slide multi-colonnes, on retourne tel quel
+        }
+
+        console.log('Migrating a multi-column slide...');
+
+        const [, contentBefore, slideTag, slideContent] = multiColumnMatch;
+
+        // Nettoyer le contenu avant
+        const cleanContentBefore = contentBefore.trim();
+
+        // Remplacer la classe dans le tag de slide
+        const newSlideTag = slideTag.replace(
+            /(?:two-column-layout|two-column)/g,
+            'tc-multiple-columns'
+        );
+
+        // Séparer les Notes du contenu principal avec la regex robuste
+        const notesMatch = slideContent.match(
+            /(Notes:\s*[\s\S]*?)(?=##--##|##==##|$)/
+        );
+        const notes = notesMatch ? notesMatch[1].trim() : '';
+
+        // Enlever les Notes du contenu pour traiter les colonnes
+        let contentWithoutNotes = slideContent;
+        if (notes) {
+            contentWithoutNotes = slideContent
+                .replace(/(Notes:\s*[\s\S]*?)(?=##--##|##==##|$)/, '')
+                .trim();
+        }
+
+        // Diviser le contenu en colonnes en utilisant ##--##
+        const columns = contentWithoutNotes.split(/##--##/);
+
+        // Traiter chaque colonne
+        const processedColumns = columns
+            .map((col: any, colIndex: number) => {
+                col = col.trim();
+
+                // Pour la première colonne, ajouter le contenu qui était avant le slide tag
+                if (colIndex === 0 && cleanContentBefore) {
+                    col = cleanContentBefore + '\n\n' + col;
+                }
+
+                // Vérifier si la colonne contient un tag de slide
+                const slideMatch = col.match(
+                    /<!--\s*\.slide:\s*([^>]*?)\s*-->/
+                );
+
+                if (slideMatch) {
+                    // Extraire les attributs de la slide
+                    const slideAttributes = slideMatch[1].trim();
+
+                    // Extraire le contenu après le tag de slide
+                    const contentAfterSlideTag = col
+                        .replace(/<!--\s*\.slide:\s*[^>]*?\s*-->/, '')
+                        .trim();
+
+                    if (contentAfterSlideTag) {
+                        return `##++## ${slideAttributes}\n\n${contentAfterSlideTag}`;
+                    } else {
+                        return `##++## ${slideAttributes}`;
+                    }
+                } else {
+                    // Si c'est du contenu normal, on l'entoure de ##++##
+                    if (col.length > 0) {
+                        return `##++##\n\n${col}`;
+                    }
+                    return '##++##\n';
+                }
+            })
+            .filter((col: any) => col.length > 0);
+
+        // Reconstruire le slide
+        let result = newSlideTag + '\n\n' + processedColumns.join('\n##++##\n');
+
+        // Ajouter ##++## à la fin
+        if (!result.endsWith('##++##')) {
+            result += '\n##++##\n';
+        }
+
+        // Ajouter les Notes à la fin si elles existent
+        if (notes) {
+            result += '\n\n' + notes;
+        }
+
+        return result;
+    });
+
+    return processedSections.join('\n');
 }
 
 function migrateSpeakerSlides(content: string): string {
@@ -215,8 +251,8 @@ function migrateFile(filePath: string) {
         );
         if (extension === '.md') {
             content = migrateSpeakerSlides(content); // Avant les autres règles
-            content = applyRules(content, V3_TO_V4_RULES.MARKDOWN);
             content = migrateMultiColumnSlides(content);
+            content = applyRules(content, V3_TO_V4_RULES.MARKDOWN);
         } else if (extension === '.html') {
             content = applyRules(content, V3_TO_V4_RULES.HTML);
         } else if (extension === '.js') {
