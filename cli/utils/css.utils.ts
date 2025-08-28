@@ -2,7 +2,7 @@ import { docsFilePath } from "./path.utils";
 import fs from "node:fs";
 
 const THEME_CSS_FILES = [
-    "web_modules/sfeir-school-theme/sfeir-school-theme.css",
+    "web_modules/sfeir-school-theme/dist/sfeir-school-theme.css",
     "css/slides.css",
 ];
 
@@ -20,15 +20,35 @@ export function getAllCssContent(rootDir: string, extraCssFiles: string[]) {
 }
 
 function getCssFile(rootDir: string, cssPath: string) {
-    return fs.readFileSync(docsFilePath(rootDir, cssPath), "utf-8");
+    const filePath = docsFilePath(rootDir, cssPath);
+    try {
+        return fs.readFileSync(filePath, "utf-8");
+    } catch {
+        throw new Error(`Cannot find: ${filePath}`);
+    }
 }
 
 export function getCssClassUsedInSlide(fileContent: string): string[] {
     return fileContent.split("\n")
-        .filter((row) => row.startsWith("<!--"))
         .map((row) => {
-            const classesPart = row.split('class="')[1];
-            return classesPart?.substring(0, classesPart.indexOf('"'));
+            // for syntax like:
+            // <!-- .slide: class="with-code" -->
+            // <!-- .slide: class="transition-bg-blue-3 right" -->
+            if (row.startsWith("<!--")) {
+                const classesPart = row.split('class="')[1];
+                return classesPart?.substring(0, classesPart.indexOf('"'));
+            }
+            const trimmed = row.trimEnd();
+            // for syntax like:
+            // ![](./assets/images/logo-sfeir-blanc.png 'company')
+            if (row.startsWith("![") && trimmed.endsWith("')")) {
+                return row.substring(
+                    trimmed.lastIndexOf(" '") + 2,
+                    trimmed.length - 2,
+                );
+            }
+
+            return undefined;
         })
         .filter((classes) => classes != undefined)
         .flatMap((classes) => classes.split(" "));

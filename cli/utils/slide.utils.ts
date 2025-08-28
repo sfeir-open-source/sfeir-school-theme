@@ -99,14 +99,24 @@ export function getImagesPathFromSlides(
     return fileContent
         .split("\n")
         .filter((row) => row.startsWith("!["))
-        .map((row) => {
-            const urlPart = row.split("](")[1];
-            return urlPart?.substring(0, urlPart.lastIndexOf(")"));
-        })
+        .map(extractUrlPart)
         .filter((url) => !url.startsWith("http"))
-        .filter((imagePath) =>
-            imagePath.startsWith("assets") || imagePath.startsWith("./assets")
-        ).map((imgPath) => docsFilePath(rootDir, imgPath));
+        .filter(isImageInAssetsDir)
+        .map((imgPath) => docsFilePath(rootDir, imgPath));
+
+    function extractUrlPart(imageMdRow: string): string {
+        const secondPart = imageMdRow.split("](")[1];
+        const urlPart = secondPart?.substring(0, secondPart.lastIndexOf(")"));
+        if (urlPart.endsWith("'")) {
+            return urlPart.substring(0, urlPart.lastIndexOf(" '"));
+        } else {
+            return urlPart;
+        }
+    }
+    function isImageInAssetsDir(imagePath: string): boolean {
+        return imagePath.startsWith("assets") ||
+            imagePath.startsWith("./assets");
+    }
 }
 
 export function getImagesPathFromFs(

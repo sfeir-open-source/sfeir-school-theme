@@ -15,7 +15,7 @@
     "bin": {
         "sfeir-school-theme-cleanup": "./dist/sfeir-school-theme-cleanup.mjs",
         "sfeir-school-theme-migrate": "./dist/sfeir-school-theme-migration.mjs",
-        "sfeir-school-theme": "./cli/main.js"
+        "sfeir-school-theme": "./dist/cli/main.js"
     },
     "exports": {
         ".": {
@@ -43,7 +43,7 @@
         "build-watch": "parallelshell \"npm run on-change:build\" \"npm run on-change:copy\"",
         "lint": "eslint src/ cli/",
         "lint:fix": "eslint --fix src/ cli/",
-        "cli-build": "tsc",
+        "cli-build": "tsc -p ./tsconfig.cli.json",
         "cli-run": "node dist/cli/main.js"
     },
     "repository": {

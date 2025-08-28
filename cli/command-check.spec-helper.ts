@@ -52,7 +52,9 @@ export function web_modules() {
     return {
         "web_modules": {
             "sfeir-school-theme": {
-                "sfeir-school-theme.css": sfeirSchoolThemeCssFile(),
+                dist: {
+                    "sfeir-school-theme.css": sfeirSchoolThemeCssFile(),
+                },
             },
         },
     };

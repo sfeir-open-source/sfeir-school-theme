@@ -152,6 +152,69 @@ describe("check command", () => {
             console.error(getErrors());
             expect(getErrors()).toHaveLength(0);
         });
+
+        it("Slides with images", async () => {
+            const rootDir = buildProject({
+                docs: {
+                    assets: {
+                        images: {
+                            "intro.png": imageFile(),
+                            "logo-sfeir-blanc.png": imageFile(),
+                            speakers: {
+                                "CMA.jpg": imageFile(),
+                                "the-conf.svg": imageFile(),
+                            },
+                        },
+                    },
+                    css: {
+                        "slides.css": slideCssFile(),
+                    },
+                    markdown: {
+                        "00-speaker-cma.md": `
+<!-- .slide: class="speaker-slide" -->
+
+<div class="speaker-slide">
+
+# Présentation
+
+![](./assets/images/speakers/CMA.jpg 'speaker')
+
+![](./assets/images/speakers/the-conf.svg 'badge')
+
+![](./assets/images/logo-sfeir-blanc.png 'company')
+
+## Claire MARTIN
+
+### Ingénieure DevOps & Cloud
+
+### @ClaireDevOps
+
+### martin.c@sfeir.com
+
+</div>`,
+                        "01-getting-started.md": `
+# Getting started
+
+![](./assets/images/intro.png)
+                        `,
+                    },
+                    scripts: {
+                        "slides.js": slideJsFile([
+                            "00-speaker-cma.md",
+                            "01-getting-started.md",
+                        ]),
+                    },
+                    ...web_modules(),
+                },
+                steps: {
+                    "package.json": packageJsonFile({}),
+                },
+            });
+
+            await checkCommandInternal({ type: "check", rootDir });
+            console.error(getErrors());
+            expect(getErrors()).toHaveLength(0);
+        });
     });
 
     describe("invalid projects", () => {
@@ -560,6 +623,7 @@ describe("check command", () => {
                 expectMatching(getErrors(), reg).toHaveLength(1);
                 expect(getErrors()).toHaveLength(1);
             });
+
             it("images in asset should be used [S_008]", async () => {
                 const rootDir = buildProject({
                     docs: {
@@ -621,7 +685,8 @@ describe("check command", () => {
                         },
                         markdown: {
                             "01-getting-started.md":
-                                '![](./assets/images/foo.png)\n<!-- .class="any-undefined-class" -->\n',
+                                '![](./assets/images/foo.png)\n<!-- .class="any-undefined-class" -->\n' +
+                                "![](./assets/images/foo.png 'another-undefined-class')\n",
                             "01-lab-getting-started.md": labSlideFile({
                                 title: "Getting started",
                                 cmd: "npm run 01-getting-started",
@@ -650,10 +715,13 @@ describe("check command", () => {
                     console.error(err);
                 }
 
-                const reg =
+                const reg1 =
                     /\[CheckError\] S_009 "any-undefined-class" in "01-getting-started.md" is not a known css class/;
-                expectMatching(getErrors(), reg).toHaveLength(1);
-                expect(getErrors()).toHaveLength(1);
+                expectMatching(getErrors(), reg1).toHaveLength(1);
+                const reg2 =
+                    /\[CheckError\] S_009 "another-undefined-class" in "01-getting-started.md" is not a known css class/;
+                expectMatching(getErrors(), reg2).toHaveLength(1);
+                expect(getErrors()).toHaveLength(2);
             });
         });
         describe("Labs checks", () => {
