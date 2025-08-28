@@ -1,4 +1,3 @@
-import fs from "node:fs";
 import {
     labPackageJsonPath,
     labReadmePath,
@@ -7,6 +6,7 @@ import {
     labsPath,
 } from "./path.utils";
 import { ConfigJson } from "./config.utils";
+import fs from "node:fs";
 import { isDirectory } from "./fs.utils";
 import { isNotDefined } from "./fp.utils";
 

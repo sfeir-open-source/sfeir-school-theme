@@ -1,6 +1,5 @@
-import { VersionCommand } from "../cli";
 import packageJson from "../../package.json";
 
-export function versionCommand(command: VersionCommand) {
+export function versionCommand() {
     console.log("Version: " + packageJson.version);
 }

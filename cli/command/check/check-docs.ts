@@ -1,5 +1,5 @@
-import { CheckCommand } from "../../cli";
 import {
+    SlideEntry,
     getAllLabSlideCommandRow,
     getAllSlidesImages,
     getImagesPathFromFs,
@@ -11,21 +11,20 @@ import {
     isImageFileExists,
     isSlideFileExists,
     readSlideFile,
-    SlideEntry,
 } from "../../utils/slide.utils";
-import { check } from "../../utils/assert.utils";
-import { isDefined } from "../../utils/fp.utils";
-import { slidePath } from "../../utils/path.utils";
+import {
+    getAllCssContent,
+    getCssClassUsedInSlide,
+} from "../../utils/css.utils";
 import {
     getLabCommandTarget,
     getLabsCommands,
     isLabCommandExists,
 } from "../../utils/labs.utils";
-import {
-    getAllCssContent,
-    getCssClassUsedInSlide,
-} from "../../utils/css.utils";
 import { ConfigJson } from "../../utils/config.utils";
+import { check } from "../../utils/assert.utils";
+import { isDefined } from "../../utils/fp.utils";
+import { slidePath } from "../../utils/path.utils";
 
 export async function checkDocs(rootDir: string, config: ConfigJson) {
     const slideFilesFromSlidesJs = await getSlideFilesFromSlidesJs(

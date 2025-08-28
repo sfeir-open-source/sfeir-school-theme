@@ -1,5 +1,5 @@
-import fs from "node:fs";
 import { describe, expect, it } from "vitest";
+import fs from "node:fs";
 
 const README = fs.readFileSync("./cli/README.md", "utf-8");
 const RULE_FILES = [

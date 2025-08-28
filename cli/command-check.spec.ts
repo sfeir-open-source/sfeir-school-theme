@@ -1,11 +1,9 @@
-import { beforeEach, describe, expect, it } from "vitest";
-import { checkCommandInternal } from "./command/check/internal";
 import {
-    __TEST_ONLY__cleanupErrors,
     CheckError,
+    __TEST_ONLY__cleanupErrors,
     getErrors,
 } from "./utils/assert.utils";
-import { buildProject } from "./test-utils/project-builder.utils";
+import { beforeEach, describe, expect, it } from "vitest";
 import {
     configFile,
     imageFile,
@@ -18,6 +16,8 @@ import {
     slideJsFile,
     web_modules,
 } from "./command-check.spec-helper";
+import { buildProject } from "./test-utils/project-builder.utils";
+import { checkCommandInternal } from "./command/check/internal";
 
 describe("check command", () => {
     beforeEach(() => __TEST_ONLY__cleanupErrors());
@@ -162,7 +162,9 @@ describe("check command", () => {
                         type: "check",
                         rootDir: `./foo-${crypto.randomUUID()}`,
                     });
-                } catch {}
+                } catch (err) {
+                    console.error(err);
+                }
 
                 const reg =
                     /\[CheckError\] G_001 Project root dir \(\.\/foo-.*\) does not exist\./;
@@ -178,7 +180,9 @@ describe("check command", () => {
 
                 try {
                     await checkCommandInternal({ type: "check", rootDir });
-                } catch {}
+                } catch (err) {
+                    console.error(err);
+                }
 
                 const reg =
                     /\[CheckError\] G_002 Project should have a 'docs' directory/;
@@ -202,7 +206,9 @@ describe("check command", () => {
 
                 try {
                     await checkCommandInternal({ type: "check", rootDir });
-                } catch {}
+                } catch (err) {
+                    console.error(err);
+                }
 
                 const reg =
                     /\[CheckError\] G_003 Project should have a 'steps' directory/;
@@ -248,7 +254,9 @@ describe("check command", () => {
                 });
                 try {
                     await checkCommandInternal({ type: "check", rootDir });
-                } catch {}
+                } catch (err) {
+                    console.error(err);
+                }
 
                 const reg =
                     /\[CheckError\] S_001 slides.js entry ""01-getting-started.md"" should be a valid entry/;
@@ -294,7 +302,9 @@ describe("check command", () => {
                 });
                 try {
                     await checkCommandInternal({ type: "check", rootDir });
-                } catch {}
+                } catch (err) {
+                    console.error(err);
+                }
 
                 const reg =
                     /\[CheckError\] S_002 slides.js entry "02-not-existing-file.md" does not match an existing file/;
@@ -340,7 +350,9 @@ describe("check command", () => {
                 });
                 try {
                     await checkCommandInternal({ type: "check", rootDir });
-                } catch {}
+                } catch (err) {
+                    console.error(err);
+                }
 
                 const reg =
                     /\[CheckError\] S_003 "02-not-existing-file.md" should be used/;
@@ -390,7 +402,9 @@ describe("check command", () => {
                 });
                 try {
                     await checkCommandInternal({ type: "check", rootDir });
-                } catch {}
+                } catch (err) {
+                    console.error(err);
+                }
 
                 const reg =
                     /\[CheckError\] S_004 "01-lab-getting-started-bis.md" should contains the command to run the exercise/;
@@ -440,7 +454,9 @@ describe("check command", () => {
                 });
                 try {
                     await checkCommandInternal({ type: "check", rootDir });
-                } catch {}
+                } catch (err) {
+                    console.error(err);
+                }
 
                 const reg =
                     /\[CheckError\] S_005 "01-lab-getting-started-bis.md" should contains the valid command to run the exercise/;
@@ -488,7 +504,9 @@ describe("check command", () => {
                 });
                 try {
                     await checkCommandInternal({ type: "check", rootDir });
-                } catch {}
+                } catch (err) {
+                    console.error(err);
+                }
 
                 const reg =
                     /\[CheckError\] S_006 "01-lab-getting-started-bis.md" should use lab slide format/;
@@ -533,7 +551,9 @@ describe("check command", () => {
                 });
                 try {
                     await checkCommandInternal({ type: "check", rootDir });
-                } catch {}
+                } catch (err) {
+                    console.error(err);
+                }
 
                 const reg =
                     /\[CheckError\] S_007 ".*\/docs\/assets\/images\/foo2.png" in "01-getting-started.md" should be an existing images/;
@@ -579,7 +599,9 @@ describe("check command", () => {
                 });
                 try {
                     await checkCommandInternal({ type: "check", rootDir });
-                } catch {}
+                } catch (err) {
+                    console.error(err);
+                }
 
                 const reg =
                     /\[CheckError\] S_008 ".*\/docs\/assets\/images\/foo2.png" should be used/;
@@ -624,7 +646,9 @@ describe("check command", () => {
                 });
                 try {
                     await checkCommandInternal({ type: "check", rootDir });
-                } catch {}
+                } catch (err) {
+                    console.error(err);
+                }
 
                 const reg =
                     /\[CheckError\] S_009 "any-undefined-class" in "01-getting-started.md" is not a known css class/;
@@ -672,7 +696,9 @@ describe("check command", () => {
                 });
                 try {
                     await checkCommandInternal({ type: "check", rootDir });
-                } catch {}
+                } catch (err) {
+                    console.error(err);
+                }
 
                 const reg =
                     /\[CheckError\] L_001 "02-next" should be used in a lab slide/;

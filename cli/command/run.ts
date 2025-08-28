@@ -14,13 +14,13 @@ export async function runCommand(command: Command) {
             await initConfigCommand(command);
             break;
         case "help":
-            helpCommand(command);
+            helpCommand();
             break;
         case "info":
             infoCommand(command);
             break;
         case "version":
-            versionCommand(command);
+            versionCommand();
             break;
         default:
             throw new Error(

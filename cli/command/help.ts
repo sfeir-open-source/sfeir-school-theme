@@ -1,6 +1,4 @@
-import { HelpCommand } from "../cli";
-
-export function helpCommand(command: HelpCommand) {
+export function helpCommand() {
     console.log(`
 sfeir-school-theme CLI
 

@@ -1,7 +1,7 @@
 #!/usr/bin/env node
+import { CheckError } from "./utils/assert.utils";
 import { parseArgs } from "./cli";
 import { runCommand } from "./command/run";
-import { CheckError } from "./utils/assert.utils";
 
 (async () => {
     try {

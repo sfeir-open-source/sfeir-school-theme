@@ -1,9 +1,9 @@
-import { InfoCommand } from "../cli";
-import { isDefined } from "../utils/fp.utils";
 import {
     getAllLabsFromWorkspace,
     splitLabsAndSolutions,
 } from "../utils/labs.utils";
+import { InfoCommand } from "../cli";
+import { isDefined } from "../utils/fp.utils";
 
 export function infoCommand({ rootDir }: InfoCommand) {
     const allLabs = getAllLabsFromWorkspace(rootDir);

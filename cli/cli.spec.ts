@@ -1,5 +1,5 @@
-import { describe, expect, it } from "vitest";
 import { CheckCommand, InfoCommand, InitConfigCommand, parseArgs } from "./cli";
+import { describe, expect, it } from "vitest";
 
 describe(parseArgs.name, () => {
     it("should enable help command by default", () => {

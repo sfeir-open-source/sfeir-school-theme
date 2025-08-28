@@ -1,6 +1,6 @@
-import fs from "node:fs";
 import { CheckCommand } from "../../cli";
 import { check } from "../../utils/assert.utils";
+import fs from "node:fs";
 import { isDirectory } from "../../utils/fs.utils";
 
 export function checkRootDir(command: CheckCommand) {

@@ -1,7 +1,6 @@
-import fs, { cpSync } from "node:fs";
-import path from "node:path";
 import { InitConfigCommand } from "../cli";
 import configTemplateJson from "../config-template.json";
+import fs from "node:fs";
 import { projectConfigPath } from "../utils/path.utils";
 
 export function initConfigCommand({ rootDir }: InitConfigCommand) {

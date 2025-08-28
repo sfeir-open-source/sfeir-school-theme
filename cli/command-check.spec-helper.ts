@@ -1,7 +1,7 @@
-import fs from "node:fs";
-import { PackageJson } from "./utils/labs.utils";
 import { ConfigJson } from "./utils/config.utils";
 import { DirStruct } from "./test-utils/project-builder.utils";
+import { PackageJson } from "./utils/labs.utils";
+import fs from "node:fs";
 
 export function slideCssFile() {
     return `\n`;
@@ -53,11 +53,6 @@ export function web_modules() {
         "web_modules": {
             "sfeir-school-theme": {
                 "sfeir-school-theme.css": sfeirSchoolThemeCssFile(),
-                "fontello-sfeir": {
-                    css: {
-                        "sfeir.css": sfeirCssFile(),
-                    },
-                },
             },
         },
     };
@@ -65,10 +60,6 @@ export function web_modules() {
 
 export function sfeirSchoolThemeCssFile() {
     return fs.readFileSync("./dist/sfeir-school-theme.css", "utf-8");
-}
-
-export function sfeirCssFile() {
-    return fs.readFileSync("./dist/fontello-sfeir/css/sfeir.css", "utf-8");
 }
 
 export function labReadmeMdFile(name: string) {
@@ -84,7 +75,6 @@ export function oneLabStructure(name: string, files: DirStruct) {
 }
 
 export function minimalValidLabStructure(name: string) {
-    const readmeMd = `# ${name} instructions\nnpm run ${name}`;
     return {
         ...oneLabStructure(name, {
             "package.json": packageJsonFile({ name }),

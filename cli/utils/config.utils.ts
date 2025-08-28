@@ -1,5 +1,5 @@
-import fs from "node:fs";
 import configTemplateJson from "../config-template.json";
+import fs from "node:fs";
 import { projectConfigPath } from "./path.utils";
 
 export interface ConfigJson {

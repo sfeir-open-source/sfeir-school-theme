@@ -13,10 +13,12 @@ jobs:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
         with:
-          node-version: 20
+          node-version: 20.9
       - name: Install dependencies
         run: npm ci
       - name: build theme
         run: npm run build
       - name: Unit Tests
         run: npm test
+      - name: Lint
+        run: npm run lint

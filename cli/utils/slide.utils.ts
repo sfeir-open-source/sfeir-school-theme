@@ -1,5 +1,3 @@
-import fs from "node:fs";
-import path from "node:path";
 import {
     docsFilePath,
     docsImagePath,
@@ -8,9 +6,11 @@ import {
     docsPath,
     slidePath,
 } from "./path.utils";
+import { ConfigJson } from "./config.utils";
+import fs from "node:fs";
 import { isDefined } from "./fp.utils";
 import { isDirectory } from "./fs.utils";
-import { ConfigJson } from "./config.utils";
+import path from "node:path";
 
 export interface SlideEntry {
     path: string;

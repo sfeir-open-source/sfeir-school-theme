@@ -1,9 +1,8 @@
-import fs from "node:fs";
 import { docsFilePath } from "./path.utils";
+import fs from "node:fs";
 
 const THEME_CSS_FILES = [
     "web_modules/sfeir-school-theme/sfeir-school-theme.css",
-    "web_modules/sfeir-school-theme/fontello-sfeir/css/sfeir.css",
     "css/slides.css",
 ];
 

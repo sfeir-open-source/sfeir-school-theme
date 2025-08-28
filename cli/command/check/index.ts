@@ -1,6 +1,6 @@
 import { CheckCommand } from "../../cli";
-import { getErrors } from "../../utils/assert.utils";
 import { checkCommandInternal } from "./internal";
+import { getErrors } from "../../utils/assert.utils";
 
 export async function checkCommand(command: CheckCommand) {
     checkCommandInternal(command);

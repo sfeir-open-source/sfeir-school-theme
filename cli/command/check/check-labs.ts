@@ -1,6 +1,3 @@
-import { check } from "../../utils/assert.utils";
-import { ConfigJson } from "../../utils/config.utils";
-import { isDefined } from "../../utils/fp.utils";
 import {
     getAllLabScripts,
     getAllLabsFromFs,
@@ -10,6 +7,9 @@ import {
     getWorkspaceStepsPackageJson,
     splitLabsAndSolutions,
 } from "../../utils/labs.utils";
+import { ConfigJson } from "../../utils/config.utils";
+import { check } from "../../utils/assert.utils";
+import { isDefined } from "../../utils/fp.utils";
 
 export function checkLabs(rootDir: string, config: ConfigJson) {
     checkLabDirectories(rootDir, config);
