@@ -40,8 +40,8 @@
 #### Workspace / Scripts checks
 
 -   L_002 every lab should be declared in the workspace (either "workspaces" or "labs" in a file `<root>/steps/package.json` or `<root>/steps/labs.json` at the root of "steps" directory);
--   L_003 every lab should have a script in `package.json` to start it (only if workspace is declared in a `<root>/steps/package.json` file);
--   L_004 every lab should have a `package.json` with corresponding name (only if workspace is declared in a `<root>/steps/package.json` file);
+-   L_003 (NPM PROJECT ONLY) every lab should have a script in `package.json` to start it (only if workspace is declared in a `<root>/steps/package.json` file);
+-   L_004 (NPM PROJECT ONLY) every lab should have a `package.json` with corresponding name (only if workspace is declared in a `<root>/steps/package.json` file);
 
 #### Instructions checks
 
