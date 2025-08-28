@@ -1,5 +1,5 @@
 {
     "extraCssFiles": [],
-    "stepCommandPrefix": "npm run ",
+    "stepCommandPrefix": "",
     "ignoreStepsDirectories": []
 }

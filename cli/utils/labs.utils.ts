@@ -84,7 +84,7 @@ export function isLabCommandExists(rootDir: string, commandName: string) {
 }
 
 export function getLabCommandTarget(labCommandRow: string, config: ConfigJson) {
-    return labCommandRow.split(config.stepCommandPrefix)[1].trim();
+    return labCommandRow.split(config.stepCommandPrefix)[1]?.trim();
 }
 
 export function getAllLabsFromFs(rootDir: string, config: ConfigJson) {

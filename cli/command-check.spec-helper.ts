@@ -1,6 +1,6 @@
+import { LabsJson, PackageJson } from "./utils/labs.utils";
 import { ConfigJson } from "./utils/config.utils";
 import { DirStruct } from "./test-utils/project-builder.utils";
-import { PackageJson } from "./utils/labs.utils";
 import fs from "node:fs";
 
 export function slideCssFile() {
@@ -14,7 +14,11 @@ export function slideJsFile(slides: string[] = []) {
 }
 
 export function packageJsonFile(content: Partial<PackageJson> = {}) {
-    return JSON.stringify(content);
+    return JSON.stringify(content) + "\n";
+}
+
+export function labsJsonFile(content: Partial<LabsJson> = {}) {
+    return JSON.stringify(content) + "\n";
 }
 
 export function configFile(content: Partial<ConfigJson> = {}) {
@@ -64,8 +68,8 @@ export function sfeirSchoolThemeCssFile() {
     return fs.readFileSync("./dist/sfeir-school-theme.css", "utf-8");
 }
 
-export function labReadmeMdFile(name: string) {
-    return `# ${name} instructions\nnpm run ${name}`;
+export function labReadmeMdFile(name: string, prefix = "npm run ") {
+    return `# ${name} instructions\n${prefix}${name}\n`;
 }
 
 export function oneLabStructure(name: string, files: DirStruct) {

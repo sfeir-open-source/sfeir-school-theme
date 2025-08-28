@@ -1,6 +1,5 @@
 import {
     SlideEntry,
-    getAllLabSlideCommandRow,
     getAllSlidesImages,
     getImagesPathFromFs,
     getImagesPathFromSlides,
@@ -21,9 +20,9 @@ import {
     getLabsCommands,
     isLabCommandExists,
 } from "../../utils/labs.utils";
+import { isDefined, isDefinedAndNotEmpty } from "../../utils/fp.utils";
 import { ConfigJson } from "../../utils/config.utils";
 import { check } from "../../utils/assert.utils";
-import { isDefined } from "../../utils/fp.utils";
 import { slidePath } from "../../utils/path.utils";
 
 export async function checkDocs(rootDir: string, config: ConfigJson) {
@@ -118,7 +117,7 @@ function checkLabSlideFile(
                 return isDefined(commandRow) && commandRow.length > 0;
             },
         );
-        if (hasCommandRow) {
+        if (hasCommandRow && isDefinedAndNotEmpty(config.stepCommandPrefix)) {
             check(
                 "S_005",
                 `"${slideFile?.path}" should contains the valid command to run the exercise`,
@@ -152,14 +151,15 @@ function checkLabCommand(
     labSlides: SlideEntry[],
     config: ConfigJson,
 ) {
-    const allLabCommandInSlides = getAllLabSlideCommandRow(
-        labSlides.map((slide) => readSlideFile(rootDir, slide.path)),
-        config,
-    ).map((commandRow) => getLabCommandTarget(commandRow, config));
+    const allLabSlides = labSlides.map((slide) =>
+        readSlideFile(rootDir, slide.path)
+    );
     const labsCommands = getLabsCommands(rootDir);
     for (const labCommand of labsCommands) {
         check("L_001", `"${labCommand}" should be used in a lab slide`, () => {
-            return allLabCommandInSlides.includes(labCommand);
+            return allLabSlides.some((slide) =>
+                slide.includes(`${config.stepCommandPrefix}${labCommand}`)
+            );
         });
     }
 }

@@ -9,6 +9,7 @@ import {
     imageFile,
     labReadmeMdFile,
     labSlideFile,
+    labsJsonFile,
     minimalValidLabStructure,
     oneLabStructure,
     packageJsonFile,
@@ -24,6 +25,7 @@ describe("check command", () => {
     describe("valid projects", () => {
         it("minimal valid empty project", async () => {
             const rootDir = buildProject({
+                ...configFile({ stepCommandPrefix: "npm run " }),
                 docs: {
                     assets: { images: {} },
                     css: {
@@ -45,8 +47,57 @@ describe("check command", () => {
             expect(getErrors()).toHaveLength(0);
         });
 
+        it("simple project with no command prefix", async () => {
+            const rootDir = buildProject({
+                ...configFile({ stepCommandPrefix: "" }),
+                docs: {
+                    assets: {
+                        images: {
+                            "foo.png": imageFile(),
+                        },
+                    },
+                    css: {
+                        "slides.css": slideCssFile(),
+                    },
+                    markdown: {
+                        "01-getting-started.md": "![](./assets/images/foo.png)",
+                        "01-lab-getting-started.md": labSlideFile({
+                            title: "Getting started",
+                            cmd: "Go to 01-getting-started",
+                        }),
+                    },
+                    scripts: {
+                        "slides.js": slideJsFile([
+                            "01-getting-started.md",
+                            "01-lab-getting-started.md",
+                        ]),
+                    },
+                    ...web_modules(),
+                },
+                steps: {
+                    "labs.json": labsJsonFile({
+                        labs: [
+                            "01-getting-started",
+                            "01-getting-started-solution",
+                        ],
+                    }),
+                    "01-getting-started": {
+                        "README.md": labReadmeMdFile("01-getting-started", ""),
+                    },
+                    "01-getting-started-solution": {
+                        "README.md": labReadmeMdFile("01-getting-started", ""),
+                    },
+                },
+            });
+
+            await checkCommandInternal({ type: "check", rootDir });
+            console.error(getErrors());
+            expect(getErrors()).toHaveLength(0);
+        });
+
         it("simple npm project with workspace", async () => {
             const rootDir = buildProject({
+                ...configFile({ stepCommandPrefix: "npm run " }),
                 docs: {
                     assets: {
                         images: {
@@ -88,6 +139,7 @@ describe("check command", () => {
 
         it("simple npm project without workspace", async () => {
             const rootDir = buildProject({
+                ...configFile({ stepCommandPrefix: "npm run " }),
                 docs: {
                     assets: { images: {} },
                     css: {
@@ -328,6 +380,7 @@ describe("check command", () => {
             });
             it("not existing markdown file in slides.js [S_002]", async () => {
                 const rootDir = buildProject({
+                    ...configFile({ stepCommandPrefix: "npm run " }),
                     docs: {
                         assets: {
                             images: {
@@ -376,6 +429,7 @@ describe("check command", () => {
             });
             it("not declared in slides.js markdown file [S_003]", async () => {
                 const rootDir = buildProject({
+                    ...configFile({ stepCommandPrefix: "npm run " }),
                     docs: {
                         assets: {
                             images: {
@@ -424,6 +478,7 @@ describe("check command", () => {
             });
             it("lab slide without command [S_004]", async () => {
                 const rootDir = buildProject({
+                    ...configFile({ stepCommandPrefix: "npm run " }),
                     docs: {
                         assets: {
                             images: {
@@ -476,6 +531,7 @@ describe("check command", () => {
             });
             it("lab slide without a valid command [S_005]", async () => {
                 const rootDir = buildProject({
+                    ...configFile({ stepCommandPrefix: "npm run " }),
                     docs: {
                         assets: {
                             images: {
@@ -528,6 +584,7 @@ describe("check command", () => {
             });
             it("lab slide without a valid command [S_006]", async () => {
                 const rootDir = buildProject({
+                    ...configFile({ stepCommandPrefix: "npm run " }),
                     docs: {
                         assets: {
                             images: {
@@ -578,6 +635,7 @@ describe("check command", () => {
             });
             it("slide should contains existing image [S_007]", async () => {
                 const rootDir = buildProject({
+                    ...configFile({ stepCommandPrefix: "npm run " }),
                     docs: {
                         assets: {
                             images: {
@@ -626,6 +684,7 @@ describe("check command", () => {
 
             it("images in asset should be used [S_008]", async () => {
                 const rootDir = buildProject({
+                    ...configFile({ stepCommandPrefix: "npm run " }),
                     docs: {
                         assets: {
                             images: {
@@ -674,6 +733,7 @@ describe("check command", () => {
             });
             it("slide should only used existing css classes [S_009]", async () => {
                 const rootDir = buildProject({
+                    ...configFile({ stepCommandPrefix: "npm run " }),
                     docs: {
                         assets: {
                             images: {
@@ -727,6 +787,7 @@ describe("check command", () => {
         describe("Labs checks", () => {
             it("labs not used in slide [L_001]", async () => {
                 const rootDir = buildProject({
+                    ...configFile({ stepCommandPrefix: "npm run " }),
                     docs: {
                         assets: {
                             images: {
@@ -775,6 +836,7 @@ describe("check command", () => {
             });
             it("labs not declared in workspace [L_002][L_003]", async () => {
                 const rootDir = buildProject({
+                    ...configFile({ stepCommandPrefix: "npm run " }),
                     docs: {
                         assets: {
                             images: {
@@ -837,6 +899,7 @@ describe("check command", () => {
             });
             it("labs in workspace but without package.json [L_004]", async () => {
                 const rootDir = buildProject({
+                    ...configFile({ stepCommandPrefix: "npm run " }),
                     docs: {
                         assets: {
                             images: {
@@ -897,6 +960,7 @@ describe("check command", () => {
             });
             it("labs without README.md [L_005][L_010]", async () => {
                 const rootDir = buildProject({
+                    ...configFile({ stepCommandPrefix: "npm run " }),
                     docs: {
                         assets: {
                             images: {
@@ -963,6 +1027,7 @@ describe("check command", () => {
             });
             it("labs with README.md missing some infos [L_006][L_007]", async () => {
                 const rootDir = buildProject({
+                    ...configFile({ stepCommandPrefix: "npm run " }),
                     docs: {
                         assets: {
                             images: {
@@ -1029,6 +1094,7 @@ describe("check command", () => {
             });
             it("every lab should have a solution [L_008]", async () => {
                 const rootDir = buildProject({
+                    ...configFile({ stepCommandPrefix: "npm run " }),
                     docs: {
                         assets: {
                             images: {
@@ -1136,6 +1202,7 @@ describe("check command", () => {
             });
             it("lab and solution should have same README.md [L_010]", async () => {
                 const rootDir = buildProject({
+                    ...configFile({ stepCommandPrefix: "npm run " }),
                     docs: {
                         assets: {
                             images: {

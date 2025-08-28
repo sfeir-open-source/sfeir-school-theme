@@ -8,7 +8,6 @@ import {
 } from "./path.utils";
 import { ConfigJson } from "./config.utils";
 import fs from "node:fs";
-import { isDefined } from "./fp.utils";
 import { isDirectory } from "./fs.utils";
 import path from "node:path";
 
@@ -72,15 +71,6 @@ export function getLabSlides(slides: SlideEntry[]): SlideEntry[] {
 
 export function readSlideFile(rootDir: string, slideFilePath: string) {
     return fs.readFileSync(slidePath(rootDir, slideFilePath), "utf-8");
-}
-
-export function getAllLabSlideCommandRow(
-    files: string[],
-    config: ConfigJson,
-): string[] {
-    return files.map((file) => getLabSlideCommandRow(file, config)).filter(
-        isDefined,
-    );
 }
 
 export function getLabSlideCommandRow(
