@@ -15,7 +15,7 @@
     "bin": {
         "sfeir-school-theme-cleanup": "./dist/sfeir-school-theme-cleanup.mjs",
         "sfeir-school-theme-migrate": "./dist/sfeir-school-theme-migration.mjs",
-        "sfeir-school-theme": "./cli/sfeir-school-theme-cli.js"
+        "sfeir-school-theme": "./cli/main.js"
     },
     "exports": {
         ".": {
