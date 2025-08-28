@@ -3,7 +3,7 @@ import { checkCommandInternal } from "./internal";
 import { getErrors } from "../../utils/assert.utils";
 
 export async function checkCommand(command: CheckCommand) {
-    checkCommandInternal(command);
+    await checkCommandInternal(command);
 
     if (getErrors().length === 0) {
         console.log("OK");
