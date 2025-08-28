@@ -9,6 +9,8 @@ Usage:
 
 Command:
     help: Display this help message
+    info: Give infos on the current school
+    init-config: Will create config file with the default configuration
     version: Display the CLI version
     check: Run project checks
         --rootDir=/path/to/root/dir
