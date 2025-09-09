@@ -1,6 +1,6 @@
 {
     "name": "sfeir-school-theme",
-    "version": "4.0.0-rc-11",
+    "version": "4.0.0-rc-13",
     "description": "Sfeir School Theme for RevealJS",
     "files": [
         "dist"
@@ -36,7 +36,7 @@
         "prestart": "npm run prepare-demo",
         "start": "parallelshell \"npm run serve\" \"npm run build-watch\"",
         "postbuild": "tsx ./scripts/prepare-publish.ts",
-        "build": "tsc && vite build && npm run build:scripts",
+        "build": "tsc && vite build && npm run build:scripts && npm run cli-build",
         "build:scripts": "tsc -p tsconfig.scripts.json && chmod +x dist/sfeir-school-theme-cleanup.js dist/sfeir-school-theme-migration.js && mv dist/sfeir-school-theme-cleanup.js dist/sfeir-school-theme-cleanup.mjs && mv dist/sfeir-school-theme-migration.js dist/sfeir-school-theme-migration.mjs",
         "on-change:build": "chokidar \"./src\" -c \"npm run build\"",
         "on-change:copy": "chokidar \"./dist\" -c \"npm run prepare-demo\"",
