@@ -783,6 +783,77 @@ describe("check command", () => {
                 expectMatching(getErrors(), reg2).toHaveLength(1);
                 expect(getErrors()).toHaveLength(2);
             });
+            it("slide.js should exists [S_010]", async () => {
+                const rootDir = buildProject({
+                    ...configFile({ stepCommandPrefix: "npm run " }),
+                    docs: {
+                        css: {
+                            "slides.css": slideCssFile(),
+                        },
+                        markdown: {
+                            "01-getting-started.md": '',
+                        },
+                        scripts: {},
+                        ...web_modules(),
+                    },
+                    steps: {
+                        "package.json": packageJsonFile({
+                            workspaces: ["01-getting-started"],
+                            scripts: {
+                                "01-getting-started": "",
+                            },
+                        }),
+                    },
+                });
+                try {
+                    await checkCommandInternal({ type: "check", rootDir });
+                } catch (err) {
+                    console.error(err);
+                }
+
+                const reg1 =
+                    /\[CheckError\] S_010 slides.js should export "formation" function/;
+                expectMatching(getErrors(), reg1).toHaveLength(1);
+                expect(getErrors()).toHaveLength(1);
+            });
+            it("slide.js should have exported formation function [S_010]", async () => {
+                const rootDir = buildProject({
+                    ...configFile({ stepCommandPrefix: "npm run " }),
+                    docs: {
+                        css: {
+                            "slides.css": slideCssFile(),
+                        },
+                        markdown: {
+                            "01-getting-started.md": '',
+                        },
+                        scripts: {
+                            "slides.js": slideJsFile([
+                                "01-getting-started.md",
+                                "01-lab-getting-started.md",
+                            ]).replaceAll('export', '')
+                        },
+                        ...web_modules(),
+                    },
+                    steps: {
+                        "package.json": packageJsonFile({
+                            workspaces: ["01-getting-started"],
+                            scripts: {
+                                "01-getting-started": "",
+                            },
+                        }),
+                    },
+                });
+                try {
+                    await checkCommandInternal({ type: "check", rootDir });
+                } catch (err) {
+                    console.error(err);
+                }
+
+                const reg1 =
+                    /\[CheckError\] S_010 slides.js should export "formation" function/;
+                expectMatching(getErrors(), reg1).toHaveLength(1);
+                expect(getErrors()).toHaveLength(1);
+            });
         });
         describe("Labs checks", () => {
             it("labs not used in slide [L_001]", async () => {

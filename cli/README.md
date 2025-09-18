@@ -12,6 +12,7 @@
 
 #### General slides checks
 
+- S_010 the script `<root>/docs/scripts/slides.js` should contain an exported function `formation()`;
 - S_001 every entry returned by the function `formation()` in `<root>/docs/scripts/slides.js` is valid;
 - S_002 every entry returned by the function `formation()` in `<root>/docs/scripts/slides.js` exists in the `<root>/docs/markdown` directory;
 - S_003 every markdown file in the `<root>/docs/markdown` directory is declared in the `<root>/docs/scripts/slides.js`;
