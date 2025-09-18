@@ -29,13 +29,13 @@ export async function checkDocs(rootDir: string, config: ConfigJson) {
     let slideFilesFromSlidesJs;
     try {
         slideFilesFromSlidesJs = await getSlideFilesFromSlidesJs(rootDir);
-    } catch (err) {
-        console.error(err);
+    } catch {
         check(
             "S_010",
-            `slides.js should export "formation" function`,
+            { msg: `slides.js should export "formation" function`, continueCheck: false },
             () => false,
         );
+        return;
     }
 
     checkSlideFilePathInSlideJs(rootDir, slideFilesFromSlidesJs);
