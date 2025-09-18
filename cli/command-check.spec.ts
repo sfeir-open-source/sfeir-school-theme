@@ -54,6 +54,11 @@ describe("check command", () => {
                     assets: {
                         images: {
                             "foo.png": imageFile(),
+                            "foo2.png": imageFile(),
+                            "foo3.png": imageFile(),
+                            "foo4.png": imageFile(),
+                            "foo5.png": imageFile(),
+                            "foo6.png": imageFile(),
                         },
                     },
                     css: {
@@ -61,7 +66,15 @@ describe("check command", () => {
                     },
                     markdown: {
                         "01-getting-started.md": "![](./assets/images/foo.png)",
-                        "01-lab-getting-started.md": labSlideFile({
+                        "02-html-images.md":
+                            '<img src="./assets/images/foo2.png"/>\n' +
+                            '<img class="tc-bg" src="./assets/images/foo3.png"/>\n' +
+                            '<div>\n' +
+                            '    <img src="./assets/images/foo4.png" />\n' +
+                            '</div>\n' +
+                            '<img src="./assets/images/foo5.png"/><img src="./assets/images/foo6.png"/>\n'
+                        ,
+                        "99-lab-getting-started.md": labSlideFile({
                             title: "Getting started",
                             cmd: "Go to 01-getting-started",
                         }),
@@ -69,7 +82,8 @@ describe("check command", () => {
                     scripts: {
                         "slides.js": slideJsFile([
                             "01-getting-started.md",
-                            "01-lab-getting-started.md",
+                            "02-html-images.md",
+                            "99-lab-getting-started.md",
                         ]),
                     },
                     ...web_modules(),

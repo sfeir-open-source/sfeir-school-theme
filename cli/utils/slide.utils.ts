@@ -8,6 +8,7 @@ import {
 } from "./path.utils";
 import { ConfigJson } from "./config.utils";
 import fs from "node:fs";
+import { isDefinedAndNotEmpty } from "./fp.utils";
 import { isDirectory } from "./fs.utils";
 import path from "node:path";
 
@@ -98,19 +99,27 @@ export function getImagesPathFromSlides(
 ): string[] {
     return fileContent
         .split("\n")
-        .filter((row) => row.startsWith("!["))
-        .map(extractUrlPart)
+        .flatMap(extractUrlPart)
+        .filter(isDefinedAndNotEmpty)
         .filter((url) => !url.startsWith("http"))
         .filter(isImageInAssetsDir)
         .map((imgPath) => docsFilePath(rootDir, imgPath));
 
-    function extractUrlPart(imageMdRow: string): string {
-        const secondPart = imageMdRow.split("](")[1];
-        const urlPart = secondPart?.substring(0, secondPart.lastIndexOf(")"));
-        if (urlPart.endsWith("'")) {
-            return urlPart.substring(0, urlPart.lastIndexOf(" '"));
+    function extractUrlPart(row: string): string | string[] | null {
+        if (row.startsWith("![")) {
+            const secondPart = row.split("](")[1];
+            const urlPart = secondPart?.substring(0, secondPart.lastIndexOf(")"));
+            if (urlPart.endsWith("'")) {
+                return urlPart.substring(0, urlPart.lastIndexOf(" '"));
+            } else {
+                return urlPart;
+            }
+        } else if (row.includes('<img')) {
+            return row.split('<img')
+                .map(img => img.match(/src="(?<src>[^"]*)"/)?.groups?.src)
+                .filter(isDefinedAndNotEmpty);
         } else {
-            return urlPart;
+            return null;
         }
     }
     function isImageInAssetsDir(imagePath: string): boolean {
