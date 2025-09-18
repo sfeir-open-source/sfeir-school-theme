@@ -9,6 +9,9 @@ import { runCommand } from "./command/run";
     } catch (error) {
         if (error instanceof CheckError) {
             console.error(error.message);
+            console.error('');
+            console.error(`You can call "sfeir-school-theme explain ${error.ruleId}" to have more details.`);
+            console.error('');
             process.exit(1);
         }
         if (error instanceof Error) {

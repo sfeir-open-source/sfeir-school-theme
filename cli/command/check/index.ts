@@ -12,6 +12,9 @@ export async function checkCommand(command: CheckCommand) {
         getErrors().forEach((error) => {
             console.error(error.message);
         });
+        console.error('');
+        console.error(`You can call "sfeir-school-theme explain ${getErrors().map(e => e.ruleId).join('|')}" to have more details.`);
+        console.error('');
         process.exit(getErrors().length);
     }
 }

@@ -22,7 +22,7 @@ export function check(
 }
 
 export class CheckError extends Error {
-    constructor(ruleId: string, message: string, public continueCheck = true) {
+    constructor(public readonly ruleId: string, message: string, public continueCheck = true) {
         super(`[CheckError] ${ruleId} ${message}`);
     }
 }
