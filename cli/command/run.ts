@@ -1,5 +1,6 @@
 import { Command } from "../cli";
 import { checkCommand } from "./check/index";
+import { explainCommand } from "./explain";
 import { helpCommand } from "./help";
 import { infoCommand } from "./info";
 import { initConfigCommand } from "./init-config";
@@ -12,6 +13,9 @@ export async function runCommand(command: Command) {
             break;
         case "init-config":
             await initConfigCommand(command);
+            break;
+        case 'explain':
+            explainCommand(command);
             break;
         case "help":
             helpCommand();

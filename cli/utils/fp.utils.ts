@@ -8,6 +8,10 @@ export function isNotDefined<T>(
     return x == undefined;
 }
 
+export function isEmpty<T extends { length: number }>(x: T): x is T {
+    return x.length === 0;
+}
+
 export function isNotEmpty<T extends { length: number }>(x: T): x is T {
     return x.length > 0;
 }
@@ -16,4 +20,10 @@ export function isDefinedAndNotEmpty<T extends { length: number }>(
     x: T | undefined | null,
 ): x is T {
     return isDefined(x) && isNotEmpty(x);
+}
+
+export function isNotDefinedOrEmpty<T extends { length: number }>(
+    x: T | undefined | null,
+): x is undefined | null {
+    return isNotDefined(x) || isEmpty(x);
 }

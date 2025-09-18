@@ -1,4 +1,4 @@
-import { CheckCommand, InfoCommand, InitConfigCommand, parseArgs } from "./cli";
+import { CheckCommand, ExplainCommand, InfoCommand, InitConfigCommand, parseArgs } from "./cli";
 import { describe, expect, it } from "vitest";
 
 describe(parseArgs.name, () => {
@@ -110,6 +110,18 @@ describe(parseArgs.name, () => {
         );
         expect(res.type).toBe("init-config");
         expect((res as InitConfigCommand).rootDir).toBe("/other/path");
+    });
+
+    it("should enable explain command with the rule code when correctly called", () => {
+        const res = parseArgs(withBaseArgs("explain", "S_001"), "./cwd");
+        expect(res.type).toBe("explain");
+        expect((res as ExplainCommand).ruleCode).toBe("S_001");
+    });
+
+    it("should enable explain command without ruleCode when not given", () => {
+        const res = parseArgs(withBaseArgs("explain"), "./cwd");
+        expect(res.type).toBe("explain");
+        expect((res as ExplainCommand).ruleCode).toBe(undefined);
     });
 
     function withBaseArgs(...args: string[]): string[] {
