@@ -114,6 +114,9 @@ export function getImagesPathFromSlides(
             } else {
                 return urlPart;
             }
+        } else if (row.includes('<!--') && row.includes('data-background=')) {
+            const dataBackgroundPart = row.split('data-background="')[1];
+            return dataBackgroundPart?.substring(0, dataBackgroundPart.indexOf('"'));
         } else if (row.includes('<img')) {
             return row.split('<img')
                 .map(img => img.match(/src="(?<src>[^"]*)"/)?.groups?.src)

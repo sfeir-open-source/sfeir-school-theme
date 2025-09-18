@@ -53,6 +53,7 @@ describe("check command", () => {
                 docs: {
                     assets: {
                         images: {
+                            "bg.png": imageFile(),
                             "foo.png": imageFile(),
                             "foo2.png": imageFile(),
                             "foo3.png": imageFile(),
@@ -67,6 +68,7 @@ describe("check command", () => {
                     markdown: {
                         "01-getting-started.md": "![](./assets/images/foo.png)",
                         "02-html-images.md":
+                            '<!-- .slide: data-background="./assets/images/bg.png"  -->\n' +
                             '<img src="./assets/images/foo2.png"/>\n' +
                             '<img class="tc-bg" src="./assets/images/foo3.png"/>\n' +
                             '<div>\n' +
