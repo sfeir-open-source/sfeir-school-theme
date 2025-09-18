@@ -20,7 +20,13 @@ export type FilePath = string;
 export async function getSlideFilesFromSlidesJs(
     rootDir: string,
 ): Promise<SlideEntry[]> {
-    return (await import(importSlidesJs(rootDir))).formation();
+    const slideJs = await import(importSlidesJs(rootDir));
+    if (typeof slideJs.formation !== "function") {
+        throw new Error(
+            "scripts/slides.js should have an exported function formation",
+        );
+    }
+    return slideJs.formation();
 }
 
 export function getSlideFilesFromFs(
@@ -34,23 +40,27 @@ export function getSlideFilesFromFs(
         .filter((path) => path.endsWith(".md"));
 }
 
-export function importSlidesJs(rootDir: string): string {
-    return (
-        "data:text/javascript;charset=utf-8," +
-        encodeURIComponent(
-            fs
-                .readFileSync(
-                    path.resolve(
-                        docsPath(rootDir),
-                        "scripts/slides.js",
-                    ),
-                    "utf-8",
-                )
-                .split("\n")
-                .filter((line) => !line.includes("SfeirThemeInitializer"))
-                .join("\n"),
-        )
-    );
+function importSlidesJs(rootDir: string): string {
+    try {
+        return (
+            "data:text/javascript;charset=utf-8," +
+            encodeURIComponent(
+                fs
+                    .readFileSync(
+                        path.resolve(
+                            docsPath(rootDir),
+                            "scripts/slides.js",
+                        ),
+                        "utf-8",
+                    )
+                    .split("\n")
+                    .filter((line) => !line.includes("SfeirThemeInitializer"))
+                    .join("\n"),
+            )
+        );
+    } catch (err) {
+        throw new Error("Failed to read scripts/slides.js", { cause: err });
+    }
 }
 
 export function isSlideFileExists(slideFilePath: string) {

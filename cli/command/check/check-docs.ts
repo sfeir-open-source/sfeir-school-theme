@@ -26,9 +26,17 @@ import { check } from "../../utils/assert.utils";
 import { slidePath } from "../../utils/path.utils";
 
 export async function checkDocs(rootDir: string, config: ConfigJson) {
-    const slideFilesFromSlidesJs = await getSlideFilesFromSlidesJs(
-        rootDir,
-    );
+    let slideFilesFromSlidesJs;
+    try {
+        slideFilesFromSlidesJs = await getSlideFilesFromSlidesJs(rootDir);
+    } catch (err) {
+        console.error(err);
+        check(
+            "S_010",
+            `slides.js should export "formation" function`,
+            () => false,
+        );
+    }
 
     checkSlideFilePathInSlideJs(rootDir, slideFilesFromSlidesJs);
     checkSlideFileInFs(rootDir, slideFilesFromSlidesJs, config);
