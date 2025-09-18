@@ -44,7 +44,7 @@
         "lint": "eslint src/ cli/",
         "lint:fix": "eslint --fix src/ cli/",
         "cli-build": "tsup --config ./tsup.cli.config.ts",
-        "cli-run": "node dist/cli/main.js"
+        "cli-run": "node dist/sfeir-school-theme-cli.mjs"
     },
     "repository": {
         "type": "git",

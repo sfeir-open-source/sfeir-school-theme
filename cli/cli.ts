@@ -1,6 +1,7 @@
 import path from "node:path";
 
 export type CheckCommand = { type: "check"; rootDir: string };
+export type ExplainCommand = { type: "explain", ruleCode: string };
 export type HelpCommand = { type: "help" };
 export type InfoCommand = { type: "info"; rootDir: string };
 export type InitConfigCommand = { type: "init-config"; rootDir: string };
@@ -8,6 +9,7 @@ export type VersionCommand = { type: "version" };
 
 export type Command =
     | CheckCommand
+    | ExplainCommand
     | HelpCommand
     | InfoCommand
     | InitConfigCommand
@@ -19,6 +21,10 @@ export function parseArgs(args: string[], currentWorkingDir: string): Command {
     }
     if (args.includes("version")) {
         return { type: "version" };
+    }
+    if (args.includes("explain")) {
+        const [ruleCode] = args.slice(args.indexOf('explain') + 1);
+        return { type: "explain", ruleCode };
     }
     if (args.includes("info")) {
         return {

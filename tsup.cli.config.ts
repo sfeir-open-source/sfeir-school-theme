@@ -5,6 +5,9 @@ export default defineConfig({
     entry: {
         "sfeir-school-theme-cli": "cli/main.ts",
     },
+    loader: {
+        '.md': 'text'
+    },
     splitting: false,
     sourcemap: false,
     format: "esm",

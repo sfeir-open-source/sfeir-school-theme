@@ -12,5 +12,6 @@ Command:
     version: Display the CLI version
     check: Run project checks
         --rootDir=/path/to/root/dir
+    explain [ruleCode]: Give the rule documentation
 `);
 }
