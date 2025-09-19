@@ -1,7 +1,6 @@
+import { isDirectory, readdirSync } from "../../utils/fs.utils";
 import { CheckCommand } from "../../cli";
 import { check } from "../../utils/assert.utils";
-import fs from "node:fs";
-import { isDirectory } from "../../utils/fs.utils";
 
 export function checkRootDir(command: CheckCommand) {
     check(
@@ -35,5 +34,5 @@ export function checkRootDir(command: CheckCommand) {
 }
 
 function readRootDir(command: CheckCommand) {
-    return fs.readdirSync(command.rootDir);
+    return readdirSync(command.rootDir);
 }

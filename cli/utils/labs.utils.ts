@@ -1,3 +1,4 @@
+import { isDirectory, readdirSync } from "./fs.utils";
 import {
     labPackageJsonPath,
     labReadmePath,
@@ -7,7 +8,6 @@ import {
 } from "./path.utils";
 import { ConfigJson } from "./config.utils";
 import fs from "node:fs";
-import { isDirectory } from "./fs.utils";
 import { isNotDefined } from "./fp.utils";
 
 export function isStepDirectoryExists(stepDirPath: string) {
@@ -88,7 +88,7 @@ export function getLabCommandTarget(labCommandRow: string, config: ConfigJson) {
 }
 
 export function getAllLabsFromFs(rootDir: string, config: ConfigJson) {
-    return fs.readdirSync(labsPath(rootDir), { encoding: "utf-8" })
+    return readdirSync(labsPath(rootDir), { encoding: "utf-8" })
         .filter((filePath) => !config.ignoreStepsDirectories.includes(filePath))
         .filter(
             (filePath) => isDirectory(labsPath(rootDir), filePath),

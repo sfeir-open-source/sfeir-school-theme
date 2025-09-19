@@ -53,13 +53,7 @@ describe("check command", () => {
                 docs: {
                     assets: {
                         images: {
-                            "bg.png": imageFile(),
                             "foo.png": imageFile(),
-                            "foo2.png": imageFile(),
-                            "foo3.png": imageFile(),
-                            "foo4.png": imageFile(),
-                            "foo5.png": imageFile(),
-                            "foo6.png": imageFile(),
                         },
                     },
                     css: {
@@ -67,15 +61,6 @@ describe("check command", () => {
                     },
                     markdown: {
                         "01-getting-started.md": "![](./assets/images/foo.png)",
-                        "02-html-images.md":
-                            '<!-- .slide: data-background="./assets/images/bg.png"  -->\n' +
-                            '<img src="./assets/images/foo2.png"/>\n' +
-                            '<img class="tc-bg" src="./assets/images/foo3.png"/>\n' +
-                            '<div>\n' +
-                            '    <img src="./assets/images/foo4.png" />\n' +
-                            '</div>\n' +
-                            '<img src="./assets/images/foo5.png"/><img src="./assets/images/foo6.png"/>\n'
-                        ,
                         "99-lab-getting-started.md": labSlideFile({
                             title: "Getting started",
                             cmd: "Go to 01-getting-started",
@@ -84,7 +69,6 @@ describe("check command", () => {
                     scripts: {
                         "slides.js": slideJsFile([
                             "01-getting-started.md",
-                            "02-html-images.md",
                             "99-lab-getting-started.md",
                         ]),
                     },
@@ -226,8 +210,14 @@ describe("check command", () => {
                 docs: {
                     assets: {
                         images: {
+                            "bg.png": imageFile(),
                             "intro.png": imageFile(),
                             "logo-sfeir-blanc.png": imageFile(),
+                            "foo2.png": imageFile(),
+                            "foo3.png": imageFile(),
+                            "foo4.png": imageFile(),
+                            "foo5.png": imageFile(),
+                            "foo6.png": imageFile(),
                             speakers: {
                                 "CMA.jpg": imageFile(),
                                 "the-conf.svg": imageFile(),
@@ -265,17 +255,71 @@ describe("check command", () => {
 
 ![](./assets/images/intro.png)
                         `,
+                        "02-html-images.md":
+                            '<!-- .slide: data-background="./assets/images/bg.png"  -->\n' +
+                            '<img src="./assets/images/foo2.png"/>\n' +
+                            '<img class="tc-bg" src="./assets/images/foo3.png"/>\n' +
+                            '<div>\n' +
+                            '    <img src="./assets/images/foo4.png" />\n' +
+                            '</div>\n' +
+                            '<img src="./assets/images/foo5.png"/><img src="./assets/images/foo6.png"/>\n'
+                        ,
                     },
                     scripts: {
                         "slides.js": slideJsFile([
                             "00-speaker-cma.md",
                             "01-getting-started.md",
+                            "02-html-images.md"
                         ]),
                     },
                     ...web_modules(),
                 },
                 steps: {
                     "package.json": packageJsonFile({}),
+                },
+            });
+
+            await checkCommandInternal({ type: "check", rootDir });
+            console.error(getErrors());
+            expect(getErrors()).toHaveLength(0);
+        });
+
+
+        it("should ignore hidden files", async () => {
+            const rootDir = buildProject({
+                ...configFile({ stepCommandPrefix: "npm run " }),
+                '.DS_Store': '',
+                'Thumbs.db': '',
+                docs: {
+                    '.DS_Store': '',
+                    'Thumbs.db': '',
+                    assets: {
+                        '.DS_Store': '',
+                        'Thumbs.db': '',
+                        images: {
+                            '.hidden-image.png': imageFile(),
+                            '.DS_Store': '',
+                            'Thumbs.db': '',
+                        }
+                    },
+                    css: {
+                        "slides.css": slideCssFile(),
+                    },
+                    markdown: {
+                        '.hidden-slide.md': '',
+                        'Thumbs.db': '',
+                        '.DS_Store': '',
+                    },
+                    scripts: {
+                        "slides.js": slideJsFile(),
+                    },
+                    ...web_modules(),
+                },
+                steps: {
+                    '.DS_Store': '',
+                    'Thumbs.db': '',
+                    '.hidden-slide.md': '',
+                    "package.json": packageJsonFile(),
                 },
             });
 

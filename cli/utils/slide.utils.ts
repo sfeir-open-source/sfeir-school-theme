@@ -6,10 +6,10 @@ import {
     docsPath,
     slidePath,
 } from "./path.utils";
+import { isDirectory, readdirSync } from "./fs.utils";
 import { ConfigJson } from "./config.utils";
 import fs from "node:fs";
 import { isDefinedAndNotEmpty } from "./fp.utils";
-import { isDirectory } from "./fs.utils";
 import path from "node:path";
 
 export interface SlideEntry {
@@ -33,11 +33,10 @@ export async function getSlideFilesFromSlidesJs(
 export function getSlideFilesFromFs(
     rootDir: string,
 ): FilePath[] {
-    return fs
-        .readdirSync(path.resolve(docsMarkdownPath(rootDir)), {
-            encoding: "utf-8",
-            recursive: true,
-        })
+    return readdirSync(path.resolve(docsMarkdownPath(rootDir)), {
+        encoding: "utf-8",
+        recursive: true,
+    })
         .filter((path) => path.endsWith(".md"));
 }
 
@@ -134,7 +133,7 @@ export function getImagesPathFromSlides(
 export function getImagesPathFromFs(
     rootDir: string,
 ): string[] {
-    return fs.readdirSync(docsImagesPath(rootDir), {
+    return readdirSync(docsImagesPath(rootDir), {
         encoding: "utf-8",
         recursive: true,
     }).filter((imagePath) => !isDirectory(docsImagesPath(rootDir), imagePath))

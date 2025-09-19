@@ -1,4 +1,4 @@
-import fs from "node:fs";
+import fs, { PathLike } from "node:fs";
 import path from "node:path";
 
 export function isDirectory(dir: string, file?: string): boolean {
@@ -11,4 +11,17 @@ export function isDirectory(dir: string, file?: string): boolean {
     } catch {
         return false;
     }
+}
+
+export function readdirSync(pathLike: PathLike,
+    options?:
+        | {
+            encoding: BufferEncoding | null;
+            withFileTypes?: false | undefined;
+            recursive?: boolean | undefined;
+        }
+        | BufferEncoding
+        | null,
+): string[] {
+    return fs.readdirSync(pathLike, options).filter(file => !file.startsWith('.') && file !== 'Thumbs.db')
 }
