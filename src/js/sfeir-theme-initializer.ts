@@ -14,7 +14,10 @@ export const SfeirThemeInitializer = {
     /**
      * @param {() => Array.<string>} slidesFactory
      */
-    async init(slidesFactory: (showType?: string) => SlidePath[]) {
+    async init(
+        slidesFactory: (showType?: string) => SlidePath[],
+        knowStyles: string[] = []
+    ) {
         await ThemeInitializer.init({
             slidesFactory,
             tcCustomBackgroundOptions: {
@@ -75,7 +78,7 @@ export const SfeirThemeInitializer = {
                     featherIconPack(),
                     materialSymbolsIconPack(),
                 ],
-                knowStyles: [],
+                knowStyles,
             },
             tcThemeOptions: {
                 defaultTheme: 'school',
