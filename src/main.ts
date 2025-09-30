@@ -4,4 +4,4 @@ import './scss/sfeir-school-theme.scss';
 
 export { SfeirThemeInitializer } from './js/sfeir-theme-initializer.ts';
 
-//export { Reveal };
+export { Reveal } from '@talk-control/talk-control-revealjs-extensions';
