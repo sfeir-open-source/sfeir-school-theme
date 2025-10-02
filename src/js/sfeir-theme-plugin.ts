@@ -41,7 +41,7 @@ export class SfeirTheme {
             imgLogo.classList.add('sfeir-logo');
             // eslint-disable-next-line @typescript-eslint/no-explicit-any
             (imgLogo.style as any)['background-image'] =
-                `url(web_modules/sfeir-school-theme/dist/images/logo_empty.webp)`;
+                `url(./web_modules/sfeir-school-theme/dist/images/logo_empty.webp)`;
 
             const level = firstSlideSection.hasAttribute('sfeir-level')
                 ? +firstSlideSection.getAttribute('sfeir-level')!
