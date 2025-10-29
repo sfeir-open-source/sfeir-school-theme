@@ -1,18 +1,26 @@
-const ERRORS: CheckError[] = [];
+export type Severity = 'error' | 'warning';
+
+const ISSUES: CheckError[] = [];
 
 export function check(
     ruleId: string,
     msg: string | { msg: string; continueCheck: boolean },
-    predicate: () => boolean
+    predicate: () => boolean,
+    severity: Severity = 'error'
 ) {
     if (predicate()) {
         return true;
     } else {
         if (typeof msg === 'string') {
-            ERRORS.push(new CheckError(ruleId, msg));
+            ISSUES.push(new CheckError(ruleId, msg, true, severity));
         } else {
-            const error = new CheckError(ruleId, msg.msg, msg.continueCheck);
-            ERRORS.push(error);
+            const error = new CheckError(
+                ruleId,
+                msg.msg,
+                msg.continueCheck,
+                severity
+            );
+            ISSUES.push(error);
             if (!msg.continueCheck) {
                 throw error;
             }
@@ -25,16 +33,26 @@ export class CheckError extends Error {
     constructor(
         public readonly ruleId: string,
         message: string,
-        public continueCheck = true
+        public continueCheck = true,
+        public readonly severity: Severity = 'error'
     ) {
-        super(`[CheckError] ${ruleId} ${message}`);
+        const prefix = severity === 'error' ? '[CheckError]' : '[CheckWarning]';
+        super(`${prefix} ${ruleId} ${message}`);
     }
 }
 
+export function getIssues() {
+    return ISSUES;
+}
+
 export function getErrors() {
-    return ERRORS;
+    return ISSUES.filter((issue) => issue.severity === 'error');
+}
+
+export function getWarnings() {
+    return ISSUES.filter((issue) => issue.severity === 'warning');
 }
 
 export function __TEST_ONLY__cleanupErrors() {
-    ERRORS.splice(0, ERRORS.length);
+    ISSUES.splice(0, ISSUES.length);
 }
