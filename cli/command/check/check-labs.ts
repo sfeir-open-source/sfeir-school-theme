@@ -5,6 +5,7 @@ import {
     getLabPackageJson,
     getLabReadme,
     getWorkspaceStepsPackageJson,
+    hasLabNoSolution,
     splitLabsAndSolutions,
 } from '../../utils/labs.utils';
 import { ConfigJson } from '../../utils/config.utils';
@@ -67,9 +68,11 @@ function checkLabsAndSolutions(rootDir: string, config: ConfigJson) {
             );
         }
 
-        check('L_008', `Lab "${lab}" should have a solution`, () =>
-            labSolutions.includes(lab + '-solution')
-        );
+        if (!hasLabNoSolution(rootDir, lab)) {
+            check('L_008', `Lab "${lab}" should have a solution`, () =>
+                labSolutions.includes(lab + '-solution')
+            );
+        }
     }
     for (const labSolution of labSolutions) {
         const matchingLabName = labSolution.replace('-solution', '');

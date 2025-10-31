@@ -47,3 +47,7 @@ export function labPackageJsonPath(rootDir: string, lab: string) {
 export function labReadmePath(rootDir: string, lab: string) {
     return path.resolve(labsPath(rootDir), lab, 'README.md');
 }
+
+export function labNoSolutionPath(rootDir: string, lab: string) {
+    return path.resolve(labsPath(rootDir), lab, '.nosolution');
+}

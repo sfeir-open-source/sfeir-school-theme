@@ -7,6 +7,7 @@ import { beforeEach, describe, expect, it } from 'vitest';
 import {
     configFile,
     imageFile,
+    labNoSolutionFile,
     labReadmeMdFile,
     labSlideFile,
     labsJsonFile,
@@ -202,6 +203,57 @@ describe('check command', () => {
 
             await checkCommandInternal({ type: 'check', rootDir });
             console.error(getErrors());
+            expect(getErrors()).toHaveLength(0);
+        });
+        it('lab with .nosolution file could not have a solution -> exception for [L_008]', async () => {
+            const rootDir = buildProject({
+                ...configFile({ stepCommandPrefix: 'npm run ' }),
+                docs: {
+                    assets: {
+                        images: {
+                            'foo.png': imageFile(),
+                        },
+                    },
+                    css: {
+                        'slides.css': slideCssFile(),
+                    },
+                    markdown: {
+                        '01-getting-started.md': '![](./assets/images/foo.png)',
+                        '01-lab-getting-started.md': labSlideFile({
+                            title: 'Getting started',
+                            cmd: 'npm run 01-getting-started',
+                        }),
+                    },
+                    scripts: {
+                        'slides.js': slideJsFile([
+                            '01-getting-started.md',
+                            '01-lab-getting-started.md',
+                        ]),
+                    },
+                    ...web_modules(),
+                },
+                steps: {
+                    ...oneLabStructure('01-getting-started', {
+                        'package.json': packageJsonFile({
+                            name: '01-getting-started',
+                        }),
+                        'README.md': labReadmeMdFile('01-getting-started'),
+                        '.nosolution': labNoSolutionFile(),
+                    }),
+                    'package.json': packageJsonFile({
+                        workspaces: ['01-getting-started'],
+                        scripts: {
+                            '01-getting-started': '',
+                        },
+                    }),
+                },
+            });
+            try {
+                await checkCommandInternal({ type: 'check', rootDir });
+            } catch (err) {
+                console.error(err);
+            }
+
             expect(getErrors()).toHaveLength(0);
         });
 
@@ -1389,6 +1441,7 @@ describe('check command', () => {
                 expectMatching(getErrors(), reg).toHaveLength(1);
                 expect(getErrors()).toHaveLength(1);
             });
+
             it('lab solution should match a lab [L_009]', async () => {
                 const rootDir = buildProject({
                     docs: {

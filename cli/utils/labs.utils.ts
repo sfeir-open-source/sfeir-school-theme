@@ -1,5 +1,6 @@
 import { isDirectory, readdirSync } from './fs.utils';
 import {
+    labNoSolutionPath,
     labPackageJsonPath,
     labReadmePath,
     labsDirLabsJsonPath,
@@ -148,5 +149,13 @@ export function getLabReadme(rootDir: string, lab: string): string | null {
         return fs.readFileSync(labReadmePath(rootDir, lab), 'utf-8');
     } catch {
         return null;
+    }
+}
+
+export function hasLabNoSolution(rootDir: string, lab: string): boolean {
+    try {
+        return fs.existsSync(labNoSolutionPath(rootDir, lab));
+    } catch {
+        return false;
     }
 }

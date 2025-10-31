@@ -298,6 +298,8 @@ npm run 01-getting-started
 
 Every lab should have a equivalent solution's lab. For example, if you create a lab "01-getting-started", you should create an other lab "01-getting-started-solution".
 
+Note: if it does not make sense to have a solution to a specific lab, you can add a `.nosolution` file and omit the lab solution.
+
 ##### L_009 every solution directory should match a lab
 
 Every lab with `-solution` suffix should match a lab with the exact same name without the `-solution` suffix.

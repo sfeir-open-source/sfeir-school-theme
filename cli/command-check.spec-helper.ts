@@ -74,6 +74,10 @@ export function labReadmeMdFile(name: string, prefix = 'npm run ') {
     return `# ${name} instructions\n${prefix}${name}\n`;
 }
 
+export function labNoSolutionFile() {
+    return '';
+}
+
 export function oneLabStructure(name: string, files: DirStruct) {
     return {
         [name]: {
