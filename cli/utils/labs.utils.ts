@@ -59,10 +59,11 @@ function extractLabsListFromPackageJson(
 
 export function getAllLabsFromWorkspace(
     rootDir: string,
-    { withSolution = true }: { withSolution?: boolean } = {},
+    { withSolution = true, ignoreStepsDirectories = [] }: Partial<Pick<ConfigJson, 'ignoreStepsDirectories'>> & { withSolution?: boolean } = {},
 ): string[] {
     const packageJson = getWorkspaceStepsPackageJson(rootDir);
-    const allCommands = extractLabsListFromPackageJson(packageJson);
+    const allCommands = extractLabsListFromPackageJson(packageJson)
+        .filter(command => !ignoreStepsDirectories.includes(command));
     if (withSolution) {
         return allCommands;
     } else {
@@ -74,9 +75,9 @@ export function getAllLabsFromWorkspace(
 
 export function getLabsCommands(
     rootDir: string,
-    { withSolution = false }: { withSolution?: boolean } = {},
+    { withSolution = false, ignoreStepsDirectories = [] }: Partial<Pick<ConfigJson, 'ignoreStepsDirectories'>> & { withSolution?: boolean } = {},
 ): string[] {
-    return getAllLabsFromWorkspace(rootDir, { withSolution });
+    return getAllLabsFromWorkspace(rootDir, { withSolution, ignoreStepsDirectories });
 }
 
 export function isLabCommandExists(rootDir: string, commandName: string) {

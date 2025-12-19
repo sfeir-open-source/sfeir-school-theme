@@ -162,7 +162,7 @@ function checkLabCommand(
     const allLabSlides = labSlides.map((slide) =>
         readSlideFile(rootDir, slide.path)
     );
-    const labsCommands = getLabsCommands(rootDir);
+    const labsCommands = getLabsCommands(rootDir, config);
     for (const labCommand of labsCommands) {
         check("L_001", `"${labCommand}" should be used in a lab slide`, () => {
             return allLabSlides.some((slide) =>
