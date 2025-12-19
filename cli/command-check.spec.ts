@@ -327,6 +327,109 @@ describe("check command", () => {
             console.error(getErrors());
             expect(getErrors()).toHaveLength(0);
         });
+
+        it("project with ignored steps", async () => {
+            const rootDir = buildProject({
+                ...configFile({ ignoreStepsDirectories: ['common'] }),
+                docs: {
+                    assets: { images: {} },
+                    css: {
+                        "slides.css": slideCssFile(),
+                    },
+                    markdown: {
+                        "01-lab-getting-started.md": labSlideFile({
+                            title: "Getting started",
+                            cmd: "npm run 01-getting-started",
+                        }),
+                    },
+                    scripts: {
+                        "slides.js": slideJsFile(["01-lab-getting-started.md"]),
+                    },
+                    ...web_modules(),
+                },
+                steps: {
+                    "common": {
+                        "index.ts": "export function foo() { return 'foo'; }",
+                        "package.json": packageJsonFile({ name: "common" })
+                    },
+                    "01-getting-started": {
+                        "README.md": labReadmeMdFile("01-getting-started", ""),
+                        "package.json": packageJsonFile({ name: "01-getting-started" })
+                    },
+                    "01-getting-started-solution": {
+                        "README.md": labReadmeMdFile("01-getting-started", ""),
+                        "package.json": packageJsonFile({ name: "01-getting-started-solution" })
+                    },
+                    "package.json": packageJsonFile({
+                        workspaces: [
+                            "01-getting-started",
+                            "01-getting-started-solution",
+                        ],
+                        "scripts": {
+                            "01-getting-started": "",
+                            "01-getting-started-solution": ""
+                        }
+                    }),
+                },
+            });
+
+            await checkCommandInternal({ type: "check", rootDir });
+            console.error(getErrors());
+            expect(getErrors()).toStrictEqual([]);
+            expect(getErrors()).toHaveLength(0);
+        });
+
+        it("project with ignored steps in the workspace", async () => {
+            const rootDir = buildProject({
+                ...configFile({ ignoreStepsDirectories: ['common'] }),
+                docs: {
+                    assets: { images: {} },
+                    css: {
+                        "slides.css": slideCssFile(),
+                    },
+                    markdown: {
+                        "01-lab-getting-started.md": labSlideFile({
+                            title: "Getting started",
+                            cmd: "npm run 01-getting-started",
+                        }),
+                    },
+                    scripts: {
+                        "slides.js": slideJsFile(["01-lab-getting-started.md"]),
+                    },
+                    ...web_modules(),
+                },
+                steps: {
+                    "common": {
+                        "index.ts": "export function foo() { return 'foo'; }",
+                        "package.json": packageJsonFile({ name: "common" })
+                    },
+                    "01-getting-started": {
+                        "README.md": labReadmeMdFile("01-getting-started", ""),
+                        "package.json": packageJsonFile({ name: "01-getting-started" })
+                    },
+                    "01-getting-started-solution": {
+                        "README.md": labReadmeMdFile("01-getting-started", ""),
+                        "package.json": packageJsonFile({ name: "01-getting-started-solution" })
+                    },
+                    "package.json": packageJsonFile({
+                        workspaces: [
+                            "common",
+                            "01-getting-started",
+                            "01-getting-started-solution",
+                        ],
+                        "scripts": {
+                            "01-getting-started": "",
+                            "01-getting-started-solution": ""
+                        }
+                    }),
+                },
+            });
+
+            await checkCommandInternal({ type: "check", rootDir });
+            console.error(getErrors());
+            expect(getErrors()).toStrictEqual([]);
+            expect(getErrors()).toHaveLength(0);
+        });
     });
 
     describe("invalid projects", () => {
