@@ -1,34 +1,34 @@
-import { Command } from "../cli";
-import { checkCommand } from "./check/index";
-import { explainCommand } from "./explain";
-import { helpCommand } from "./help";
-import { infoCommand } from "./info";
-import { initConfigCommand } from "./init-config";
-import { versionCommand } from "./version";
+import { Command } from '../cli';
+import { checkCommand } from './check/index';
+import { explainCommand } from './explain';
+import { helpCommand } from './help';
+import { infoCommand } from './info';
+import { initConfigCommand } from './init-config';
+import { versionCommand } from './version';
 
 export async function runCommand(command: Command) {
     switch (command.type) {
-        case "check":
+        case 'check':
             await checkCommand(command);
             break;
-        case "init-config":
+        case 'init-config':
             await initConfigCommand(command);
             break;
         case 'explain':
             explainCommand(command);
             break;
-        case "help":
+        case 'help':
             helpCommand();
             break;
-        case "info":
+        case 'info':
             infoCommand(command);
             break;
-        case "version":
+        case 'version':
             versionCommand();
             break;
         default:
             throw new Error(
-                `Command "${JSON.stringify(command)}" not implemented`,
+                `Command "${JSON.stringify(command)}" not implemented`
             );
     }
 }

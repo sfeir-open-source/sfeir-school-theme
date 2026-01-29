@@ -1,28 +1,28 @@
-import { LabsJson, PackageJson } from "./utils/labs.utils";
-import { ConfigJson } from "./utils/config.utils";
-import { DirStruct } from "./test-utils/project-builder.utils";
-import fs from "node:fs";
+import { LabsJson, PackageJson } from './utils/labs.utils';
+import { ConfigJson } from './utils/config.utils';
+import { DirStruct } from './test-utils/project-builder.utils';
+import fs from 'node:fs';
 
 export function slideCssFile() {
     return `\n`;
 }
 
 export function slideJsFile(slides: string[] = []) {
-    return `export function formation() { return ${
-        JSON.stringify(slides)
-    }.map(path => ({path})) }\n`;
+    return `export function formation() { return ${JSON.stringify(
+        slides
+    )}.map(path => ({path})) }\n`;
 }
 
 export function packageJsonFile(content: Partial<PackageJson> = {}) {
-    return JSON.stringify(content) + "\n";
+    return JSON.stringify(content) + '\n';
 }
 
 export function labsJsonFile(content: Partial<LabsJson> = {}) {
-    return JSON.stringify(content) + "\n";
+    return JSON.stringify(content) + '\n';
 }
 
 export function configFile(content: Partial<ConfigJson> = {}) {
-    return { ".sfeir-theme-config.json": JSON.stringify(content) };
+    return { '.sfeir-theme-config.json': JSON.stringify(content) };
 }
 
 export type LabSlideOptions = {
@@ -31,9 +31,11 @@ export type LabSlideOptions = {
     cmd?: string;
 };
 
-export function labSlideFile(
-    { title = "", steps = [], cmd = "" }: LabSlideOptions,
-) {
+export function labSlideFile({
+    title = '',
+    steps = [],
+    cmd = '',
+}: LabSlideOptions) {
     return `<!-- .slide: class="exercice" -->
 
 # ${title}
@@ -49,15 +51,15 @@ ${steps.map((step, index) => `${index + 1}. ${step}`)}
 }
 
 export function imageFile() {
-    return "";
+    return '';
 }
 
 export function web_modules() {
     return {
-        "web_modules": {
-            "sfeir-school-theme": {
+        web_modules: {
+            'sfeir-school-theme': {
                 dist: {
-                    "sfeir-school-theme.css": sfeirSchoolThemeCssFile(),
+                    'sfeir-school-theme.css': sfeirSchoolThemeCssFile(),
                 },
             },
         },
@@ -65,10 +67,10 @@ export function web_modules() {
 }
 
 export function sfeirSchoolThemeCssFile() {
-    return fs.readFileSync("./dist/sfeir-school-theme.css", "utf-8");
+    return fs.readFileSync('./dist/sfeir-school-theme.css', 'utf-8');
 }
 
-export function labReadmeMdFile(name: string, prefix = "npm run ") {
+export function labReadmeMdFile(name: string, prefix = 'npm run ') {
     return `# ${name} instructions\n${prefix}${name}\n`;
 }
 
@@ -83,12 +85,12 @@ export function oneLabStructure(name: string, files: DirStruct) {
 export function minimalValidLabStructure(name: string) {
     return {
         ...oneLabStructure(name, {
-            "package.json": packageJsonFile({ name }),
-            "README.md": labReadmeMdFile(name),
+            'package.json': packageJsonFile({ name }),
+            'README.md': labReadmeMdFile(name),
         }),
-        ...oneLabStructure(name + "-solution", {
-            "package.json": packageJsonFile({ name: name + "-solution" }),
-            "README.md": labReadmeMdFile(name),
+        ...oneLabStructure(name + '-solution', {
+            'package.json': packageJsonFile({ name: name + '-solution' }),
+            'README.md': labReadmeMdFile(name),
         }),
     };
 }

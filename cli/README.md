@@ -279,6 +279,7 @@ Example of minimal `README.md`:
 
 npm run 01-getting-started
 ```
+
 ##### L_007 every lab `README.md` should contains the correct command to start the lab
 
 Every lab directory in `<root>/steps/` should contain a `README.md` file with the lab title and the correct command.

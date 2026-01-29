@@ -5,12 +5,12 @@ import {
     docsMarkdownPath,
     docsPath,
     slidePath,
-} from "./path.utils";
-import { isDirectory, readdirSync } from "./fs.utils";
-import { ConfigJson } from "./config.utils";
-import fs from "node:fs";
-import { isDefinedAndNotEmpty } from "./fp.utils";
-import path from "node:path";
+} from './path.utils';
+import { isDirectory, readdirSync } from './fs.utils';
+import { ConfigJson } from './config.utils';
+import fs from 'node:fs';
+import { isDefinedAndNotEmpty } from './fp.utils';
+import path from 'node:path';
 
 export interface SlideEntry {
     path: string;
@@ -19,47 +19,41 @@ export interface SlideEntry {
 export type FilePath = string;
 
 export async function getSlideFilesFromSlidesJs(
-    rootDir: string,
+    rootDir: string
 ): Promise<SlideEntry[]> {
     const slideJs = await import(importSlidesJs(rootDir));
-    if (typeof slideJs.formation !== "function") {
+    if (typeof slideJs.formation !== 'function') {
         throw new Error(
-            "scripts/slides.js should have an exported function formation",
+            'scripts/slides.js should have an exported function formation'
         );
     }
     return slideJs.formation();
 }
 
-export function getSlideFilesFromFs(
-    rootDir: string,
-): FilePath[] {
+export function getSlideFilesFromFs(rootDir: string): FilePath[] {
     return readdirSync(path.resolve(docsMarkdownPath(rootDir)), {
-        encoding: "utf-8",
+        encoding: 'utf-8',
         recursive: true,
-    })
-        .filter((path) => path.endsWith(".md"));
+    }).filter((path) => path.endsWith('.md'));
 }
 
 function importSlidesJs(rootDir: string): string {
     try {
         return (
-            "data:text/javascript;charset=utf-8," +
+            'data:text/javascript;charset=utf-8,' +
             encodeURIComponent(
                 fs
                     .readFileSync(
-                        path.resolve(
-                            docsPath(rootDir),
-                            "scripts/slides.js",
-                        ),
-                        "utf-8",
+                        path.resolve(docsPath(rootDir), 'scripts/slides.js'),
+                        'utf-8'
                     )
-                    .split("\n")
-                    .filter((line) => !line.includes("SfeirThemeInitializer"))
-                    .join("\n"),
+                    .split('\n')
+                    .filter((line) => !line.includes('SfeirThemeInitializer'))
+                    .join('\n')
             )
         );
     } catch (err) {
-        throw new Error("Failed to read scripts/slides.js", { cause: err });
+        throw new Error('Failed to read scripts/slides.js', { cause: err });
     }
 }
 
@@ -68,46 +62,52 @@ export function isSlideFileExists(slideFilePath: string) {
 }
 
 export function getAllSlidesImages(rootDir: string): string[] {
-    return getSlideFilesFromFs(rootDir).map((file) =>
-        readSlideFile(rootDir, file)
-    ).flatMap((fileContent) => getImagesPathFromSlides(rootDir, fileContent));
+    return getSlideFilesFromFs(rootDir)
+        .map((file) => readSlideFile(rootDir, file))
+        .flatMap((fileContent) =>
+            getImagesPathFromSlides(rootDir, fileContent)
+        );
 }
 
 export function getLabSlides(slides: SlideEntry[]): SlideEntry[] {
-    return slides.filter((slide) =>
-        slide.path.includes("-lab-") || slide.path.includes("-lab.md")
+    return slides.filter(
+        (slide) =>
+            slide.path.includes('-lab-') || slide.path.includes('-lab.md')
     );
 }
 
 export function readSlideFile(rootDir: string, slideFilePath: string) {
-    return fs.readFileSync(slidePath(rootDir, slideFilePath), "utf-8");
+    return fs.readFileSync(slidePath(rootDir, slideFilePath), 'utf-8');
 }
 
 export function getLabSlideCommandRow(
     file: string,
-    config: ConfigJson,
+    config: ConfigJson
 ): string | undefined {
-    return file.split("\n").find((row) =>
-        row.includes(config.stepCommandPrefix)
-    );
+    return file
+        .split('\n')
+        .find((row) => row.includes(config.stepCommandPrefix));
 }
 
 export function getImagesPathFromSlides(
     rootDir: string,
-    fileContent: string,
+    fileContent: string
 ): string[] {
     return fileContent
-        .split("\n")
+        .split('\n')
         .flatMap(extractUrlPart)
         .filter(isDefinedAndNotEmpty)
-        .filter((url) => !url.startsWith("http"))
+        .filter((url) => !url.startsWith('http'))
         .filter(isImageInAssetsDir)
         .map((imgPath) => docsFilePath(rootDir, imgPath));
 
     function extractUrlPart(row: string): string | string[] | null {
-        if (row.startsWith("![")) {
-            const secondPart = row.split("](")[1];
-            const urlPart = secondPart?.substring(0, secondPart.lastIndexOf(")"));
+        if (row.startsWith('![')) {
+            const secondPart = row.split('](')[1];
+            const urlPart = secondPart?.substring(
+                0,
+                secondPart.lastIndexOf(')')
+            );
             if (urlPart.endsWith("'")) {
                 return urlPart.substring(0, urlPart.lastIndexOf(" '"));
             } else {
@@ -115,29 +115,33 @@ export function getImagesPathFromSlides(
             }
         } else if (row.includes('<!--') && row.includes('data-background=')) {
             const dataBackgroundPart = row.split('data-background="')[1];
-            return dataBackgroundPart?.substring(0, dataBackgroundPart.indexOf('"'));
+            return dataBackgroundPart?.substring(
+                0,
+                dataBackgroundPart.indexOf('"')
+            );
         } else if (row.includes('<img')) {
-            return row.split('<img')
-                .map(img => img.match(/src="(?<src>[^"]*)"/)?.groups?.src)
+            return row
+                .split('<img')
+                .map((img) => img.match(/src="(?<src>[^"]*)"/)?.groups?.src)
                 .filter(isDefinedAndNotEmpty);
         } else {
             return null;
         }
     }
     function isImageInAssetsDir(imagePath: string): boolean {
-        return imagePath.startsWith("assets") ||
-            imagePath.startsWith("./assets");
+        return (
+            imagePath.startsWith('assets') || imagePath.startsWith('./assets')
+        );
     }
 }
 
-export function getImagesPathFromFs(
-    rootDir: string,
-): string[] {
+export function getImagesPathFromFs(rootDir: string): string[] {
     return readdirSync(docsImagesPath(rootDir), {
-        encoding: "utf-8",
+        encoding: 'utf-8',
         recursive: true,
-    }).filter((imagePath) => !isDirectory(docsImagesPath(rootDir), imagePath))
-        .filter((imagePath) => !imagePath.includes("sfeir-school-logo.png"))
+    })
+        .filter((imagePath) => !isDirectory(docsImagesPath(rootDir), imagePath))
+        .filter((imagePath) => !imagePath.includes('sfeir-school-logo.png'))
         .map((imagePath) => docsImagePath(rootDir, imagePath));
 }
 
