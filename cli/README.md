@@ -1,5 +1,72 @@
 # CLI
 
+The Sfeir School Theme CLI will provide you better Sfeir School Theme experience:
+
+- Check classes and markdown syntax;
+- Images check;
+- Slide declaration check;
+- Labs declaration check;
+- Ensure some convention;
+
+The ultimate goals of the CLI are:
+
+- Avoid a lot a friction when build training with the Sfeir School Theme;
+- Ensure the training stay cleaned up (no old image, no unused markdown files, etc.);
+- Ensure a minimal coherence between training, so when you go on another training you will not be lost;
+
+## Installation
+
+Add to the `docs/package.json`:
+
+```JSON
+{
+    ...
+    "scripts": {
+        ...
+        "test": "sfeir-school-theme check --rootDir=..",
+        ...
+    }
+    ...
+}
+```
+
+Add the pipeline `.github/workflows/check-repo.yml`:
+
+```Yaml
+name: CI/CD
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  check-repo:
+    timeout-minutes: 60
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: ./docs
+    permissions: write-all
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20.9
+      - name: Install dependencies
+        run: npm ci
+      - name: Unit Tests
+        run: npm test
+
+```
+
+Init the configuration file (on the training root directory):
+
+```Bash
+npx sfeir-school-theme init-config
+```
+
+This command will create `.sfeir-theme-config.json` file.
+
 ## Check
 
 ### Global checks

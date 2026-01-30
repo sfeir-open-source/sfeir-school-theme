@@ -13,7 +13,11 @@ const CHECK_COMMAND_TESTS = fs.readFileSync(
 );
 
 describe('Documentation', () => {
-    const ruleCodesFromReadme = README.match(/([GSL]_\d{3})/g) ?? [];
+    const ruleCodesFromReadme = (
+        README.match(/##### ([GSL]_\d{3})/g) ?? []
+    ).map((code) =>
+        code.startsWith('##### ') ? code.slice('##### '.length) : code
+    );
     const concatenedRuleFiles = RULE_FILES.join('\n');
     const ruleCodesFromCode = ensureUnique(
         concatenedRuleFiles.match(/([GSL]_\d{3})/g) ?? []
