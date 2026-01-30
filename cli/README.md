@@ -67,7 +67,110 @@ npx sfeir-school-theme init-config
 
 This command will create `.sfeir-theme-config.json` file.
 
-## Check
+## Basic usage
+
+### Check the Training
+
+```Bash
+# In the training root directory:
+npx sfeir-school-theme check
+
+# From other directory:
+npx sfeir-school-theme check --rootDir=path/to/training/root/directory
+```
+
+If everything is good, you should see:
+
+```
+OK
+```
+
+If there is errors:
+
+```
+[CheckError] S_003 "00-school/00-TITLE.md" should be used
+
+You can call "sfeir-school-theme explain S_003" to have more details.
+```
+
+Every error will have a rule code `<ONE_LETTER>_<RULE_ID>` (in the above example: `S_003`).
+
+### Explain
+
+The CLI let you get the documentation directly:
+
+```Bash
+npx sfeir-school-theme explain S_003
+```
+
+### Get school info
+
+This command will give you the lab list
+
+```Bash
+npx sfeir-school-theme info
+```
+
+```
+# Labs
+
+ - 01-ouverture-de-l-usine(-solution)
+ - 02-preparer-la-pate(-solution)
+ - 03-preparer-les-pommes(-solution)
+ - 04-foncer-la-tarte(-solution)
+ - 05-cuire-la-tarte(-solution)
+ - 06-tests(-solution)
+ - 99-bonus-simple-mapping(-solution)
+ - 100-bonus-chevre-chaud(-solution)
+```
+
+### Get school theme version
+
+This command will give you the lab list
+
+```Bash
+npx sfeir-school-theme version
+```
+
+```
+Version: 4.0.0-rc-14
+```
+
+## Configuration files
+
+### extraCssFiles: string[] (optional)
+
+Default: `[]`
+
+You can specify here training css files. If you defined new css classes, these classes will be considered for S_009.
+
+### stepCommandPrefix: string (optional)
+
+Default: `""`
+
+If you specify `stepCommandPrefix`, every command of the training will be excepted to start with this prefix.
+
+For example, if you defined `"stepCommandPrefix": "npm run "`, your lab slide should look like:
+
+```Markdown
+<!-- .slide: class="exercice" -->
+
+# Lab title
+
+## Lab
+
+...
+
+### npm run lab-name
+```
+
+### ignoreStepsDirectories: string[] (optional)
+
+Default: `[]`
+
+You can specify here every directories which are not lab but need to be in the `steps` directory (node_modules, common modules, data, etc.)
+
+## Rules
 
 ### Global checks
 
