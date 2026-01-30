@@ -199,7 +199,28 @@ Every classes used in a slide file should exists:
 
 ##### L_001 every labs should be used in a slide
 
-Every lab should be referenced in the lab slide.
+Every lab should be referenced in the lab slide. Lab is considered referenced when the lab name is present in a lab slide.
+
+Example:
+
+If you have a lab named `01-getting-started`, you should have a lab slide like:
+
+```
+<!-- .slide: class="exercice" -->
+
+# Getting started
+
+## Lab
+
+<br>
+
+1. first thing to do
+2. second thing to do
+
+### 01-getting-started
+```
+
+Note: if you have configured a command prefix (check `stepCommandPrefix` option for more details), the last lab slide row should be `### <stepCommandPrefix><lab name>`. For example, with `stepCommandPrefix: "npm run "`, you should have `### npm run 01-getting-started`.
 
 #### Workspace / Scripts checks
 
