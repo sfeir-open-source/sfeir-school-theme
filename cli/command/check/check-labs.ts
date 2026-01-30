@@ -8,9 +8,9 @@ import {
     hasLabNoSolution,
     splitLabsAndSolutions,
 } from '../../utils/labs.utils';
+import { isDefined, isDefinedAndNotEmpty } from '../../utils/fp.utils';
 import { ConfigJson } from '../../utils/config.utils';
 import { check } from '../../utils/assert.utils';
-import { isDefined } from '../../utils/fp.utils';
 
 export function checkLabs(rootDir: string, config: ConfigJson) {
     checkLabDirectories(rootDir, config);
@@ -59,13 +59,15 @@ function checkLabsAndSolutions(rootDir: string, config: ConfigJson) {
                 `Lab "${lab}"'s README.md should contains the correct title`,
                 () => readme?.includes(`# ${lab} instructions`) ?? false
             );
-            check(
-                'L_007',
-                `Lab "${lab}"'s README.md should contains the correct command`,
-                () =>
-                    readme?.includes(`${config.stepCommandPrefix}${lab}`) ??
-                    false
-            );
+            if (isDefinedAndNotEmpty(config.stepCommandPrefix)) {
+                check(
+                    'L_007',
+                    `Lab "${lab}"'s README.md should contains the correct command`,
+                    () =>
+                        readme?.includes(`${config.stepCommandPrefix}${lab}`) ??
+                        false
+                );
+            }
         }
 
         if (!hasLabNoSolution(rootDir, lab)) {

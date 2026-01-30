@@ -1316,6 +1316,69 @@ describe('check command', () => {
                 expectMatching(getErrors(), regL010).toHaveLength(1);
                 expect(getErrors()).toHaveLength(2);
             });
+            it('labs with README.md missing some infos [L_006]', async () => {
+                const rootDir = buildProject({
+                    ...configFile({}),
+                    docs: {
+                        assets: {
+                            images: {
+                                'foo.png': imageFile(),
+                            },
+                        },
+                        css: {
+                            'slides.css': slideCssFile(),
+                        },
+                        markdown: {
+                            '01-getting-started.md':
+                                '![](./assets/images/foo.png)',
+                            '01-lab-getting-started.md': labSlideFile({
+                                title: 'Getting started',
+                                cmd: '01-getting-started',
+                            }),
+                        },
+                        scripts: {
+                            'slides.js': slideJsFile([
+                                '01-getting-started.md',
+                                '01-lab-getting-started.md',
+                            ]),
+                        },
+                        ...web_modules(),
+                    },
+                    steps: {
+                        ...oneLabStructure('01-getting-started', {
+                            'package.json': packageJsonFile({
+                                name: '01-getting-started',
+                            }),
+                            'README.md': '# 01-getting-started\n',
+                        }),
+                        ...oneLabStructure('01-getting-started-solution', {
+                            'package.json': packageJsonFile({
+                                name: '01-getting-started-solution',
+                            }),
+                            'README.md': '# 01-getting-started\n',
+                        }),
+                        'package.json': packageJsonFile({
+                            workspaces: [
+                                '01-getting-started',
+                                '01-getting-started-solution',
+                            ],
+                            scripts: {
+                                '01-getting-started': '',
+                                '01-getting-started-solution': '',
+                            },
+                        }),
+                    },
+                });
+                try {
+                    await checkCommandInternal({ type: 'check', rootDir });
+                } catch (err) {
+                    console.error(err);
+                }
+
+                const regL006 =
+                    /\[CheckError\] L_006 Lab "01-getting-started"'s README.md should contains the correct title/;
+                expectMatching(getErrors(), regL006).toHaveLength(1);
+            });
             it('labs with README.md missing some infos [L_006][L_007]', async () => {
                 const rootDir = buildProject({
                     ...configFile({ stepCommandPrefix: 'npm run ' }),

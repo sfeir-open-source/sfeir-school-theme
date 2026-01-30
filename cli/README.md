@@ -313,6 +313,8 @@ Example of minimal `README.md`:
 npm run 01-getting-started
 ```
 
+Note: this rule is only applied if you have specified `stepCommandPrefix` specified in the `<root>/.sfeir-theme-config.json`.
+
 #### Solutions checks
 
 ##### L_008 every lab should have solution
