@@ -16,6 +16,7 @@ import {
     getCssClassUsedInSlide,
 } from '../../utils/css.utils';
 import {
+    getAllLabsFromFs,
     getLabCommandTarget,
     getLabsCommands,
     isLabCommandExists,
@@ -113,8 +114,9 @@ function checkLabSlideFile(
     config: ConfigJson
 ) {
     const labSlides = getLabSlides(slideFilesFromSlidesJs);
+    const labSlidesDirectory = getAllLabsFromFs(rootDir, config);
     for (const slideFile of labSlides) {
-        const labSlideContent = readSlideFile(rootDir, slideFile.path);
+        const labSlideContent = readSlideFile(rootDir, slideFile.path) ?? '';
         const commandRow = getLabSlideCommandRow(labSlideContent, config)!;
         const hasCommandRow = check(
             'S_004',
@@ -133,6 +135,17 @@ function checkLabSlideFile(
                         config
                     );
                     return isLabCommandExists(rootDir, commandTarget);
+                }
+            );
+            check(
+                'S_011',
+                `"${slideFile?.path}" lab should have a dedicated directory in \`steps\``,
+                () => {
+                    const commandTarget = getLabCommandTarget(
+                        commandRow,
+                        config
+                    );
+                    return labSlidesDirectory.includes(commandTarget);
                 }
             );
         }
@@ -157,9 +170,9 @@ function checkLabCommand(
     labSlides: SlideEntry[],
     config: ConfigJson
 ) {
-    const allLabSlides = labSlides.map((slide) =>
-        readSlideFile(rootDir, slide.path)
-    );
+    const allLabSlides = labSlides
+        .map((slide) => readSlideFile(rootDir, slide.path))
+        .filter(isDefinedAndNotEmpty);
     const labsCommands = getLabsCommands(rootDir, config);
     for (const labCommand of labsCommands) {
         check('L_001', `"${labCommand}" should be used in a lab slide`, () => {

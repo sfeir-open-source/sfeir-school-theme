@@ -86,15 +86,15 @@ export function oneLabStructure(name: string, files: DirStruct) {
     };
 }
 
-export function minimalValidLabStructure(name: string) {
+export function minimalValidLabStructure(name: string, prefix?: string) {
     return {
         ...oneLabStructure(name, {
             'package.json': packageJsonFile({ name }),
-            'README.md': labReadmeMdFile(name),
+            'README.md': labReadmeMdFile(name, prefix),
         }),
         ...oneLabStructure(name + '-solution', {
             'package.json': packageJsonFile({ name: name + '-solution' }),
-            'README.md': labReadmeMdFile(name),
+            'README.md': labReadmeMdFile(name, prefix),
         }),
     };
 }

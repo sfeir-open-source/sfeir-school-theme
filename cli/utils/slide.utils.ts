@@ -64,6 +64,7 @@ export function isSlideFileExists(slideFilePath: string) {
 export function getAllSlidesImages(rootDir: string): string[] {
     return getSlideFilesFromFs(rootDir)
         .map((file) => readSlideFile(rootDir, file))
+        .filter(isDefinedAndNotEmpty)
         .flatMap((fileContent) =>
             getImagesPathFromSlides(rootDir, fileContent)
         );
@@ -77,7 +78,11 @@ export function getLabSlides(slides: SlideEntry[]): SlideEntry[] {
 }
 
 export function readSlideFile(rootDir: string, slideFilePath: string) {
-    return fs.readFileSync(slidePath(rootDir, slideFilePath), 'utf-8');
+    try {
+        return fs.readFileSync(slidePath(rootDir, slideFilePath), 'utf-8');
+    } catch {
+        return null;
+    }
 }
 
 export function getLabSlideCommandRow(

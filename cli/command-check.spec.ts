@@ -124,10 +124,15 @@ describe('check command', () => {
                     ...web_modules(),
                 },
                 steps: {
+                    ...minimalValidLabStructure('01-getting-started'),
                     'package.json': packageJsonFile({
-                        workspaces: ['01-getting-started'],
+                        workspaces: [
+                            '01-getting-started',
+                            '01-getting-started-solution',
+                        ],
                         scripts: {
                             '01-getting-started': '',
+                            '01-getting-started-solution': '',
                         },
                     }),
                 },
@@ -158,10 +163,15 @@ describe('check command', () => {
                     ...web_modules(),
                 },
                 steps: {
+                    ...minimalValidLabStructure('01-getting-started'),
                     'package.json': packageJsonFile({
-                        labs: ['01-getting-started'],
+                        workspaces: [
+                            '01-getting-started',
+                            '01-getting-started-solution',
+                        ],
                         scripts: {
                             '01-getting-started': '',
+                            '01-getting-started-solution': '',
                         },
                     }),
                 },
@@ -192,10 +202,18 @@ describe('check command', () => {
                     ...web_modules(),
                 },
                 steps: {
+                    ...minimalValidLabStructure(
+                        '01-getting-started',
+                        'yarn run '
+                    ),
                     'package.json': packageJsonFile({
-                        workspaces: ['01-getting-started'],
+                        workspaces: [
+                            '01-getting-started',
+                            '01-getting-started-solution',
+                        ],
                         scripts: {
                             '01-getting-started': '',
+                            '01-getting-started-solution': '',
                         },
                     }),
                 },
@@ -579,6 +597,7 @@ describe('check command', () => {
                         ...web_modules(),
                     },
                     steps: {
+                        ...minimalValidLabStructure('01-getting-started'),
                         'package.json': packageJsonFile({
                             workspaces: ['01-getting-started'],
                             scripts: {
@@ -628,10 +647,15 @@ describe('check command', () => {
                         ...web_modules(),
                     },
                     steps: {
+                        ...minimalValidLabStructure('01-getting-started'),
                         'package.json': packageJsonFile({
-                            workspaces: ['01-getting-started'],
+                            workspaces: [
+                                '01-getting-started',
+                                '01-getting-started-solution',
+                            ],
                             scripts: {
                                 '01-getting-started': '',
+                                '01-getting-started-solution': '',
                             },
                         }),
                     },
@@ -677,10 +701,15 @@ describe('check command', () => {
                         ...web_modules(),
                     },
                     steps: {
+                        ...minimalValidLabStructure('01-getting-started'),
                         'package.json': packageJsonFile({
-                            workspaces: ['01-getting-started'],
+                            workspaces: [
+                                '01-getting-started',
+                                '01-getting-started-solution',
+                            ],
                             scripts: {
                                 '01-getting-started': '',
+                                '01-getting-started-solution': '',
                             },
                         }),
                     },
@@ -730,10 +759,15 @@ describe('check command', () => {
                         ...web_modules(),
                     },
                     steps: {
+                        ...minimalValidLabStructure('01-getting-started'),
                         'package.json': packageJsonFile({
-                            workspaces: ['01-getting-started'],
+                            workspaces: [
+                                '01-getting-started',
+                                '01-getting-started-solution',
+                            ],
                             scripts: {
                                 '01-getting-started': '',
+                                '01-getting-started-solution': '',
                             },
                         }),
                     },
@@ -749,7 +783,7 @@ describe('check command', () => {
                 expectMatching(getErrors(), reg).toHaveLength(1);
                 expect(getErrors()).toHaveLength(1);
             });
-            it('lab slide without a valid command [S_005]', async () => {
+            it('lab slide without a valid command [S_005][S_011]', async () => {
                 const rootDir = buildProject({
                     ...configFile({ stepCommandPrefix: 'npm run ' }),
                     docs: {
@@ -783,10 +817,15 @@ describe('check command', () => {
                         ...web_modules(),
                     },
                     steps: {
+                        ...minimalValidLabStructure('01-getting-started'),
                         'package.json': packageJsonFile({
-                            workspaces: ['01-getting-started'],
+                            workspaces: [
+                                '01-getting-started',
+                                '01-getting-started-solution',
+                            ],
                             scripts: {
                                 '01-getting-started': '',
+                                '01-getting-started-solution': '',
                             },
                         }),
                     },
@@ -797,10 +836,13 @@ describe('check command', () => {
                     console.error(err);
                 }
 
-                const reg =
+                const regS005 =
                     /\[CheckError\] S_005 "01-lab-getting-started-bis.md" should contains the valid command to run the exercise/;
-                expectMatching(getErrors(), reg).toHaveLength(1);
-                expect(getErrors()).toHaveLength(1);
+                expectMatching(getErrors(), regS005).toHaveLength(1);
+                const regS011 =
+                    /\[CheckError\] S_011 "01-lab-getting-started-bis.md" lab should have a dedicated directory in `steps`/;
+                expectMatching(getErrors(), regS011).toHaveLength(1);
+                expect(getErrors()).toHaveLength(2);
             });
             it('lab slide without a valid command [S_006]', async () => {
                 const rootDir = buildProject({
@@ -834,10 +876,15 @@ describe('check command', () => {
                         ...web_modules(),
                     },
                     steps: {
+                        ...minimalValidLabStructure('01-getting-started'),
                         'package.json': packageJsonFile({
-                            workspaces: ['01-getting-started'],
+                            workspaces: [
+                                '01-getting-started',
+                                '01-getting-started-solution',
+                            ],
                             scripts: {
                                 '01-getting-started': '',
+                                '01-getting-started-solution': '',
                             },
                         }),
                     },
@@ -882,10 +929,15 @@ describe('check command', () => {
                         ...web_modules(),
                     },
                     steps: {
+                        ...minimalValidLabStructure('01-getting-started'),
                         'package.json': packageJsonFile({
-                            workspaces: ['01-getting-started'],
+                            workspaces: [
+                                '01-getting-started',
+                                '01-getting-started-solution',
+                            ],
                             scripts: {
                                 '01-getting-started': '',
+                                '01-getting-started-solution': '',
                             },
                         }),
                     },
@@ -932,10 +984,15 @@ describe('check command', () => {
                         ...web_modules(),
                     },
                     steps: {
+                        ...minimalValidLabStructure('01-getting-started'),
                         'package.json': packageJsonFile({
-                            workspaces: ['01-getting-started'],
+                            workspaces: [
+                                '01-getting-started',
+                                '01-getting-started-solution',
+                            ],
                             scripts: {
                                 '01-getting-started': '',
+                                '01-getting-started-solution': '',
                             },
                         }),
                     },
@@ -981,10 +1038,15 @@ describe('check command', () => {
                         ...web_modules(),
                     },
                     steps: {
+                        ...minimalValidLabStructure('01-getting-started'),
                         'package.json': packageJsonFile({
-                            workspaces: ['01-getting-started'],
+                            workspaces: [
+                                '01-getting-started',
+                                '01-getting-started-solution',
+                            ],
                             scripts: {
                                 '01-getting-started': '',
+                                '01-getting-started-solution': '',
                             },
                         }),
                     },
@@ -1017,10 +1079,15 @@ describe('check command', () => {
                         ...web_modules(),
                     },
                     steps: {
+                        ...minimalValidLabStructure('01-getting-started'),
                         'package.json': packageJsonFile({
-                            workspaces: ['01-getting-started'],
+                            workspaces: [
+                                '01-getting-started',
+                                '01-getting-started-solution',
+                            ],
                             scripts: {
                                 '01-getting-started': '',
+                                '01-getting-started-solution': '',
                             },
                         }),
                     },
@@ -1055,10 +1122,15 @@ describe('check command', () => {
                         ...web_modules(),
                     },
                     steps: {
+                        ...minimalValidLabStructure('01-getting-started'),
                         'package.json': packageJsonFile({
-                            workspaces: ['01-getting-started'],
+                            workspaces: [
+                                '01-getting-started',
+                                '01-getting-started-solution',
+                            ],
                             scripts: {
                                 '01-getting-started': '',
+                                '01-getting-started-solution': '',
                             },
                         }),
                     },
@@ -1105,11 +1177,20 @@ describe('check command', () => {
                         ...web_modules(),
                     },
                     steps: {
+                        ...minimalValidLabStructure('01-getting-started'),
+                        ...minimalValidLabStructure('02-next'),
                         'package.json': packageJsonFile({
-                            workspaces: ['01-getting-started', '02-next'],
+                            workspaces: [
+                                '01-getting-started',
+                                '01-getting-started-solution',
+                                '02-next',
+                                '02-next-solution',
+                            ],
                             scripts: {
                                 '01-getting-started': '',
+                                '01-getting-started-solution': '',
                                 '02-next': '',
+                                '02-next-solution': '',
                             },
                         }),
                     },

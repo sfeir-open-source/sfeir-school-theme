@@ -314,6 +314,42 @@ Notes:
 
 The command should start with `stepCommandPrefix` specified in the `<root>/.sfeir-theme-config.json`. This command should also contains an existing lab command.
 
+##### S_011 every lab slide should refer an existing lab
+
+Every lab referred in a lab slide should match an existing lab directory in the `<root>/steps` directory.
+
+Example of lab slide referencing `01-getting-started` lab
+
+```Markdown
+<!-- .slide: class="exercice" -->
+
+# Lab title
+
+## Lab
+
+<br>
+
+1. First thing to do
+2. Another thing to do
+3. Last thing to do
+
+<br>
+
+- note for the students
+
+### 01-getting-started
+```
+
+And we expect the `01-getting-started` directory exist.
+
+```
+<root>
+...
+└── steps
+    ├── 01-getting-started
+    ├── ...
+```
+
 ##### S_006 every lab slide should have lab format
 
 Every labs should have the expected format:
