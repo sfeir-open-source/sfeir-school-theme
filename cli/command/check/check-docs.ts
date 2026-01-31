@@ -8,6 +8,7 @@ import {
     getSlideFilesFromFs,
     getSlideFilesFromSlidesJs,
     isImageFileExists,
+    isOneSpeakerSlide,
     isSlideFileExists,
     readSlideFile,
 } from '../../utils/slide.utils';
@@ -83,12 +84,19 @@ function checkSlideFileInFs(
     const cssContent = getAllCssContent(rootDir, config.extraCssFiles);
 
     for (const slideFile of slideFilesFromFs) {
-        check('S_003', `"${slideFile}" should be used`, () =>
-            slideFilesFromSlidesJs.includes(slideFile)
-        );
+        const slideContent = readSlideFile(rootDir, slideFile) ?? '';
+        check('S_003', `"${slideFile}" should be used`, () => {
+            if (slideFilesFromSlidesJs.includes(slideFile)) {
+                return true;
+            }
+            return {
+                result: false,
+                severity: isOneSpeakerSlide(slideContent) ? 'warning' : 'error',
+            };
+        });
         for (const imagePath of getImagesPathFromSlides(
             rootDir,
-            readSlideFile(rootDir, slideFile)
+            slideContent
         )) {
             check(
                 'S_007',
@@ -96,9 +104,7 @@ function checkSlideFileInFs(
                 () => isImageFileExists(imagePath)
             );
         }
-        for (const cssClass of getCssClassUsedInSlide(
-            readSlideFile(rootDir, slideFile)
-        )) {
+        for (const cssClass of getCssClassUsedInSlide(slideContent)) {
             check(
                 'S_009',
                 `"${cssClass}" in "${slideFile}" is not a known css class`,

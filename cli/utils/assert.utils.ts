@@ -5,20 +5,26 @@ const ISSUES: CheckError[] = [];
 export function check(
     ruleId: string,
     msg: string | { msg: string; continueCheck: boolean },
-    predicate: () => boolean,
+    predicate: () => boolean | { result: boolean; severity: Severity },
     severity: Severity = 'error'
 ) {
-    if (predicate()) {
+    const result = predicate();
+    if (
+        (typeof result === 'boolean' && result) ||
+        (typeof result === 'object' && result.result)
+    ) {
         return true;
     } else {
+        const finalSeveriry =
+            typeof result === 'object' ? result.severity : severity;
         if (typeof msg === 'string') {
-            ISSUES.push(new CheckError(ruleId, msg, true, severity));
+            ISSUES.push(new CheckError(ruleId, msg, true, finalSeveriry));
         } else {
             const error = new CheckError(
                 ruleId,
                 msg.msg,
                 msg.continueCheck,
-                severity
+                finalSeveriry
             );
             ISSUES.push(error);
             if (!msg.continueCheck) {

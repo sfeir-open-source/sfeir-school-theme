@@ -2,6 +2,7 @@ import {
     CheckError,
     __TEST_ONLY__cleanupErrors,
     getErrors,
+    getWarnings,
 } from './utils/assert.utils';
 import { beforeEach, describe, expect, it } from 'vitest';
 import {
@@ -16,6 +17,7 @@ import {
     packageJsonFile,
     slideCssFile,
     slideJsFile,
+    speakerSlideFile,
     web_modules,
 } from './command-check.spec-helper';
 import { buildProject } from './test-utils/project-builder.utils';
@@ -684,6 +686,14 @@ describe('check command', () => {
                             'slides.css': slideCssFile(),
                         },
                         markdown: {
+                            '00-1-doe-jane.md': speakerSlideFile({
+                                firstname: 'Jane',
+                                lastname: 'doe',
+                            }),
+                            '00-2-doe-john.md': speakerSlideFile({
+                                firstname: 'John',
+                                lastname: 'doe',
+                            }),
                             '01-getting-started.md':
                                 '![](./assets/images/foo.png)',
                             '01-lab-getting-started.md': labSlideFile({
@@ -694,6 +704,7 @@ describe('check command', () => {
                         },
                         scripts: {
                             'slides.js': slideJsFile([
+                                '00-1-doe-jane.md',
                                 '01-getting-started.md',
                                 '01-lab-getting-started.md',
                             ]),
@@ -720,10 +731,14 @@ describe('check command', () => {
                     console.error(err);
                 }
 
-                const reg =
+                const regS003Error =
                     /\[CheckError\] S_003 "02-not-existing-file.md" should be used/;
-                expectMatching(getErrors(), reg).toHaveLength(1);
+                expectMatching(getErrors(), regS003Error).toHaveLength(1);
                 expect(getErrors()).toHaveLength(1);
+                const regS003Warning =
+                    /\[CheckWarning\] S_003 "00-2-doe-john.md" should be used/;
+                expectMatching(getWarnings(), regS003Warning).toHaveLength(1);
+                expect(getWarnings()).toHaveLength(1);
             });
             it('lab slide without command [S_004]', async () => {
                 const rootDir = buildProject({

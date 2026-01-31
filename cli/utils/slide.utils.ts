@@ -153,3 +153,10 @@ export function getImagesPathFromFs(rootDir: string): string[] {
 export function isImageFileExists(imageFilePath: string) {
     return fs.existsSync(imageFilePath);
 }
+
+export function isOneSpeakerSlide(slide: string) {
+    return (
+        slide.includes('<div class="speaker-slide">') &&
+        !slide.includes('##==##')
+    );
+}

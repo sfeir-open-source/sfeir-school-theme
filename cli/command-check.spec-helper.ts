@@ -25,6 +25,26 @@ export function configFile(content: Partial<ConfigJson> = {}) {
     return { '.sfeir-theme-config.json': JSON.stringify(content) };
 }
 
+export type SpeakerSlideOptions = {
+    firstname: string;
+    lastname: string;
+};
+
+export function speakerSlideFile({ firstname, lastname }: SpeakerSlideOptions) {
+    return `<!-- .slide: class="speaker-slide" -->
+<div class="speaker-slide">
+
+# Hello ! @SFEIR
+
+## ${firstname} <b>${lastname}</b>
+
+### Developer
+
+### fake.email@sfeir.com
+
+</div>`;
+}
+
 export type LabSlideOptions = {
     title?: string;
     steps?: string[];
