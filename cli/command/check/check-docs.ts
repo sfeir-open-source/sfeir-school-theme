@@ -12,6 +12,7 @@ import {
     isSlideFileExists,
     readSlideFile,
 } from '../../utils/slide.utils';
+import { docsAssetPath, slidePath } from '../../utils/path.utils';
 import {
     getAllCssContent,
     getCssClassUsedInSlide,
@@ -25,7 +26,6 @@ import {
 import { isDefined, isDefinedAndNotEmpty } from '../../utils/fp.utils';
 import { ConfigJson } from '../../utils/config.utils';
 import { check } from '../../utils/assert.utils';
-import { slidePath } from '../../utils/path.utils';
 
 export async function checkDocs(rootDir: string, config: ConfigJson) {
     let slideFilesFromSlidesJs;
@@ -47,7 +47,7 @@ export async function checkDocs(rootDir: string, config: ConfigJson) {
     checkSlideFileInFs(rootDir, slideFilesFromSlidesJs, config);
     checkLabSlideFile(rootDir, slideFilesFromSlidesJs, config);
     checkLabCommand(rootDir, slideFilesFromSlidesJs, config);
-    checkImagesFs(rootDir);
+    checkImagesFs(rootDir, config);
 }
 
 function checkSlideFilePathInSlideJs(
@@ -189,8 +189,13 @@ function checkLabCommand(
     }
 }
 
-function checkImagesFs(rootDir: string) {
-    const imagesFromFs = getImagesPathFromFs(rootDir);
+function checkImagesFs(rootDir: string, config: ConfigJson) {
+    const ignoredImages = config.ignoreAssets.map((ignored) =>
+        docsAssetPath(rootDir, ignored)
+    );
+    const imagesFromFs = getImagesPathFromFs(rootDir).filter(
+        (imagesPath) => !ignoredImages.includes(imagesPath)
+    );
     for (const imagePath of imagesFromFs) {
         check('S_008', `"${imagePath}" should be used`, () => {
             return getAllSlidesImages(rootDir).includes(imagePath);

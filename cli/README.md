@@ -170,6 +170,12 @@ Default: `[]`
 
 You can specify here every directories which are not lab but need to be in the `steps` directory (node_modules, common modules, data, etc.)
 
+### ignoreAssets: string[] (optional)
+
+Default: `[]`
+
+Every assets here will be ignored. So S_008 will not emit any warning or error.
+
 ## Rules
 
 ### Global checks
@@ -388,6 +394,8 @@ Every images linked in a slide should exists in the assets directory `<root>/doc
 ##### S_008 every images in assets should be referenced at least in one slide
 
 Every images in `<root>/docs/assets/images/` directory should be linked in a slide.
+
+Note: images referenced in `ignoreAssets` in the configuration file will be ignored.
 
 #### CSS classes
 

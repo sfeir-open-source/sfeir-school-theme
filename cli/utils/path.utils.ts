@@ -16,8 +16,16 @@ export function docsFilePath(rootDir: string, assetFile: string) {
     return path.resolve(docsPath(rootDir), assetFile);
 }
 
+export function docsAssetsPath(rootDir: string) {
+    return path.resolve(docsPath(rootDir), 'assets');
+}
+
+export function docsAssetPath(rootDir: string, filePath: string) {
+    return path.resolve(docsAssetsPath(rootDir), filePath);
+}
+
 export function docsImagesPath(rootDir: string) {
-    return path.resolve(docsPath(rootDir), 'assets', 'images');
+    return docsAssetPath(rootDir, 'images');
 }
 
 export function docsImagePath(rootDir: string, filePath: string) {

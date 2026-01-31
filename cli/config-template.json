@@ -1,5 +1,6 @@
 {
     "extraCssFiles": [],
     "stepCommandPrefix": "",
-    "ignoreStepsDirectories": []
+    "ignoreStepsDirectories": [],
+    "ignoreAssets": []
 }

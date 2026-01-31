@@ -971,12 +971,16 @@ describe('check command', () => {
 
             it('images in asset should be used [S_008]', async () => {
                 const rootDir = buildProject({
-                    ...configFile({ stepCommandPrefix: 'npm run ' }),
+                    ...configFile({
+                        stepCommandPrefix: 'npm run ',
+                        ignoreAssets: ['images/ignored.png'],
+                    }),
                     docs: {
                         assets: {
                             images: {
                                 'foo.png': imageFile(),
                                 'foo2.png': imageFile(),
+                                'ignored.png': imageFile(),
                             },
                         },
                         css: {

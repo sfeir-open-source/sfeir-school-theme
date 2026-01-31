@@ -6,6 +6,7 @@ export interface ConfigJson {
     extraCssFiles: string[];
     stepCommandPrefix: string;
     ignoreStepsDirectories: string[]; // Use to ignore internals directories in "steps" directory (for exemple technicals directories used for making steps working but that are not exercices)
+    ignoreAssets: string[];
 }
 
 export function getProjectConfig(rootDir: string): ConfigJson {
