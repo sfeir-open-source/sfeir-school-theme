@@ -92,13 +92,15 @@ function checkLabsAndSolutions(rootDir: string, config: ConfigJson) {
             () => labs.includes(matchingLabName)
         );
         if (hasMatchingLab) {
-            const labReadme = getLabReadme(rootDir, matchingLabName);
             const labSolutionReadme = getLabReadme(rootDir, labSolution);
-            check(
-                'L_010',
-                `Lab and solution of "${matchingLabName}" should have same README.md`,
-                () => labReadme === labSolutionReadme
-            );
+            if (isDefined(labSolutionReadme)) {
+                const labReadme = getLabReadme(rootDir, matchingLabName);
+                check(
+                    'L_010',
+                    `Lab and solution of "${matchingLabName}" should have same README.md`,
+                    () => labReadme === labSolutionReadme
+                );
+            }
         }
     }
 }

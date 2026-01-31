@@ -1715,7 +1715,7 @@ describe('check command', () => {
                 expectMatching(getErrors(), reg).toHaveLength(1);
                 expect(getErrors()).toHaveLength(1);
             });
-            it('lab and solution should have same README.md [L_010]', async () => {
+            it('lab and solution should have same README.md (if lab has a README.md) [L_010]', async () => {
                 const rootDir = buildProject({
                     ...configFile({ stepCommandPrefix: 'npm run ' }),
                     docs: {
@@ -1734,11 +1734,16 @@ describe('check command', () => {
                                 title: 'Getting started',
                                 cmd: 'npm run 01-getting-started',
                             }),
+                            '02-next.md': labSlideFile({
+                                title: 'Next',
+                                cmd: 'npm run 02-next',
+                            }),
                         },
                         scripts: {
                             'slides.js': slideJsFile([
                                 '01-getting-started.md',
                                 '01-lab-getting-started.md',
+                                '02-next.md',
                             ]),
                         },
                         ...web_modules(),
@@ -1758,14 +1763,29 @@ describe('check command', () => {
                                 labReadmeMdFile('01-getting-started') +
                                 '\nHello\n',
                         }),
+                        ...oneLabStructure('02-next', {
+                            'package.json': packageJsonFile({
+                                name: '02-next',
+                            }),
+                            'README.md': labReadmeMdFile('02-next'),
+                        }),
+                        ...oneLabStructure('02-next-solution', {
+                            'package.json': packageJsonFile({
+                                name: '02-next-solution',
+                            }),
+                        }),
                         'package.json': packageJsonFile({
                             workspaces: [
                                 '01-getting-started',
                                 '01-getting-started-solution',
+                                '02-next',
+                                '02-next-solution',
                             ],
                             scripts: {
                                 '01-getting-started': '',
                                 '01-getting-started-solution': '',
+                                '02-next': '',
+                                '02-next-solution': '',
                             },
                         }),
                     },

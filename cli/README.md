@@ -543,4 +543,4 @@ Every lab with `-solution` suffix should match a lab with the exact same name wi
 
 ##### L_010 every solution `README.md` should be the same as the lab's one
 
-Both lab and solution's lab should have the same `README.md` file content.
+You can omit solution's lab `README.md`, but if you add one: both lab and solution's lab should have the same `README.md` file content.
