@@ -1585,7 +1585,71 @@ describe('check command', () => {
                 expectMatching(getErrors(), reg).toHaveLength(1);
                 expect(getErrors()).toHaveLength(1);
             });
+            it('every lab with .nosolution file should not have a solution [L_008]', async () => {
+                const rootDir = buildProject({
+                    ...configFile({ stepCommandPrefix: 'npm run ' }),
+                    docs: {
+                        assets: {
+                            images: {
+                                'foo.png': imageFile(),
+                            },
+                        },
+                        css: {
+                            'slides.css': slideCssFile(),
+                        },
+                        markdown: {
+                            '01-getting-started.md':
+                                '![](./assets/images/foo.png)',
+                            '01-lab-getting-started.md': labSlideFile({
+                                title: 'Getting started',
+                                cmd: 'npm run 01-getting-started',
+                            }),
+                        },
+                        scripts: {
+                            'slides.js': slideJsFile([
+                                '01-getting-started.md',
+                                '01-lab-getting-started.md',
+                            ]),
+                        },
+                        ...web_modules(),
+                    },
+                    steps: {
+                        ...oneLabStructure('01-getting-started', {
+                            'package.json': packageJsonFile({
+                                name: '01-getting-started',
+                            }),
+                            'README.md': labReadmeMdFile('01-getting-started'),
+                            '.nosolution': labNoSolutionFile(),
+                        }),
+                        ...oneLabStructure('01-getting-started-solution', {
+                            'package.json': packageJsonFile({
+                                name: '01-getting-started-solution',
+                            }),
+                            'README.md': labReadmeMdFile('01-getting-started'),
+                        }),
+                        'package.json': packageJsonFile({
+                            workspaces: [
+                                '01-getting-started',
+                                '01-getting-started-solution',
+                            ],
+                            scripts: {
+                                '01-getting-started': '',
+                                '01-getting-started-solution': '',
+                            },
+                        }),
+                    },
+                });
+                try {
+                    await checkCommandInternal({ type: 'check', rootDir });
+                } catch (err) {
+                    console.error(err);
+                }
 
+                const reg =
+                    /\[CheckError\] L_008 Lab "01-getting-started" should not have both solution and `.nosolution` file/;
+                expectMatching(getErrors(), reg).toHaveLength(1);
+                expect(getErrors()).toHaveLength(1);
+            });
             it('lab solution should match a lab [L_009]', async () => {
                 const rootDir = buildProject({
                     docs: {

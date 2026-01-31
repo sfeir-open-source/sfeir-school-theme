@@ -70,7 +70,15 @@ function checkLabsAndSolutions(rootDir: string, config: ConfigJson) {
             }
         }
 
-        if (!hasLabNoSolution(rootDir, lab)) {
+        if (hasLabNoSolution(rootDir, lab)) {
+            check(
+                'L_008',
+                `Lab "${lab}" should not have both solution and \`.nosolution\` file`,
+                () => {
+                    return !labSolutions.includes(lab + '-solution');
+                }
+            );
+        } else {
             check('L_008', `Lab "${lab}" should have a solution`, () =>
                 labSolutions.includes(lab + '-solution')
             );

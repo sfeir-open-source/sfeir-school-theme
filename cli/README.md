@@ -527,7 +527,7 @@ Note: this rule is only applied if you have specified `stepCommandPrefix` specif
 
 Every lab should have a equivalent solution's lab. For example, if you create a lab "01-getting-started", you should create an other lab "01-getting-started-solution".
 
-Note: if it does not make sense to have a solution to a specific lab, you can add a `.nosolution` file and omit the lab solution.
+Note: if it does not make sense to have a solution to a specific lab, you can add a `.nosolution` file and omit the lab solution. If you add a `.nosolution`, you should not add a lab solution.
 
 ##### L_009 every solution directory should match a lab
 
