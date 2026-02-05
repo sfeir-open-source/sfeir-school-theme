@@ -274,35 +274,6 @@ Every markdown files in the `<root>/docs/markdown` directory should be declared 
 
 #### Lab slides specific checks
 
-##### S_004 every lab slide file contains the command to run the exercise
-
-Every labs should have the expected format:
-
-```Markdown
-<!-- .slide: class="exercice" -->
-
-# Lab title
-
-## Lab
-
-<br>
-
-1. First thing to do
-2. Another thing to do
-3. Last thing to do
-
-<br>
-
-- note for the students
-
-### command to run
-
-Notes:
-- eventual speaker notes
-```
-
-The command should start with `stepCommandPrefix` specified in the `<root>/.sfeir-theme-config.json`. This command should also contains an existing lab command.
-
 ##### S_005 every lab slide file contains the valid command to run the exercise
 
 Every labs should have the expected format:

@@ -872,7 +872,7 @@ Vivamus lacinia odio vitae vestibulum vestibulum. Integer nec odio.
                 expectMatching(getWarnings(), regS003Warning).toHaveLength(1);
                 expect(getWarnings()).toHaveLength(1);
             });
-            it('lab slide without command [S_004]', async () => {
+            it('lab slide without command [S_005]', async () => {
                 const rootDir = buildProject({
                     ...configFile({ stepCommandPrefix: 'npm run ' }),
                     ...contributionGuide(),
@@ -927,7 +927,7 @@ Vivamus lacinia odio vitae vestibulum vestibulum. Integer nec odio.
                 }
 
                 const reg =
-                    /\[CheckError\] S_004 "01-lab-getting-started-bis.md" should contains the command to run the exercise/;
+                    /\[CheckError\] S_005 "01-lab-getting-started-bis.md" should contains the command to run the exercise/;
                 expectMatching(getErrors(), reg).toHaveLength(1);
                 expect(getErrors()).toHaveLength(1);
             });

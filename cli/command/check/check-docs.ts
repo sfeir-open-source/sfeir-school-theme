@@ -125,7 +125,7 @@ function checkLabSlideFile(
         const labSlideContent = readSlideFile(rootDir, slideFile.path) ?? '';
         const commandRow = getLabSlideCommandRow(labSlideContent, config)!;
         const hasCommandRow = check(
-            'S_004',
+            'S_005',
             `"${slideFile?.path}" should contains the command to run the exercise`,
             () => {
                 return isDefined(commandRow) && commandRow.length > 0;
