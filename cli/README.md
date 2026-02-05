@@ -341,7 +341,22 @@ And we expect the `01-getting-started` directory exist.
 
 ##### S_006 every lab slide should have lab format
 
-Every labs should have the expected format:
+Every labs should have the expected format. You should have at least two things to be compliant:
+
+- `<!-- .slide: class="exercice" -->` at the beginning of the slide;
+- `## Lab` to have a "Lab" mention visible;
+
+Minimal example:
+
+```Markdown
+<!-- .slide: class="exercice" -->
+
+# Lab title
+
+## Lab
+```
+
+Full example:
 
 ```Markdown
 <!-- .slide: class="exercice" -->
