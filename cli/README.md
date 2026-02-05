@@ -214,6 +214,18 @@ The root directory should contains a minimal structure:
     ├── ...
 ```
 
+##### G_004 the `<root>/CONTRIBUTION-GUIDE.md` file should exists and contains required content
+
+To ensure every trainer to be able to work smoothly on any training, a file `<root>/CONTRIBUTION-GUIDE.md` should be present and contains required sections.
+
+The required sections are:
+
+- How to start the slides on local?
+- How to start a lab?
+- How to add a new lab?
+- What tasks to do before push a PR?
+- What are the specific rules of this training?
+
 ### Slides checks
 
 #### General slides checks

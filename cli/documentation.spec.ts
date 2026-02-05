@@ -42,8 +42,8 @@ describe('Documentation', () => {
             });
             it('should have at least one unit test', () => {
                 expect(CHECK_COMMAND_TESTS).includes(`[${ruleCode}]`);
-                expect(CHECK_COMMAND_TESTS).includes(
-                    `\\[CheckError\\] ${ruleCode} `
+                expect(CHECK_COMMAND_TESTS).toMatch(
+                    new RegExp(`\\[Check.*\\] ${ruleCode} `)
                 );
             });
         });

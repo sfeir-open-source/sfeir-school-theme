@@ -7,6 +7,7 @@ import {
 import { beforeEach, describe, expect, it } from 'vitest';
 import {
     configFile,
+    contributionGuide,
     imageFile,
     labNoSolutionFile,
     labReadmeMdFile,
@@ -29,6 +30,7 @@ describe('check command', () => {
         it('minimal valid empty project', async () => {
             const rootDir = buildProject({
                 ...configFile({ stepCommandPrefix: 'npm run ' }),
+                ...contributionGuide(),
                 docs: {
                     assets: { images: {} },
                     css: {
@@ -53,6 +55,7 @@ describe('check command', () => {
         it('simple project with no command prefix', async () => {
             const rootDir = buildProject({
                 ...configFile({ stepCommandPrefix: '' }),
+                ...contributionGuide(),
                 docs: {
                     assets: {
                         images: {
@@ -101,6 +104,7 @@ describe('check command', () => {
         it('simple npm project with workspace', async () => {
             const rootDir = buildProject({
                 ...configFile({ stepCommandPrefix: 'npm run ' }),
+                ...contributionGuide(),
                 docs: {
                     assets: {
                         images: {
@@ -148,6 +152,7 @@ describe('check command', () => {
         it('simple npm project without workspace', async () => {
             const rootDir = buildProject({
                 ...configFile({ stepCommandPrefix: 'npm run ' }),
+                ...contributionGuide(),
                 docs: {
                     assets: { images: {} },
                     css: {
@@ -187,6 +192,7 @@ describe('check command', () => {
         it('npm project with command prefix override', async () => {
             const rootDir = buildProject({
                 ...configFile({ stepCommandPrefix: 'yarn run ' }),
+                ...contributionGuide(),
                 docs: {
                     assets: { images: {} },
                     css: {
@@ -228,6 +234,7 @@ describe('check command', () => {
         it('lab with .nosolution file could not have a solution -> exception for [L_008]', async () => {
             const rootDir = buildProject({
                 ...configFile({ stepCommandPrefix: 'npm run ' }),
+                ...contributionGuide(),
                 docs: {
                     assets: {
                         images: {
@@ -279,6 +286,7 @@ describe('check command', () => {
 
         it('Slides with images', async () => {
             const rootDir = buildProject({
+                ...contributionGuide(),
                 docs: {
                     assets: {
                         images: {
@@ -358,6 +366,7 @@ describe('check command', () => {
         it('should ignore hidden files', async () => {
             const rootDir = buildProject({
                 ...configFile({ stepCommandPrefix: 'npm run ' }),
+                ...contributionGuide(),
                 '.DS_Store': '',
                 'Thumbs.db': '',
                 docs: {
@@ -401,6 +410,7 @@ describe('check command', () => {
         it('project with ignored steps', async () => {
             const rootDir = buildProject({
                 ...configFile({ ignoreStepsDirectories: ['common'] }),
+                ...contributionGuide(),
                 docs: {
                     assets: { images: {} },
                     css: {
@@ -456,6 +466,7 @@ describe('check command', () => {
         it('project with ignored steps in the workspace', async () => {
             const rootDir = buildProject({
                 ...configFile({ ignoreStepsDirectories: ['common'] }),
+                ...contributionGuide(),
                 docs: {
                     assets: { images: {} },
                     css: {
@@ -571,11 +582,130 @@ describe('check command', () => {
                 expectMatching(getErrors(), reg).toHaveLength(1);
                 expect(getErrors()).toHaveLength(1);
             });
+            it('missing CONTRIBUTION_GUIDE.md [G_004]', async () => {
+                const rootDir = buildProject({
+                    docs: {
+                        assets: { images: {} },
+                        css: {
+                            'slides.css': slideCssFile(),
+                        },
+                        markdown: {},
+                        scripts: {
+                            'slides.js': slideJsFile(),
+                        },
+                        ...web_modules(),
+                    },
+                    steps: {
+                        'package.json': packageJsonFile(),
+                    },
+                });
+
+                try {
+                    await checkCommandInternal({ type: 'check', rootDir });
+                } catch (err) {
+                    console.error(err);
+                }
+
+                expect(getErrors()).toHaveLength(0);
+                const reg =
+                    /\[CheckWarning\] G_004 Project should have a 'CONTRIBUTION_GUIDE.md' file/;
+                expectMatching(getWarnings(), reg).toHaveLength(1);
+                expect(getWarnings()).toHaveLength(1);
+            });
+            it('missing CONTRIBUTION_GUIDE.md sections [G_004]', async () => {
+                const rootDir = buildProject({
+                    docs: {
+                        assets: { images: {} },
+                        css: {
+                            'slides.css': slideCssFile(),
+                        },
+                        markdown: {},
+                        scripts: {
+                            'slides.js': slideJsFile(),
+                        },
+                        ...web_modules(),
+                    },
+                    steps: {
+                        'package.json': packageJsonFile(),
+                    },
+                    'CONTRIBUTION_GUIDE.md': `# Contribution guide
+
+## How to start the slides on local?
+
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+
+`,
+                });
+
+                try {
+                    await checkCommandInternal({ type: 'check', rootDir });
+                } catch (err) {
+                    console.error(err);
+                }
+
+                expect(getErrors()).toHaveLength(0);
+                const reg =
+                    /\[CheckWarning\] G_004 The 'CONTRIBUTION_GUIDE.md' file should contains required sections \("How to start a lab\?" is missing\)/;
+                expectMatching(getWarnings(), reg).toHaveLength(1);
+                expect(getWarnings()).toHaveLength(1);
+            });
+            it('missing CONTRIBUTION_GUIDE.md section content [G_004]', async () => {
+                const rootDir = buildProject({
+                    docs: {
+                        assets: { images: {} },
+                        css: {
+                            'slides.css': slideCssFile(),
+                        },
+                        markdown: {},
+                        scripts: {
+                            'slides.js': slideJsFile(),
+                        },
+                        ...web_modules(),
+                    },
+                    steps: {
+                        'package.json': packageJsonFile(),
+                    },
+                    'CONTRIBUTION_GUIDE.md': `# Contribution guide
+
+## How to start the slides on local?
+
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+
+## How to start a lab?
+
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec odio. Praesent libero. Sed cursus ante dapibus diam. Sed nisi. Nulla quis sem at nibh elementum imperdiet. Duis sagittis ipsum. Praesent mauris. Fusce nec tellus sed augue semper porta. Mauris massa.
+
+## How to add a new lab?
+
+## What tasks to do before push a PR?
+
+Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+
+## What are the specific rules of this training?
+
+Vivamus lacinia odio vitae vestibulum vestibulum. Integer nec odio.
+
+`,
+                });
+
+                try {
+                    await checkCommandInternal({ type: 'check', rootDir });
+                } catch (err) {
+                    console.error(err);
+                }
+
+                expect(getErrors()).toHaveLength(0);
+                const reg =
+                    /\[CheckWarning\] G_004 All section in the 'CONTRIBUTION_GUIDE.md' file should contains information/;
+                expectMatching(getWarnings(), reg).toHaveLength(1);
+                expect(getWarnings()).toHaveLength(1);
+            });
         });
 
         describe('Slides checks', () => {
             it('invalid slides.js entry [S_001]', async () => {
                 const rootDir = buildProject({
+                    ...contributionGuide(),
                     docs: {
                         assets: {
                             images: {
@@ -622,6 +752,7 @@ describe('check command', () => {
             it('not existing markdown file in slides.js [S_002]', async () => {
                 const rootDir = buildProject({
                     ...configFile({ stepCommandPrefix: 'npm run ' }),
+                    ...contributionGuide(),
                     docs: {
                         assets: {
                             images: {
@@ -676,6 +807,7 @@ describe('check command', () => {
             it('not declared in slides.js markdown file [S_003]', async () => {
                 const rootDir = buildProject({
                     ...configFile({ stepCommandPrefix: 'npm run ' }),
+                    ...contributionGuide(),
                     docs: {
                         assets: {
                             images: {
@@ -743,6 +875,7 @@ describe('check command', () => {
             it('lab slide without command [S_004]', async () => {
                 const rootDir = buildProject({
                     ...configFile({ stepCommandPrefix: 'npm run ' }),
+                    ...contributionGuide(),
                     docs: {
                         assets: {
                             images: {
@@ -801,6 +934,7 @@ describe('check command', () => {
             it('lab slide without a valid command [S_005][S_011]', async () => {
                 const rootDir = buildProject({
                     ...configFile({ stepCommandPrefix: 'npm run ' }),
+                    ...contributionGuide(),
                     docs: {
                         assets: {
                             images: {
@@ -862,6 +996,7 @@ describe('check command', () => {
             it('lab slide without a valid command [S_006]', async () => {
                 const rootDir = buildProject({
                     ...configFile({ stepCommandPrefix: 'npm run ' }),
+                    ...contributionGuide(),
                     docs: {
                         assets: {
                             images: {
@@ -918,6 +1053,7 @@ describe('check command', () => {
             it('slide should contains existing image [S_007]', async () => {
                 const rootDir = buildProject({
                     ...configFile({ stepCommandPrefix: 'npm run ' }),
+                    ...contributionGuide(),
                     docs: {
                         assets: {
                             images: {
@@ -975,6 +1111,7 @@ describe('check command', () => {
                         stepCommandPrefix: 'npm run ',
                         ignoreAssets: ['images/ignored.png'],
                     }),
+                    ...contributionGuide(),
                     docs: {
                         assets: {
                             images: {
@@ -1030,6 +1167,7 @@ describe('check command', () => {
             it('slide should only used existing css classes [S_009]', async () => {
                 const rootDir = buildProject({
                     ...configFile({ stepCommandPrefix: 'npm run ' }),
+                    ...contributionGuide(),
                     docs: {
                         assets: {
                             images: {
@@ -1087,6 +1225,7 @@ describe('check command', () => {
             it('slide.js should exists [S_010]', async () => {
                 const rootDir = buildProject({
                     ...configFile({ stepCommandPrefix: 'npm run ' }),
+                    ...contributionGuide(),
                     docs: {
                         css: {
                             'slides.css': slideCssFile(),
@@ -1125,6 +1264,7 @@ describe('check command', () => {
             it('slide.js should have exported formation function [S_010]', async () => {
                 const rootDir = buildProject({
                     ...configFile({ stepCommandPrefix: 'npm run ' }),
+                    ...contributionGuide(),
                     docs: {
                         css: {
                             'slides.css': slideCssFile(),
@@ -1170,6 +1310,7 @@ describe('check command', () => {
             it('labs not used in slide [L_001]', async () => {
                 const rootDir = buildProject({
                     ...configFile({ stepCommandPrefix: 'npm run ' }),
+                    ...contributionGuide(),
                     docs: {
                         assets: {
                             images: {
@@ -1228,6 +1369,7 @@ describe('check command', () => {
             it('labs not declared in workspace [L_002][L_003]', async () => {
                 const rootDir = buildProject({
                     ...configFile({ stepCommandPrefix: 'npm run ' }),
+                    ...contributionGuide(),
                     docs: {
                         assets: {
                             images: {
@@ -1291,6 +1433,7 @@ describe('check command', () => {
             it('labs in workspace but without package.json [L_004]', async () => {
                 const rootDir = buildProject({
                     ...configFile({ stepCommandPrefix: 'npm run ' }),
+                    ...contributionGuide(),
                     docs: {
                         assets: {
                             images: {
@@ -1352,6 +1495,7 @@ describe('check command', () => {
             it('labs without README.md [L_005][L_010]', async () => {
                 const rootDir = buildProject({
                     ...configFile({ stepCommandPrefix: 'npm run ' }),
+                    ...contributionGuide(),
                     docs: {
                         assets: {
                             images: {
@@ -1419,6 +1563,7 @@ describe('check command', () => {
             it('labs with README.md missing some infos [L_006]', async () => {
                 const rootDir = buildProject({
                     ...configFile({}),
+                    ...contributionGuide(),
                     docs: {
                         assets: {
                             images: {
@@ -1482,6 +1627,7 @@ describe('check command', () => {
             it('labs with README.md missing some infos [L_006][L_007]', async () => {
                 const rootDir = buildProject({
                     ...configFile({ stepCommandPrefix: 'npm run ' }),
+                    ...contributionGuide(),
                     docs: {
                         assets: {
                             images: {
@@ -1549,6 +1695,7 @@ describe('check command', () => {
             it('every lab should have a solution [L_008]', async () => {
                 const rootDir = buildProject({
                     ...configFile({ stepCommandPrefix: 'npm run ' }),
+                    ...contributionGuide(),
                     docs: {
                         assets: {
                             images: {
@@ -1607,6 +1754,7 @@ describe('check command', () => {
             it('every lab with .nosolution file should not have a solution [L_008]', async () => {
                 const rootDir = buildProject({
                     ...configFile({ stepCommandPrefix: 'npm run ' }),
+                    ...contributionGuide(),
                     docs: {
                         assets: {
                             images: {
@@ -1671,6 +1819,7 @@ describe('check command', () => {
             });
             it('lab solution should match a lab [L_009]', async () => {
                 const rootDir = buildProject({
+                    ...contributionGuide(),
                     docs: {
                         assets: {
                             images: {
@@ -1718,6 +1867,7 @@ describe('check command', () => {
             it('lab and solution should have same README.md (if lab has a README.md) [L_010]', async () => {
                 const rootDir = buildProject({
                     ...configFile({ stepCommandPrefix: 'npm run ' }),
+                    ...contributionGuide(),
                     docs: {
                         assets: {
                             images: {
