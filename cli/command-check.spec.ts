@@ -71,11 +71,33 @@ describe('check command', () => {
                             title: 'Getting started',
                             cmd: 'Go to 01-getting-started',
                         }),
+                        '100-lab-no-command.md': `<!-- .slide: class="exercice" -->
+
+# 02-no-command
+
+## Lab
+
+<br>
+
+### 02-no-command
+    `,
+                        '101-lab-not-existing-command.md': `<!-- .slide: class="exercice" -->
+
+# Lab with no command
+
+## Lab
+
+<br>
+
+### no command to executre
+    `,
                     },
                     scripts: {
                         'slides.js': slideJsFile([
                             '01-getting-started.md',
                             '99-lab-getting-started.md',
+                            '100-lab-no-command.md',
+                            '101-lab-not-existing-command.md',
                         ]),
                     },
                     ...web_modules(),
@@ -85,6 +107,7 @@ describe('check command', () => {
                         labs: [
                             '01-getting-started',
                             '01-getting-started-solution',
+                            '02-no-command',
                         ],
                     }),
                     '01-getting-started': {
@@ -93,10 +116,16 @@ describe('check command', () => {
                     '01-getting-started-solution': {
                         'README.md': labReadmeMdFile('01-getting-started', ''),
                     },
+                    '02-no-command': {
+                        'README.md': `# 02-no-command instructions\n\nReadme with no command`,
+                        '.nosolution': labNoSolutionFile(),
+                    },
                 },
             });
 
             await checkCommandInternal({ type: 'check', rootDir });
+
+            expect(getErrors()).toStrictEqual([]);
             console.error(getErrors());
             expect(getErrors()).toHaveLength(0);
         });
