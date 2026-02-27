@@ -1,3 +1,4 @@
+import { RootPart, html, render } from 'lit-html';
 import {
     ThemeInitializer,
     featherIconPack,
@@ -5,21 +6,47 @@ import {
     materialSymbolsIconPack,
 } from '@talk-control/talk-control-revealjs-extensions';
 import RevealSfeirThemePlugin from './sfeir-theme-plugin';
+import { unsafeHTML } from 'lit-html/directives/unsafe-html.js';
 
 interface SlidePath {
     path: string;
 }
 
+type SfeirThemeInitializerOptions = {
+    slidesFactory: (showType?: string) => SlidePath[];
+    knowStyles?: string[];
+    plugins?: Reveal.PluginFunction[];
+    defaultLang?: string;
+    extrasRenderAttr?: string;
+};
+
 export const SfeirThemeInitializer = {
-    /**
-     * @param {() => Array.<string>} slidesFactory
-     */
     async init(
-        slidesFactory: (showType?: string) => SlidePath[],
-        knowStyles: string[] = []
+        params:
+            | ((showType?: string) => SlidePath[])
+            | SfeirThemeInitializerOptions
     ) {
+        let slidesFactory: (showType?: string) => SlidePath[];
+        let knowStyles: string[] = [];
+        let plugins: Reveal.PluginFunction[] = [];
+        let defaultLang = 'FR';
+        let extrasRenderAttr: string | undefined;
+
+        if (typeof params === 'function') {
+            slidesFactory = params;
+        } else {
+            ({
+                slidesFactory,
+                knowStyles = [],
+                plugins = [],
+                defaultLang = 'FR',
+                extrasRenderAttr,
+            } = params);
+        }
+
         await ThemeInitializer.init({
             slidesFactory,
+            slidesRenderer: schoolSlideRenderer(extrasRenderAttr),
             tcCustomBackgroundOptions: {
                 basePath: './web_modules/sfeir-school-theme/dist/images/',
                 mapBackgrounds(theme) {
@@ -70,7 +97,7 @@ export const SfeirThemeInitializer = {
             },
             tcI18nOptions: {
                 baseMarkdownPath: 'markdown/',
-                defaultLang: 'FR',
+                defaultLang,
             },
             tcMarkedOptions: {
                 fontIcons: [
@@ -83,7 +110,37 @@ export const SfeirThemeInitializer = {
             tcThemeOptions: {
                 defaultTheme: 'school',
             },
-            plugins: [RevealSfeirThemePlugin],
+            plugins: [...plugins, RevealSfeirThemePlugin],
         });
     },
 };
+
+/**
+ * Render the html with override for custom attribute
+ */
+function schoolSlideRenderer(customAttribute?: string) {
+    return function schoolSlideRenderer(
+        element: HTMLElement,
+        slides: SlidePath[]
+    ): RootPart {
+        return render(
+            html`
+                ${slides.map((slide) => {
+                    const path = `./markdown/${slide.path}`;
+                    const extraAttr = customAttribute
+                        ? `${customAttribute}="${path}"`
+                        : '';
+                    return unsafeHTML(`
+                        <section
+                            data-markdown="${path}"
+                            ${extraAttr}
+                            data-separator="##==##"
+                            data-separator-vertical="##--##"
+                            data-separator-notes="^Notes:"></section>
+                    `);
+                })}
+            `,
+            element
+        );
+    };
+}
