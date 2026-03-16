@@ -1,5 +1,17 @@
-import fs, { PathLike } from "node:fs";
-import path from "node:path";
+import fs, { PathLike } from 'node:fs';
+import path from 'node:path';
+
+export function isFile(dir: string, file?: string): boolean {
+    try {
+        if (file == undefined) {
+            return fs.statSync(dir).isFile();
+        } else {
+            return fs.statSync(path.resolve(dir, file)).isFile();
+        }
+    } catch {
+        return false;
+    }
+}
 
 export function isDirectory(dir: string, file?: string): boolean {
     try {
@@ -13,15 +25,18 @@ export function isDirectory(dir: string, file?: string): boolean {
     }
 }
 
-export function readdirSync(pathLike: PathLike,
+export function readdirSync(
+    pathLike: PathLike,
     options?:
         | {
-            encoding: BufferEncoding | null;
-            withFileTypes?: false | undefined;
-            recursive?: boolean | undefined;
-        }
+              encoding: BufferEncoding | null;
+              withFileTypes?: false | undefined;
+              recursive?: boolean | undefined;
+          }
         | BufferEncoding
-        | null,
+        | null
 ): string[] {
-    return fs.readdirSync(pathLike, options).filter(file => !file.startsWith('.') && file !== 'Thumbs.db')
+    return fs
+        .readdirSync(pathLike, options)
+        .filter((file) => !file.startsWith('.') && file !== 'Thumbs.db');
 }

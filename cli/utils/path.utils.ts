@@ -1,11 +1,11 @@
-import path from "node:path";
+import path from 'node:path';
 
 export function docsPath(rootDir: string) {
-    return path.resolve(rootDir, "docs");
+    return path.resolve(rootDir, 'docs');
 }
 
 export function docsMarkdownPath(rootDir: string) {
-    return path.resolve(docsPath(rootDir), "markdown");
+    return path.resolve(docsPath(rootDir), 'markdown');
 }
 
 export function slidePath(rootDir: string, slideFile: string) {
@@ -16,8 +16,16 @@ export function docsFilePath(rootDir: string, assetFile: string) {
     return path.resolve(docsPath(rootDir), assetFile);
 }
 
+export function docsAssetsPath(rootDir: string) {
+    return path.resolve(docsPath(rootDir), 'assets');
+}
+
+export function docsAssetPath(rootDir: string, filePath: string) {
+    return path.resolve(docsAssetsPath(rootDir), filePath);
+}
+
 export function docsImagesPath(rootDir: string) {
-    return path.resolve(docsPath(rootDir), "assets", "images");
+    return docsAssetPath(rootDir, 'images');
 }
 
 export function docsImagePath(rootDir: string, filePath: string) {
@@ -25,25 +33,29 @@ export function docsImagePath(rootDir: string, filePath: string) {
 }
 
 export function labsPath(rootDir: string) {
-    return path.resolve(rootDir, "steps");
+    return path.resolve(rootDir, 'steps');
 }
 
 export function labsDirPackageJsonPath(rootDir: string) {
-    return path.resolve(labsPath(rootDir), "package.json");
+    return path.resolve(labsPath(rootDir), 'package.json');
 }
 
 export function labsDirLabsJsonPath(rootDir: string) {
-    return path.resolve(labsPath(rootDir), "labs.json");
+    return path.resolve(labsPath(rootDir), 'labs.json');
 }
 
 export function projectConfigPath(rootDir: string) {
-    return path.resolve(rootDir, ".sfeir-theme-config.json");
+    return path.resolve(rootDir, '.sfeir-theme-config.json');
 }
 
 export function labPackageJsonPath(rootDir: string, lab: string) {
-    return path.resolve(labsPath(rootDir), lab, "package.json");
+    return path.resolve(labsPath(rootDir), lab, 'package.json');
 }
 
 export function labReadmePath(rootDir: string, lab: string) {
-    return path.resolve(labsPath(rootDir), lab, "README.md");
+    return path.resolve(labsPath(rootDir), lab, 'README.md');
+}
+
+export function labNoSolutionPath(rootDir: string, lab: string) {
+    return path.resolve(labsPath(rootDir), lab, '.nosolution');
 }

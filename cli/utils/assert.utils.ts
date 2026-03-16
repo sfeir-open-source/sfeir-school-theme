@@ -1,18 +1,32 @@
-const ERRORS: CheckError[] = [];
+export type Severity = 'error' | 'warning';
+
+const ISSUES: CheckError[] = [];
 
 export function check(
     ruleId: string,
     msg: string | { msg: string; continueCheck: boolean },
-    predicate: () => boolean,
+    predicate: () => boolean | { result: boolean; severity: Severity },
+    severity: Severity = 'error'
 ) {
-    if (predicate()) {
+    const result = predicate();
+    if (
+        (typeof result === 'boolean' && result) ||
+        (typeof result === 'object' && result.result)
+    ) {
         return true;
     } else {
-        if (typeof msg === "string") {
-            ERRORS.push(new CheckError(ruleId, msg));
+        const finalSeveriry =
+            typeof result === 'object' ? result.severity : severity;
+        if (typeof msg === 'string') {
+            ISSUES.push(new CheckError(ruleId, msg, true, finalSeveriry));
         } else {
-            const error = new CheckError(ruleId, msg.msg, msg.continueCheck);
-            ERRORS.push(error);
+            const error = new CheckError(
+                ruleId,
+                msg.msg,
+                msg.continueCheck,
+                finalSeveriry
+            );
+            ISSUES.push(error);
             if (!msg.continueCheck) {
                 throw error;
             }
@@ -22,15 +36,29 @@ export function check(
 }
 
 export class CheckError extends Error {
-    constructor(public readonly ruleId: string, message: string, public continueCheck = true) {
-        super(`[CheckError] ${ruleId} ${message}`);
+    constructor(
+        public readonly ruleId: string,
+        message: string,
+        public continueCheck = true,
+        public readonly severity: Severity = 'error'
+    ) {
+        const prefix = severity === 'error' ? '[CheckError]' : '[CheckWarning]';
+        super(`${prefix} ${ruleId} ${message}`);
     }
 }
 
+export function getIssues() {
+    return ISSUES;
+}
+
 export function getErrors() {
-    return ERRORS;
+    return ISSUES.filter((issue) => issue.severity === 'error');
+}
+
+export function getWarnings() {
+    return ISSUES.filter((issue) => issue.severity === 'warning');
 }
 
 export function __TEST_ONLY__cleanupErrors() {
-    ERRORS.splice(0, ERRORS.length);
+    ISSUES.splice(0, ISSUES.length);
 }

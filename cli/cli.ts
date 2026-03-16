@@ -1,11 +1,11 @@
-import path from "node:path";
+import path from 'node:path';
 
-export type CheckCommand = { type: "check"; rootDir: string };
-export type ExplainCommand = { type: "explain", ruleCode: string };
-export type HelpCommand = { type: "help" };
-export type InfoCommand = { type: "info"; rootDir: string };
-export type InitConfigCommand = { type: "init-config"; rootDir: string };
-export type VersionCommand = { type: "version" };
+export type CheckCommand = { type: 'check'; rootDir: string };
+export type ExplainCommand = { type: 'explain'; ruleCode: string };
+export type HelpCommand = { type: 'help' };
+export type InfoCommand = { type: 'info'; rootDir: string };
+export type InitConfigCommand = { type: 'init-config'; rootDir: string };
+export type VersionCommand = { type: 'version' };
 
 export type Command =
     | CheckCommand
@@ -16,44 +16,44 @@ export type Command =
     | VersionCommand;
 
 export function parseArgs(args: string[], currentWorkingDir: string): Command {
-    if (args.includes("help")) {
-        return { type: "help" };
+    if (args.includes('help')) {
+        return { type: 'help' };
     }
-    if (args.includes("version")) {
-        return { type: "version" };
+    if (args.includes('version')) {
+        return { type: 'version' };
     }
-    if (args.includes("explain")) {
+    if (args.includes('explain')) {
         const [ruleCode] = args.slice(args.indexOf('explain') + 1);
-        return { type: "explain", ruleCode };
+        return { type: 'explain', ruleCode };
     }
-    if (args.includes("info")) {
+    if (args.includes('info')) {
         return {
-            type: "info",
+            type: 'info',
             rootDir: getRootDirOrDefault(args, currentWorkingDir),
         };
     }
-    if (args.includes("init-config")) {
+    if (args.includes('init-config')) {
         return {
-            type: "init-config",
+            type: 'init-config',
             rootDir: getRootDirOrDefault(args, currentWorkingDir),
         };
     }
-    if (args.includes("check")) {
+    if (args.includes('check')) {
         return {
-            type: "check",
+            type: 'check',
             rootDir: getRootDirOrDefault(args, currentWorkingDir),
         };
     }
-    return { type: "help" };
+    return { type: 'help' };
 }
 
 function getRootDirOrDefault(
     args: string[],
-    currentWorkingDir: string,
+    currentWorkingDir: string
 ): string {
-    const fromArgs = args.find((arg) => arg.startsWith("--rootDir="));
+    const fromArgs = args.find((arg) => arg.startsWith('--rootDir='));
     if (fromArgs == undefined) {
         return currentWorkingDir;
     }
-    return path.resolve(fromArgs.replace("--rootDir=", ""));
+    return path.resolve(fromArgs.replace('--rootDir=', ''));
 }

@@ -139,6 +139,7 @@ See the documentation about all thoses features [here](https://github.com/TalkCo
     - Three theme mode available : institute, school or conf
     - Blur slide
     - Exercices Slides
+- [CLI to help building good training](./cli/README.md)
 
 ## Play with mode theme
 
