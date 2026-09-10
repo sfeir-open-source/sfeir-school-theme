@@ -18,7 +18,25 @@ Nothing visual can be finalised before these land. See `04-open-decisions.md`.
 
 Phases 1 and 2 depend only on **D2**, so they can start as soon as that one is settled.
 
-## Phase 1 — Foundation: tokens and typography
+## Phase 1 — Foundation: tokens and typography ✅ done
+
+**Landed** in `5c67ae9` (tokens) and `ef5b3d2` (typography and the resolution fix).
+Outcome notes, where reality differed from the plan below:
+
+- The token layer needed a fifth file, `_selectors.scss`, so the program and polarity
+  selector lists are shared between `_context.scss` and `_legacy.scss`.
+- A CSS semantics trap cost two rounds: a referencing custom property resolves at its
+  declaration site, so switching the ramp on a descendant did nothing for roles declared
+  at `:root`. Documented in `02-token-mapping.md` section 3.1 and asserted against the
+  compiled CSS.
+- Font payload came in at 289 KB across 10 variable WOFF2 files, against the 4.1 MB of
+  25 TTF — better than the ~500 KB estimated.
+- The 16 `data-theme` colour branches are down to 4, all asset-related, because the
+  program axis now resolves them.
+- **Not done, and it should have been:** the visual regression baselines. Verification
+  was manual — Chrome DevTools screenshots of the demo across both programs and both
+  polarities, which is how the resolution bug surfaced. Baselines must land **before
+  phase 3**, which is the phase that actually restyles.
 
 Purely additive. At the end of this phase the demo looks the same except for the
 typeface — which is the point: it isolates the font swap from the reskin.
