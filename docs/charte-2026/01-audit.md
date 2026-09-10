@@ -95,10 +95,17 @@ The 2026 palette has exactly **one** brand accent: Cuivre (`#845400` / `#E5A040`
 (Data & Product) and Azur (Digital Workplace) — which the skill reserves for **topics**,
 not for programs, and forbids mixing (one family per slide).
 
-Consequence: `school = green` / `institute = blue` cannot be carried over as-is. Both
-programs must render in Cuivre, and the differentiation has to move to another axis
-(logo, surface polarity, or an editorial label). This is the pivotal design decision —
-see `04-open-decisions.md`, decision **D1**.
+Consequence: `school = green` / `institute = blue` cannot be carried over as-is.
+
+**Resolved (D1, accepted 2026-09-10):** the hue axis is restored rather than replaced.
+Institute keeps Cuivre; School gets **Bronze** (`#4D662A`, hue 85°) — copper alloyed
+with tin, a green derived from the metal rather than chosen beside it. Each Bronze tier
+is solved for the measured luminance of its Cuivre counterpart, so both programs share
+one contrast rule. Hue 85° is also the only arc more than 50° from all eight families.
+Full rationale, ramp and parity table in `04-open-decisions.md`, decision **D1**.
+
+Bronze is a deliberate deviation from the charte's single-accent rule and has to be
+submitted to the brand team with that rationale.
 
 Corollary opportunity: the eight expertise families map naturally onto **the deck's
 technology**, which is exactly how this theme is consumed (one repository per techno —
@@ -184,7 +191,31 @@ slide authors:
   or label text on a light surface**.
 
 A single `--sfeir-accent-on-dark` / `--sfeir-accent-on-light` pair makes both traps
-unreachable by construction.
+unreachable by construction. Both traps carry over identically to the Bronze ramp:
+`#4D662A` on Noir Carbone is 3.25:1, the same failure as Cuivre.
+
+### 4.9 S1 — The charte's own contrast table is unreliable
+
+Reproducing the skill's asserted ratios to validate our own arithmetic showed that
+**not one of the six published values is correct**, and the errors run in both
+directions — so this is hand-entered data, not a formula mismatch:
+
+| Pair                              | Charte claims | Recomputed | Charte verdict | Real verdict |
+| --------------------------------- | ------------: | ---------: | -------------- | ------------ |
+| Cuivre `#845400` on white         |          7.60 |   **6.46** | AAA            | **AA only**  |
+| Charcoal `#1B1B1B` on Blanc Craie |         15.50 |      16.36 | AAA            | AAA          |
+| Cuivre Clair `#FFB95C` on Noir    |         10.50 |      12.35 | AAA            | AAA          |
+| `#514536` on Blanc Craie          |          5.20 |       8.84 | AA             | AAA          |
+| `#F1F1F1` on Noir                 |         16.10 |      18.59 | AAA            | AAA          |
+| Cuivre `#845400` on Noir          |          3.40 |       3.25 | fail           | fail         |
+
+Only one error changes a decision: **Cuivre on white is AA, not AAA** as the charte
+claims. The rest are cosmetic, but collectively they mean the table cannot be used as a
+reference.
+
+Two consequences: the phase-1 contrast test must _compute_ ratios rather than transcribe
+them (`03-migration-plan.md`, testing strategy item 2), and the correction should be
+reported back to the brand team so the skill is fixed at the source.
 
 ## 5. What already aligns (no work needed)
 
