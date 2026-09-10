@@ -1,0 +1,53 @@
+/**
+* Layer 3 — contextual redefinitions.
+*
+* Two independent axes, resolved in this order:
+*   program  ([data-theme] on .slides) picks the ramp;
+*   polarity (a dark-surfaced section)  picks the tier within it.
+*
+* This is where the charte's contrast traps are closed, so that an author writing
+* `color: var(--sfeir-accent)` is correct in all four combinations.
+*/
+
+/**
+* Program axis.
+*
+* :root already defaults to School (Bronze), and `conf` inherits School, so only
+* Institute needs redefining. `.backgrounds` is a sibling of `.slides`, not a
+* descendant, hence the second selector.
+*/
+.reveal .slides[data-theme='institute'],
+.reveal .slides[data-theme='institute'] ~ .backgrounds {
+    --sfeir-ramp-accent: var(--sfeir-cuivre);
+    --sfeir-ramp-accent-on-dark: var(--sfeir-cuivre-clair);
+    --sfeir-ramp-fill: var(--sfeir-cuivre-poli);
+    --sfeir-ramp-on-fill: var(--sfeir-cuivre-profond);
+    --sfeir-ramp-wash: var(--sfeir-sable);
+    --sfeir-ramp-deep: var(--sfeir-cuivre-profond);
+}
+
+/**
+* Polarity axis.
+*
+* The slide archetypes that sit on Noir Carbone. This selector list mirrors the one
+* already used to pick the white logo in layout.scss; phase 3 will consolidate both
+* around a single `.on-dark` marker.
+*/
+.reveal
+    .slides
+    section:is(
+        .first-slide,
+        .speaker-slide,
+        .quote-slide,
+        .bg-blur,
+        .with-code-dark,
+        [class*='transition']
+    ) {
+    --sfeir-accent: var(--sfeir-ramp-accent-on-dark);
+    --sfeir-surface: var(--sfeir-noir);
+    --sfeir-surface-raised: var(--sfeir-carbone-mid);
+    --sfeir-surface-high: var(--sfeir-carbone-mid);
+    --sfeir-on-surface: var(--sfeir-ink-on-dark);
+    --sfeir-on-surface-muted: var(--sfeir-ink-on-dark-muted);
+    --sfeir-separator: var(--sfeir-outline);
+}

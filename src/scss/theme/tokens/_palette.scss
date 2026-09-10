@@ -1,0 +1,58 @@
+/**
+* Layer 1 — palette.
+*
+* Raw values from the SFEIR Brand Guidelines, The Sharp Artisan (v2026.1).
+* Never reference these from a slide or from a school's own stylesheet: they carry no
+* role, so they cannot switch with the program or with surface polarity. Use the
+* semantic tokens in _semantic.scss instead.
+*/
+
+:root {
+    /**
+    * Cuivre — the charte accent, carried by SFEIR Institute.
+    */
+    --sfeir-cuivre: #845400; // accent on light surfaces
+    --sfeir-cuivre-poli: #e5a040; // fills and large numerals, never text on light
+    --sfeir-cuivre-clair: #ffb95c; // accent on dark surfaces, AA-safe
+    --sfeir-sable: #ffddb7; // warm callout wash
+    --sfeir-cuivre-profond: #5d3a00; // text on Cuivre Poli or Sable
+
+    /**
+    * Bronze — copper alloyed with tin, carried by SFEIR School (decision D1).
+    *
+    * Hue 85, the only arc of the wheel more than 50 degrees from all eight expertise
+    * families. Each tier is solved for the measured luminance of its Cuivre
+    * counterpart, so both programs share one contrast rule. Retuning any tier by eye
+    * breaks that parity — tokens.spec.ts guards it.
+    */
+    --sfeir-bronze: #4d662a;
+    --sfeir-bronze-poli: #9cb774;
+    --sfeir-bronze-clair: #b4d08d;
+    --sfeir-mousse: #dae8c6;
+    --sfeir-bronze-profond: #35471d;
+
+    /**
+    * Surfaces — the Blanc Craie to Noir Carbone ramp.
+    * Depth comes from layering these, never from a shadow.
+    */
+    --sfeir-white: #ffffff; // editorial insert cards on light sections
+    --sfeir-craie: #f9f9f9; // default page background
+    --sfeir-craie-1: #f3f3f3; // default card surface
+    --sfeir-craie-2: #eeeeee;
+    --sfeir-craie-3: #e8e8e8; // elevated / featured cards
+    --sfeir-craie-4: #e2e2e2; // rare, hover states
+    --sfeir-brouillard: #dadada; // dimmed sections, separators
+    --sfeir-carbone-mid: #303030; // mid-dark surface, code blocks
+    --sfeir-noir: #000000; // covers, dividers, hero bands
+
+    /**
+    * Ink and outline.
+    */
+    --sfeir-charcoal: #1b1b1b; // body text on light surfaces
+    --sfeir-charcoal-variant: #514536; // captions, eyebrows on light surfaces
+    --sfeir-ink-on-dark: #f1f1f1; // body text on dark surfaces
+    --sfeir-ink-on-dark-muted: #bfbfbf; // section ledes on dark, per the charte
+    --sfeir-outline: #847564; // strong borders, rare
+    --sfeir-outline-variant: #d6c3b1; // the standard separator
+    --sfeir-error: #ba1a1a;
+}
