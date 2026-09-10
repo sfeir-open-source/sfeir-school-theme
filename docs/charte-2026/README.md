@@ -40,5 +40,8 @@ Claude Code skill.
 
 ## Status
 
-Study complete. **Phase 0 closed — all five decisions arbitrated 2026-09-10.**
-Implementation starts at phase 1 (tokens and typography).
+Study complete. **Phase 0 closed** — all five decisions arbitrated 2026-09-10.
+**Phase 1 done** — token layer and typography landed, 240 tests green.
+
+Next: phase 2 (shape reset — radius 0, no shadows, no gradients), and the visual
+regression baselines that phase 1 skipped and phase 3 cannot start without.
