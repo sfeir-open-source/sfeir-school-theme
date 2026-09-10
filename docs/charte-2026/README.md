@@ -13,9 +13,11 @@ Claude Code skill.
 
 ## Headline findings
 
-1. **The green/blue program axis is gone.** The charte has one accent (Cuivre) and
-   reserves green and blue for expertise families, which describe topics, not programs.
-   School and Institute have to differentiate on another axis — see decision **D1**.
+1. **The green/blue program axis is gone — and was rebuilt from copper.** The charte has
+   one accent (Cuivre) and reserves green and blue for expertise families, which describe
+   topics, not programs. Resolved by D1: Institute keeps Cuivre, School gets **Bronze**
+   (`#4D662A`, hue 85°) — copper alloyed with tin, each tier solved for its Cuivre
+   counterpart's luminance so both programs share one contrast rule.
 2. **The expertise families are the opportunity.** Eight families × four variants map
    naturally onto a deck's technology, which is exactly how this theme is consumed. A new
    opt-in `data-family` axis gives every school its own on-brand accent.
@@ -26,13 +28,17 @@ Claude Code skill.
    read at laptop distance; a literal transposition puts body text at 29 px on a 1080 px
    canvas. Body stays at 40 px for training-room projectors — documented, asserted in a
    test, not left to chance.
-5. **CSS has no test coverage today**, and `conductor/workflow.md` exempts it. Visual
+5. **The charte's contrast table is unreliable.** None of its six published ratios is
+   correct and the errors run both ways. One of them matters: Cuivre on white is 6.46:1
+   (AA), not the 7.6:1 (AAA) claimed. Contrast must be computed, never transcribed.
+6. **CSS has no test coverage today**, and `conductor/workflow.md` exempts it. Visual
    regression baselines have to land _before_ any restyling, or the whole reskin ships
    unverified.
-6. **One blocking external dependency**: no SFEIR School or Institute lockup exists in
+7. **One external dependency**: no SFEIR School or Institute lockup exists in
    the 2026 identity. Decision **D3** proposes composing them typographically instead of
    waiting on assets.
 
 ## Status
 
-Study complete. Phase 0 (decisions) open — nothing implemented yet.
+Study complete. **Phase 0 closed — all five decisions arbitrated 2026-09-10.**
+Implementation starts at phase 1 (tokens and typography).

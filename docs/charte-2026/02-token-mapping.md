@@ -36,6 +36,26 @@ redefines `--sfeir-accent` to Cuivre Clair, so a slide author writing
 | `--sfeir-sable`          | `#FFDDB7` | Sable          | warm callout wash                           |
 | `--sfeir-cuivre-profond` | `#5D3A00` | Cuivre Profond | text on Cuivre Poli / Sable                 |
 
+### 2.2 Bronze — the School accent (decision D1)
+
+Institute keeps Cuivre; School gets a copper-derived green. Each tier is solved for the
+**measured luminance of the matching Cuivre tier**, so the two ramps behave identically
+under every contrast rule (worst divergence 0.07 — full table in
+`04-open-decisions.md`, D1).
+
+| Token                    | Hex       | Mirrors        | Use                                         |
+| ------------------------ | --------- | -------------- | ------------------------------------------- |
+| `--sfeir-bronze`         | `#4D662A` | Cuivre         | accent on light surfaces                    |
+| `--sfeir-bronze-poli`    | `#9CB774` | Cuivre Poli    | fills, large numerals — never text on light |
+| `--sfeir-bronze-clair`   | `#B4D08D` | Cuivre Clair   | accent on dark surfaces (AA-safe)           |
+| `--sfeir-mousse`         | `#DAE8C6` | Sable          | warm callout wash                           |
+| `--sfeir-bronze-profond` | `#35471D` | Cuivre Profond | text on Bronze Poli / Mousse                |
+
+Hue 85°, which is the only arc of the wheel more than 50° from all eight expertise
+families — the reason this green was chosen over verdigris. Bronze is a documented
+deviation from the charte's single-accent rule and must be submitted to the brand team
+as such.
+
 ### 2.2 Surfaces — the Craie → Carbone ramp
 
 | Token                 | Hex       | Charte name     |
@@ -79,6 +99,24 @@ redefines `--sfeir-accent` to Cuivre Clair, so a slide author writing
 `--sfeir-radius` exists only so the two legitimate exceptions (pill chips, avatars) are
 named rather than magic. Any component using a literal radius is a violation.
 
+### 3.1 The program axis
+
+`--sfeir-accent` and its siblings do not point at a palette value directly — they
+resolve from whichever ramp the program selects, then again by surface polarity:
+
+| Context                           | `--sfeir-accent` | `--sfeir-accent-fill` | `--sfeir-on-accent-fill` |
+| --------------------------------- | ---------------- | --------------------- | ------------------------ |
+| `[data-theme="institute"]`, light | `#845400`        | `#E5A040`             | `#5D3A00`                |
+| `[data-theme="institute"]`, dark  | `#FFB95C`        | `#E5A040`             | `#5D3A00`                |
+| `[data-theme="school"]`, light    | `#4D662A`        | `#9CB774`             | `#35471D`                |
+| `[data-theme="school"]`, dark     | `#B4D08D`        | `#9CB774`             | `#35471D`                |
+| `[data-theme="conf"]`             | inherits School  | idem                  | idem                     |
+
+Two independent axes, resolved in this order: **program** (`data-theme`) picks the ramp,
+**polarity** (dark surface or not) picks the tier within it. A slide author writing
+`color: var(--sfeir-accent)` is correct in all four combinations without knowing either
+rule — which is the whole reason the semantic layer exists.
+
 ## 4. Legacy → new mapping
 
 The neutrals barely move — a useful de-risking finding: the current greys are already
@@ -100,8 +138,14 @@ variables.
 | `--sfeir-*-stop-N` ×8 | gradients   | **retired**                | —         | removed        |
 
 All legacy names are kept as deprecated aliases pointing at their new target, so a
-downstream deck writing `var(--sfeir-green)` renders in Cuivre instead of breaking. The
-CLI `check` command reports them; they are removed one major version later.
+downstream deck writing `var(--sfeir-green)` renders in the new accent instead of
+breaking. The CLI `check` command reports them; they are removed one major version later.
+
+Decision D1 makes this mapping unusually clean: `--sfeir-green` was the _School accent_
+and `--sfeir-blue` the _Institute accent_, so both collapse onto the single
+`--sfeir-accent` token and each resolves to the right ramp on its own program. A deck
+that hard-codes `var(--sfeir-green)` in School mode keeps working and even keeps its
+intent — it just renders Bronze instead of `#0AB580`.
 
 The 8 gradient-stop variables have no target: gradients are not part of the identity.
 

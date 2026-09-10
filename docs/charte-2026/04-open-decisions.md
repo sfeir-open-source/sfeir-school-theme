@@ -1,12 +1,14 @@
 # Charte 2026 — Open decisions
 
-Five decisions gate the migration. Each carries a recommendation; none is final until
-arbitrated. Format is deliberately ADR-like so the accepted option can be frozen in
-place.
+Five decisions gated the migration. All are now arbitrated; the outcome of each is
+frozen in the log at the bottom. Format is deliberately ADR-like.
 
 ---
 
 ## D1 — How do School and Institute differentiate without green and blue?
+
+**Status: accepted 2026-09-10 — option E, a copper-derived green accent for School
+("Bronze", hue 85).**
 
 **Context.** The theme's core promise is that one deck serves both programs, switched by
 `data-theme`. That switch is currently a hue switch: School = `#0AB580`, Institute =
@@ -14,7 +16,7 @@ place.
 for expertise families, which describe _topics_, not programs. The hue axis is gone and
 needs a replacement.
 
-**Options.**
+**Options considered.**
 
 |     | Option                                                                        | On-brand                         | Distinctive | Cost |
 | --- | ----------------------------------------------------------------------------- | -------------------------------- | ----------- | ---- |
@@ -22,22 +24,84 @@ needs a replacement.
 | B   | Surface polarity — School light-dominant, Institute dark-dominant             | ✅ fully                         | ✅ strong   | M    |
 | C   | One expertise family per program (e.g. Institute = Souverain)                 | ✗ violates "families are topics" | ✅ strong   | S    |
 | D   | Polarity on chrome slides only — cover, dividers, closing — content identical | ✅ fully                         | ✅ strong   | M    |
+| E   | **Institute keeps Cuivre; School gets a copper-derived green accent**         | ⚠ second accent — see below     | ✅ strong   | M    |
 
-**Recommendation: D.**
+**Accepted: E.** The hue axis is restored rather than replaced, which keeps the mental
+model trainers already have (School and Institute are two colours) and needs no new
+mechanism — `data-theme` keeps doing exactly what it does today.
 
-Both polarities are first-class in the charte, so nothing has to be invented and no
-second accent appears. Program identity is read on the slides where it is actually
-looked for — the cover and the dividers — while content slides stay identical across
-programs, which is where legibility matters and where both programs must look equally
-professional. It also keeps the diff small: only three archetypes become polarity-aware.
+### Why a second accent is defensible here
 
-Option C should be rejected explicitly: it looks attractive (Institute = Souverain reads
-well) but it burns a topic signal on a program distinction, and then an Institute deck
-about AI can no longer use Indigo without breaking the one-family rule.
+The charte admits one accent and caps a slide at "Cuivre + one expertise family, never
+three". A School green is a genuine deviation from the letter. It is defensible only
+because the green is **derived from copper itself**, not chosen beside it:
 
-Concretely under D: `data-theme="institute"` flips cover / divider / closing to Noir
-Carbone with Cuivre Clair; `school` uses Blanc Craie with Cuivre; `conf` keeps the
-neutral, logo-free treatment it has today.
+- **Institute — Cuivre.** The polished metal. The corporate accent, unchanged.
+- **School — Bronze.** Copper alloyed with tin. A warm olive green, literally a
+  _vert cuivré_: green and copper coexist in the hue.
+
+The rejected third derivation was **Patine** (verdigris, hue 168) — copper oxidised by
+time. Better narrative, prettier green, and it failed on a technical point, not an
+aesthetic one: see the family-collision test below.
+
+### The ramp
+
+Five tiers mirroring Cuivre's structure, each solved for **Cuivre's measured luminance**
+at that tier rather than picked by eye:
+
+| Tier      | Cuivre (Institute) | Bronze (School) |
+| --------- | ------------------ | --------------- |
+| `deep`    | `#5D3A00`          | `#35471D`       |
+| `primary` | `#845400`          | `#4D662A`       |
+| `fill`    | `#E5A040`          | `#9CB774`       |
+| `on-dark` | `#FFB95C`          | `#B4D08D`       |
+| `wash`    | `#FFDDB7`          | `#DAE8C6`       |
+
+Contrast parity, recomputed (WCAG 2.1), worst divergence **0.07**:
+
+| Pair                      | Cuivre | Bronze | Patine | Max Δ |
+| ------------------------- | -----: | -----: | -----: | ----: |
+| `primary` on Blanc Craie  |   6.14 |   6.14 |   6.10 |  0.04 |
+| `primary` on pure white   |   6.46 |   6.46 |   6.42 |  0.04 |
+| `fill` on Noir Carbone    |   9.43 |   9.44 |   9.45 |  0.02 |
+| `on-dark` on Noir Carbone |  12.35 |  12.35 |  12.30 |  0.05 |
+| `wash` on Noir Carbone    |  16.28 |  16.34 |  16.27 |  0.07 |
+| `deep` on pure white      |  10.14 |  10.14 |  10.08 |  0.06 |
+| `deep` on `fill`          |   4.56 |   4.56 |   4.54 |  0.02 |
+
+This parity is the point: one contrast rule in the theme covers both programs, so every
+AA guarantee is written once and no archetype needs a per-program special case.
+
+Cuivre's trap is inherited unchanged — `primary` on Noir Carbone reaches only 3.25
+(Cuivre), 3.25 (Bronze), 3.27 (Patine), **failing AA in all three**. That is exactly why
+the `on-dark` tier exists and why `--sfeir-accent` must switch by itself on dark
+surfaces.
+
+### The family-collision test
+
+The families carry a deck's _topic_, the accent carries its _program_. If the two hues
+resemble each other the reader cannot separate them, and the "one family per slide" rule
+loses its meaning. Hue distance to the nearest of the eight families:
+
+| Candidate  | Hue  | Nearest family | Distance                                             |
+| ---------- | ---- | -------------- | ---------------------------------------------------- |
+| Cuivre     | 38°  | Ocre           | 3° — deliberate: Ocre _is_ Cuivre Poli               |
+| **Bronze** | 85°  | Ocre           | **50° — the only gap in the wheel**                  |
+| Patine     | 168° | Canard         | 18° — sits between Canard (186°) and Émeraude (146°) |
+
+Bronze occupies the one empty arc of the colour wheel. Patine would put a School deck on
+Software & MACH at 18° between its program accent and its family accent.
+
+### Consequences
+
+- `data-theme` stays a hue switch; **decision D1's earlier recommendation (option D,
+  surface polarity) is superseded** — polarity remains available as an aesthetic choice
+  but no longer carries the program signal.
+- The token layer gains a program axis: `--sfeir-accent` and friends resolve from a
+  Cuivre or Bronze ramp under `[data-theme]`, orthogonal to the `[data-family]` axis.
+- `conf` keeps the neutral, logo-free treatment it has today.
+- Bronze must be submitted to the brand team as a documented deviation, with the
+  copper-alloy rationale and the contrast-parity table above.
 
 ---
 
@@ -143,13 +207,13 @@ KISS wins here.
 
 ## Decision log
 
-| ID  | Decision                | Outcome                            | Status       | Blocks     |
-| --- | ----------------------- | ---------------------------------- | ------------ | ---------- |
-| D1  | Program differentiation | —                                  | **open**     | phase 3    |
-| D2  | Release strategy        | A — v4 GA now, charte as v5.0.0    | **accepted** | phases 1–2 |
-| D3  | Lockup source           | B — typographic composition in CSS | **accepted** | phase 4    |
-| D4  | Level / techno badge    | B — eyebrow + pill chips, API kept | **accepted** | phase 3    |
-| D5  | Legacy escape hatch     | A — clean break                    | proposed     | phase 1    |
+| ID  | Decision                | Outcome                             | Status       | Blocks     |
+| --- | ----------------------- | ----------------------------------- | ------------ | ---------- |
+| D1  | Program differentiation | E — Institute Cuivre, School Bronze | **accepted** | phase 3    |
+| D2  | Release strategy        | A — v4 GA now, charte as v5.0.0     | **accepted** | phases 1–2 |
+| D3  | Lockup source           | B — typographic composition in CSS  | **accepted** | phase 4    |
+| D4  | Level / techno badge    | B — eyebrow + pill chips, API kept  | **accepted** | phase 3    |
+| D5  | Legacy escape hatch     | A — clean break                     | **accepted** | phase 1    |
 
-Accepted 2026-09-10. D1 is now the only blocker for phase 3; phases 1 and 2 are
-unblocked by D2.
+All five arbitrated as of 2026-09-10 (D5 accepted as proposed). Phase 0 is closed;
+no decision blocks implementation.
