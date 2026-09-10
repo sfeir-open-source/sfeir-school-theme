@@ -143,10 +143,13 @@ KISS wins here.
 
 ## Decision log
 
-| ID  | Decision                | Recommendation                   | Status | Blocks     |
-| --- | ----------------------- | -------------------------------- | ------ | ---------- |
-| D1  | Program differentiation | D — polarity on chrome slides    | open   | phase 3    |
-| D2  | Release strategy        | A — charte as v5                 | open   | phases 1–2 |
-| D3  | Lockup source           | B — typographic, brand-validated | open   | phase 4    |
-| D4  | Level / techno badge    | B — eyebrow + pill chips         | open   | phase 3    |
-| D5  | Legacy escape hatch     | A — clean break                  | open   | phase 1    |
+| ID  | Decision                | Outcome                            | Status       | Blocks     |
+| --- | ----------------------- | ---------------------------------- | ------------ | ---------- |
+| D1  | Program differentiation | —                                  | **open**     | phase 3    |
+| D2  | Release strategy        | A — v4 GA now, charte as v5.0.0    | **accepted** | phases 1–2 |
+| D3  | Lockup source           | B — typographic composition in CSS | **accepted** | phase 4    |
+| D4  | Level / techno badge    | B — eyebrow + pill chips, API kept | **accepted** | phase 3    |
+| D5  | Legacy escape hatch     | A — clean break                    | proposed     | phase 1    |
+
+Accepted 2026-09-10. D1 is now the only blocker for phase 3; phases 1 and 2 are
+unblocked by D2.
