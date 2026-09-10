@@ -5,7 +5,13 @@
  */
 
 @import './fonts';
-@import './colors';
+
+// Design tokens — three layers plus the deprecated aliases.
+// See docs/charte-2026/02-token-mapping.md.
+@import './tokens/palette';
+@import './tokens/semantic';
+@import './tokens/context';
+@import './tokens/legacy';
 
 :root {
     /**
@@ -13,23 +19,24 @@
     **/
 
     // Background of the presentation
-    --r-background-color: #fff;
+    --r-background-color: var(--sfeir-surface);
 
     // Primary/body text
     --r-main-font: 'Poppins', sans-serif;
     --r-main-font-size: 40px;
-    --r-main-color: var(--dark-grey);
+    --r-main-color: var(--sfeir-on-surface);
 
     // Headings
     --r-heading-font: 'Poppins', Impact, sans-serif;
     --r-heading-color: var(--r-main-color);
     --r-heading-text-transform: initial;
 
-    // Links and actions
-    --r-link-color: var(--black);
-    --r-link-color-hover: lighten(var(--r-link-color), 20%);
+    // Links and actions. The charte forbids blue links: Charcoal text, accent on hover,
+    // with the Cuivre bottom border landing in phase 2.
+    --r-link-color: var(--sfeir-on-surface);
+    --r-link-color-hover: var(--sfeir-accent);
 
     // Text selection
-    --r-selection-background-color: rgba(140, 191, 240, 0.8);
-    --r-selection-color: #fff;
+    --r-selection-background-color: var(--sfeir-accent-wash);
+    --r-selection-color: var(--sfeir-accent-deep);
 }

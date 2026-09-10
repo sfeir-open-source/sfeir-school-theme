@@ -1,0 +1,38 @@
+/**
+* Deprecated aliases — removed in v6.
+*
+* Every name the v4 theme exposed keeps resolving, so no downstream deck breaks on
+* upgrade. `sfeir-school-theme check` reports each usage and the v4-to-v5 codemod
+* rewrites them in place.
+*
+* The program hues collapse cleanly: --sfeir-green was the School accent and
+* --sfeir-blue the Institute accent, so both become --sfeir-accent and each resolves to
+* the right ramp on its own program. A School deck hard-coding var(--sfeir-green) keeps
+* its intent and simply renders Bronze.
+*
+* Retired with no target: the eight --sfeir-*-stop-N gradient stops. Gradients are not
+* part of the identity.
+*/
+
+:root {
+    /* Brand hues */
+    --sfeir-green: var(--sfeir-accent);
+    --sfeir-blue: var(--sfeir-accent);
+    --sfeir-orange: var(--sfeir-accent-fill);
+    --sfeir-pink: var(
+        --sfeir-accent-fill
+    ); // repointed to the Rose family in phase 5
+
+    /* Generic neutrals */
+    --white: var(--sfeir-white);
+    --black: var(--sfeir-on-surface);
+    --dark-grey: var(--sfeir-on-surface-muted);
+    --medium-grey: var(--sfeir-outline);
+    --light-grey: var(--sfeir-brouillard);
+    --code-bg: var(--sfeir-code-surface);
+    --red: var(--sfeir-danger);
+
+    /* Kept verbatim: an alpha value has no palette equivalent, and phase 2 removes the
+     * one rule that uses it. */
+    --dark-grey-alpha: rgba(61, 67, 73, 0.7);
+}
