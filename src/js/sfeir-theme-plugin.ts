@@ -1,5 +1,3 @@
-import { _handle_parameter } from '@talk-control/talk-control-revealjs-extensions';
-
 export class SfeirTheme {
     constructor() {}
 
@@ -56,29 +54,20 @@ export class SfeirTheme {
         }
     }
 
+    /**
+     * The 25% band no longer needs to know which program is active: --sfeir-accent
+     * resolves through the program axis, and tokens/_context.scss declares it on
+     * `.slides[data-theme] ~ .backgrounds` too, which is where reveal puts this
+     * background. Phase 2 replaces the gradient itself — the charte has no gradients.
+     */
     _manageExerciceSlide() {
-        const queryString = window.location.search;
-        const urlParams = new URLSearchParams(queryString);
-        const slidesElement: HTMLElement =
-            document.querySelector('.reveal .slides')!;
-        const slidesTheme = _handle_parameter(
-            urlParams,
-            'data-theme',
-            slidesElement,
-            'data-theme',
-            'school'
-        );
         const exercicesSlides = [
             ...document.querySelectorAll('.reveal .slides section.exercice'),
         ];
         for (const exercicesection of exercicesSlides) {
-            const colorToUse =
-                slidesTheme === 'institute'
-                    ? 'var(--sfeir-blue)'
-                    : 'var(--sfeir-green)';
             exercicesection.setAttribute(
                 'data-background',
-                `linear-gradient(90deg,  ${colorToUse} 25%, white 25%, white 100%)`
+                'linear-gradient(90deg, var(--sfeir-accent) 25%, var(--sfeir-surface) 25%, var(--sfeir-surface) 100%)'
             );
         }
     }

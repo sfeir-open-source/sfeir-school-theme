@@ -1,0 +1,61 @@
+/**
+* Typography tokens — font stacks, type scale, tracking and weights.
+*
+* The @font-face declarations live in ../fonts.scss; this file is the contract slides
+* should reference.
+*/
+
+:root {
+    /**
+    * Font stacks. The brand faces are self-hosted, but a fallback chain still matters:
+    * a school deck may be opened from a file:// path or behind a proxy that blocks the
+    * font requests.
+    */
+    --sfeir-font-display:
+        'Epilogue', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    --sfeir-font-body:
+        'Epilogue', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    --sfeir-font-label:
+        'Space Grotesk', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    --sfeir-font-mono:
+        'JetBrains Mono', ui-monospace, Menlo, Consolas, monospace;
+
+    /**
+    * Type scale, in px on reveal's 1920x1080 logical viewport.
+    *
+    * The charte is calibrated for pptx at 10 x 5.625in, so 1pt = 2.667px here. That
+    * transposition is adopted for every role except body text: literally it would give
+    * 29px, which is 2.7% of slide height — fine for a deck read on a laptop, marginal
+    * in a training room on the projectors product-guidelines.md targets. Body stays at
+    * 40px and the hierarchy is compressed around it.
+    *
+    * See docs/charte-2026/02-token-mapping.md section 6.
+    */
+    --sfeir-fs-eyebrow: 27px; // 0.675x base
+    --sfeir-fs-caption: 26px; // 0.65x
+    --sfeir-fs-body: 40px; // 1x   — the documented deviation
+    --sfeir-fs-subtitle: 48px; // 1.2x
+    --sfeir-fs-title: 76px; // 1.9x
+    --sfeir-fs-display: 128px; // 3.2x
+    --sfeir-fs-display-cover: 136px; // 3.4x
+    --sfeir-fs-stat: 208px; // 5.2x
+
+    /**
+    * Tracking. Negative on display type, positive on uppercase labels — the charte
+    * treats both as part of the identity, not as polish.
+    */
+    --sfeir-tracking-display: -0.02em;
+    --sfeir-tracking-title: -0.01em;
+    --sfeir-tracking-label: 0.16em; // eyebrows, section numbers
+    --sfeir-tracking-nav: 0.06em; // buttons, nav labels
+    --sfeir-tracking-mono: 0.02em;
+
+    /**
+    * Weights. Epilogue Black carries every display role; 500 and 700 are the only
+    * intermediate steps the charte uses.
+    */
+    --sfeir-weight-regular: 400;
+    --sfeir-weight-medium: 500;
+    --sfeir-weight-bold: 700;
+    --sfeir-weight-black: 900;
+}

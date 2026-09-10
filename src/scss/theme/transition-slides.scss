@@ -1,9 +1,9 @@
 :root {
-    --tc-transition-color: var(--white);
-    --tc-transition-title-font-size: 2em;
+    --tc-transition-color: var(--sfeir-ink-on-dark);
+    --tc-transition-title-font-size: var(--sfeir-fs-display);
     --tc-transition-margin-top: 450px;
-    --tc-transition-line-color: var(--sfeir-green);
-    --tc-transition-sub-title-font-size: 1.5em;
+    --tc-transition-line-color: var(--sfeir-accent);
+    --tc-transition-sub-title-font-size: var(--sfeir-fs-subtitle);
 }
 
 .reveal .slides section[class*='transition']:not(.stack),
@@ -17,17 +17,6 @@
         text-align: left;
     }
 
-    &.blue h1:before,
-    &.transition-bg-blue-1 h1:before,
-    &.transition-bg-blue-2 h1:before,
-    &.transition-bg-blue-3 h1:before {
-        --tc-transition-line-color: var(--sfeir-blue);
-    }
-
-    &.green h1:before {
-        --tc-transition-line-color: var(--sfeir-green);
-    }
-
     &.bg-white h1:before,
     &.bg-blue h1:before,
     &.bg-green h1:before {
@@ -35,10 +24,10 @@
     }
 
     &.bg-white h1 {
-        --tc-transition-color: var(--black);
+        --tc-transition-color: var(--sfeir-charcoal);
     }
     &.bg-white:not(h1) {
-        color: var(--black);
+        color: var(--sfeir-charcoal);
     }
 }
 
@@ -66,30 +55,11 @@
 }
 
 /**
-* Hack for institute mode
+* The institute branch that used to live here is gone: --tc-transition-line-color now
+* points at --sfeir-accent, which the program axis in tokens/_context.scss resolves. The
+* per-class `blue` / `green` underline modifiers went with it — deprecated no-ops under
+* a single-accent charte, reported by the CLI and rewritten by the v4-to-v5 codemod.
 **/
-.reveal .slides[data-theme='institute'] section[class*='transition'],
-.reveal
-    .slides[data-theme='institute']
-    section.sfeir-basic-slide[class*='transition'],
-.reveal
-    .slides[data-theme='institute']
-    section.sfeir-specific-slide[class*='transition'],
-.reveal .slides[data-theme='institute'] section.first-slide {
-    h1:before {
-        --tc-transition-line-color: var(--sfeir-blue);
-    }
-
-    &.green h1:before,
-    &.transition-bg-green-1 h1:before,
-    &.transition-bg-green-2 h1:before,
-    &.transition-bg-green-3 h1:before,
-    &.transition-bg-green-4 h1:before,
-    &.transition-bg-green-5 h1:before,
-    &.transition-bg-green-6 h1:before {
-        --tc-transition-line-color: var(--sfeir-green);
-    }
-}
 
 /**
 * Hack for print

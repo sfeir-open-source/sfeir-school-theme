@@ -1,152 +1,137 @@
-// Poppins
+/**
+* Typography — SFEIR Brand Guidelines, The Sharp Artisan (v2026.1).
+*
+* Three families, each shipped as a single variable WOFF2 per style and subset. This
+* replaces the 25 static TTF files of the v4 theme: 4.1 MB down to 289 KB.
+*
+*   Epilogue        display and body            100-900, upright and italic
+*   Space Grotesk   labels and eyebrows         300-700, always uppercase with tracking
+*   JetBrains Mono  code and technical data     100-800, upright and italic
+*
+* Poppins, Consolas and Inconsolata are retired. The charte names Poppins explicitly as
+* the superseded family, and Consolas is proprietary — it had no business shipping from
+* an Apache-2.0 repository. All three replacements are SIL OFL 1.1.
+*
+* Provenance, versions and licences: public/fonts/README.md.
+* Font stacks and the type scale: ./tokens/_typography.scss.
+*/
 
 @font-face {
-    font-family: 'Poppins';
-    src: url('./fonts/Poppins-Light.ttf');
-    font-weight: 300;
-    font-style: normal;
-}
-
-@font-face {
-    font-family: 'Poppins';
-    src: url('./fonts/Poppins-LightItalic.ttf');
-    font-weight: 300;
+    font-family: 'Epilogue';
+    src: url('./fonts/Epilogue-italic-latin.woff2') format('woff2');
+    font-weight: 100 900;
     font-style: italic;
+    font-display: swap;
+    unicode-range:
+        U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC,
+        U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193,
+        U+2212, U+2215, U+FEFF, U+FFFD;
 }
 
 @font-face {
-    font-family: 'Poppins';
-    src: url('./fonts/Poppins-ExtraLight.ttf');
-    font-weight: 100;
-    font-style: normal;
-}
-
-@font-face {
-    font-family: 'Poppins';
-    src: url('./fonts/Poppins-ExtraLightItalic.ttf');
-    font-weight: 100;
+    font-family: 'Epilogue';
+    src: url('./fonts/Epilogue-italic-latin-ext.woff2') format('woff2');
+    font-weight: 100 900;
     font-style: italic;
+    font-display: swap;
+    unicode-range:
+        U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304,
+        U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020,
+        U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
 }
 
 @font-face {
-    font-family: 'Poppins';
-    src: url('./fonts/Poppins-Regular.ttf');
-    font-weight: 400;
+    font-family: 'Epilogue';
+    src: url('./fonts/Epilogue-normal-latin.woff2') format('woff2');
+    font-weight: 100 900;
     font-style: normal;
+    font-display: swap;
+    unicode-range:
+        U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC,
+        U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193,
+        U+2212, U+2215, U+FEFF, U+FFFD;
 }
 
 @font-face {
-    font-family: 'Poppins';
-    src: url('./fonts/Poppins-Medium.ttf');
-    font-weight: 500;
+    font-family: 'Epilogue';
+    src: url('./fonts/Epilogue-normal-latin-ext.woff2') format('woff2');
+    font-weight: 100 900;
     font-style: normal;
+    font-display: swap;
+    unicode-range:
+        U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304,
+        U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020,
+        U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
 }
 
 @font-face {
-    font-family: 'Poppins';
-    src: url('./fonts/Poppins-MediumItalic.ttf');
-    font-weight: 500;
+    font-family: 'Space Grotesk';
+    src: url('./fonts/SpaceGrotesk-normal-latin.woff2') format('woff2');
+    font-weight: 300 700;
+    font-style: normal;
+    font-display: swap;
+    unicode-range:
+        U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC,
+        U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193,
+        U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+@font-face {
+    font-family: 'Space Grotesk';
+    src: url('./fonts/SpaceGrotesk-normal-latin-ext.woff2') format('woff2');
+    font-weight: 300 700;
+    font-style: normal;
+    font-display: swap;
+    unicode-range:
+        U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304,
+        U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020,
+        U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+
+@font-face {
+    font-family: 'JetBrains Mono';
+    src: url('./fonts/JetBrainsMono-italic-latin.woff2') format('woff2');
+    font-weight: 100 800;
     font-style: italic;
+    font-display: swap;
+    unicode-range:
+        U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC,
+        U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193,
+        U+2212, U+2215, U+FEFF, U+FFFD;
 }
 
 @font-face {
-    font-family: 'Poppins';
-    src: url('./fonts/Poppins-SemiBold.ttf');
-    font-weight: 600;
-    font-style: normal;
-}
-
-@font-face {
-    font-family: 'Poppins';
-    src: url('./fonts/Poppins-SemiBoldItalic.ttf');
-    font-weight: 600;
+    font-family: 'JetBrains Mono';
+    src: url('./fonts/JetBrainsMono-italic-latin-ext.woff2') format('woff2');
+    font-weight: 100 800;
     font-style: italic;
+    font-display: swap;
+    unicode-range:
+        U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304,
+        U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020,
+        U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
 }
 
 @font-face {
-    font-family: 'Poppins';
-    src: url('./fonts/Poppins-Bold.ttf');
-    font-weight: 700;
+    font-family: 'JetBrains Mono';
+    src: url('./fonts/JetBrainsMono-normal-latin.woff2') format('woff2');
+    font-weight: 100 800;
     font-style: normal;
+    font-display: swap;
+    unicode-range:
+        U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC,
+        U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193,
+        U+2212, U+2215, U+FEFF, U+FFFD;
 }
 
 @font-face {
-    font-family: 'Poppins';
-    src: url('./fonts/Poppins-BoldItalic.ttf');
-    font-weight: 700;
-    font-style: italic;
-}
-
-@font-face {
-    font-family: 'Poppins';
-    src: url('./fonts/Poppins-ExtraBold.ttf');
-    font-weight: 800;
+    font-family: 'JetBrains Mono';
+    src: url('./fonts/JetBrainsMono-normal-latin-ext.woff2') format('woff2');
+    font-weight: 100 800;
     font-style: normal;
-}
-
-@font-face {
-    font-family: 'Poppins';
-    src: url('./fonts/Poppins-ExtraBoldItalic.ttf');
-    font-weight: 800;
-    font-style: italic;
-}
-
-@font-face {
-    font-family: 'Poppins';
-    src: url('./fonts/Poppins-Black.ttf');
-    font-weight: 900;
-    font-style: normal;
-}
-
-@font-face {
-    font-family: 'Poppins';
-    src: url('./fonts/Poppins-BlackItalic.ttf');
-    font-weight: 900;
-    font-style: italic;
-}
-
-// Consolas
-
-@font-face {
-    font-family: 'Consolas';
-    src: url('./fonts/Consolas.ttf');
-}
-
-@font-face {
-    font-family: 'Consolas';
-    src: url('./fonts/Consolaz.ttf');
-    font-weight: 800;
-    font-style: normal;
-}
-
-// Inconsolata
-
-@font-face {
-    font-family: 'Inconsolata';
-    src: url('./fonts/Inconsolata-Regular.ttf');
-}
-
-@font-face {
-    font-family: 'Inconsolata';
-    src: url('./fonts/Inconsolata-Bold.ttf');
-    font-weight: 800;
-    font-style: normal;
-}
-
-.reveal {
-    font-family:
-        'Poppins', 'Helvetica Neue', Helvetica, 'Microsoft YaHei',
-        'WenQuanYi Micro Hei', Arial, sans-serif;
-}
-
-.reveal h1,
-.reveal h2,
-.reveal h3,
-.reveal h4,
-.reveal .slides section.with-code h1,
-.reveal .slides section.with-code h2 {
-    font-family:
-        'Poppins', 'Helvetica Neue', Helvetica, 'Microsoft YaHei',
-        'WenQuanYi Micro Hei', Arial, sans-serif;
-    font-weight: 600;
+    font-display: swap;
+    unicode-range:
+        U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304,
+        U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020,
+        U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
 }

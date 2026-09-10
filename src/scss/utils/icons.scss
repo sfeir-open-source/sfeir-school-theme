@@ -3,14 +3,6 @@
 */
 
 :root {
-    --tc-icon-color: var(--sfeir-green);
+    --tc-icon-color: var(--sfeir-accent);
     --tc-icone-size: 24px;
-}
-
-/**
-* Hack for mode instute
-*/
-
-.reveal .slides[data-theme='institute'] section {
-    --tc-icon-color: var(--sfeir-blue);
 }
