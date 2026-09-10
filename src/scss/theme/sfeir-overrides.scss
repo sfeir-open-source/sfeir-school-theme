@@ -8,7 +8,9 @@
 
 // Design tokens — three layers plus the deprecated aliases.
 // See docs/charte-2026/02-token-mapping.md.
+@import './tokens/selectors';
 @import './tokens/palette';
+@import './tokens/typography';
 @import './tokens/semantic';
 @import './tokens/context';
 @import './tokens/legacy';
@@ -22,12 +24,12 @@
     --r-background-color: var(--sfeir-surface);
 
     // Primary/body text
-    --r-main-font: 'Poppins', sans-serif;
-    --r-main-font-size: 40px;
+    --r-main-font: var(--sfeir-font-body);
+    --r-main-font-size: var(--sfeir-fs-body);
     --r-main-color: var(--sfeir-on-surface);
 
     // Headings
-    --r-heading-font: 'Poppins', Impact, sans-serif;
+    --r-heading-font: var(--sfeir-font-display);
     --r-heading-color: var(--r-main-color);
     --r-heading-text-transform: initial;
 
@@ -39,4 +41,22 @@
     // Text selection
     --r-selection-background-color: var(--sfeir-accent-wash);
     --r-selection-color: var(--sfeir-accent-deep);
+
+    // Code
+    --r-code-font: var(--sfeir-font-mono);
+}
+
+/**
+* Headings carry Epilogue Bold as a baseline; phase 3 raises the display archetypes
+* (cover, section dividers, stats) to Epilogue Black with the charte's tracking.
+*/
+.reveal h1,
+.reveal h2,
+.reveal h3,
+.reveal h4,
+.reveal .slides section.with-code h1,
+.reveal .slides section.with-code h2 {
+    font-family: var(--sfeir-font-display);
+    font-weight: var(--sfeir-weight-bold);
+    letter-spacing: var(--sfeir-tracking-title);
 }

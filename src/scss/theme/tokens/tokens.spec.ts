@@ -1,9 +1,10 @@
 import { contrastRatio, wcagLevel } from './color.utils';
 import { describe, expect, it } from 'vitest';
-import { parseCustomProperties, varRefs } from './tokens.utils';
+import { parseBlocks, parseCustomProperties, varRefs } from './tokens.utils';
 import { fileURLToPath } from 'node:url';
 import fs from 'node:fs';
 import path from 'node:path';
+import sass from 'sass';
 
 const DIR = path.dirname(fileURLToPath(import.meta.url));
 const read = (file: string) => fs.readFileSync(path.join(DIR, file), 'utf-8');
@@ -12,6 +13,7 @@ const PALETTE_SCSS = '_palette.scss';
 const SEMANTIC_SCSS = '_semantic.scss';
 const CONTEXT_SCSS = '_context.scss';
 const LEGACY_SCSS = '_legacy.scss';
+const TYPOGRAPHY_SCSS = '_typography.scss';
 
 const palette = parseCustomProperties(read(PALETTE_SCSS));
 const hex = (token: string) => {
@@ -228,5 +230,188 @@ describe('token layering', () => {
         for (const name of legacy.keys()) {
             expect(palette.has(name) || semantic.has(name)).toBe(false);
         }
+    });
+});
+
+describe(`${TYPOGRAPHY_SCSS} — font stacks`, () => {
+    const typography = parseCustomProperties(read(TYPOGRAPHY_SCSS));
+    const stack = (role: string) => {
+        const value = typography.get(`sfeir-font-${role}`);
+        if (!value) throw new Error(`--sfeir-font-${role} is not declared`);
+        return value.split(',').map((family) => family.trim());
+    };
+
+    it.each([
+        ['display', "'Epilogue'"],
+        ['body', "'Epilogue'"],
+        ['label', "'Space Grotesk'"],
+        ['mono', "'JetBrains Mono'"],
+    ])('should lead the %s stack with %s', (role, expected) => {
+        expect(stack(role)[0]).toBe(expected);
+    });
+
+    it.each(['display', 'body', 'label', 'mono'])(
+        'should give the %s stack a real fallback chain',
+        (role) => {
+            expect(stack(role).length).toBeGreaterThanOrEqual(3);
+        }
+    );
+
+    it('should never fall back to Poppins, the superseded family', () => {
+        expect(read(TYPOGRAPHY_SCSS)).not.toMatch(/Poppins/i);
+    });
+});
+
+/**
+ * The charte is calibrated for pptx at 10 x 5.625in; reveal runs at 1920 x 1080, so
+ * 1pt = 2.667px. That transposition is adopted for every role except body text, which
+ * would land at 29px — marginal on the projectors conductor/product-guidelines.md
+ * targets. Body stays at 40px. See docs/charte-2026/02-token-mapping.md section 6.
+ */
+describe(`${TYPOGRAPHY_SCSS} — type scale`, () => {
+    const typography = parseCustomProperties(read(TYPOGRAPHY_SCSS));
+    const px = (role: string) => {
+        const value = typography.get(`sfeir-fs-${role}`);
+        if (!value) throw new Error(`--sfeir-fs-${role} is not declared`);
+        expect(value).toMatch(/^\d+px$/);
+        return Number.parseInt(value, 10);
+    };
+
+    // Captions sit below eyebrows: the charte puts eyebrow labels at 10-12pt and
+    // captions at 9-10pt.
+    const ORDER = [
+        'caption',
+        'eyebrow',
+        'body',
+        'subtitle',
+        'title',
+        'display',
+        'display-cover',
+        'stat',
+    ];
+
+    it('should keep body text at 40px, the documented deviation', () => {
+        expect(px('body')).toBe(40);
+    });
+
+    it('should rise monotonically through the hierarchy', () => {
+        const sizes = ORDER.map(px);
+        expect(sizes).toEqual([...sizes].sort((a, b) => a - b));
+    });
+
+    it.each([
+        ['eyebrow', 0.675],
+        ['caption', 0.65],
+        ['body', 1],
+        ['subtitle', 1.2],
+        ['title', 1.9],
+        ['display', 3.2],
+        ['display-cover', 3.4],
+        ['stat', 5.2],
+    ])('should size %s at %s times the base', (role, expected) => {
+        expect(px(role) / px('body')).toBeCloseTo(expected, 2);
+    });
+
+    it('should carry the negative tracking the charte puts on display type', () => {
+        expect(typography.get('sfeir-tracking-display')).toBe('-0.02em');
+    });
+
+    it('should carry positive tracking on uppercase labels', () => {
+        const label = typography.get('sfeir-tracking-label');
+        expect(label).toBeDefined();
+        expect(Number.parseFloat(label!)).toBeGreaterThanOrEqual(0.06);
+    });
+});
+
+/**
+ * A custom property that references another resolves **at its own declaration site**.
+ * So redefining a token on a descendant does not retroactively change anything that
+ * reads it higher up: every block that redefines a token must also redeclare each
+ * token transitively derived from it.
+ *
+ * This is not a hypothetical. Two separate blocks got this wrong on the first cut —
+ * the program axis failed to redeclare the accent roles, and the deprecated aliases
+ * failed to redeclare --sfeir-blue / --sfeir-green — and every value-level test above
+ * passed while `data-theme="institute"` still rendered Bronze. Value assertions cannot
+ * see this class of bug; only resolution can.
+ */
+describe('token resolution across contexts', () => {
+    const css = sass.compileString(
+        [
+            "@import 'selectors';",
+            "@import 'semantic';",
+            "@import 'context';",
+            "@import 'legacy';",
+        ].join('\n'),
+        { loadPaths: [DIR] }
+    ).css;
+
+    // The cascade merges every rule sharing a selector, and the token layers
+    // deliberately declare the same selector more than once (_context sets the ramp,
+    // _legacy sets the aliases). Merge before asserting, or the invariant is checked
+    // against half of each context.
+    const merged = new Map<string, Map<string, string>>();
+    for (const block of parseBlocks(css)) {
+        const target = merged.get(block.selector) ?? new Map<string, string>();
+        for (const [name, value] of block.properties) target.set(name, value);
+        merged.set(block.selector, target);
+    }
+
+    const rootProperties = merged.get(':root') ?? new Map<string, string>();
+    const blocks = [...merged].map(([selector, properties]) => ({
+        selector,
+        properties,
+    }));
+
+    /** Every root token that reads `token`, directly or through other tokens. */
+    const dependentsOf = (token: string): string[] => {
+        const found = new Set<string>();
+        const frontier = [token];
+        while (frontier.length > 0) {
+            const current = frontier.pop()!;
+            for (const [name, value] of rootProperties) {
+                if (found.has(name) || name === token) continue;
+                if (varRefs(value).includes(current)) {
+                    found.add(name);
+                    frontier.push(name);
+                }
+            }
+        }
+        return [...found];
+    };
+
+    const contextBlocks = blocks.filter((block) => block.selector !== ':root');
+
+    it('should declare tokens at :root and redefine them in context blocks', () => {
+        expect(rootProperties.size).toBeGreaterThan(0);
+        expect(contextBlocks.length).toBeGreaterThan(0);
+    });
+
+    it.each(contextBlocks.map((block) => [block.selector, block] as const))(
+        '%s should redeclare every token derived from what it redefines',
+        (_selector, block) => {
+            const declared = new Set(block.properties.keys());
+            const missing = [...declared]
+                .flatMap(dependentsOf)
+                .filter((token) => !declared.has(token));
+            expect([...new Set(missing)]).toEqual([]);
+        }
+    );
+
+    it('should resolve the Institute accent to Cuivre, not the School ramp', () => {
+        // Compiled CSS drops the quotes from the attribute value.
+        const institute = contextBlocks.find((block) =>
+            /\[data-theme=['"]?institute['"]?\]/.test(block.selector)
+        );
+        expect(institute).toBeDefined();
+        expect(institute?.properties.get('sfeir-ramp-accent')).toBe(
+            'var(--sfeir-cuivre)'
+        );
+        expect(institute?.properties.get('sfeir-accent')).toBe(
+            'var(--sfeir-ramp-accent)'
+        );
+        expect(institute?.properties.get('sfeir-blue')).toBe(
+            'var(--sfeir-accent)'
+        );
     });
 });

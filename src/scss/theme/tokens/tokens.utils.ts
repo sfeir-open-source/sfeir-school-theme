@@ -24,3 +24,28 @@ export function parseCustomProperties(scss: string): Map<string, string> {
 export function varRefs(value: string): string[] {
     return [...value.matchAll(VAR_REFERENCE)].map(([, name]) => name);
 }
+
+export interface TokenBlock {
+    selector: string;
+    properties: Map<string, string>;
+}
+
+const RULE = /([^{}]+)\{([^{}]*)\}/g;
+
+/**
+ * Split compiled CSS into its rule blocks, keeping only the custom properties. Used to
+ * assert how the token layers resolve, which the flat property map cannot express.
+ */
+export function parseBlocks(css: string): TokenBlock[] {
+    const blocks: TokenBlock[] = [];
+    for (const [, prelude, body] of stripComments(css).matchAll(RULE)) {
+        const properties = parseCustomProperties(body);
+        if (properties.size > 0) {
+            // The prelude can trail a statement at-rule such as `@charset "UTF-8";`;
+            // the selector is whatever follows the last one.
+            const selector = prelude.split(';').pop()!.trim();
+            blocks.push({ selector, properties });
+        }
+    }
+    return blocks;
+}

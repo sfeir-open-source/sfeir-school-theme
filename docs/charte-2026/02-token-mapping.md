@@ -99,6 +99,34 @@ as such.
 `--sfeir-radius` exists only so the two legitimate exceptions (pill chips, avatars) are
 named rather than magic. Any component using a literal radius is a violation.
 
+### 3.1 Resolution rule — the constraint that shapes this layer
+
+A custom property that references another **resolves at its own declaration site**.
+Redefining a token on a descendant therefore does _not_ retroactively change anything
+declared higher up that reads it:
+
+```scss
+:root {
+    --sfeir-ramp-accent: var(--sfeir-bronze);
+    --sfeir-accent: var(--sfeir-ramp-accent); // resolves HERE, to Bronze
+}
+.slides[data-theme='institute'] {
+    --sfeir-ramp-accent: var(--sfeir-cuivre); // too late for --sfeir-accent
+}
+```
+
+So every block that redefines a token must also redeclare each token transitively
+derived from it. The layers do this with mixins — `sfeir-accent-roles` in
+`_semantic.scss` and `sfeir-legacy-derived` in `_legacy.scss` — included at `:root` and
+again on each axis, with the selector lists shared through `_selectors.scss`.
+
+This is worth stating explicitly because it bit the implementation twice: first the
+program axis switched the ramp without redeclaring the roles, then the deprecated
+aliases failed to redeclare `--sfeir-blue` / `--sfeir-green`. Both times every
+value-level test passed while `data-theme="institute"` still rendered Bronze. The
+invariant is now asserted against the _compiled_ CSS (`tokens.spec.ts`, "token
+resolution across contexts"), which is the only surface where it is visible.
+
 ### 3.1 The program axis
 
 `--sfeir-accent` and its siblings do not point at a palette value directly — they

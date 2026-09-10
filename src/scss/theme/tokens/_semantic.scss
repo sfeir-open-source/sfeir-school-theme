@@ -9,6 +9,22 @@
 * _context.scss redefines them per program and per surface.
 */
 
+/**
+* The accent roles, as a mixin.
+*
+* A custom property that references another resolves at its own declaration site, so
+* redefining the ramp on a descendant does not retroactively change a role declared
+* here. Every block that switches the ramp must therefore include this mixin again —
+* tokens.spec.ts asserts it, having caught exactly that omission once already.
+*/
+@mixin sfeir-accent-roles {
+    --sfeir-accent: var(--sfeir-ramp-accent);
+    --sfeir-accent-fill: var(--sfeir-ramp-fill);
+    --sfeir-on-accent-fill: var(--sfeir-ramp-on-fill);
+    --sfeir-accent-wash: var(--sfeir-ramp-wash);
+    --sfeir-accent-deep: var(--sfeir-ramp-deep);
+}
+
 :root {
     /**
     * The active program ramp. Redefined under [data-theme] in _context.scss.
@@ -27,11 +43,7 @@
     * reason this layer exists: the accent tier fails AA on Noir Carbone in both ramps
     * (3.25:1), so reaching for it directly is a trap.
     */
-    --sfeir-accent: var(--sfeir-ramp-accent);
-    --sfeir-accent-fill: var(--sfeir-ramp-fill);
-    --sfeir-on-accent-fill: var(--sfeir-ramp-on-fill);
-    --sfeir-accent-wash: var(--sfeir-ramp-wash);
-    --sfeir-accent-deep: var(--sfeir-ramp-deep);
+    @include sfeir-accent-roles;
 
     /**
     * Surface roles.

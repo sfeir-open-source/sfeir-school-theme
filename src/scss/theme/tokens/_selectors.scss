@@ -1,0 +1,17 @@
+/**
+* Shared selector lists.
+*
+* Both the contextual layer and the deprecated aliases have to redeclare tokens at the
+* same places, so those places are named once here rather than copied.
+*/
+
+// Program axis. `.backgrounds` is a sibling of `.slides`, not a descendant, and reveal
+// puts slide backgrounds there — so it needs the program tokens too.
+$sfeir-institute: ".reveal .slides[data-theme='institute'], " +
+    ".reveal .slides[data-theme='institute'] ~ .backgrounds";
+
+// Polarity axis: the archetypes that sit on Noir Carbone. Phase 3 consolidates this
+// list and the one in layout.scss around a single `.on-dark` marker.
+$sfeir-dark-sections: '.reveal .slides section:is(' + '.first-slide, ' +
+    '.speaker-slide, ' + '.quote-slide, ' + '.bg-blur, ' + '.with-code-dark, ' +
+    "[class*='transition']" + ')';
