@@ -30,20 +30,14 @@
 
     // Headings
     --r-heading-font: var(--sfeir-font-display);
-    --r-heading-color: var(--r-main-color);
     --r-heading-text-transform: initial;
-
-    // Links and actions. The charte forbids blue links: Charcoal text, accent on hover,
-    // with the Cuivre bottom border landing in phase 2.
-    --r-link-color: var(--sfeir-on-surface);
-    --r-link-color-hover: var(--sfeir-accent);
-
-    // Text selection
-    --r-selection-background-color: var(--sfeir-accent-wash);
-    --r-selection-color: var(--sfeir-accent-deep);
 
     // Code
     --r-code-font: var(--sfeir-font-mono);
+
+    // Heading colour, links and selection are bound in tokens/_semantic.scss, by the
+    // sfeir-framework-bindings mixin: they read semantic roles, so they have to follow
+    // the program and the surface polarity.
 }
 
 /**

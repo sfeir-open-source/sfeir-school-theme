@@ -17,16 +17,19 @@
 * descendant, hence the second selector.
 */
 #{$sfeir-institute} {
-    --sfeir-ramp-accent: var(--sfeir-cuivre);
-    --sfeir-ramp-accent-on-dark: var(--sfeir-cuivre-clair);
-    --sfeir-ramp-fill: var(--sfeir-cuivre-poli);
+    --sfeir-ramp-accent: var(--sfeir-ocre-dark);
+    --sfeir-ramp-accent-on-dark: var(--sfeir-ocre-medium);
+    --sfeir-ramp-fill: var(--sfeir-ocre-primary);
+    // The charte prescribes Cuivre Profond as the text colour on Cuivre Poli, which is
+    // what ocre-primary is. Émeraude has no such prescription — see _palette.scss.
     --sfeir-ramp-on-fill: var(--sfeir-cuivre-profond);
-    --sfeir-ramp-wash: var(--sfeir-sable);
+    --sfeir-ramp-wash: var(--sfeir-ocre-light);
     --sfeir-ramp-deep: var(--sfeir-cuivre-profond);
 
     // Mandatory: the roles resolve where they are declared, so switching the ramp
     // above has no effect on the roles declared at :root.
     @include sfeir-accent-roles;
+    @include sfeir-framework-bindings;
 }
 
 /**
@@ -42,4 +45,6 @@
     --sfeir-on-surface: var(--sfeir-ink-on-dark);
     --sfeir-on-surface-muted: var(--sfeir-ink-on-dark-muted);
     --sfeir-separator: var(--sfeir-outline);
+
+    @include sfeir-framework-bindings;
 }

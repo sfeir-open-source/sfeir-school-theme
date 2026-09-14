@@ -2,10 +2,10 @@
 * Globals overrides to change the layout of slides
 */
 :root {
+    // --tc-credits-color and --tc-heading-color are bound in tokens/_semantic.scss:
+    // they read semantic roles and must follow the program and the polarity.
     --tc-quote-color: var(--sfeir-ink-on-dark);
-    --tc-credits-color: var(--sfeir-accent);
     --tc-quote-bg-color: var(--sfeir-carbone-mid);
-    --tc-heading-color: var(--sfeir-on-surface);
     --tc-heading-title-font-size: var(--sfeir-fs-title);
     --tc-heading-sub-title-font-size: var(--sfeir-fs-subtitle);
     --tc-heading-other-headings-font-size: var(--sfeir-fs-body);
@@ -57,6 +57,17 @@
     h1 ~ h3:first-of-type:after {
         content: initial;
     }
+}
+
+/**
+* Dark surfaces.
+*
+* Reveal resolves `color: var(--r-main-color)` on `.reveal` itself, so redefining the
+* ink role further down the tree cannot reach body text — it has to be set here, on the
+* sections that sit on Noir Carbone.
+*/
+#{$sfeir-dark-sections} {
+    color: var(--sfeir-on-surface);
 }
 
 /**
