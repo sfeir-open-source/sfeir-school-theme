@@ -18,18 +18,28 @@
     --sfeir-cuivre-profond: #5d3a00; // text on Cuivre Poli or Sable
 
     /**
-    * Bronze — copper alloyed with tin, carried by SFEIR School (decision D1).
+    * Ocre — the Services Managés family, carried by SFEIR Institute (decision D1).
     *
-    * Hue 85, the only arc of the wheel more than 50 degrees from all eight expertise
-    * families. Each tier is solved for the measured luminance of its Cuivre
-    * counterpart, so both programs share one contrast rule. Retuning any tier by eye
-    * breaks that parity — tokens.spec.ts guards it.
+    * Its two darkest variants are the charte core by another name: `ocre-primary` is
+    * Cuivre Poli and `ocre-dark` is Cuivre. Declared here as literals anyway, so the
+    * family table reads as the charte writes it.
     */
-    --sfeir-bronze: #4d662a;
-    --sfeir-bronze-poli: #9cb774;
-    --sfeir-bronze-clair: #b4d08d;
-    --sfeir-mousse: #dae8c6;
-    --sfeir-bronze-profond: #35471d;
+    --sfeir-ocre-light: #fff0d6;
+    --sfeir-ocre-medium: #f2c878;
+    --sfeir-ocre-primary: #e5a040;
+    --sfeir-ocre-dark: #845400;
+
+    /**
+    * Émeraude — the Data & Product family, carried by SFEIR School (decision D1).
+    *
+    * Unlike Ocre, this family's `primary` is mid-dark (L=36%), so text placed on it has
+    * to be Noir: white reaches only 4.25:1 and the family's own light variant 3.54:1.
+    * Only #000000 clears AA, at 4.95:1. That constraint is encoded in the ramp.
+    */
+    --sfeir-emeraude-light: #c8f5d6;
+    --sfeir-emeraude-medium: #6bc68f;
+    --sfeir-emeraude-primary: #2e8b57;
+    --sfeir-emeraude-dark: #0d5a2e;
 
     /**
     * Surfaces — the Blanc Craie to Noir Carbone ramp.

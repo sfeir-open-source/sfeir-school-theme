@@ -2,7 +2,6 @@
     --tc-transition-color: var(--sfeir-ink-on-dark);
     --tc-transition-title-font-size: var(--sfeir-fs-display);
     --tc-transition-margin-top: 450px;
-    --tc-transition-line-color: var(--sfeir-accent);
     --tc-transition-sub-title-font-size: var(--sfeir-fs-subtitle);
 }
 
@@ -17,41 +16,9 @@
         text-align: left;
     }
 
-    &.bg-white h1:before,
-    &.bg-blue h1:before,
-    &.bg-green h1:before {
-        background: none;
-    }
-
-    &.bg-white h1 {
-        --tc-transition-color: var(--sfeir-charcoal);
-    }
-    &.bg-white:not(h1) {
-        color: var(--sfeir-charcoal);
-    }
-}
-
-.reveal .backgrounds div.slide-background.transition {
-    &.bg-white,
-    &.bg-blue,
-    &.bg-green {
-        &:after {
-            content: '';
-            position: absolute;
-            width: 100%;
-            height: 100%;
-        }
-    }
-
-    &.bg-white:after {
-        background: rgba(255, 255, 255, 0.6);
-    }
-    &.bg-blue::after {
-        background: rgba(87, 94, 170, 0.6);
-    }
-    &.bg-green::after {
-        background: rgba(10, 181, 128, 0.6);
-    }
+    // `bg-white`, `bg-blue` and `bg-green` are deprecated: they tinted a photo that no
+    // longer exists. They now render as plain Noir Carbone like every other background
+    // class, so their dark-text and no-underline overrides are gone.
 }
 
 /**
@@ -71,30 +38,6 @@ html.print-pdf {
     .reveal .slides .pdf-page section.first-slide {
         h1:before {
             z-index: 1;
-        }
-    }
-
-    .reveal .slides .pdf-page div.slide-background.transition {
-        &.bg-white,
-        &.bg-blue,
-        &.bg-green {
-            &:after {
-                content: '';
-                position: absolute;
-                width: 100%;
-                height: 100%;
-                left: 0;
-            }
-        }
-
-        &.bg-white:after {
-            background: rgba(255, 255, 255, 0.6);
-        }
-        &.bg-blue::after {
-            background: rgba(87, 94, 170, 0.6);
-        }
-        &.bg-green::after {
-            background: rgba(10, 181, 128, 0.6);
         }
     }
 }

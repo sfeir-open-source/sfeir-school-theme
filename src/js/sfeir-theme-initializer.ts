@@ -12,6 +12,45 @@ interface SlidePath {
     path: string;
 }
 
+/**
+ * Every slide class that carries a background, all of them Noir Carbone.
+ *
+ * The charte builds depth from a tonal ramp rather than from imagery, so the eleven
+ * raster backgrounds of the v4 theme are gone. The class names stay — downstream school
+ * decks use them in their Markdown — they simply all resolve to flat black now, which
+ * is also what makes the accent legible: tokens/_context.scss lists the same archetypes
+ * and flips them to the on-dark tier.
+ *
+ * The colour/blur variants are kept as deprecated aliases and are rewritten by the
+ * v4-to-v5 codemod.
+ */
+const DARK_BACKGROUND_CLASSES = [
+    'first-slide',
+    'transition',
+    'speaker-slide',
+    'quote-slide',
+    'sfeir-slide',
+    'bg-blur',
+    // Deprecated colour variants, kept resolving until v6.
+    'bg-white',
+    'bg-pink',
+    'bg-blue',
+    'bg-green',
+    'transition-bg-sfeir-1',
+    'transition-bg-sfeir-2',
+    'transition-bg-sfeir-3',
+    'transition-bg-blue-1',
+    'transition-bg-blue-2',
+    'transition-bg-blue-3',
+    'transition-bg-blue-blur',
+    'transition-bg-green-1',
+    'transition-bg-green-2',
+    'transition-bg-green-3',
+    'transition-bg-green-4',
+    'transition-bg-green-5',
+    'transition-bg-green-6',
+];
+
 type SfeirThemeInitializerOptions = {
     slidesFactory: (showType?: string) => SlidePath[];
     knowStyles?: string[];
@@ -49,50 +88,13 @@ export const SfeirThemeInitializer = {
             slidesRenderer: schoolSlideRenderer(extrasRenderAttr),
             tcCustomBackgroundOptions: {
                 basePath: './web_modules/sfeir-school-theme/dist/images/',
-                mapBackgrounds(theme) {
-                    return {
-                        'first-slide':
-                            theme === 'institute'
-                                ? 'bg-blue-1.webp'
-                                : 'bg-green-1.webp',
-                        transition:
-                            theme === 'institute'
-                                ? 'bg-blue-1.webp'
-                                : 'bg-green-1.webp',
-                        'speaker-slide': `var(--black)`,
-                        'quote-slide': `var(--black)`,
-                        'sfeir-slide': `bg-green-1.webp`,
-                        'bg-white': `bg-green-1.webp`,
-                        'bg-pink': `bg-green-1.webp`,
-                        'bg-blue': `bg-green-1.webp`,
-                        'bg-green': `bg-green-1.webp`,
-                        'bg-blur':
-                            theme === 'institute'
-                                ? 'bg-blue-blur.webp'
-                                : 'bg-green-blur.webp',
-                        'transition-bg-sfeir-1':
-                            theme === 'institute'
-                                ? 'bg-blue-1.webp'
-                                : 'bg-green-1.webp',
-                        'transition-bg-sfeir-2':
-                            theme === 'institute'
-                                ? 'bg-blue-2.webp'
-                                : 'bg-green-2.webp',
-                        'transition-bg-sfeir-3':
-                            theme === 'institute'
-                                ? 'bg-blue-3.webp'
-                                : 'bg-green-3.webp',
-                        'transition-bg-blue-1': `bg-blue-1.webp`,
-                        'transition-bg-blue-2': `bg-blue-2.webp`,
-                        'transition-bg-blue-3': `bg-blue-3.webp`,
-                        'transition-bg-blue-blur': `bg-blue-blur.webp`,
-                        'transition-bg-green-1': `bg-green-1.webp`,
-                        'transition-bg-green-2': `bg-green-2.webp`,
-                        'transition-bg-green-3': `bg-green-3.webp`,
-                        'transition-bg-green-4': `bg-green-4.webp`,
-                        'transition-bg-green-5': `bg-green-5.webp`,
-                        'transition-bg-green-6': `bg-green-6.webp`,
-                    };
+                mapBackgrounds() {
+                    return DARK_BACKGROUND_CLASSES.reduce<
+                        Record<string, string>
+                    >((backgrounds, className) => {
+                        backgrounds[className] = 'var(--sfeir-noir)';
+                        return backgrounds;
+                    }, {});
                 },
             },
             tcI18nOptions: {

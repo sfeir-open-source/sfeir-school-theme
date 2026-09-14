@@ -22,23 +22,33 @@ const hex = (token: string) => {
     return value;
 };
 
-/** The two program ramps, tier by tier. Institute = Cuivre, School = Bronze (D1). */
+/**
+ * The two program ramps, tier by tier (decision D1).
+ *
+ * Institute = Ocre (Services Managés), School = Émeraude (Data & Product). Unlike the
+ * earlier Cuivre/Bronze pair, these are two independent charte families, so they do NOT
+ * share a contrast profile — each is asserted against the WCAG thresholds on its own.
+ */
 const RAMPS = {
-    cuivre: {
+    'ocre (Institute)': {
+        accent: 'sfeir-ocre-dark',
+        onDark: 'sfeir-ocre-medium',
+        fill: 'sfeir-ocre-primary',
+        onFill: 'sfeir-cuivre-profond',
+        wash: 'sfeir-ocre-light',
         deep: 'sfeir-cuivre-profond',
-        primary: 'sfeir-cuivre',
-        fill: 'sfeir-cuivre-poli',
-        clair: 'sfeir-cuivre-clair',
-        wash: 'sfeir-sable',
     },
-    bronze: {
-        deep: 'sfeir-bronze-profond',
-        primary: 'sfeir-bronze',
-        fill: 'sfeir-bronze-poli',
-        clair: 'sfeir-bronze-clair',
-        wash: 'sfeir-mousse',
+    'emeraude (School)': {
+        accent: 'sfeir-emeraude-dark',
+        onDark: 'sfeir-emeraude-medium',
+        fill: 'sfeir-emeraude-primary',
+        onFill: 'sfeir-noir',
+        wash: 'sfeir-emeraude-light',
+        deep: 'sfeir-emeraude-dark',
     },
 } as const;
+
+const ramps = Object.entries(RAMPS);
 
 describe(`${PALETTE_SCSS} — charte values`, () => {
     it.each([
@@ -48,12 +58,16 @@ describe(`${PALETTE_SCSS} — charte values`, () => {
         ['sfeir-cuivre-clair', '#FFB95C'],
         ['sfeir-sable', '#FFDDB7'],
         ['sfeir-cuivre-profond', '#5D3A00'],
-        // Bronze — School (decision D1)
-        ['sfeir-bronze', '#4D662A'],
-        ['sfeir-bronze-poli', '#9CB774'],
-        ['sfeir-bronze-clair', '#B4D08D'],
-        ['sfeir-mousse', '#DAE8C6'],
-        ['sfeir-bronze-profond', '#35471D'],
+        // Ocre — Institute (decision D1)
+        ['sfeir-ocre-light', '#FFF0D6'],
+        ['sfeir-ocre-medium', '#F2C878'],
+        ['sfeir-ocre-primary', '#E5A040'],
+        ['sfeir-ocre-dark', '#845400'],
+        // Émeraude — School (decision D1)
+        ['sfeir-emeraude-light', '#C8F5D6'],
+        ['sfeir-emeraude-medium', '#6BC68F'],
+        ['sfeir-emeraude-primary', '#2E8B57'],
+        ['sfeir-emeraude-dark', '#0D5A2E'],
         // Surfaces — the Craie to Carbone ramp
         ['sfeir-white', '#FFFFFF'],
         ['sfeir-craie', '#F9F9F9'],
@@ -78,75 +92,63 @@ describe(`${PALETTE_SCSS} — charte values`, () => {
 });
 
 /**
- * Decision D1 rests on this: every Bronze tier was solved for the measured luminance of
- * its Cuivre counterpart, so one contrast rule covers both programs. If a tier is ever
- * retuned by eye, this is the test that catches it.
+ * Each ramp carries its own contrast profile, so each is asserted on its own. The
+ * thresholds encode what every tier is *for*, which is what stops a future retune from
+ * quietly producing an illegible slide.
  */
-describe('program ramp parity (decision D1)', () => {
-    const PAIRS = [
-        ['deep', 'sfeir-white'],
-        ['primary', 'sfeir-white'],
-        ['primary', 'sfeir-craie'],
-        ['fill', 'sfeir-noir'],
-        ['clair', 'sfeir-noir'],
-        ['wash', 'sfeir-noir'],
-    ] as const;
-
-    it.each(PAIRS)(
-        'should rate %s on --%s identically for Cuivre and Bronze',
-        (tier, ground) => {
-            const cuivre = contrastRatio(hex(RAMPS.cuivre[tier]), hex(ground));
-            const bronze = contrastRatio(hex(RAMPS.bronze[tier]), hex(ground));
-            expect(Math.abs(cuivre - bronze)).toBeLessThanOrEqual(0.1);
-        }
-    );
-
-    it('should keep deep-on-fill legible in both ramps', () => {
-        const cuivre = contrastRatio(
-            hex(RAMPS.cuivre.deep),
-            hex(RAMPS.cuivre.fill)
-        );
-        const bronze = contrastRatio(
-            hex(RAMPS.bronze.deep),
-            hex(RAMPS.bronze.fill)
-        );
-        expect(Math.abs(cuivre - bronze)).toBeLessThanOrEqual(0.1);
-        expect(wcagLevel(cuivre)).not.toBe('fail');
-        expect(wcagLevel(bronze)).not.toBe('fail');
-    });
-});
-
-describe('WCAG guarantees', () => {
-    const ramps = Object.entries(RAMPS);
-
+describe('WCAG guarantees, per program ramp', () => {
     it.each(ramps)(
-        'should keep %s primary at AA or better on Blanc Craie',
+        '%s should keep the accent legible as body text on Blanc Craie',
         (_name, ramp) => {
             expect(
-                wcagLevel(contrastRatio(hex(ramp.primary), hex('sfeir-craie')))
+                wcagLevel(contrastRatio(hex(ramp.accent), hex('sfeir-craie')))
             ).not.toBe('fail');
         }
     );
 
     it.each(ramps)(
-        'should keep %s on-dark at AAA on Noir Carbone',
+        '%s should keep the on-dark tier at AAA on Noir Carbone',
         (_name, ramp) => {
             expect(
-                wcagLevel(contrastRatio(hex(ramp.clair), hex('sfeir-noir')))
+                wcagLevel(contrastRatio(hex(ramp.onDark), hex('sfeir-noir')))
             ).toBe('AAA');
         }
     );
 
-    it.each(ramps)('should keep %s deep at AAA on white', (_name, ramp) => {
-        expect(
-            wcagLevel(contrastRatio(hex(ramp.deep), hex('sfeir-white')))
-        ).toBe('AAA');
-    });
+    it.each(ramps)(
+        '%s should keep text on the fill legible at body size',
+        (_name, ramp) => {
+            expect(
+                wcagLevel(contrastRatio(hex(ramp.onFill), hex(ramp.fill)))
+            ).not.toBe('fail');
+        }
+    );
+
+    it.each(ramps)(
+        '%s should keep the deep tier legible on its own wash',
+        (_name, ramp) => {
+            expect(
+                wcagLevel(contrastRatio(hex(ramp.deep), hex(ramp.wash)))
+            ).not.toBe('fail');
+        }
+    );
+
+    it.each(ramps)(
+        '%s should keep the fill readable as a large shape on Noir Carbone',
+        (_name, ramp) => {
+            expect(
+                wcagLevel(contrastRatio(hex(ramp.fill), hex('sfeir-noir')), {
+                    large: true,
+                })
+            ).not.toBe('fail');
+        }
+    );
 
     it.each([
         ['sfeir-charcoal', 'sfeir-craie', 'AAA'],
         ['sfeir-charcoal-variant', 'sfeir-craie', 'AAA'],
         ['sfeir-ink-on-dark', 'sfeir-noir', 'AAA'],
+        ['sfeir-ink-on-dark-muted', 'sfeir-noir', 'AAA'],
     ])('should rate --%s on --%s as %s', (fg, bg, level) => {
         expect(wcagLevel(contrastRatio(hex(fg), hex(bg)))).toBe(level);
     });
@@ -158,17 +160,17 @@ describe('WCAG guarantees', () => {
  * reason to exist.
  */
 describe('inherited contrast traps', () => {
-    it.each(Object.entries(RAMPS))(
-        'should keep %s primary failing on Noir Carbone',
+    it.each(ramps)(
+        '%s should keep the accent failing on Noir Carbone',
         (_name, ramp) => {
             expect(
-                wcagLevel(contrastRatio(hex(ramp.primary), hex('sfeir-noir')))
+                wcagLevel(contrastRatio(hex(ramp.accent), hex('sfeir-noir')))
             ).toBe('fail');
         }
     );
 
-    it.each(Object.entries(RAMPS))(
-        'should keep %s fill unusable as text on Blanc Craie',
+    it.each(ramps)(
+        '%s should keep the fill unusable as text on Blanc Craie',
         (_name, ramp) => {
             expect(
                 wcagLevel(contrastRatio(hex(ramp.fill), hex('sfeir-craie')))
@@ -398,14 +400,14 @@ describe('token resolution across contexts', () => {
         }
     );
 
-    it('should resolve the Institute accent to Cuivre, not the School ramp', () => {
+    it('should resolve the Institute accent to Ocre, not the School ramp', () => {
         // Compiled CSS drops the quotes from the attribute value.
         const institute = contextBlocks.find((block) =>
             /\[data-theme=['"]?institute['"]?\]/.test(block.selector)
         );
         expect(institute).toBeDefined();
         expect(institute?.properties.get('sfeir-ramp-accent')).toBe(
-            'var(--sfeir-cuivre)'
+            'var(--sfeir-ocre-dark)'
         );
         expect(institute?.properties.get('sfeir-accent')).toBe(
             'var(--sfeir-ramp-accent)'

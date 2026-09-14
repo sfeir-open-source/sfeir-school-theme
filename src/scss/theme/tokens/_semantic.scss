@@ -5,7 +5,7 @@
 * they resolve to the right palette value for the active program and for the polarity
 * of the surface they sit on, so an author never has to know either rule.
 *
-* Defaults are SFEIR School (Bronze), matching the theme's default `data-theme`.
+* Defaults are SFEIR School (Émeraude), matching the theme's default `data-theme`.
 * _context.scss redefines them per program and per surface.
 */
 
@@ -17,6 +17,26 @@
 * here. Every block that switches the ramp must therefore include this mixin again —
 * tokens.spec.ts asserts it, having caught exactly that omission once already.
 */
+/**
+* Reveal and talk-control bindings that read a semantic role.
+*
+* Same resolution rule as the accent roles: these have to be redeclared wherever the
+* role they read changes, or an icon on a Noir Carbone slide keeps the light accent and
+* lands at 3.25:1.
+*/
+@mixin sfeir-framework-bindings {
+    --tc-heading-color: var(--sfeir-on-surface);
+    --tc-credits-color: var(--sfeir-accent);
+    --tc-transition-line-color: var(--sfeir-accent);
+    --tc-icon-color: var(--sfeir-accent);
+
+    --r-heading-color: var(--sfeir-on-surface);
+    --r-link-color: var(--sfeir-on-surface);
+    --r-link-color-hover: var(--sfeir-accent);
+    --r-selection-background-color: var(--sfeir-accent-wash);
+    --r-selection-color: var(--sfeir-accent-deep);
+}
+
 @mixin sfeir-accent-roles {
     --sfeir-accent: var(--sfeir-ramp-accent);
     --sfeir-accent-fill: var(--sfeir-ramp-fill);
@@ -29,19 +49,19 @@
     /**
     * The active program ramp. Redefined under [data-theme] in _context.scss.
     */
-    --sfeir-ramp-accent: var(--sfeir-bronze);
-    --sfeir-ramp-accent-on-dark: var(--sfeir-bronze-clair);
-    --sfeir-ramp-fill: var(--sfeir-bronze-poli);
-    --sfeir-ramp-on-fill: var(--sfeir-bronze-profond);
-    --sfeir-ramp-wash: var(--sfeir-mousse);
-    --sfeir-ramp-deep: var(--sfeir-bronze-profond);
+    --sfeir-ramp-accent: var(--sfeir-emeraude-dark);
+    --sfeir-ramp-accent-on-dark: var(--sfeir-emeraude-medium);
+    --sfeir-ramp-fill: var(--sfeir-emeraude-primary);
+    --sfeir-ramp-on-fill: var(--sfeir-noir);
+    --sfeir-ramp-wash: var(--sfeir-emeraude-light);
+    --sfeir-ramp-deep: var(--sfeir-emeraude-dark);
 
     /**
     * Accent roles.
     *
     * --sfeir-accent switches to the on-dark tier on dark surfaces. That switch is the
     * reason this layer exists: the accent tier fails AA on Noir Carbone in both ramps
-    * (3.25:1), so reaching for it directly is a trap.
+    * (Ocre 3.25:1, Émeraude 2.52:1), so reaching for it directly is a trap.
     */
     @include sfeir-accent-roles;
 
@@ -68,4 +88,6 @@
     */
     --sfeir-radius: 0;
     --sfeir-radius-pill: 999px;
+
+    @include sfeir-framework-bindings;
 }
