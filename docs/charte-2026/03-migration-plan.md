@@ -108,11 +108,20 @@ Notes on the three that need design work, not translation:
 **Verification** — screenshot baseline per archetype per mode; contrast assertion on
 every text/background pair introduced.
 
+**Known finding, waiting on archetype 7.** The measured audit of 2026-09-14 leaves eight
+contrast failures, all of them highlight.js light-theme tokens on their own code surface
+— orange `#F5871F` at 2.49:1, yellow `#EAB700` at 1.85:1, olive `#718C00` at 3.82:1.
+They predate the charte work and are the concrete reason the code archetype needs a
+re-picked highlight theme rather than a token swap.
+
 ## Phase 4 — Assets
 
-1. Redraw the background set. 15 legacy rasters collapse to a small structural set
-   (flat Noir, flat Craie, Craie-1 lift, plus at most three structural variants).
-   Every retired class keeps resolving per `02-token-mapping.md` §7.
+1. ~~Redraw the background set.~~ **Done ahead of schedule (2026-09-14).** Rather than a
+   structural raster set, every background class resolves to flat Noir Carbone. The
+   eleven raster backgrounds and the colour veils are deleted — 948 KB — and every
+   retired class still resolves per `02-token-mapping.md` §7. A measured audit over the
+   rendered demo (188 slides, 1083 text nodes) found zero contrast failures on the 44
+   newly-black slides.
 2. Integrate the SVG lockups from **D3**; retire the WebP logos.
 3. Favicon set regenerated from the SVG mark.
 4. Icon default: evaluate Material Symbols **Sharp** as the on-brand default in place of

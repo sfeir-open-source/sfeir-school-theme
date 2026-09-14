@@ -97,20 +97,16 @@ not for programs, and forbids mixing (one family per slide).
 
 Consequence: `school = green` / `institute = blue` cannot be carried over as-is.
 
-**Resolved (D1, accepted 2026-09-10):** the hue axis is restored rather than replaced.
-Institute keeps Cuivre; School gets **Bronze** (`#4D662A`, hue 85°) — copper alloyed
-with tin, a green derived from the metal rather than chosen beside it. Each Bronze tier
-is solved for the measured luminance of its Cuivre counterpart, so both programs share
-one contrast rule. Hue 85° is also the only arc more than 50° from all eight families.
-Full rationale, ramp and parity table in `04-open-decisions.md`, decision **D1**.
+**Resolved (D1, revised 2026-09-14):** the hue axis is restored rather than replaced,
+by spending two of the charte's eight expertise families on the program axis.
+Institute takes **Ocre** (`#845400` accent — the charte core under another name),
+School takes **Émeraude** (`#0D5A2E`). Full ramps, tier mapping and the recomputed
+contrast table in `04-open-decisions.md`, decision **D1**.
 
-Bronze is a deliberate deviation from the charte's single-accent rule and has to be
-submitted to the brand team with that rationale.
-
-Corollary opportunity: the eight expertise families map naturally onto **the deck's
-technology**, which is exactly how this theme is consumed (one repository per techno —
-`sfeir-school-angular`, `sfeir-school-genai`, …). A new orthogonal axis
-(`data-family`) would give every school a legitimate, brand-compliant secondary accent.
+The cost is explicit: Ocre and Émeraude can no longer serve as topic accents on the
+`data-family` axis, leaving six families for phase 5. Unlike the superseded Cuivre/Bronze
+pair, the two programs no longer share a contrast profile, so each ramp is asserted
+against the WCAG thresholds on its own.
 
 ### 4.2 S1 — Typography stack is entirely superseded
 
@@ -138,7 +134,11 @@ Noir Carbone and a six-step Craie tonal ramp; copper "is a highlighter, never a 
 background".
 
 These class names are used in **every downstream school repository**, so the assets can
-be redrawn but the class names must keep resolving. See `03-migration-plan.md`, phase 4.
+be redrawn but the class names must keep resolving.
+
+**Resolved, ahead of phase 4:** all eleven raster backgrounds are replaced by flat Noir
+Carbone, and the colour veils that tinted them are removed. Every class name still
+resolves, so no deck breaks — they simply all render black. 948 KB of imagery deleted.
 
 ### 4.4 S2 — Shape and depth violations
 

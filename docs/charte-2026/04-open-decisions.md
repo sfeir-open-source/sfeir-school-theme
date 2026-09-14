@@ -7,101 +7,93 @@ frozen in the log at the bottom. Format is deliberately ADR-like.
 
 ## D1 — How do School and Institute differentiate without green and blue?
 
-**Status: accepted 2026-09-10 — option E, a copper-derived green accent for School
-("Bronze", hue 85).**
+**Status: revised and accepted 2026-09-14 — option C, one expertise family per program.
+Institute = Ocre, School = Émeraude.**
+
+> Supersedes the 2026-09-10 acceptance of option E (Institute Cuivre, School Bronze).
+> The Bronze ramp and its copper-alloy rationale are kept below as rejected history,
+> because the contrast reasoning it produced still applies to the replacement.
 
 **Context.** The theme's core promise is that one deck serves both programs, switched by
 `data-theme`. That switch is currently a hue switch: School = `#0AB580`, Institute =
-`#5155F9`. The 2026 charte has a single brand accent (Cuivre) and reserves green and blue
-for expertise families, which describe _topics_, not programs. The hue axis is gone and
-needs a replacement.
+`#5155F9`. The 2026 charte has a single brand accent (Cuivre) and eight expertise
+families.
 
-**Options considered.**
+**Accepted: option C.** Each program takes an expertise family:
 
-|     | Option                                                                        | On-brand                         | Distinctive | Cost |
-| --- | ----------------------------------------------------------------------------- | -------------------------------- | ----------- | ---- |
-| A   | Logo only — both programs identical otherwise                                 | ✅ fully                         | ✗ weak      | S    |
-| B   | Surface polarity — School light-dominant, Institute dark-dominant             | ✅ fully                         | ✅ strong   | M    |
-| C   | One expertise family per program (e.g. Institute = Souverain)                 | ✗ violates "families are topics" | ✅ strong   | S    |
-| D   | Polarity on chrome slides only — cover, dividers, closing — content identical | ✅ fully                         | ✅ strong   | M    |
-| E   | **Institute keeps Cuivre; School gets a copper-derived green accent**         | ⚠ second accent — see below     | ✅ strong   | M    |
+| Program   | Family   | light     | medium    | primary   | dark      |
+| --------- | -------- | --------- | --------- | --------- | --------- |
+| Institute | Ocre     | `#FFF0D6` | `#F2C878` | `#E5A040` | `#845400` |
+| School    | Émeraude | `#C8F5D6` | `#6BC68F` | `#2E8B57` | `#0D5A2E` |
 
-**Accepted: E.** The hue axis is restored rather than replaced, which keeps the mental
-model trainers already have (School and Institute are two colours) and needs no new
-mechanism — `data-theme` keeps doing exactly what it does today.
+Ocre is the charte core under another name — its `primary` is Cuivre Poli and its `dark`
+is Cuivre — so Institute keeps the corporate copper. School gets a green again, which is
+the continuity trainers expect.
 
-### Why a second accent is defensible here
+### The cost, stated once
 
-The charte admits one accent and caps a slide at "Cuivre + one expertise family, never
-three". A School green is a genuine deviation from the letter. It is defensible only
-because the green is **derived from copper itself**, not chosen beside it:
+This is the option the 2026-09-10 analysis rejected, on the grounds that families
+describe _topics_, not programs. That objection still holds and is now a deliberate
+trade-off: **Ocre and Émeraude are spent, and can no longer be used as topic accents.**
+A School deck on Data & Product cannot take Émeraude, and an Institute deck on Services
+Managés cannot take Ocre, without colliding with their own program colour. The remaining
+six families stay available for the `data-family` axis in phase 5.
 
-- **Institute — Cuivre.** The polished metal. The corporate accent, unchanged.
-- **School — Bronze.** Copper alloyed with tin. A warm olive green, literally a
-  _vert cuivré_: green and copper coexist in the hue.
+### Ramp mapping
 
-The rejected third derivation was **Patine** (verdigris, hue 168) — copper oxidised by
-time. Better narrative, prettier green, and it failed on a technical point, not an
-aesthetic one: see the family-collision test below.
+The four family variants do not map one-to-one onto the five tiers the theme needs, so
+each tier is assigned by what it is _for_ and verified against WCAG:
 
-### The ramp
+| Tier      | Ocre                     | Émeraude          |
+| --------- | ------------------------ | ----------------- |
+| `wash`    | light `#FFF0D6`          | light `#C8F5D6`   |
+| `on-dark` | medium `#F2C878`         | medium `#6BC68F`  |
+| `fill`    | primary `#E5A040`        | primary `#2E8B57` |
+| `accent`  | dark `#845400`           | dark `#0D5A2E`    |
+| `on-fill` | Cuivre Profond `#5D3A00` | Noir `#000000`    |
 
-Five tiers mirroring Cuivre's structure, each solved for **Cuivre's measured luminance**
-at that tier rather than picked by eye:
+### Contrast, recomputed
 
-| Tier      | Cuivre (Institute) | Bronze (School) |
-| --------- | ------------------ | --------------- |
-| `deep`    | `#5D3A00`          | `#35471D`       |
-| `primary` | `#845400`          | `#4D662A`       |
-| `fill`    | `#E5A040`          | `#9CB774`       |
-| `on-dark` | `#FFB95C`          | `#B4D08D`       |
-| `wash`    | `#FFDDB7`          | `#DAE8C6`       |
+Unlike the Cuivre/Bronze pair, these are two independent charte palettes, so **they do
+not share a contrast profile.** The "one contrast rule for both programs" property is
+gone; each ramp is asserted against the thresholds on its own.
 
-Contrast parity, recomputed (WCAG 2.1), worst divergence **0.07**:
+| Guarantee                             |      Ocre |  Émeraude |
+| ------------------------------------- | --------: | --------: |
+| `accent` on Blanc Craie (body text)   |   6.14 AA |  7.92 AAA |
+| `on-dark` on Noir Carbone (body text) | 13.31 AAA | 10.10 AAA |
+| `on-fill` on `fill`                   |   4.56 AA |   4.95 AA |
+| `deep` on `wash` (selection)          |  9.02 AAA |   6.94 AA |
+| `fill` on Noir Carbone (large shapes) |  9.43 AAA |  4.95 AAA |
 
-| Pair                      | Cuivre | Bronze | Patine | Max Δ |
-| ------------------------- | -----: | -----: | -----: | ----: |
-| `primary` on Blanc Craie  |   6.14 |   6.14 |   6.10 |  0.04 |
-| `primary` on pure white   |   6.46 |   6.46 |   6.42 |  0.04 |
-| `fill` on Noir Carbone    |   9.43 |   9.44 |   9.45 |  0.02 |
-| `on-dark` on Noir Carbone |  12.35 |  12.35 |  12.30 |  0.05 |
-| `wash` on Noir Carbone    |  16.28 |  16.34 |  16.27 |  0.07 |
-| `deep` on pure white      |  10.14 |  10.14 |  10.08 |  0.06 |
-| `deep` on `fill`          |   4.56 |   4.56 |   4.54 |  0.02 |
+Two traps, both preserved and both asserted as _failing_ so the on-dark tier keeps its
+reason to exist:
 
-This parity is the point: one contrast rule in the theme covers both programs, so every
-AA guarantee is written once and no archetype needs a per-program special case.
+- `accent` on Noir Carbone — Ocre 3.25, Émeraude **2.52**. Émeraude's is the worse of
+  the two, which is why the polarity axis had to cover every newly-black archetype.
+- `fill` as text on Blanc Craie — Ocre 2.11, Émeraude 4.03.
 
-Cuivre's trap is inherited unchanged — `primary` on Noir Carbone reaches only 3.25
-(Cuivre), 3.25 (Bronze), 3.27 (Patine), **failing AA in all three**. That is exactly why
-the `on-dark` tier exists and why `--sfeir-accent` must switch by itself on dark
-surfaces.
+**Émeraude's fill is the tight one.** `#2E8B57` sits mid-dark (L=36%), so text on it has
+exactly one legal colour: white reaches 4.25:1, the family's own light variant 3.54:1,
+Charcoal 4.06:1 — all failing. Only `#000000` clears AA, at 4.95:1. That is encoded in
+the ramp rather than left to slide authors.
 
-### The family-collision test
+### Rejected: option E — Cuivre and Bronze
 
-The families carry a deck's _topic_, the accent carries its _program_. If the two hues
-resemble each other the reader cannot separate them, and the "one family per slide" rule
-loses its meaning. Hue distance to the nearest of the eight families:
+The 2026-09-10 decision paired Institute Cuivre with a School "Bronze" (`#4D662A`,
+hue 85°), derived by solving each tier for the measured luminance of its Cuivre
+counterpart. It gave both programs an identical contrast profile — one rule instead of
+two — and sat 50° from every expertise family, the only such gap on the wheel.
 
-| Candidate  | Hue  | Nearest family | Distance                                             |
-| ---------- | ---- | -------------- | ---------------------------------------------------- |
-| Cuivre     | 38°  | Ocre           | 3° — deliberate: Ocre _is_ Cuivre Poli               |
-| **Bronze** | 85°  | Ocre           | **50° — the only gap in the wheel**                  |
-| Patine     | 168° | Canard         | 18° — sits between Canard (186°) and Émeraude (146°) |
-
-Bronze occupies the one empty arc of the colour wheel. Patine would put a School deck on
-Software & MACH at 18° between its program accent and its family accent.
+It was dropped in favour of using the charte's own families, which are recognisable to
+anyone who already knows the brand and need no invented colour to be defended.
 
 ### Consequences
 
-- `data-theme` stays a hue switch; **decision D1's earlier recommendation (option D,
-  surface polarity) is superseded** — polarity remains available as an aesthetic choice
-  but no longer carries the program signal.
-- The token layer gains a program axis: `--sfeir-accent` and friends resolve from a
-  Cuivre or Bronze ramp under `[data-theme]`, orthogonal to the `[data-family]` axis.
+- `data-theme` stays a hue switch; the surface-polarity option (D) is not needed to
+  carry the program signal and remains available as a purely aesthetic choice.
+- Ocre and Émeraude are removed from the `data-family` pool in phase 5.
 - `conf` keeps the neutral, logo-free treatment it has today.
-- Bronze must be submitted to the brand team as a documented deviation, with the
-  copper-alloy rationale and the contrast-parity table above.
 
 ---
 
@@ -209,11 +201,11 @@ KISS wins here.
 
 | ID  | Decision                | Outcome                             | Status       | Blocks     |
 | --- | ----------------------- | ----------------------------------- | ------------ | ---------- |
-| D1  | Program differentiation | E — Institute Cuivre, School Bronze | **accepted** | phase 3    |
+| D1  | Program differentiation | C — Institute Ocre, School Émeraude | **accepted** | phase 3    |
 | D2  | Release strategy        | A — v4 GA now, charte as v5.0.0     | **accepted** | phases 1–2 |
 | D3  | Lockup source           | B — typographic composition in CSS  | **accepted** | phase 4    |
 | D4  | Level / techno badge    | B — eyebrow + pill chips, API kept  | **accepted** | phase 3    |
 | D5  | Legacy escape hatch     | A — clean break                     | **accepted** | phase 1    |
 
-All five arbitrated as of 2026-09-10 (D5 accepted as proposed). Phase 0 is closed;
-no decision blocks implementation.
+All five arbitrated. D1 was revised on 2026-09-14, replacing the Cuivre/Bronze pair
+with the Ocre and Émeraude expertise families. Phase 0 is closed.
