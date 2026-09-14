@@ -36,25 +36,30 @@ redefines `--sfeir-accent` to Cuivre Clair, so a slide author writing
 | `--sfeir-sable`          | `#FFDDB7` | Sable          | warm callout wash                           |
 | `--sfeir-cuivre-profond` | `#5D3A00` | Cuivre Profond | text on Cuivre Poli / Sable                 |
 
-### 2.2 Bronze — the School accent (decision D1)
+### 2.2 The two program families (decision D1)
 
-Institute keeps Cuivre; School gets a copper-derived green. Each tier is solved for the
-**measured luminance of the matching Cuivre tier**, so the two ramps behave identically
-under every contrast rule (worst divergence 0.07 — full table in
-`04-open-decisions.md`, D1).
+Institute takes **Ocre**, School takes **Émeraude** — two of the charte's eight
+expertise families, spent on the program axis and therefore unavailable as topic
+accents (see `04-open-decisions.md`, D1).
 
-| Token                    | Hex       | Mirrors        | Use                                         |
-| ------------------------ | --------- | -------------- | ------------------------------------------- |
-| `--sfeir-bronze`         | `#4D662A` | Cuivre         | accent on light surfaces                    |
-| `--sfeir-bronze-poli`    | `#9CB774` | Cuivre Poli    | fills, large numerals — never text on light |
-| `--sfeir-bronze-clair`   | `#B4D08D` | Cuivre Clair   | accent on dark surfaces (AA-safe)           |
-| `--sfeir-mousse`         | `#DAE8C6` | Sable          | warm callout wash                           |
-| `--sfeir-bronze-profond` | `#35471D` | Cuivre Profond | text on Bronze Poli / Mousse                |
+| Token                  | Hex       | Token                      | Hex       |
+| ---------------------- | --------- | -------------------------- | --------- |
+| `--sfeir-ocre-light`   | `#FFF0D6` | `--sfeir-emeraude-light`   | `#C8F5D6` |
+| `--sfeir-ocre-medium`  | `#F2C878` | `--sfeir-emeraude-medium`  | `#6BC68F` |
+| `--sfeir-ocre-primary` | `#E5A040` | `--sfeir-emeraude-primary` | `#2E8B57` |
+| `--sfeir-ocre-dark`    | `#845400` | `--sfeir-emeraude-dark`    | `#0D5A2E` |
 
-Hue 85°, which is the only arc of the wheel more than 50° from all eight expertise
-families — the reason this green was chosen over verdigris. Bronze is a documented
-deviation from the charte's single-accent rule and must be submitted to the brand team
-as such.
+Ocre's two darkest variants are the charte core renamed: `ocre-primary` is Cuivre Poli,
+`ocre-dark` is Cuivre. The Cuivre tokens stay in the palette regardless, because
+`--sfeir-cuivre-profond` is Ocre's text-on-fill colour.
+
+**These are independent palettes, so the two programs no longer share a contrast
+profile.** The parity property of the superseded Cuivre/Bronze pair is gone; each ramp
+is asserted against the WCAG thresholds separately. Full table in `04-open-decisions.md`.
+
+One constraint is worth repeating here because it is invisible in the palette: Émeraude's
+`primary` is mid-dark, and the only colour that clears AA as text on it is `#000000`
+(4.95:1). White gives 4.25, the family's light variant 3.54, Charcoal 4.06.
 
 ### 2.2 Surfaces — the Craie → Carbone ramp
 
@@ -173,7 +178,7 @@ Decision D1 makes this mapping unusually clean: `--sfeir-green` was the _School 
 and `--sfeir-blue` the _Institute accent_, so both collapse onto the single
 `--sfeir-accent` token and each resolves to the right ramp on its own program. A deck
 that hard-codes `var(--sfeir-green)` in School mode keeps working and even keeps its
-intent — it just renders Bronze instead of `#0AB580`.
+intent — it just renders Émeraude instead of `#0AB580`.
 
 The 8 gradient-stop variables have no target: gradients are not part of the identity.
 

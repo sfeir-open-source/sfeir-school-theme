@@ -13,14 +13,14 @@ Claude Code skill.
 
 ## Headline findings
 
-1. **The green/blue program axis is gone — and was rebuilt from copper.** The charte has
-   one accent (Cuivre) and reserves green and blue for expertise families, which describe
-   topics, not programs. Resolved by D1: Institute keeps Cuivre, School gets **Bronze**
-   (`#4D662A`, hue 85°) — copper alloyed with tin, each tier solved for its Cuivre
-   counterpart's luminance so both programs share one contrast rule.
-2. **The expertise families are the opportunity.** Eight families × four variants map
-   naturally onto a deck's technology, which is exactly how this theme is consumed. A new
-   opt-in `data-family` axis gives every school its own on-brand accent.
+1. **The green/blue program axis is gone — and was rebuilt from the families.** The
+   charte has one accent (Cuivre) plus eight expertise families. Resolved by D1:
+   Institute takes **Ocre**, School takes **Émeraude**. The two programs no longer share
+   a contrast profile, so each ramp is verified on its own.
+
+2. **Six expertise families remain for the topic axis.** Ocre and Émeraude are spent on
+   the programs, so the opt-in `data-family` axis of phase 5 draws from the other six.
+   That is the acknowledged price of D1.
 3. **The neutrals barely move.** The current greys are already within a few ΔE of the
    Craie ramp, so the reskin is hue- and shape-driven, not structural. Lower risk than it
    first appears.
@@ -40,8 +40,10 @@ Claude Code skill.
 
 ## Status
 
-Study complete. **Phase 0 closed** — all five decisions arbitrated 2026-09-10.
-**Phase 1 done** — token layer and typography landed, 240 tests green.
+Study complete. **Phase 0 closed** — all five decisions arbitrated; D1 revised
+2026-09-14 to the Ocre / Émeraude families. **Phase 1 done** — token layer and
+typography landed. **Backgrounds pulled forward from phase 4** — all imagery replaced by
+flat Noir Carbone. 241 tests green.
 
 Next: phase 2 (shape reset — radius 0, no shadows, no gradients), and the visual
 regression baselines that phase 1 skipped and phase 3 cannot start without.
