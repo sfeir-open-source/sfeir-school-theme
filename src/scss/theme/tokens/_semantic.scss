@@ -39,6 +39,10 @@
 
 @mixin sfeir-accent-roles {
     --sfeir-accent: var(--sfeir-ramp-accent);
+    // The accent as it appears on a light surface, whatever the slide polarity. Needed
+    // by light islands: a white card sitting on a Noir Carbone slide still wants the
+    // light-surface tier, because --sfeir-accent there has flipped to the on-dark one.
+    --sfeir-accent-on-light: var(--sfeir-ramp-accent);
     --sfeir-accent-fill: var(--sfeir-ramp-fill);
     --sfeir-on-accent-fill: var(--sfeir-ramp-on-fill);
     --sfeir-accent-wash: var(--sfeir-ramp-wash);
