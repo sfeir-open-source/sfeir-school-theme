@@ -1,8 +1,23 @@
 .reveal .slides section.speaker-slide {
-    --r-main-color: var(--white);
-    --tc-heading-color: var(--white);
-    --r-heading-color: var(--white);
+    --r-main-color: var(--sfeir-ink-on-dark);
+    --tc-heading-color: var(--sfeir-ink-on-dark);
+    --r-heading-color: var(--sfeir-ink-on-dark);
     --tc-speaker-width-img: 300px;
+
+    /**
+    * The speaker card is a light island on a Noir Carbone slide.
+    *
+    * It has its own surface and its own ink, and neither follows the slide polarity —
+    * which is exactly what went wrong when the polarity axis landed: the deprecated
+    * --black alias started resolving to the dark-surface ink, putting #F1F1F1 text on a
+    * white card at 1.13:1. The card names its own pair so that cannot recur.
+    *
+    * There is no element wrapping the card: it is painted by a pseudo-element behind the
+    * avatar while the headings sit in neighbouring grid areas, so the pair is declared on
+    * the section and read by both.
+    */
+    --sfeir-speaker-card-surface: var(--sfeir-white);
+    --sfeir-speaker-card-ink: var(--sfeir-charcoal);
 
     --tc-speaker-grid-template-areas: 'left title title title title title right'
         'left img empty company company company right'
@@ -34,7 +49,7 @@
             &::before {
                 content: '';
                 position: absolute;
-                background-color: white;
+                background-color: var(--sfeir-speaker-card-surface);
                 left: 50%;
                 top: 0;
                 transform: translate(-50%, -20px);
@@ -52,17 +67,28 @@
         h3,
         h2 {
             text-align: center;
-            color: var(--black);
+            color: var(--sfeir-speaker-card-ink);
             font-weight: 400;
         }
 
+        // Talk-control auto-links e-mail addresses, and a link takes its colour from
+        // --r-link-color, not from the heading — which on a Noir Carbone slide is the
+        // dark-surface ink, landing at 1.13:1 on the white card. Links on the card take
+        // the card's ink, underlined in the light-surface accent as the charte asks.
+        h2 a,
+        h3 a {
+            color: inherit;
+            text-decoration: none;
+            border-bottom: 2px solid var(--sfeir-accent-on-light);
+        }
+
+        // The role banner. The two-stop gradient is gone: both legacy hues now alias to
+        // the same accent, so it already rendered flat, and the charte has no gradients.
+        // The fill/on-fill pair is the one guaranteed legible in both programs —
+        // Émeraude 4.95:1, Ocre 4.56:1.
         :nth-child(1 of h3) {
-            background: linear-gradient(
-                to right,
-                var(--sfeir-blue),
-                var(--sfeir-green)
-            );
-            color: var(--white);
+            background: var(--sfeir-accent-fill);
+            color: var(--sfeir-on-accent-fill);
         }
     }
 }
