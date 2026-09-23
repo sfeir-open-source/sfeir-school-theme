@@ -10,8 +10,8 @@ import { ConfigJson } from "./config.utils";
 import fs from "node:fs";
 import { isNotDefined } from "./fp.utils";
 
-export function isStepDirectoryExists(stepDirPath: string) {
-    return fs.existsSync(stepDirPath);
+export function isLabsDirectoryExists(labsDirPath: string) {
+    return fs.existsSync(labsDirPath);
 }
 
 export interface LabsJson {
@@ -26,7 +26,7 @@ export interface PackageJson extends Partial<Omit<LabsJson, "kind">> {
     scripts?: Record<string, string>;
 }
 
-export function getWorkspaceStepsPackageJson(
+export function getWorkspaceLabsPackageJson(
     rootDir: string,
 ): PackageJson | LabsJson | null {
     const packageJson = labsDirPackageJsonPath(rootDir);
@@ -59,11 +59,11 @@ function extractLabsListFromPackageJson(
 
 export function getAllLabsFromWorkspace(
     rootDir: string,
-    { withSolution = true, ignoreStepsDirectories = [] }: Partial<Pick<ConfigJson, 'ignoreStepsDirectories'>> & { withSolution?: boolean } = {},
+    { withSolution = true, ignoreLabsDirectories = [] }: Partial<Pick<ConfigJson, 'ignoreLabsDirectories'>> & { withSolution?: boolean } = {},
 ): string[] {
-    const packageJson = getWorkspaceStepsPackageJson(rootDir);
+    const packageJson = getWorkspaceLabsPackageJson(rootDir);
     const allCommands = extractLabsListFromPackageJson(packageJson)
-        .filter(command => !ignoreStepsDirectories.includes(command));
+        .filter(command => !ignoreLabsDirectories.includes(command));
     if (withSolution) {
         return allCommands;
     } else {
@@ -75,9 +75,9 @@ export function getAllLabsFromWorkspace(
 
 export function getLabsCommands(
     rootDir: string,
-    { withSolution = false, ignoreStepsDirectories = [] }: Partial<Pick<ConfigJson, 'ignoreStepsDirectories'>> & { withSolution?: boolean } = {},
+    { withSolution = false, ignoreLabsDirectories = [] }: Partial<Pick<ConfigJson, 'ignoreLabsDirectories'>> & { withSolution?: boolean } = {},
 ): string[] {
-    return getAllLabsFromWorkspace(rootDir, { withSolution, ignoreStepsDirectories });
+    return getAllLabsFromWorkspace(rootDir, { withSolution, ignoreLabsDirectories });
 }
 
 export function isLabCommandExists(rootDir: string, commandName: string) {
@@ -85,19 +85,19 @@ export function isLabCommandExists(rootDir: string, commandName: string) {
 }
 
 export function getLabCommandTarget(labCommandRow: string, config: ConfigJson) {
-    return labCommandRow.split(config.stepCommandPrefix)[1]?.trim();
+    return labCommandRow.split(config.labCommandPrefix)[1]?.trim();
 }
 
 export function getAllLabsFromFs(rootDir: string, config: ConfigJson) {
     return readdirSync(labsPath(rootDir), { encoding: "utf-8" })
-        .filter((filePath) => !config.ignoreStepsDirectories.includes(filePath))
+        .filter((filePath) => !config.ignoreLabsDirectories.includes(filePath))
         .filter(
             (filePath) => isDirectory(labsPath(rootDir), filePath),
         );
 }
 
 export function getAllLabScripts(rootDir: string): string[] {
-    const packageJson = getWorkspaceStepsPackageJson(rootDir);
+    const packageJson = getWorkspaceLabsPackageJson(rootDir);
     if (packageJson?.kind === "package.json") {
         return Object.keys(packageJson.scripts ?? {});
     } else {

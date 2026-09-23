@@ -4,7 +4,7 @@ import {
     getAllLabsFromWorkspace,
     getLabPackageJson,
     getLabReadme,
-    getWorkspaceStepsPackageJson,
+    getWorkspaceLabsPackageJson,
     splitLabsAndSolutions,
 } from "../../utils/labs.utils";
 import { ConfigJson } from "../../utils/config.utils";
@@ -17,17 +17,17 @@ export function checkLabs(rootDir: string, config: ConfigJson) {
 }
 
 function checkLabDirectories(rootDir: string, config: ConfigJson) {
-    const stepsPackageJson = getWorkspaceStepsPackageJson(rootDir);
+    const labsPackageJson = getWorkspaceLabsPackageJson(rootDir);
     const labDirectories = getAllLabsFromFs(rootDir, config);
     const labsDeclared = getAllLabsFromWorkspace(rootDir);
     const labScripts = getAllLabScripts(rootDir);
     for (const labDir of labDirectories) {
         check(
             "L_002",
-            `Lab "${labDir}" should be declared in the workspace (either "workspaces" or "labs" in a file "package.json" or "labs.json" at the root of "steps" directory)`,
+            `Lab "${labDir}" should be declared in the workspace (either "workspaces" or "labs" in a file "package.json" or "labs.json" at the root of "labs" directory)`,
             () => labsDeclared.includes(labDir),
         );
-        if (stepsPackageJson?.kind === "package.json") {
+        if (labsPackageJson?.kind === "package.json") {
             check(
                 "L_003",
                 `Lab "${labDir}" should have corresponding script`,
@@ -62,7 +62,7 @@ function checkLabsAndSolutions(rootDir: string, config: ConfigJson) {
                 "L_007",
                 `Lab "${lab}"'s README.md should contains the correct command`,
                 () =>
-                    readme?.includes(`${config.stepCommandPrefix}${lab}`) ??
+                    readme?.includes(`${config.labCommandPrefix}${lab}`) ??
                         false,
             );
         }

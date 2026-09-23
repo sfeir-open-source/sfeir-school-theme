@@ -1,31 +1,31 @@
 import path from "node:path";
 
-export function docsPath(rootDir: string) {
-    return path.resolve(rootDir, "docs");
+export function slidesPath(rootDir: string) {
+    return path.resolve(rootDir, "slides");
 }
 
-export function docsMarkdownPath(rootDir: string) {
-    return path.resolve(docsPath(rootDir), "markdown");
+export function slidesMarkdownPath(rootDir: string) {
+    return path.resolve(slidesPath(rootDir), "markdown");
 }
 
 export function slidePath(rootDir: string, slideFile: string) {
-    return path.resolve(docsMarkdownPath(rootDir), slideFile);
+    return path.resolve(slidesMarkdownPath(rootDir), slideFile);
 }
 
-export function docsFilePath(rootDir: string, assetFile: string) {
-    return path.resolve(docsPath(rootDir), assetFile);
+export function slidesFilePath(rootDir: string, assetFile: string) {
+    return path.resolve(slidesPath(rootDir), assetFile);
 }
 
-export function docsImagesPath(rootDir: string) {
-    return path.resolve(docsPath(rootDir), "assets", "images");
+export function slidesImagesPath(rootDir: string) {
+    return path.resolve(slidesPath(rootDir), "assets", "images");
 }
 
-export function docsImagePath(rootDir: string, filePath: string) {
-    return path.resolve(docsImagesPath(rootDir), filePath);
+export function slidesImagePath(rootDir: string, filePath: string) {
+    return path.resolve(slidesImagesPath(rootDir), filePath);
 }
 
 export function labsPath(rootDir: string) {
-    return path.resolve(rootDir, "steps");
+    return path.resolve(rootDir, "labs");
 }
 
 export function labsDirPackageJsonPath(rootDir: string) {

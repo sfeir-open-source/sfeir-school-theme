@@ -4,8 +4,8 @@ import { projectConfigPath } from "./path.utils";
 
 export interface ConfigJson {
     extraCssFiles: string[];
-    stepCommandPrefix: string;
-    ignoreStepsDirectories: string[];
+    labCommandPrefix: string;
+    ignoreLabsDirectories: string[];
 }
 
 export function getProjectConfig(rootDir: string): ConfigJson {

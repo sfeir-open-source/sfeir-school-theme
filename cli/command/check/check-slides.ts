@@ -25,7 +25,7 @@ import { ConfigJson } from "../../utils/config.utils";
 import { check } from "../../utils/assert.utils";
 import { slidePath } from "../../utils/path.utils";
 
-export async function checkDocs(rootDir: string, config: ConfigJson) {
+export async function checkSlides(rootDir: string, config: ConfigJson) {
     let slideFilesFromSlidesJs;
     try {
         slideFilesFromSlidesJs = await getSlideFilesFromSlidesJs(rootDir);
@@ -125,7 +125,7 @@ function checkLabSlideFile(
                 return isDefined(commandRow) && commandRow.length > 0;
             },
         );
-        if (hasCommandRow && isDefinedAndNotEmpty(config.stepCommandPrefix)) {
+        if (hasCommandRow && isDefinedAndNotEmpty(config.labCommandPrefix)) {
             check(
                 "S_005",
                 `"${slideFile?.path}" should contains the valid command to run the exercise`,
@@ -166,7 +166,7 @@ function checkLabCommand(
     for (const labCommand of labsCommands) {
         check("L_001", `"${labCommand}" should be used in a lab slide`, () => {
             return allLabSlides.some((slide) =>
-                slide.includes(`${config.stepCommandPrefix}${labCommand}`)
+                slide.includes(`${config.labCommandPrefix}${labCommand}`)
             );
         });
     }

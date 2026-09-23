@@ -25,8 +25,8 @@ describe("check command", () => {
     describe("valid projects", () => {
         it("minimal valid empty project", async () => {
             const rootDir = buildProject({
-                ...configFile({ stepCommandPrefix: "npm run " }),
-                docs: {
+                ...configFile({ labCommandPrefix: "npm run " }),
+                slides: {
                     assets: { images: {} },
                     css: {
                         "slides.css": slideCssFile(),
@@ -37,7 +37,7 @@ describe("check command", () => {
                     },
                     ...web_modules(),
                 },
-                steps: {
+                labs: {
                     "package.json": packageJsonFile(),
                 },
             });
@@ -49,8 +49,8 @@ describe("check command", () => {
 
         it("simple project with no command prefix", async () => {
             const rootDir = buildProject({
-                ...configFile({ stepCommandPrefix: "" }),
-                docs: {
+                ...configFile({ labCommandPrefix: "" }),
+                slides: {
                     assets: {
                         images: {
                             "foo.png": imageFile(),
@@ -74,7 +74,7 @@ describe("check command", () => {
                     },
                     ...web_modules(),
                 },
-                steps: {
+                labs: {
                     "labs.json": labsJsonFile({
                         labs: [
                             "01-getting-started",
@@ -97,8 +97,8 @@ describe("check command", () => {
 
         it("simple npm project with workspace", async () => {
             const rootDir = buildProject({
-                ...configFile({ stepCommandPrefix: "npm run " }),
-                docs: {
+                ...configFile({ labCommandPrefix: "npm run " }),
+                slides: {
                     assets: {
                         images: {
                             "foo.png": imageFile(),
@@ -122,7 +122,7 @@ describe("check command", () => {
                     },
                     ...web_modules(),
                 },
-                steps: {
+                labs: {
                     "package.json": packageJsonFile({
                         workspaces: ["01-getting-started"],
                         scripts: {
@@ -139,8 +139,8 @@ describe("check command", () => {
 
         it("simple npm project without workspace", async () => {
             const rootDir = buildProject({
-                ...configFile({ stepCommandPrefix: "npm run " }),
-                docs: {
+                ...configFile({ labCommandPrefix: "npm run " }),
+                slides: {
                     assets: { images: {} },
                     css: {
                         "slides.css": slideCssFile(),
@@ -156,7 +156,7 @@ describe("check command", () => {
                     },
                     ...web_modules(),
                 },
-                steps: {
+                labs: {
                     "package.json": packageJsonFile({
                         labs: ["01-getting-started"],
                         scripts: {
@@ -173,8 +173,8 @@ describe("check command", () => {
 
         it("npm project with command prefix override", async () => {
             const rootDir = buildProject({
-                ...configFile({ stepCommandPrefix: "yarn run " }),
-                docs: {
+                ...configFile({ labCommandPrefix: "yarn run " }),
+                slides: {
                     assets: { images: {} },
                     css: {
                         "slides.css": slideCssFile(),
@@ -190,7 +190,7 @@ describe("check command", () => {
                     },
                     ...web_modules(),
                 },
-                steps: {
+                labs: {
                     "package.json": packageJsonFile({
                         workspaces: ["01-getting-started"],
                         scripts: {
@@ -207,7 +207,7 @@ describe("check command", () => {
 
         it("Slides with images", async () => {
             const rootDir = buildProject({
-                docs: {
+                slides: {
                     assets: {
                         images: {
                             "bg.png": imageFile(),
@@ -274,7 +274,7 @@ describe("check command", () => {
                     },
                     ...web_modules(),
                 },
-                steps: {
+                labs: {
                     "package.json": packageJsonFile({}),
                 },
             });
@@ -287,10 +287,10 @@ describe("check command", () => {
 
         it("should ignore hidden files", async () => {
             const rootDir = buildProject({
-                ...configFile({ stepCommandPrefix: "npm run " }),
+                ...configFile({ labCommandPrefix: "npm run " }),
                 '.DS_Store': '',
                 'Thumbs.db': '',
-                docs: {
+                slides: {
                     '.DS_Store': '',
                     'Thumbs.db': '',
                     assets: {
@@ -315,7 +315,7 @@ describe("check command", () => {
                     },
                     ...web_modules(),
                 },
-                steps: {
+                labs: {
                     '.DS_Store': '',
                     'Thumbs.db': '',
                     '.hidden-slide.md': '',
@@ -328,10 +328,10 @@ describe("check command", () => {
             expect(getErrors()).toHaveLength(0);
         });
 
-        it("project with ignored steps", async () => {
+        it("project with ignored labs", async () => {
             const rootDir = buildProject({
-                ...configFile({ ignoreStepsDirectories: ['common'] }),
-                docs: {
+                ...configFile({ ignoreLabsDirectories: ['common'] }),
+                slides: {
                     assets: { images: {} },
                     css: {
                         "slides.css": slideCssFile(),
@@ -347,7 +347,7 @@ describe("check command", () => {
                     },
                     ...web_modules(),
                 },
-                steps: {
+                labs: {
                     "common": {
                         "index.ts": "export function foo() { return 'foo'; }",
                         "package.json": packageJsonFile({ name: "common" })
@@ -379,10 +379,10 @@ describe("check command", () => {
             expect(getErrors()).toHaveLength(0);
         });
 
-        it("project with ignored steps in the workspace", async () => {
+        it("project with ignored labs in the workspace", async () => {
             const rootDir = buildProject({
-                ...configFile({ ignoreStepsDirectories: ['common'] }),
-                docs: {
+                ...configFile({ ignoreLabsDirectories: ['common'] }),
+                slides: {
                     assets: { images: {} },
                     css: {
                         "slides.css": slideCssFile(),
@@ -398,7 +398,7 @@ describe("check command", () => {
                     },
                     ...web_modules(),
                 },
-                steps: {
+                labs: {
                     "common": {
                         "index.ts": "export function foo() { return 'foo'; }",
                         "package.json": packageJsonFile({ name: "common" })
@@ -449,9 +449,9 @@ describe("check command", () => {
                 expectMatching(getErrors(), reg).toHaveLength(1);
                 expect(getErrors()).toHaveLength(1);
             });
-            it("missing docs dir [G_002]", async () => {
+            it("missing slides dir [G_002]", async () => {
                 const rootDir = buildProject({
-                    steps: {
+                    labs: {
                         "package.json": packageJsonFile(),
                     },
                 });
@@ -463,13 +463,13 @@ describe("check command", () => {
                 }
 
                 const reg =
-                    /\[CheckError\] G_002 Project should have a 'docs' directory/;
+                    /\[CheckError\] G_002 Project should have a 'slides' directory/;
                 expectMatching(getErrors(), reg).toHaveLength(1);
                 expect(getErrors()).toHaveLength(1);
             });
-            it("missing steps dir [G_003]", async () => {
+            it("missing labs dir [G_003]", async () => {
                 const rootDir = buildProject({
-                    docs: {
+                    slides: {
                         assets: { images: {} },
                         css: {
                             "slides.css": slideCssFile(),
@@ -489,7 +489,7 @@ describe("check command", () => {
                 }
 
                 const reg =
-                    /\[CheckError\] G_003 Project should have a 'steps' directory/;
+                    /\[CheckError\] G_003 Project should have a 'labs' directory/;
                 expectMatching(getErrors(), reg).toHaveLength(1);
                 expect(getErrors()).toHaveLength(1);
             });
@@ -498,7 +498,7 @@ describe("check command", () => {
         describe("Slides checks", () => {
             it("invalid slides.js entry [S_001]", async () => {
                 const rootDir = buildProject({
-                    docs: {
+                    slides: {
                         assets: {
                             images: {
                                 "foo.png": imageFile(),
@@ -521,7 +521,7 @@ describe("check command", () => {
                         },
                         ...web_modules(),
                     },
-                    steps: {
+                    labs: {
                         "package.json": packageJsonFile({
                             workspaces: ["01-getting-started"],
                             scripts: {
@@ -543,8 +543,8 @@ describe("check command", () => {
             });
             it("not existing markdown file in slides.js [S_002]", async () => {
                 const rootDir = buildProject({
-                    ...configFile({ stepCommandPrefix: "npm run " }),
-                    docs: {
+                    ...configFile({ labCommandPrefix: "npm run " }),
+                    slides: {
                         assets: {
                             images: {
                                 "foo.png": imageFile(),
@@ -570,7 +570,7 @@ describe("check command", () => {
                         },
                         ...web_modules(),
                     },
-                    steps: {
+                    labs: {
                         "package.json": packageJsonFile({
                             workspaces: ["01-getting-started"],
                             scripts: {
@@ -592,8 +592,8 @@ describe("check command", () => {
             });
             it("not declared in slides.js markdown file [S_003]", async () => {
                 const rootDir = buildProject({
-                    ...configFile({ stepCommandPrefix: "npm run " }),
-                    docs: {
+                    ...configFile({ labCommandPrefix: "npm run " }),
+                    slides: {
                         assets: {
                             images: {
                                 "foo.png": imageFile(),
@@ -619,7 +619,7 @@ describe("check command", () => {
                         },
                         ...web_modules(),
                     },
-                    steps: {
+                    labs: {
                         "package.json": packageJsonFile({
                             workspaces: ["01-getting-started"],
                             scripts: {
@@ -641,8 +641,8 @@ describe("check command", () => {
             });
             it("lab slide without command [S_004]", async () => {
                 const rootDir = buildProject({
-                    ...configFile({ stepCommandPrefix: "npm run " }),
-                    docs: {
+                    ...configFile({ labCommandPrefix: "npm run " }),
+                    slides: {
                         assets: {
                             images: {
                                 "foo.png": imageFile(),
@@ -672,7 +672,7 @@ describe("check command", () => {
                         },
                         ...web_modules(),
                     },
-                    steps: {
+                    labs: {
                         "package.json": packageJsonFile({
                             workspaces: ["01-getting-started"],
                             scripts: {
@@ -694,8 +694,8 @@ describe("check command", () => {
             });
             it("lab slide without a valid command [S_005]", async () => {
                 const rootDir = buildProject({
-                    ...configFile({ stepCommandPrefix: "npm run " }),
-                    docs: {
+                    ...configFile({ labCommandPrefix: "npm run " }),
+                    slides: {
                         assets: {
                             images: {
                                 "foo.png": imageFile(),
@@ -725,7 +725,7 @@ describe("check command", () => {
                         },
                         ...web_modules(),
                     },
-                    steps: {
+                    labs: {
                         "package.json": packageJsonFile({
                             workspaces: ["01-getting-started"],
                             scripts: {
@@ -747,8 +747,8 @@ describe("check command", () => {
             });
             it("lab slide without a valid command [S_006]", async () => {
                 const rootDir = buildProject({
-                    ...configFile({ stepCommandPrefix: "npm run " }),
-                    docs: {
+                    ...configFile({ labCommandPrefix: "npm run " }),
+                    slides: {
                         assets: {
                             images: {
                                 "foo.png": imageFile(),
@@ -776,7 +776,7 @@ describe("check command", () => {
                         },
                         ...web_modules(),
                     },
-                    steps: {
+                    labs: {
                         "package.json": packageJsonFile({
                             workspaces: ["01-getting-started"],
                             scripts: {
@@ -798,8 +798,8 @@ describe("check command", () => {
             });
             it("slide should contains existing image [S_007]", async () => {
                 const rootDir = buildProject({
-                    ...configFile({ stepCommandPrefix: "npm run " }),
-                    docs: {
+                    ...configFile({ labCommandPrefix: "npm run " }),
+                    slides: {
                         assets: {
                             images: {
                                 "foo.png": imageFile(),
@@ -824,7 +824,7 @@ describe("check command", () => {
                         },
                         ...web_modules(),
                     },
-                    steps: {
+                    labs: {
                         "package.json": packageJsonFile({
                             workspaces: ["01-getting-started"],
                             scripts: {
@@ -840,15 +840,15 @@ describe("check command", () => {
                 }
 
                 const reg =
-                    /\[CheckError\] S_007 ".*\/docs\/assets\/images\/foo2.png" in "01-getting-started.md" should be an existing images/;
+                    /\[CheckError\] S_007 ".*\/slides\/assets\/images\/foo2.png" in "01-getting-started.md" should be an existing images/;
                 expectMatching(getErrors(), reg).toHaveLength(1);
                 expect(getErrors()).toHaveLength(1);
             });
 
             it("images in asset should be used [S_008]", async () => {
                 const rootDir = buildProject({
-                    ...configFile({ stepCommandPrefix: "npm run " }),
-                    docs: {
+                    ...configFile({ labCommandPrefix: "npm run " }),
+                    slides: {
                         assets: {
                             images: {
                                 "foo.png": imageFile(),
@@ -874,7 +874,7 @@ describe("check command", () => {
                         },
                         ...web_modules(),
                     },
-                    steps: {
+                    labs: {
                         "package.json": packageJsonFile({
                             workspaces: ["01-getting-started"],
                             scripts: {
@@ -890,14 +890,14 @@ describe("check command", () => {
                 }
 
                 const reg =
-                    /\[CheckError\] S_008 ".*\/docs\/assets\/images\/foo2.png" should be used/;
+                    /\[CheckError\] S_008 ".*\/slides\/assets\/images\/foo2.png" should be used/;
                 expectMatching(getErrors(), reg).toHaveLength(1);
                 expect(getErrors()).toHaveLength(1);
             });
             it("slide should only used existing css classes [S_009]", async () => {
                 const rootDir = buildProject({
-                    ...configFile({ stepCommandPrefix: "npm run " }),
-                    docs: {
+                    ...configFile({ labCommandPrefix: "npm run " }),
+                    slides: {
                         assets: {
                             images: {
                                 "foo.png": imageFile(),
@@ -923,7 +923,7 @@ describe("check command", () => {
                         },
                         ...web_modules(),
                     },
-                    steps: {
+                    labs: {
                         "package.json": packageJsonFile({
                             workspaces: ["01-getting-started"],
                             scripts: {
@@ -948,8 +948,8 @@ describe("check command", () => {
             });
             it("slide.js should exists [S_010]", async () => {
                 const rootDir = buildProject({
-                    ...configFile({ stepCommandPrefix: "npm run " }),
-                    docs: {
+                    ...configFile({ labCommandPrefix: "npm run " }),
+                    slides: {
                         css: {
                             "slides.css": slideCssFile(),
                         },
@@ -959,7 +959,7 @@ describe("check command", () => {
                         scripts: {},
                         ...web_modules(),
                     },
-                    steps: {
+                    labs: {
                         "package.json": packageJsonFile({
                             workspaces: ["01-getting-started"],
                             scripts: {
@@ -981,8 +981,8 @@ describe("check command", () => {
             });
             it("slide.js should have exported formation function [S_010]", async () => {
                 const rootDir = buildProject({
-                    ...configFile({ stepCommandPrefix: "npm run " }),
-                    docs: {
+                    ...configFile({ labCommandPrefix: "npm run " }),
+                    slides: {
                         css: {
                             "slides.css": slideCssFile(),
                         },
@@ -997,7 +997,7 @@ describe("check command", () => {
                         },
                         ...web_modules(),
                     },
-                    steps: {
+                    labs: {
                         "package.json": packageJsonFile({
                             workspaces: ["01-getting-started"],
                             scripts: {
@@ -1021,8 +1021,8 @@ describe("check command", () => {
         describe("Labs checks", () => {
             it("labs not used in slide [L_001]", async () => {
                 const rootDir = buildProject({
-                    ...configFile({ stepCommandPrefix: "npm run " }),
-                    docs: {
+                    ...configFile({ labCommandPrefix: "npm run " }),
+                    slides: {
                         assets: {
                             images: {
                                 "foo.png": imageFile(),
@@ -1047,7 +1047,7 @@ describe("check command", () => {
                         },
                         ...web_modules(),
                     },
-                    steps: {
+                    labs: {
                         "package.json": packageJsonFile({
                             workspaces: ["01-getting-started", "02-next"],
                             scripts: {
@@ -1070,8 +1070,8 @@ describe("check command", () => {
             });
             it("labs not declared in workspace [L_002][L_003]", async () => {
                 const rootDir = buildProject({
-                    ...configFile({ stepCommandPrefix: "npm run " }),
-                    docs: {
+                    ...configFile({ labCommandPrefix: "npm run " }),
+                    slides: {
                         assets: {
                             images: {
                                 "foo.png": imageFile(),
@@ -1096,7 +1096,7 @@ describe("check command", () => {
                         },
                         ...web_modules(),
                     },
-                    steps: {
+                    labs: {
                         ...minimalValidLabStructure("01-getting-started"),
                         ...minimalValidLabStructure("02-next"),
                         "package.json": packageJsonFile({
@@ -1118,13 +1118,13 @@ describe("check command", () => {
                 }
 
                 const regL002 =
-                    /\[CheckError\] L_002 Lab "02-next" should be declared in the workspace \(either "workspaces" or "labs" in a file "package.json" or "labs.json" at the root of "steps" directory\)/;
+                    /\[CheckError\] L_002 Lab "02-next" should be declared in the workspace \(either "workspaces" or "labs" in a file "package.json" or "labs.json" at the root of "labs" directory\)/;
                 expectMatching(getErrors(), regL002).toHaveLength(1);
                 const regL003 =
                     /\[CheckError\] L_003 Lab "02-next" should have corresponding script/;
                 expectMatching(getErrors(), regL003).toHaveLength(1);
                 const regL002Sol =
-                    /\[CheckError\] L_002 Lab "02-next-solution" should be declared in the workspace \(either "workspaces" or "labs" in a file "package.json" or "labs.json" at the root of "steps" directory\)/;
+                    /\[CheckError\] L_002 Lab "02-next-solution" should be declared in the workspace \(either "workspaces" or "labs" in a file "package.json" or "labs.json" at the root of "labs" directory\)/;
                 expectMatching(getErrors(), regL002Sol).toHaveLength(1);
                 const regL003Sol =
                     /\[CheckError\] L_003 Lab "02-next-solution" should have corresponding script/;
@@ -1133,8 +1133,8 @@ describe("check command", () => {
             });
             it("labs in workspace but without package.json [L_004]", async () => {
                 const rootDir = buildProject({
-                    ...configFile({ stepCommandPrefix: "npm run " }),
-                    docs: {
+                    ...configFile({ labCommandPrefix: "npm run " }),
+                    slides: {
                         assets: {
                             images: {
                                 "foo.png": imageFile(),
@@ -1159,7 +1159,7 @@ describe("check command", () => {
                         },
                         ...web_modules(),
                     },
-                    steps: {
+                    labs: {
                         ...oneLabStructure("01-getting-started", {
                             "README.md": labReadmeMdFile("01-getting-started"),
                         }),
@@ -1194,8 +1194,8 @@ describe("check command", () => {
             });
             it("labs without README.md [L_005][L_010]", async () => {
                 const rootDir = buildProject({
-                    ...configFile({ stepCommandPrefix: "npm run " }),
-                    docs: {
+                    ...configFile({ labCommandPrefix: "npm run " }),
+                    slides: {
                         assets: {
                             images: {
                                 "foo.png": imageFile(),
@@ -1220,7 +1220,7 @@ describe("check command", () => {
                         },
                         ...web_modules(),
                     },
-                    steps: {
+                    labs: {
                         ...oneLabStructure("01-getting-started", {
                             "package.json": packageJsonFile({
                                 name: "01-getting-started",
@@ -1261,8 +1261,8 @@ describe("check command", () => {
             });
             it("labs with README.md missing some infos [L_006][L_007]", async () => {
                 const rootDir = buildProject({
-                    ...configFile({ stepCommandPrefix: "npm run " }),
-                    docs: {
+                    ...configFile({ labCommandPrefix: "npm run " }),
+                    slides: {
                         assets: {
                             images: {
                                 "foo.png": imageFile(),
@@ -1287,7 +1287,7 @@ describe("check command", () => {
                         },
                         ...web_modules(),
                     },
-                    steps: {
+                    labs: {
                         ...oneLabStructure("01-getting-started", {
                             "package.json": packageJsonFile({
                                 name: "01-getting-started",
@@ -1328,8 +1328,8 @@ describe("check command", () => {
             });
             it("every lab should have a solution [L_008]", async () => {
                 const rootDir = buildProject({
-                    ...configFile({ stepCommandPrefix: "npm run " }),
-                    docs: {
+                    ...configFile({ labCommandPrefix: "npm run " }),
+                    slides: {
                         assets: {
                             images: {
                                 "foo.png": imageFile(),
@@ -1354,7 +1354,7 @@ describe("check command", () => {
                         },
                         ...web_modules(),
                     },
-                    steps: {
+                    labs: {
                         ...oneLabStructure("01-getting-started", {
                             "package.json": packageJsonFile({
                                 name: "01-getting-started",
@@ -1386,7 +1386,7 @@ describe("check command", () => {
             });
             it("lab solution should match a lab [L_009]", async () => {
                 const rootDir = buildProject({
-                    docs: {
+                    slides: {
                         assets: {
                             images: {
                                 "foo.png": imageFile(),
@@ -1406,7 +1406,7 @@ describe("check command", () => {
                         },
                         ...web_modules(),
                     },
-                    steps: {
+                    labs: {
                         ...oneLabStructure("01-getting-started-solution", {
                             "package.json": packageJsonFile({
                                 name: "01-getting-started-solution",
@@ -1436,8 +1436,8 @@ describe("check command", () => {
             });
             it("lab and solution should have same README.md [L_010]", async () => {
                 const rootDir = buildProject({
-                    ...configFile({ stepCommandPrefix: "npm run " }),
-                    docs: {
+                    ...configFile({ labCommandPrefix: "npm run " }),
+                    slides: {
                         assets: {
                             images: {
                                 "foo.png": imageFile(),
@@ -1462,7 +1462,7 @@ describe("check command", () => {
                         },
                         ...web_modules(),
                     },
-                    steps: {
+                    labs: {
                         ...oneLabStructure("01-getting-started", {
                             "package.json": packageJsonFile({
                                 name: "01-getting-started",

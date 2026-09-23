@@ -1,5 +1,5 @@
-import { docsFilePath } from "./path.utils";
 import fs from "node:fs";
+import { slidesFilePath } from "./path.utils";
 
 const THEME_CSS_FILES = [
     "web_modules/sfeir-school-theme/dist/sfeir-school-theme.css",
@@ -20,7 +20,7 @@ export function getAllCssContent(rootDir: string, extraCssFiles: string[]) {
 }
 
 function getCssFile(rootDir: string, cssPath: string) {
-    const filePath = docsFilePath(rootDir, cssPath);
+    const filePath = slidesFilePath(rootDir, cssPath);
     try {
         return fs.readFileSync(filePath, "utf-8");
     } catch {

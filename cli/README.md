@@ -8,7 +8,7 @@
 
 To make the sfeir-school-theme CLI work correctly, it should be run in the repository root (or be run with --rootDir specified), and the root directory should exists.
 
-##### G_002 the `<root>/docs` directory exists
+##### G_002 the `<root>/slides` directory exists
 
 The root directory should contains a minimal structure:
 
@@ -16,37 +16,32 @@ The root directory should contains a minimal structure:
 <root>
 ├── CONTRIBUTING.md
 ├── docs
+|   ├── adr
+|   |   ├── ...
+├── labs
 |   ├── ...
 ├── LICENSE
 ├── README.md
-└── steps
+└── slides
     ├── ...
 ```
 
-##### G_003 the `<root>/steps` directory exists
+`docs/` is reserved for ADRs and other project documentation, not for the
+slide deck — see [ADR-0002](../docs/adr/0002-rename-docs-to-slides.md).
 
-The root directory should contains a minimal structure:
+##### G_003 the `<root>/labs` directory exists
 
-```
-<root>
-├── CONTRIBUTING.md
-├── docs
-|   ├── ...
-├── LICENSE
-├── README.md
-└── steps
-    ├── ...
-```
+The root directory should contains the minimal structure shown above.
 
 ### Slides checks
 
 #### General slides checks
 
-##### S_010 the script `<root>/docs/scripts/slides.js` should contain an exported function `formation()`
+##### S_010 the script `<root>/slides/scripts/slides.js` should contain an exported function `formation()`
 
 Every school should have a file `slides.js` in the correct directory and with an exported function `formation()`.
 
-`<root>/docs/scripts/slides.js` :
+`<root>/slides/scripts/slides.js` :
 
 ```JavaScript
 import { SfeirThemeInitializer } from '../web_modules/sfeir-school-theme/dist/sfeir-school-theme.mjs';
@@ -72,17 +67,17 @@ export function formation() {
 SfeirThemeInitializer.init(formation);
 ```
 
-##### S_001 every entry returned by the function `formation()` in `<root>/docs/scripts/slides.js` is valid
+##### S_001 every entry returned by the function `formation()` in `<root>/slides/scripts/slides.js` is valid
 
 Every entry returned by the function `formation()` should be an object which have a path property.
 
-##### S_002 every entry returned by the function `formation()` in `<root>/docs/scripts/slides.js` exists in the `<root>/docs/markdown` directory
+##### S_002 every entry returned by the function `formation()` in `<root>/slides/scripts/slides.js` exists in the `<root>/slides/markdown` directory
 
-Every entry returned by the function `formation()` should have a path matching an existing markdown file in the `<root>/docs/markdown` directory.
+Every entry returned by the function `formation()` should have a path matching an existing markdown file in the `<root>/slides/markdown` directory.
 
-##### S_003 every markdown file in the `<root>/docs/markdown` directory is declared in the `<root>/docs/scripts/slides.js`
+##### S_003 every markdown file in the `<root>/slides/markdown` directory is declared in the `<root>/slides/scripts/slides.js`
 
-Every markdown files in the `<root>/docs/markdown` directory should be declared with a valid entry in the result of the `formation()` function in `<root>/docs/scripts/slides.js`.
+Every markdown files in the `<root>/slides/markdown` directory should be declared with a valid entry in the result of the `formation()` function in `<root>/slides/scripts/slides.js`.
 
 #### Lab slides specific checks
 
@@ -113,7 +108,7 @@ Notes:
 - eventual speaker notes
 ```
 
-The command should start with `stepCommandPrefix` specified in the `<root>/.sfeir-theme-config.json`. This command should also contains an existing lab command.
+The command should start with `labCommandPrefix` specified in the `<root>/.sfeir-theme-config.json`. This command should also contains an existing lab command.
 
 ##### S_005 every lab slide file contains the valid command to run the exercise
 
@@ -142,7 +137,7 @@ Notes:
 - eventual speaker notes
 ```
 
-The command should start with `stepCommandPrefix` specified in the `<root>/.sfeir-theme-config.json`. This command should also contains an existing lab command.
+The command should start with `labCommandPrefix` specified in the `<root>/.sfeir-theme-config.json`. This command should also contains an existing lab command.
 
 ##### S_006 every lab slide should have lab format
 
@@ -171,17 +166,17 @@ Notes:
 - eventual speaker notes
 ```
 
-The command should start with `stepCommandPrefix` specified in the `<root>/.sfeir-theme-config.json`. This command should also contains an existing lab command.
+The command should start with `labCommandPrefix` specified in the `<root>/.sfeir-theme-config.json`. This command should also contains an existing lab command.
 
 #### Images / slides checks
 
 ##### S_007 every images (relative one's only) in a slide should exists
 
-Every images linked in a slide should exists in the assets directory `<root>/docs/assets/images/`.
+Every images linked in a slide should exists in the assets directory `<root>/slides/assets/images/`.
 
 ##### S_008 every images in assets should be referenced at least in one slide
 
-Every images in `<root>/docs/assets/images/` directory should be linked in a slide.
+Every images in `<root>/slides/assets/images/` directory should be linked in a slide.
 
 #### CSS classes
 
@@ -189,8 +184,8 @@ Every images in `<root>/docs/assets/images/` directory should be linked in a sli
 
 Every classes used in a slide file should exists:
 
-- in `<root>/docs/web_modules/sfeir-school-theme/dist/sfeir-school-theme.css`;
-- in `<root>/docs/css/slides.css`;
+- in `<root>/slides/web_modules/sfeir-school-theme/dist/sfeir-school-theme.css`;
+- in `<root>/slides/css/slides.css`;
 - in any css files declared in the property `extraCssFiles` in the `<root>/.sfeir-theme-config.json`;
 
 ### Labs checks
@@ -203,9 +198,9 @@ Every lab should be referenced in the lab slide.
 
 #### Workspace / Scripts checks
 
-##### L_002 every lab should be declared in the workspace (either "workspaces" or "labs" in a file `<root>/steps/package.json` or `<root>/steps/labs.json` at the root of "steps" directory)
+##### L_002 every lab should be declared in the workspace (either "workspaces" or "labs" in a file `<root>/labs/package.json` or `<root>/labs/labs.json` at the root of "labs" directory)
 
-Every lab should be declared either in `<root>/steps/package.json` or `<root>/steps/labs.json`.
+Every lab should be declared either in `<root>/labs/package.json` or `<root>/labs/labs.json`.
 
 For `package.json` format:
 
@@ -229,9 +224,9 @@ For `labs.json` format:
 }
 ```
 
-##### L_003 every lab should have a script in `package.json` to start it (only if workspace is declared in a `<root>/steps/package.json` file) (NPM PROJECT ONLY)
+##### L_003 every lab should have a script in `package.json` to start it (only if workspace is declared in a `<root>/labs/package.json` file) (NPM PROJECT ONLY)
 
-Rules for NPM projects only. If you have a `<root>/steps/package.json` the this rules will be activated automatically.
+Rules for NPM projects only. If you have a `<root>/labs/package.json` the this rules will be activated automatically.
 
 Every lab should have a dedicated script in the `package.json`.
 
@@ -248,17 +243,17 @@ Every lab should have a dedicated script in the `package.json`.
 }
 ```
 
-##### L_004 every lab should have a `package.json` with corresponding name (only if workspace is declared in a `<root>/steps/package.json` file) (NPM PROJECT ONLY)
+##### L_004 every lab should have a `package.json` with corresponding name (only if workspace is declared in a `<root>/labs/package.json` file) (NPM PROJECT ONLY)
 
-Rules for NPM projects only. If you have a `<root>/steps/package.json` the this rules will be activated automatically.
+Rules for NPM projects only. If you have a `<root>/labs/package.json` the this rules will be activated automatically.
 
-Every lab in the `workspaces` property in `<root>/steps/package.json` file should correspond to a directory in `<root>/steps/` with a package.json file.
+Every lab in the `workspaces` property in `<root>/labs/package.json` file should correspond to a directory in `<root>/labs/` with a package.json file.
 
 #### Instructions checks
 
 ##### L_005 every lab should have a `README.md`
 
-Every lab directory in `<root>/steps/` should contain a `README.md` file with the lab title and the correct command.
+Every lab directory in `<root>/labs/` should contain a `README.md` file with the lab title and the correct command.
 
 Example of minimal `README.md`:
 
@@ -270,7 +265,7 @@ npm run 01-getting-started
 
 ##### L_006 every lab `README.md` should have correct title
 
-Every lab directory in `<root>/steps/` should contain a `README.md` file with the lab title and the correct command.
+Every lab directory in `<root>/labs/` should contain a `README.md` file with the lab title and the correct command.
 
 Example of minimal `README.md`:
 
@@ -281,7 +276,7 @@ npm run 01-getting-started
 ```
 ##### L_007 every lab `README.md` should contains the correct command to start the lab
 
-Every lab directory in `<root>/steps/` should contain a `README.md` file with the lab title and the correct command.
+Every lab directory in `<root>/labs/` should contain a `README.md` file with the lab title and the correct command.
 
 Example of minimal `README.md`:
 
