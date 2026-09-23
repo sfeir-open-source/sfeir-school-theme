@@ -1,0 +1,68 @@
+/**
+* Layer 1 — palette.
+*
+* Raw values from the SFEIR Brand Guidelines, The Sharp Artisan (v2026.1).
+* Never reference these from a slide or from a school's own stylesheet: they carry no
+* role, so they cannot switch with the program or with surface polarity. Use the
+* semantic tokens in _semantic.scss instead.
+*/
+
+:root {
+    /**
+    * Cuivre — the charte accent, carried by SFEIR Institute.
+    */
+    --sfeir-cuivre: #845400; // accent on light surfaces
+    --sfeir-cuivre-poli: #e5a040; // fills and large numerals, never text on light
+    --sfeir-cuivre-clair: #ffb95c; // accent on dark surfaces, AA-safe
+    --sfeir-sable: #ffddb7; // warm callout wash
+    --sfeir-cuivre-profond: #5d3a00; // text on Cuivre Poli or Sable
+
+    /**
+    * Ocre — the Services Managés family, carried by SFEIR Institute (decision D1).
+    *
+    * Its two darkest variants are the charte core by another name: `ocre-primary` is
+    * Cuivre Poli and `ocre-dark` is Cuivre. Declared here as literals anyway, so the
+    * family table reads as the charte writes it.
+    */
+    --sfeir-ocre-light: #fff0d6;
+    --sfeir-ocre-medium: #f2c878;
+    --sfeir-ocre-primary: #e5a040;
+    --sfeir-ocre-dark: #845400;
+
+    /**
+    * Émeraude — the Data & Product family, carried by SFEIR School (decision D1).
+    *
+    * Unlike Ocre, this family's `primary` is mid-dark (L=36%), so text placed on it has
+    * to be Noir: white reaches only 4.25:1 and the family's own light variant 3.54:1.
+    * Only #000000 clears AA, at 4.95:1. That constraint is encoded in the ramp.
+    */
+    --sfeir-emeraude-light: #c8f5d6;
+    --sfeir-emeraude-medium: #6bc68f;
+    --sfeir-emeraude-primary: #2e8b57;
+    --sfeir-emeraude-dark: #0d5a2e;
+
+    /**
+    * Surfaces — the Blanc Craie to Noir Carbone ramp.
+    * Depth comes from layering these, never from a shadow.
+    */
+    --sfeir-white: #ffffff; // editorial insert cards on light sections
+    --sfeir-craie: #f9f9f9; // default page background
+    --sfeir-craie-1: #f3f3f3; // default card surface
+    --sfeir-craie-2: #eeeeee;
+    --sfeir-craie-3: #e8e8e8; // elevated / featured cards
+    --sfeir-craie-4: #e2e2e2; // rare, hover states
+    --sfeir-brouillard: #dadada; // dimmed sections, separators
+    --sfeir-carbone-mid: #303030; // mid-dark surface, code blocks
+    --sfeir-noir: #000000; // covers, dividers, hero bands
+
+    /**
+    * Ink and outline.
+    */
+    --sfeir-charcoal: #1b1b1b; // body text on light surfaces
+    --sfeir-charcoal-variant: #514536; // captions, eyebrows on light surfaces
+    --sfeir-ink-on-dark: #f1f1f1; // body text on dark surfaces
+    --sfeir-ink-on-dark-muted: #bfbfbf; // section ledes on dark, per the charte
+    --sfeir-outline: #847564; // strong borders, rare
+    --sfeir-outline-variant: #d6c3b1; // the standard separator
+    --sfeir-error: #ba1a1a;
+}

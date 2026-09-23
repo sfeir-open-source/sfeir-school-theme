@@ -1,9 +1,8 @@
 :root {
-    --tc-transition-color: var(--white);
-    --tc-transition-title-font-size: 2em;
+    --tc-transition-color: var(--sfeir-ink-on-dark);
+    --tc-transition-title-font-size: var(--sfeir-fs-display);
     --tc-transition-margin-top: 450px;
-    --tc-transition-line-color: var(--sfeir-green);
-    --tc-transition-sub-title-font-size: 1.5em;
+    --tc-transition-sub-title-font-size: var(--sfeir-fs-subtitle);
 }
 
 .reveal .slides section[class*='transition']:not(.stack),
@@ -17,79 +16,17 @@
         text-align: left;
     }
 
-    &.blue h1:before,
-    &.transition-bg-blue-1 h1:before,
-    &.transition-bg-blue-2 h1:before,
-    &.transition-bg-blue-3 h1:before {
-        --tc-transition-line-color: var(--sfeir-blue);
-    }
-
-    &.green h1:before {
-        --tc-transition-line-color: var(--sfeir-green);
-    }
-
-    &.bg-white h1:before,
-    &.bg-blue h1:before,
-    &.bg-green h1:before {
-        background: none;
-    }
-
-    &.bg-white h1 {
-        --tc-transition-color: var(--black);
-    }
-    &.bg-white:not(h1) {
-        color: var(--black);
-    }
-}
-
-.reveal .backgrounds div.slide-background.transition {
-    &.bg-white,
-    &.bg-blue,
-    &.bg-green {
-        &:after {
-            content: '';
-            position: absolute;
-            width: 100%;
-            height: 100%;
-        }
-    }
-
-    &.bg-white:after {
-        background: rgba(255, 255, 255, 0.6);
-    }
-    &.bg-blue::after {
-        background: rgba(87, 94, 170, 0.6);
-    }
-    &.bg-green::after {
-        background: rgba(10, 181, 128, 0.6);
-    }
+    // `bg-white`, `bg-blue` and `bg-green` are deprecated: they tinted a photo that no
+    // longer exists. They now render as plain Noir Carbone like every other background
+    // class, so their dark-text and no-underline overrides are gone.
 }
 
 /**
-* Hack for institute mode
+* The institute branch that used to live here is gone: --tc-transition-line-color now
+* points at --sfeir-accent, which the program axis in tokens/_context.scss resolves. The
+* per-class `blue` / `green` underline modifiers went with it — deprecated no-ops under
+* a single-accent charte, reported by the CLI and rewritten by the v4-to-v5 codemod.
 **/
-.reveal .slides[data-theme='institute'] section[class*='transition'],
-.reveal
-    .slides[data-theme='institute']
-    section.sfeir-basic-slide[class*='transition'],
-.reveal
-    .slides[data-theme='institute']
-    section.sfeir-specific-slide[class*='transition'],
-.reveal .slides[data-theme='institute'] section.first-slide {
-    h1:before {
-        --tc-transition-line-color: var(--sfeir-blue);
-    }
-
-    &.green h1:before,
-    &.transition-bg-green-1 h1:before,
-    &.transition-bg-green-2 h1:before,
-    &.transition-bg-green-3 h1:before,
-    &.transition-bg-green-4 h1:before,
-    &.transition-bg-green-5 h1:before,
-    &.transition-bg-green-6 h1:before {
-        --tc-transition-line-color: var(--sfeir-green);
-    }
-}
 
 /**
 * Hack for print
@@ -101,30 +38,6 @@ html.print-pdf {
     .reveal .slides .pdf-page section.first-slide {
         h1:before {
             z-index: 1;
-        }
-    }
-
-    .reveal .slides .pdf-page div.slide-background.transition {
-        &.bg-white,
-        &.bg-blue,
-        &.bg-green {
-            &:after {
-                content: '';
-                position: absolute;
-                width: 100%;
-                height: 100%;
-                left: 0;
-            }
-        }
-
-        &.bg-white:after {
-            background: rgba(255, 255, 255, 0.6);
-        }
-        &.bg-blue::after {
-            background: rgba(87, 94, 170, 0.6);
-        }
-        &.bg-green::after {
-            background: rgba(10, 181, 128, 0.6);
         }
     }
 }

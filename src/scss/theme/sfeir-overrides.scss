@@ -5,7 +5,15 @@
  */
 
 @import './fonts';
-@import './colors';
+
+// Design tokens — three layers plus the deprecated aliases.
+// See docs/charte-2026/02-token-mapping.md.
+@import './tokens/selectors';
+@import './tokens/palette';
+@import './tokens/typography';
+@import './tokens/semantic';
+@import './tokens/context';
+@import './tokens/legacy';
 
 :root {
     /**
@@ -13,23 +21,36 @@
     **/
 
     // Background of the presentation
-    --r-background-color: #fff;
+    --r-background-color: var(--sfeir-surface);
 
     // Primary/body text
-    --r-main-font: 'Poppins', sans-serif;
-    --r-main-font-size: 40px;
-    --r-main-color: var(--dark-grey);
+    --r-main-font: var(--sfeir-font-body);
+    --r-main-font-size: var(--sfeir-fs-body);
+    --r-main-color: var(--sfeir-on-surface);
 
     // Headings
-    --r-heading-font: 'Poppins', Impact, sans-serif;
-    --r-heading-color: var(--r-main-color);
+    --r-heading-font: var(--sfeir-font-display);
     --r-heading-text-transform: initial;
 
-    // Links and actions
-    --r-link-color: var(--black);
-    --r-link-color-hover: lighten(var(--r-link-color), 20%);
+    // Code
+    --r-code-font: var(--sfeir-font-mono);
 
-    // Text selection
-    --r-selection-background-color: rgba(140, 191, 240, 0.8);
-    --r-selection-color: #fff;
+    // Heading colour, links and selection are bound in tokens/_semantic.scss, by the
+    // sfeir-framework-bindings mixin: they read semantic roles, so they have to follow
+    // the program and the surface polarity.
+}
+
+/**
+* Headings carry Epilogue Bold as a baseline; phase 3 raises the display archetypes
+* (cover, section dividers, stats) to Epilogue Black with the charte's tracking.
+*/
+.reveal h1,
+.reveal h2,
+.reveal h3,
+.reveal h4,
+.reveal .slides section.with-code h1,
+.reveal .slides section.with-code h2 {
+    font-family: var(--sfeir-font-display);
+    font-weight: var(--sfeir-weight-bold);
+    letter-spacing: var(--sfeir-tracking-title);
 }

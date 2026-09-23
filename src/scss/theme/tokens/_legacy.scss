@@ -1,0 +1,55 @@
+/**
+* Deprecated aliases — removed in v6.
+*
+* Every name the v4 theme exposed keeps resolving, so no downstream deck breaks on
+* upgrade. `sfeir-school-theme check` reports each usage and the v4-to-v5 codemod
+* rewrites them in place.
+*
+* The program hues collapse cleanly: --sfeir-green was the School accent and
+* --sfeir-blue the Institute accent, so both become --sfeir-accent and each resolves to
+* the right ramp on its own program. A School deck hard-coding var(--sfeir-green) keeps
+* its intent and simply renders Bronze.
+*
+* Retired with no target: the eight --sfeir-*-stop-N gradient stops. Gradients are not
+* part of the identity.
+*/
+
+/**
+* The aliases that read a semantic role, as a mixin.
+*
+* They inherit the resolution rule from tokens/_semantic.scss: a referencing custom
+* property resolves at its declaration site, so these have to be redeclared wherever
+* the role they read changes. Without that, an Institute deck writing
+* var(--sfeir-blue) renders the School accent.
+*/
+@mixin sfeir-legacy-derived {
+    --sfeir-green: var(--sfeir-accent); // was the School accent
+    --sfeir-blue: var(--sfeir-accent); // was the Institute accent
+    --sfeir-orange: var(--sfeir-accent-fill);
+    --sfeir-pink: var(--sfeir-accent-fill); // repointed to Rose in phase 5
+    --black: var(--sfeir-on-surface);
+    --dark-grey: var(--sfeir-on-surface-muted);
+}
+
+:root {
+    @include sfeir-legacy-derived;
+
+    /* Aliases that read the palette directly need no contextual redeclaration. */
+    --white: var(--sfeir-white);
+    --medium-grey: var(--sfeir-outline);
+    --light-grey: var(--sfeir-brouillard);
+    --code-bg: var(--sfeir-code-surface);
+    --red: var(--sfeir-danger);
+
+    /* Kept verbatim: an alpha value has no palette equivalent, and phase 2 removes the
+     * one rule that uses it. */
+    --dark-grey-alpha: rgba(61, 67, 73, 0.7);
+}
+
+#{$sfeir-institute} {
+    @include sfeir-legacy-derived;
+}
+
+#{$sfeir-dark-sections} {
+    @include sfeir-legacy-derived;
+}

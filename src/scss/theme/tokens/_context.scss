@@ -1,0 +1,50 @@
+/**
+* Layer 3 — contextual redefinitions.
+*
+* Two independent axes, resolved in this order:
+*   program  ([data-theme] on .slides) picks the ramp;
+*   polarity (a dark-surfaced section)  picks the tier within it.
+*
+* This is where the charte's contrast traps are closed, so that an author writing
+* `color: var(--sfeir-accent)` is correct in all four combinations.
+*/
+
+/**
+* Program axis.
+*
+* :root already defaults to School (Bronze), and `conf` inherits School, so only
+* Institute needs redefining. `.backgrounds` is a sibling of `.slides`, not a
+* descendant, hence the second selector.
+*/
+#{$sfeir-institute} {
+    --sfeir-ramp-accent: var(--sfeir-ocre-dark);
+    --sfeir-ramp-accent-on-dark: var(--sfeir-ocre-medium);
+    --sfeir-ramp-fill: var(--sfeir-ocre-primary);
+    // The charte prescribes Cuivre Profond as the text colour on Cuivre Poli, which is
+    // what ocre-primary is. Émeraude has no such prescription — see _palette.scss.
+    --sfeir-ramp-on-fill: var(--sfeir-cuivre-profond);
+    --sfeir-ramp-wash: var(--sfeir-ocre-light);
+    --sfeir-ramp-deep: var(--sfeir-cuivre-profond);
+
+    // Mandatory: the roles resolve where they are declared, so switching the ramp
+    // above has no effect on the roles declared at :root.
+    @include sfeir-accent-roles;
+    @include sfeir-framework-bindings;
+}
+
+/**
+* Polarity axis.
+*
+* The slide archetypes that sit on Noir Carbone.
+*/
+#{$sfeir-dark-sections} {
+    --sfeir-accent: var(--sfeir-ramp-accent-on-dark);
+    --sfeir-surface: var(--sfeir-noir);
+    --sfeir-surface-raised: var(--sfeir-carbone-mid);
+    --sfeir-surface-high: var(--sfeir-carbone-mid);
+    --sfeir-on-surface: var(--sfeir-ink-on-dark);
+    --sfeir-on-surface-muted: var(--sfeir-ink-on-dark-muted);
+    --sfeir-separator: var(--sfeir-outline);
+
+    @include sfeir-framework-bindings;
+}

@@ -2,22 +2,24 @@
 * Globals overrides to change the layout of slides
 */
 :root {
-    --tc-quote-color: var(--white);
-    --tc-credits-color: var(--sfeir-green);
-    --tc-quote-bg-color: var(--dark-grey);
-    --tc-heading-color: var(--black);
-    --tc-heading-title-font-size: 1.5em;
-    --tc-heading-sub-title-font-size: 1.15em;
-    --tc-heading-other-headings-font-size: 1em;
+    // --tc-credits-color and --tc-heading-color are bound in tokens/_semantic.scss:
+    // they read semantic roles and must follow the program and the polarity.
+    --tc-quote-color: var(--sfeir-ink-on-dark);
+    --tc-quote-bg-color: var(--sfeir-carbone-mid);
+    --tc-heading-title-font-size: var(--sfeir-fs-title);
+    --tc-heading-sub-title-font-size: var(--sfeir-fs-subtitle);
+    --tc-heading-other-headings-font-size: var(--sfeir-fs-body);
     --tc-font-size: 1em; // TODO à check ??
-    --tc-table-bg: #efefef;
-    --tc-table-header-bg: var(--sfeir-green);
-    --tc-table-header-color: var(--white);
+    --tc-table-bg: var(--sfeir-craie-2);
+    // The charte forbids colour as wallpaper: table headers are Noir Carbone in both
+    // programs, not the program accent.
+    --tc-table-header-bg: var(--sfeir-noir);
+    --tc-table-header-color: var(--sfeir-ink-on-dark);
 }
 
 .reveal {
     li::marker {
-        color: var(--sfeir-green); /* Change the color */
+        color: var(--sfeir-accent);
     }
 }
 
@@ -41,14 +43,13 @@
         text-align: left;
     }
 
+    // `blue` and `green` are deprecated no-ops: the charte has one accent per
+    // program, so both resolve to it. Removed in v6.
     &.blue h1:first-of-type:after,
-    &.blue h2:first-of-type:after {
-        background-color: var(--sfeir-blue);
-    }
-
+    &.blue h2:first-of-type:after,
     &.green h1:first-of-type:after,
     &.green h2:first-of-type:after {
-        background-color: var(--sfeir-green);
+        background-color: var(--sfeir-accent);
     }
 
     h1 ~ h2:first-of-type:after,
@@ -56,6 +57,17 @@
     h1 ~ h3:first-of-type:after {
         content: initial;
     }
+}
+
+/**
+* Dark surfaces.
+*
+* Reveal resolves `color: var(--r-main-color)` on `.reveal` itself, so redefining the
+* ink role further down the tree cannot reach body text — it has to be set here, on the
+* sections that sit on Noir Carbone.
+*/
+#{$sfeir-dark-sections} {
+    color: var(--sfeir-on-surface);
 }
 
 /**
@@ -133,31 +145,16 @@
 }
 
 /**
-* Hack for institute mode
+* Institute mode — assets only.
+*
+* Every colour branch this block used to carry is gone: the program axis in
+* tokens/_context.scss redefines --sfeir-accent, so list markers, credits and table
+* headers follow the program on their own. Phase 4 replaces these raster lockups with
+* the typographic composition decided in D3.
 **/
-.reveal .slides[data-theme='institute'] {
-    li::marker {
-        color: var(--sfeir-blue); /* Change the color */
-    }
-    section.quote-slide .credits::before {
-        color: var(--sfeir-blue);
-    }
-
-    & ~ .backgrounds {
-        --url-logo-dark: url('./images/logo-institute-dark.webp');
-        --url-logo-white: url('./images/logo-institute-white.webp');
-    }
-}
-
-.reveal
-    .slides[data-theme='institute']
-    section:not(.stack):not([class*='transition']),
-.reveal
-    .slides[data-theme='institute']
-    section:not(.stack):not([class*='transition']) {
-    thead {
-        background-color: var(--sfeir-blue);
-    }
+.reveal .slides[data-theme='institute'] ~ .backgrounds {
+    --url-logo-dark: url('./images/logo-institute-dark.webp');
+    --url-logo-white: url('./images/logo-institute-white.webp');
 }
 
 /**

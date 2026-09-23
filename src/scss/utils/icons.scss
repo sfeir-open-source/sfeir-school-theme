@@ -1,16 +1,10 @@
 /**
 * Feathers icons
+*
+* --tc-icon-color is bound in tokens/_semantic.scss: it reads the accent role, so it
+* follows the program and flips to the on-dark tier on Noir Carbone slides.
 */
 
 :root {
-    --tc-icon-color: var(--sfeir-green);
     --tc-icone-size: 24px;
-}
-
-/**
-* Hack for mode instute
-*/
-
-.reveal .slides[data-theme='institute'] section {
-    --tc-icon-color: var(--sfeir-blue);
 }
