@@ -503,26 +503,26 @@ npm run 01-getting-started
 
 ##### L_006 every lab `README.md` should have correct title
 
-Every lab directory in `<root>/steps/` should contain a `README.md` file with the lab title and the correct command.
+Every lab directory in `<root>/steps/` should contain a `README.md` file whose title matches the lab name.
 
 Example of minimal `README.md`:
 
 ```Markdown
-# 01-getting-started instructions
+# **01-getting-started** instructions
 
 npm run 01-getting-started
 ```
 
 ##### L_007 every lab `README.md` should contains the correct command to start the lab
 
-Every lab directory in `<root>/steps/` should contain a `README.md` file with the lab title and the correct command.
+Every lab directory in `<root>/steps/` should contain a `README.md` file with the correct command to start the lab.
 
 Example of minimal `README.md`:
 
 ```Markdown
 # 01-getting-started instructions
 
-npm run 01-getting-started
+**npm run 01-getting-started**
 ```
 
 Note: this rule is only applied if you have specified `stepCommandPrefix` specified in the `<root>/.sfeir-theme-config.json`.
