@@ -1,19 +1,21 @@
 import {
     getAllLabsFromWorkspace,
     splitLabsAndSolutions,
-} from "../utils/labs.utils";
-import { InfoCommand } from "../cli";
-import { isDefined } from "../utils/fp.utils";
+} from '../utils/labs.utils';
+import { InfoCommand } from '../cli';
+import { isDefined } from '../utils/fp.utils';
 
 export function infoCommand({ rootDir }: InfoCommand) {
     const allLabs = getAllLabsFromWorkspace(rootDir);
     const { labs, labSolutions } = splitLabsAndSolutions(allLabs);
-    console.log([
-        "", //
-        "# Labs", //
-        "", //
-        ...labs.map((lab) => printLab(lab, labSolutions)),
-    ].join("\n"));
+    console.log(
+        [
+            '', //
+            '# Labs', //
+            '', //
+            ...labs.map((lab) => printLab(lab, labSolutions)),
+        ].join('\n')
+    );
 }
 
 function printLab(lab: string, labSolutions: string[]): string {
