@@ -84,6 +84,12 @@ SfeirThemeInitializer.init(formation);
 
 Enjoy!
 
+# CLI
+
+This repo also ships a CLI to check and scaffold your training: it validates slides, labs and assets against the theme's conventions.
+
+See the [CLI documentation](./cli/README.md) for installation, commands and configuration.
+
 # RevealJS
 
 This theme use target for [RevealJS](https://revealjs.com/#/) so all you can do with RevealJS is available with theme.
@@ -139,7 +145,6 @@ See the documentation about all thoses features [here](https://github.com/TalkCo
     - Three theme mode available : institute, school or conf
     - Blur slide
     - Exercices Slides
-- [CLI to help building good training](./cli/README.md)
 
 ## Play with mode theme
 
