@@ -548,6 +548,63 @@ describe('check command', () => {
             expect(getErrors()).toStrictEqual([]);
             expect(getErrors()).toHaveLength(0);
         });
+
+        it('lab slide without command but listed in ignoreCommandCheck [S_005][S_011]', async () => {
+            const rootDir = buildProject({
+                ...configFile({
+                    stepCommandPrefix: 'npm run ',
+                    ignoreCommandCheck: ['01-lab-getting-started-bis.md'],
+                }),
+                ...contributionGuide(),
+                docs: {
+                    assets: {
+                        images: {
+                            'foo.png': imageFile(),
+                        },
+                    },
+                    css: {
+                        'slides.css': slideCssFile(),
+                    },
+                    markdown: {
+                        '01-getting-started.md': '![](./assets/images/foo.png)',
+                        '01-lab-getting-started.md': labSlideFile({
+                            title: 'Getting started',
+                            cmd: 'npm run 01-getting-started',
+                        }),
+                        '01-lab-getting-started-bis.md': labSlideFile({
+                            title: 'Getting started bis',
+                            cmd: '',
+                        }),
+                    },
+                    scripts: {
+                        'slides.js': slideJsFile([
+                            '01-getting-started.md',
+                            '01-lab-getting-started.md',
+                            '01-lab-getting-started-bis.md',
+                        ]),
+                    },
+                    ...web_modules(),
+                },
+                steps: {
+                    ...minimalValidLabStructure('01-getting-started'),
+                    'package.json': packageJsonFile({
+                        workspaces: [
+                            '01-getting-started',
+                            '01-getting-started-solution',
+                        ],
+                        scripts: {
+                            '01-getting-started': '',
+                            '01-getting-started-solution': '',
+                        },
+                    }),
+                },
+            });
+
+            await checkCommandInternal({ type: 'check', rootDir });
+            console.error(getErrors());
+            expect(getErrors()).toStrictEqual([]);
+            expect(getErrors()).toHaveLength(0);
+        });
     });
 
     describe('invalid projects', () => {

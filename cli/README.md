@@ -192,6 +192,14 @@ Every assets here will be ignored. So S_008 will not emit any warning or error.
 
 **Impacts:** `S_008` only.
 
+### ignoreCommandCheck: string[] (optional)
+
+Default: `[]`
+
+Some labs legitimately have no command to run (a browser-only lab, a manual/UI exercise, etc.). List their slide path here (as declared in `slides.js`, e.g. `"05-accessibility-lab.md"`) to exempt them from the command checks below.
+
+**Impacts:** `S_005` and `S_011` are entirely skipped for a listed slide. `S_006` (lab slide format) still applies.
+
 ## Rules
 
 ### Global checks
@@ -318,6 +326,8 @@ Notes:
 ```
 
 The command should start with `stepCommandPrefix` specified in the `<root>/.sfeir-theme-config.json`. This command should also contains an existing lab command.
+
+Note: if a lab genuinely has no command to run, list its slide path in `ignoreCommandCheck` in the `<root>/.sfeir-theme-config.json` to skip this rule (and `S_011`) for it.
 
 ##### S_011 every lab slide should refer an existing lab
 
