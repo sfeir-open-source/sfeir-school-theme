@@ -63,6 +63,9 @@ Init the configuration file (on the training root directory):
 
 ```Bash
 npx sfeir-school-theme init-config
+
+# From other directory:
+npx sfeir-school-theme init-config --rootDir=path/to/training/root/directory
 ```
 
 This command will create `.sfeir-theme-config.json` file.
@@ -109,6 +112,9 @@ This command will give you the lab list
 
 ```Bash
 npx sfeir-school-theme info
+
+# From other directory:
+npx sfeir-school-theme info --rootDir=path/to/training/root/directory
 ```
 
 ```
@@ -138,11 +144,15 @@ Version: 4.0.0-rc-14
 
 ## Configuration files
 
+The `.sfeir-theme-config.json` file (created via `init-config`) lets you override the CLI's default behavior for your training. Every key is optional and has a sane default; each one only affects the specific rules listed below.
+
 ### extraCssFiles: string[] (optional)
 
 Default: `[]`
 
 You can specify here training css files. If you defined new css classes, these classes will be considered for S_009.
+
+**Impacts:** `S_009` only.
 
 ### stepCommandPrefix: string (optional)
 
@@ -164,17 +174,23 @@ For example, if you defined `"stepCommandPrefix": "npm run "`, your lab slide sh
 ### npm run lab-name
 ```
 
+**Impacts:** without it, `L_007` and the strict part of `S_005`/`S_011` are entirely skipped (no check runs at all). `L_001` still runs, but only does a loose substring match on the lab name without requiring the prefix — a false negative risk if the lab name happens to appear elsewhere in the slide.
+
 ### ignoreStepsDirectories: string[] (optional)
 
 Default: `[]`
 
 You can specify here every directories which are not lab but need to be in the `steps` directory (node_modules, common modules, data, etc.)
 
+**Impacts:** every `L_00X` rule. A listed directory is excluded from the lab set entirely, so it is never expected to have a README, a solution, a workspace declaration, etc.
+
 ### ignoreAssets: string[] (optional)
 
 Default: `[]`
 
 Every assets here will be ignored. So S_008 will not emit any warning or error.
+
+**Impacts:** `S_008` only.
 
 ## Rules
 
@@ -503,26 +519,26 @@ npm run 01-getting-started
 
 ##### L_006 every lab `README.md` should have correct title
 
-Every lab directory in `<root>/steps/` should contain a `README.md` file with the lab title and the correct command.
+Every lab directory in `<root>/steps/` should contain a `README.md` file whose title matches the lab name.
 
 Example of minimal `README.md`:
 
 ```Markdown
-# 01-getting-started instructions
+# **01-getting-started** instructions
 
 npm run 01-getting-started
 ```
 
 ##### L_007 every lab `README.md` should contains the correct command to start the lab
 
-Every lab directory in `<root>/steps/` should contain a `README.md` file with the lab title and the correct command.
+Every lab directory in `<root>/steps/` should contain a `README.md` file with the correct command to start the lab.
 
 Example of minimal `README.md`:
 
 ```Markdown
 # 01-getting-started instructions
 
-npm run 01-getting-started
+**npm run 01-getting-started**
 ```
 
 Note: this rule is only applied if you have specified `stepCommandPrefix` specified in the `<root>/.sfeir-theme-config.json`.
