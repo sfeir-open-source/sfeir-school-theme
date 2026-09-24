@@ -12,7 +12,6 @@ import {
     isSlideFileExists,
     readSlideFile,
 } from '../../utils/slide.utils';
-import { docsAssetPath, slidePath } from '../../utils/path.utils';
 import {
     getAllCssContent,
     getCssClassUsedInSlide,
@@ -24,10 +23,11 @@ import {
     isLabCommandExists,
 } from '../../utils/labs.utils';
 import { isDefined, isDefinedAndNotEmpty } from '../../utils/fp.utils';
+import { slidePath, slidesAssetPath } from '../../utils/path.utils';
 import { ConfigJson } from '../../utils/config.utils';
 import { check } from '../../utils/assert.utils';
 
-export async function checkDocs(rootDir: string, config: ConfigJson) {
+export async function checkSlides(rootDir: string, config: ConfigJson) {
     let slideFilesFromSlidesJs;
     try {
         slideFilesFromSlidesJs = await getSlideFilesFromSlidesJs(rootDir);
@@ -139,7 +139,7 @@ function checkLabSlideFile(
         if (
             hasCommandRow &&
             !ignoreCommandCheck &&
-            isDefinedAndNotEmpty(config.stepCommandPrefix)
+            isDefinedAndNotEmpty(config.labCommandPrefix)
         ) {
             check(
                 'S_005',
@@ -154,7 +154,7 @@ function checkLabSlideFile(
             );
             check(
                 'S_011',
-                `"${slideFile?.path}" lab should have a dedicated directory in \`steps\``,
+                `"${slideFile?.path}" lab should have a dedicated directory in \`labs\``,
                 () => {
                     const commandTarget = getLabCommandTarget(
                         commandRow,
@@ -192,7 +192,7 @@ function checkLabCommand(
     for (const labCommand of labsCommands) {
         check('L_001', `"${labCommand}" should be used in a lab slide`, () => {
             return allLabSlides.some((slide) =>
-                slide.includes(`${config.stepCommandPrefix}${labCommand}`)
+                slide.includes(`${config.labCommandPrefix}${labCommand}`)
             );
         });
     }
@@ -200,7 +200,7 @@ function checkLabCommand(
 
 function checkImagesFs(rootDir: string, config: ConfigJson) {
     const ignoredImages = config.ignoreAssets.map((ignored) =>
-        docsAssetPath(rootDir, ignored)
+        slidesAssetPath(rootDir, ignored)
     );
     const imagesFromFs = getImagesPathFromFs(rootDir).filter(
         (imagesPath) => !ignoredImages.includes(imagesPath)

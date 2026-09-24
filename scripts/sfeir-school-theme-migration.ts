@@ -3,6 +3,7 @@
 
 import fs from 'fs';
 import path from 'path';
+import { fileURLToPath } from 'node:url';
 
 // #region Règles de migration
 
@@ -69,6 +70,192 @@ const V3_TO_V4_RULES = {
         },
     ],
 };
+
+// Règles V4 -> V5 (see ADR-0001, ADR-0002): structural rename, not a per-file
+// content rewrite, so the rules are directory/key renames rather than regexes.
+const V4_TO_V5_RULES = {
+    RENAME_DIRECTORIES: [
+        {
+            from: 'docs',
+            to: 'slides',
+            // Only these entries move; anything else stays in docs/ (ADR-0001
+            // reserves it for ADRs and other documentation).
+            onlyEntries: ['scripts', 'markdown', 'assets', 'css', 'web_modules'],
+        },
+        { from: 'steps', to: 'labs' },
+    ],
+    RENAME_CONFIG_KEYS: [
+        { from: 'stepCommandPrefix', to: 'labCommandPrefix' },
+        { from: 'ignoreStepsDirectories', to: 'ignoreLabsDirectories' },
+    ],
+};
+
+// #endregion
+
+// #region Structural migration engine (drives V4_TO_V5_RULES)
+
+function renameDirectory(
+    rootDir: string,
+    rule: { from: string; to: string; onlyEntries?: string[] },
+) {
+    const fromDir = path.join(rootDir, rule.from);
+    const toDir = path.join(rootDir, rule.to);
+
+    if (!fs.existsSync(fromDir)) {
+        return;
+    }
+    if (fs.existsSync(toDir)) {
+        console.log(`${rule.to}/ already exists, skipping ${rule.from}/ -> ${rule.to}/ migration.`);
+        return;
+    }
+
+    if (!rule.onlyEntries) {
+        fs.renameSync(fromDir, toDir);
+        console.log(`Renamed ${rule.from}/ to ${rule.to}/.`);
+        return;
+    }
+
+    const entries = fs.readdirSync(fromDir)
+        .filter((entry) => rule.onlyEntries!.includes(entry));
+    if (entries.length === 0) {
+        console.log(`No known content found in ${rule.from}/ to move to ${rule.to}/.`);
+        return;
+    }
+
+    console.log(`Migrating ${rule.from}/ content to ${rule.to}/ (${entries.join(', ')})...`);
+    fs.mkdirSync(toDir, { recursive: true });
+    for (const entry of entries) {
+        fs.renameSync(path.join(fromDir, entry), path.join(toDir, entry));
+    }
+
+    const remaining = fs.readdirSync(fromDir);
+    if (remaining.length === 0) {
+        fs.rmdirSync(fromDir);
+        console.log(`${rule.from}/ was left empty after migration and has been removed.`);
+    } else {
+        console.log(`${rule.from}/ still contains ${remaining.join(', ')} (kept).`);
+    }
+}
+
+function migrateConfigKeys(rootDir: string) {
+    const configPath = path.join(rootDir, '.sfeir-theme-config.json');
+    if (!fs.existsSync(configPath)) {
+        return;
+    }
+
+    const raw = JSON.parse(fs.readFileSync(configPath, 'utf-8'));
+    let changed = false;
+    for (const { from, to } of V4_TO_V5_RULES.RENAME_CONFIG_KEYS) {
+        if (from in raw) {
+            raw[to] = raw[from];
+            delete raw[from];
+            changed = true;
+        }
+    }
+
+    if (changed) {
+        fs.writeFileSync(configPath, JSON.stringify(raw, null, 4) + '\n', 'utf-8');
+        console.log(
+            'Migrated .sfeir-theme-config.json keys: ' +
+            V4_TO_V5_RULES.RENAME_CONFIG_KEYS.map((r) => `${r.from} -> ${r.to}`).join(', '),
+        );
+    }
+}
+
+// This script ships two ways: compiled to dist/sfeir-school-theme-migration.mjs
+// (sibling of dist/adr/ and dist/migration-templates/), or run directly from
+// scripts/ during local development (sibling of docs/adr/ one level up, and
+// of scripts/migration-templates/). Try both layouts, in that order.
+function resolveMigrationAsset(...candidateRelativePaths: string[]): string | undefined {
+    const here = path.dirname(fileURLToPath(import.meta.url));
+    return candidateRelativePaths
+        .map((relativePath) => path.join(here, relativePath))
+        .find((candidate) => fs.existsSync(candidate));
+}
+
+// A destination project's docs/adr/ numbering is independent of this
+// repo's (see ADR-0000: "one flat sequence per repository"), and may
+// already contain other entries by the time it's migrated. So a seeded
+// ADR's number is never copied verbatim from this repo: it is recomputed
+// as the next available number in the destination, and only its title
+// heading's own number is rewritten to match — the rest of the content,
+// including cross-references to this repo's other ADR numbers, is left
+// as-is.
+function hasAdrWithSlug(adrDir: string, slug: string): boolean {
+    if (!fs.existsSync(adrDir)) {
+        return false;
+    }
+    return fs.readdirSync(adrDir).some((name) => name.endsWith(`-${slug}.md`));
+}
+
+function nextAdrNumber(adrDir: string): string {
+    const entries = fs.existsSync(adrDir) ? fs.readdirSync(adrDir) : [];
+    const numbers = entries
+        .map((name) => name.match(/^(\d{4})-/)?.[1])
+        .filter((n): n is string => n !== undefined)
+        .map(Number);
+    const next = numbers.length > 0 ? Math.max(...numbers) + 1 : 0;
+    return String(next).padStart(4, '0');
+}
+
+function seedNumberedAdr(adrDir: string, slug: string, sourcePath: string | undefined) {
+    if (hasAdrWithSlug(adrDir, slug)) {
+        console.log(`An ADR ending in "-${slug}.md" already exists in ${adrDir}, leaving it untouched.`);
+        return;
+    }
+    if (!sourcePath) {
+        console.error(`Could not find the bundled ADR source for "${slug}". Skipping.`);
+        return;
+    }
+
+    const oldNumber = path.basename(sourcePath).match(/^(\d{4})-/)?.[1];
+    const newNumber = nextAdrNumber(adrDir);
+    const targetPath = path.join(adrDir, `${newNumber}-${slug}.md`);
+
+    let content = fs.readFileSync(sourcePath, 'utf-8');
+    if (oldNumber) {
+        content = content.replace(`# ${oldNumber}.`, `# ${newNumber}.`);
+    }
+
+    fs.writeFileSync(targetPath, content, 'utf-8');
+    console.log(`Created ${targetPath}.`);
+}
+
+// See ADR-0001: docs/ is reserved for ADRs even after its slide content
+// moves to slides/. A migrated project must end up with a docs/adr/ that at
+// least states it adopts ADRs ([[0000-adopt-adrs]]) and complies with the
+// theme's own ones ([[0001-comply-with-theme-adrs]]) — existing files are
+// never overwritten.
+function ensureAdrBootstrap(rootDir: string) {
+    const adrDir = path.join(rootDir, 'docs', 'adr');
+    fs.mkdirSync(adrDir, { recursive: true });
+
+    seedNumberedAdr(
+        adrDir,
+        'adopt-adrs',
+        resolveMigrationAsset(
+            path.join('adr', '0000-adopt-adrs.md'), // published dist/ layout
+            path.join('..', 'docs', 'adr', '0000-adopt-adrs.md'), // local dev layout
+        ),
+    );
+
+    seedNumberedAdr(
+        adrDir,
+        'comply-with-theme-adrs',
+        resolveMigrationAsset(
+            path.join('adr', '0001-comply-with-theme-adrs.md'),
+            path.join('..', 'docs', 'adr', '0001-comply-with-theme-adrs.md'),
+        ),
+    );
+}
+
+function runV4ToV5StructuralMigration(rootDir: string) {
+    for (const rule of V4_TO_V5_RULES.RENAME_DIRECTORIES) {
+        renameDirectory(rootDir, rule);
+    }
+    migrateConfigKeys(rootDir);
+    ensureAdrBootstrap(rootDir);
+}
 
 // #endregion
 
@@ -319,41 +506,79 @@ function findFiles(dir: string, filter: RegExp): string[] {
     return results;
 }
 
-function main() {
-    const currentDir = process.cwd();
-    let docsPath: string;
-    // Vérifier si on est dans le dossier docs ou dans la racine du projet
-    if (path.basename(currentDir) === 'docs') {
-        // Cas 2: le script est dans docs/, on traite le dossier courant
-        docsPath = currentDir;
-        console.log(
-            `Script detected in docs directory. Starting migration in: ${docsPath}`
-        );
-    } else {
-        // Cas 1: le script est à la racine, on cherche le dossier docs/
-        docsPath = path.join(currentDir, 'docs');
-        console.log(
-            `Script detected in project root. Starting migration in: ${docsPath}`
-        );
-    }
+function runV3ToV4ContentMigration(rootDir: string) {
+    // A project already migrated to V5 has no docs/ left to walk; fall back
+    // to slides/ so this transition still works when re-run in isolation.
+    const slidesDir = path.join(rootDir, 'slides');
+    const legacyDocsDir = path.join(rootDir, 'docs');
+    const targetDir = fs.existsSync(slidesDir) ? slidesDir : legacyDocsDir;
 
-    // Vérifier que le dossier docs existe
-    if (!fs.existsSync(docsPath)) {
-        console.error(`Error: docs directory not found at ${docsPath}`);
+    if (!fs.existsSync(targetDir)) {
+        console.error(`Error: neither slides/ nor docs/ found under ${rootDir}`);
         return;
     }
-    console.log(`Starting migration in: ${docsPath}`);
-    const filesToMigrate = findFiles(docsPath, /\.(md|html|js)$/);
+
+    console.log(`Starting content migration in: ${targetDir}`);
+    const filesToMigrate = findFiles(targetDir, /\.(md|html|js)$/);
 
     if (filesToMigrate.length === 0) {
-        console.log(
-            'No relevant files (.md, .html, .js) found in the docs directory.'
-        );
+        console.log('No relevant files (.md, .html, .js) found to migrate.');
         return;
     }
 
     console.log(`Found ${filesToMigrate.length} files to migrate.`);
     filesToMigrate.forEach(migrateFile);
+}
+
+type MigrationTransition = {
+    from: string;
+    to: string;
+    run: (rootDir: string) => void;
+};
+
+const TRANSITIONS: MigrationTransition[] = [
+    { from: 'v3', to: 'v4', run: runV3ToV4ContentMigration },
+    { from: 'v4', to: 'v5', run: runV4ToV5StructuralMigration },
+];
+
+function parseVersionArg(argv: string[], flag: string): string | undefined {
+    return argv.find((arg) => arg.startsWith(`${flag}=`))?.split('=')[1];
+}
+
+function selectTransitions(argv: string[]): MigrationTransition[] {
+    const from = parseVersionArg(argv, '--from');
+    const to = parseVersionArg(argv, '--to');
+
+    if (!from && !to) {
+        // No flags: run every known transition, oldest first.
+        return TRANSITIONS;
+    }
+
+    const selected = TRANSITIONS.filter(
+        (t) => (!from || t.from === from) && (!to || t.to === to),
+    );
+    if (selected.length === 0) {
+        throw new Error(
+            `No known migration matches --from=${from ?? '*'} --to=${to ?? '*'}. ` +
+            `Known transitions: ${TRANSITIONS.map((t) => `${t.from}->${t.to}`).join(', ')}`,
+        );
+    }
+    return selected;
+}
+
+function main() {
+    const currentDir = process.cwd();
+    // Legacy convenience: running the script from inside the old docs/ (now
+    // slides/) directory should still resolve the project root correctly.
+    const rootDir = ['docs', 'slides'].includes(path.basename(currentDir))
+        ? path.dirname(currentDir)
+        : currentDir;
+
+    const transitions = selectTransitions(process.argv.slice(2));
+    for (const transition of transitions) {
+        console.log(`\n=== Migration ${transition.from} -> ${transition.to} ===`);
+        transition.run(rootDir);
+    }
 
     console.log('\nMigration complete!');
     console.log('Please review the changes carefully.');

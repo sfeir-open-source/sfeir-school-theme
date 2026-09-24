@@ -3,7 +3,7 @@ import fs from 'node:fs';
 
 const README = fs.readFileSync('./cli/README.md', 'utf-8');
 const RULE_FILES = [
-    './cli/command/check/check-docs.ts',
+    './cli/command/check/check-slides.ts',
     './cli/command/check/check-labs.ts',
     './cli/command/check/check-root-dir.ts',
 ].map((file) => fs.readFileSync(file, 'utf-8'));
