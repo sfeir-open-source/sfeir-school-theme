@@ -122,16 +122,25 @@ function checkLabSlideFile(
     const labSlides = getLabSlides(slideFilesFromSlidesJs);
     const labSlidesDirectory = getAllLabsFromFs(rootDir, config);
     for (const slideFile of labSlides) {
+        const ignoreCommandCheck = config.ignoreCommandCheck.includes(
+            slideFile.path
+        );
         const labSlideContent = readSlideFile(rootDir, slideFile.path) ?? '';
         const commandRow = getLabSlideCommandRow(labSlideContent, config)!;
-        const hasCommandRow = check(
-            'S_005',
-            `"${slideFile?.path}" should contains the command to run the exercise`,
-            () => {
-                return isDefined(commandRow) && commandRow.length > 0;
-            }
-        );
-        if (hasCommandRow && isDefinedAndNotEmpty(config.stepCommandPrefix)) {
+        const hasCommandRow =
+            ignoreCommandCheck ||
+            check(
+                'S_005',
+                `"${slideFile?.path}" should contains the command to run the exercise`,
+                () => {
+                    return isDefined(commandRow) && commandRow.length > 0;
+                }
+            );
+        if (
+            hasCommandRow &&
+            !ignoreCommandCheck &&
+            isDefinedAndNotEmpty(config.stepCommandPrefix)
+        ) {
             check(
                 'S_005',
                 `"${slideFile?.path}" should contains the valid command to run the exercise`,
