@@ -1,5 +1,7 @@
 {
     "extraCssFiles": [],
     "labCommandPrefix": "",
-    "ignoreLabsDirectories": []
+    "ignoreLabsDirectories": [],
+    "ignoreAssets": [],
+    "ignoreCommandCheck": []
 }

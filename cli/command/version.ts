@@ -1,5 +1,5 @@
-import packageJson from "../../package.json";
+import packageJson from '../../package.json';
 
 export function versionCommand() {
-    console.log("Version: " + packageJson.version);
+    console.log('Version: ' + packageJson.version);
 }

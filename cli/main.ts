@@ -1,7 +1,7 @@
 #!/usr/bin/env node
-import { CheckError } from "./utils/assert.utils";
-import { parseArgs } from "./cli";
-import { runCommand } from "./command/run";
+import { CheckError } from './utils/assert.utils';
+import { parseArgs } from './cli';
+import { runCommand } from './command/run';
 
 (async () => {
     try {
@@ -10,7 +10,9 @@ import { runCommand } from "./command/run";
         if (error instanceof CheckError) {
             console.error(error.message);
             console.error('');
-            console.error(`You can call "sfeir-school-theme explain ${error.ruleId}" to have more details.`);
+            console.error(
+                `You can call "sfeir-school-theme explain ${error.ruleId}" to have more details.`
+            );
             console.error('');
             process.exit(1);
         }
