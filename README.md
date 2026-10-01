@@ -142,7 +142,9 @@ See the documentation about all thoses features [here](https://github.com/TalkCo
 
 ## Play with mode theme
 
-Lots of trainings given by SFEIR School program are also available with the paid program SFEIR Institute (training organism of SFEIR company). The program SFEIR School has a main theme color which is green whereas SFEIR Institute has a main theme color which is blue. To use the same support for both programs, V3 makes it possible to switch easily from one theme to another.
+Lots of trainings given by SFEIR School program are also available with the paid program SFEIR Institute (training organism of SFEIR company). Since v5 both programs share the **SFEIR 2026 identity**: Epilogue and Space Grotesk type, copper `#E4AA5D` as the single fill colour, warm neutrals, and photos where they matter — gold dust, gold arc or dark rock on covers, dividers and dark slides, over a plain off-white surface on content slides. Cards are translucent glass, rounded at 12 px, with no shadows and no gradients.
+
+The two programs differ by a **signature colour** on small elements only (eyebrow, list markers, title underline, transition line, level chips) and by the cover lockup: SFEIR Institute is the corporate copper throughout; SFEIR School carries an Émeraude green signature (`#0D5A2E` on light, `#6BC68F` on dark) while its fills, numerals and photos stay copper. Everything else is identical, so one deck serves both programs by switching `data-theme`. See `docs/charte-2026/06-authoring-guide.md` for how to write on-brand slides.
 
 To this end, you have two possibilities:
 
@@ -187,9 +189,11 @@ https://sfeir-school-theme.netlify.app/index.html?data-theme=school#/
 
 https://sfeir-school-theme.netlify.app/index.html?data-theme=conf#/
 
-The default value is "school" mode -> Green theme.
+The default value is "school" mode.
 
 Here is an example of first slide according to if you set mode to institute or not.
+
+> **Note:** the screenshots in this README predate the 2026 identity and will be regenerated.
 
 ### Institute mode :
 
@@ -205,12 +209,11 @@ Here is an example of first slide according to if you set mode to institute or n
 
 Here are the impacts of the mode :
 
-- Change the first slide
-- If you use SFEIR background (`transition-bg-sfeir-1` to `transition-bg-sfeir-3`), the background use will be green or blue
-- The underline of titles in transitions slides
-- The exercice slide
-- The color of feather icons
-- The header of tables
+- The first slide: lockup (`[sfeir] School` / `[sfeir] Institute`) and the eyebrow `[ SFEIR SCHOOL | TECHNO ]`
+- The signature colour (`--sfeir-accent`): eyebrows, list markers, the underline of titles, the line under transition titles, level chips, the colour of feather icons, credits
+- `conf` removes the lockup, the eyebrow, the corner mark and the tagline
+
+Backgrounds, fills, cards, code blocks and table headers are the same in every mode.
 
 ## I18N your slides
 
@@ -255,8 +258,10 @@ Simply add a query parameter in the URL `data-lang` with the wanted langage afte
 
 ![](./docs/images/first-slide.png)
 
-- Attribute: `sfeir-level` could change from 1 to 3
-- Attribute: `sfeir-techno` display the technology of the SFEIR school in the badge of SFEIR school.
+- Attribute: `sfeir-level` could change from 1 to 3 — rendered as three pill chips next to the eyebrow, filled up to the level
+- Attribute: `sfeir-techno` display the technology of the SFEIR school — rendered in the eyebrow `[ SFEIR SCHOOL | PWA ]` above the title (`[ SFEIR SCHOOL ]` when omitted)
+
+The cover sits on the gold-dust photo, with the program lockup top-left and the SFEIR wordmark over the tagline bottom-right.
 
 ### Speaker Slide
 
@@ -304,30 +309,28 @@ You can also have up to 6 badge
 
 ![](./docs/images/transition-slide.png)
 
-You can use those class for transitions slides :
+A transition sits on the gold-arc photo by default, title bottom-left. You can use those class for transitions slides :
 
-- `blue`: the text underline of transition will be set to blue
-- `green`: the text underline of transition will be set to blue
 - `left`: the text will be left aligned
 - `right`: the text will be right aligned
 - `top`: the text will be stick to the top
 - `bottom`: the text will be stick to the bottom
-- `bg-white` / `bg-blue` / `bg-green` : the background will be in a different color
-- `transition-bg-sfeir-1` -> `transition-bg-sfeir-3` : different background images linked to theme mode (school or institute)
-- `transition-bg-green-1` -> `transition-bg-green-6` : different green backgrounds images
-- `transition-bg-blue-1` -> `transition-bg-blue-3` : different blue backgrounds images
+- `bg-plaster`, `bg-dust`, `bg-arc`, `bg-rock`, `bg-flecks`, `bg-bokeh`, `bg-brown`, `bg-sand`, `bg-pour` : pick another photo (see "Photo backgrounds" below)
+- `bg-overlay` : add a dark scrim over the photo for weak projectors
+- `transition-bg-sfeir-1` -> `transition-bg-sfeir-3` : the gold-dust, gold-arc and slate-rock photos
+- _Deprecated, removed in v6_: `blue` / `green` (no-op, the underline is the program signature), `bg-white` / `bg-blue` / `bg-green`, `transition-bg-green-1` -> `-6`, `transition-bg-blue-1` -> `-3` (each resolves to one of the photos above)
 
-## Transition with background text in blue or green
+## Transition with the program signature
+
+The underline under a transition title is the program signature colour: Émeraude in `school`, copper in `institute`. The `blue` and `green` modifiers still parse but change nothing.
 
 ```md
-<!-- .slide: class="transition blue" -->
+<!-- .slide: class="transition" -->
 
-# Transition blue
+# Transition
 ```
 
 ![](./docs/images/transition-blue.png)
-
-or in `green`
 
 ![](./docs/images/transition-green.png)
 
@@ -353,32 +356,36 @@ or in `green`
 
 ![](./docs/images/transition-bottom.png)
 
-## Specifics Colors Backgrounds
+## Photo backgrounds
 
-Here is the list of possible backgrounds:
+Content slides sit on a plain off-white surface; covers, dividers and dark slides sit on a photo from the 2026 identity. Add one of these classes to any slide to pick a photo, plaster wall included. Dark photos switch the text and the accent to their on-dark values automatically, and a flat `#181A1F` sits under every dark photo while it loads.
 
 ```md
-<!-- .slide: class="transition bg-white" -->
+<!-- .slide: class="bg-rock" -->
 
-# Transition
+# Dense text on a dark photo
+
+<!-- .slide: class="bg-sand bg-overlay" -->
+
+# The one photo that needs the scrim
 ```
 
-- `bg-white`
-  ![](./docs/images/sfeir-bg-white.png)
+| Class        | Photo                       | Use                                              |
+| ------------ | --------------------------- | ------------------------------------------------ |
+| `bg-plaster` | off-white plaster (light)   | opt-in textured light background                 |
+| `bg-dust`    | gold particles on black     | covers, closings, hero statements                |
+| `bg-arc`     | gold horizon arc            | section dividers (the `transition` default)      |
+| `bg-rock`    | dark slate                  | dense text on dark — the safest                  |
+| `bg-flecks`  | charcoal rock, gold flecks  | dark content                                     |
+| `bg-bokeh`   | warm bokeh discs            | statements; keep text off the discs              |
+| `bg-brown`   | soft copper blur            | dense text on dark                               |
+| `bg-sand`    | gold glitter, bright centre | **always with `bg-overlay`**                     |
+| `bg-pour`    | sand trickle, portrait      | statements; also the exercice band               |
+| `bg-overlay` | modifier                    | 55 % dark scrim over any photo for weak projectors |
 
-- `bg-blue`
-  ![](./docs/images/sfeir-bg-blue.png)
+## Transition background SFEIR
 
-- `bg-green`
-  ![](./docs/images/sfeir-bg-green.png)
-
-## Transition background SFEIR and green and blue
-
-Here is the list of possible grey background
-
-- bg-sfeir-1 = bg-green-1 or bg-blue-1
-- bg-sfeir-2 = bg-green-2 or bg-blue-2
-- bg-sfeir-3 = bg-green-3 or bg-blue-3
+`transition-bg-sfeir-1` to `-3` are kept and map to the gold-dust, gold-arc and slate-rock photos. The green and blue numbered variants are deprecated and each resolves to one of the photos above (the screenshots below show their v4 rendering).
 
 ```md
 <!-- .slide: class="transition-bg-sfeir-1" -->
