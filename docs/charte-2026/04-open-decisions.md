@@ -320,3 +320,6 @@ All five arbitrated. D1 was revised on 2026-09-14 (Ocre / Émeraude replace Cuiv
 Bronze) and again on 2026-10-01 with D3 and D4, after the official material landed
 (`05-reference-analysis.md`). One external item stays open under D3: the official School
 lockup, requested from the brand team. Phase 0 is closed.
+
+
+**D1 amendment, 2026-10-01 (maintainer):** the Émeraude-as-signature-only rule is withdrawn. In School, the fill tier (bullets, numerals, stats, quote marks, filled chips) is Émeraude too, with Noir as its on-fill ink; photos and neutrals stay shared. Institute is unchanged.

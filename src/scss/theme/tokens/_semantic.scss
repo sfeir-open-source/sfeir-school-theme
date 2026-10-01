@@ -21,7 +21,7 @@
     // Program-dependent: eyebrow, list markers, title underline, transition line,
     // level chips, separators. Émeraude on School, Cuivre on Institute.
     --sfeir-accent: var(--sfeir-ramp-accent);
-    // Program-independent: copper in both programs. Émeraude is never a fill (D1).
+    // Follows the program ramp: Émeraude in School, copper in Institute.
     --sfeir-accent-fill: var(--sfeir-ramp-fill);
     --sfeir-on-accent-fill: var(--sfeir-ramp-on-fill);
     --sfeir-accent-wash: var(--sfeir-ramp-wash);
@@ -53,14 +53,15 @@
     /**
     * The active program ramp. Redefined under [data-theme] in _context.scss.
     *
-    * School: Émeraude carries the signature tiers only; fill, on-fill and wash are the
-    * corporate copper, identical to Institute.
+    * School: Émeraude carries every tier, fill included, so bullets, numerals, stats,
+    * quote marks and filled chips are green. The only text colour that clears AA on
+    * the Émeraude fill is Noir (4.95:1).
     */
     --sfeir-ramp-accent: var(--sfeir-emeraude-dark);
     --sfeir-ramp-accent-on-dark: var(--sfeir-emeraude-medium);
-    --sfeir-ramp-fill: var(--sfeir-cuivre-poli);
-    --sfeir-ramp-on-fill: var(--sfeir-carbone);
-    --sfeir-ramp-wash: var(--sfeir-sable);
+    --sfeir-ramp-fill: var(--sfeir-emeraude-primary);
+    --sfeir-ramp-on-fill: var(--sfeir-noir);
+    --sfeir-ramp-wash: var(--sfeir-emeraude-light);
     --sfeir-ramp-deep: var(--sfeir-emeraude-dark);
 
     /**
