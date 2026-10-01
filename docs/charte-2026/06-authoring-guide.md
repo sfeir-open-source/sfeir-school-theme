@@ -15,7 +15,7 @@ A slide never names the program: it reads roles, resolved per program and polari
 | What changes with the program | School                                   | Institute               |
 | ----------------------------- | ---------------------------------------- | ----------------------- |
 | Signature (`--sfeir-accent`)  | Émeraude `#0D5A2E` light / `#6BC68F` dark | copper `#845400` / `#E4AA5D` |
-| Fills, numerals, wash         | copper, identical                        | copper, identical       |
+| Fills, numerals, wash         | Émeraude `#2E8B57` / `#C8F5D6`           | copper `#E4AA5D` / `#F0C387` |
 | Photos, cards, neutrals, marks| identical                                | identical               |
 | Cover lockup and eyebrow      | `[sfeir] School`, `[ SFEIR SCHOOL \| … ]` | `[sfeir] Institute`, `[ SFEIR INSTITUTE \| … ]` |
 
@@ -70,10 +70,10 @@ on an HTML tag. All read semantic roles: correct in both programs, on both polar
 | Class             | What it is                                                     | Rule                              |
 | ----------------- | -------------------------------------------------------------- | --------------------------------- |
 | `eyebrow`         | Space Grotesk caps, 32 px, signature colour                    | one per slide, above the title; type the brackets and `\|` yourself |
-| `stat` + `stat-label` | 208 px Space Grotesk Medium copper numeral + caps label    | up to three per slide             |
-| `chip`, `chip-filled` | pill outlined in the signature; filled = copper            | short labels: level, track, "new" |
+| `stat` + `stat-label` | 208 px Space Grotesk Medium numeral in the program colour + caps label    | up to three per slide             |
+| `chip`, `chip-filled` | pill outlined in the signature; filled = program fill           | short labels: level, track, "new" |
 | `glass`           | translucent card, dark glass on dark photos, white on light    | the only card on a photo          |
-| `pull-quote`      | copper left rule, italic; on a `>` blockquote                  | one per slide                     |
+| `pull-quote`      | program-coloured left rule, italic; on a `>` blockquote                  | one per slide                     |
 | `separator`       | 1 px warm hairline, on `<hr>`                                  |                                   |
 
 ```markdown
@@ -126,7 +126,7 @@ Un bloc translucide, comme ceux du MasterPrez.
 ## 5. Two rules that keep a deck on-brand
 
 - **One accent per slide.** The signature colour stays on small elements (eyebrow,
-  markers, chips, a rule); large colour is the copper fill (`stat`, `chip-filled`) or a
+  markers, chips, a rule); large colour is the program fill (`stat`, `chip-filled`) or a
   photo. Never a second hue.
 - **No literal hex, no literal radius.** A per-school stylesheet reads roles:
   `var(--sfeir-accent)`, `var(--sfeir-accent-fill)`, `var(--sfeir-on-surface)`,
@@ -146,6 +146,6 @@ Un bloc translucide, comme ceux du MasterPrez.
 | Epilogue 900, `letter-spacing: 0.16em` on labels              | the official deck uses ExtraBold 800 and no tracking                          | `--sfeir-weight-display`, `--sfeir-tracking-label` |
 | `#E4AA5D` text on a light slide, `--sfeir-taupe` as text      | 1.95:1 and 2.30:1 on Craie                                                     | `--sfeir-accent` (resolves to `#845400` on light), `--sfeir-on-surface-muted` |
 | `·` as eyebrow separator, generated brackets                  | the deck types ` \| ` and `[ … ]`                                             | type them in the Markdown                 |
-| A green fill, numeral or background in School                 | Émeraude is a signature, never a surface (D1)                                 | copper `stat`, `chip-filled`, photos      |
+| A hard-coded copper or green hex on a School or Institute slide | cannot follow the program                                                     | `stat`, `chip-filled`, `--sfeir-accent`   |
 | `bg-sand` without `bg-overlay`                                | mid-light photo; text fails on the bright centre                               | `bg-sand bg-overlay`, or `bg-brown`       |
 | Body text under 40 px to fit more                             | the documented training-room floor                                             | split the slide                           |

@@ -18,7 +18,7 @@
 }
 
 .reveal {
-    // The official master uses copper bullets in both programs.
+    // Bullets and numerals take the program fill (Émeraude in School, copper in Institute).
     li::marker {
         color: var(--sfeir-accent-fill);
     }
