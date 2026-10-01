@@ -1,0 +1,415 @@
+{
+  "generated": "2026-10-01",
+  "root": "public/images",
+  "assets": [
+    {
+      "file": "backgrounds/bg-bokeh-dark.webp",
+      "source": "design/charte-2026/Nouvelle Charte Graphique Groupe SFEIR 2026-2027/FONDS/AdobeStock_1575367686.jpeg",
+      "role": "layout-picture",
+      "usedBy": [
+        "GROUPE SFEIR MasterPrez.pptx: layout SECTION_TITLE_AND_DESCRIPTION_1_1_1_1, SECTION_TITLE_AND_DESCRIPTION_1_1_1_1_1, SECTION_TITLE_AND_DESCRIPTION_1_1_1_1_1_1, SECTION_TITLE_AND_DESCRIPTION_1_1_1_2, SECTION_TITLE_AND_DESCRIPTION_1_1_1_3, TITLE_AND_TWO_COLUMNS_1_2",
+        "GROUPE SFEIR MasterPrez.pptx: slide slide21.xml",
+        "Theme SFEIR 26_27.pptx: layout SECTION_TITLE_AND_DESCRIPTION_1_1_1_1_1_1, SECTION_TITLE_AND_DESCRIPTION_1_1_1_1_2, SECTION_TITLE_AND_DESCRIPTION_1_1_1_2, SECTION_TITLE_AND_DESCRIPTION_1_1_1_3, TITLE_AND_TWO_COLUMNS_1_2"
+      ],
+      "width": 1920,
+      "height": 1280,
+      "bytes": 132086,
+      "dominantColor": "#403023",
+      "polarity": "dark",
+      "description": "Warm bokeh light discs on near-black (WebP q80)"
+    },
+    {
+      "file": "backgrounds/bg-brown-blur-dark.webp",
+      "source": "design/charte-2026/Nouvelle Charte Graphique Groupe SFEIR 2026-2027/FONDS/AdobeStock_680975112.jpeg",
+      "role": "fonds-background",
+      "usedBy": [
+        "fonds-only"
+      ],
+      "width": 1920,
+      "height": 883,
+      "bytes": 37324,
+      "dominantColor": "#37261B",
+      "polarity": "dark",
+      "description": "Soft dark brown and copper blur, no detail; safe behind text; 1 px Gaussian denoise before encoding (WebP q78)"
+    },
+    {
+      "file": "backgrounds/bg-gold-arc-dark.webp",
+      "source": "design/charte-2026/Nouvelle Charte Graphique Groupe SFEIR 2026-2027/FONDS/AdobeStock_1964989013.jpeg",
+      "role": "layout-picture",
+      "usedBy": [
+        "GROUPE SFEIR MasterPrez.pptx: layout SECTION_TITLE_AND_DESCRIPTION_1_1_1_3, TITLE_AND_TWO_COLUMNS_1, TITLE_AND_TWO_COLUMNS_1_1, TITLE_AND_TWO_COLUMNS_1_3, TITLE_AND_TWO_COLUMNS_2_1",
+        "GROUPE SFEIR MasterPrez.pptx: slide slide21.xml, slide22.xml",
+        "Theme SFEIR 26_27.pptx: layout SECTION_TITLE_AND_DESCRIPTION_1_1_1_3, TITLE_AND_TWO_COLUMNS_1, TITLE_AND_TWO_COLUMNS_1_1, TITLE_AND_TWO_COLUMNS_2_1_1"
+      ],
+      "width": 1920,
+      "height": 912,
+      "bytes": 238974,
+      "dominantColor": "#43301A",
+      "polarity": "dark",
+      "description": "Grainy gold horizon arc on black; 0.8 px Gaussian denoise before encoding (WebP q78)"
+    },
+    {
+      "file": "backgrounds/bg-gold-glitter-sand.webp",
+      "source": "design/charte-2026/Nouvelle Charte Graphique Groupe SFEIR 2026-2027/FONDS/AdobeStock_2180014338.jpeg",
+      "role": "layout-picture",
+      "usedBy": [
+        "GROUPE SFEIR MasterPrez.pptx: layout SECTION_TITLE_AND_DESCRIPTION_1_1_1_2, TITLE_AND_TWO_COLUMNS_1_2_1",
+        "GROUPE SFEIR MasterPrez.pptx: slide slide21.xml",
+        "Theme SFEIR 26_27.pptx: layout SECTION_TITLE_AND_DESCRIPTION_1_1_1_2, TITLE_AND_TWO_COLUMNS_1_2_1"
+      ],
+      "width": 1920,
+      "height": 1072,
+      "bytes": 220146,
+      "dominantColor": "#B0895A",
+      "polarity": "mixed",
+      "description": "Macro gold glitter / sand texture, bright centre (WebP q80)"
+    },
+    {
+      "file": "backgrounds/bg-gold-particles-dark.webp",
+      "source": "design/charte-2026/Nouvelle Charte Graphique Groupe SFEIR 2026-2027/FONDS/AdobeStock_1111949534 (1).jpg",
+      "role": "layout-background",
+      "usedBy": [
+        "GROUPE SFEIR MasterPrez.pptx: layout BLANK_1_1_1, TITLE, TITLE_2",
+        "Theme SFEIR 26_27.pptx: layout BLANK_1_1_1, TITLE, TITLE_2"
+      ],
+      "width": 1920,
+      "height": 1633,
+      "bytes": 141326,
+      "dominantColor": "#110E0D",
+      "polarity": "dark",
+      "description": "Gold particle wave / nebula on black; the hero background of the TITLE layouts and the Tagline (WebP q80)"
+    },
+    {
+      "file": "backgrounds/bg-plaster-white.webp",
+      "source": "design/charte-2026/Nouvelle Charte Graphique Groupe SFEIR 2026-2027/FONDS/AdobeStock_1500236871.jpeg",
+      "role": "layout-picture",
+      "usedBy": [
+        "GROUPE SFEIR MasterPrez.pptx: layout SECTION_TITLE_AND_DESCRIPTION_1_1_1_1, SECTION_TITLE_AND_DESCRIPTION_1_1_1_1_1, SECTION_TITLE_AND_DESCRIPTION_1_1_1_1_1_1, SECTION_TITLE_AND_DESCRIPTION_1_1_1_2, SECTION_TITLE_AND_DESCRIPTION_1_1_1_3, TITLE_AND_TWO_COLUMNS_2_1",
+        "GROUPE SFEIR MasterPrez.pptx: master simple-light-2",
+        "GROUPE SFEIR MasterPrez.pptx: slide slide22.xml",
+        "Theme SFEIR 26_27.pptx: layout SECTION_TITLE_AND_DESCRIPTION_1_1_1_1_1_1, SECTION_TITLE_AND_DESCRIPTION_1_1_1_1_2, SECTION_TITLE_AND_DESCRIPTION_1_1_1_2, SECTION_TITLE_AND_DESCRIPTION_1_1_1_3, TITLE_AND_TWO_COLUMNS_2_1_1",
+        "Theme SFEIR 26_27.pptx: master simple-light-2"
+      ],
+      "width": 1920,
+      "height": 1076,
+      "bytes": 225546,
+      "dominantColor": "#E7E8E6",
+      "polarity": "light",
+      "description": "Off-white textured plaster wall; the only light background (WebP q80)"
+    },
+    {
+      "file": "backgrounds/bg-rock-gold-flecks-dark.webp",
+      "source": "design/charte-2026/Theme SFEIR 26_27.pptx!ppt/media/image6.jpg",
+      "role": "layout-background",
+      "usedBy": [
+        "GROUPE SFEIR MasterPrez.pptx: layout ONE_COLUMN_TEXT_1, TITLE_AND_BODY_1_1, TITLE_AND_TWO_COLUMNS_2_2",
+        "Theme SFEIR 26_27.pptx: layout BLANK_1_1, TITLE_AND_BODY_1_1, TITLE_AND_TWO_COLUMNS_2_2"
+      ],
+      "width": 1920,
+      "height": 1280,
+      "bytes": 104240,
+      "dominantColor": "#0B0D0E",
+      "polarity": "dark",
+      "description": "Dark charcoal rock facets with gold flecks; deck-only, 2048x1365 source, no FONDS original (WebP q80)"
+    },
+    {
+      "file": "backgrounds/bg-sand-pour-dark.webp",
+      "source": "design/charte-2026/Nouvelle Charte Graphique Groupe SFEIR 2026-2027/FONDS/front-view-brown-sand-black-surface (1).jpg",
+      "role": "fonds-background",
+      "usedBy": [
+        "fonds-only"
+      ],
+      "width": 1281,
+      "height": 1920,
+      "bytes": 94050,
+      "dominantColor": "#040302",
+      "polarity": "dark",
+      "description": "Vertical gold sand pour on black (portrait orientation) (WebP q80)"
+    },
+    {
+      "file": "backgrounds/bg-slate-rock-dark.webp",
+      "source": "design/charte-2026/Theme SFEIR 26_27.pptx!ppt/media/image9.jpg",
+      "role": "layout-background",
+      "usedBy": [
+        "GROUPE SFEIR MasterPrez.pptx: layout BLANK_1, SECTION_TITLE_AND_DESCRIPTION_1_1_1_1, SECTION_TITLE_AND_DESCRIPTION_1_1_1_3, TITLE_AND_BODY_1",
+        "GROUPE SFEIR MasterPrez.pptx: slide slide9.xml",
+        "Theme SFEIR 26_27.pptx: layout BLANK_1, SECTION_TITLE_AND_DESCRIPTION_1_1_1_1_2, SECTION_TITLE_AND_DESCRIPTION_1_1_1_3, TITLE_AND_BODY_1"
+      ],
+      "width": 1920,
+      "height": 1047,
+      "bytes": 72726,
+      "dominantColor": "#0F0F0D",
+      "polarity": "dark",
+      "description": "Dark slate rock strata, very low key; deck-only, 2048x1117 source, no FONDS original (WebP q80)"
+    },
+    {
+      "file": "logos/logo-institute-grey.png",
+      "source": "design/charte-2026/Nouvelle Charte Graphique Groupe SFEIR 2026-2027/LOGOS/Logo_SFEIR-Institutes_Gris.png",
+      "role": "logo",
+      "usedBy": [
+        "LOGOS/Logo_SFEIR-Institutes_Gris.png"
+      ],
+      "width": 1085,
+      "height": 267,
+      "bytes": 8676,
+      "dominantColor": "#494B5D",
+      "polarity": "dark",
+      "description": "SFEIR Institute lockup, slate grey, 1085x267 raster"
+    },
+    {
+      "file": "logos/logo-institute-grey.svg",
+      "source": "design/charte-2026/Nouvelle Charte Graphique Groupe SFEIR 2026-2027/LOGOS/Logo_SFEIR-Institutes_2020.ai",
+      "role": "logo",
+      "usedBy": [
+        "LOGOS/Logo_SFEIR-Institutes_2020.ai"
+      ],
+      "width": 985,
+      "height": 174,
+      "bytes": 7387,
+      "dominantColor": "#484A5C",
+      "polarity": "dark",
+      "description": "SFEIR Institute lockup, vector from the .ai master, slate grey"
+    },
+    {
+      "file": "logos/logo-institute-grey.webp",
+      "source": "design/charte-2026/Nouvelle Charte Graphique Groupe SFEIR 2026-2027/LOGOS/Logo_SFEIR-Institutes_Gris.png",
+      "role": "logo",
+      "usedBy": [
+        "LOGOS/Logo_SFEIR-Institutes_Gris.png"
+      ],
+      "width": 1085,
+      "height": 267,
+      "bytes": 3002,
+      "dominantColor": "#494B5D",
+      "polarity": "dark",
+      "description": "SFEIR Institute lockup, slate grey, 1085x267 raster (lossless WebP twin)"
+    },
+    {
+      "file": "logos/logo-institute-white.png",
+      "source": "design/charte-2026/Nouvelle Charte Graphique Groupe SFEIR 2026-2027/LOGOS/Logo_SFEIR-Institutes_Blanc_2020.png",
+      "role": "logo",
+      "usedBy": [
+        "LOGOS/Logo_SFEIR-Institutes_Blanc_2020.png"
+      ],
+      "width": 1085,
+      "height": 267,
+      "bytes": 8134,
+      "dominantColor": "#FFFFFF",
+      "polarity": "light",
+      "description": "SFEIR Institute lockup, white, 1085x267 raster"
+    },
+    {
+      "file": "logos/logo-institute-white.svg",
+      "source": "design/charte-2026/Nouvelle Charte Graphique Groupe SFEIR 2026-2027/LOGOS/Logo_SFEIR-Institutes_2020.ai",
+      "role": "logo",
+      "usedBy": [
+        "derived"
+      ],
+      "width": 985,
+      "height": 174,
+      "bytes": 7387,
+      "dominantColor": "#FFFFFF",
+      "polarity": "light",
+      "description": "SFEIR Institute lockup, vector, recoloured white"
+    },
+    {
+      "file": "logos/logo-institute-white.webp",
+      "source": "design/charte-2026/Nouvelle Charte Graphique Groupe SFEIR 2026-2027/LOGOS/Logo_SFEIR-Institutes_Blanc_2020.png",
+      "role": "logo",
+      "usedBy": [
+        "LOGOS/Logo_SFEIR-Institutes_Blanc_2020.png"
+      ],
+      "width": 1085,
+      "height": 267,
+      "bytes": 2990,
+      "dominantColor": "#FFFFFF",
+      "polarity": "light",
+      "description": "SFEIR Institute lockup, white, 1085x267 raster (lossless WebP twin)"
+    },
+    {
+      "file": "logos/logo-sfeir-black.png",
+      "source": "design/charte-2026/Nouvelle Charte Graphique Groupe SFEIR 2026-2027/LOGOS/Sfeir-Gris-designer.png",
+      "role": "logo",
+      "usedBy": [
+        "derived"
+      ],
+      "width": 1319,
+      "height": 443,
+      "bytes": 12481,
+      "dominantColor": "#000000",
+      "polarity": "dark",
+      "description": "SFEIR wordmark, black; recoloured from the grey raster, alpha preserved"
+    },
+    {
+      "file": "logos/logo-sfeir-black.svg",
+      "source": "design/charte-2026/Nouvelle Charte Graphique Groupe SFEIR 2026-2027/LOGOS/Sfeir-Gris-designer.ai",
+      "role": "logo",
+      "usedBy": [
+        "derived"
+      ],
+      "width": 317,
+      "height": 106,
+      "bytes": 2306,
+      "dominantColor": "#000000",
+      "polarity": "dark",
+      "description": "SFEIR wordmark, vector, recoloured black"
+    },
+    {
+      "file": "logos/logo-sfeir-black.webp",
+      "source": "design/charte-2026/Nouvelle Charte Graphique Groupe SFEIR 2026-2027/LOGOS/Sfeir-Gris-designer.png",
+      "role": "logo",
+      "usedBy": [
+        "derived"
+      ],
+      "width": 1319,
+      "height": 443,
+      "bytes": 5150,
+      "dominantColor": "#000000",
+      "polarity": "dark",
+      "description": "SFEIR wordmark, black; recoloured from the grey raster, alpha preserved (lossless WebP twin)"
+    },
+    {
+      "file": "logos/logo-sfeir-burger-grey.png",
+      "source": "design/charte-2026/Nouvelle Charte Graphique Groupe SFEIR 2026-2027/LOGOS/Logo-Corp_Burger-Gris-Charte.png",
+      "role": "logo",
+      "usedBy": [
+        "Theme SFEIR 26_27.pptx: master simple-light-2 uses a #464646 variant (ppt/media/image1.png)"
+      ],
+      "width": 504,
+      "height": 445,
+      "bytes": 1776,
+      "dominantColor": "#4C4B5E",
+      "polarity": "dark",
+      "description": "SFEIR burger mark [≡], charte slate grey, 504x445 raster (same size as the deck's image1/image3)"
+    },
+    {
+      "file": "logos/logo-sfeir-burger-grey.webp",
+      "source": "design/charte-2026/Nouvelle Charte Graphique Groupe SFEIR 2026-2027/LOGOS/Logo-Corp_Burger-Gris-Charte.png",
+      "role": "logo",
+      "usedBy": [
+        "Theme SFEIR 26_27.pptx: master simple-light-2 uses a #464646 variant (ppt/media/image1.png)"
+      ],
+      "width": 504,
+      "height": 445,
+      "bytes": 236,
+      "dominantColor": "#4C4B5E",
+      "polarity": "dark",
+      "description": "SFEIR burger mark [≡], charte slate grey, 504x445 raster (same size as the deck's image1/image3) (lossless WebP twin)"
+    },
+    {
+      "file": "logos/logo-sfeir-burger-white.png",
+      "source": "design/charte-2026/Nouvelle Charte Graphique Groupe SFEIR 2026-2027/LOGOS/logo-burger.png",
+      "role": "logo",
+      "usedBy": [
+        "Theme SFEIR 26_27.pptx: 30 layouts bottom-left corner mark 13x11pt (ppt/media/image3.png, white burger)",
+        "GROUPE SFEIR MasterPrez.pptx: slides 42-45, 48"
+      ],
+      "width": 819,
+      "height": 723,
+      "bytes": 29919,
+      "dominantColor": "#FFFFFF",
+      "polarity": "light",
+      "description": "SFEIR burger mark [≡], white; alpha derived from luminance of the white-on-black source, trimmed to the glyph (same 1.13 ratio as the grey mark)"
+    },
+    {
+      "file": "logos/logo-sfeir-burger-white.webp",
+      "source": "design/charte-2026/Nouvelle Charte Graphique Groupe SFEIR 2026-2027/LOGOS/logo-burger.png",
+      "role": "logo",
+      "usedBy": [
+        "Theme SFEIR 26_27.pptx: 30 layouts bottom-left corner mark 13x11pt (ppt/media/image3.png, white burger)",
+        "GROUPE SFEIR MasterPrez.pptx: slides 42-45, 48"
+      ],
+      "width": 819,
+      "height": 723,
+      "bytes": 4830,
+      "dominantColor": "#FFFFFF",
+      "polarity": "light",
+      "description": "SFEIR burger mark [≡], white; alpha derived from luminance of the white-on-black source, trimmed to the glyph (same 1.13 ratio as the grey mark) (lossless WebP twin)"
+    },
+    {
+      "file": "logos/logo-sfeir-grey.png",
+      "source": "design/charte-2026/Nouvelle Charte Graphique Groupe SFEIR 2026-2027/LOGOS/Sfeir-Gris-designer.png",
+      "role": "logo",
+      "usedBy": [
+        "LOGOS/Sfeir-Gris-designer.png"
+      ],
+      "width": 1319,
+      "height": 443,
+      "bytes": 17363,
+      "dominantColor": "#4D4C5F",
+      "polarity": "dark",
+      "description": "SFEIR wordmark, charte slate grey, 1319x443 raster"
+    },
+    {
+      "file": "logos/logo-sfeir-grey.svg",
+      "source": "design/charte-2026/Nouvelle Charte Graphique Groupe SFEIR 2026-2027/LOGOS/Sfeir-Gris-designer.ai",
+      "role": "logo",
+      "usedBy": [
+        "LOGOS/Sfeir-Gris-designer.ai"
+      ],
+      "width": 317,
+      "height": 106,
+      "bytes": 2306,
+      "dominantColor": "#4C4B5E",
+      "polarity": "dark",
+      "description": "SFEIR wordmark [sf≡ir], vector from the .ai master, charte slate grey"
+    },
+    {
+      "file": "logos/logo-sfeir-grey.webp",
+      "source": "design/charte-2026/Nouvelle Charte Graphique Groupe SFEIR 2026-2027/LOGOS/Sfeir-Gris-designer.png",
+      "role": "logo",
+      "usedBy": [
+        "LOGOS/Sfeir-Gris-designer.png"
+      ],
+      "width": 1319,
+      "height": 443,
+      "bytes": 5156,
+      "dominantColor": "#4D4C5F",
+      "polarity": "dark",
+      "description": "SFEIR wordmark, charte slate grey, 1319x443 raster (lossless WebP twin)"
+    },
+    {
+      "file": "logos/logo-sfeir-white.png",
+      "source": "design/charte-2026/Nouvelle Charte Graphique Groupe SFEIR 2026-2027/LOGOS/logo-SFEIR-blanc.png",
+      "role": "logo",
+      "usedBy": [
+        "Theme SFEIR 26_27.pptx: layout TITLE, TITLE_2, BLANK_1_1_1 (ppt/media/image2.png, white wordmark)"
+      ],
+      "width": 1076,
+      "height": 364,
+      "bytes": 11613,
+      "dominantColor": "#FFFFFF",
+      "polarity": "light",
+      "description": "SFEIR wordmark, white, 1076x364 raster"
+    },
+    {
+      "file": "logos/logo-sfeir-white.svg",
+      "source": "design/charte-2026/Nouvelle Charte Graphique Groupe SFEIR 2026-2027/LOGOS/Sfeir-Gris-designer.ai",
+      "role": "logo",
+      "usedBy": [
+        "Theme SFEIR 26_27.pptx: layout TITLE, TITLE_2, BLANK_1_1_1 (ppt/media/image2.png, white wordmark)"
+      ],
+      "width": 317,
+      "height": 106,
+      "bytes": 2306,
+      "dominantColor": "#FFFFFF",
+      "polarity": "light",
+      "description": "SFEIR wordmark, vector, recoloured white for dark backgrounds"
+    },
+    {
+      "file": "logos/logo-sfeir-white.webp",
+      "source": "design/charte-2026/Nouvelle Charte Graphique Groupe SFEIR 2026-2027/LOGOS/logo-SFEIR-blanc.png",
+      "role": "logo",
+      "usedBy": [
+        "Theme SFEIR 26_27.pptx: layout TITLE, TITLE_2, BLANK_1_1_1 (ppt/media/image2.png, white wordmark)"
+      ],
+      "width": 1076,
+      "height": 364,
+      "bytes": 4454,
+      "dominantColor": "#FFFFFF",
+      "polarity": "light",
+      "description": "SFEIR wordmark, white, 1076x364 raster (lossless WebP twin)"
+    }
+  ],
+  "note": "Three FONDS photos (gold-dust-corner, gold-glow-grain, gold-streak-blur) and the misc/ folder are not shipped: heavy, overlay-dependent and redundant with the set above. Sources stay in design/charte-2026/."
+}

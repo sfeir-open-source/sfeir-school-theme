@@ -3,9 +3,9 @@
 */
 :root {
     // --tc-credits-color and --tc-heading-color are bound in tokens/_semantic.scss:
-    // they read semantic roles and must follow the program and the polarity.
-    --tc-quote-color: var(--sfeir-ink-on-dark);
-    --tc-quote-bg-color: var(--sfeir-carbone-mid);
+    // they read semantic roles and must follow the program and the polarity. The quote
+    // bindings sit on the quote slide itself (below): they read the glass pair, which
+    // flips with polarity, so binding them here would freeze the light-surface values.
     --tc-heading-title-font-size: var(--sfeir-fs-title);
     --tc-heading-sub-title-font-size: var(--sfeir-fs-subtitle);
     --tc-heading-other-headings-font-size: var(--sfeir-fs-body);
@@ -23,7 +23,6 @@
     }
 }
 
-.reveal .slides section.sfeir-basic-slide:not(.stack),
 .reveal .slides section.exercice:not(.stack) {
     color: var(--dark-grey);
 
@@ -43,15 +42,6 @@
         text-align: left;
     }
 
-    // `blue` and `green` are deprecated no-ops: the charte has one accent per
-    // program, so both resolve to it. Removed in v6.
-    &.blue h1:first-of-type:after,
-    &.blue h2:first-of-type:after,
-    &.green h1:first-of-type:after,
-    &.green h2:first-of-type:after {
-        background-color: var(--sfeir-accent);
-    }
-
     h1 ~ h2:first-of-type:after,
     h2 ~ h3:first-of-type:after,
     h1 ~ h3:first-of-type:after {
@@ -64,18 +54,193 @@
 *
 * Reveal resolves `color: var(--r-main-color)` on `.reveal` itself, so redefining the
 * ink role further down the tree cannot reach body text — it has to be set here, on the
-* sections that sit on Noir Carbone.
+* sections that sit on a dark photo.
 */
 #{$sfeir-dark-sections} {
     color: var(--sfeir-on-surface);
 }
 
 /**
-* Logo SFEIR 
+* Quote slide.
+*
+* A glass card on the slate-rock photo (the initializer maps `quote-slide` onto it),
+* like every card the MasterPrez draws on a dark photo. Talk-control exposes the pair as
+* variables, so they are bound rather than overridden; the box-shadow and the 70 % width
+* are its own and have to be reset. The opening glyph talk-control paints was a raster
+* (`quotes.webp`, retired) at 25 % brightness — invisible on the photo. It is replaced
+* by the typographic glyph reveal already puts on every blockquote, set in Epilogue
+* ExtraBold copper, which prints as it displays.
+*/
+.reveal .slides section.quote-slide {
+    --tc-quote-bg-color: var(--sfeir-glass);
+    --tc-quote-color: var(--sfeir-on-glass);
+    --tc-quote-slide-bg-color: var(--sfeir-glass);
+
+    blockquote {
+        width: 80%;
+        padding: 60px 80px;
+        background: var(--tc-quote-bg-color);
+        border-radius: var(--sfeir-radius);
+        box-shadow: none;
+        font-size: var(--sfeir-fs-subtitle);
+        font-weight: var(--sfeir-weight-medium);
+        line-height: 1.3;
+
+        &::before {
+            content: '“';
+            top: -0.1em;
+            left: -0.05em;
+            width: auto;
+            height: auto;
+            font-family: var(--sfeir-font-display);
+            font-weight: var(--sfeir-weight-display);
+            font-style: normal;
+            font-size: 4em;
+            line-height: 1;
+            color: var(--sfeir-accent-fill);
+            opacity: 0.7;
+        }
+
+        &::after {
+            content: none;
+        }
+    }
+
+    .credits {
+        border-radius: var(--sfeir-radius);
+    }
+}
+
+.reveal .backgrounds div.slide-background.quote-slide::before,
+html.print-pdf
+    .reveal
+    .slides
+    .pdf-page
+    div.slide-background.quote-slide::before {
+    content: none;
+}
+
+// Every other blockquote: reveal's 2px shadow is depth, which the charte paints with
+// surfaces, never with shadows.
+.reveal blockquote {
+    box-shadow: none;
+}
+
+/**
+* Backgrounds.
+*
+* The official master puts a photo under every slide. The class → photo mapping lives
+* in src/js/sfeir-theme-initializer.ts: talk-control turns it into `data-background`,
+* reveal paints the photo on `.slide-background-content` (cover, centred). What is left
+* to CSS is everything the mapping cannot express:
+*
+*   1. a flat --sfeir-surface (Blanc Craie) under every slide that maps to nothing —
+*      content slides, code slides, exercices — painted once on the viewport. The
+*      plaster wall is NOT the default any more: it is too present for a whole deck,
+*      so it stays an opt-in photo (`bg-plaster`). Reveal's `.backgrounds` and
+*      per-slide `.slide-background` are transparent unless the slide carries a
+*      colour, so the viewport colour shows through. The viewport rather than
+*      `.backgrounds` because print mode copies the viewport's computed background
+*      onto every `.pdf-page` as an inline style, which gets printed pages the same
+*      surface;
+*   2. a flat fallback colour under each photo, so a slow network shows Noir Carbone
+*      under light text rather than white (and Craie under plaster);
+*   3. the crop: where the photo has a dark zone meant for the title;
+*   4. the opt-in `bg-overlay` scrim. The pptx uses none — legibility comes from photo
+*      selection — but a training room on a weak projector needs the option. `bg-sand`
+*      (gold glitter, mid-light) is the one photo that should always carry it.
+*/
+.reveal-viewport {
+    background: var(--sfeir-surface);
+}
+
+.reveal div.slide-background#{$sfeir-dark-qualifier} {
+    background-color: var(--sfeir-carbone);
+}
+
+.reveal div.slide-background#{$sfeir-light-qualifier} {
+    background-color: var(--sfeir-craie);
+}
+
+// A `contrast-opposite` column sets white text and expects its own `data-background`
+// (talk-control builds one `.slide-background.tc-col-section` per column): Noir Carbone
+// under it, so the text stays legible while the image loads or if it is missing.
+.reveal div.slide-background.tc-col-section.contrast-opposite {
+    background-color: var(--sfeir-carbone);
+}
+
+// The gold arc is a dome across the photo. Scaled up and anchored bottom-right, the
+// view keeps the dome's descending right half: bright zone top, black lower-left where
+// the divider title sits.
+// Only where the arc is the photo: a `transition` that names another photo keeps cover.
+.reveal
+    div.slide-background:is(
+        .bg-arc,
+        .transition-bg-sfeir-2,
+        .transition:not(:is(#{$sfeir-photo-classes}))
+    )
+    > .slide-background-content {
+    background-size: auto 140%;
+    background-position: right bottom;
+}
+
+// Portrait photo: keep the sand trickle in view instead of a black centre crop.
+.reveal div.slide-background.bg-pour > .slide-background-content {
+    background-position: left center;
+}
+
+.reveal div.slide-background.bg-overlay > .slide-background-content::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: var(--sfeir-overlay);
+}
+
+/**
+* Signature mark.
+*
+* Every slide carries the program lockup bottom-left — the corporate wordmark plus the
+* program word, composed exactly like the cover lockup (title-slide.scss) at the size
+* of the official master's mark: 36 px high at 1080, 28 px from the edges. Black on
+* light surfaces, white on dark ones. This is a deliberate departure from the official
+* master, which shows only the compact `[≡]` burger: the theme has always told the
+* audience which program they are attending on every slide, and keeps doing so.
+*
+* The word is `--sfeir-program-label`, declared on `.slides` and on `.backgrounds`
+* (where this pseudo-element lives) through `$sfeir-institute`.
+*
+* The cover swaps the lockup for the corporate wordmark and the tagline bottom-right,
+* see title-slide.scss.
 **/
 :root {
-    --url-logo-white: url('./images/logo-school-white-3.webp');
-    --url-logo-dark: url('./images/logo-school-dark-3.webp');
+    --sfeir-mark-on-light: url('./images/logos/logo-sfeir-black.svg');
+    --sfeir-mark-on-dark: url('./images/logos/logo-sfeir-white.svg');
+    --sfeir-mark-ink-on-light: var(--sfeir-charcoal);
+    --sfeir-mark-ink-on-dark: var(--sfeir-craie);
+    --sfeir-mark-size: 36px;
+    --sfeir-mark-inset: 28px;
+}
+
+@mixin sfeir-mark {
+    content: var(--sfeir-program-label);
+    display: block;
+    position: absolute;
+    bottom: var(--sfeir-mark-inset);
+    left: var(--sfeir-mark-inset);
+    height: var(--sfeir-mark-size);
+    // the wordmark SVG is 316.6 x 106.3, then a 10 px gap before the word
+    padding-left: calc(var(--sfeir-mark-size) * 2.98 + 10px);
+    background-image: var(--sfeir-mark-on-light);
+    background-repeat: no-repeat;
+    background-size: auto 100%;
+    background-position: left center;
+    color: var(--sfeir-mark-ink-on-light);
+    font-family: var(--sfeir-font-display);
+    font-weight: var(--sfeir-weight-medium);
+    font-size: calc(var(--sfeir-mark-size) * 0.72);
+    line-height: var(--sfeir-mark-size);
+    white-space: nowrap;
+    z-index: 1;
 }
 
 .reveal
@@ -96,40 +261,25 @@
     > div.slide-background.tc-multiple-columns
     > .slide-background:last-of-type
     .slide-background-content:after {
-    content: '';
-    display: block;
-    position: absolute;
-    bottom: 40px;
-    right: 140px;
-    background-image: var(--url-logo-dark);
-    width: 150px;
-    height: 40px;
-    background-repeat: no-repeat;
-    background-size: contain;
-    z-index: 1;
+    @include sfeir-mark;
 }
 
+// White mark on dark photos. The cover is left out: it carries the wordmark and the
+// tagline instead (title-slide.scss).
 .reveal
     .backgrounds
     > div.slide-background.tc-multiple-columns
     > .slide-background:last-of-type:is(.contrast-opposite),
 .reveal
     .backgrounds
-    > .slide-background
-    > div.slide-background:is(
-        .speaker-slide,
-        .first-slide,
-        .quote-slide,
-        .bg-blur,
-        .with-code-dark
-    ),
-.reveal .backgrounds > div.slide-background[class*='transition'],
+    div.slide-background#{$sfeir-dark-qualifier}:not(.first-slide),
 .reveal
     .backgrounds
     > .slide-background
-    > div.slide-background[class*='transition'] {
+    > div.slide-background#{$sfeir-dark-qualifier}:not(.first-slide) {
     .slide-background-content:after {
-        background-image: var(--url-logo-white);
+        background-image: var(--sfeir-mark-on-dark);
+        color: var(--sfeir-mark-ink-on-dark);
     }
 }
 
@@ -145,19 +295,6 @@
 }
 
 /**
-* Institute mode — assets only.
-*
-* Every colour branch this block used to carry is gone: the program axis in
-* tokens/_context.scss redefines --sfeir-accent, so list markers, credits and table
-* headers follow the program on their own. Phase 4 replaces these raster lockups with
-* the typographic composition decided in D3.
-**/
-.reveal .slides[data-theme='institute'] ~ .backgrounds {
-    --url-logo-dark: url('./images/logo-institute-dark.webp');
-    --url-logo-white: url('./images/logo-institute-white.webp');
-}
-
-/**
 * Hack for conf Mode
 **/
 .reveal .slides[data-theme='conf'] ~ .backgrounds {
@@ -168,21 +305,12 @@
 
 /**
 * Hack for print
+*
+* Reveal hides `.backgrounds` and moves each `.slide-background` into its `.pdf-page`,
+* so the marks are declared again on that tree. The plaster default needs nothing:
+* reveal paints the viewport's computed background on each page.
 */
 html.print-pdf {
-    .reveal .slides .pdf-page div.slide-background.quote-slide::before {
-        content: '';
-        position: absolute;
-        background: url('./images/quotes.webp');
-        background-size: contain;
-        filter: brightness(0.25);
-        top: 5px;
-        left: 5px;
-        width: 400px;
-        height: 400px;
-        color: var(--dark-grey);
-    }
-
     .reveal .slides .pdf-page {
         div.slide-background.tc-multiple-columns
             > .slide-background
@@ -196,38 +324,19 @@ html.print-pdf {
         div.slide-background.tc-multiple-columns
             > .slide-background:last-of-type
             .slide-background-content:after {
-            content: '';
-            position: absolute;
-            bottom: 40px;
-            right: 140px;
-            background-image: var(--url-logo-dark);
-            width: 150px;
-            height: 40px;
-            background-repeat: no-repeat;
-            background-size: contain;
+            @include sfeir-mark;
         }
 
         div.slide-background.tc-multiple-columns
             > .slide-background:last-of-type:is(.contrast-opposite),
+        div.slide-background#{$sfeir-dark-qualifier}:not(.first-slide),
         .slide-background
-            > div.slide-background:is(
-                .speaker-slide,
-                .first-slide,
-                .quote-slide,
-                .bg-blur,
-                .with-code-dark
-            ),
-        div.slide-background[class*='transition'],
-        .slide-background > div.slide-background[class*='transition'] {
+            > div.slide-background#{$sfeir-dark-qualifier}:not(.first-slide) {
             .slide-background-content:after {
-                background-image: var(--url-logo-white);
+                background-image: var(--sfeir-mark-on-dark);
+                color: var(--sfeir-mark-ink-on-dark);
             }
         }
-    }
-
-    .reveal .slides[data-theme='institute'] .pdf-page {
-        --url-logo-dark: url('./images/logo-institute-dark.webp');
-        --url-logo-white: url('./images/logo-institute-white.webp');
     }
 
     .reveal .slides[data-theme='conf'] .pdf-page {

@@ -16,6 +16,7 @@ const LEGACY_SCSS = '_legacy.scss';
 const TYPOGRAPHY_SCSS = '_typography.scss';
 
 const palette = parseCustomProperties(read(PALETTE_SCSS));
+const semantic = parseCustomProperties(read(SEMANTIC_SCSS));
 const hex = (token: string) => {
     const value = palette.get(token);
     if (!value) throw new Error(`${token} is not declared in ${PALETTE_SCSS}`);
@@ -23,47 +24,47 @@ const hex = (token: string) => {
 };
 
 /**
- * The two program ramps, tier by tier (decision D1).
+ * The two program ramps, tier by tier (decision D1, revision 2).
  *
- * Institute = Ocre (Services Managés), School = Émeraude (Data & Product). Unlike the
- * earlier Cuivre/Bronze pair, these are two independent charte families, so they do NOT
- * share a contrast profile — each is asserted against the WCAG thresholds on its own.
+ * Institute = Ocre, re-pointed to the official copper. School = Émeraude, demoted to
+ * the signature tiers (accent, on-dark accent, deep): its fill, on-fill and wash are
+ * the same copper as Institute, because Émeraude is never a fill.
  */
 const RAMPS = {
     'ocre (Institute)': {
         accent: 'sfeir-ocre-dark',
-        onDark: 'sfeir-ocre-medium',
+        onDark: 'sfeir-ocre-primary',
         fill: 'sfeir-ocre-primary',
-        onFill: 'sfeir-cuivre-profond',
+        onFill: 'sfeir-carbone',
         wash: 'sfeir-ocre-light',
         deep: 'sfeir-cuivre-profond',
     },
     'emeraude (School)': {
         accent: 'sfeir-emeraude-dark',
         onDark: 'sfeir-emeraude-medium',
-        fill: 'sfeir-emeraude-primary',
-        onFill: 'sfeir-noir',
-        wash: 'sfeir-emeraude-light',
+        fill: 'sfeir-cuivre-poli',
+        onFill: 'sfeir-carbone',
+        wash: 'sfeir-sable',
         deep: 'sfeir-emeraude-dark',
     },
 } as const;
 
 const ramps = Object.entries(RAMPS);
 
-describe(`${PALETTE_SCSS} — charte values`, () => {
+describe(`${PALETTE_SCSS} — official values`, () => {
     it.each([
-        // Copper — Institute
+        // Copper — the corporate accent, pptx accent1/3/4 plus the two AA text tiers
         ['sfeir-cuivre', '#845400'],
-        ['sfeir-cuivre-poli', '#E5A040'],
-        ['sfeir-cuivre-clair', '#FFB95C'],
-        ['sfeir-sable', '#FFDDB7'],
+        ['sfeir-cuivre-poli', '#E4AA5D'],
+        ['sfeir-cuivre-clair', '#FEB95C'],
+        ['sfeir-sable', '#F0C387'],
         ['sfeir-cuivre-profond', '#5D3A00'],
-        // Ocre — Institute (decision D1)
-        ['sfeir-ocre-light', '#FFF0D6'],
-        ['sfeir-ocre-medium', '#F2C878'],
-        ['sfeir-ocre-primary', '#E5A040'],
+        // Ocre — Institute (decision D1), re-pointed to the copper
+        ['sfeir-ocre-light', '#F0C387'],
+        ['sfeir-ocre-medium', '#FEB95C'],
+        ['sfeir-ocre-primary', '#E4AA5D'],
         ['sfeir-ocre-dark', '#845400'],
-        // Émeraude — School (decision D1)
+        // Émeraude — School (decision D1), unchanged
         ['sfeir-emeraude-light', '#C8F5D6'],
         ['sfeir-emeraude-medium', '#6BC68F'],
         ['sfeir-emeraude-primary', '#2E8B57'],
@@ -76,18 +77,44 @@ describe(`${PALETTE_SCSS} — charte values`, () => {
         ['sfeir-craie-3', '#E8E8E8'],
         ['sfeir-craie-4', '#E2E2E2'],
         ['sfeir-brouillard', '#DADADA'],
-        ['sfeir-carbone-mid', '#303030'],
+        ['sfeir-carbone', '#181A1F'],
         ['sfeir-noir', '#000000'],
-        // Ink and outline
-        ['sfeir-charcoal', '#1B1B1B'],
+        // Ink and separators
+        ['sfeir-charcoal', '#181A1F'],
         ['sfeir-charcoal-variant', '#514536'],
-        ['sfeir-ink-on-dark', '#F1F1F1'],
-        ['sfeir-ink-on-dark-muted', '#BFBFBF'],
-        ['sfeir-outline', '#847564'],
-        ['sfeir-outline-variant', '#D6C3B1'],
+        ['sfeir-ink-on-dark', '#F9F9F9'],
+        ['sfeir-separator-warm', '#CCC4B6'],
+        ['sfeir-taupe', '#B3A495'],
         ['sfeir-error', '#BA1A1A'],
     ])('should declare --%s as %s', (token, value) => {
         expect(hex(token).toUpperCase()).toBe(value);
+    });
+
+    it.each([
+        ['sfeir-glass-dark', 'rgb(23 26 32 / 0.7)'],
+        ['sfeir-glass-light', 'rgb(255 255 255 / 0.41)'],
+        ['sfeir-overlay', 'rgb(24 26 31 / 0.55)'],
+    ])('should declare the translucent --%s as %s', (token, value) => {
+        expect(palette.get(token)).toBe(value);
+    });
+
+    // The skill values the official theme contradicted, and the two greys the first cut
+    // invented. None may come back as a palette value.
+    const RETIRED = [
+        '#1B1B1B',
+        '#303030',
+        '#D6C3B1',
+        '#847564',
+        '#E5A040',
+        '#FFB95C',
+        '#FFDDB7',
+        '#F1F1F1',
+        '#BFBFBF',
+    ];
+
+    it('should carry none of the retired values', () => {
+        const values = [...palette.values()].map((value) => value.toUpperCase());
+        expect(values.filter((value) => RETIRED.includes(value))).toEqual([]);
     });
 });
 
@@ -107,10 +134,10 @@ describe('WCAG guarantees, per program ramp', () => {
     );
 
     it.each(ramps)(
-        '%s should keep the on-dark tier at AAA on Noir Carbone',
+        '%s should keep the on-dark tier at AAA on Carbone',
         (_name, ramp) => {
             expect(
-                wcagLevel(contrastRatio(hex(ramp.onDark), hex('sfeir-noir')))
+                wcagLevel(contrastRatio(hex(ramp.onDark), hex('sfeir-carbone')))
             ).toBe('AAA');
         }
     );
@@ -134,37 +161,48 @@ describe('WCAG guarantees, per program ramp', () => {
     );
 
     it.each(ramps)(
-        '%s should keep the fill readable as a large shape on Noir Carbone',
+        '%s should keep the fill readable as a large shape on Carbone',
         (_name, ramp) => {
             expect(
-                wcagLevel(contrastRatio(hex(ramp.fill), hex('sfeir-noir')), {
+                wcagLevel(contrastRatio(hex(ramp.fill), hex('sfeir-carbone')), {
                     large: true,
                 })
             ).not.toBe('fail');
         }
     );
+});
 
+/**
+ * The official pairs, as the pptx draws them, with the threshold each has to clear.
+ * Ratios are computed, never transcribed — the skill's own table got all six wrong.
+ */
+describe('WCAG guarantees, official pairs', () => {
     it.each([
-        ['sfeir-charcoal', 'sfeir-craie', 'AAA'],
-        ['sfeir-charcoal-variant', 'sfeir-craie', 'AAA'],
-        ['sfeir-ink-on-dark', 'sfeir-noir', 'AAA'],
-        ['sfeir-ink-on-dark-muted', 'sfeir-noir', 'AAA'],
-    ])('should rate --%s on --%s as %s', (fg, bg, level) => {
-        expect(wcagLevel(contrastRatio(hex(fg), hex(bg)))).toBe(level);
+        ['sfeir-cuivre-poli', 'sfeir-carbone', 4.5], // #E4AA5D eyebrow on dark
+        ['sfeir-cuivre', 'sfeir-craie', 4.5], // #845400 accent text on light
+        ['sfeir-emeraude-medium', 'sfeir-carbone', 4.5], // #6BC68F School eyebrow on dark
+        ['sfeir-emeraude-dark', 'sfeir-craie', 4.5], // #0D5A2E School eyebrow on light
+        ['sfeir-carbone', 'sfeir-craie', 7], // #181A1F body on light
+        ['sfeir-ink-on-dark', 'sfeir-carbone', 7], // #F9F9F9 body on dark
+        ['sfeir-separator-warm', 'sfeir-carbone', 4.5], // #CCC4B6 muted on dark
+        ['sfeir-carbone', 'sfeir-cuivre-poli', 4.5], // #181A1F on the copper fill
+        ['sfeir-charcoal-variant', 'sfeir-craie', 7], // #514536 muted on light
+    ])('should keep --%s on --%s at or above %s:1', (fg, bg, minimum) => {
+        expect(contrastRatio(hex(fg), hex(bg))).toBeGreaterThanOrEqual(minimum);
     });
 });
 
 /**
- * These two traps are why the semantic layer exists. Both must keep failing: the day one
+ * These traps are why the semantic layer exists. They must keep failing: the day one
  * of them passes, someone has retuned the palette and the on-dark tier has lost its
  * reason to exist.
  */
 describe('inherited contrast traps', () => {
     it.each(ramps)(
-        '%s should keep the accent failing on Noir Carbone',
+        '%s should keep the accent failing on Carbone',
         (_name, ramp) => {
             expect(
-                wcagLevel(contrastRatio(hex(ramp.accent), hex('sfeir-noir')))
+                wcagLevel(contrastRatio(hex(ramp.accent), hex('sfeir-carbone')))
             ).toBe('fail');
         }
     );
@@ -177,6 +215,20 @@ describe('inherited contrast traps', () => {
             ).toBe('fail');
         }
     );
+
+    it('should keep the official on-light eyebrow (#E4AA5D on #F9F9F9) failing — the kept deviation', () => {
+        expect(
+            wcagLevel(contrastRatio(hex('sfeir-cuivre-poli'), hex('sfeir-craie')))
+        ).toBe('fail');
+    });
+
+    it('should keep Taupe failing as text on Blanc Craie, even large', () => {
+        expect(
+            wcagLevel(contrastRatio(hex('sfeir-taupe'), hex('sfeir-craie')), {
+                large: true,
+            })
+        ).toBe('fail');
+    });
 });
 
 describe('token layering', () => {
@@ -200,7 +252,6 @@ describe('token layering', () => {
     });
 
     it('should resolve every semantic token to a declared palette token', () => {
-        const semantic = parseCustomProperties(read(SEMANTIC_SCSS));
         expect(semantic.size).toBeGreaterThan(0);
         for (const [name, value] of semantic) {
             for (const ref of varRefs(value)) {
@@ -212,8 +263,20 @@ describe('token layering', () => {
         }
     });
 
+    it('should resolve every contextual token to a declared palette or semantic token', () => {
+        const context = parseCustomProperties(read(CONTEXT_SCSS));
+        expect(context.size).toBeGreaterThan(0);
+        for (const [name, value] of context) {
+            for (const ref of varRefs(value)) {
+                expect(
+                    palette.has(ref) || semantic.has(ref),
+                    `context --${name} references undeclared --${ref}`
+                ).toBe(true);
+            }
+        }
+    });
+
     it('should resolve every legacy alias to a declared token', () => {
-        const semantic = parseCustomProperties(read(SEMANTIC_SCSS));
         const legacy = parseCustomProperties(read(LEGACY_SCSS));
         expect(legacy.size).toBeGreaterThan(0);
         for (const [name, value] of legacy) {
@@ -227,11 +290,28 @@ describe('token layering', () => {
     });
 
     it('should keep every legacy alias out of the palette and semantic layers', () => {
-        const semantic = parseCustomProperties(read(SEMANTIC_SCSS));
         const legacy = parseCustomProperties(read(LEGACY_SCSS));
         for (const name of legacy.keys()) {
             expect(palette.has(name) || semantic.has(name)).toBe(false);
         }
+    });
+
+    it.each(['code-bg', 'sfeir-green', 'sfeir-blue'])(
+        'should keep the alias --%s resolving',
+        (alias) => {
+            const legacy = parseCustomProperties(read(LEGACY_SCSS));
+            expect(legacy.has(alias)).toBe(true);
+        }
+    );
+});
+
+describe(`${SEMANTIC_SCSS} — shape`, () => {
+    it('should round cards at 12px, as the official deck does', () => {
+        expect(semantic.get('sfeir-radius')).toBe('12px');
+    });
+
+    it('should keep the pill radius for chips and avatars', () => {
+        expect(semantic.get('sfeir-radius-pill')).toBe('999px');
     });
 });
 
@@ -247,12 +327,13 @@ describe(`${TYPOGRAPHY_SCSS} — font stacks`, () => {
         ['display', "'Epilogue'"],
         ['body', "'Epilogue'"],
         ['label', "'Space Grotesk'"],
+        ['stat', "'Space Grotesk'"],
         ['mono', "'JetBrains Mono'"],
     ])('should lead the %s stack with %s', (role, expected) => {
         expect(stack(role)[0]).toBe(expected);
     });
 
-    it.each(['display', 'body', 'label', 'mono'])(
+    it.each(['display', 'body', 'label', 'stat', 'mono'])(
         'should give the %s stack a real fallback chain',
         (role) => {
             expect(stack(role).length).toBeGreaterThanOrEqual(3);
@@ -261,6 +342,15 @@ describe(`${TYPOGRAPHY_SCSS} — font stacks`, () => {
 
     it('should never fall back to Poppins, the superseded family', () => {
         expect(read(TYPOGRAPHY_SCSS)).not.toMatch(/Poppins/i);
+    });
+
+    it('should set display roles at ExtraBold 800, never Black', () => {
+        expect(typography.get('sfeir-weight-display')).toBe('800');
+        expect(read(TYPOGRAPHY_SCSS)).not.toMatch(/\b900\b/);
+    });
+
+    it('should set stat numerals at Medium 500', () => {
+        expect(typography.get('sfeir-weight-stat')).toBe('500');
     });
 });
 
@@ -279,13 +369,14 @@ describe(`${TYPOGRAPHY_SCSS} — type scale`, () => {
         return Number.parseInt(value, 10);
     };
 
-    // Captions sit below eyebrows: the charte puts eyebrow labels at 10-12pt and
-    // captions at 9-10pt.
+    // Captions sit below eyebrows: the official deck puts eyebrows at 12pt and
+    // captions at 8-9pt.
     const ORDER = [
         'caption',
         'eyebrow',
         'body',
         'subtitle',
+        'title-dense',
         'title',
         'display',
         'display-cover',
@@ -302,26 +393,29 @@ describe(`${TYPOGRAPHY_SCSS} — type scale`, () => {
     });
 
     it.each([
-        ['eyebrow', 0.675],
-        ['caption', 0.65],
-        ['body', 1],
-        ['subtitle', 1.2],
-        ['title', 1.9],
-        ['display', 3.2],
-        ['display-cover', 3.4],
-        ['stat', 5.2],
-    ])('should size %s at %s times the base', (role, expected) => {
-        expect(px(role) / px('body')).toBeCloseTo(expected, 2);
+        ['caption', 26],
+        ['eyebrow', 32], // 12pt
+        ['body', 40],
+        ['subtitle', 48],
+        ['title-dense', 61], // 23pt
+        ['title', 76], // 28pt
+        ['display', 133], // 50pt divider
+        ['display-cover', 136], // 52pt cover
+        ['stat', 208],
+    ])('should size %s at %spx', (role, expected) => {
+        expect(px(role)).toBe(expected);
     });
 
     it('should carry the negative tracking the charte puts on display type', () => {
         expect(typography.get('sfeir-tracking-display')).toBe('-0.02em');
     });
 
-    it('should carry positive tracking on uppercase labels', () => {
+    it('should keep label tracking at or under 0.06em — the official deck uses none', () => {
         const label = typography.get('sfeir-tracking-label');
         expect(label).toBeDefined();
-        expect(Number.parseFloat(label!)).toBeGreaterThanOrEqual(0.06);
+        const value = Number.parseFloat(label!);
+        expect(value).toBeGreaterThanOrEqual(0);
+        expect(value).toBeLessThanOrEqual(0.06);
     });
 });
 
@@ -400,20 +494,88 @@ describe('token resolution across contexts', () => {
         }
     );
 
-    it('should resolve the Institute accent to Ocre, not the School ramp', () => {
-        // Compiled CSS drops the quotes from the attribute value.
-        const institute = contextBlocks.find((block) =>
-            /\[data-theme=['"]?institute['"]?\]/.test(block.selector)
-        );
+    // Compiled CSS drops the quotes from the attribute value.
+    const institute = contextBlocks.find((block) =>
+        /\[data-theme=['"]?institute['"]?\]/.test(block.selector)
+    )?.properties;
+    const dark = contextBlocks.find((block) =>
+        /\.first-slide/.test(block.selector)
+    )?.properties;
+
+    /**
+     * Resolve `token` on an element whose ancestors declare the given blocks, most
+     * specific first. Custom properties inherit as computed values, so looking a
+     * reference up from the nearest declaring block models the cascade exactly —
+     * provided every block redeclares its dependents, which the test above enforces.
+     */
+    const resolve = (chain: Map<string, string>[], token: string): string => {
+        for (const properties of chain) {
+            const value = properties.get(token);
+            if (value === undefined) continue;
+            const [ref] = varRefs(value);
+            return ref ? resolve(chain, ref) : value;
+        }
+        const literal = palette.get(token);
+        if (literal === undefined) throw new Error(`--${token} does not resolve`);
+        return literal.startsWith('#') ? literal.toUpperCase() : literal;
+    };
+
+    const CONTEXTS = {
+        'School, light': [rootProperties],
+        'School, dark': [dark!, rootProperties],
+        'Institute, light': [institute!, rootProperties],
+        'Institute, dark': [dark!, institute!, rootProperties],
+    };
+    const contexts = Object.entries(CONTEXTS);
+
+    it('should find both context blocks in the compiled CSS', () => {
         expect(institute).toBeDefined();
-        expect(institute?.properties.get('sfeir-ramp-accent')).toBe(
-            'var(--sfeir-ocre-dark)'
-        );
-        expect(institute?.properties.get('sfeir-accent')).toBe(
-            'var(--sfeir-ramp-accent)'
-        );
-        expect(institute?.properties.get('sfeir-blue')).toBe(
-            'var(--sfeir-accent)'
-        );
+        expect(dark).toBeDefined();
+    });
+
+    it.each([
+        ['School, light', '#0D5A2E'],
+        ['School, dark', '#6BC68F'],
+        ['Institute, light', '#845400'],
+        ['Institute, dark', '#E4AA5D'],
+    ] as const)('should resolve --sfeir-accent on %s to %s', (context, expected) => {
+        expect(resolve(CONTEXTS[context], 'sfeir-accent')).toBe(expected);
+    });
+
+    it.each(contexts)(
+        'should resolve --sfeir-accent-fill on %s to the copper, in both programs',
+        (_context, chain) => {
+            expect(resolve(chain, 'sfeir-accent-fill')).toBe('#E4AA5D');
+            expect(resolve(chain, 'sfeir-on-accent-fill')).toBe('#181A1F');
+            expect(resolve(chain, 'sfeir-accent-wash')).toBe('#F0C387');
+        }
+    );
+
+    it.each([
+        ['School, light', '#F9F9F9', 'rgb(255 255 255 / 0.41)', '#181A1F'],
+        ['School, dark', '#181A1F', 'rgb(23 26 32 / 0.7)', '#F9F9F9'],
+        ['Institute, light', '#F9F9F9', 'rgb(255 255 255 / 0.41)', '#181A1F'],
+        ['Institute, dark', '#181A1F', 'rgb(23 26 32 / 0.7)', '#F9F9F9'],
+    ] as const)(
+        'should flip surface and glass with polarity on %s',
+        (context, surface, glass, onGlass) => {
+            const chain = CONTEXTS[context];
+            expect(resolve(chain, 'sfeir-surface')).toBe(surface);
+            expect(resolve(chain, 'sfeir-glass')).toBe(glass);
+            expect(resolve(chain, 'sfeir-on-glass')).toBe(onGlass);
+            expect(resolve(chain, 'sfeir-on-surface')).toBe(
+                surface === '#F9F9F9' ? '#181A1F' : '#F9F9F9'
+            );
+        }
+    );
+
+    it('should resolve the legacy Institute accent through the ramp', () => {
+        expect(resolve(CONTEXTS['Institute, light'], 'sfeir-blue')).toBe('#845400');
+        expect(resolve(CONTEXTS['Institute, dark'], 'sfeir-blue')).toBe('#E4AA5D');
+    });
+
+    it('should resolve the code surface to Carbone on light and black blocks on dark', () => {
+        expect(resolve(CONTEXTS['School, light'], 'code-bg')).toBe('#181A1F');
+        expect(resolve(CONTEXTS['School, dark'], 'code-bg')).toBe('#000000');
     });
 });

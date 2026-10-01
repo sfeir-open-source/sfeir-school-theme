@@ -454,6 +454,216 @@
 
 ##==##
 
+<!-- .slide: class="transition bg-plaster" -->
+
+# Photo backgrounds
+
+## `bg-plaster` — the light one, also the default under every content slide
+
+##--##
+
+<!-- .slide: class="with-code" -->
+
+# Code to produce / Markdown
+
+```markdown
+<!-- .slide: class="transition bg-plaster" -->
+
+# Photo backgrounds
+```
+
+<!-- .element: class="big-code" -->
+
+##==##
+
+<!-- .slide: class="bg-dust" -->
+
+# `bg-dust`
+
+Gold particles — the cover photo. Works with any slide class.
+
+##--##
+
+<!-- .slide: class="with-code" -->
+
+# Code to produce / Markdown
+
+```markdown
+<!-- .slide: class="bg-dust" -->
+
+# `bg-dust`
+```
+
+<!-- .element: class="big-code" -->
+
+##==##
+
+<!-- .slide: class="transition bg-arc" -->
+
+# `bg-arc`
+
+## The section divider photo
+
+##--##
+
+<!-- .slide: class="with-code" -->
+
+# Code to produce / Markdown
+
+```markdown
+<!-- .slide: class="transition bg-arc" -->
+
+# `bg-arc`
+```
+
+<!-- .element: class="big-code" -->
+
+##==##
+
+<!-- .slide: class="bg-rock" -->
+
+# `bg-rock`
+
+Dark slate — the safest photo behind dense text.
+
+- One
+- Two
+- Three
+
+##--##
+
+<!-- .slide: class="with-code" -->
+
+# Code to produce / Markdown
+
+```markdown
+<!-- .slide: class="bg-rock" -->
+
+# `bg-rock`
+```
+
+<!-- .element: class="big-code" -->
+
+##==##
+
+<!-- .slide: class="bg-flecks" -->
+
+# `bg-flecks`
+
+Charcoal rock with gold flecks.
+
+##--##
+
+<!-- .slide: class="with-code" -->
+
+# Code to produce / Markdown
+
+```markdown
+<!-- .slide: class="bg-flecks" -->
+
+# `bg-flecks`
+```
+
+<!-- .element: class="big-code" -->
+
+##==##
+
+<!-- .slide: class="bg-bokeh" -->
+
+# `bg-bokeh`
+
+Warm bokeh discs — keep text away from the discs.
+
+##--##
+
+<!-- .slide: class="with-code" -->
+
+# Code to produce / Markdown
+
+```markdown
+<!-- .slide: class="bg-bokeh" -->
+
+# `bg-bokeh`
+```
+
+<!-- .element: class="big-code" -->
+
+##==##
+
+<!-- .slide: class="bg-brown" -->
+
+# `bg-brown`
+
+Soft copper blur, no detail.
+
+##--##
+
+<!-- .slide: class="with-code" -->
+
+# Code to produce / Markdown
+
+```markdown
+<!-- .slide: class="bg-brown" -->
+
+# `bg-brown`
+```
+
+<!-- .element: class="big-code" -->
+
+##==##
+
+<!-- .slide: class="bg-sand" -->
+
+# `bg-sand`
+
+Gold glitter, mid-light — without `bg-overlay`, for comparison.
+
+##--##
+
+<!-- .slide: class="bg-sand bg-overlay" -->
+
+# `bg-sand bg-overlay`
+
+The scrim the pptx does not use, but a weak projector needs. Recommended on `bg-sand`.
+
+##--##
+
+<!-- .slide: class="with-code" -->
+
+# Code to produce / Markdown
+
+```markdown
+<!-- .slide: class="bg-sand bg-overlay" -->
+
+# `bg-sand bg-overlay`
+```
+
+<!-- .element: class="big-code" -->
+
+##==##
+
+<!-- .slide: class="bg-pour" -->
+
+# `bg-pour`
+
+The sand trickle, portrait — also the exercice band.
+
+##--##
+
+<!-- .slide: class="with-code" -->
+
+# Code to produce / Markdown
+
+```markdown
+<!-- .slide: class="bg-pour" -->
+
+# `bg-pour`
+```
+
+<!-- .element: class="big-code" -->
+
+##==##
+
 <!-- .slide: data-background="./assets/images/dark_background.jpeg" class="transition" -->
 
 # A Custom Transition Slide

@@ -30,8 +30,8 @@ describe(relativeLuminance.name, () => {
     });
 
     it('should be case-insensitive', () => {
-        expect(relativeLuminance('#e5a040')).toBeCloseTo(
-            relativeLuminance('#E5A040'),
+        expect(relativeLuminance('#e4aa5d')).toBeCloseTo(
+            relativeLuminance('#E4AA5D'),
             10
         );
     });
@@ -57,13 +57,19 @@ describe(contrastRatio.name, () => {
         );
     });
 
+    // Reference ratios for the official 2026 palette, recomputed from the WCAG formula.
     it.each([
-        ['Charcoal on Blanc Craie', '#1B1B1B', '#F9F9F9', 16.36],
+        ['Carbone ink on Blanc Craie', '#181A1F', '#F9F9F9', 16.53],
+        ['Blanc Craie on Carbone', '#F9F9F9', '#181A1F', 16.53],
         ['Cuivre on white', '#845400', '#FFFFFF', 6.46],
-        ['Cuivre Clair on Noir Carbone', '#FFB95C', '#000000', 12.35],
-        ['Cuivre on Noir Carbone', '#845400', '#000000', 3.25],
-        ['on-surface-variant on Blanc Craie', '#514536', '#F9F9F9', 8.84],
-        ['ink-on-dark on Noir Carbone', '#F1F1F1', '#000000', 18.59],
+        ['Cuivre on Blanc Craie', '#845400', '#F9F9F9', 6.14],
+        ['Cuivre Poli on Carbone', '#E4AA5D', '#181A1F', 8.46],
+        ['Cuivre Poli on Blanc Craie', '#E4AA5D', '#F9F9F9', 1.95],
+        ['Cuivre on Carbone', '#845400', '#181A1F', 2.69],
+        ['on-surface-variant on Blanc Craie', '#514536', '#F9F9F9', 8.85],
+        ['separator on Carbone', '#CCC4B6', '#181A1F', 10.06],
+        ['Émeraude medium on Carbone', '#6BC68F', '#181A1F', 8.37],
+        ['Émeraude dark on Blanc Craie', '#0D5A2E', '#F9F9F9', 7.92],
     ])('should rate %s at %s:1', (_label, fg, bg, expected) => {
         expect(contrastRatio(fg, bg)).toBeCloseTo(expected, 1);
     });
@@ -72,7 +78,7 @@ describe(contrastRatio.name, () => {
 describe(wcagLevel.name, () => {
     it('should rate 7.0 and above as AAA for body text', () => {
         expect(wcagLevel(7)).toBe('AAA');
-        expect(wcagLevel(16.36)).toBe('AAA');
+        expect(wcagLevel(16.53)).toBe('AAA');
     });
 
     it('should rate Cuivre on white as AA, not the AAA the charte claims', () => {
@@ -80,7 +86,7 @@ describe(wcagLevel.name, () => {
     });
 
     it('should rate below 4.5 as a failure for body text', () => {
-        expect(wcagLevel(contrastRatio('#845400', '#000000'))).toBe('fail');
+        expect(wcagLevel(contrastRatio('#845400', '#181A1F'))).toBe('fail');
     });
 
     it('should lower both thresholds for large text', () => {
