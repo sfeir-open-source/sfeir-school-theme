@@ -23,8 +23,37 @@ const resolve = (token: string) => {
     return literal;
 };
 
+const GLASS = /^rgb\((\d+) (\d+) (\d+) \/ ([\d.]+)\)$/;
+
 /**
- * The speaker card is a light island on a Noir Carbone slide, so its ink must not be a
+ * A translucent surface has no contrast of its own: composite it over a backdrop first.
+ * The backdrop is the photo under the card, so it is checked at Carbone (the flat
+ * fallback) and at a mid grey, a pessimistic reading of the slate-rock photo.
+ */
+const composite = (glass: string, backdrop: string) => {
+    const match = GLASS.exec(glass);
+    if (!match) throw new Error(`Not a glass colour: "${glass}"`);
+    const alpha = Number.parseFloat(match[4]);
+    const under = [1, 3, 5].map((offset) =>
+        Number.parseInt(backdrop.slice(offset, offset + 2), 16)
+    );
+    return (
+        '#' +
+        [1, 2, 3]
+            .map((index) =>
+                Math.round(
+                    Number.parseInt(match[index], 10) * alpha +
+                        under[index - 1] * (1 - alpha)
+                )
+                    .toString(16)
+                    .padStart(2, '0')
+            )
+            .join('')
+    );
+};
+
+/**
+ * The speaker card is a glass island on the slate-rock photo, so its ink must not be a
  * token that follows the slide polarity.
  *
  * This regressed once: the card kept the deprecated --black alias, which the polarity
@@ -32,14 +61,31 @@ const resolve = (token: string) => {
  * Nothing in the token tests could see it, because every token involved was individually
  * correct — the bug was picking the wrong one.
  */
-describe('speaker card — a light island on a dark slide', () => {
-    it('should keep the card ink legible on the card surface', () => {
-        const ratio = contrastRatio(
-            resolve('sfeir-speaker-card-ink'),
-            resolve('sfeir-speaker-card-surface')
+describe('speaker card — a glass island on a dark photo', () => {
+    it('should paint the card with the dark glass, the pptx card on photos', () => {
+        expect(resolve('sfeir-speaker-card-surface')).toBe(
+            'rgb(23 26 32 / 0.7)'
         );
-        expect(wcagLevel(ratio)).toBe('AAA');
     });
+
+    it.each([
+        ['Carbone, the flat fallback', '#181a1f', 'AAA'],
+        ['a mid-grey photo region', '#808080', 'AAA'],
+        ['a light photo region', '#a0a0a0', 'AAA'],
+    ])(
+        'should keep the card ink legible on the glass over %s',
+        (_backdrop, hex, level) => {
+            const surface = composite(
+                resolve('sfeir-speaker-card-surface'),
+                hex
+            );
+            const ratio = contrastRatio(
+                resolve('sfeir-speaker-card-ink'),
+                surface
+            );
+            expect(wcagLevel(ratio)).toBe(level);
+        }
+    );
 
     it('should paint the card from its own surface token, not a literal', () => {
         expect(read('speaker-slide.scss')).toContain(
@@ -55,9 +101,21 @@ describe('speaker card — a light island on a dark slide', () => {
         }
     );
 
-    it('should underline card links with the light-surface accent', () => {
+    it('should round the card with the shape token, not a literal radius', () => {
+        const scss = read('speaker-slide.scss');
+        expect(scss).toContain('border-radius: var(--sfeir-radius)');
+        expect(scss).not.toMatch(/border-radius:\s*\d/);
+    });
+
+    it('should carry no shadow and no gradient of its own', () => {
+        const scss = read('speaker-slide.scss');
+        expect(scss).not.toMatch(/box-shadow:\s*(?!none\b)\S/);
+        expect(scss).not.toMatch(/gradient/);
+    });
+
+    it('should underline card links with the signature colour', () => {
         expect(read('speaker-slide.scss')).toContain(
-            'border-bottom: 2px solid var(--sfeir-accent-on-light)'
+            'border-bottom: 2px solid var(--sfeir-accent)'
         );
     });
 });

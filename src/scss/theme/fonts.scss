@@ -5,8 +5,12 @@
 * replaces the 25 static TTF files of the v4 theme: 4.1 MB down to 289 KB.
 *
 *   Epilogue        display and body            100-900, upright and italic
-*   Space Grotesk   labels and eyebrows         300-700, always uppercase with tracking
+*                                               display roles sit at ExtraBold 800
+*   Space Grotesk   labels, eyebrows, stats     300-700, uppercase labels; stats at 500
 *   JetBrains Mono  code and technical data     100-800, upright and italic
+*
+* The `font-weight` ranges below are the `wght` axes read from the files themselves, so
+* every weight the tokens name (400, 500, 700, 800) is covered without synthesis.
 *
 * Poppins, Consolas and Inconsolata are retired. The charte names Poppins explicitly as
 * the superseded family, and Consolas is proprietary — it had no business shipping from

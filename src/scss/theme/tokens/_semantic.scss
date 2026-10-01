@@ -5,7 +5,7 @@
 * they resolve to the right palette value for the active program and for the polarity
 * of the surface they sit on, so an author never has to know either rule.
 *
-* Defaults are SFEIR School (Émeraude), matching the theme's default `data-theme`.
+* Defaults are SFEIR School, matching the theme's default `data-theme`.
 * _context.scss redefines them per program and per surface.
 */
 
@@ -17,18 +17,30 @@
 * here. Every block that switches the ramp must therefore include this mixin again —
 * tokens.spec.ts asserts it, having caught exactly that omission once already.
 */
+@mixin sfeir-accent-roles {
+    // Program-dependent: eyebrow, list markers, title underline, transition line,
+    // level chips, separators. Émeraude on School, Cuivre on Institute.
+    --sfeir-accent: var(--sfeir-ramp-accent);
+    // Program-independent: copper in both programs. Émeraude is never a fill (D1).
+    --sfeir-accent-fill: var(--sfeir-ramp-fill);
+    --sfeir-on-accent-fill: var(--sfeir-ramp-on-fill);
+    --sfeir-accent-wash: var(--sfeir-ramp-wash);
+    --sfeir-accent-deep: var(--sfeir-ramp-deep);
+}
+
 /**
 * Reveal and talk-control bindings that read a semantic role.
 *
 * Same resolution rule as the accent roles: these have to be redeclared wherever the
 * role they read changes, or an icon on a Noir Carbone slide keeps the light accent and
-* lands at 3.25:1.
+* lands at 2.7:1.
 */
 @mixin sfeir-framework-bindings {
     --tc-heading-color: var(--sfeir-on-surface);
     --tc-credits-color: var(--sfeir-accent);
     --tc-transition-line-color: var(--sfeir-accent);
     --tc-icon-color: var(--sfeir-accent);
+    --tc-code-dark-background: var(--sfeir-code-surface);
 
     --r-heading-color: var(--sfeir-on-surface);
     --r-link-color: var(--sfeir-on-surface);
@@ -37,35 +49,26 @@
     --r-selection-color: var(--sfeir-accent-deep);
 }
 
-@mixin sfeir-accent-roles {
-    --sfeir-accent: var(--sfeir-ramp-accent);
-    // The accent as it appears on a light surface, whatever the slide polarity. Needed
-    // by light islands: a white card sitting on a Noir Carbone slide still wants the
-    // light-surface tier, because --sfeir-accent there has flipped to the on-dark one.
-    --sfeir-accent-on-light: var(--sfeir-ramp-accent);
-    --sfeir-accent-fill: var(--sfeir-ramp-fill);
-    --sfeir-on-accent-fill: var(--sfeir-ramp-on-fill);
-    --sfeir-accent-wash: var(--sfeir-ramp-wash);
-    --sfeir-accent-deep: var(--sfeir-ramp-deep);
-}
-
 :root {
     /**
     * The active program ramp. Redefined under [data-theme] in _context.scss.
+    *
+    * School: Émeraude carries the signature tiers only; fill, on-fill and wash are the
+    * corporate copper, identical to Institute.
     */
     --sfeir-ramp-accent: var(--sfeir-emeraude-dark);
     --sfeir-ramp-accent-on-dark: var(--sfeir-emeraude-medium);
-    --sfeir-ramp-fill: var(--sfeir-emeraude-primary);
-    --sfeir-ramp-on-fill: var(--sfeir-noir);
-    --sfeir-ramp-wash: var(--sfeir-emeraude-light);
+    --sfeir-ramp-fill: var(--sfeir-cuivre-poli);
+    --sfeir-ramp-on-fill: var(--sfeir-carbone);
+    --sfeir-ramp-wash: var(--sfeir-sable);
     --sfeir-ramp-deep: var(--sfeir-emeraude-dark);
 
     /**
     * Accent roles.
     *
     * --sfeir-accent switches to the on-dark tier on dark surfaces. That switch is the
-    * reason this layer exists: the accent tier fails AA on Noir Carbone in both ramps
-    * (Ocre 3.25:1, Émeraude 2.52:1), so reaching for it directly is a trap.
+    * reason this layer exists: the light-surface accent fails AA on Noir Carbone in
+    * both ramps (Cuivre 2.7:1, Émeraude 2.1:1), so reaching for it directly is a trap.
     */
     @include sfeir-accent-roles;
 
@@ -76,21 +79,27 @@
     --sfeir-surface-raised: var(--sfeir-craie-1);
     --sfeir-surface-high: var(--sfeir-craie-3);
     --sfeir-surface-dim: var(--sfeir-brouillard);
-    --sfeir-code-surface: var(--sfeir-carbone-mid);
+    --sfeir-code-surface: var(--sfeir-carbone);
+    // Translucent card on a photo, and the ink that sits on it. Flips with polarity.
+    --sfeir-glass: var(--sfeir-glass-light);
+    --sfeir-on-glass: var(--sfeir-carbone);
 
     /**
     * Ink roles.
     */
     --sfeir-on-surface: var(--sfeir-charcoal);
     --sfeir-on-surface-muted: var(--sfeir-charcoal-variant);
-    --sfeir-separator: var(--sfeir-outline-variant);
+    // One value on both polarities: the pptx has no light separator, and a separator
+    // is decoration, not text.
+    --sfeir-separator: var(--sfeir-separator-warm);
     --sfeir-danger: var(--sfeir-error);
 
     /**
-    * Shape. Zero is the charte rule; the pill radius names its two documented
-    * exceptions, chips and avatars. Any literal radius elsewhere is a violation.
+    * Shape. Rounded cards and circular badges are part of the official identity: the
+    * MasterPrez draws 86 rounded cards and 37 circular badges. Cards take --sfeir-radius,
+    * chips and avatars the pill. A literal radius elsewhere is still a violation.
     */
-    --sfeir-radius: 0;
+    --sfeir-radius: 12px;
     --sfeir-radius-pill: 999px;
 
     @include sfeir-framework-bindings;

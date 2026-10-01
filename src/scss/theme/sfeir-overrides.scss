@@ -32,7 +32,9 @@
     --r-heading-font: var(--sfeir-font-display);
     --r-heading-text-transform: initial;
 
-    // Code
+    // Code. Talk-control paints the `with-code-dark` slide and the `with-code-bg-dark`
+    // block from --tc-code-dark-background, bound in tokens/_semantic.scss so it follows
+    // the dark flip; the block palette itself is in utils/code.scss.
     --r-code-font: var(--sfeir-font-mono);
 
     // Heading colour, links and selection are bound in tokens/_semantic.scss, by the
@@ -42,7 +44,7 @@
 
 /**
 * Headings carry Epilogue Bold as a baseline; phase 3 raises the display archetypes
-* (cover, section dividers, stats) to Epilogue Black with the charte's tracking.
+* (cover, section dividers, stats) to Epilogue ExtraBold (800) with the charte's tracking.
 */
 .reveal h1,
 .reveal h2,

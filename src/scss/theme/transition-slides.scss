@@ -1,40 +1,47 @@
+/**
+* Section dividers — `transition` and the `transition-bg-*` variants.
+*
+* The official divider (layout L4) puts the title bottom-left of the gold-arc photo,
+* whose bright zone is top-right: h1 133 px Epilogue 800 in Craie, the accent line
+* under it. The talk-control positioning variants (`left`, `right`, `top`, `bottom`)
+* keep their own margins, so a deck that used them still renders as before.
+*/
 :root {
     --tc-transition-color: var(--sfeir-ink-on-dark);
     --tc-transition-title-font-size: var(--sfeir-fs-display);
-    --tc-transition-margin-top: 450px;
+    --tc-transition-margin-top: 620px;
     --tc-transition-sub-title-font-size: var(--sfeir-fs-subtitle);
 }
 
-.reveal .slides section[class*='transition']:not(.stack),
-.reveal .slides section.first-slide:not(.stack) {
+.reveal .slides section[class*='transition']:not(.stack) {
+    box-sizing: border-box;
+    padding-left: 64px; // 94 px from the edge with talk-control's 30 px h1 padding
+    padding-right: 64px;
+
     h1 {
         margin-left: initial;
         text-align: left;
+        line-height: 1.05;
+        letter-spacing: var(--sfeir-tracking-display);
     }
 
     h2 {
         text-align: left;
+        font-weight: var(--sfeir-weight-medium);
     }
 
-    // `bg-white`, `bg-blue` and `bg-green` are deprecated: they tinted a photo that no
-    // longer exists. They now render as plain Noir Carbone like every other background
-    // class, so their dark-text and no-underline overrides are gone.
+    // Light photos under a divider: dark ink. --tc-transition-color is declared at
+    // :root, so the flip has to be restated here.
+    &#{$sfeir-light-qualifier} {
+        --tc-transition-color: var(--sfeir-on-surface);
+    }
 }
-
-/**
-* The institute branch that used to live here is gone: --tc-transition-line-color now
-* points at --sfeir-accent, which the program axis in tokens/_context.scss resolves. The
-* per-class `blue` / `green` underline modifiers went with it — deprecated no-ops under
-* a single-accent charte, reported by the CLI and rewritten by the v4-to-v5 codemod.
-**/
 
 /**
 * Hack for print
 */
 html.print-pdf {
     .reveal .slides .pdf-page section[class*='transition'],
-    .reveal .slides .pdf-page section.sfeir-basic-slide[class*='transition'],
-    .reveal .slides .pdf-page section.sfeir-specific-slide[class*='transition'],
     .reveal .slides .pdf-page section.first-slide {
         h1:before {
             z-index: 1;

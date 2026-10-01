@@ -1,23 +1,25 @@
 .reveal .slides section.speaker-slide {
-    --r-main-color: var(--sfeir-ink-on-dark);
-    --tc-heading-color: var(--sfeir-ink-on-dark);
-    --r-heading-color: var(--sfeir-ink-on-dark);
     --tc-speaker-width-img: 300px;
 
     /**
-    * The speaker card is a light island on a Noir Carbone slide.
+    * The speaker card is a glass card on the slate-rock photo (the initializer maps
+    * `speaker-slide` onto it), as the MasterPrez draws every card on a dark photo:
+    * #171A20 at 70 %, rounded, no shadow.
     *
-    * It has its own surface and its own ink, and neither follows the slide polarity —
-    * which is exactly what went wrong when the polarity axis landed: the deprecated
-    * --black alias started resolving to the dark-surface ink, putting #F1F1F1 text on a
-    * white card at 1.13:1. The card names its own pair so that cannot recur.
+    * The card has its own surface and its own ink, and neither follows the slide
+    * polarity — which is exactly what went wrong when the polarity axis landed: the
+    * deprecated --black alias started resolving to the dark-surface ink, putting
+    * #F1F1F1 text on a white card at 1.13:1. The card names its own pair so that
+    * cannot recur. Both resolve to palette literals: the glass is the dark glass
+    * whatever the program, and the ink is Blanc Craie — 16.5:1 over Carbone, still
+    * 9.6:1 should the photo under the card be as light as #A0A0A0.
     *
     * There is no element wrapping the card: it is painted by a pseudo-element behind the
     * avatar while the headings sit in neighbouring grid areas, so the pair is declared on
     * the section and read by both.
     */
-    --sfeir-speaker-card-surface: var(--sfeir-white);
-    --sfeir-speaker-card-ink: var(--sfeir-charcoal);
+    --sfeir-speaker-card-surface: var(--sfeir-glass-dark);
+    --sfeir-speaker-card-ink: var(--sfeir-ink-on-dark);
 
     --tc-speaker-grid-template-areas: 'left title title title title title right'
         'left img empty company company company right'
@@ -58,37 +60,59 @@
                         (var(--tc-speaker-max-size-badge) * 2) + 20px
                 );
                 width: calc(var(--tc-speaker-width-img) + 100px + 20px);
-                border-radius: 30px;
+                border-radius: var(--sfeir-radius);
                 z-index: -1;
             }
+
+            // The avatar stays a circle — the one allowed exception — but flat: talk-control
+            // puts a grey drop shadow under it, and the charte has none.
+            .speaker {
+                box-shadow: none;
+            }
         }
-        --tc-speaker-h2-font-size: 1em;
-        --tc-speaker-info-font-size: 0.8em;
-        h3,
+        --tc-speaker-h2-font-size: var(--sfeir-fs-subtitle);
+        --tc-speaker-info-font-size: var(--sfeir-fs-caption);
+
+        // The name: Epilogue ExtraBold, the display weight.
         h2 {
             text-align: center;
             color: var(--sfeir-speaker-card-ink);
-            font-weight: 400;
+            font-weight: var(--sfeir-weight-display);
+            letter-spacing: var(--sfeir-tracking-title);
+        }
+
+        // Role, e-mail and handles: Space Grotesk labels, typed in caps like the eyebrows.
+        h3 {
+            text-align: center;
+            color: var(--sfeir-speaker-card-ink);
+            font-family: var(--sfeir-font-label);
+            font-weight: var(--sfeir-weight-medium);
+            text-transform: uppercase;
+            letter-spacing: var(--sfeir-tracking-label);
         }
 
         // Talk-control auto-links e-mail addresses, and a link takes its colour from
-        // --r-link-color, not from the heading — which on a Noir Carbone slide is the
-        // dark-surface ink, landing at 1.13:1 on the white card. Links on the card take
-        // the card's ink, underlined in the light-surface accent as the charte asks.
+        // --r-link-color, not from the heading. Links on the card take the card's ink,
+        // underlined in the signature colour — the on-dark tier, since the card is dark.
         h2 a,
         h3 a {
             color: inherit;
             text-decoration: none;
-            border-bottom: 2px solid var(--sfeir-accent-on-light);
+            border-bottom: 2px solid var(--sfeir-accent);
         }
 
-        // The role banner. The two-stop gradient is gone: both legacy hues now alias to
-        // the same accent, so it already rendered flat, and the charte has no gradients.
-        // The fill/on-fill pair is the one guaranteed legible in both programs —
-        // Émeraude 4.95:1, Ocre 4.56:1.
+        // The role is the one small element carrying the program signature. The copper
+        // banner it used to sit on is gone: the charte has no fills on cards, and both
+        // programs must read the same but for the signature colour.
         :nth-child(1 of h3) {
-            background: var(--sfeir-accent-fill);
-            color: var(--sfeir-on-accent-fill);
+            color: var(--sfeir-accent);
+        }
+
+        // Badges as a flat row: talk-control already lays them out, the theme just
+        // makes sure nothing adds depth.
+        .badge,
+        .company {
+            box-shadow: none;
         }
     }
 }

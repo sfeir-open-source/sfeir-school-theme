@@ -1,7 +1,22 @@
+/**
+* Exercice slide.
+*
+* A 25 % band on the left carries the rotated "Exercice" label; the content sits on
+* the flat surface to its right. The band is the sand-pour photo: the initializer
+* maps the `exercice` class onto it like any other background, and the rule below
+* confines the photo to the band instead of reveal's full-bleed cover: the portrait photo
+* keeps its ratio at full height, anchored left, and the clip cuts it at 25 % (sizing it
+* to `25% 100%` would stretch it).
+*/
+.reveal div.slide-background.exercice > .slide-background-content {
+    background-size: auto 100%;
+    background-position: left center;
+    background-repeat: no-repeat;
+    clip-path: inset(0 75% 0 0);
+}
+
 .reveal .slides section {
-    &.exercice:not(.sfeir-specific-slide):not(.stack):not(
-            [class*='transition']
-        ) {
+    &.exercice:not(.stack):not([class*='transition']) {
         width: calc(100% - 25% - 50px);
         left: calc(25% + 50px);
         height: calc(100% - 200px);
@@ -26,11 +41,11 @@
         h2:first-of-type {
             position: absolute;
             padding: 10px;
-            font-weight: 800;
+            font-weight: var(--sfeir-weight-display);
             top: 200px;
             left: -600px;
             transform: translateY(300px) rotate(-90deg);
-            color: var(--white);
+            color: var(--sfeir-craie);
             font-size: 3em;
             &:after {
                 content: initial;
@@ -60,11 +75,9 @@
 */
 html.print-pdf {
     .reveal .slides .pdf-page section {
-        &.exercice:not(.sfeir-specific-slide):not(.stack):not(
-                [class*='transition']
-            ) {
-            width: calc(100% - 25%) !important;
-            left: 25% !important;
+        &.exercice:not(.stack):not([class*='transition']) {
+            width: calc(100% - 25% - 50px) !important;
+            left: calc(25% + 50px) !important;
             padding-left: 0 !important;
         }
     }
