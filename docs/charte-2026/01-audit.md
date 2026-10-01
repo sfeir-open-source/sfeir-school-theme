@@ -4,6 +4,27 @@
 > Target identity: **SFEIR Brand Guidelines — The Sharp Artisan (v2026.1)**, distributed
 > as the `sfeir-brand-guidelines` Claude Code skill.
 
+> **Superseded facts (2026-10-01).** This audit measured the gap against the _skill_. The
+> official theme and MasterPrez delivered on 2026-10-01 overturned several of the skill's
+> rules, so the following targets below are no longer the targets:
+>
+> - **Flat backgrounds** (Noir Carbone / Blanc Craie) → every official slide sits on a
+>   photo: plaster on light, gold dust / arc / rock on dark, no overlay.
+> - **Radius 0, no transparency** → rounded cards (`--sfeir-radius: 12px`), circular
+>   badges, translucent glass cards.
+> - **Charcoal `#1B1B1B`** as dark ink → `#181A1F` (the pptx `dk1`).
+> - **`#303030`** mid-dark surface → does not exist; glass `rgb(23 26 32 / .7)` plays
+>   that part.
+> - **Epilogue Black 900** for display → ExtraBold **800**; eyebrows 12 pt with no
+>   tracking, not 10 pt at +0.16 em.
+> - Copper values `#E5A040` / `#FFB95C` / `#FFDDB7` → `#E4AA5D` / `#FEB95C` / `#F0C387`.
+> - The `--sfeir-accent-on-dark` / `--sfeir-accent-on-light` pair (§4.8) was not
+>   shipped: a single `--sfeir-accent` role flips with the slide polarity instead.
+>
+> The inventory and the mode-awareness findings stand. Current targets:
+> [`05-reference-analysis.md`](./05-reference-analysis.md); shipped values:
+> [`02-token-mapping.md`](./02-token-mapping.md).
+
 ## 1. Scope
 
 The theme dresses RevealJS decks for two programs plus one neutral mode, selected through

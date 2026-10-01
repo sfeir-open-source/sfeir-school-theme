@@ -2,6 +2,87 @@
 
 Branch: `feat/charte-2026`. Target release: **v5.0.0**.
 
+## Revision 2 — 2026-10-01, after the official material landed
+
+The official theme (`Theme SFEIR 26_27.pptx`), the MasterPrez and the asset folder were
+delivered on 2026-10-01 and analysed in `05-reference-analysis.md`. Rule applied: **the
+delivered files win over the skill** wherever the two disagree. This revision supersedes
+phases 2 and 4 below and refines phase 3; phase 1 stands but its palette values are
+re-pointed. The original text is kept underneath for the record.
+
+### What changed in the facts
+
+| Topic        | Plan v1 (from the skill)             | Official material                                              |
+| ------------ | ------------------------------------ | -------------------------------------------------------------- |
+| Dark ink     | Charcoal `#1B1B1B`                   | `#181A1F`                                                      |
+| Accent       | Cuivre Poli `#E5A040`, Clair `#FFB95C`, Cuivre `#845400` as text | `#E4AA5D` on both polarities; `#FEB95C` light tier; `#845400` absent |
+| Wash         | Sable `#FFDDB7`                      | `#F0C387`                                                      |
+| Separator    | `#D6C3B1` / `#847564`                | `#CCC4B6`                                                      |
+| Mid surface  | `#303030`                            | none; glass `rgb(23 26 32 / .70)` on photos                    |
+| Shape        | radius 0, no transparency            | rounded cards (~12 px), circular badges, translucent glass     |
+| Backgrounds  | flat Noir / Craie                    | **photos, no overlay**: plaster on light, gold dust / arc / rock on dark |
+| Display      | Epilogue 900                         | Epilogue ExtraBold 800                                         |
+| Eyebrow      | 10 pt, +0.16 em                      | 12 pt, no tracking, `|` or `[ ]` separators                    |
+| Marks        | wordmark bottom-left on every slide  | compact `[≡]` bottom-left; wordmark bottom-right on cover/closing |
+| Institute lockup | none exists                      | **exists as vector** (2020, still used in the 2026 MasterPrez) |
+| School lockup | none exists                         | still none                                                     |
+
+### Decisions taken in this revision
+
+- **D1 refined.** Institute keeps the corporate copper (the "Ocre" ramp is re-pointed to
+  the pptx values). School keeps Émeraude, but **demoted to signature elements only**:
+  eyebrow, list markers, title underline, transition line, level chips, separators. Never a
+  fill, a background or a numeral. Photos, neutrals and cards are identical in both
+  programs. Rationale and contrast figures in `05-reference-analysis.md` §9. Fallback if the
+  brand team refuses even that: School monochrome copper, differentiated by the lockup
+  alone — a six-line change in `_semantic.scss`.
+- **D3 refined.** Both lockups are composed in CSS from the corporate wordmark SVG plus
+  the program word in Epilogue, on the Institute lockup's geometry, so the two read as
+  siblings. The official Institute vector ships in `public/images/logos/` for decks that
+  want it. The official School sibling is requested from the brand team.
+- **D4 confirmed.** Eyebrow `[ SFEIR SCHOOL | ANGULAR ]`, level as 1–3 pill chips.
+- **Backgrounds come back**, as photos, mapped onto the existing class contract (see WP2).
+  Every photo sits on a flat `#181A1F` / `#F9F9F9` fallback; an opt-in `bg-overlay`
+  modifier adds `rgb(24 26 31 / .55)` for weak projectors — the pptx does not use it.
+- **Two deliberate deviations, kept:** accent *text* on light surfaces stays `#845400`
+  (the pptx's `#E4AA5D` on `#F9F9F9` is 1.95:1), and body stays 40 px.
+- **Housekeeping.** The 130 MB of reference binaries move out of `docs/` (which
+  `prepare-publish` copies into the npm package) to `design/charte-2026/`, git-ignored
+  except the logo sources. `npm start` rebuilds before serving.
+
+### Work packages
+
+Each package is coded by one agent on disjoint files, then checked by a verifier agent
+(unit tests, built-CSS invariants, visual regression against the baselines, contrast audit).
+
+| WP  | Scope                                                                                                                                                                                                                                                                          | Files owned                                                                                                     | Depends on |
+| --- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | --------------------------------------------------------------------------------------------------------------- | ---------- |
+| 0   | Visual regression harness (Playwright), baselines of the current state, contrast audit, `prestart` fix                                                                                                                                                                         | `tests/visual/**`, `playwright.config.ts`, `package.json` scripts                                               | —          |
+| 1   | **Tokens & type**: re-point palette; glass tokens; `--sfeir-radius: 12px`; Émeraude signature-only roles; type scale (800, eyebrow 32 px, divider 133 px, stat in Space Grotesk); `--sfeir-code-surface` → `#181A1F`; tests updated                                            | `src/scss/theme/tokens/**`, `src/scss/theme/fonts.scss`                                                         | —          |
+| 2   | **Backgrounds, marks & cover**: move assets to `public/images/{backgrounds,logos}`; re-encode the heavy grain photos; class → photo mapping in the initializer; `bg-*` classes and `bg-overlay`; burger signature bottom-left; composed lockups; cover eyebrow + level chips (D4); exercice band from the sand-pour photo | `src/js/**`, `src/scss/theme/layout.scss`, `title-slide.scss`, `transition-slides.scss`, `exercice.scss`, `specifics-slides.scss`, `tokens/_selectors.scss`, `public/images/**` | —          |
+| 3   | **Archetypes**: speaker card as glass, quote, code surface, new utilities `eyebrow` / `stat` / `chip` / `pull-quote` / `glass`; demo slides for each                                                                                                                           | `src/scss/theme/speaker-slide.scss`, a new `utilities.scss`, `demo/markdown/**`                                 | 1, 2       |
+| 4   | **Docs**: `02-token-mapping.md` values, `04-open-decisions.md` log (D1/D3 revisions), README identity sections, `conductor/product.md`, `design/README.md`                                                                                                                      | `docs/**`, `README.md`, `conductor/product.md`                                                                  | 1, 2, 3    |
+
+### Status — 2026-10-01, end of the coding pass
+
+| WP  | Status      | Shipped vs planned                                                                                                                                                                                                                                                                                                                                                                                                                 |
+| --- | ----------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| 0   | **delivered** | Playwright harness under `tests/visual/` (chromium, 1920 × 1080), served on its own port **4243** so it never collides with `npm run serve` on 4242. Scripts: `test:visual` (full deck, both programs), `test:visual:quick` (archetypes), `test:visual:update`, `test:contrast` (WCAG audit → `tests/visual/reports/`). Two consecutive full runs are pixel-identical, hence no masks. Baselines are **local artefacts, not committed**: each contributor generates them with `test:visual:update` before a change. `prestart` now runs `build` before `prepare-demo`. |
+| 1   | **landed**  | As planned: palette re-pointed (`#181A1F`, `#E4AA5D`, `#FEB95C`, `#F0C387`, `#CCC4B6`), glass tokens, `--sfeir-radius: 12px`, Émeraude on the signature tiers only, display 800, eyebrow 32 px, divider 133 px, stat in Space Grotesk 500, `--sfeir-code-surface` → Carbone. Beyond plan: the code surface flips to `#000000` on dark sections; `--sfeir-fs-title-dense` (61 px) and `--sfeir-overlay` added; `--sfeir-carbone-mid` and `--dark-grey-alpha` removed (no reader left). 7 retired skill values asserted absent. |
+| 2   | **landed**  | As planned: assets moved to `public/images/{backgrounds,logos}` with `manifest.json` provenance; grain photos denoised and re-encoded (9 WebP, ≈ 1.27 MB); class → photo map in the initializer; nine `bg-*` classes plus `bg-overlay`; composed program lockup bottom-left on every slide (36 px; first shipped as the burger, switched after validation); composed lockups; cover eyebrow + chips; exercice band from the sand-pour photo, the JS gradient injection removed. Beyond plan: the two rock photos re-encoded from the pptx embeds (no FONDS original); 15 v4 WebP images deleted. Not touched although owned: `specifics-slides.scss`. |
+| 3   | **landed**  | As planned: speaker card as dark glass with its own ink pair, quote slide as glass, code on a dark block with a brand highlight palette (new `utils/code.scss`, every token computed against `#181A1F`), utilities `eyebrow` / `stat` / `chip` / `pull-quote` / `glass`; demo `25_charte_2026.md`. Beyond plan: `stat-label`, `chip-filled`, `separator`; a photo-background showcase in `20_specifics_slides.md`; `window.Reveal` exposed by the demo for the harness. |
+| 4   | **done**    | This revision of the docs: token mapping, decision log, migration status, `06-authoring-guide.md`, root README, `conductor/`, `CHANGELOG.md`, `design/README.md`. Phase 7 item 4 is renumbered: the authoring guide is `06-authoring-guide.md`, `05` being the reference analysis. |
+
+Open after this pass: regenerate `docs/images/*.png`
+(phase 7 item 2), the official School lockup (D3), the two rock-photo originals, phase 5
+(families) and phase 6 (codemod rules for the new class and token names).
+
+Phases 5 to 8 of the original plan are unchanged.
+
+---
+
+## Original plan (v1, 2026-09-10)
+
 Guiding constraint: **no downstream school repository may break on upgrade.** Every phase
 below is shippable and independently verifiable, and legacy names keep resolving until
 v6.

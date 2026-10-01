@@ -7,12 +7,59 @@ frozen in the log at the bottom. Format is deliberately ADR-like.
 
 ## D1 — How do School and Institute differentiate without green and blue?
 
-**Status: revised and accepted 2026-09-14 — option C, one expertise family per program.
-Institute = Ocre, School = Émeraude.**
+**Status: accepted 2026-09-14 (option C), revised 2026-10-01 — Institute = Ocre re-pointed
+to the official copper; School = Émeraude, demoted to signature elements only.**
 
-> Supersedes the 2026-09-10 acceptance of option E (Institute Cuivre, School Bronze).
-> The Bronze ramp and its copper-alloy rationale are kept below as rejected history,
-> because the contrast reasoning it produced still applies to the replacement.
+### Revision 2026-10-01 — after the official material
+
+**Context.** The official theme and MasterPrez (`05-reference-analysis.md`) use **no
+expertise-family colour at all**: copper `#E4AA5D`, warm neutrals and photos, monochrome
+by design. Two consequences for the 2026-09-14 ramp:
+
+1. "Ocre" for Institute is indistinguishable from the corporate accent. That is fine —
+   Institute _is_ corporate training — but the ramp had to be re-pointed to the pptx
+   values: `primary #E4AA5D`, `medium #FEB95C`, `light #F0C387`, `dark #845400` (ours,
+   kept for AA text on light).
+2. An Émeraude green has no support anywhere in the delivered material. Next to the gold
+   photography a green fill or a green numeral reads as off-brand, and nothing in the
+   pptx shows how a second hue should coexist with copper.
+
+**Decision.** Keep the two-program mechanism; **demote Émeraude to a signature role**:
+eyebrow, list markers, title underline, transition line, level chips, link underlines on
+cards. Never a fill, a background or a numeral. Photos, neutrals, cards and the copper fill
+are identical in both programs. In token terms (`_semantic.scss`): School's
+`--sfeir-ramp-accent` / `-accent-on-dark` / `-deep` stay Émeraude, its `-fill`, `-on-fill`
+and `-wash` point at Cuivre Poli / Carbone / Sable — the same values Institute resolves.
+
+**Contrast, recomputed** with `tokens/color.utils.ts`, asserted in `tokens.spec.ts`:
+
+| Pair                                                | Ratio    | Verdict                       |
+| --------------------------------------------------- | -------- | ----------------------------- |
+| Émeraude medium `#6BC68F` on Carbone `#181A1F`      | 8.37:1   | AAA — eyebrow on dark         |
+| Émeraude dark `#0D5A2E` on Craie `#F9F9F9`          | 7.92:1   | AAA — eyebrow on light        |
+| Émeraude primary `#2E8B57` on Carbone               | 4.10:1   | large text only — hence not a fill |
+| Émeraude dark on Carbone (trap, must keep failing)  | 2.09:1   | fail — the on-dark tier exists for this |
+| Copper `#E4AA5D` on Carbone                         | 8.46:1   | AAA — official on-dark accent |
+| Cuivre `#845400` on Craie                           | 6.14:1   | AA — our on-light accent text |
+| Official eyebrow `#E4AA5D` on Craie (not adopted)   | 1.95:1   | fail — the kept deviation     |
+| Carbone on copper fill                              | 8.46:1   | AAA — `on-accent-fill`        |
+| Émeraude dark on Sable `#F0C387` (School selection) | 5.11:1   | AA                            |
+| Cuivre Profond `#5D3A00` on Sable (Institute selection) | 6.21:1 | AA                          |
+
+**Fallback, if the brand team refuses even a signature green.** School goes monochrome
+copper, differentiated by the lockup alone: point School's `--sfeir-ramp-accent`,
+`-accent-on-dark` and `-deep` at the Ocre tiers — a six-line change in `_semantic.scss`,
+nothing else moves. The surface-polarity option D (School light-first on plaster,
+Institute dark-first on rock) remains available as a second differentiator but is not
+needed to carry the program signal, which the lockup (D3) carries first.
+
+**Consequences.** `02-token-mapping.md` §2–3 record the shipped values. The "parity"
+property returns for everything but the signature: both programs now share the fill,
+wash and on-fill contrast profile, and only the two signature tiers are asserted
+separately.
+
+> The 2026-09-14 text follows for the record. Its ramp table is superseded by the
+> revision above; its contrast reasoning still applies to the signature tiers.
 
 **Context.** The theme's core promise is that one deck serves both programs, switched by
 `data-theme`. That switch is currently a hue switch: School = `#0AB580`, Institute =
@@ -152,6 +199,46 @@ The corporate SVG mark is still required either way, and remains a genuine exter
 dependency. If the brand team already holds official 2026 lockups, they win — but the
 theme should not block on their existence.
 
+### Revision 2026-10-01 — the premise was half false
+
+**Context.** The delivered `LOGOS/` folder (`05-reference-analysis.md` §6) contains the
+corporate wordmark as vector (`Sfeir-Gris-designer.ai`, 2019), the compact burger mark,
+and an **official SFEIR Institute lockup as vector** (`Logo_SFEIR-Institutes_2020.ai`,
+white and grey PNG twins). The 2026 MasterPrez still uses it (slide 21), so it is the
+current official Institute lockup despite its 2020 date. There is still **no School
+lockup**: the string "school" appears zero times in either pptx.
+
+**Decision.** Option B stands, constrained by the Institute geometry:
+
+- **Both lockups are composed in CSS** on the cover (`title-slide.scss`): the corporate
+  wordmark SVG (`logo-sfeir-white.svg`) followed by the program word in Epilogue 500 at
+  ≈ 0.72 × the wordmark height, on one baseline — mirroring the Institute lockup's
+  proportions (`[sfeir]` + word at ≈ 0.55 × the bracket height, 4.06:1 overall). Composing
+  Institute too, rather than using its vector, is deliberate: the two programs then read
+  as siblings, and the Institute word in a 2020 geometric sans would otherwise sit next
+  to a School word in Epilogue. The program word is a custom property
+  (`--sfeir-program-label`), so the markup never carries it.
+- **The official Institute vector ships** in `public/images/logos/`
+  (`logo-institute-{grey,white}.{svg,png,webp}`) for decks that want the authoritative
+  asset; it is not the default.
+- **The official School sibling is requested** from the brand team — a ten-minute job:
+  duplicate the Institute `.ai`, swap the word. When it arrives, both covers switch to
+  the official vectors and the composition becomes the fallback.
+- The corporate wordmark's grey is `#4C4B5E`, a cool slate from 2019, not a charte
+  neutral. It is shipped as-is (the pptx does the same with the burger mark) and no token
+  is derived from it.
+
+**Consequences.** Thirteen v4 WebP marks are deleted. Every slide carries the composed
+program lockup bottom-left (`layout.scss`, 36 px high, black on light, white on dark);
+the cover swaps it for the wordmark over the tagline, bottom-right, as on the official
+`TITLE` layouts. `conf` shows none of them.
+
+**Validated with the maintainer, 2026-10-01: per-slide lockup instead of the burger.**
+The official master signs content slides with the compact `[≡]` burger only. The theme
+deliberately keeps the program lockup on every slide, as v4 did, because attendees should
+see which program they are in on any slide. The burger rasters stay in
+`public/images/logos/` for decks that want the official master look.
+
 ---
 
 ## D4 — Keep the level and techno badge on the cover?
@@ -174,6 +261,28 @@ school. The charte's cover layout has no such device.
 The attributes stay, so no downstream deck changes; only the rendering does. The level
 signal is pedagogically real and the charte already provides the two components needed to
 express it. The star sprites and `logo_empty.webp` are retired as assets.
+
+### Revision 2026-10-01 — confirmed, and made easier
+
+**Context.** The MasterPrez uses circular badges (`ellipse` `#181A1F` with white Space
+Grotesk text) and 86 rounded cards, so pill chips are squarely in-brand and the radius
+"exception" no longer is one. Its eyebrows are Space Grotesk 12 pt, typed in caps, with
+` | ` or bracket separators (`[ UNE MISSION ]`), never `·`.
+
+**Decision.** Option B as shipped (`sfeir-theme-plugin.ts`, `title-slide.scss`):
+
+- The plugin still injects `div.sfeir-logo[data-sfeir-techno][data-sfeir-level]` as the
+  cover's first child — the public contract per-school stylesheets select — plus three
+  `span.sfeir-level-chip`. No raster, no inline style.
+- The eyebrow is drawn from the attributes: **`[ SFEIR SCHOOL | TECHNO ]`** (or
+  `[ SFEIR SCHOOL ]` without a techno), 32 px Space Grotesk 500 caps in `--sfeir-accent`.
+- The level is 1–3 pills, filled up to `sfeir-level`, hollow above, outlined in the
+  signature colour.
+- **Institute shows it too** — `[ SFEIR INSTITUTE | TECHNO ]` — the program word coming
+  from `--sfeir-program-label`. `conf` hides the badge with the lockup.
+
+**Consequences.** No change to any downstream Markdown. The old `·` separator proposed
+above is dropped for ` | `.
 
 ---
 
@@ -199,13 +308,15 @@ KISS wins here.
 
 ## Decision log
 
-| ID  | Decision                | Outcome                             | Status       | Blocks     |
-| --- | ----------------------- | ----------------------------------- | ------------ | ---------- |
-| D1  | Program differentiation | C — Institute Ocre, School Émeraude | **accepted** | phase 3    |
-| D2  | Release strategy        | A — v4 GA now, charte as v5.0.0     | **accepted** | phases 1–2 |
-| D3  | Lockup source           | B — typographic composition in CSS  | **accepted** | phase 4    |
-| D4  | Level / techno badge    | B — eyebrow + pill chips, API kept  | **accepted** | phase 3    |
-| D5  | Legacy escape hatch     | A — clean break                     | **accepted** | phase 1    |
+| ID  | Decision                | Outcome                                                              | Status                           | Blocks     |
+| --- | ----------------------- | -------------------------------------------------------------------- | -------------------------------- | ---------- |
+| D1  | Program differentiation | C — Institute Ocre (= official copper), School Émeraude signature only | **accepted, revised 2026-10-01** | phase 3    |
+| D2  | Release strategy        | A — v4 GA now, charte as v5.0.0                                      | **accepted**                     | phases 1–2 |
+| D3  | Lockup source           | B — both composed in CSS on the Institute geometry; official Institute vector shipped, School sibling requested | **accepted, revised 2026-10-01** | phase 4 |
+| D4  | Level / techno badge    | B — `[ SFEIR SCHOOL \| TECHNO ]` eyebrow + pill chips, API kept     | **accepted, revised 2026-10-01** | phase 3    |
+| D5  | Legacy escape hatch     | A — clean break                                                      | **accepted**                     | phase 1    |
 
-All five arbitrated. D1 was revised on 2026-09-14, replacing the Cuivre/Bronze pair
-with the Ocre and Émeraude expertise families. Phase 0 is closed.
+All five arbitrated. D1 was revised on 2026-09-14 (Ocre / Émeraude replace Cuivre /
+Bronze) and again on 2026-10-01 with D3 and D4, after the official material landed
+(`05-reference-analysis.md`). One external item stays open under D3: the official School
+lockup, requested from the brand team. Phase 0 is closed.
