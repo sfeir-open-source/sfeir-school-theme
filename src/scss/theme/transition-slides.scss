@@ -7,6 +7,8 @@
 * keep their own margins, so a deck that used them still renders as before.
 */
 :root {
+    // The official divider has no accent rule under the title.
+    --tc-transition-display-line: none;
     --tc-transition-color: var(--sfeir-ink-on-dark);
     --tc-transition-title-font-size: var(--sfeir-fs-display);
     --tc-transition-margin-top: 620px;
