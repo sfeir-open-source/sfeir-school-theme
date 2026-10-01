@@ -31,9 +31,14 @@
     "scripts": {
         "test": "vitest",
         "serve": "live-server --port=4242 --open=\"./demo/index.html\" --mount=\"/assets:./demo/assets\" --mount=\"/web_modules:./demo/web_modules\" --watch=\"./demo/web_modules/sfeir-school-theme,./demo/markdown/\"",
+        "serve:ci": "live-server --port=4243 --no-browser --quiet --mount=\"/assets:./demo/assets\" --mount=\"/web_modules:./demo/web_modules\" --watch=\"./demo/index.html\"",
+        "test:visual": "playwright test tests/visual/demo.pw.ts",
+        "test:visual:quick": "playwright test tests/visual/archetypes.pw.ts",
+        "test:visual:update": "playwright test tests/visual/demo.pw.ts tests/visual/archetypes.pw.ts --update-snapshots",
+        "test:contrast": "playwright test tests/visual/contrast-audit.pw.ts",
         "release": "echo \"Error: no deployement is configure for the moment, please just build the project\"",
         "prepare-demo": "tsx ./scripts/prepare-demo.ts",
-        "prestart": "npm run prepare-demo",
+        "prestart": "npm run build && npm run prepare-demo",
         "start": "parallelshell \"npm run serve\" \"npm run build-watch\"",
         "postbuild": "tsx ./scripts/prepare-publish.ts",
         "build": "tsc && vite build && npm run build:scripts && npm run cli-build",
@@ -69,6 +74,7 @@
     },
     "devDependencies": {
         "@eslint/js": "^9.6.0",
+        "@playwright/test": "^1.61.0",
         "@types/node": "^20.14.9",
         "@types/reveal.js": "^5.0.3",
         "@types/shelljs": "^0.8.15",

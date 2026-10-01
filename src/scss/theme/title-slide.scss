@@ -1,123 +1,197 @@
 /**
-* First Slide of Sfeir School
+* Cover — `first-slide`.
+*
+* Follows the official TITLE_2 layout on the gold-dust photo, plus decision D4:
+*
+*   lockup      top-left     corporate wordmark + program word, composed (D3)
+*   eyebrow     above title  [ SFEIR SCHOOL | TECHNO ] in Space Grotesk, program accent
+*   chips       with eyebrow level as 1–3 pills, filled up to the level reached
+*   title       lower-left   h1 136 px Epilogue 800, h2 48 px, Craie
+*   tagline     bottom-right small white wordmark over "Sharp Tech. Real Impact."
+*
+* The composed lockup (D3): the official Institute lockup is the corporate `[sfeir]`
+* wordmark followed by the program word in a geometric sans at ≈ 0.55 × the bracket
+* height, on one baseline. No School sibling exists, so both programs compose the same
+* geometry from the wordmark SVG and the word in Epilogue 500 — the two then read as
+* siblings. The official Institute vector ships in images/logos/ for decks that want
+* it. The program word is a custom property so the markup never carries it.
 */
+
+:root {
+    --sfeir-program-label: 'School';
+}
+
+// `.backgrounds` too: the per-slide lockup in layout.scss lives there.
+#{$sfeir-institute} {
+    --sfeir-program-label: 'Institute';
+}
+
+// Slide geometry at 1920 x 1080: the pptx margin of 0.49 in is 94 px.
+$cover-margin: 94px;
+$cover-lockup-height: 72px;
+$cover-lockup-width: $cover-lockup-height * 2.98; // the SVG is 316.6 x 106.3
 
 .reveal .slides section[data-background].first-slide {
     position: absolute;
-    color: var(--white);
+    box-sizing: border-box;
+    padding: 520px $cover-margin 0; // the title group sits in the lower-left
+    color: var(--sfeir-craie);
     background: transparent;
+    text-align: left;
+    // The official cover has no accent line under the title; the eyebrow carries
+    // the accent.
+    --tc-transition-display-line: none;
 
+    // Lockup: the wordmark…
     &::before {
-        position: absolute;
         content: '';
-        background: url('./images/logo-school-white-3.webp');
-        width: 800px;
-        height: 400px;
-        background-repeat: no-repeat;
-        background-size: contain;
-        top: 200px;
-        left: 0;
+        position: absolute;
+        top: $cover-margin;
+        left: $cover-margin;
+        width: $cover-lockup-width;
+        height: $cover-lockup-height;
+        background: url('./images/logos/logo-sfeir-white.svg') left center /
+            contain no-repeat;
+    }
+
+    // …and the program word, on the wordmark's baseline.
+    &::after {
+        content: var(--sfeir-program-label);
+        position: absolute;
+        top: $cover-margin;
+        left: calc(#{$cover-margin} + #{$cover-lockup-width} + 18px);
+        height: $cover-lockup-height;
+        line-height: $cover-lockup-height;
+        font-family: var(--sfeir-font-display);
+        font-weight: var(--sfeir-weight-medium);
+        font-size: calc(#{$cover-lockup-height} * 0.72);
+        letter-spacing: var(--sfeir-tracking-title);
+        color: var(--sfeir-craie);
     }
 
     h1 {
-        font-size: 2em;
-        margin-left: initial;
+        margin: 24px 0 0;
+        padding: 0;
+        font-size: var(--sfeir-fs-display-cover);
+        font-weight: var(--sfeir-weight-display);
+        line-height: 1.05;
+        letter-spacing: var(--sfeir-tracking-display);
+        color: var(--sfeir-craie);
         text-align: left;
     }
 
     h2 {
-        font-size: 1.5em;
-        margin-bottom: 20px;
-        margin-left: initial;
+        margin: 24px 0 0;
+        padding: 0;
+        font-size: var(--sfeir-fs-subtitle);
+        font-weight: var(--sfeir-weight-medium);
+        line-height: 1.2;
+        color: var(--sfeir-craie);
         text-align: left;
     }
 
-    // Management of logo
+    /**
+    * Badge (D4). The plugin injects `div.sfeir-logo[data-sfeir-techno][data-sfeir-level]`
+    * as the first child with three empty spans; the eyebrow is drawn from the
+    * attributes, the spans are the chips.
+    */
     div.sfeir-logo {
-        position: absolute;
-        top: 100px;
-        right: 100px;
-        width: 400px;
-        height: 500px;
-        max-width: 400px;
-        max-height: 500px;
-        background-size: contain;
-        background-position: center center;
-        background-repeat: no-repeat;
-        margin: auto;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        font-family: var(--sfeir-font-label);
+        font-size: var(--sfeir-fs-eyebrow);
+        font-weight: var(--sfeir-weight-medium);
+        line-height: 1;
+        text-transform: uppercase;
+        color: var(--sfeir-accent);
 
         &::before {
-            color: var(--black);
-            position: absolute;
-            content: attr(data-sfeir-techno);
-            text-transform: uppercase;
-            font-weight: 800;
-            top: 230px;
-            left: 0;
-            width: 100%;
-            text-align: center;
-            font-size: 50px;
+            content: '[ SFEIR ' var(--sfeir-program-label) ' | '
+                attr(data-sfeir-techno) ' ]';
+            margin-right: 22px;
         }
 
-        &::after {
-            content: '';
-            position: absolute;
-            bottom: 50px;
-            width: 100%;
-            height: 200px;
-            left: 0;
+        &:not([data-sfeir-techno])::before,
+        &[data-sfeir-techno='']::before {
+            content: '[ SFEIR ' var(--sfeir-program-label) ' ]';
         }
-    }
 
-    div.sfeir-logo[data-sfeir-level='1']:after {
-        background: url('./images/star.webp');
-        background-repeat: no-repeat;
-        background-position: 50% 70px;
-        background-size: 45px;
-    }
-    div.sfeir-logo[data-sfeir-level='2']:after {
-        background: url('./images/star.webp'), url('./images/star.webp');
-        background-position:
-            calc(50% - 35px) 70px,
-            calc(50% + 35px) 70px;
-        background-repeat: no-repeat;
-        background-size: 45px;
-    }
-    div.sfeir-logo[data-sfeir-level='3']:after {
-        background:
-            url('./images/star.webp'), url('./images/star.webp'),
-            url('./images/star.webp');
-        background-position:
-            calc(50% - 35px) 55px,
-            calc(50% + 35px) 55px,
-            50% 95px;
-        background-repeat: no-repeat;
-        background-size: 45px;
+        .sfeir-level-chip {
+            display: inline-block;
+            box-sizing: border-box;
+            width: 56px;
+            height: 18px;
+            border: 1px solid var(--sfeir-accent);
+            border-radius: var(--sfeir-radius-pill);
+        }
+
+        &[data-sfeir-level='1'] .sfeir-level-chip:nth-child(1),
+        &[data-sfeir-level='2'] .sfeir-level-chip:nth-child(-n + 2),
+        &[data-sfeir-level='3'] .sfeir-level-chip {
+            background: var(--sfeir-accent);
+        }
     }
 }
 
 /**
-* Hack for Institute
+* Tagline, bottom-right, on the background layer: the small white wordmark (1.58 in ≈
+* 300 px in the pptx) over "Sharp Tech. Real Impact." in Space Grotesk Medium. It
+* replaces the burger signature on the cover, as on the official TITLE layouts.
 */
-.reveal .slides[data-theme='institute'] section[data-background].first-slide {
-    &::before {
-        background: url('./images/logo-institute-white.webp');
-        background-repeat: no-repeat;
-        background-size: contain;
-    }
-    div.sfeir-logo {
-        display: none;
-    }
+@mixin sfeir-cover-tagline {
+    content: 'Sharp Tech. Real Impact.';
+    left: auto;
+    right: $cover-margin;
+    bottom: $cover-margin;
+    width: auto;
+    height: auto;
+    padding-top: 116px;
+    padding-left: 0; // reset the per-slide lockup's word offset (layout.scss)
+    background: url('./images/logos/logo-sfeir-white.svg') right top / 300px
+        auto no-repeat;
+    font-family: var(--sfeir-font-label);
+    font-weight: var(--sfeir-weight-medium);
+    font-size: var(--sfeir-fs-eyebrow);
+    line-height: 1;
+    color: var(--sfeir-craie);
+    text-align: right;
+    white-space: nowrap;
+}
+
+.reveal
+    .backgrounds
+    div.slide-background.first-slide
+    > .slide-background-content:after {
+    @include sfeir-cover-tagline;
 }
 
 /**
-* Hack for Conf
+* Hack for Conf: no lockup, no badge, no tagline.
 */
 .reveal .slides[data-theme='conf'] section[data-background].first-slide {
-    &::before {
-        display: none;
-    }
+    &::before,
+    &::after,
     div.sfeir-logo {
         display: none;
+    }
+}
+
+/**
+* Hack for print
+*/
+html.print-pdf {
+    // reveal's print stylesheet zeroes every section's padding with !important, which
+    // would lift the title group into the lockup.
+    .reveal .slides .pdf-page section[data-background].first-slide {
+        padding: 520px $cover-margin 0 !important;
+    }
+
+    .reveal
+        .slides
+        .pdf-page
+        div.slide-background.first-slide
+        > .slide-background-content:after {
+        @include sfeir-cover-tagline;
     }
 }

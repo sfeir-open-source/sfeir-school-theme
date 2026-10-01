@@ -1,0 +1,55 @@
+/**
+* Layer 3 — contextual redefinitions.
+*
+* Two independent axes, resolved in this order:
+*   program  ([data-theme] on .slides) picks the ramp;
+*   polarity (a dark-surfaced section)  picks the tier within it.
+*
+* This is where the charte's contrast traps are closed, so that an author writing
+* `color: var(--sfeir-accent)` is correct in all four combinations.
+*/
+
+/**
+* Program axis.
+*
+* :root already defaults to School (Émeraude signature on copper), and `conf` inherits
+* School, so only Institute needs redefining. `.backgrounds` is a sibling of `.slides`,
+* not a descendant, hence the second selector.
+*/
+#{$sfeir-institute} {
+    --sfeir-ramp-accent: var(--sfeir-ocre-dark);
+    // The official on-dark accent: #E4AA5D everywhere in the pptx, 8.5:1 on Carbone.
+    --sfeir-ramp-accent-on-dark: var(--sfeir-ocre-primary);
+    // Fill, on-fill and wash are the same copper as School; only the deep tier differs.
+    --sfeir-ramp-fill: var(--sfeir-ocre-primary);
+    --sfeir-ramp-on-fill: var(--sfeir-carbone);
+    --sfeir-ramp-wash: var(--sfeir-ocre-light);
+    --sfeir-ramp-deep: var(--sfeir-cuivre-profond);
+
+    // Mandatory: the roles resolve where they are declared, so switching the ramp
+    // above has no effect on the roles declared at :root.
+    @include sfeir-accent-roles;
+    @include sfeir-framework-bindings;
+}
+
+/**
+* Polarity axis.
+*
+* The slide archetypes that sit on a dark surface: flat Carbone, or a dark photo over
+* the same Carbone fallback.
+*/
+#{$sfeir-dark-sections} {
+    --sfeir-accent: var(--sfeir-ramp-accent-on-dark);
+    --sfeir-surface: var(--sfeir-carbone);
+    --sfeir-surface-raised: var(--sfeir-glass-dark);
+    --sfeir-surface-high: var(--sfeir-noir); // black blocks on a Carbone slide
+    // A code block on a Carbone slide would vanish into it; the pptx puts black blocks
+    // on dark slides, so the code surface follows.
+    --sfeir-code-surface: var(--sfeir-noir);
+    --sfeir-glass: var(--sfeir-glass-dark);
+    --sfeir-on-glass: var(--sfeir-ink-on-dark);
+    --sfeir-on-surface: var(--sfeir-ink-on-dark);
+    --sfeir-on-surface-muted: var(--sfeir-separator-warm);
+
+    @include sfeir-framework-bindings;
+}

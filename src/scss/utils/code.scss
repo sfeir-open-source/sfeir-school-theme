@@ -1,0 +1,141 @@
+/**
+* Code slides.
+*
+* Code always sits on a dark block: Carbone (--sfeir-code-surface) on the plaster
+* slides, black on the dark ones, where a Carbone block would vanish into the photo —
+* the pptx puts black blocks on its dark slides. One highlight palette therefore serves
+* `with-code`, `with-code-dark` and `with-code-bg-dark`, and the bare `.hljs` reveal
+* paints when a slide carries none of those classes.
+*
+* The palette is the brand's: the four copper tiers, the warm neutral and Blanc Craie,
+* plus one cool tone for keywords so a line of code is not a single hue. Every value
+* is computed against #181A1F with tokens/color.utils.ts, never transcribed:
+*
+*   #F9F9F9 plain        16.5:1      #E4AA5D strings       8.5:1
+*   #CCC4B6 comments     10.1:1      #FEB95C numbers      10.2:1
+*   #7FC8D2 keywords      9.2:1      #F0C387 attributes   10.7:1
+*
+* (and higher still on the black block). This replaces the vendored Tomorrow theme,
+* whose orange, yellow and olive sat at 2.5:1, 1.9:1 and 3.8:1 on their white block.
+*/
+
+// The one hue the palette does not carry: a soft teal, kept to keywords.
+$sfeir-code-keyword: #7fc8d2;
+
+:root {
+    --sfeir-code-ink: var(--sfeir-ink-on-dark);
+    --sfeir-code-comment: var(--sfeir-separator-warm);
+    --sfeir-code-keyword: #{$sfeir-code-keyword};
+    --sfeir-code-string: var(--sfeir-cuivre-poli);
+    --sfeir-code-number: var(--sfeir-cuivre-clair);
+    --sfeir-code-attribute: var(--sfeir-sable);
+}
+
+.reveal .slides {
+    // Talk-control sets the block colours per slide class; the vendored `pre` shadow
+    // and the a11y themes it ships are all replaced here.
+    pre {
+        box-shadow: none;
+    }
+
+    pre code.hljs,
+    .hljs {
+        background: var(--sfeir-code-surface);
+        color: var(--sfeir-code-ink);
+        border-radius: var(--sfeir-radius);
+        font-family: var(--sfeir-font-mono);
+        letter-spacing: var(--sfeir-tracking-mono);
+    }
+
+    // Inline code: the same block, scaled to the line.
+    code:not(.hljs) {
+        padding: 0 0.3em;
+        background: var(--sfeir-code-surface);
+        color: var(--sfeir-code-ink);
+        border-radius: calc(var(--sfeir-radius) / 3);
+        box-shadow: none;
+    }
+
+    .hljs-subst,
+    .hljs-punctuation,
+    .hljs-operator,
+    .hljs-params {
+        color: var(--sfeir-code-ink);
+    }
+
+    .hljs-comment,
+    .hljs-quote,
+    .hljs-tag,
+    .hljs-meta,
+    .hljs-meta .hljs-keyword,
+    .hljs-meta .hljs-string {
+        color: var(--sfeir-code-comment);
+    }
+
+    .hljs-comment,
+    .hljs-quote {
+        font-style: italic;
+    }
+
+    .hljs-keyword,
+    .hljs-selector-tag,
+    .hljs-name,
+    .hljs-type,
+    .hljs-template-tag,
+    .hljs-built_in,
+    .hljs-doctag,
+    .hljs-literal,
+    .hljs-regexp,
+    .hljs-keyword.hljs-atrule {
+        color: var(--sfeir-code-keyword);
+    }
+
+    .hljs-string,
+    .hljs-symbol,
+    .hljs-bullet,
+    .hljs-addition,
+    .hljs-code {
+        color: var(--sfeir-code-string);
+    }
+
+    .hljs-number,
+    .hljs-link,
+    .hljs-variable,
+    .hljs-template-variable,
+    .hljs-variable.constant_,
+    .hljs-selector-id,
+    .hljs-selector-class,
+    .hljs-deletion {
+        color: var(--sfeir-code-number);
+    }
+
+    .hljs-attr,
+    .hljs-attribute,
+    .hljs-property,
+    .ruby .hljs-property {
+        color: var(--sfeir-code-attribute);
+    }
+
+    .hljs-title,
+    .hljs-section,
+    .hljs-title.class_,
+    .hljs-title.function_,
+    .hljs-class .hljs-title,
+    .hljs-function .hljs-title,
+    .hljs-strong {
+        color: var(--sfeir-code-ink);
+        font-weight: var(--sfeir-weight-bold);
+    }
+
+    .hljs-emphasis {
+        color: var(--sfeir-code-ink);
+        font-style: italic;
+    }
+
+    // Talk-control hard-codes white headings on `with-code-dark`; the ink role is the
+    // same value but follows the surface.
+    .with-code-dark:not(.stack):not([class*='transition']) h1,
+    .with-code-dark:not(.stack):not([class*='transition']) h2 {
+        color: var(--sfeir-on-surface);
+    }
+}

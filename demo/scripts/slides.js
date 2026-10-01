@@ -9,6 +9,7 @@ function schoolSlides() {
         '03-classics/11_layouts.md',
         '03-classics/30_code_slides.md',
         '04-specifics/20_specifics_slides.md',
+        '04-specifics/25_charte_2026.md',
         '05-helpers/40_helpers.md',
         '05-helpers/50_modes.md',
     ];
@@ -23,7 +24,23 @@ function formation() {
     });
 }
 
-await SfeirThemeInitializer.init(formation);
+/**
+ * Expose the Reveal API as `window.Reveal` (the ESM build keeps it module-private).
+ * Used by the visual regression harness (tests/visual) and handy in DevTools.
+ */
+function exposeRevealPlugin() {
+    return {
+        id: 'expose-reveal',
+        init: (deck) => {
+            window.Reveal = deck;
+        },
+    };
+}
+
+await SfeirThemeInitializer.init({
+    slidesFactory: formation,
+    plugins: [exposeRevealPlugin],
+});
 
 /**
  * To Uncomment to see in actions other configuration possible offered by theme initialization

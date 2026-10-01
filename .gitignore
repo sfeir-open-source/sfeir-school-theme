@@ -72,3 +72,16 @@ demo/libs
 
 .vscode
 .idea
+
+# Playwright visual harness (tests/visual)
+tests/visual/reports/
+tests/visual/test-results/
+tests/visual/playwright-report/
+# Baselines are local artefacts, regenerated on the reference state (tests/visual/README.md)
+tests/visual/__screenshots__/
+
+# Brand reference material (design/): heavy binaries stay local, logo sources are tracked
+design/**/FONDS/
+design/**/*.pptx
+design/**/*.zip
+design/**/*.psd

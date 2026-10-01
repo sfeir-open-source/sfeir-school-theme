@@ -1,4 +1,5 @@
-import { _handle_parameter } from '@talk-control/talk-control-revealjs-extensions';
+/** The level scale of a SFEIR School course: 100, 200, 300. */
+const LEVELS = 3;
 
 export class SfeirTheme {
     constructor() {}
@@ -7,12 +8,12 @@ export class SfeirTheme {
         // FavIcon
         this._manageFavIcon();
 
-        // ManageBackground
-        //this._manageBackgrounds();
+        // Cover: eyebrow and level chips
         this._manageFirstSlide();
 
-        // ManageExercices
-        this._manageExerciceSlide();
+        // The exercice band is a background like any other now: the initializer maps
+        // the `exercice` class onto the sand-pour photo and theme/exercice.scss sizes
+        // it to the left 25 %. Nothing left to inject here.
     }
 
     _manageFavIcon() {
@@ -32,54 +33,46 @@ export class SfeirTheme {
         document.getElementsByTagName('head')[0].appendChild(link);
     }
 
+    /**
+     * Cover badge (decision D4).
+     *
+     * `div.sfeir-logo[data-sfeir-techno][data-sfeir-level]` is the public contract —
+     * per-school stylesheets select it — so the element and both attributes stay. What
+     * it renders changed: theme/title-slide.scss draws an eyebrow
+     * `[ SFEIR SCHOOL | <techno> ]` from the attributes and the program label, and the
+     * three spans below are the level chips (filled up to `data-sfeir-level`, hollow
+     * above). No raster logo, no star sprites, no inline style.
+     */
     _manageFirstSlide() {
         const firstSlides = [
             ...document.querySelectorAll('.reveal .slides section.first-slide'),
         ];
         for (const firstSlideSection of firstSlides) {
-            const imgLogo = document.createElement('DIV');
-            imgLogo.classList.add('sfeir-logo');
-            // eslint-disable-next-line @typescript-eslint/no-explicit-any
-            (imgLogo.style as any)['background-image'] =
-                `url(./web_modules/sfeir-school-theme/dist/images/logo_empty.webp)`;
+            const badge = document.createElement('DIV');
+            badge.classList.add('sfeir-logo');
 
-            const level = firstSlideSection.hasAttribute('sfeir-level')
-                ? +firstSlideSection.getAttribute('sfeir-level')!
-                : 1;
+            // Clamped to the 1-3 scale: a typo or `0` still draws one chip, never none.
+            const level = Math.min(
+                3,
+                Math.max(
+                    1,
+                    Number(firstSlideSection.getAttribute('sfeir-level')) || 1
+                )
+            );
             const techno = firstSlideSection.hasAttribute('sfeir-techno')
                 ? firstSlideSection.getAttribute('sfeir-techno')
                 : '';
-            imgLogo.setAttribute('data-sfeir-level', `${level}`);
-            imgLogo.setAttribute('data-sfeir-techno', `${techno}`);
+            badge.setAttribute('data-sfeir-level', `${level}`);
+            badge.setAttribute('data-sfeir-techno', `${techno}`);
 
-            firstSlideSection.insertAdjacentElement('afterbegin', imgLogo);
-        }
-    }
+            for (let i = 0; i < LEVELS; i++) {
+                const chip = document.createElement('SPAN');
+                chip.classList.add('sfeir-level-chip');
+                chip.setAttribute('aria-hidden', 'true');
+                badge.appendChild(chip);
+            }
 
-    _manageExerciceSlide() {
-        const queryString = window.location.search;
-        const urlParams = new URLSearchParams(queryString);
-        const slidesElement: HTMLElement =
-            document.querySelector('.reveal .slides')!;
-        const slidesTheme = _handle_parameter(
-            urlParams,
-            'data-theme',
-            slidesElement,
-            'data-theme',
-            'school'
-        );
-        const exercicesSlides = [
-            ...document.querySelectorAll('.reveal .slides section.exercice'),
-        ];
-        for (const exercicesection of exercicesSlides) {
-            const colorToUse =
-                slidesTheme === 'institute'
-                    ? 'var(--sfeir-blue)'
-                    : 'var(--sfeir-green)';
-            exercicesection.setAttribute(
-                'data-background',
-                `linear-gradient(90deg,  ${colorToUse} 25%, white 25%, white 100%)`
-            );
+            firstSlideSection.insertAdjacentElement('afterbegin', badge);
         }
     }
 }
