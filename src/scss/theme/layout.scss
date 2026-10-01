@@ -18,9 +18,25 @@
 }
 
 .reveal {
+    // The official master uses copper bullets in both programs.
     li::marker {
-        color: var(--sfeir-accent);
+        color: var(--sfeir-accent-fill);
     }
+}
+
+/**
+* Page margins, as the official master: title and body start 0.49 in from the edges,
+* i.e. 94 px at 1080. talk-control's own 30 px heading padding makes up part of it, so
+* the section adds the rest. The cover and the dividers carry their own padding.
+*/
+:root {
+    --sfeir-page-margin-x: 56px;
+    --sfeir-page-margin-top: 56px;
+}
+
+.reveal .slides section:not(.stack):not(.first-slide):not([class*='transition']):not(.speaker-slide):not(.quote-slide) {
+    box-sizing: border-box;
+    padding: var(--sfeir-page-margin-top) var(--sfeir-page-margin-x) 0;
 }
 
 .reveal .slides section.exercice:not(.stack) {
