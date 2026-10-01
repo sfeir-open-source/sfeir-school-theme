@@ -543,11 +543,12 @@ describe('token resolution across contexts', () => {
     });
 
     it.each(contexts)(
-        'should resolve --sfeir-accent-fill on %s to the copper, in both programs',
-        (_context, chain) => {
-            expect(resolve(chain, 'sfeir-accent-fill')).toBe('#E4AA5D');
-            expect(resolve(chain, 'sfeir-on-accent-fill')).toBe('#181A1F');
-            expect(resolve(chain, 'sfeir-accent-wash')).toBe('#F0C387');
+        'should resolve --sfeir-accent-fill on %s to the program fill',
+        (context, chain) => {
+            const school = context.startsWith('School');
+            expect(resolve(chain, 'sfeir-accent-fill')).toBe(school ? '#2E8B57' : '#E4AA5D');
+            expect(resolve(chain, 'sfeir-on-accent-fill')).toBe(school ? '#000000' : '#181A1F');
+            expect(resolve(chain, 'sfeir-accent-wash')).toBe(school ? '#C8F5D6' : '#F0C387');
         }
     );
 

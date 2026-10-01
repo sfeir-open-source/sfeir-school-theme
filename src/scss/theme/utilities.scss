@@ -5,7 +5,7 @@
 * Each one reads semantic roles only, so it is correct on both polarities and in both
 * programs without the author knowing either rule. No shadow, no gradient, no literal
 * colour or radius: the signature colour (--sfeir-accent) stays on small elements, the
-* copper fill (--sfeir-accent-fill) is the same in both programs.
+* fill (--sfeir-accent-fill) follows the program: Émeraude in School, copper in Institute.
 */
 
 // Eyebrow: Space Grotesk caps above a title. Brackets and separators are typed by the
@@ -21,9 +21,9 @@
     color: var(--sfeir-accent);
 }
 
-// Key figure: Space Grotesk Medium in copper, as the pptx sets its stats. Copper in both
-// programs (D1: Émeraude is never a numeral), at the text tier on light surfaces: the
-// pptx's #E4AA5D on plaster is 1.95:1, under the 3:1 even 200 px text needs.
+// Key figure: Space Grotesk Medium in the program colour (copper in Institute, Émeraude
+// in School) at the text tier on light surfaces. The pptx's #E4AA5D on a light slide is
+// 1.95:1, under the 3:1 even 200 px text needs.
 .reveal .stat {
     margin: 0;
     font-family: var(--sfeir-font-stat);
@@ -31,7 +31,7 @@
     font-weight: var(--sfeir-weight-stat);
     line-height: 1;
     letter-spacing: var(--sfeir-tracking-display);
-    color: var(--sfeir-cuivre);
+    color: var(--sfeir-accent);
 }
 
 #{$sfeir-dark-sections} .stat {
