@@ -1,4 +1,4 @@
-# 0002. Rename `docs/` to `slides/`, reclaim `docs/` for documentation
+# 0002. `slides/` holds the learner deck, `docs/` holds project documentation
 
 ### Submitters
 
@@ -33,8 +33,16 @@ Rename the CLI-mandated slide-deck root from `docs/` to `slides/`. Every
 path currently rooted at `<root>/docs/...` (`scripts/slides.js`,
 `markdown/`, `assets/images/`, `css/slides.css`, `web_modules/`) moves to
 the equivalent path under `<root>/slides/...`, unchanged otherwise.
-`<root>/docs/` becomes free for `docs/adr/` and other project
-documentation.
+
+The two roots then hold two deliberately different audiences:
+
+- `<root>/slides/` — the learner-facing deck: the declaration script, the
+  markdown, the images, the slide-specific CSS, the compiled theme bundle
+  — everything the `check` command governs.
+- `<root>/docs/` — the contributor-facing project documentation: ADRs
+  (`docs/adr/`), training documentation, speaker notes, `README.md`,
+  `CONTRIBUTING.md`, and anything else about the project rather than for
+  the learner.
 
 This affects: `G_002`, every path assumption in `S_001`–`S_010`
 (`check-docs.ts`), and `cli/README.md`.
@@ -45,15 +53,6 @@ This affects: `G_002`, every path assumption in `S_001`–`S_010`
   cut.** Rejected dual-support: the number of existing `sfeir-school-xxx`
   repos is small, and a compatibility mode is extra CLI code that would
   need to be remembered and removed later — a hard cut is simpler (KISS).
-- **Renaming this repo's own `demo/` to match the `slides/` shape.**
-  Considered, for a contributor exploring the theme to see the target
-  shape directly. Rejected: this repo doesn't run `check` on itself, so
-  there is no functional benefit, and nesting `demo/`'s content one level
-  deeper (or moving `index.html` inside it, which is what actually
-  serving it with zero config would require) is extra churn — the current
-  `demo/scripts`, `demo/markdown`, `demo/assets`, `demo/web_modules`
-  layout already works and stays simpler.
-
 ## Decision
 
 - The slide-deck root is renamed `docs/` → `slides/` in

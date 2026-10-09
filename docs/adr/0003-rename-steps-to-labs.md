@@ -1,4 +1,4 @@
-# 0003. Rename `steps/` to `labs/`, align config vocabulary
+# 0003. `labs/` replaces `steps/`: directory, config keys, and vocabulary align
 
 ### Submitters
 
@@ -15,17 +15,19 @@ Context below.
 
 ## Context
 
-The `check` command requires every project to have a `<root>/steps`
-directory holding lab exercises (`check-root-dir.ts`, rule `G_003`),
-validated by `check-labs.ts` (`L_001`–`L_010`), declared via
-`steps/package.json` or `steps/labs.json`, and tunable through
-`.sfeir-theme-config.json`'s `ignoreStepsDirectories` and
-`stepCommandPrefix` keys.
+The directory holding hands-on exercises is called `steps`, but everyone
+else already calls the exercise itself a "lab" — the CLI's own check
+messages, the trainers, the generated schools. That mismatch between what
+the folder is named and what everyone calls the thing inside it is
+confusing for anyone reading the folder name or the config file against
+the CLI's own output.
 
-The vocabulary is already inconsistent: the directory and the config keys
-say "step", while every check message already says "lab" (e.g. `L_001`:
-`Lab "%s" should be declared...`). This is confusing for anyone reading the
-folder name or the config file against the CLI's own output.
+Concretely: the `check` command requires every project to have a
+`<root>/steps` directory (`check-root-dir.ts`, rule `G_003`), validated by
+`check-labs.ts` (`L_001`–`L_010`), declared via `steps/package.json` or
+`steps/labs.json`, and tunable through `.sfeir-theme-config.json`'s
+`ignoreStepsDirectories` and `stepCommandPrefix` keys — yet `L_001`'s own
+message already reads `Lab "%s" should be declared...`.
 
 ## Proposed Design
 

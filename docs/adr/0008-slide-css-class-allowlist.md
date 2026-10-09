@@ -16,8 +16,11 @@ Context below.
 ## Context
 
 `check-docs.ts` (`S_009`) enforces that every CSS class used inside a
-slide file is defined somewhere known: the theme's compiled CSS, the
-project's own `css/slides.css`, or a file declared in `extraCssFiles`
+slide file is defined somewhere known — not just a literal `class="..."`
+attribute, but also a class introduced through markdown syntax that gets
+converted into one (e.g. an image's `{.some-class}` attribute syntax) —
+sourced from: the theme's compiled CSS, the project's own
+`css/slides.css`, or a file declared in `extraCssFiles`
 ([[0012-project-override-config-file]]). This catches typos and stale
 classes left over from a removed stylesheet.
 

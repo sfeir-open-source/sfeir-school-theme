@@ -24,6 +24,11 @@ Context below.
 - **`sfeir-school-xxx`** — one repository per concrete training, generated
   from the template.
 
+Decisions cascade one-way down this chain — theme, then template, then
+school — never the other way: a lower tier may extend what the tier above
+leaves open, never override it (section 3 below spells out how this is
+enforced in practice).
+
 A decision made in the theme (a breaking API, a naming convention, a
 build-tooling choice) affects the template, then every generated `xxx`
 instance. Today nothing is written down: contributors have no way to know
@@ -64,7 +69,9 @@ Files are named `NNNN-kebab-slug.md`, zero-padded, sequential, never
 reused — the convention this very file follows. One flat sequence per
 repository — except in a school/template project, where the two founding
 ADRs and each prefixed group (point 3) each keep their own independent
-sequence.
+sequence. These parallel sequences are a numbering detail, not competing
+authority: point 3 below states the order these ADRs apply in when more
+than one of them touches the same subject.
 
 A new file exists only for a new decision. A release or a git tag is never
 by itself a reason to create a file — it's the *consequence* of decisions
@@ -114,6 +121,24 @@ those two founding decisions:
   `template-NNNN-kebab-slug.md` for the template itself) — its own
   sequence starting at `0000`.
 
+**Order of precedence.** When a school's or the template's own ADR and a
+theme ADR address the same subject, the theme's decision always wins — the
+compliance rule in point 2 is unconditional, not something a lower tier can
+opt out of by writing its own ADR. Precedence mirrors the dependency
+chain, theme before template before school:
+
+- A `theme-NNNN-slug.md` file never records a competing decision: it
+  exists only to keep a theme ADR visible locally (the first bullet
+  above), and the theme's own `dist/adr` copy stays authoritative for its
+  content.
+- A `template-NNNN-slug.md` or `<xxx>-NNNN-slug.md` ADR may extend or
+  specialize what the theme leaves open, but can never contradict a theme
+  ADR already in force for the version it depends on.
+- Inside a single `sfeir-school-xxx` instance, its own `<xxx>-NNNN-slug.md`
+  ADRs take precedence over the template's `template-NNNN-slug.md` ones
+  only where the template explicitly leaves a choice open; otherwise the
+  same rule applies one level down: template before school.
+
 ## Considerations
 
 - **A file per theme release vs. one flat sequence.** Dropped: a release
@@ -149,6 +174,9 @@ those two founding decisions:
   (`theme-NNNN-slug.md` for a referenced theme ADR, `<xxx>-NNNN-slug.md`
   or `template-NNNN-slug.md` for a local decision), each its own sequence
   starting at `0000` (point 3).
+- A theme ADR always takes precedence over a template or school ADR on the
+  same subject; a template ADR takes precedence over a school's own,
+  except where the template explicitly leaves the choice open (point 3).
 - Out of scope, tracked as follow-up work:
   - the naming convention for a school (the `xxx` in `sfeir-school-xxx`) —
     its own future ADR;
@@ -165,7 +193,7 @@ those two founding decisions:
 
 None at the time this ADR was written — it is the founding ADR of the
 series. [[0001-comply-with-theme-adrs]] through
-[[0014-commit-and-branch-convention]] are the first decisions to build on
+[[0016-minimal-tooling-footprint]] are the first decisions to build on
 the numbering, edgex-template, and Change-Log-only-revision conventions
 established here.
 

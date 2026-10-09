@@ -46,6 +46,11 @@ repo.
   [[0000-adopt-adrs]] are the two decisions every tier of the chain
   adopts as its own — they belong together at the start of the sequence,
   not mixed in with the theme's own, unrelated architecture decisions.
+  This does not conflict with [[0000-adopt-adrs]]'s numbering rule
+  (section 1, "a new file exists only for a new decision"): that rule
+  governs decisions made as the theme's sequence grows, while `0000` and
+  `0001` are seeded once, as a pair, by `sfeir-school-theme-migrate` —
+  never created ad hoc by a later, unrelated decision.
 
 ## Decision
 

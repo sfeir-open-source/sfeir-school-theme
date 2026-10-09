@@ -39,6 +39,12 @@ needs no config file at all.
 - **A mandatory, always-present config file.** Rejected: most schools need
   none of these overrides; requiring a file for defaults-only projects is
   needless ceremony (KISS).
+- **Is a config file really an architecture decision?** Yes — the
+  decision isn't the file's existence, it's that the whole `check`
+  contract exposes exactly one override surface, bounded to the keys this
+  ADR's Change Log enumerates. Letting overrides accumulate as ad hoc CLI
+  flags or scattered env vars, instead of one reviewed, versioned surface,
+  is the alternative this ADR rules out.
 
 ## Decision
 
@@ -46,6 +52,14 @@ needs no config file at all.
   documented defaults; it stays the single place for per-project CLI
   overrides, with new keys added there as new overridable behaviors are
   introduced.
+- The surface is bounded to the keys `config-template.json` enumerates: a
+  project cannot use this file to turn off a `check` rule outright (e.g.
+  disabling the CSS allow-list of [[0008-slide-css-class-allowlist]], or
+  opting out of [[0004-self-contained-slides]]'s zero-install invariant) —
+  only to tune parameters this ADR's Change Log has explicitly opened up
+  (ignored directories, prefixes, extra CSS files). Opening a new one is
+  itself a decision, recorded by amending this Change Log, not by
+  silently adding a key.
 
 ## Other Related ADRs
 

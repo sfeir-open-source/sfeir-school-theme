@@ -32,12 +32,25 @@ toolchains). When the npm-workspace form is used, keep the stricter
 name/script correspondence checks, since that's what makes `npm run <lab>`
 actually work.
 
+Every lab directory, regardless of declaration form, follows one naming
+convention: `NNNN-kebab-slug-lab` (zero-padded order prefix, a short slug,
+the `-lab` suffix) — e.g. `0003-arrays-lab`. This is the name both forms
+declare: the npm `workspaces` entry, or the `labs/labs.json` `labs`
+array's entry, each naming the directory it points at. Its companion
+solution, when one exists, is named identically with `-solution` appended
+([[0011-lab-solution-pairing]]).
+
 ## Considerations
 
 - **Force every school onto npm workspaces, for consistency.** Rejected:
   SFEIR School covers non-JS trainings; forcing an npm-only mechanism
   would remove the `labs.json` escape hatch that exists precisely for that
   reason.
+- **A lecture-only school, with no hands-on exercise at all.** Needs no
+  `labs/` directory and declares nothing here: `check-root-dir.ts`'s
+  `G_003` must only fire once the project declares at least one lab slide
+  ([[0006-lab-slide-format]]) — exact gating logic is CLI implementation
+  follow-up, not detailed here.
 
 ## Decision
 
@@ -45,6 +58,9 @@ actually work.
   the stricter npm-only correspondence rules, unchanged in substance —
   path prefix updates only (`steps/` → `labs/`, per
   [[0003-rename-steps-to-labs]]).
+- Every lab directory is named `NNNN-kebab-slug-lab`; its solution, when
+  one exists, is the same name with `-solution` appended.
+- A school with no hands-on exercises needs no `labs/` directory at all.
 
 ## Other Related ADRs
 

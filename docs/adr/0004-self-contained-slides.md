@@ -16,13 +16,15 @@ Context below.
 ## Context
 
 `slides/` ([[0002-rename-docs-to-slides]]) is what a learner or trainer
-opens. Today it already works with nothing more than a static file
-server: `demo/index.html` only uses relative ES module imports
-(`./scripts/slides.js`, `./web_modules/sfeir-school-theme/dist/sfeir-school-theme.css`)
-— no bare specifier, no import map, no bundler. But nothing currently
-stops a future change from introducing a bare-specifier import, a CDN
-dependency, or a required build step, silently breaking that property for
-every generated school.
+opens, and the zero-install property already holds in practice: this
+repo's own `demo/` — the closest stand-in to `slides/` this repo has (see
+[[0002-rename-docs-to-slides]]'s Considerations) — only uses relative ES
+module imports (`./scripts/slides.js`,
+`./web_modules/sfeir-school-theme/dist/sfeir-school-theme.css`) — no bare
+specifier, no import map, no bundler. But nothing currently stops a future
+change from introducing a bare-specifier import, a CDN dependency, or a
+required build step, silently breaking that property for every generated
+school.
 
 ## Proposed Design
 
@@ -48,6 +50,11 @@ from a CDN at slide-runtime.
 - **Enforcing it automatically.** Desirable (e.g. a check rejecting
   bare-specifier imports or `<script src="https://...">` in slide files),
   but the exact rule is CLI implementation work, left as follow-up.
+- **Committing `web_modules/` to git.** Required, not an oversight: a
+  cloned project must be viewable with zero install, so the theme's
+  compiled bundle has to already be on disk. Treating `web_modules/` like
+  a typical dependency folder (`.gitignore`-d, restored by a package
+  manager) would break the invariant this ADR defines.
 
 ## Decision
 
@@ -55,6 +62,9 @@ from a CDN at slide-runtime.
   `slides/` is a permanent architectural invariant.
 - No dependency on Nx, Vue, a framework CLI, or any dev-server-only
   feature is allowed inside `slides/`.
+- `web_modules/sfeir-school-theme/dist/*` is committed to the project's
+  git repository, not gitignored — that's what makes a bare clone
+  viewable with zero install.
 - An automated CLI check enforcing this is tracked as follow-up work, not
   specified here.
 

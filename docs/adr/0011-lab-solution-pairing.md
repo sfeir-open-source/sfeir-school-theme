@@ -23,7 +23,9 @@ discoverable by a fixed naming rule rather than an ad hoc pointer.
 ## Proposed Design
 
 Keep the `-solution` suffix convention and the identical-`README.md`
-requirement mandatory.
+requirement mandatory: a lab named `0003-arrays-lab`
+([[0009-labs-as-npm-workspaces]]'s naming convention) pairs with
+`0003-arrays-lab-solution`.
 
 ## Considerations
 

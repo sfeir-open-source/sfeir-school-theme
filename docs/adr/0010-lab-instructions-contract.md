@@ -20,6 +20,11 @@ have a `README.md` whose content includes a title of the exact form
 `# <lab> instructions` and the exact command to run that lab, using the
 configured `labCommandPrefix` ([[0003-rename-steps-to-labs]]).
 
+This is distinct from [[0006-lab-slide-format]]: that ADR governs the
+short announcement on the slide deck, this one governs the lab's own,
+self-contained instructions — the README is where the step-by-step detail
+lives, not the slide.
+
 ## Proposed Design
 
 Keep this contract mandatory: every lab is self-documenting, with a
