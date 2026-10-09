@@ -17,22 +17,22 @@ export function checkRootDir(command: CheckCommand) {
     check(
         'G_003',
         {
-            msg: "Project should have a 'steps' directory",
+            msg: "Project should have a 'labs' directory",
             continueCheck: false,
         },
         () =>
-            readRootDir(command).includes('steps') &&
-            isDirectory(command.rootDir, 'steps')
+            readRootDir(command).includes('labs') &&
+            isDirectory(command.rootDir, 'labs')
     );
     check(
         'G_002',
         {
-            msg: "Project should have a 'docs' directory",
+            msg: "Project should have a 'slides' directory",
             continueCheck: false,
         },
         () =>
-            readRootDir(command).includes('docs') &&
-            isDirectory(command.rootDir, 'docs')
+            readRootDir(command).includes('slides') &&
+            isDirectory(command.rootDir, 'slides')
     );
     const contributionGuideExist = check(
         'G_004',

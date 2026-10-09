@@ -101,26 +101,31 @@ function findFiles(dir: string, filter: RegExp): string[] {
 
 function main() {
     const currentDir = process.cwd();
-    let docsPath: string;
-    // Vérifier si on est dans le dossier docs ou dans la racine du projet
-    if (path.basename(currentDir) === 'docs') {
-        // Cas 2: le script est dans docs/, on traite le dossier courant
-        docsPath = currentDir;
+    const rootDir = ['docs', 'slides'].includes(path.basename(currentDir))
+        ? path.dirname(currentDir)
+        : currentDir;
+
+    const slidesDir = path.join(rootDir, 'slides');
+    const legacyDocsDir = path.join(rootDir, 'docs');
+    let slidesPath: string;
+    if (fs.existsSync(slidesDir)) {
+        slidesPath = slidesDir;
+    } else if (fs.existsSync(legacyDocsDir)) {
         console.log(
-            `Script detected in docs directory. Starting migration in: ${docsPath}`
+            'No slides/ directory found, falling back to legacy docs/. ' +
+            'Run sfeir-school-theme-migrate first to move to slides/.'
         );
+        slidesPath = legacyDocsDir;
     } else {
-        // Cas 1: le script est à la racine, on cherche le dossier docs/
-        docsPath = path.join(currentDir, 'docs');
-        console.log(
-            `Script detected in project root. Starting migration in: ${docsPath}`
-        );
+        console.error(`Error: neither slides/ nor docs/ found under ${rootDir}`);
+        return;
     }
-    console.log(`Starting cleanup in: ${docsPath}`);
-    const filesToCleanup = findFiles(docsPath, /\.md$/);
+
+    console.log(`Starting cleanup in: ${slidesPath}`);
+    const filesToCleanup = findFiles(slidesPath, /\.md$/);
 
     if (filesToCleanup.length === 0) {
-        console.log('No markdown files found in the docs directory.');
+        console.log('No markdown files found in the slides directory.');
         return;
     }
 

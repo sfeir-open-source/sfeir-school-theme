@@ -13,8 +13,15 @@ copyDocs();
 function copyDocs() {
     shelljs.cp('-f', './README.md', './dist');
     shelljs.rm('-rf', './dist/docs');
-    shelljs.mkdir('-p', './dist/docs');
     shelljs.cp('-rf', './docs', './dist/docs');
+
+    // ADR-0000: publish docs/adr as a top-level dist/adr, consumed by
+    // downstream tiers as web_modules/sfeir-school-theme/dist/adr. This is
+    // also where sfeir-school-theme-migrate reads 0000-adopt-adrs.md and
+    // 0001-comply-with-theme-adrs.md from, to seed a migrated project's
+    // docs/adr/ (see ADR-0001, the V4 -> V5 structural migration).
+    shelljs.rm('-rf', './dist/adr');
+    shelljs.cp('-rf', './docs/adr', './dist/adr');
 }
 /*const shelljs = require('shelljs');
 const fs = require('node:fs');

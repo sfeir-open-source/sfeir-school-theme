@@ -1,12 +1,12 @@
-import {
-    docsFilePath,
-    docsImagePath,
-    docsImagesPath,
-    docsMarkdownPath,
-    docsPath,
-    slidePath,
-} from './path.utils';
 import { isDirectory, readdirSync } from './fs.utils';
+import {
+    slidePath,
+    slidesFilePath,
+    slidesImagePath,
+    slidesImagesPath,
+    slidesMarkdownPath,
+    slidesPath,
+} from './path.utils';
 import { ConfigJson } from './config.utils';
 import fs from 'node:fs';
 import { isDefinedAndNotEmpty } from './fp.utils';
@@ -31,7 +31,7 @@ export async function getSlideFilesFromSlidesJs(
 }
 
 export function getSlideFilesFromFs(rootDir: string): FilePath[] {
-    return readdirSync(path.resolve(docsMarkdownPath(rootDir)), {
+    return readdirSync(path.resolve(slidesMarkdownPath(rootDir)), {
         encoding: 'utf-8',
         recursive: true,
     }).filter((path) => path.endsWith('.md'));
@@ -44,7 +44,7 @@ function importSlidesJs(rootDir: string): string {
             encodeURIComponent(
                 fs
                     .readFileSync(
-                        path.resolve(docsPath(rootDir), 'scripts/slides.js'),
+                        path.resolve(slidesPath(rootDir), 'scripts/slides.js'),
                         'utf-8'
                     )
                     .split('\n')
@@ -91,7 +91,7 @@ export function getLabSlideCommandRow(
 ): string | undefined {
     return file
         .split('\n')
-        .find((row) => row.includes(config.stepCommandPrefix));
+        .find((row) => row.includes(config.labCommandPrefix));
 }
 
 export function getImagesPathFromSlides(
@@ -104,7 +104,7 @@ export function getImagesPathFromSlides(
         .filter(isDefinedAndNotEmpty)
         .filter((url) => !url.startsWith('http'))
         .filter(isImageInAssetsDir)
-        .map((imgPath) => docsFilePath(rootDir, imgPath));
+        .map((imgPath) => slidesFilePath(rootDir, imgPath));
 
     function extractUrlPart(row: string): string | string[] | null {
         if (row.startsWith('![')) {
@@ -141,13 +141,15 @@ export function getImagesPathFromSlides(
 }
 
 export function getImagesPathFromFs(rootDir: string): string[] {
-    return readdirSync(docsImagesPath(rootDir), {
+    return readdirSync(slidesImagesPath(rootDir), {
         encoding: 'utf-8',
         recursive: true,
     })
-        .filter((imagePath) => !isDirectory(docsImagesPath(rootDir), imagePath))
+        .filter(
+            (imagePath) => !isDirectory(slidesImagesPath(rootDir), imagePath)
+        )
         .filter((imagePath) => !imagePath.includes('sfeir-school-logo.png'))
-        .map((imagePath) => docsImagePath(rootDir, imagePath));
+        .map((imagePath) => slidesImagePath(rootDir, imagePath));
 }
 
 export function isImageFileExists(imageFilePath: string) {
