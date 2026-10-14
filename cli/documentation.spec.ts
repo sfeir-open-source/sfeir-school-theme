@@ -1,4 +1,5 @@
 import { describe, expect, it } from 'vitest';
+import configTemplateJson from './config-template.json';
 import fs from 'node:fs';
 
 const README = fs.readFileSync('./cli/README.md', 'utf-8');
@@ -48,6 +49,17 @@ describe('Documentation', () => {
             });
         });
     }
+});
+
+describe('Configuration documentation', () => {
+    const documentedKeys = (README.match(/^### (\w+): /gm) ?? []).map((row) =>
+        row.slice('### '.length, -': '.length)
+    );
+    it('should document every accepted key, and only those', () => {
+        expect([...documentedKeys].sort()).toStrictEqual(
+            Object.keys(configTemplateJson).sort()
+        );
+    });
 });
 
 function ensureUnique(array: string[]): string[] {

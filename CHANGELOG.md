@@ -3,83 +3,144 @@
 All notable changes to this project are documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
-This project follows Semantic Versioning — see
-[ADR-0013](docs/adr/0013-semver-and-git-tags.md).
+This project follows Semantic Versioning, with an annotated git tag per
+published version — see
+[theme-0013](docs/adr/theme-0013-semver-and-git-tags.md).
 
 ## [Unreleased]
 
 ### Changed (breaking)
 
-- **`docs/` renamed to `slides/`** in `sfeir-school-template` and every
-  `sfeir-school-xxx` instance. `docs/` is now reserved for ADRs and other
+- **Relicensed from MIT to Apache-2.0.** `LICENSE` is now the Apache-2.0
+  text, matching `package.json`. See
+  [theme-0015](docs/adr/theme-0015-opensource-license.md).
+- **`docs/` → `slides/`** in `sfeir-school-template` and every
+  `sfeir-school-xxx` school: `slides/` holds the whole deck (`index.html`
+  and the deck `package.json` included), `docs/` holds ADRs and other
   project documentation. See
-  [ADR-0002](docs/adr/0002-rename-docs-to-slides.md).
-- **`steps/` renamed to `labs/`.** Config keys `stepCommandPrefix` and
-  `ignoreStepsDirectories` in `.sfeir-theme-config.json` are renamed to
+  [theme-0002](docs/adr/theme-0002-slides-and-docs-directories.md).
+- **`steps/` → `labs/`.** Config keys `stepCommandPrefix` and
+  `ignoreStepsDirectories` in `.sfeir-theme-config.json` become
   `labCommandPrefix` and `ignoreLabsDirectories`. See
-  [ADR-0003](docs/adr/0003-rename-steps-to-labs.md).
-- The `check` command now validates `slides/` and `labs/` instead of
-  `docs/` and `steps/` (`G_002`, `G_003`, and every path used by the
-  `S_0xx`/`L_0xx` rules). `cli/README.md` is updated to match.
+  [theme-0003](docs/adr/theme-0003-labs-directory.md).
+- `check` validates `slides/` and `labs/` instead of `docs/` and `steps/`.
+  When `slides/` is missing but `docs/` still holds a deck, `G_002` points to
+  `npx sfeir-school-theme-migrate --from=v4 --to=v5`.
+- **Lab directory naming is enforced** by the new rule `L_011`:
+  `NNN-name-lab` and `NNN-name-lab-solution` (3 digits, kebab-case).
+  Directories in `ignoreLabsDirectories` are exempt; a `.nosolution` file in
+  the exercise directory still opts out of the solution. Single lab contract:
+  [theme-0006](docs/adr/theme-0006-lab-contract.md) (theme-0010 and
+  theme-0011 are deprecated in its favour).
+- **`S_009` is stricter.** A word in an image title
+  (`![](./assets/images/x.png 'my-style')`) must be a talk-control built-in
+  style or listed in the `knowStyles` passed to `SfeirThemeInitializer.init()`
+  in `slides/scripts/slides.js` (read by the CLI), and be defined in a known
+  stylesheet. Classes are matched exactly, not as substrings. Exception:
+  talk-control icon and QR-code titles (`tc-icons …`, `tc-qrcode`) are
+  applied as classes by talk-control itself, so their words only need to be
+  defined in a known stylesheet, not registered. See
+  [theme-0008](docs/adr/theme-0008-slide-css-class-allowlist.md).
+- **`sfeir-school-theme-migrate` no longer runs every transition by
+  default.** `--from` and `--to` select one transition; a single `--from` or
+  `--to` selects the transitions starting or ending there. With no flag it
+  prints its usage and exits with code 1; unknown arguments are rejected.
+- **ADR files carry their tier prefix**: `theme-NNNN-slug.md` here,
+  `template-NNNN-…` in the template, `<xxx>-NNNN-…` in a school. Precedence
+  follows the prefix: theme > template > school. See
+  [theme-0000](docs/adr/theme-0000-adopt-adrs.md).
+
+### Removed
+
+- `G_003` ("`labs/` exists"): `labs/` is optional. A training without labs
+  has no `labs/`, and the `L_0xx` rules are skipped. See
+  [theme-0009](docs/adr/theme-0009-labs-as-npm-workspaces.md).
 
 ### Added
 
-- `sfeir-school-theme-migrate` now models its work as named version
-  transitions: the existing content rules are `v3 -> v4`, and a new
-  `v4 -> v5` transition performs the `docs/` → `slides/`, `steps/` →
-  `labs/`, and config-key structural migration. With no flags, every
-  transition runs in order; `--from=vX --to=vY` targets one transition
-  explicitly (e.g. `--to=v5` to run only the structural migration). See
-  "Migrating an existing project" below.
-- After moving `docs/`'s slide content to `slides/`, the `v4 -> v5`
-  transition always ensures a `docs/adr/` exists (creating it if needed)
-  and seeds it — without ever overwriting an existing file, and
-  renumbering each seeded ADR's filename and title to the next available
-  number in the destination project — with this theme's own
-  `0000-adopt-adrs.md` and `0001-comply-with-theme-adrs.md` (the latter
-  states that the project must follow every ADR published under
-  `web_modules/sfeir-school-theme/dist/adr` for its pinned theme version).
-  Both are sourced from this repo's own published `dist/adr/`, like every
-  other ADR here.
-- `sfeir-school-theme-cleanup` now targets `slides/` first, falling back to
-  a legacy `docs/` (with a warning to run the migration) for projects that
-  haven't migrated yet.
-- The theme's own ADRs (`docs/adr/`) are now published as a top-level
-  `dist/adr/` on every build, consumed by downstream tiers via
-  `web_modules/sfeir-school-theme/dist/adr`. See
-  [ADR-0000](docs/adr/0000-adopt-adrs.md).
-- Adopted Architecture Decision Records: `docs/adr/0000-adopt-adrs.md`
-  through `0014-commit-and-branch-convention.md` — `0001` is the
-  "comply with the theme's ADRs" decision seeded into every migrated
-  project right after `0000`; the rest cover the `slides`/`labs` rename,
-  the CLI's existing (previously undocumented) check contracts,
-  per-project config, and versioning/commit conventions.
+- `G_004` accepts either `CONTRIBUTION_GUIDE.md` or `CONTRIBUTING.md` at
+  the project root.
+- `G_005` (warning): an unknown key in `.sfeir-theme-config.json` is
+  reported; a pre-v5 key names its replacement. Accepted keys:
+  [theme-0012](docs/adr/theme-0012-bounded-config-overrides.md).
+- `ignoreCommandCheck` config key: lab slides with no command to run skip
+  `S_005`/`S_011` (#161).
+- `sfeir-school-theme-migrate --help`, and named version transitions:
+  `v3 -> v4` (content syntax) and `v4 -> v5` (layout).
+- The `v4 -> v5` transition seeds, without overwriting an existing file:
+  - `docs/adr/theme-0000-adopt-adrs.md` and
+    `docs/adr/theme-0001-comply-with-theme-adrs.md`, copied as-is from the
+    theme's published `dist/adr/`;
+  - `LICENSE` (Apache-2.0) when no license file exists, and
+    `LICENSE-CONTENT` (CC BY-ND 4.0) for slides and learner material,
+    unless the school's `docs/LICENSE` already provides it.
+- `sfeir-school-theme-cleanup` targets `slides/`, falling back to a legacy
+  `docs/` with a warning to migrate.
+- The theme's ADRs (`docs/adr/`) are published as `dist/adr/`, read
+  downstream under `slides/web_modules/sfeir-school-theme/dist/adr`. ADRs
+  `theme-0000` to `theme-0016` cover ADR practice, project layout, the CLI
+  check contracts, config overrides, versioning, commits, licensing and
+  tooling.
+
+### Fixed (found while reviewing this release)
+
+- The `v4 -> v5` migration moved only part of the deck (`scripts/`,
+  `markdown/`, `assets/`, `css/`, `web_modules/`), leaving `index.html` and
+  the deck `package.json` in `docs/` and breaking the migrated deck. It now
+  moves everything in `docs/` except `docs/adr/`.
+- The `v3 -> v4` content migration rewrote `docs/adr/*.md` as slides. It now
+  skips `docs/adr/`.
+- `S_009` skipped an image title followed by an `<!-- .element … -->`
+  comment on the same line. The title is now checked.
+- The reworked `S_009` rejected talk-control icon and QR-code image titles
+  (`![](clock 'tc-icons feather tc-big')`, `![](url 'tc-qrcode')`). Their
+  words are now checked against the known stylesheets only.
 
 ### Migrating an existing project
 
-Run `npx sfeir-school-theme-migrate` from the project root (or from inside
-its `docs/` directory) to run every known transition in order, or target
-one explicitly with `--from=vX --to=vY` (e.g. `--to=v5`). The `v4 -> v5`
-structural transition will, in order:
+Run from the project root (or its `slides/` or `docs/` directory), one
+transition at a time:
 
-1. Move the slide-deck content found in `docs/` (`scripts/`, `markdown/`,
-   `assets/`, `css/`, `web_modules/`) into a new `slides/`, leaving
-   anything else already in `docs/` untouched.
-2. Rename `steps/` to `labs/`.
-3. Rename `stepCommandPrefix`/`ignoreStepsDirectories` to
-   `labCommandPrefix`/`ignoreLabsDirectories` in
-   `.sfeir-theme-config.json`, if that file exists.
-4. Ensure `docs/adr/` exists and seed it with `0000-adopt-adrs.md` (copied
-   from the theme) and `0001-comply-with-theme-adrs.md` (new), never
-   overwriting a file that's already there.
+- **v4 project** (deck in `docs/`, labs in `steps/`):
 
-The `v3 -> v4` transition then runs its existing content-migration rules
-against `slides/`, unchanged.
+  ```sh
+  npx sfeir-school-theme-migrate --from=v4 --to=v5
+  ```
 
-Review the diff before committing — this rewrites your project's layout.
-No compatibility mode is kept in the `check` command (see ADR-0002/0003's
-Considerations): a project must be migrated to pass `check` again.
+- **v3 project**: first the content syntax, then the layout:
 
-This is a breaking change to the CLI's file-structure contract; per
-[ADR-0013](docs/adr/0013-semver-and-git-tags.md) it should ship as a major
-version bump, with a matching annotated git tag once released.
+  ```sh
+  npx sfeir-school-theme-migrate --from=v3 --to=v4
+  npx sfeir-school-theme-migrate --from=v4 --to=v5
+  ```
+
+Never re-run `--from=v3 --to=v4` on a v4 project: it rewrites image alt text
+(`![alt](src)`) into image titles (`![](src 'alt')`), which then fail `S_009`.
+
+The `v4 -> v5` transition:
+
+1. Moves `docs/LICENSE` (the school's content license, usually CC BY-ND
+   3.0) to the root `LICENSE-CONTENT` unchanged, when `LICENSE-CONTENT` does
+   not exist yet; otherwise leaves it in `docs/` and warns.
+2. Moves everything else in `docs/` into `slides/`, except `docs/adr/`: the
+   whole deck moves, `index.html`, `package.json` (with its `prepare`
+   script), `scripts/`, `markdown/`, `assets/`, `css/`, `web_modules/` and
+   any other deck file included.
+3. Renames `steps/` to `labs/`.
+4. Renames `stepCommandPrefix`/`ignoreStepsDirectories` to
+   `labCommandPrefix`/`ignoreLabsDirectories` in `.sfeir-theme-config.json`,
+   if present.
+5. Seeds `docs/adr/` with `theme-0000-adopt-adrs.md` and
+   `theme-0001-comply-with-theme-adrs.md`, as-is.
+6. Seeds `LICENSE` and `LICENSE-CONTENT` when absent; an existing one is
+   never overwritten.
+
+Then rename lab directories to `NNN-name-lab` / `NNN-name-lab-solution`
+(`L_011`; not automated), update `labs.json` or `labs/package.json` and the
+lab slides accordingly, and run `sfeir-school-theme check`. Review the diff
+before committing: there is no compatibility mode in `check`.
+
+These are breaking changes to the CLI's file-structure contract: per
+[theme-0013](docs/adr/theme-0013-semver-and-git-tags.md) they ship as a
+major version bump, with a matching annotated git tag. Prereleases switch to
+the `-rc.N` format with this version line, starting at `5.0.0-rc.0`.

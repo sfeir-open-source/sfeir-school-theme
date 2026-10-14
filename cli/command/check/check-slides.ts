@@ -1,20 +1,22 @@
 import {
     SlideEntry,
+    SlidesJs,
     getAllSlidesImages,
     getImagesPathFromFs,
     getImagesPathFromSlides,
     getLabSlideCommandRow,
     getLabSlides,
     getSlideFilesFromFs,
-    getSlideFilesFromSlidesJs,
     isImageFileExists,
     isOneSpeakerSlide,
     isSlideFileExists,
+    loadSlidesJs,
     readSlideFile,
 } from '../../utils/slide.utils';
 import {
-    getAllCssContent,
-    getCssClassUsedInSlide,
+    TALK_CONTROL_IMAGE_STYLES,
+    getCssClassesUsedInSlide,
+    getKnownCssClasses,
 } from '../../utils/css.utils';
 import {
     getAllLabsFromFs,
@@ -28,9 +30,9 @@ import { ConfigJson } from '../../utils/config.utils';
 import { check } from '../../utils/assert.utils';
 
 export async function checkSlides(rootDir: string, config: ConfigJson) {
-    let slideFilesFromSlidesJs;
+    let slidesJs;
     try {
-        slideFilesFromSlidesJs = await getSlideFilesFromSlidesJs(rootDir);
+        slidesJs = await loadSlidesJs(rootDir);
     } catch {
         check(
             'S_010',
@@ -42,9 +44,10 @@ export async function checkSlides(rootDir: string, config: ConfigJson) {
         );
         return;
     }
+    const slideFilesFromSlidesJs = slidesJs.slides;
 
     checkSlideFilePathInSlideJs(rootDir, slideFilesFromSlidesJs);
-    checkSlideFileInFs(rootDir, slideFilesFromSlidesJs, config);
+    checkSlideFileInFs(rootDir, slidesJs, config);
     checkLabSlideFile(rootDir, slideFilesFromSlidesJs, config);
     checkLabCommand(rootDir, slideFilesFromSlidesJs, config);
     checkImagesFs(rootDir, config);
@@ -74,14 +77,16 @@ function checkSlideFilePathInSlideJs(
 
 function checkSlideFileInFs(
     rootDir: string,
-    slideEntriesFromSlidesJs: SlideEntry[],
+    slidesJs: SlidesJs,
     config: ConfigJson
 ) {
     const slideFilesFromFs = getSlideFilesFromFs(rootDir);
-    const slideFilesFromSlidesJs = slideEntriesFromSlidesJs.map(
-        (entry) => entry.path
-    );
-    const cssContent = getAllCssContent(rootDir, config.extraCssFiles);
+    const slideFilesFromSlidesJs = slidesJs.slides.map((entry) => entry.path);
+    const knownCssClasses = getKnownCssClasses(rootDir, config.extraCssFiles);
+    const knownImageStyles = new Set([
+        ...TALK_CONTROL_IMAGE_STYLES,
+        ...slidesJs.knowStyles,
+    ]);
 
     for (const slideFile of slideFilesFromFs) {
         const slideContent = readSlideFile(rootDir, slideFile) ?? '';
@@ -104,12 +109,28 @@ function checkSlideFileInFs(
                 () => isImageFileExists(imagePath)
             );
         }
-        for (const cssClass of getCssClassUsedInSlide(slideContent)) {
+        const { classAttributes, imageStyles } =
+            getCssClassesUsedInSlide(slideContent);
+        for (const cssClass of classAttributes) {
             check(
                 'S_009',
                 `"${cssClass}" in "${slideFile}" is not a known css class`,
-                () => cssContent.includes(cssClass)
+                () => knownCssClasses.has(cssClass)
             );
+        }
+        for (const imageStyle of imageStyles) {
+            const isRegistered = check(
+                'S_009',
+                `"${imageStyle}" in "${slideFile}" is not registered in the "knowStyles" of slides.js (talk-control renders it as a title, not a class)`,
+                () => knownImageStyles.has(imageStyle)
+            );
+            if (isRegistered) {
+                check(
+                    'S_009',
+                    `"${imageStyle}" in "${slideFile}" is not a known css class`,
+                    () => knownCssClasses.has(imageStyle)
+                );
+            }
         }
     }
 }

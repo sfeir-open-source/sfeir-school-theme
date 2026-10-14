@@ -13,6 +13,50 @@ export function slideJsFile(slides: string[] = []) {
     )}.map(path => ({path})) }\n`;
 }
 
+/**
+ * A `slides.js` shaped like a real school one: it imports `SfeirThemeInitializer`
+ * (multi-line import) and calls `init()` with a multi-line options object.
+ */
+export function slideJsFileWithInit(
+    slides: string[] = [],
+    knowStyles: string[] = []
+) {
+    return `import {
+    SfeirThemeInitializer,
+} from '../web_modules/sfeir-school-theme/dist/sfeir-school-theme.mjs';
+
+export function formation() {
+    return ${JSON.stringify(slides)}.map((path) => ({ path }));
+}
+
+await SfeirThemeInitializer.init({
+    slidesFactory: formation,
+    knowStyles: ${JSON.stringify(knowStyles)},
+    defaultLang: 'EN',
+});
+`;
+}
+
+export function minimalSlidesDir({
+    markdown = {},
+    slidesJs = slideJsFile(Object.keys(markdown)),
+    css = slideCssFile(),
+    images = {},
+}: {
+    markdown?: DirStruct;
+    slidesJs?: string;
+    css?: string;
+    images?: DirStruct;
+} = {}): DirStruct {
+    return {
+        assets: { images },
+        css: { 'slides.css': css },
+        markdown,
+        scripts: { 'slides.js': slidesJs },
+        ...web_modules(),
+    };
+}
+
 export function packageJsonFile(content: Partial<PackageJson> = {}) {
     return JSON.stringify(content) + '\n';
 }
@@ -21,13 +65,19 @@ export function labsJsonFile(content: Partial<LabsJson> = {}) {
     return JSON.stringify(content) + '\n';
 }
 
-export function configFile(content: Partial<ConfigJson> = {}) {
+export function configFile(
+    content: Partial<ConfigJson> & Record<string, unknown> = {}
+) {
     return { '.sfeir-theme-config.json': JSON.stringify(content) };
 }
 
-export function contributionGuide() {
+export function contributionGuide(
+    fileName:
+        | 'CONTRIBUTION_GUIDE.md'
+        | 'CONTRIBUTING.md' = 'CONTRIBUTION_GUIDE.md'
+) {
     return {
-        'CONTRIBUTION_GUIDE.md': `# Contribution guide
+        [fileName]: `# Contribution guide
 
 ## How to start the slides on local?
 

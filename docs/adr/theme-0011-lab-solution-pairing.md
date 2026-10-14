@@ -1,4 +1,4 @@
-# 0011. Lab / solution pairing convention
+# theme-0011. Lab / solution pairing convention
 
 ### Submitters
 
@@ -6,7 +6,10 @@
 
 ## Change Log
 
-- [pending](TBD — PR not yet opened) 2026-09-23
+- [pending](https://github.com/sfeir-open-source/sfeir-school-theme/pull/159) 2026-09-23
+- [deprecated](https://github.com/sfeir-open-source/sfeir-school-theme/pull/159) 2026-10-14 — merged into [[theme-0006-lab-contract]]
+
+> **Deprecated:** the solution pairing and `.nosolution` rules now live in [[theme-0006-lab-contract]]. This file is kept for history.
 
 ## Referenced Use Case(s)
 
@@ -16,16 +19,17 @@ Context below.
 ## Context
 
 `check-labs.ts` (`L_008`, `L_009`, `L_010`) requires that every lab `X` has
-a matching `X-solution` lab, and that both share an identical `README.md`.
+a matching `X-solution` lab, and that a solution `README.md`, when present,
+is identical to the lab's one.
 This guarantees learners always have a working reference solution,
 discoverable by a fixed naming rule rather than an ad hoc pointer.
 
 ## Proposed Design
 
 Keep the `-solution` suffix convention and the identical-`README.md`
-requirement mandatory: a lab named `0003-arrays-lab`
-([[0009-labs-as-npm-workspaces]]'s naming convention) pairs with
-`0003-arrays-lab-solution`.
+requirement mandatory: a lab named `003-arrays-lab`
+([[theme-0006-lab-contract]]'s naming convention) pairs with
+`003-arrays-lab-solution`.
 
 ## Considerations
 
@@ -34,6 +38,8 @@ requirement mandatory: a lab named `0003-arrays-lab`
   (e.g. a config flag) is speculative complexity for a need that hasn't
   materialized — easy to add later as an amendment to this ADR's Change
   Log if it does.
+  Since then: the `.nosolution` opt-out exists in the CLI, and is
+  described in [[theme-0006-lab-contract]].
 
 ## Decision
 
@@ -42,8 +48,8 @@ requirement mandatory: a lab named `0003-arrays-lab`
 
 ## Other Related ADRs
 
-- [[0009-labs-as-npm-workspaces]] - the lab declaration this pairs
-- [[0010-lab-instructions-contract]] - the README this requires to match
+- [[theme-0009-labs-as-npm-workspaces]] - the lab declaration this pairs
+- [[theme-0010-lab-instructions-contract]] - the README this requires to match
 
 ## References
 

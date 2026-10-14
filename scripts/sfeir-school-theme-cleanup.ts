@@ -4,7 +4,7 @@
 import fs from 'fs';
 import path from 'path';
 
-// #region Règles de nettoyage
+// #region Cleanup rules
 
 const CLEANUP_RULES = {
     MARKDOWN: [

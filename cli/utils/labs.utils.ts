@@ -15,6 +15,11 @@ export function isLabsDirectoryExists(labsDirPath: string) {
     return fs.existsSync(labsDirPath);
 }
 
+/** `labs/` is optional: a school without hands-on exercises has none. */
+export function hasLabsDirectory(rootDir: string) {
+    return isDirectory(labsPath(rootDir));
+}
+
 export interface LabsJson {
     kind: 'labs.json';
     labs: string[];
@@ -74,9 +79,7 @@ export function getAllLabsFromWorkspace(
     if (withSolution) {
         return allCommands;
     } else {
-        return allCommands.filter(
-            (labCommand) => !labCommand.includes('-solution')
-        );
+        return allCommands.filter((labCommand) => !isLabSolution(labCommand));
     }
 }
 
@@ -104,6 +107,9 @@ export function getLabCommandTarget(labCommandRow: string, config: ConfigJson) {
 }
 
 export function getAllLabsFromFs(rootDir: string, config: ConfigJson) {
+    if (!hasLabsDirectory(rootDir)) {
+        return [];
+    }
     return readdirSync(labsPath(rootDir), { encoding: 'utf-8' })
         .filter((filePath) => !config.ignoreLabsDirectories.includes(filePath))
         .filter((filePath) => isDirectory(labsPath(rootDir), filePath));
@@ -135,13 +141,31 @@ export function splitLabsAndSolutions(labNames: string[]) {
     const labs: string[] = [];
     const labSolutions: string[] = [];
     for (const lab of labNames) {
-        if (lab.endsWith('-solution')) {
+        if (isLabSolution(lab)) {
             labSolutions.push(lab);
         } else {
             labs.push(lab);
         }
     }
     return { labs, labSolutions } as const;
+}
+
+const SOLUTION_SUFFIX = '-solution';
+
+/** `NNN-name-lab` (3 digits, kebab-case name) or its `NNN-name-lab-solution`. */
+const LAB_DIRECTORY_NAME = /^\d{3}-[a-z0-9]+(-[a-z0-9]+)*-lab(-solution)?$/;
+
+export function isLabSolution(labDirectory: string): boolean {
+    return labDirectory.endsWith(SOLUTION_SUFFIX);
+}
+
+/** The lab a solution belongs to: `001-foo-lab-solution` → `001-foo-lab`. */
+export function getSolutionLab(labSolution: string): string {
+    return labSolution.slice(0, -SOLUTION_SUFFIX.length);
+}
+
+export function isValidLabDirectoryName(labDirectory: string): boolean {
+    return LAB_DIRECTORY_NAME.test(labDirectory);
 }
 
 export function getLabReadme(rootDir: string, lab: string): string | null {

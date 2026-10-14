@@ -4,8 +4,10 @@ import {
     getAllLabsFromWorkspace,
     getLabPackageJson,
     getLabReadme,
+    getSolutionLab,
     getWorkspaceLabsPackageJson,
     hasLabNoSolution,
+    isValidLabDirectoryName,
     splitLabsAndSolutions,
 } from '../../utils/labs.utils';
 import { isDefined, isDefinedAndNotEmpty } from '../../utils/fp.utils';
@@ -23,6 +25,11 @@ function checkLabDirectories(rootDir: string, config: ConfigJson) {
     const labsDeclared = getAllLabsFromWorkspace(rootDir);
     const labScripts = getAllLabScripts(rootDir);
     for (const labDir of labDirectories) {
+        check(
+            'L_011',
+            `Lab directory "${labDir}" should be named "NNN-name-lab" or "NNN-name-lab-solution" (3 digits, kebab-case name)`,
+            () => isValidLabDirectoryName(labDir)
+        );
         check(
             'L_002',
             `Lab "${labDir}" should be declared in the workspace (either "workspaces" or "labs" in a file "package.json" or "labs.json" at the root of "labs" directory)`,
@@ -85,7 +92,7 @@ function checkLabsAndSolutions(rootDir: string, config: ConfigJson) {
         }
     }
     for (const labSolution of labSolutions) {
-        const matchingLabName = labSolution.replace('-solution', '');
+        const matchingLabName = getSolutionLab(labSolution);
         const hasMatchingLab = check(
             'L_009',
             `Solution lab "${labSolution}" should match to a lab`,

@@ -2,32 +2,28 @@
 
 # SFEIR School Theme
 
-This repository is an Open Source theme for RevealJS presentations. It respect the graphical theme of [@SFEIR](https://github.com/sfeir) company.
+An open-source theme for RevealJS presentations, following the graphical identity of [@SFEIR](https://github.com/sfeir). It is the bottom tier of a three-tier chain: this theme, [`sfeir-school-template`](https://github.com/sfeir-open-source/sfeir-school-template), and one `sfeir-school-xxx` repository per training (a "school").
 
-You can preview it here : https://sfeir-school-theme.netlify.app/
+- Preview: https://sfeir-school-theme.netlify.app/
+- Release notes: [`CHANGELOG.md`](./CHANGELOG.md)
 
-- [Releases Notes](https://github.com/sfeir-open-source/sfeir-school-theme/wiki/Releases-Notes)
+# How to use it
 
-# How to use it:
-
-## Npm
+## Install
 
 ```sh
-# run
-$npm install sfeir-school-theme
+npm install sfeir-school-theme
 ```
 
-## Cloning the repo
+Copy the package's `dist/` into `slides/web_modules/sfeir-school-theme/dist/` and **commit it**: the deck must open with any static file server, with no install and no build step ([theme-0004](./docs/adr/theme-0004-self-contained-slides.md)). `sfeir-school-template` does this copy for you on `npm install`, through the `prepare` script of `slides/package.json`.
 
-Let's consider that the path to reveal engine is at `$LIBS_PATH`
-
-Clone the repository in your project (`$SFEIR_THEME_PATH`)
+```sh
+npx serve slides
+```
 
 ## Link
 
-You should have a folder `web_modules/sfeir-school-theme`. In this folder you should have the bundled sfeir theme (either copy the demo web_modules or build it with `npm run build`).
-
-In your index.html add the following lines:
+In `slides/index.html`:
 
 ```html
 ...
@@ -50,45 +46,114 @@ In your index.html add the following lines:
 ...
 ```
 
-and a basic `slides.js`:
+and a basic `slides/scripts/slides.js`. Every path is relative to `slides/markdown/`, and every markdown file there must be declared ([theme-0005](./docs/adr/theme-0005-slide-declaration-contract.md)):
 
 ```JavaScript
-import { SfeirThemeInitializer } from "../web_modules/sfeir-school-theme/dist/sfeir-school-theme.mjs";
+import { SfeirThemeInitializer } from '../web_modules/sfeir-school-theme/dist/sfeir-school-theme.mjs';
 
-// One method per module
-function schoolSlides(typeShow) {
-  return [
-    "00_intro.md",
-    "01_speaker.md",
-    "10_chapter1.md",
-    "11_layouts.md",
-    "15_vertical.md",
-    "20_specifics_slides.md",
-    "30_code_slides.md",
-    "40_helpers.md",
-    "50_modes.md",
-  ];
+// One function per module
+function schoolSlides() {
+    return ['00-school/00-title.md', '00-school/01-speaker.md'];
 }
 
-function formation(typeShow) {
-  return [
-    //
-    ...schoolSlides(typeShow),
-  ].map((slidePath) => {
-    return { path: slidePath };
-  });
+function introSlides() {
+    return ['10-intro/10-transition.md', '10-intro/20-getting-started-lab.md'];
+}
+
+// Must be exported: the CLI reads it (S_010)
+export function formation() {
+    return [
+        //
+        ...schoolSlides(),
+        ...introSlides(),
+    ].map((slidePath) => ({ path: slidePath }));
 }
 
 SfeirThemeInitializer.init(formation);
 ```
 
-Enjoy!
+To register project styles usable in image titles, pass an object instead: `SfeirThemeInitializer.init({ slidesFactory: formation, knowStyles: ['my-style'] })` (see `S_009` in the [CLI documentation](./cli/README.md)). Talk-control icon and QR-code titles (`tc-icons …`, `tc-qrcode`) need no registration ([theme-0008](./docs/adr/theme-0008-slide-css-class-allowlist.md)).
+
+# Training project layout
+
+What goes where in a school ([theme-0002](./docs/adr/theme-0002-slides-and-docs-directories.md), [theme-0003](./docs/adr/theme-0003-labs-directory.md)):
+
+```
+sfeir-school-xxx/
+├── README.md
+├── CONTRIBUTION_GUIDE.md        # or CONTRIBUTING.md: trainer guide, checked by G_004 (warning)
+├── LICENSE                      # Apache-2.0, code
+├── LICENSE-CONTENT              # CC BY-ND 4.0, slides and learner material
+├── .sfeir-theme-config.json     # optional check overrides (theme-0012)
+├── docs/                        # ADRs, training docs, trainer notes; never the deck
+│   └── adr/                     # theme-0000, theme-0001 (seeded) + xxx-NNNN-*.md
+├── labs/                        # optional: only if the training has labs
+│   ├── labs.json                # or labs/package.json (npm workspaces)
+│   ├── 001-getting-started-lab/
+│   │   └── README.md
+│   └── 001-getting-started-lab-solution/
+│       └── README.md
+└── slides/                      # the whole deck, what learners see
+    ├── index.html
+    ├── package.json             # its prepare script refreshes web_modules/
+    ├── scripts/slides.js
+    ├── markdown/
+    ├── assets/images/
+    ├── css/slides.css
+    └── web_modules/sfeir-school-theme/dist/   # committed
+```
+
+## Labs
+
+A lab is a hands-on exercise; a training may have none. The full contract is [theme-0006](./docs/adr/theme-0006-lab-contract.md); in short:
+
+- a pair of directories `labs/NNN-name-lab/` and `labs/NNN-name-lab-solution/` (3 digits, kebab-case, `L_011`);
+- the exercise `README.md` is titled `# <lab> instructions` and holds the exercise, hints and, when `labCommandPrefix` is set, the run command; a solution `README.md`, if any, is identical;
+- no solution makes sense? put a `.nosolution` file in the exercise directory, and drop the `-solution` directory;
+- both directories are declared in `labs/labs.json` (`{ "labs": [...] }`) or as npm workspaces in `labs/package.json` ([theme-0009](./docs/adr/theme-0009-labs-as-npm-workspaces.md));
+- each lab is announced by a lab slide, whose file name contains `-lab` (see [Exercices](#exercices)).
 
 # CLI
 
-This repo also ships a CLI to check and scaffold your training: it validates slides, labs and assets against the theme's conventions.
+`sfeir-school-theme check` validates a school against these conventions: slides declaration, labs, images, CSS classes, config keys. `sfeir-school-theme explain <RULE>` prints a rule's documentation.
 
-See the [CLI documentation](./cli/README.md) for installation, commands and configuration.
+See the [CLI documentation](./cli/README.md) for installation, commands, configuration and every rule.
+
+# Migrating a project
+
+`sfeir-school-theme-migrate` runs one version transition at a time, from the project root (or from its `slides/` or `docs/` directory). `--help` lists the transitions. Pass `--from` and `--to` to run one transition; a single `--from` or `--to` selects the transition starting or ending there. With no flag, it prints its usage and exits with code 1.
+
+```sh
+# v4 project (deck in docs/, labs in steps/): move everything in docs/
+# but docs/adr/ to slides/, steps/ to labs/, rename config keys,
+# seed docs/adr/ and the license files (docs/LICENSE, the school's
+# content license, becomes LICENSE-CONTENT as-is)
+npx sfeir-school-theme-migrate --from=v4 --to=v5
+
+# v3 project: migrate the content syntax first, then the layout
+npx sfeir-school-theme-migrate --from=v3 --to=v4
+npx sfeir-school-theme-migrate --from=v4 --to=v5
+```
+
+Never re-run `--from=v3 --to=v4` on a v4 project: it rewrites image alt text into classes. The v4 to v5 migration does not rename lab directories: rename them to `NNN-name-lab` by hand, and update `labs.json` and the lab slides' commands. An existing `docs/LICENSE` is the school's content license: it moves to the root `LICENSE-CONTENT` unchanged (no relicensing), or stays in `docs/` with a warning if `LICENSE-CONTENT` already exists. Review the diff before committing. Details in [`CHANGELOG.md`](./CHANGELOG.md).
+
+# Architecture Decision Records
+
+Decisions live in [`docs/adr/`](./docs/adr/), using the edgex template ([theme-0000](./docs/adr/theme-0000-adopt-adrs.md)):
+
+- **Naming.** `<tier>-NNNN-kebab-slug.md`, one sequence per tier: `theme-` here, `template-` in the template, `<xxx>-` in a school.
+- **Precedence.** theme > template > school. A lower tier only decides what the tiers above leave open.
+- **Propagation.** The build publishes `docs/adr/` as `dist/adr/`. Downstream projects read it under `slides/web_modules/sfeir-school-theme/dist/adr` and must comply with the ADRs of the theme version they depend on ([theme-0001](./docs/adr/theme-0001-comply-with-theme-adrs.md)). `sfeir-school-theme-migrate` seeds `theme-0000` and `theme-0001` into a project's `docs/adr/`, as-is.
+- **Adding one.** Copy an existing ADR's sections, take the next number of your tier, open a PR. A decision changes by a new Change Log line on its own file, never by a new file.
+
+# License
+
+- Theme code: [Apache-2.0](./LICENSE).
+- Schools: `LICENSE` (Apache-2.0) for code and `LICENSE-CONTENT` (CC BY-ND 4.0) for slides and learner material, seeded by `sfeir-school-theme-migrate` when absent ([theme-0015](./docs/adr/theme-0015-opensource-license.md)).
+
+# Contributing
+
+See [`CONTRIBUTING.md`](./CONTRIBUTING.md). New tooling is opt-in, never the default: any new dependency must justify what it costs a trainer or a participant to install and maintain ([theme-0016](./docs/adr/theme-0016-minimal-tooling-footprint.md)).
 
 # RevealJS
 
@@ -148,7 +213,7 @@ See the documentation about all thoses features [here](https://github.com/TalkCo
 
 ## Play with mode theme
 
-Lots of trainings given by SFEIR School program are also available with the paid program SFEIR Institute (training organism of SFEIR company). The program SFEIR School has a main theme color which is green whereas SFEIR Institute has a main theme color which is blue. To use the same support for both programs, V3 makes it possible to switch easily from one theme to another.
+Lots of trainings given by SFEIR School program are also available with the paid program SFEIR Institute (training organism of SFEIR company). The program SFEIR School has a main theme color which is green whereas SFEIR Institute has a main theme color which is blue. To use the same support for both programs, you can switch easily from one theme to another.
 
 To this end, you have two possibilities:
 
@@ -451,22 +516,20 @@ On se retrouve à
 
 ## Exercices
 
-To produce exercices slides:
+A lab slide announces a lab ([theme-0006](./docs/adr/theme-0006-lab-contract.md)). Its file name contains `-lab` (e.g. `20-getting-started-lab.md`), and it needs the exact line `<!-- .slide: class="exercice" -->`, a `## Lab` line and the run command. The step-by-step stays in the lab's `README.md`.
+
+With `"labCommandPrefix": "npm run "` in `.sfeir-theme-config.json`:
 
 ```md
 <!-- .slide: class="exercice" -->
 
-# Exercice Title
+# Getting started
 
-## Exercice
+## Lab
 
-<br>
-1. First step
-2. Second step
-3. Third step
-<br>
-Additionnal Advice
-### Step: push-1
+Set up the project and run its first test.
+
+### npm run 001-getting-started-lab
 ```
 
 ![](./docs/images/exercice-slide.png)

@@ -61,7 +61,7 @@ All tasks follow a strict lifecycle:
 
 11. **Commit Plan Update:**
     - **Action:** Stage the modified `plan.md` file.
-    - **Action:** Commit this change with a descriptive message (e.g., `conductor(plan): Mark task 'Create user model' as complete`).
+    - **Action:** Commit this change with a descriptive message (e.g., `chore(conductor): mark task 'Create user model' as complete`).
 
 ### Phase Completion Verification and Checkpointing Protocol
 
@@ -114,7 +114,7 @@ All tasks follow a strict lifecycle:
 
 6.  **Create Checkpoint Commit:**
     -   Stage all changes. If no changes occurred in this step, proceed with an empty commit.
-    -   Perform the commit with a clear and concise message (e.g., `conductor(checkpoint): Checkpoint end of Phase X`).
+    -   Perform the commit with a clear and concise message (e.g., `chore(conductor): checkpoint end of Phase X`).
 
 7.  **Attach Auditable Verification Report using Git Notes:**
     -   **Step 8.1: Draft Note Content:** Create a detailed verification report including the automated test command, the manual verification steps, and the user's confirmation.
@@ -127,7 +127,7 @@ All tasks follow a strict lifecycle:
 
 9. **Commit Plan Update:**
     - **Action:** Stage the modified `plan.md` file.
-    - **Action:** Commit this change with a descriptive message following the format `conductor(plan): Mark phase '<PHASE NAME>' as complete`.
+    - **Action:** Commit this change with a descriptive message following the format `chore(conductor): mark phase '<PHASE NAME>' as complete`.
 
 10.  **Announce Completion:** Inform the user that the phase is complete and the checkpoint has been created, with the detailed verification report attached as a git note.
 
@@ -231,6 +231,8 @@ Before requesting review:
 
 ## Commit Guidelines
 
+The convention is set by [ADR theme-0014](../docs/adr/theme-0014-commit-and-branch-convention.md) and summarized in [`CONTRIBUTING.md`](../CONTRIBUTING.md); this section only restates it, the ADR wins on any difference.
+
 ### Message Format
 ```
 <type>(<scope>): <description>
@@ -240,21 +242,25 @@ Before requesting review:
 [optional footer]
 ```
 
+[Conventional Commits](https://www.conventionalcommits.org/en/v1.0.0/): scope optional, `!` after the type for a breaking change.
+
 ### Types
 - `feat`: New feature
 - `fix`: Bug fix
+- `core`: Change to the theme core (styles, initializer, runtime)
+- `build`: Build, packaging or release tooling
+- `chore`: Maintenance tasks (including conductor plan/checkpoint commits)
 - `docs`: Documentation only
-- `style`: Formatting, missing semicolons, etc.
-- `refactor`: Code change that neither fixes a bug nor adds a feature
-- `test`: Adding missing tests
-- `chore`: Maintenance tasks
+
+### Branches
+`type/slug`, with the same types: `feat/105-select-slides`, `fix/…`, `core/…`, `chore/…`, `docs/…`.
 
 ### Examples
 ```bash
-git commit -m "feat(auth): Add remember me functionality"
-git commit -m "fix(posts): Correct excerpt generation for short posts"
-git commit -m "test(comments): Add tests for emoji reaction limits"
-git commit -m "style(mobile): Improve button touch targets"
+git commit -m "feat(cli): warn on unknown config keys"
+git commit -m "fix(cli): accept CONTRIBUTING.md in G_004"
+git commit -m "docs(adr): add the license ADR"
+git commit -m "chore(conductor): mark task 'Create user model' as complete"
 ```
 
 ## Definition of Done
