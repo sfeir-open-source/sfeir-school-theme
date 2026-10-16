@@ -110,7 +110,7 @@ A lab is a hands-on exercise; a training may have none. The full contract is [th
 - a pair of directories `labs/NNN-name-lab/` and `labs/NNN-name-lab-solution/` (3 digits, kebab-case, `L_011`);
 - the exercise `README.md` is titled `# <lab> instructions` and holds the exercise, hints and, when `labCommandPrefix` is set, the run command; a solution `README.md`, if any, is identical;
 - no solution makes sense? put a `.nosolution` file in the exercise directory, and drop the `-solution` directory;
-- both directories are declared in `labs/labs.json` (`{ "labs": [...] }`) or as npm workspaces in `labs/package.json` ([theme-0009](./docs/adr/theme-0009-labs-as-npm-workspaces.md));
+- both directories are declared in `labs/labs.json` (`{ "labs": [...] }`) or as npm workspaces in `labs/package.json` ([theme-0009](./docs/adr/theme-0009-labs-as-npm-workspaces.md)); `labs/package.json` is a package of its own and never replaces or includes `slides/package.json`;
 - each lab is announced by a lab slide, whose file name contains `-lab` (see [Exercices](#exercices)).
 
 # CLI

@@ -8,6 +8,7 @@
 
 - [pending](https://github.com/sfeir-open-source/sfeir-school-theme/pull/159) 2026-09-23
 - [amended](https://github.com/sfeir-open-source/sfeir-school-theme/pull/159) 2026-10-14 — narrowed to the declaration mechanism; naming moved to [[theme-0006-lab-contract]]; `labs/` optional; script lives in `labs/package.json`
+- [amended](https://github.com/sfeir-open-source/sfeir-school-theme/pull/159) 2026-10-16 — `labs/package.json` and `slides/package.json` are two separate packages, never substituted for each other
 
 ## Referenced Use Case(s)
 
@@ -37,6 +38,13 @@ Some trainings have no hands-on exercise at all.
   declaration, and the stricter correspondence applies: a script per lab
   in `labs/package.json`, and a lab `package.json` named after its
   directory. That is what makes `npm run <lab>` work.
+- **Two separate packages.** `labs/package.json`, when it exists, is the
+  labs' package only. It never replaces, extends or absorbs
+  `slides/package.json`, which belongs to the deck (its `prepare` script
+  refreshes `slides/web_modules/`, see [[theme-0004-self-contained-slides]]):
+  - neither declares the other as a workspace;
+  - neither carries the other's scripts or dependencies;
+  - installing or running one never requires the other.
 - **No labs, no `labs/`.** A training with no lab needs neither a `labs/`
   directory nor a declaration file. The `check` command must not fail
   because `labs/` is missing; the lab rules simply have nothing to check.
@@ -55,6 +63,8 @@ Some trainings have no hands-on exercise at all.
 - Labs are declared either as npm workspaces in `labs/package.json` or in
   `labs/labs.json`; the npm-only correspondence rules (`L_003`, `L_004`)
   apply to the first form only.
+- `labs/package.json` and `slides/package.json` are two separate packages:
+  one never substitutes for, nor includes, the other.
 - `labs/` is optional: a training without labs has none, and `check` does
   not fail on its absence.
 - What a lab is (naming, README, solution, slide) is defined in
@@ -64,6 +74,7 @@ Some trainings have no hands-on exercise at all.
 
 - [[theme-0003-labs-directory]] - `labs/` and the `lab` vocabulary
 - [[theme-0006-lab-contract]] - the lab contract this declaration serves
+- [[theme-0004-self-contained-slides]] - `slides/package.json` belongs to the deck
 - [[theme-0016-minimal-tooling-footprint]] - same reasoning for non-JS labs
 
 ## References
