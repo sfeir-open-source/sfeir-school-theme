@@ -4,8 +4,10 @@ import {
     getAllLabsFromWorkspace,
     getLabPackageJson,
     getLabReadme,
-    getWorkspaceStepsPackageJson,
+    getSolutionLab,
+    getWorkspaceLabsPackageJson,
     hasLabNoSolution,
+    isValidLabDirectoryName,
     splitLabsAndSolutions,
 } from '../../utils/labs.utils';
 import { isDefined, isDefinedAndNotEmpty } from '../../utils/fp.utils';
@@ -18,17 +20,22 @@ export function checkLabs(rootDir: string, config: ConfigJson) {
 }
 
 function checkLabDirectories(rootDir: string, config: ConfigJson) {
-    const stepsPackageJson = getWorkspaceStepsPackageJson(rootDir);
+    const labsPackageJson = getWorkspaceLabsPackageJson(rootDir);
     const labDirectories = getAllLabsFromFs(rootDir, config);
     const labsDeclared = getAllLabsFromWorkspace(rootDir);
     const labScripts = getAllLabScripts(rootDir);
     for (const labDir of labDirectories) {
         check(
+            'L_011',
+            `Lab directory "${labDir}" should be named "NNN-name-lab" or "NNN-name-lab-solution" (3 digits, kebab-case name)`,
+            () => isValidLabDirectoryName(labDir)
+        );
+        check(
             'L_002',
-            `Lab "${labDir}" should be declared in the workspace (either "workspaces" or "labs" in a file "package.json" or "labs.json" at the root of "steps" directory)`,
+            `Lab "${labDir}" should be declared in the workspace (either "workspaces" or "labs" in a file "package.json" or "labs.json" at the root of "labs" directory)`,
             () => labsDeclared.includes(labDir)
         );
-        if (stepsPackageJson?.kind === 'package.json') {
+        if (labsPackageJson?.kind === 'package.json') {
             check(
                 'L_003',
                 `Lab "${labDir}" should have corresponding script`,
@@ -59,12 +66,12 @@ function checkLabsAndSolutions(rootDir: string, config: ConfigJson) {
                 `Lab "${lab}"'s README.md should contains the correct title`,
                 () => readme?.includes(`# ${lab} instructions`) ?? false
             );
-            if (isDefinedAndNotEmpty(config.stepCommandPrefix)) {
+            if (isDefinedAndNotEmpty(config.labCommandPrefix)) {
                 check(
                     'L_007',
                     `Lab "${lab}"'s README.md should contains the correct command`,
                     () =>
-                        readme?.includes(`${config.stepCommandPrefix}${lab}`) ??
+                        readme?.includes(`${config.labCommandPrefix}${lab}`) ??
                         false
                 );
             }
@@ -85,7 +92,7 @@ function checkLabsAndSolutions(rootDir: string, config: ConfigJson) {
         }
     }
     for (const labSolution of labSolutions) {
-        const matchingLabName = labSolution.replace('-solution', '');
+        const matchingLabName = getSolutionLab(labSolution);
         const hasMatchingLab = check(
             'L_009',
             `Solution lab "${labSolution}" should match to a lab`,

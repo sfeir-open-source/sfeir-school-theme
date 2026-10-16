@@ -13,11 +13,13 @@ import {
     labReadmeMdFile,
     labSlideFile,
     labsJsonFile,
+    minimalSlidesDir,
     minimalValidLabStructure,
     oneLabStructure,
     packageJsonFile,
     slideCssFile,
     slideJsFile,
+    slideJsFileWithInit,
     speakerSlideFile,
     web_modules,
 } from './command-check.spec-helper';
@@ -29,9 +31,9 @@ describe('check command', () => {
     describe('valid projects', () => {
         it('minimal valid empty project', async () => {
             const rootDir = buildProject({
-                ...configFile({ stepCommandPrefix: 'npm run ' }),
+                ...configFile({ labCommandPrefix: 'npm run ' }),
                 ...contributionGuide(),
-                docs: {
+                slides: {
                     assets: { images: {} },
                     css: {
                         'slides.css': slideCssFile(),
@@ -42,7 +44,7 @@ describe('check command', () => {
                     },
                     ...web_modules(),
                 },
-                steps: {
+                labs: {
                     'package.json': packageJsonFile(),
                 },
             });
@@ -54,9 +56,9 @@ describe('check command', () => {
 
         it('simple project with no command prefix', async () => {
             const rootDir = buildProject({
-                ...configFile({ stepCommandPrefix: '' }),
+                ...configFile({ labCommandPrefix: '' }),
                 ...contributionGuide(),
-                docs: {
+                slides: {
                     assets: {
                         images: {
                             'foo.png': imageFile(),
@@ -69,17 +71,17 @@ describe('check command', () => {
                         '01-getting-started.md': '![](./assets/images/foo.png)',
                         '99-lab-getting-started.md': labSlideFile({
                             title: 'Getting started',
-                            cmd: 'Go to 01-getting-started',
+                            cmd: 'Go to 001-getting-started-lab',
                         }),
                         '100-lab-no-command.md': `<!-- .slide: class="exercice" -->
 
-# 02-no-command
+# 002-no-command-lab
 
 ## Lab
 
 <br>
 
-### 02-no-command
+### 002-no-command-lab
     `,
                         '101-lab-not-existing-command.md': `<!-- .slide: class="exercice" -->
 
@@ -102,22 +104,28 @@ describe('check command', () => {
                     },
                     ...web_modules(),
                 },
-                steps: {
+                labs: {
                     'labs.json': labsJsonFile({
                         labs: [
-                            '01-getting-started',
-                            '01-getting-started-solution',
-                            '02-no-command',
+                            '001-getting-started-lab',
+                            '001-getting-started-lab-solution',
+                            '002-no-command-lab',
                         ],
                     }),
-                    '01-getting-started': {
-                        'README.md': labReadmeMdFile('01-getting-started', ''),
+                    '001-getting-started-lab': {
+                        'README.md': labReadmeMdFile(
+                            '001-getting-started-lab',
+                            ''
+                        ),
                     },
-                    '01-getting-started-solution': {
-                        'README.md': labReadmeMdFile('01-getting-started', ''),
+                    '001-getting-started-lab-solution': {
+                        'README.md': labReadmeMdFile(
+                            '001-getting-started-lab',
+                            ''
+                        ),
                     },
-                    '02-no-command': {
-                        'README.md': `# 02-no-command instructions\n\nReadme with no command`,
+                    '002-no-command-lab': {
+                        'README.md': `# 002-no-command-lab instructions\n\nReadme with no command`,
                         '.nosolution': labNoSolutionFile(),
                     },
                 },
@@ -132,9 +140,9 @@ describe('check command', () => {
 
         it('simple npm project with workspace', async () => {
             const rootDir = buildProject({
-                ...configFile({ stepCommandPrefix: 'npm run ' }),
+                ...configFile({ labCommandPrefix: 'npm run ' }),
                 ...contributionGuide(),
-                docs: {
+                slides: {
                     assets: {
                         images: {
                             'foo.png': imageFile(),
@@ -147,7 +155,7 @@ describe('check command', () => {
                         '01-getting-started.md': '![](./assets/images/foo.png)',
                         '01-lab-getting-started.md': labSlideFile({
                             title: 'Getting started',
-                            cmd: 'npm run 01-getting-started',
+                            cmd: 'npm run 001-getting-started-lab',
                         }),
                     },
                     scripts: {
@@ -158,16 +166,16 @@ describe('check command', () => {
                     },
                     ...web_modules(),
                 },
-                steps: {
-                    ...minimalValidLabStructure('01-getting-started'),
+                labs: {
+                    ...minimalValidLabStructure('001-getting-started-lab'),
                     'package.json': packageJsonFile({
                         workspaces: [
-                            '01-getting-started',
-                            '01-getting-started-solution',
+                            '001-getting-started-lab',
+                            '001-getting-started-lab-solution',
                         ],
                         scripts: {
-                            '01-getting-started': '',
-                            '01-getting-started-solution': '',
+                            '001-getting-started-lab': '',
+                            '001-getting-started-lab-solution': '',
                         },
                     }),
                 },
@@ -180,9 +188,9 @@ describe('check command', () => {
 
         it('simple npm project without workspace', async () => {
             const rootDir = buildProject({
-                ...configFile({ stepCommandPrefix: 'npm run ' }),
+                ...configFile({ labCommandPrefix: 'npm run ' }),
                 ...contributionGuide(),
-                docs: {
+                slides: {
                     assets: { images: {} },
                     css: {
                         'slides.css': slideCssFile(),
@@ -190,7 +198,7 @@ describe('check command', () => {
                     markdown: {
                         '01-lab-getting-started.md': labSlideFile({
                             title: 'Getting started',
-                            cmd: 'npm run 01-getting-started',
+                            cmd: 'npm run 001-getting-started-lab',
                         }),
                     },
                     scripts: {
@@ -198,16 +206,16 @@ describe('check command', () => {
                     },
                     ...web_modules(),
                 },
-                steps: {
-                    ...minimalValidLabStructure('01-getting-started'),
+                labs: {
+                    ...minimalValidLabStructure('001-getting-started-lab'),
                     'package.json': packageJsonFile({
                         workspaces: [
-                            '01-getting-started',
-                            '01-getting-started-solution',
+                            '001-getting-started-lab',
+                            '001-getting-started-lab-solution',
                         ],
                         scripts: {
-                            '01-getting-started': '',
-                            '01-getting-started-solution': '',
+                            '001-getting-started-lab': '',
+                            '001-getting-started-lab-solution': '',
                         },
                     }),
                 },
@@ -220,9 +228,9 @@ describe('check command', () => {
 
         it('npm project with command prefix override', async () => {
             const rootDir = buildProject({
-                ...configFile({ stepCommandPrefix: 'yarn run ' }),
+                ...configFile({ labCommandPrefix: 'yarn run ' }),
                 ...contributionGuide(),
-                docs: {
+                slides: {
                     assets: { images: {} },
                     css: {
                         'slides.css': slideCssFile(),
@@ -230,7 +238,7 @@ describe('check command', () => {
                     markdown: {
                         '01-lab-getting-started.md': labSlideFile({
                             title: 'Getting started',
-                            cmd: 'yarn run 01-getting-started',
+                            cmd: 'yarn run 001-getting-started-lab',
                         }),
                     },
                     scripts: {
@@ -238,19 +246,19 @@ describe('check command', () => {
                     },
                     ...web_modules(),
                 },
-                steps: {
+                labs: {
                     ...minimalValidLabStructure(
-                        '01-getting-started',
+                        '001-getting-started-lab',
                         'yarn run '
                     ),
                     'package.json': packageJsonFile({
                         workspaces: [
-                            '01-getting-started',
-                            '01-getting-started-solution',
+                            '001-getting-started-lab',
+                            '001-getting-started-lab-solution',
                         ],
                         scripts: {
-                            '01-getting-started': '',
-                            '01-getting-started-solution': '',
+                            '001-getting-started-lab': '',
+                            '001-getting-started-lab-solution': '',
                         },
                     }),
                 },
@@ -262,9 +270,9 @@ describe('check command', () => {
         });
         it('lab with .nosolution file could not have a solution -> exception for [L_008]', async () => {
             const rootDir = buildProject({
-                ...configFile({ stepCommandPrefix: 'npm run ' }),
+                ...configFile({ labCommandPrefix: 'npm run ' }),
                 ...contributionGuide(),
-                docs: {
+                slides: {
                     assets: {
                         images: {
                             'foo.png': imageFile(),
@@ -277,7 +285,7 @@ describe('check command', () => {
                         '01-getting-started.md': '![](./assets/images/foo.png)',
                         '01-lab-getting-started.md': labSlideFile({
                             title: 'Getting started',
-                            cmd: 'npm run 01-getting-started',
+                            cmd: 'npm run 001-getting-started-lab',
                         }),
                     },
                     scripts: {
@@ -288,18 +296,18 @@ describe('check command', () => {
                     },
                     ...web_modules(),
                 },
-                steps: {
-                    ...oneLabStructure('01-getting-started', {
+                labs: {
+                    ...oneLabStructure('001-getting-started-lab', {
                         'package.json': packageJsonFile({
-                            name: '01-getting-started',
+                            name: '001-getting-started-lab',
                         }),
-                        'README.md': labReadmeMdFile('01-getting-started'),
+                        'README.md': labReadmeMdFile('001-getting-started-lab'),
                         '.nosolution': labNoSolutionFile(),
                     }),
                     'package.json': packageJsonFile({
-                        workspaces: ['01-getting-started'],
+                        workspaces: ['001-getting-started-lab'],
                         scripts: {
-                            '01-getting-started': '',
+                            '001-getting-started-lab': '',
                         },
                     }),
                 },
@@ -316,7 +324,7 @@ describe('check command', () => {
         it('Slides with images', async () => {
             const rootDir = buildProject({
                 ...contributionGuide(),
-                docs: {
+                slides: {
                     assets: {
                         images: {
                             'bg.png': imageFile(),
@@ -382,7 +390,7 @@ describe('check command', () => {
                     },
                     ...web_modules(),
                 },
-                steps: {
+                labs: {
                     'package.json': packageJsonFile({}),
                 },
             });
@@ -394,11 +402,11 @@ describe('check command', () => {
 
         it('should ignore hidden files', async () => {
             const rootDir = buildProject({
-                ...configFile({ stepCommandPrefix: 'npm run ' }),
+                ...configFile({ labCommandPrefix: 'npm run ' }),
                 ...contributionGuide(),
                 '.DS_Store': '',
                 'Thumbs.db': '',
-                docs: {
+                slides: {
                     '.DS_Store': '',
                     'Thumbs.db': '',
                     assets: {
@@ -423,7 +431,7 @@ describe('check command', () => {
                     },
                     ...web_modules(),
                 },
-                steps: {
+                labs: {
                     '.DS_Store': '',
                     'Thumbs.db': '',
                     '.hidden-slide.md': '',
@@ -436,11 +444,11 @@ describe('check command', () => {
             expect(getErrors()).toHaveLength(0);
         });
 
-        it('project with ignored steps', async () => {
+        it('project with ignored labs', async () => {
             const rootDir = buildProject({
-                ...configFile({ ignoreStepsDirectories: ['common'] }),
+                ...configFile({ ignoreLabsDirectories: ['common'] }),
                 ...contributionGuide(),
-                docs: {
+                slides: {
                     assets: { images: {} },
                     css: {
                         'slides.css': slideCssFile(),
@@ -448,7 +456,7 @@ describe('check command', () => {
                     markdown: {
                         '01-lab-getting-started.md': labSlideFile({
                             title: 'Getting started',
-                            cmd: 'npm run 01-getting-started',
+                            cmd: 'npm run 001-getting-started-lab',
                         }),
                     },
                     scripts: {
@@ -456,31 +464,37 @@ describe('check command', () => {
                     },
                     ...web_modules(),
                 },
-                steps: {
+                labs: {
                     common: {
                         'index.ts': "export function foo() { return 'foo'; }",
                         'package.json': packageJsonFile({ name: 'common' }),
                     },
-                    '01-getting-started': {
-                        'README.md': labReadmeMdFile('01-getting-started', ''),
+                    '001-getting-started-lab': {
+                        'README.md': labReadmeMdFile(
+                            '001-getting-started-lab',
+                            ''
+                        ),
                         'package.json': packageJsonFile({
-                            name: '01-getting-started',
+                            name: '001-getting-started-lab',
                         }),
                     },
-                    '01-getting-started-solution': {
-                        'README.md': labReadmeMdFile('01-getting-started', ''),
+                    '001-getting-started-lab-solution': {
+                        'README.md': labReadmeMdFile(
+                            '001-getting-started-lab',
+                            ''
+                        ),
                         'package.json': packageJsonFile({
-                            name: '01-getting-started-solution',
+                            name: '001-getting-started-lab-solution',
                         }),
                     },
                     'package.json': packageJsonFile({
                         workspaces: [
-                            '01-getting-started',
-                            '01-getting-started-solution',
+                            '001-getting-started-lab',
+                            '001-getting-started-lab-solution',
                         ],
                         scripts: {
-                            '01-getting-started': '',
-                            '01-getting-started-solution': '',
+                            '001-getting-started-lab': '',
+                            '001-getting-started-lab-solution': '',
                         },
                     }),
                 },
@@ -492,11 +506,11 @@ describe('check command', () => {
             expect(getErrors()).toHaveLength(0);
         });
 
-        it('project with ignored steps in the workspace', async () => {
+        it('project with ignored labs in the workspace', async () => {
             const rootDir = buildProject({
-                ...configFile({ ignoreStepsDirectories: ['common'] }),
+                ...configFile({ ignoreLabsDirectories: ['common'] }),
                 ...contributionGuide(),
-                docs: {
+                slides: {
                     assets: { images: {} },
                     css: {
                         'slides.css': slideCssFile(),
@@ -504,7 +518,7 @@ describe('check command', () => {
                     markdown: {
                         '01-lab-getting-started.md': labSlideFile({
                             title: 'Getting started',
-                            cmd: 'npm run 01-getting-started',
+                            cmd: 'npm run 001-getting-started-lab',
                         }),
                     },
                     scripts: {
@@ -512,32 +526,38 @@ describe('check command', () => {
                     },
                     ...web_modules(),
                 },
-                steps: {
+                labs: {
                     common: {
                         'index.ts': "export function foo() { return 'foo'; }",
                         'package.json': packageJsonFile({ name: 'common' }),
                     },
-                    '01-getting-started': {
-                        'README.md': labReadmeMdFile('01-getting-started', ''),
+                    '001-getting-started-lab': {
+                        'README.md': labReadmeMdFile(
+                            '001-getting-started-lab',
+                            ''
+                        ),
                         'package.json': packageJsonFile({
-                            name: '01-getting-started',
+                            name: '001-getting-started-lab',
                         }),
                     },
-                    '01-getting-started-solution': {
-                        'README.md': labReadmeMdFile('01-getting-started', ''),
+                    '001-getting-started-lab-solution': {
+                        'README.md': labReadmeMdFile(
+                            '001-getting-started-lab',
+                            ''
+                        ),
                         'package.json': packageJsonFile({
-                            name: '01-getting-started-solution',
+                            name: '001-getting-started-lab-solution',
                         }),
                     },
                     'package.json': packageJsonFile({
                         workspaces: [
                             'common',
-                            '01-getting-started',
-                            '01-getting-started-solution',
+                            '001-getting-started-lab',
+                            '001-getting-started-lab-solution',
                         ],
                         scripts: {
-                            '01-getting-started': '',
-                            '01-getting-started-solution': '',
+                            '001-getting-started-lab': '',
+                            '001-getting-started-lab-solution': '',
                         },
                     }),
                 },
@@ -552,11 +572,11 @@ describe('check command', () => {
         it('lab slide without command but listed in ignoreCommandCheck [S_005][S_011]', async () => {
             const rootDir = buildProject({
                 ...configFile({
-                    stepCommandPrefix: 'npm run ',
+                    labCommandPrefix: 'npm run ',
                     ignoreCommandCheck: ['01-lab-getting-started-bis.md'],
                 }),
                 ...contributionGuide(),
-                docs: {
+                slides: {
                     assets: {
                         images: {
                             'foo.png': imageFile(),
@@ -569,7 +589,7 @@ describe('check command', () => {
                         '01-getting-started.md': '![](./assets/images/foo.png)',
                         '01-lab-getting-started.md': labSlideFile({
                             title: 'Getting started',
-                            cmd: 'npm run 01-getting-started',
+                            cmd: 'npm run 001-getting-started-lab',
                         }),
                         '01-lab-getting-started-bis.md': labSlideFile({
                             title: 'Getting started bis',
@@ -585,16 +605,16 @@ describe('check command', () => {
                     },
                     ...web_modules(),
                 },
-                steps: {
-                    ...minimalValidLabStructure('01-getting-started'),
+                labs: {
+                    ...minimalValidLabStructure('001-getting-started-lab'),
                     'package.json': packageJsonFile({
                         workspaces: [
-                            '01-getting-started',
-                            '01-getting-started-solution',
+                            '001-getting-started-lab',
+                            '001-getting-started-lab-solution',
                         ],
                         scripts: {
-                            '01-getting-started': '',
-                            '01-getting-started-solution': '',
+                            '001-getting-started-lab': '',
+                            '001-getting-started-lab-solution': '',
                         },
                     }),
                 },
@@ -604,6 +624,73 @@ describe('check command', () => {
             console.error(getErrors());
             expect(getErrors()).toStrictEqual([]);
             expect(getErrors()).toHaveLength(0);
+        });
+        it('project without labs directory', async () => {
+            const rootDir = buildProject({
+                ...configFile({ labCommandPrefix: 'npm run ' }),
+                ...contributionGuide(),
+                slides: minimalSlidesDir({
+                    markdown: { '01-intro.md': '# Intro' },
+                }),
+            });
+
+            await checkCommandInternal({ type: 'check', rootDir });
+
+            expect(getErrors()).toStrictEqual([]);
+            expect(getWarnings()).toStrictEqual([]);
+        });
+
+        it('slides.js with multi-line init() and knowStyles [S_009][S_010]', async () => {
+            const rootDir = buildProject({
+                ...contributionGuide(),
+                slides: minimalSlidesDir({
+                    images: { 'logo.png': imageFile() },
+                    css: '.my-logo { width: 10px; }\n',
+                    markdown: {
+                        '01-intro.md':
+                            '<!-- .slide: class="transition-bg-blue-3" -->\n' +
+                            "![](./assets/images/logo.png 'my-logo h-50 company')\n",
+                    },
+                    slidesJs: slideJsFileWithInit(['01-intro.md'], ['my-logo']),
+                }),
+            });
+
+            await checkCommandInternal({ type: 'check', rootDir });
+
+            expect(getErrors()).toStrictEqual([]);
+        });
+
+        it('lab whose name contains "solution" is paired with its solution [L_009]', async () => {
+            const rootDir = buildProject({
+                ...contributionGuide(),
+                slides: minimalSlidesDir({
+                    markdown: {
+                        '01-lab-solution-design.md': labSlideFile({
+                            title: 'Solution design',
+                            cmd: '001-solution-design-lab',
+                        }),
+                    },
+                }),
+                labs: {
+                    'labs.json': labsJsonFile({
+                        labs: [
+                            '001-solution-design-lab',
+                            '001-solution-design-lab-solution',
+                        ],
+                    }),
+                    '001-solution-design-lab': {
+                        'README.md': labReadmeMdFile(
+                            '001-solution-design-lab',
+                            ''
+                        ),
+                    },
+                    '001-solution-design-lab-solution': {},
+                },
+            });
+
+            await checkCommandInternal({ type: 'check', rootDir });
+
+            expect(getErrors()).toStrictEqual([]);
         });
     });
 
@@ -624,8 +711,30 @@ describe('check command', () => {
                 expectMatching(getErrors(), reg).toHaveLength(1);
                 expect(getErrors()).toHaveLength(1);
             });
-            it('missing docs dir [G_002]', async () => {
+            it('missing slides dir [G_002]', async () => {
                 const rootDir = buildProject({
+                    labs: {
+                        'package.json': packageJsonFile(),
+                    },
+                });
+
+                try {
+                    await checkCommandInternal({ type: 'check', rootDir });
+                } catch (err) {
+                    console.error(err);
+                }
+
+                const reg =
+                    /\[CheckError\] G_002 Project should have a 'slides' directory/;
+                expectMatching(getErrors(), reg).toHaveLength(1);
+                expect(getErrors()).toHaveLength(1);
+            });
+            it('legacy deck in docs/ without slides/ points to the migration [G_002]', async () => {
+                const rootDir = buildProject({
+                    docs: {
+                        markdown: { '00-intro.md': '# Intro' },
+                        scripts: { 'slides.js': slideJsFile(['00-intro.md']) },
+                    },
                     steps: {
                         'package.json': packageJsonFile(),
                     },
@@ -638,39 +747,54 @@ describe('check command', () => {
                 }
 
                 const reg =
-                    /\[CheckError\] G_002 Project should have a 'docs' directory/;
+                    /\[CheckError\] G_002 Project should have a 'slides' directory: 'docs' still holds a legacy slide deck, run "npx sfeir-school-theme-migrate --from=v4 --to=v5" \(a v3 school runs "--from=v3 --to=v4" first\)/;
                 expectMatching(getErrors(), reg).toHaveLength(1);
                 expect(getErrors()).toHaveLength(1);
             });
-            it('missing steps dir [G_003]', async () => {
+            it('unknown keys in .sfeir-theme-config.json [G_005]', async () => {
                 const rootDir = buildProject({
-                    docs: {
-                        assets: { images: {} },
-                        css: {
-                            'slides.css': slideCssFile(),
-                        },
-                        markdown: {},
-                        scripts: {
-                            'slides.js': slideJsFile(),
-                        },
-                        ...web_modules(),
-                    },
+                    ...configFile({
+                        labCommandPrefix: 'npm run ',
+                        stepCommandPrefix: 'npm run ',
+                        foo: true,
+                    }),
+                    ...contributionGuide(),
+                    slides: minimalSlidesDir(),
                 });
 
-                try {
-                    await checkCommandInternal({ type: 'check', rootDir });
-                } catch (err) {
-                    console.error(err);
-                }
+                await checkCommandInternal({ type: 'check', rootDir });
 
-                const reg =
-                    /\[CheckError\] G_003 Project should have a 'steps' directory/;
-                expectMatching(getErrors(), reg).toHaveLength(1);
-                expect(getErrors()).toHaveLength(1);
+                expect(getErrors()).toHaveLength(0);
+                const reg1 =
+                    /\[CheckWarning\] G_005 Unknown key "stepCommandPrefix" in '.sfeir-theme-config.json' \(renamed "labCommandPrefix", run "npx sfeir-school-theme-migrate --from=v4 --to=v5"\)/;
+                expectMatching(getWarnings(), reg1).toHaveLength(1);
+                const reg2 =
+                    /\[CheckWarning\] G_005 Unknown key "foo" in '.sfeir-theme-config.json' \(it is ignored\)/;
+                expectMatching(getWarnings(), reg2).toHaveLength(1);
+                expect(getWarnings()).toHaveLength(2);
+            });
+            it('prototype-named keys are unknown, with no garbage hint [G_005]', async () => {
+                const rootDir = buildProject({
+                    '.sfeir-theme-config.json':
+                        '{"constructor": 1, "__proto__": 2, "toString": 3}',
+                    ...contributionGuide(),
+                    slides: minimalSlidesDir(),
+                });
+
+                await checkCommandInternal({ type: 'check', rootDir });
+
+                expect(getErrors()).toHaveLength(0);
+                for (const key of ['constructor', '__proto__', 'toString']) {
+                    const reg = new RegExp(
+                        `\\[CheckWarning\\] G_005 Unknown key "${key}" in '.sfeir-theme-config.json' \\(it is ignored\\)`
+                    );
+                    expectMatching(getWarnings(), reg).toHaveLength(1);
+                }
+                expect(getWarnings()).toHaveLength(3);
             });
             it('missing CONTRIBUTION_GUIDE.md [G_004]', async () => {
                 const rootDir = buildProject({
-                    docs: {
+                    slides: {
                         assets: { images: {} },
                         css: {
                             'slides.css': slideCssFile(),
@@ -681,7 +805,7 @@ describe('check command', () => {
                         },
                         ...web_modules(),
                     },
-                    steps: {
+                    labs: {
                         'package.json': packageJsonFile(),
                     },
                 });
@@ -694,13 +818,38 @@ describe('check command', () => {
 
                 expect(getErrors()).toHaveLength(0);
                 const reg =
-                    /\[CheckWarning\] G_004 Project should have a 'CONTRIBUTION_GUIDE.md' file/;
+                    /\[CheckWarning\] G_004 Project should have a 'CONTRIBUTION_GUIDE.md' or 'CONTRIBUTING.md' file/;
+                expectMatching(getWarnings(), reg).toHaveLength(1);
+                expect(getWarnings()).toHaveLength(1);
+            });
+            it('CONTRIBUTING.md is an accepted contribution guide [G_004]', async () => {
+                const rootDir = buildProject({
+                    ...contributionGuide('CONTRIBUTING.md'),
+                    slides: minimalSlidesDir(),
+                });
+
+                await checkCommandInternal({ type: 'check', rootDir });
+
+                expect(getErrors()).toHaveLength(0);
+                expect(getWarnings()).toHaveLength(0);
+            });
+            it('CONTRIBUTING.md sections are checked too [G_004]', async () => {
+                const rootDir = buildProject({
+                    'CONTRIBUTING.md':
+                        '# Contributing\n\n## How to start a lab?\n\nRun it.\n',
+                    slides: minimalSlidesDir(),
+                });
+
+                await checkCommandInternal({ type: 'check', rootDir });
+
+                const reg =
+                    /\[CheckWarning\] G_004 The 'CONTRIBUTING.md' file should contains required sections \("How to start the slides on local\?" is missing\)/;
                 expectMatching(getWarnings(), reg).toHaveLength(1);
                 expect(getWarnings()).toHaveLength(1);
             });
             it('missing CONTRIBUTION_GUIDE.md sections [G_004]', async () => {
                 const rootDir = buildProject({
-                    docs: {
+                    slides: {
                         assets: { images: {} },
                         css: {
                             'slides.css': slideCssFile(),
@@ -711,7 +860,7 @@ describe('check command', () => {
                         },
                         ...web_modules(),
                     },
-                    steps: {
+                    labs: {
                         'package.json': packageJsonFile(),
                     },
                     'CONTRIBUTION_GUIDE.md': `# Contribution guide
@@ -737,7 +886,7 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor i
             });
             it('missing CONTRIBUTION_GUIDE.md section content [G_004]', async () => {
                 const rootDir = buildProject({
-                    docs: {
+                    slides: {
                         assets: { images: {} },
                         css: {
                             'slides.css': slideCssFile(),
@@ -748,7 +897,7 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor i
                         },
                         ...web_modules(),
                     },
-                    steps: {
+                    labs: {
                         'package.json': packageJsonFile(),
                     },
                     'CONTRIBUTION_GUIDE.md': `# Contribution guide
@@ -792,7 +941,7 @@ Vivamus lacinia odio vitae vestibulum vestibulum. Integer nec odio.
             it('invalid slides.js entry [S_001]', async () => {
                 const rootDir = buildProject({
                     ...contributionGuide(),
-                    docs: {
+                    slides: {
                         assets: {
                             images: {
                                 'foo.png': imageFile(),
@@ -806,7 +955,7 @@ Vivamus lacinia odio vitae vestibulum vestibulum. Integer nec odio.
                                 '![](./assets/images/foo.png)',
                             '01-lab-getting-started.md': labSlideFile({
                                 title: 'Getting started',
-                                cmd: 'npm run 01-getting-started',
+                                cmd: 'npm run 001-getting-started-lab',
                             }),
                         },
                         scripts: {
@@ -814,12 +963,12 @@ Vivamus lacinia odio vitae vestibulum vestibulum. Integer nec odio.
                         },
                         ...web_modules(),
                     },
-                    steps: {
-                        ...minimalValidLabStructure('01-getting-started'),
+                    labs: {
+                        ...minimalValidLabStructure('001-getting-started-lab'),
                         'package.json': packageJsonFile({
-                            workspaces: ['01-getting-started'],
+                            workspaces: ['001-getting-started-lab'],
                             scripts: {
-                                '01-getting-started': '',
+                                '001-getting-started-lab': '',
                             },
                         }),
                     },
@@ -837,9 +986,9 @@ Vivamus lacinia odio vitae vestibulum vestibulum. Integer nec odio.
             });
             it('not existing markdown file in slides.js [S_002]', async () => {
                 const rootDir = buildProject({
-                    ...configFile({ stepCommandPrefix: 'npm run ' }),
+                    ...configFile({ labCommandPrefix: 'npm run ' }),
                     ...contributionGuide(),
-                    docs: {
+                    slides: {
                         assets: {
                             images: {
                                 'foo.png': imageFile(),
@@ -853,7 +1002,7 @@ Vivamus lacinia odio vitae vestibulum vestibulum. Integer nec odio.
                                 '![](./assets/images/foo.png)',
                             '01-lab-getting-started.md': labSlideFile({
                                 title: 'Getting started',
-                                cmd: 'npm run 01-getting-started',
+                                cmd: 'npm run 001-getting-started-lab',
                             }),
                         },
                         scripts: {
@@ -865,16 +1014,16 @@ Vivamus lacinia odio vitae vestibulum vestibulum. Integer nec odio.
                         },
                         ...web_modules(),
                     },
-                    steps: {
-                        ...minimalValidLabStructure('01-getting-started'),
+                    labs: {
+                        ...minimalValidLabStructure('001-getting-started-lab'),
                         'package.json': packageJsonFile({
                             workspaces: [
-                                '01-getting-started',
-                                '01-getting-started-solution',
+                                '001-getting-started-lab',
+                                '001-getting-started-lab-solution',
                             ],
                             scripts: {
-                                '01-getting-started': '',
-                                '01-getting-started-solution': '',
+                                '001-getting-started-lab': '',
+                                '001-getting-started-lab-solution': '',
                             },
                         }),
                     },
@@ -892,9 +1041,9 @@ Vivamus lacinia odio vitae vestibulum vestibulum. Integer nec odio.
             });
             it('not declared in slides.js markdown file [S_003]', async () => {
                 const rootDir = buildProject({
-                    ...configFile({ stepCommandPrefix: 'npm run ' }),
+                    ...configFile({ labCommandPrefix: 'npm run ' }),
                     ...contributionGuide(),
-                    docs: {
+                    slides: {
                         assets: {
                             images: {
                                 'foo.png': imageFile(),
@@ -916,7 +1065,7 @@ Vivamus lacinia odio vitae vestibulum vestibulum. Integer nec odio.
                                 '![](./assets/images/foo.png)',
                             '01-lab-getting-started.md': labSlideFile({
                                 title: 'Getting started',
-                                cmd: 'npm run 01-getting-started',
+                                cmd: 'npm run 001-getting-started-lab',
                             }),
                             '02-not-existing-file.md': '',
                         },
@@ -929,16 +1078,16 @@ Vivamus lacinia odio vitae vestibulum vestibulum. Integer nec odio.
                         },
                         ...web_modules(),
                     },
-                    steps: {
-                        ...minimalValidLabStructure('01-getting-started'),
+                    labs: {
+                        ...minimalValidLabStructure('001-getting-started-lab'),
                         'package.json': packageJsonFile({
                             workspaces: [
-                                '01-getting-started',
-                                '01-getting-started-solution',
+                                '001-getting-started-lab',
+                                '001-getting-started-lab-solution',
                             ],
                             scripts: {
-                                '01-getting-started': '',
-                                '01-getting-started-solution': '',
+                                '001-getting-started-lab': '',
+                                '001-getting-started-lab-solution': '',
                             },
                         }),
                     },
@@ -960,9 +1109,9 @@ Vivamus lacinia odio vitae vestibulum vestibulum. Integer nec odio.
             });
             it('lab slide without command [S_005]', async () => {
                 const rootDir = buildProject({
-                    ...configFile({ stepCommandPrefix: 'npm run ' }),
+                    ...configFile({ labCommandPrefix: 'npm run ' }),
                     ...contributionGuide(),
-                    docs: {
+                    slides: {
                         assets: {
                             images: {
                                 'foo.png': imageFile(),
@@ -976,7 +1125,7 @@ Vivamus lacinia odio vitae vestibulum vestibulum. Integer nec odio.
                                 '![](./assets/images/foo.png)',
                             '01-lab-getting-started.md': labSlideFile({
                                 title: 'Getting started',
-                                cmd: 'npm run 01-getting-started',
+                                cmd: 'npm run 001-getting-started-lab',
                             }),
                             '01-lab-getting-started-bis.md': labSlideFile({
                                 title: 'Getting started bis',
@@ -992,16 +1141,16 @@ Vivamus lacinia odio vitae vestibulum vestibulum. Integer nec odio.
                         },
                         ...web_modules(),
                     },
-                    steps: {
-                        ...minimalValidLabStructure('01-getting-started'),
+                    labs: {
+                        ...minimalValidLabStructure('001-getting-started-lab'),
                         'package.json': packageJsonFile({
                             workspaces: [
-                                '01-getting-started',
-                                '01-getting-started-solution',
+                                '001-getting-started-lab',
+                                '001-getting-started-lab-solution',
                             ],
                             scripts: {
-                                '01-getting-started': '',
-                                '01-getting-started-solution': '',
+                                '001-getting-started-lab': '',
+                                '001-getting-started-lab-solution': '',
                             },
                         }),
                     },
@@ -1019,9 +1168,9 @@ Vivamus lacinia odio vitae vestibulum vestibulum. Integer nec odio.
             });
             it('lab slide without a valid command [S_005][S_011]', async () => {
                 const rootDir = buildProject({
-                    ...configFile({ stepCommandPrefix: 'npm run ' }),
+                    ...configFile({ labCommandPrefix: 'npm run ' }),
                     ...contributionGuide(),
-                    docs: {
+                    slides: {
                         assets: {
                             images: {
                                 'foo.png': imageFile(),
@@ -1035,7 +1184,7 @@ Vivamus lacinia odio vitae vestibulum vestibulum. Integer nec odio.
                                 '![](./assets/images/foo.png)',
                             '01-lab-getting-started.md': labSlideFile({
                                 title: 'Getting started',
-                                cmd: 'npm run 01-getting-started',
+                                cmd: 'npm run 001-getting-started-lab',
                             }),
                             '01-lab-getting-started-bis.md': labSlideFile({
                                 title: 'Getting started bis',
@@ -1051,16 +1200,16 @@ Vivamus lacinia odio vitae vestibulum vestibulum. Integer nec odio.
                         },
                         ...web_modules(),
                     },
-                    steps: {
-                        ...minimalValidLabStructure('01-getting-started'),
+                    labs: {
+                        ...minimalValidLabStructure('001-getting-started-lab'),
                         'package.json': packageJsonFile({
                             workspaces: [
-                                '01-getting-started',
-                                '01-getting-started-solution',
+                                '001-getting-started-lab',
+                                '001-getting-started-lab-solution',
                             ],
                             scripts: {
-                                '01-getting-started': '',
-                                '01-getting-started-solution': '',
+                                '001-getting-started-lab': '',
+                                '001-getting-started-lab-solution': '',
                             },
                         }),
                     },
@@ -1075,15 +1224,15 @@ Vivamus lacinia odio vitae vestibulum vestibulum. Integer nec odio.
                     /\[CheckError\] S_005 "01-lab-getting-started-bis.md" should contains the valid command to run the exercise/;
                 expectMatching(getErrors(), regS005).toHaveLength(1);
                 const regS011 =
-                    /\[CheckError\] S_011 "01-lab-getting-started-bis.md" lab should have a dedicated directory in `steps`/;
+                    /\[CheckError\] S_011 "01-lab-getting-started-bis.md" lab should have a dedicated directory in `labs`/;
                 expectMatching(getErrors(), regS011).toHaveLength(1);
                 expect(getErrors()).toHaveLength(2);
             });
             it('lab slide without a valid command [S_006]', async () => {
                 const rootDir = buildProject({
-                    ...configFile({ stepCommandPrefix: 'npm run ' }),
+                    ...configFile({ labCommandPrefix: 'npm run ' }),
                     ...contributionGuide(),
-                    docs: {
+                    slides: {
                         assets: {
                             images: {
                                 'foo.png': imageFile(),
@@ -1097,10 +1246,10 @@ Vivamus lacinia odio vitae vestibulum vestibulum. Integer nec odio.
                                 '![](./assets/images/foo.png)',
                             '01-lab-getting-started.md': labSlideFile({
                                 title: 'Getting started',
-                                cmd: 'npm run 01-getting-started',
+                                cmd: 'npm run 001-getting-started-lab',
                             }),
                             '01-lab-getting-started-bis.md':
-                                '# Getting started\n\nnpm run 01-getting-started',
+                                '# Getting started\n\nnpm run 001-getting-started-lab',
                         },
                         scripts: {
                             'slides.js': slideJsFile([
@@ -1111,16 +1260,16 @@ Vivamus lacinia odio vitae vestibulum vestibulum. Integer nec odio.
                         },
                         ...web_modules(),
                     },
-                    steps: {
-                        ...minimalValidLabStructure('01-getting-started'),
+                    labs: {
+                        ...minimalValidLabStructure('001-getting-started-lab'),
                         'package.json': packageJsonFile({
                             workspaces: [
-                                '01-getting-started',
-                                '01-getting-started-solution',
+                                '001-getting-started-lab',
+                                '001-getting-started-lab-solution',
                             ],
                             scripts: {
-                                '01-getting-started': '',
-                                '01-getting-started-solution': '',
+                                '001-getting-started-lab': '',
+                                '001-getting-started-lab-solution': '',
                             },
                         }),
                     },
@@ -1138,9 +1287,9 @@ Vivamus lacinia odio vitae vestibulum vestibulum. Integer nec odio.
             });
             it('slide should contains existing image [S_007]', async () => {
                 const rootDir = buildProject({
-                    ...configFile({ stepCommandPrefix: 'npm run ' }),
+                    ...configFile({ labCommandPrefix: 'npm run ' }),
                     ...contributionGuide(),
-                    docs: {
+                    slides: {
                         assets: {
                             images: {
                                 'foo.png': imageFile(),
@@ -1154,7 +1303,7 @@ Vivamus lacinia odio vitae vestibulum vestibulum. Integer nec odio.
                                 '![](./assets/images/foo.png)\n![](./assets/images/foo2.png)',
                             '01-lab-getting-started.md': labSlideFile({
                                 title: 'Getting started',
-                                cmd: 'npm run 01-getting-started',
+                                cmd: 'npm run 001-getting-started-lab',
                             }),
                         },
                         scripts: {
@@ -1165,16 +1314,16 @@ Vivamus lacinia odio vitae vestibulum vestibulum. Integer nec odio.
                         },
                         ...web_modules(),
                     },
-                    steps: {
-                        ...minimalValidLabStructure('01-getting-started'),
+                    labs: {
+                        ...minimalValidLabStructure('001-getting-started-lab'),
                         'package.json': packageJsonFile({
                             workspaces: [
-                                '01-getting-started',
-                                '01-getting-started-solution',
+                                '001-getting-started-lab',
+                                '001-getting-started-lab-solution',
                             ],
                             scripts: {
-                                '01-getting-started': '',
-                                '01-getting-started-solution': '',
+                                '001-getting-started-lab': '',
+                                '001-getting-started-lab-solution': '',
                             },
                         }),
                     },
@@ -1186,7 +1335,7 @@ Vivamus lacinia odio vitae vestibulum vestibulum. Integer nec odio.
                 }
 
                 const reg =
-                    /\[CheckError\] S_007 ".*\/docs\/assets\/images\/foo2.png" in "01-getting-started.md" should be an existing images/;
+                    /\[CheckError\] S_007 ".*\/slides\/assets\/images\/foo2.png" in "01-getting-started.md" should be an existing images/;
                 expectMatching(getErrors(), reg).toHaveLength(1);
                 expect(getErrors()).toHaveLength(1);
             });
@@ -1194,11 +1343,11 @@ Vivamus lacinia odio vitae vestibulum vestibulum. Integer nec odio.
             it('images in asset should be used [S_008]', async () => {
                 const rootDir = buildProject({
                     ...configFile({
-                        stepCommandPrefix: 'npm run ',
+                        labCommandPrefix: 'npm run ',
                         ignoreAssets: ['images/ignored.png'],
                     }),
                     ...contributionGuide(),
-                    docs: {
+                    slides: {
                         assets: {
                             images: {
                                 'foo.png': imageFile(),
@@ -1214,7 +1363,7 @@ Vivamus lacinia odio vitae vestibulum vestibulum. Integer nec odio.
                                 '![](./assets/images/foo.png)',
                             '01-lab-getting-started.md': labSlideFile({
                                 title: 'Getting started',
-                                cmd: 'npm run 01-getting-started',
+                                cmd: 'npm run 001-getting-started-lab',
                             }),
                         },
                         scripts: {
@@ -1225,16 +1374,16 @@ Vivamus lacinia odio vitae vestibulum vestibulum. Integer nec odio.
                         },
                         ...web_modules(),
                     },
-                    steps: {
-                        ...minimalValidLabStructure('01-getting-started'),
+                    labs: {
+                        ...minimalValidLabStructure('001-getting-started-lab'),
                         'package.json': packageJsonFile({
                             workspaces: [
-                                '01-getting-started',
-                                '01-getting-started-solution',
+                                '001-getting-started-lab',
+                                '001-getting-started-lab-solution',
                             ],
                             scripts: {
-                                '01-getting-started': '',
-                                '01-getting-started-solution': '',
+                                '001-getting-started-lab': '',
+                                '001-getting-started-lab-solution': '',
                             },
                         }),
                     },
@@ -1246,15 +1395,15 @@ Vivamus lacinia odio vitae vestibulum vestibulum. Integer nec odio.
                 }
 
                 const reg =
-                    /\[CheckError\] S_008 ".*\/docs\/assets\/images\/foo2.png" should be used/;
+                    /\[CheckError\] S_008 ".*\/slides\/assets\/images\/foo2.png" should be used/;
                 expectMatching(getErrors(), reg).toHaveLength(1);
                 expect(getErrors()).toHaveLength(1);
             });
             it('slide should only used existing css classes [S_009]', async () => {
                 const rootDir = buildProject({
-                    ...configFile({ stepCommandPrefix: 'npm run ' }),
+                    ...configFile({ labCommandPrefix: 'npm run ' }),
                     ...contributionGuide(),
-                    docs: {
+                    slides: {
                         assets: {
                             images: {
                                 'foo.png': imageFile(),
@@ -1269,7 +1418,7 @@ Vivamus lacinia odio vitae vestibulum vestibulum. Integer nec odio.
                                 "![](./assets/images/foo.png 'another-undefined-class')\n",
                             '01-lab-getting-started.md': labSlideFile({
                                 title: 'Getting started',
-                                cmd: 'npm run 01-getting-started',
+                                cmd: 'npm run 001-getting-started-lab',
                             }),
                         },
                         scripts: {
@@ -1280,16 +1429,16 @@ Vivamus lacinia odio vitae vestibulum vestibulum. Integer nec odio.
                         },
                         ...web_modules(),
                     },
-                    steps: {
-                        ...minimalValidLabStructure('01-getting-started'),
+                    labs: {
+                        ...minimalValidLabStructure('001-getting-started-lab'),
                         'package.json': packageJsonFile({
                             workspaces: [
-                                '01-getting-started',
-                                '01-getting-started-solution',
+                                '001-getting-started-lab',
+                                '001-getting-started-lab-solution',
                             ],
                             scripts: {
-                                '01-getting-started': '',
-                                '01-getting-started-solution': '',
+                                '001-getting-started-lab': '',
+                                '001-getting-started-lab-solution': '',
                             },
                         }),
                     },
@@ -1304,15 +1453,104 @@ Vivamus lacinia odio vitae vestibulum vestibulum. Integer nec odio.
                     /\[CheckError\] S_009 "any-undefined-class" in "01-getting-started.md" is not a known css class/;
                 expectMatching(getErrors(), reg1).toHaveLength(1);
                 const reg2 =
-                    /\[CheckError\] S_009 "another-undefined-class" in "01-getting-started.md" is not a known css class/;
+                    /\[CheckError\] S_009 "another-undefined-class" in "01-getting-started.md" is not registered in the "knowStyles" of slides.js/;
                 expectMatching(getErrors(), reg2).toHaveLength(1);
                 expect(getErrors()).toHaveLength(2);
             });
+            it('image title words should be registered talk-control styles [S_009]', async () => {
+                const rootDir = buildProject({
+                    ...contributionGuide(),
+                    slides: minimalSlidesDir({
+                        images: { 'logo.png': imageFile() },
+                        css: '.my-logo { width: 10px; }\n',
+                        markdown: {
+                            '01-intro.md':
+                                "![](./assets/images/logo.png 'my-logo company')\n",
+                        },
+                        slidesJs: slideJsFileWithInit(['01-intro.md']),
+                    }),
+                });
+
+                await checkCommandInternal({ type: 'check', rootDir });
+
+                const reg =
+                    /\[CheckError\] S_009 "my-logo" in "01-intro.md" is not registered in the "knowStyles" of slides.js \(talk-control renders it as a title, not a class\)/;
+                expectMatching(getErrors(), reg).toHaveLength(1);
+                expect(getErrors()).toHaveLength(1);
+            });
+            it('registered image styles should still be defined in css [S_009]', async () => {
+                const rootDir = buildProject({
+                    ...contributionGuide(),
+                    slides: minimalSlidesDir({
+                        images: { 'logo.png': imageFile() },
+                        markdown: {
+                            '01-intro.md':
+                                "![](./assets/images/logo.png 'my-logo')\n",
+                        },
+                        slidesJs: slideJsFileWithInit(
+                            ['01-intro.md'],
+                            ['my-logo']
+                        ),
+                    }),
+                });
+
+                await checkCommandInternal({ type: 'check', rootDir });
+
+                const reg =
+                    /\[CheckError\] S_009 "my-logo" in "01-intro.md" is not a known css class/;
+                expectMatching(getErrors(), reg).toHaveLength(1);
+                expect(getErrors()).toHaveLength(1);
+            });
+            it('css classes should match exactly, not as a substring [S_009]', async () => {
+                const rootDir = buildProject({
+                    ...contributionGuide(),
+                    slides: minimalSlidesDir({
+                        markdown: {
+                            '01-intro.md':
+                                '<!-- .slide: class="with-cod  bg" -->\n# Intro\n',
+                        },
+                    }),
+                });
+
+                await checkCommandInternal({ type: 'check', rootDir });
+
+                const reg1 =
+                    /\[CheckError\] S_009 "with-cod" in "01-intro.md" is not a known css class/;
+                expectMatching(getErrors(), reg1).toHaveLength(1);
+                const reg2 =
+                    /\[CheckError\] S_009 "bg" in "01-intro.md" is not a known css class/;
+                expectMatching(getErrors(), reg2).toHaveLength(1);
+                expect(getErrors()).toHaveLength(2);
+            });
+            it('talk-control icon and QR code titles are classes [S_009]', async () => {
+                const rootDir = buildProject({
+                    ...contributionGuide(),
+                    slides: minimalSlidesDir({
+                        markdown: {
+                            '01-intro.md': [
+                                "![](clock 'tc-icons feather tc-big')",
+                                "![](github 'tc-icons fa fa-brands')",
+                                "![](https://sfeir.com 'tc-qrcode')",
+                                "![](clock 'tc-icons feather tc-bigg')",
+                                '',
+                            ].join('\n'),
+                        },
+                        slidesJs: slideJsFileWithInit(['01-intro.md']),
+                    }),
+                });
+
+                await checkCommandInternal({ type: 'check', rootDir });
+
+                const reg =
+                    /\[CheckError\] S_009 "tc-bigg" in "01-intro.md" is not a known css class/;
+                expectMatching(getErrors(), reg).toHaveLength(1);
+                expect(getErrors()).toHaveLength(1);
+            });
             it('slide.js should exists [S_010]', async () => {
                 const rootDir = buildProject({
-                    ...configFile({ stepCommandPrefix: 'npm run ' }),
+                    ...configFile({ labCommandPrefix: 'npm run ' }),
                     ...contributionGuide(),
-                    docs: {
+                    slides: {
                         css: {
                             'slides.css': slideCssFile(),
                         },
@@ -1322,16 +1560,16 @@ Vivamus lacinia odio vitae vestibulum vestibulum. Integer nec odio.
                         scripts: {},
                         ...web_modules(),
                     },
-                    steps: {
-                        ...minimalValidLabStructure('01-getting-started'),
+                    labs: {
+                        ...minimalValidLabStructure('001-getting-started-lab'),
                         'package.json': packageJsonFile({
                             workspaces: [
-                                '01-getting-started',
-                                '01-getting-started-solution',
+                                '001-getting-started-lab',
+                                '001-getting-started-lab-solution',
                             ],
                             scripts: {
-                                '01-getting-started': '',
-                                '01-getting-started-solution': '',
+                                '001-getting-started-lab': '',
+                                '001-getting-started-lab-solution': '',
                             },
                         }),
                     },
@@ -1349,9 +1587,9 @@ Vivamus lacinia odio vitae vestibulum vestibulum. Integer nec odio.
             });
             it('slide.js should have exported formation function [S_010]', async () => {
                 const rootDir = buildProject({
-                    ...configFile({ stepCommandPrefix: 'npm run ' }),
+                    ...configFile({ labCommandPrefix: 'npm run ' }),
                     ...contributionGuide(),
-                    docs: {
+                    slides: {
                         css: {
                             'slides.css': slideCssFile(),
                         },
@@ -1366,16 +1604,16 @@ Vivamus lacinia odio vitae vestibulum vestibulum. Integer nec odio.
                         },
                         ...web_modules(),
                     },
-                    steps: {
-                        ...minimalValidLabStructure('01-getting-started'),
+                    labs: {
+                        ...minimalValidLabStructure('001-getting-started-lab'),
                         'package.json': packageJsonFile({
                             workspaces: [
-                                '01-getting-started',
-                                '01-getting-started-solution',
+                                '001-getting-started-lab',
+                                '001-getting-started-lab-solution',
                             ],
                             scripts: {
-                                '01-getting-started': '',
-                                '01-getting-started-solution': '',
+                                '001-getting-started-lab': '',
+                                '001-getting-started-lab-solution': '',
                             },
                         }),
                     },
@@ -1395,9 +1633,9 @@ Vivamus lacinia odio vitae vestibulum vestibulum. Integer nec odio.
         describe('Labs checks', () => {
             it('labs not used in slide [L_001]', async () => {
                 const rootDir = buildProject({
-                    ...configFile({ stepCommandPrefix: 'npm run ' }),
+                    ...configFile({ labCommandPrefix: 'npm run ' }),
                     ...contributionGuide(),
-                    docs: {
+                    slides: {
                         assets: {
                             images: {
                                 'foo.png': imageFile(),
@@ -1411,7 +1649,7 @@ Vivamus lacinia odio vitae vestibulum vestibulum. Integer nec odio.
                                 '![](./assets/images/foo.png)',
                             '01-lab-getting-started.md': labSlideFile({
                                 title: 'Getting started',
-                                cmd: 'npm run 01-getting-started',
+                                cmd: 'npm run 001-getting-started-lab',
                             }),
                         },
                         scripts: {
@@ -1422,21 +1660,21 @@ Vivamus lacinia odio vitae vestibulum vestibulum. Integer nec odio.
                         },
                         ...web_modules(),
                     },
-                    steps: {
-                        ...minimalValidLabStructure('01-getting-started'),
-                        ...minimalValidLabStructure('02-next'),
+                    labs: {
+                        ...minimalValidLabStructure('001-getting-started-lab'),
+                        ...minimalValidLabStructure('002-next-lab'),
                         'package.json': packageJsonFile({
                             workspaces: [
-                                '01-getting-started',
-                                '01-getting-started-solution',
-                                '02-next',
-                                '02-next-solution',
+                                '001-getting-started-lab',
+                                '001-getting-started-lab-solution',
+                                '002-next-lab',
+                                '002-next-lab-solution',
                             ],
                             scripts: {
-                                '01-getting-started': '',
-                                '01-getting-started-solution': '',
-                                '02-next': '',
-                                '02-next-solution': '',
+                                '001-getting-started-lab': '',
+                                '001-getting-started-lab-solution': '',
+                                '002-next-lab': '',
+                                '002-next-lab-solution': '',
                             },
                         }),
                     },
@@ -1448,15 +1686,15 @@ Vivamus lacinia odio vitae vestibulum vestibulum. Integer nec odio.
                 }
 
                 const reg =
-                    /\[CheckError\] L_001 "02-next" should be used in a lab slide/;
+                    /\[CheckError\] L_001 "002-next-lab" should be used in a lab slide/;
                 expectMatching(getErrors(), reg).toHaveLength(1);
                 expect(getErrors()).toHaveLength(1);
             });
             it('labs not declared in workspace [L_002][L_003]', async () => {
                 const rootDir = buildProject({
-                    ...configFile({ stepCommandPrefix: 'npm run ' }),
+                    ...configFile({ labCommandPrefix: 'npm run ' }),
                     ...contributionGuide(),
-                    docs: {
+                    slides: {
                         assets: {
                             images: {
                                 'foo.png': imageFile(),
@@ -1470,7 +1708,7 @@ Vivamus lacinia odio vitae vestibulum vestibulum. Integer nec odio.
                                 '![](./assets/images/foo.png)',
                             '01-lab-getting-started.md': labSlideFile({
                                 title: 'Getting started',
-                                cmd: 'npm run 01-getting-started',
+                                cmd: 'npm run 001-getting-started-lab',
                             }),
                         },
                         scripts: {
@@ -1481,17 +1719,17 @@ Vivamus lacinia odio vitae vestibulum vestibulum. Integer nec odio.
                         },
                         ...web_modules(),
                     },
-                    steps: {
-                        ...minimalValidLabStructure('01-getting-started'),
-                        ...minimalValidLabStructure('02-next'),
+                    labs: {
+                        ...minimalValidLabStructure('001-getting-started-lab'),
+                        ...minimalValidLabStructure('002-next-lab'),
                         'package.json': packageJsonFile({
                             workspaces: [
-                                '01-getting-started',
-                                '01-getting-started-solution',
+                                '001-getting-started-lab',
+                                '001-getting-started-lab-solution',
                             ],
                             scripts: {
-                                '01-getting-started': '',
-                                '01-getting-started-solution': '',
+                                '001-getting-started-lab': '',
+                                '001-getting-started-lab-solution': '',
                             },
                         }),
                     },
@@ -1503,24 +1741,24 @@ Vivamus lacinia odio vitae vestibulum vestibulum. Integer nec odio.
                 }
 
                 const regL002 =
-                    /\[CheckError\] L_002 Lab "02-next" should be declared in the workspace \(either "workspaces" or "labs" in a file "package.json" or "labs.json" at the root of "steps" directory\)/;
+                    /\[CheckError\] L_002 Lab "002-next-lab" should be declared in the workspace \(either "workspaces" or "labs" in a file "package.json" or "labs.json" at the root of "labs" directory\)/;
                 expectMatching(getErrors(), regL002).toHaveLength(1);
                 const regL003 =
-                    /\[CheckError\] L_003 Lab "02-next" should have corresponding script/;
+                    /\[CheckError\] L_003 Lab "002-next-lab" should have corresponding script/;
                 expectMatching(getErrors(), regL003).toHaveLength(1);
                 const regL002Sol =
-                    /\[CheckError\] L_002 Lab "02-next-solution" should be declared in the workspace \(either "workspaces" or "labs" in a file "package.json" or "labs.json" at the root of "steps" directory\)/;
+                    /\[CheckError\] L_002 Lab "002-next-lab-solution" should be declared in the workspace \(either "workspaces" or "labs" in a file "package.json" or "labs.json" at the root of "labs" directory\)/;
                 expectMatching(getErrors(), regL002Sol).toHaveLength(1);
                 const regL003Sol =
-                    /\[CheckError\] L_003 Lab "02-next-solution" should have corresponding script/;
+                    /\[CheckError\] L_003 Lab "002-next-lab-solution" should have corresponding script/;
                 expectMatching(getErrors(), regL003Sol).toHaveLength(1);
                 expect(getErrors()).toHaveLength(4);
             });
             it('labs in workspace but without package.json [L_004]', async () => {
                 const rootDir = buildProject({
-                    ...configFile({ stepCommandPrefix: 'npm run ' }),
+                    ...configFile({ labCommandPrefix: 'npm run ' }),
                     ...contributionGuide(),
-                    docs: {
+                    slides: {
                         assets: {
                             images: {
                                 'foo.png': imageFile(),
@@ -1534,7 +1772,7 @@ Vivamus lacinia odio vitae vestibulum vestibulum. Integer nec odio.
                                 '![](./assets/images/foo.png)',
                             '01-lab-getting-started.md': labSlideFile({
                                 title: 'Getting started',
-                                cmd: 'npm run 01-getting-started',
+                                cmd: 'npm run 001-getting-started-lab',
                             }),
                         },
                         scripts: {
@@ -1545,24 +1783,28 @@ Vivamus lacinia odio vitae vestibulum vestibulum. Integer nec odio.
                         },
                         ...web_modules(),
                     },
-                    steps: {
-                        ...oneLabStructure('01-getting-started', {
-                            'README.md': labReadmeMdFile('01-getting-started'),
+                    labs: {
+                        ...oneLabStructure('001-getting-started-lab', {
+                            'README.md': labReadmeMdFile(
+                                '001-getting-started-lab'
+                            ),
                         }),
-                        ...oneLabStructure('01-getting-started-solution', {
+                        ...oneLabStructure('001-getting-started-lab-solution', {
                             'package.json': packageJsonFile({
-                                name: '01-getting-started-solution',
+                                name: '001-getting-started-lab-solution',
                             }),
-                            'README.md': labReadmeMdFile('01-getting-started'),
+                            'README.md': labReadmeMdFile(
+                                '001-getting-started-lab'
+                            ),
                         }),
                         'package.json': packageJsonFile({
                             workspaces: [
-                                '01-getting-started',
-                                '01-getting-started-solution',
+                                '001-getting-started-lab',
+                                '001-getting-started-lab-solution',
                             ],
                             scripts: {
-                                '01-getting-started': '',
-                                '01-getting-started-solution': '',
+                                '001-getting-started-lab': '',
+                                '001-getting-started-lab-solution': '',
                             },
                         }),
                     },
@@ -1574,15 +1816,15 @@ Vivamus lacinia odio vitae vestibulum vestibulum. Integer nec odio.
                 }
 
                 const reg =
-                    /\[CheckError\] L_004 Lab "01-getting-started" should have a package.json with corresponding name/;
+                    /\[CheckError\] L_004 Lab "001-getting-started-lab" should have a package.json with corresponding name/;
                 expectMatching(getErrors(), reg).toHaveLength(1);
                 expect(getErrors()).toHaveLength(1);
             });
             it('labs without README.md [L_005][L_010]', async () => {
                 const rootDir = buildProject({
-                    ...configFile({ stepCommandPrefix: 'npm run ' }),
+                    ...configFile({ labCommandPrefix: 'npm run ' }),
                     ...contributionGuide(),
-                    docs: {
+                    slides: {
                         assets: {
                             images: {
                                 'foo.png': imageFile(),
@@ -1596,7 +1838,7 @@ Vivamus lacinia odio vitae vestibulum vestibulum. Integer nec odio.
                                 '![](./assets/images/foo.png)',
                             '01-lab-getting-started.md': labSlideFile({
                                 title: 'Getting started',
-                                cmd: 'npm run 01-getting-started',
+                                cmd: 'npm run 001-getting-started-lab',
                             }),
                         },
                         scripts: {
@@ -1607,27 +1849,29 @@ Vivamus lacinia odio vitae vestibulum vestibulum. Integer nec odio.
                         },
                         ...web_modules(),
                     },
-                    steps: {
-                        ...oneLabStructure('01-getting-started', {
+                    labs: {
+                        ...oneLabStructure('001-getting-started-lab', {
                             'package.json': packageJsonFile({
-                                name: '01-getting-started',
+                                name: '001-getting-started-lab',
                             }),
-                            // "README.md": labReadmeMdFile("01-getting-started"),
+                            // "README.md": labReadmeMdFile("001-getting-started-lab"),
                         }),
-                        ...oneLabStructure('01-getting-started-solution', {
+                        ...oneLabStructure('001-getting-started-lab-solution', {
                             'package.json': packageJsonFile({
-                                name: '01-getting-started-solution',
+                                name: '001-getting-started-lab-solution',
                             }),
-                            'README.md': labReadmeMdFile('01-getting-started'),
+                            'README.md': labReadmeMdFile(
+                                '001-getting-started-lab'
+                            ),
                         }),
                         'package.json': packageJsonFile({
                             workspaces: [
-                                '01-getting-started',
-                                '01-getting-started-solution',
+                                '001-getting-started-lab',
+                                '001-getting-started-lab-solution',
                             ],
                             scripts: {
-                                '01-getting-started': '',
-                                '01-getting-started-solution': '',
+                                '001-getting-started-lab': '',
+                                '001-getting-started-lab-solution': '',
                             },
                         }),
                     },
@@ -1639,10 +1883,10 @@ Vivamus lacinia odio vitae vestibulum vestibulum. Integer nec odio.
                 }
 
                 const regL005 =
-                    /\[CheckError\] L_005 Lab "01-getting-started" should have a README.md/;
+                    /\[CheckError\] L_005 Lab "001-getting-started-lab" should have a README.md/;
                 expectMatching(getErrors(), regL005).toHaveLength(1);
                 const regL010 =
-                    /\[CheckError\] L_010 Lab and solution of "01-getting-started" should have same README.md/;
+                    /\[CheckError\] L_010 Lab and solution of "001-getting-started-lab" should have same README.md/;
                 expectMatching(getErrors(), regL010).toHaveLength(1);
                 expect(getErrors()).toHaveLength(2);
             });
@@ -1650,7 +1894,7 @@ Vivamus lacinia odio vitae vestibulum vestibulum. Integer nec odio.
                 const rootDir = buildProject({
                     ...configFile({}),
                     ...contributionGuide(),
-                    docs: {
+                    slides: {
                         assets: {
                             images: {
                                 'foo.png': imageFile(),
@@ -1664,7 +1908,7 @@ Vivamus lacinia odio vitae vestibulum vestibulum. Integer nec odio.
                                 '![](./assets/images/foo.png)',
                             '01-lab-getting-started.md': labSlideFile({
                                 title: 'Getting started',
-                                cmd: '01-getting-started',
+                                cmd: '001-getting-started-lab',
                             }),
                         },
                         scripts: {
@@ -1675,27 +1919,27 @@ Vivamus lacinia odio vitae vestibulum vestibulum. Integer nec odio.
                         },
                         ...web_modules(),
                     },
-                    steps: {
-                        ...oneLabStructure('01-getting-started', {
+                    labs: {
+                        ...oneLabStructure('001-getting-started-lab', {
                             'package.json': packageJsonFile({
-                                name: '01-getting-started',
+                                name: '001-getting-started-lab',
                             }),
-                            'README.md': '# 01-getting-started\n',
+                            'README.md': '# 001-getting-started-lab\n',
                         }),
-                        ...oneLabStructure('01-getting-started-solution', {
+                        ...oneLabStructure('001-getting-started-lab-solution', {
                             'package.json': packageJsonFile({
-                                name: '01-getting-started-solution',
+                                name: '001-getting-started-lab-solution',
                             }),
-                            'README.md': '# 01-getting-started\n',
+                            'README.md': '# 001-getting-started-lab\n',
                         }),
                         'package.json': packageJsonFile({
                             workspaces: [
-                                '01-getting-started',
-                                '01-getting-started-solution',
+                                '001-getting-started-lab',
+                                '001-getting-started-lab-solution',
                             ],
                             scripts: {
-                                '01-getting-started': '',
-                                '01-getting-started-solution': '',
+                                '001-getting-started-lab': '',
+                                '001-getting-started-lab-solution': '',
                             },
                         }),
                     },
@@ -1707,14 +1951,14 @@ Vivamus lacinia odio vitae vestibulum vestibulum. Integer nec odio.
                 }
 
                 const regL006 =
-                    /\[CheckError\] L_006 Lab "01-getting-started"'s README.md should contains the correct title/;
+                    /\[CheckError\] L_006 Lab "001-getting-started-lab"'s README.md should contains the correct title/;
                 expectMatching(getErrors(), regL006).toHaveLength(1);
             });
             it('labs with README.md missing some infos [L_006][L_007]', async () => {
                 const rootDir = buildProject({
-                    ...configFile({ stepCommandPrefix: 'npm run ' }),
+                    ...configFile({ labCommandPrefix: 'npm run ' }),
                     ...contributionGuide(),
-                    docs: {
+                    slides: {
                         assets: {
                             images: {
                                 'foo.png': imageFile(),
@@ -1728,7 +1972,7 @@ Vivamus lacinia odio vitae vestibulum vestibulum. Integer nec odio.
                                 '![](./assets/images/foo.png)',
                             '01-lab-getting-started.md': labSlideFile({
                                 title: 'Getting started',
-                                cmd: 'npm run 01-getting-started',
+                                cmd: 'npm run 001-getting-started-lab',
                             }),
                         },
                         scripts: {
@@ -1739,27 +1983,27 @@ Vivamus lacinia odio vitae vestibulum vestibulum. Integer nec odio.
                         },
                         ...web_modules(),
                     },
-                    steps: {
-                        ...oneLabStructure('01-getting-started', {
+                    labs: {
+                        ...oneLabStructure('001-getting-started-lab', {
                             'package.json': packageJsonFile({
-                                name: '01-getting-started',
+                                name: '001-getting-started-lab',
                             }),
-                            'README.md': '# 01-getting-started\n',
+                            'README.md': '# 001-getting-started-lab\n',
                         }),
-                        ...oneLabStructure('01-getting-started-solution', {
+                        ...oneLabStructure('001-getting-started-lab-solution', {
                             'package.json': packageJsonFile({
-                                name: '01-getting-started-solution',
+                                name: '001-getting-started-lab-solution',
                             }),
-                            'README.md': '# 01-getting-started\n',
+                            'README.md': '# 001-getting-started-lab\n',
                         }),
                         'package.json': packageJsonFile({
                             workspaces: [
-                                '01-getting-started',
-                                '01-getting-started-solution',
+                                '001-getting-started-lab',
+                                '001-getting-started-lab-solution',
                             ],
                             scripts: {
-                                '01-getting-started': '',
-                                '01-getting-started-solution': '',
+                                '001-getting-started-lab': '',
+                                '001-getting-started-lab-solution': '',
                             },
                         }),
                     },
@@ -1771,18 +2015,18 @@ Vivamus lacinia odio vitae vestibulum vestibulum. Integer nec odio.
                 }
 
                 const regL006 =
-                    /\[CheckError\] L_006 Lab "01-getting-started"'s README.md should contains the correct title/;
+                    /\[CheckError\] L_006 Lab "001-getting-started-lab"'s README.md should contains the correct title/;
                 expectMatching(getErrors(), regL006).toHaveLength(1);
                 const regL007 =
-                    /\[CheckError\] L_007 Lab "01-getting-started"'s README.md should contains the correct command/;
+                    /\[CheckError\] L_007 Lab "001-getting-started-lab"'s README.md should contains the correct command/;
                 expectMatching(getErrors(), regL007).toHaveLength(1);
                 expect(getErrors()).toHaveLength(2);
             });
             it('every lab should have a solution [L_008]', async () => {
                 const rootDir = buildProject({
-                    ...configFile({ stepCommandPrefix: 'npm run ' }),
+                    ...configFile({ labCommandPrefix: 'npm run ' }),
                     ...contributionGuide(),
-                    docs: {
+                    slides: {
                         assets: {
                             images: {
                                 'foo.png': imageFile(),
@@ -1796,7 +2040,7 @@ Vivamus lacinia odio vitae vestibulum vestibulum. Integer nec odio.
                                 '![](./assets/images/foo.png)',
                             '01-lab-getting-started.md': labSlideFile({
                                 title: 'Getting started',
-                                cmd: 'npm run 01-getting-started',
+                                cmd: 'npm run 001-getting-started-lab',
                             }),
                         },
                         scripts: {
@@ -1807,21 +2051,23 @@ Vivamus lacinia odio vitae vestibulum vestibulum. Integer nec odio.
                         },
                         ...web_modules(),
                     },
-                    steps: {
-                        ...oneLabStructure('01-getting-started', {
+                    labs: {
+                        ...oneLabStructure('001-getting-started-lab', {
                             'package.json': packageJsonFile({
-                                name: '01-getting-started',
+                                name: '001-getting-started-lab',
                             }),
-                            'README.md': labReadmeMdFile('01-getting-started'),
+                            'README.md': labReadmeMdFile(
+                                '001-getting-started-lab'
+                            ),
                         }),
                         'package.json': packageJsonFile({
                             workspaces: [
-                                '01-getting-started',
-                                '01-getting-started-solution',
+                                '001-getting-started-lab',
+                                '001-getting-started-lab-solution',
                             ],
                             scripts: {
-                                '01-getting-started': '',
-                                '01-getting-started-solution': '',
+                                '001-getting-started-lab': '',
+                                '001-getting-started-lab-solution': '',
                             },
                         }),
                     },
@@ -1833,15 +2079,15 @@ Vivamus lacinia odio vitae vestibulum vestibulum. Integer nec odio.
                 }
 
                 const reg =
-                    /\[CheckError\] L_008 Lab "01-getting-started" should have a solution/;
+                    /\[CheckError\] L_008 Lab "001-getting-started-lab" should have a solution/;
                 expectMatching(getErrors(), reg).toHaveLength(1);
                 expect(getErrors()).toHaveLength(1);
             });
             it('every lab with .nosolution file should not have a solution [L_008]', async () => {
                 const rootDir = buildProject({
-                    ...configFile({ stepCommandPrefix: 'npm run ' }),
+                    ...configFile({ labCommandPrefix: 'npm run ' }),
                     ...contributionGuide(),
-                    docs: {
+                    slides: {
                         assets: {
                             images: {
                                 'foo.png': imageFile(),
@@ -1855,7 +2101,7 @@ Vivamus lacinia odio vitae vestibulum vestibulum. Integer nec odio.
                                 '![](./assets/images/foo.png)',
                             '01-lab-getting-started.md': labSlideFile({
                                 title: 'Getting started',
-                                cmd: 'npm run 01-getting-started',
+                                cmd: 'npm run 001-getting-started-lab',
                             }),
                         },
                         scripts: {
@@ -1866,28 +2112,32 @@ Vivamus lacinia odio vitae vestibulum vestibulum. Integer nec odio.
                         },
                         ...web_modules(),
                     },
-                    steps: {
-                        ...oneLabStructure('01-getting-started', {
+                    labs: {
+                        ...oneLabStructure('001-getting-started-lab', {
                             'package.json': packageJsonFile({
-                                name: '01-getting-started',
+                                name: '001-getting-started-lab',
                             }),
-                            'README.md': labReadmeMdFile('01-getting-started'),
+                            'README.md': labReadmeMdFile(
+                                '001-getting-started-lab'
+                            ),
                             '.nosolution': labNoSolutionFile(),
                         }),
-                        ...oneLabStructure('01-getting-started-solution', {
+                        ...oneLabStructure('001-getting-started-lab-solution', {
                             'package.json': packageJsonFile({
-                                name: '01-getting-started-solution',
+                                name: '001-getting-started-lab-solution',
                             }),
-                            'README.md': labReadmeMdFile('01-getting-started'),
+                            'README.md': labReadmeMdFile(
+                                '001-getting-started-lab'
+                            ),
                         }),
                         'package.json': packageJsonFile({
                             workspaces: [
-                                '01-getting-started',
-                                '01-getting-started-solution',
+                                '001-getting-started-lab',
+                                '001-getting-started-lab-solution',
                             ],
                             scripts: {
-                                '01-getting-started': '',
-                                '01-getting-started-solution': '',
+                                '001-getting-started-lab': '',
+                                '001-getting-started-lab-solution': '',
                             },
                         }),
                     },
@@ -1899,14 +2149,14 @@ Vivamus lacinia odio vitae vestibulum vestibulum. Integer nec odio.
                 }
 
                 const reg =
-                    /\[CheckError\] L_008 Lab "01-getting-started" should not have both solution and `.nosolution` file/;
+                    /\[CheckError\] L_008 Lab "001-getting-started-lab" should not have both solution and `.nosolution` file/;
                 expectMatching(getErrors(), reg).toHaveLength(1);
                 expect(getErrors()).toHaveLength(1);
             });
             it('lab solution should match a lab [L_009]', async () => {
                 const rootDir = buildProject({
                     ...contributionGuide(),
-                    docs: {
+                    slides: {
                         assets: {
                             images: {
                                 'foo.png': imageFile(),
@@ -1924,17 +2174,19 @@ Vivamus lacinia odio vitae vestibulum vestibulum. Integer nec odio.
                         },
                         ...web_modules(),
                     },
-                    steps: {
-                        ...oneLabStructure('01-getting-started-solution', {
+                    labs: {
+                        ...oneLabStructure('001-getting-started-lab-solution', {
                             'package.json': packageJsonFile({
-                                name: '01-getting-started-solution',
+                                name: '001-getting-started-lab-solution',
                             }),
-                            'README.md': labReadmeMdFile('01-getting-started'),
+                            'README.md': labReadmeMdFile(
+                                '001-getting-started-lab'
+                            ),
                         }),
                         'package.json': packageJsonFile({
-                            workspaces: ['01-getting-started-solution'],
+                            workspaces: ['001-getting-started-lab-solution'],
                             scripts: {
-                                '01-getting-started-solution': '',
+                                '001-getting-started-lab-solution': '',
                             },
                         }),
                     },
@@ -1946,15 +2198,15 @@ Vivamus lacinia odio vitae vestibulum vestibulum. Integer nec odio.
                 }
 
                 const reg =
-                    /\[CheckError\] L_009 Solution lab "01-getting-started-solution" should match to a lab/;
+                    /\[CheckError\] L_009 Solution lab "001-getting-started-lab-solution" should match to a lab/;
                 expectMatching(getErrors(), reg).toHaveLength(1);
                 expect(getErrors()).toHaveLength(1);
             });
             it('lab and solution should have same README.md (if lab has a README.md) [L_010]', async () => {
                 const rootDir = buildProject({
-                    ...configFile({ stepCommandPrefix: 'npm run ' }),
+                    ...configFile({ labCommandPrefix: 'npm run ' }),
                     ...contributionGuide(),
-                    docs: {
+                    slides: {
                         assets: {
                             images: {
                                 'foo.png': imageFile(),
@@ -1968,11 +2220,11 @@ Vivamus lacinia odio vitae vestibulum vestibulum. Integer nec odio.
                                 '![](./assets/images/foo.png)',
                             '01-lab-getting-started.md': labSlideFile({
                                 title: 'Getting started',
-                                cmd: 'npm run 01-getting-started',
+                                cmd: 'npm run 001-getting-started-lab',
                             }),
                             '02-next.md': labSlideFile({
                                 title: 'Next',
-                                cmd: 'npm run 02-next',
+                                cmd: 'npm run 002-next-lab',
                             }),
                         },
                         scripts: {
@@ -1984,44 +2236,46 @@ Vivamus lacinia odio vitae vestibulum vestibulum. Integer nec odio.
                         },
                         ...web_modules(),
                     },
-                    steps: {
-                        ...oneLabStructure('01-getting-started', {
+                    labs: {
+                        ...oneLabStructure('001-getting-started-lab', {
                             'package.json': packageJsonFile({
-                                name: '01-getting-started',
+                                name: '001-getting-started-lab',
                             }),
-                            'README.md': labReadmeMdFile('01-getting-started'),
+                            'README.md': labReadmeMdFile(
+                                '001-getting-started-lab'
+                            ),
                         }),
-                        ...oneLabStructure('01-getting-started-solution', {
+                        ...oneLabStructure('001-getting-started-lab-solution', {
                             'package.json': packageJsonFile({
-                                name: '01-getting-started-solution',
+                                name: '001-getting-started-lab-solution',
                             }),
                             'README.md':
-                                labReadmeMdFile('01-getting-started') +
+                                labReadmeMdFile('001-getting-started-lab') +
                                 '\nHello\n',
                         }),
-                        ...oneLabStructure('02-next', {
+                        ...oneLabStructure('002-next-lab', {
                             'package.json': packageJsonFile({
-                                name: '02-next',
+                                name: '002-next-lab',
                             }),
-                            'README.md': labReadmeMdFile('02-next'),
+                            'README.md': labReadmeMdFile('002-next-lab'),
                         }),
-                        ...oneLabStructure('02-next-solution', {
+                        ...oneLabStructure('002-next-lab-solution', {
                             'package.json': packageJsonFile({
-                                name: '02-next-solution',
+                                name: '002-next-lab-solution',
                             }),
                         }),
                         'package.json': packageJsonFile({
                             workspaces: [
-                                '01-getting-started',
-                                '01-getting-started-solution',
-                                '02-next',
-                                '02-next-solution',
+                                '001-getting-started-lab',
+                                '001-getting-started-lab-solution',
+                                '002-next-lab',
+                                '002-next-lab-solution',
                             ],
                             scripts: {
-                                '01-getting-started': '',
-                                '01-getting-started-solution': '',
-                                '02-next': '',
-                                '02-next-solution': '',
+                                '001-getting-started-lab': '',
+                                '001-getting-started-lab-solution': '',
+                                '002-next-lab': '',
+                                '002-next-lab-solution': '',
                             },
                         }),
                     },
@@ -2033,9 +2287,67 @@ Vivamus lacinia odio vitae vestibulum vestibulum. Integer nec odio.
                 }
 
                 const reg =
-                    /\[CheckError\] L_010 Lab and solution of "01-getting-started" should have same README.md/;
+                    /\[CheckError\] L_010 Lab and solution of "001-getting-started-lab" should have same README.md/;
                 expectMatching(getErrors(), reg).toHaveLength(1);
                 expect(getErrors()).toHaveLength(1);
+            });
+            it('lab directories should be named NNN-name-lab[-solution] [L_011]', async () => {
+                const labs = [
+                    '01-getting-started',
+                    '01-getting-started-solution',
+                    '001-Getting-lab',
+                    '001-getting-started-lab',
+                    '001-getting-started-lab-solution',
+                ];
+                const rootDir = buildProject({
+                    ...configFile({ ignoreLabsDirectories: ['common'] }),
+                    ...contributionGuide(),
+                    slides: minimalSlidesDir({
+                        markdown: {
+                            '99-lab-all.md': labSlideFile({
+                                title: 'All labs',
+                                steps: labs,
+                                cmd: '001-getting-started-lab',
+                            }),
+                        },
+                    }),
+                    labs: {
+                        'labs.json': labsJsonFile({ labs }),
+                        common: { 'index.js': '' },
+                        '01-getting-started': {
+                            'README.md': labReadmeMdFile(
+                                '01-getting-started',
+                                ''
+                            ),
+                        },
+                        '01-getting-started-solution': {},
+                        '001-Getting-lab': {
+                            'README.md': labReadmeMdFile('001-Getting-lab', ''),
+                            '.nosolution': labNoSolutionFile(),
+                        },
+                        '001-getting-started-lab': {
+                            'README.md': labReadmeMdFile(
+                                '001-getting-started-lab',
+                                ''
+                            ),
+                        },
+                        '001-getting-started-lab-solution': {},
+                    },
+                });
+
+                await checkCommandInternal({ type: 'check', rootDir });
+
+                for (const lab of [
+                    '01-getting-started',
+                    '01-getting-started-solution',
+                    '001-Getting-lab',
+                ]) {
+                    const reg = new RegExp(
+                        `\\[CheckError\\] L_011 Lab directory "${lab}" should be named "NNN-name-lab" or "NNN-name-lab-solution"`
+                    );
+                    expectMatching(getErrors(), reg).toHaveLength(1);
+                }
+                expect(getErrors()).toHaveLength(3);
             });
         });
     });

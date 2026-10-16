@@ -1,9 +1,16 @@
+import {
+    LEGACY_CONFIG_KEYS,
+    getUnknownConfigKeys,
+} from '../../utils/config.utils';
+import { isDefined, isDefinedAndNotEmpty } from '../../utils/fp.utils';
 import { isDirectory, isFile, readdirSync } from '../../utils/fs.utils';
 import { CheckCommand } from '../../cli';
 import { check } from '../../utils/assert.utils';
 import fs from 'node:fs';
-import { isDefinedAndNotEmpty } from '../../utils/fp.utils';
 import path from 'node:path';
+
+/** Accepted names of the contribution guide, in lookup order (theme-0002). */
+const CONTRIBUTION_GUIDE_NAMES = ['CONTRIBUTION_GUIDE.md', 'CONTRIBUTING.md'];
 
 export function checkRootDir(command: CheckCommand) {
     check(
@@ -15,35 +22,29 @@ export function checkRootDir(command: CheckCommand) {
         () => isDirectory(command.rootDir)
     );
     check(
-        'G_003',
-        {
-            msg: "Project should have a 'steps' directory",
-            continueCheck: false,
-        },
-        () =>
-            readRootDir(command).includes('steps') &&
-            isDirectory(command.rootDir, 'steps')
-    );
-    check(
         'G_002',
         {
-            msg: "Project should have a 'docs' directory",
+            msg: hasLegacySlideDeck(command.rootDir)
+                ? `Project should have a 'slides' directory: 'docs' still holds a legacy slide deck, run "npx sfeir-school-theme-migrate --from=v4 --to=v5" (a v3 school runs "--from=v3 --to=v4" first)`
+                : "Project should have a 'slides' directory",
             continueCheck: false,
         },
         () =>
-            readRootDir(command).includes('docs') &&
-            isDirectory(command.rootDir, 'docs')
+            readRootDir(command).includes('slides') &&
+            isDirectory(command.rootDir, 'slides')
+    );
+    const contributionGuideName = CONTRIBUTION_GUIDE_NAMES.find(
+        (name) =>
+            readRootDir(command).includes(name) && isFile(command.rootDir, name)
     );
     const contributionGuideExist = check(
         'G_004',
-        "Project should have a 'CONTRIBUTION_GUIDE.md' file",
-        () =>
-            readRootDir(command).includes('CONTRIBUTION_GUIDE.md') &&
-            isFile(command.rootDir, 'CONTRIBUTION_GUIDE.md'),
+        `Project should have a ${CONTRIBUTION_GUIDE_NAMES.map((name) => `'${name}'`).join(' or ')} file`,
+        () => isDefined(contributionGuideName),
         'warning'
     );
 
-    if (contributionGuideExist) {
+    if (contributionGuideExist && isDefined(contributionGuideName)) {
         const requiredSections: string[] = [
             'How to start the slides on local?',
             'How to start a lab?',
@@ -52,13 +53,13 @@ export function checkRootDir(command: CheckCommand) {
             'What are the specific rules of this training?',
         ];
         const contributionGuide = fs.readFileSync(
-            path.resolve(command.rootDir, 'CONTRIBUTION_GUIDE.md'),
+            path.resolve(command.rootDir, contributionGuideName),
             'utf-8'
         );
         const allSectionsExists = requiredSections.every((section) =>
             check(
                 'G_004',
-                `The 'CONTRIBUTION_GUIDE.md' file should contains required sections ("${section}" is missing)`,
+                `The '${contributionGuideName}' file should contains required sections ("${section}" is missing)`,
                 () => contributionGuide.includes(`## ${section}`),
                 'warning'
             )
@@ -92,7 +93,7 @@ export function checkRootDir(command: CheckCommand) {
                 ([sectionName, section]) =>
                     check(
                         'G_004',
-                        `All section in the 'CONTRIBUTION_GUIDE.md' file should contains information ("${sectionName}" is missing content)`,
+                        `All section in the '${contributionGuideName}' file should contains information ("${sectionName}" is missing content)`,
                         () =>
                             section.some((x) =>
                                 isDefinedAndNotEmpty(x?.trim())
@@ -102,6 +103,32 @@ export function checkRootDir(command: CheckCommand) {
             );
         }
     }
+}
+
+export function checkProjectConfig(rootDir: string) {
+    for (const key of getUnknownConfigKeys(rootDir)) {
+        // Own-property check: a key like "constructor" must not hit Object.prototype
+        const hint = Object.prototype.hasOwnProperty.call(
+            LEGACY_CONFIG_KEYS,
+            key
+        )
+            ? `renamed "${LEGACY_CONFIG_KEYS[key]}", run "npx sfeir-school-theme-migrate --from=v4 --to=v5"`
+            : 'it is ignored';
+        check(
+            'G_005',
+            `Unknown key "${key}" in '.sfeir-theme-config.json' (${hint})`,
+            () => false,
+            'warning'
+        );
+    }
+}
+
+/** A pre-v5 project keeps its deck (`scripts/slides.js`, `markdown/`) under `docs/`. */
+function hasLegacySlideDeck(rootDir: string) {
+    return (
+        isFile(rootDir, 'docs/scripts/slides.js') ||
+        isDirectory(rootDir, 'docs/markdown')
+    );
 }
 
 function readRootDir(command: CheckCommand) {
