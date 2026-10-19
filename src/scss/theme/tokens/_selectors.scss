@@ -1,0 +1,86 @@
+/**
+* Shared selector lists.
+*
+* Both the contextual layer and the deprecated aliases have to redeclare tokens at the
+* same places, so those places are named once here rather than copied.
+*/
+
+// Program axis. `.backgrounds` is a sibling of `.slides`, not a descendant, and reveal
+// puts slide backgrounds there — so it needs the program tokens too.
+$sfeir-institute: ".reveal .slides[data-theme='institute'], " +
+    ".reveal .slides[data-theme='institute'] ~ .backgrounds";
+
+/**
+* Polarity axis — the classes that put a slide on a dark photo (Noir Carbone fallback).
+*
+* The list is a bare selector list so it can qualify both the `section` (ink, accent
+* tier) and the `.slide-background` reveal copies the classes onto (fallback colour,
+* white signature mark). The class → photo mapping itself lives in
+* src/js/sfeir-theme-initializer.ts; keep the two in step.
+*/
+$sfeir-dark-classes: (
+    // Archetypes
+    '.first-slide',
+    '.speaker-slide',
+    '.quote-slide',
+    '.bg-blur',
+    '.sfeir-slide',
+    '.with-code-dark',
+    "[class*='transition']",
+    // Public photo classes (v5)
+    '.bg-dust',
+    '.bg-arc',
+    '.bg-rock',
+    '.bg-flecks',
+    '.bg-bokeh',
+    '.bg-brown',
+    '.bg-sand',
+    '.bg-pour',
+    // Deprecated colour variants, kept resolving until v6
+    '.bg-pink',
+    '.bg-blue',
+    '.bg-green'
+);
+
+// The light photo classes. They can be combined with `transition`, so the dark list
+// has to exclude them explicitly.
+$sfeir-light-classes: ('.bg-plaster', '.bg-white');
+
+@function sfeir-join($list) {
+    $out: '';
+    @each $item in $list {
+        $out: if($out == '', $item, $out + ', ' + $item);
+    }
+    @return $out;
+}
+
+// `:is(<dark>):not(:is(<light>))`, usable after any compound selector.
+$sfeir-dark-qualifier: ':is(' + sfeir-join($sfeir-dark-classes) + '):not(:is(' +
+    sfeir-join($sfeir-light-classes) + '))';
+$sfeir-light-qualifier: ':is(' + sfeir-join($sfeir-light-classes) + ')';
+
+// Every class that names its own photo. `transition` defaults to the gold arc, but a
+// `transition bg-rock` or `transition transition-bg-green-1` carries another photo, so
+// the arc-only crop (layout.scss) has to exclude them.
+$sfeir-photo-classes: sfeir-join(
+    (
+        '.bg-plaster',
+        '.bg-white',
+        '.bg-dust',
+        '.bg-arc',
+        '.bg-rock',
+        '.bg-flecks',
+        '.bg-bokeh',
+        '.bg-brown',
+        '.bg-sand',
+        '.bg-pour',
+        '.bg-blur',
+        '.bg-pink',
+        '.bg-blue',
+        '.bg-green',
+        "[class*='transition-bg-']"
+    )
+);
+
+// The sections that sit on a dark surface — where ink and accent flip tier.
+$sfeir-dark-sections: '.reveal .slides section' + $sfeir-dark-qualifier;

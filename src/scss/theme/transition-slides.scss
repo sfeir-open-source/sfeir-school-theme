@@ -1,93 +1,41 @@
+/**
+* Section dividers — `transition` and the `transition-bg-*` variants.
+*
+* The official divider (layout L4) puts the title bottom-left of the gold-arc photo,
+* whose bright zone is top-right: h1 133 px Epilogue 800 in Craie, the accent line
+* under it. The talk-control positioning variants (`left`, `right`, `top`, `bottom`)
+* keep their own margins, so a deck that used them still renders as before.
+*/
 :root {
-    --tc-transition-color: var(--white);
-    --tc-transition-title-font-size: 2em;
-    --tc-transition-margin-top: 450px;
-    --tc-transition-line-color: var(--sfeir-green);
-    --tc-transition-sub-title-font-size: 1.5em;
+    // The official divider has no accent rule under the title.
+    --tc-transition-display-line: none;
+    --tc-transition-color: var(--sfeir-ink-on-dark);
+    --tc-transition-title-font-size: var(--sfeir-fs-display);
+    --tc-transition-margin-top: 620px;
+    --tc-transition-sub-title-font-size: var(--sfeir-fs-subtitle);
 }
 
-.reveal .slides section[class*='transition']:not(.stack),
-.reveal .slides section.first-slide:not(.stack) {
+.reveal .slides section[class*='transition']:not(.stack) {
+    box-sizing: border-box;
+    padding-left: 64px; // 94 px from the edge with talk-control's 30 px h1 padding
+    padding-right: 64px;
+
     h1 {
         margin-left: initial;
         text-align: left;
+        line-height: 1.05;
+        letter-spacing: var(--sfeir-tracking-display);
     }
 
     h2 {
         text-align: left;
+        font-weight: var(--sfeir-weight-medium);
     }
 
-    &.blue h1:before,
-    &.transition-bg-blue-1 h1:before,
-    &.transition-bg-blue-2 h1:before,
-    &.transition-bg-blue-3 h1:before {
-        --tc-transition-line-color: var(--sfeir-blue);
-    }
-
-    &.green h1:before {
-        --tc-transition-line-color: var(--sfeir-green);
-    }
-
-    &.bg-white h1:before,
-    &.bg-blue h1:before,
-    &.bg-green h1:before {
-        background: none;
-    }
-
-    &.bg-white h1 {
-        --tc-transition-color: var(--black);
-    }
-    &.bg-white:not(h1) {
-        color: var(--black);
-    }
-}
-
-.reveal .backgrounds div.slide-background.transition {
-    &.bg-white,
-    &.bg-blue,
-    &.bg-green {
-        &:after {
-            content: '';
-            position: absolute;
-            width: 100%;
-            height: 100%;
-        }
-    }
-
-    &.bg-white:after {
-        background: rgba(255, 255, 255, 0.6);
-    }
-    &.bg-blue::after {
-        background: rgba(87, 94, 170, 0.6);
-    }
-    &.bg-green::after {
-        background: rgba(10, 181, 128, 0.6);
-    }
-}
-
-/**
-* Hack for institute mode
-**/
-.reveal .slides[data-theme='institute'] section[class*='transition'],
-.reveal
-    .slides[data-theme='institute']
-    section.sfeir-basic-slide[class*='transition'],
-.reveal
-    .slides[data-theme='institute']
-    section.sfeir-specific-slide[class*='transition'],
-.reveal .slides[data-theme='institute'] section.first-slide {
-    h1:before {
-        --tc-transition-line-color: var(--sfeir-blue);
-    }
-
-    &.green h1:before,
-    &.transition-bg-green-1 h1:before,
-    &.transition-bg-green-2 h1:before,
-    &.transition-bg-green-3 h1:before,
-    &.transition-bg-green-4 h1:before,
-    &.transition-bg-green-5 h1:before,
-    &.transition-bg-green-6 h1:before {
-        --tc-transition-line-color: var(--sfeir-green);
+    // Light photos under a divider: dark ink. --tc-transition-color is declared at
+    // :root, so the flip has to be restated here.
+    &#{$sfeir-light-qualifier} {
+        --tc-transition-color: var(--sfeir-on-surface);
     }
 }
 
@@ -96,35 +44,9 @@
 */
 html.print-pdf {
     .reveal .slides .pdf-page section[class*='transition'],
-    .reveal .slides .pdf-page section.sfeir-basic-slide[class*='transition'],
-    .reveal .slides .pdf-page section.sfeir-specific-slide[class*='transition'],
     .reveal .slides .pdf-page section.first-slide {
         h1:before {
             z-index: 1;
-        }
-    }
-
-    .reveal .slides .pdf-page div.slide-background.transition {
-        &.bg-white,
-        &.bg-blue,
-        &.bg-green {
-            &:after {
-                content: '';
-                position: absolute;
-                width: 100%;
-                height: 100%;
-                left: 0;
-            }
-        }
-
-        &.bg-white:after {
-            background: rgba(255, 255, 255, 0.6);
-        }
-        &.bg-blue::after {
-            background: rgba(87, 94, 170, 0.6);
-        }
-        &.bg-green::after {
-            background: rgba(10, 181, 128, 0.6);
         }
     }
 }

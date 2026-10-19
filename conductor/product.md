@@ -15,7 +15,7 @@ The primary audience consists of SFEIR trainers and speakers. They require a con
 
 ## Key Features
 - **RevealJS & TalkControl Integration:** Full compatibility with the RevealJS ecosystem and specialized extensions for speaker notes, multi-column layouts, and more.
-- **Branding Modes:** Automatic switching between "School" (Green), "Institute" (Blue), and "Conf" modes to adapt to different training contexts.
+- **Branding Modes:** Automatic switching between "School", "Institute" and "Conf" modes to adapt to different training contexts. Both programs share the SFEIR 2026 identity (Epilogue / Space Grotesk, copper fills, photo backgrounds, glass cards); they differ by the cover lockup and a signature colour on small elements only — copper for Institute, Émeraude green for School. "Conf" removes the branding.
 - **Maintenance CLI:** A dedicated CLI to manage project cleanup, version migration, and initial setup.
 - **KISS UI:** Keep the tool UI simple and focused on the presentation itself, avoiding unnecessary complexity for the trainer.
 

@@ -1,0 +1,86 @@
+/**
+* Layer 1 — palette.
+*
+* Raw values from the official 2026-2027 theme (`Theme SFEIR 26`, analysed in
+* docs/charte-2026/05-reference-analysis.md). Where the skill and the delivered pptx
+* disagree, the pptx wins; the two deliberate deviations are flagged inline.
+*
+* Never reference these from a slide or from a school's own stylesheet: they carry no
+* role, so they cannot switch with the program or with surface polarity. Use the
+* semantic tokens in _semantic.scss instead.
+*/
+
+:root {
+    /**
+    * Cuivre — the charte accent, carried by both programs as fill and wash.
+    *
+    * Deviation, kept on purpose: the pptx puts #E4AA5D text on #F9F9F9 (1.95:1). Accent
+    * *text* on light surfaces uses --sfeir-cuivre instead (6.1:1), a value the official
+    * scheme does not carry but a training room needs.
+    */
+    --sfeir-cuivre: #845400; // accent text on light surfaces — the AA deviation
+    --sfeir-cuivre-poli: #e4aa5d; // accent1: fills, numerals, accent on dark (8.5:1)
+    --sfeir-cuivre-clair: #feb95c; // accent4: the lighter tier
+    --sfeir-sable: #f0c387; // accent3: warm callout wash
+    --sfeir-cuivre-profond: #5d3a00; // deep tier, selection ink on Sable
+
+    /**
+    * Ocre — the family carried by SFEIR Institute (decision D1, revision 2).
+    *
+    * Re-pointed to the pptx copper so that Institute is indistinguishable from the
+    * corporate accent, which is the intent: Institute is corporate training.
+    * Declared as literals so the family table reads on its own.
+    */
+    --sfeir-ocre-light: #f0c387;
+    --sfeir-ocre-medium: #feb95c;
+    --sfeir-ocre-primary: #e4aa5d;
+    --sfeir-ocre-dark: #845400;
+
+    /**
+    * Émeraude — the family carried by SFEIR School (decision D1, revision 2).
+    *
+    * Demoted to signature elements only: eyebrow, list markers, title underline,
+    * transition line, level chips, separators. Never a fill, a background or a numeral —
+    * the semantic layer encodes that by pointing School's fill and wash at Cuivre.
+    */
+    --sfeir-emeraude-light: #c8f5d6;
+    --sfeir-emeraude-medium: #6bc68f;
+    --sfeir-emeraude-primary: #2e8b57;
+    --sfeir-emeraude-dark: #0d5a2e;
+
+    /**
+    * Surfaces — the Blanc Craie to Noir Carbone ramp.
+    * Depth comes from layering these and from the glass tints, never from a shadow.
+    */
+    --sfeir-white: #ffffff; // lt2: white cards and insets
+    --sfeir-craie: #f9f9f9; // lt1: default light surface, light ink on dark
+    --sfeir-craie-1: #f3f3f3; // default card surface
+    --sfeir-craie-2: #eeeeee;
+    --sfeir-craie-3: #e8e8e8; // elevated / featured cards
+    --sfeir-craie-4: #e2e2e2; // rare, hover states
+    --sfeir-brouillard: #dadada; // dimmed sections
+    --sfeir-carbone: #181a1f; // dk1: dark surface fill, flat fallback under photos
+    --sfeir-noir: #000000; // dk2: black blocks, never a slide background
+
+    /**
+    * Glass — translucent cards on photos, as the pptx draws them.
+    */
+    --sfeir-glass-dark: rgb(23 26 32 / 0.7); // #171A20 at 70 %, 10 uses
+    --sfeir-glass-light: rgb(255 255 255 / 0.41); // white at 41 %, 8 uses
+    --sfeir-overlay: rgb(24 26 31 / 0.55); // opt-in scrim for weak projectors
+
+    /**
+    * Ink and separators.
+    *
+    * dk1 is both the dark fill and the ink: --sfeir-charcoal is --sfeir-carbone under its
+    * ink name, and --sfeir-ink-on-dark is --sfeir-craie under its own.
+    */
+    --sfeir-charcoal: #181a1f; // body text on light surfaces
+    --sfeir-ink-on-dark: #f9f9f9; // body text on dark surfaces
+    --sfeir-separator-warm: #ccc4b6; // accent6: separators and muted ink on dark (10:1)
+    --sfeir-taupe: #b3a495; // accent5: captions on light, 2.3:1 — decoration, never ink
+    // The one skill value retained: the pptx has no legible muted ink on light, and
+    // Taupe fails even as large text. Captions and eyebrows on light use this (8.8:1).
+    --sfeir-charcoal-variant: #514536;
+    --sfeir-error: #ba1a1a;
+}
